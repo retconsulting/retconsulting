@@ -1,0 +1,493 @@
+/* RET Consulting marketing site styles
+   Imports the design tokens from ../../colors_and_type.css */
+
+.app {
+  min-height: 100vh;
+  background: var(--paper);
+  display: flex;
+  flex-direction: column;
+}
+
+.container {
+  max-width: 1100px;
+  margin: 0 auto;
+  width: 100%;
+  padding: 0 32px;
+  box-sizing: border-box;
+}
+
+/* ---------- Header ---------- */
+.ret-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 20px 32px;
+  max-width: 1100px;
+  margin: 0 auto;
+  width: 100%;
+  box-sizing: border-box;
+  border-bottom: 1px solid var(--rule);
+}
+.ret-header__brand { cursor: pointer; display: flex; align-items: center; }
+.ret-header__brand img { height: 64px; display: block; }
+.ret-header__nav { display: flex; gap: 32px; }
+.ret-header__link {
+  font-family: var(--font-sans);
+  font-size: 14px;
+  color: var(--ink-2);
+  cursor: pointer;
+  position: relative;
+  padding: 4px 0;
+  transition: color var(--dur-fast) var(--ease);
+}
+.ret-header__link:hover { color: var(--ink); text-decoration: none; }
+.ret-header__link.is-active { color: var(--ink); }
+.ret-header__link.is-active::after {
+  content: ''; position: absolute; left: 0; right: 0; bottom: -2px;
+  height: 1.5px; background: var(--pine);
+}
+
+/* ---------- Hero ---------- */
+.ret-hero {
+  padding: 96px 0 80px;
+  border-bottom: 1px solid var(--rule);
+}
+.ret-hero__eyebrow {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--ink-3);
+  margin-bottom: 32px;
+}
+.ret-hero__title {
+  font-family: var(--font-sans);
+  font-weight: 400;
+  font-size: clamp(2.75rem, 5.2vw, 4.5rem);
+  line-height: 1.05;
+  letter-spacing: -0.025em;
+  color: var(--ink);
+  margin: 0 0 28px 0;
+  max-width: 14ch;
+}
+.ret-hero__title em {
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-weight: 400;
+}
+.ret-hero__lede {
+  font-family: var(--font-sans);
+  font-size: 19px;
+  line-height: 1.55;
+  color: var(--ink-2);
+  max-width: 56ch;
+  margin: 0 0 40px 0;
+}
+.ret-hero__cta { display: flex; gap: 12px; margin-bottom: 56px; }
+.ret-hero__meta {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  font-family: var(--font-mono);
+  font-size: 12px;
+  letter-spacing: 0.06em;
+  color: var(--ink-3);
+}
+.ret-hero__dot {
+  width: 4px; height: 4px; border-radius: 50%; background: var(--rule-strong);
+}
+
+/* ---------- Services ---------- */
+.ret-services { padding: 96px 0; border-bottom: 1px solid var(--rule); }
+.ret-services__head { margin-bottom: 56px; }
+.ret-services__head .eyebrow { display: block; margin-bottom: 16px; }
+.ret-services__head h2 {
+  font-family: var(--font-serif);
+  font-size: clamp(1.75rem, 2.6vw, 2.5rem);
+  letter-spacing: -0.018em;
+  line-height: 1.15;
+  max-width: 16ch;
+}
+.ret-services__grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+}
+.ret-service {
+  background: var(--paper-soft);
+  border: 1px solid var(--rule);
+  border-radius: var(--r-2);
+  padding: 32px;
+  transition: border-color var(--dur-fast) var(--ease);
+}
+.ret-service:hover { border-color: var(--ink-3); }
+.ret-service__num {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  letter-spacing: 0.18em;
+  color: var(--pine);
+  display: block;
+  margin-bottom: 24px;
+}
+.ret-service__title {
+  font-family: var(--font-sans);
+  font-size: 20px;
+  font-weight: 500;
+  letter-spacing: -0.005em;
+  margin: 0 0 12px 0;
+  color: var(--ink);
+}
+.ret-service__body {
+  font-size: 15px;
+  line-height: 1.55;
+  color: var(--ink-2);
+}
+
+/* ---------- Work list ---------- */
+.ret-work { padding: 96px 0; border-bottom: 1px solid var(--rule); }
+.ret-work__head { margin-bottom: 40px; }
+.ret-work__head .eyebrow { display: block; margin-bottom: 16px; }
+.ret-work__head h2 {
+  font-family: var(--font-serif);
+  font-size: clamp(1.75rem, 2.6vw, 2.5rem);
+  letter-spacing: -0.018em;
+  line-height: 1.15;
+  margin-bottom: 28px;
+}
+.ret-work__filters { display: flex; gap: 8px; }
+.ret-chip {
+  font-family: var(--font-sans);
+  font-size: 13px;
+  padding: 6px 14px;
+  border-radius: var(--r-pill);
+  border: 1px solid var(--rule);
+  background: transparent;
+  color: var(--ink-2);
+  cursor: pointer;
+  transition: all var(--dur-fast) var(--ease);
+}
+.ret-chip:hover { border-color: var(--ink-3); color: var(--ink); }
+.ret-chip.is-active {
+  background: var(--ink);
+  color: var(--paper-soft);
+  border-color: var(--ink);
+}
+.ret-work__list { list-style: none; padding: 0; margin: 0; }
+.ret-work__row {
+  display: grid;
+  grid-template-columns: 80px 1fr auto;
+  align-items: center;
+  gap: 24px;
+  padding: 24px 0;
+  border-top: 1px solid var(--rule);
+}
+.ret-work__row:last-child { border-bottom: 1px solid var(--rule); }
+.ret-work__yr {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  color: var(--ink-3);
+  letter-spacing: 0.04em;
+}
+.ret-work__title {
+  font-family: var(--font-sans);
+  font-size: 17px;
+  font-weight: 500;
+  color: var(--ink);
+  margin: 0 0 4px 0;
+  letter-spacing: -0.005em;
+}
+.ret-work__client {
+  font-family: var(--font-sans);
+  font-size: 13px;
+  color: var(--ink-3);
+}
+
+/* ---------- Writing ---------- */
+.ret-writing { padding: 96px 0; border-bottom: 1px solid var(--rule); }
+.ret-writing__head { margin-bottom: 40px; max-width: 60ch; }
+.ret-writing__head .eyebrow { display: block; margin-bottom: 16px; }
+.ret-writing__head h2 {
+  font-family: var(--font-serif);
+  font-size: clamp(1.75rem, 2.6vw, 2.5rem);
+  letter-spacing: -0.018em;
+  line-height: 1.15;
+  margin-bottom: 16px;
+}
+.ret-writing__lede {
+  font-size: 17px;
+  line-height: 1.55;
+  color: var(--ink-2);
+}
+.ret-writing__lede em {
+  font-family: var(--font-serif);
+  font-style: italic;
+}
+.ret-writing__list { list-style: none; padding: 0; margin: 0; }
+.ret-writing__row {
+  display: grid;
+  grid-template-columns: 120px 1fr 80px;
+  align-items: baseline;
+  gap: 24px;
+  padding: 22px 0;
+  border-top: 1px solid var(--rule);
+  cursor: pointer;
+  transition: background var(--dur-fast) var(--ease);
+}
+.ret-writing__row:last-child { border-bottom: 1px solid var(--rule); }
+.ret-writing__row:hover { background: var(--paper-soft); }
+.ret-writing__date {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  color: var(--ink-3);
+  letter-spacing: 0.04em;
+}
+.ret-writing__title {
+  font-family: var(--font-serif);
+  font-size: 22px;
+  letter-spacing: -0.018em;
+  color: var(--ink);
+  cursor: pointer;
+}
+.ret-writing__min {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  color: var(--ink-3);
+  text-align: right;
+}
+
+/* ---------- About ---------- */
+.ret-about { padding: 96px 0; border-bottom: 1px solid var(--rule); }
+.ret-about__head { margin-bottom: 56px; max-width: 24ch; }
+.ret-about__head .eyebrow { display: block; margin-bottom: 16px; }
+.ret-about__head h2 {
+  font-family: var(--font-serif);
+  font-size: clamp(1.75rem, 2.6vw, 2.5rem);
+  letter-spacing: -0.018em;
+  line-height: 1.15;
+}
+.ret-about__grid {
+  display: grid;
+  grid-template-columns: 320px 1fr;
+  gap: 56px;
+  align-items: start;
+}
+.ret-about__portrait {
+  aspect-ratio: 4 / 5;
+  background: var(--paper-deep);
+  border: 1px solid var(--rule);
+  border-radius: var(--r-2);
+  position: relative;
+  overflow: hidden;
+}
+.ret-about__portrait-inner {
+  position: absolute; inset: 0;
+  display: flex; align-items: center; justify-content: center;
+  background: linear-gradient(135deg, var(--paper-deep), var(--rule));
+}
+.ret-about__caption {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--ink-3);
+}
+.ret-about__prose p {
+  font-size: 17px;
+  line-height: 1.65;
+  color: var(--ink-2);
+  margin-bottom: 20px;
+  max-width: 56ch;
+}
+.ret-about__prose em {
+  font-family: var(--font-serif);
+  font-style: italic;
+  color: var(--ink);
+}
+
+/* ---------- Contact ---------- */
+.ret-contact { padding: 96px 0; }
+.ret-contact__head { margin-bottom: 40px; max-width: 50ch; }
+.ret-contact__head .eyebrow { display: block; margin-bottom: 16px; }
+.ret-contact__head h2 {
+  font-family: var(--font-serif);
+  font-size: clamp(1.75rem, 2.6vw, 2.5rem);
+  letter-spacing: -0.018em;
+  line-height: 1.15;
+  margin-bottom: 16px;
+}
+.ret-contact__lede {
+  font-size: 17px;
+  line-height: 1.55;
+  color: var(--ink-2);
+}
+.ret-contact__form {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+  max-width: 640px;
+}
+.ret-field { display: flex; flex-direction: column; gap: 8px; }
+.ret-field--full { grid-column: 1 / -1; }
+.ret-field label {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--ink-3);
+}
+.ret-field--actions {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 16px;
+  margin-top: 8px;
+}
+.ret-contact__small {
+  font-size: 13px;
+  color: var(--ink-3);
+}
+.ret-contact__thanks {
+  background: var(--pine-soft);
+  border: 1px solid var(--pine);
+  border-radius: var(--r-2);
+  padding: 32px;
+  max-width: 640px;
+}
+.ret-contact__thanks h3 {
+  font-family: var(--font-serif);
+  font-size: 22px;
+  letter-spacing: -0.018em;
+  color: var(--pine-deep);
+  margin-bottom: 8px;
+}
+.ret-contact__thanks p { color: var(--ink-2); }
+
+/* ---------- Footer ---------- */
+.ret-footer {
+  background: var(--paper-deep);
+  border-top: 1px solid var(--rule);
+  padding: 40px 32px;
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  gap: 40px;
+  align-items: center;
+  margin-top: 0;
+}
+.ret-footer__brand { display: flex; align-items: center; gap: 14px; }
+.ret-footer__brand img { height: 40px; }
+.ret-footer__name {
+  font-family: var(--font-sans);
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--ink);
+}
+.ret-footer__addr {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  color: var(--ink-3);
+  margin-top: 2px;
+}
+.ret-footer__nav {
+  display: flex;
+  gap: 24px;
+  justify-content: center;
+}
+.ret-footer__nav a {
+  font-family: var(--font-sans);
+  font-size: 13px;
+  color: var(--ink-2);
+  cursor: pointer;
+}
+.ret-footer__meta {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 4px;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  color: var(--ink-3);
+}
+
+/* responsive */
+@media (max-width: 800px) {
+  .ret-services__grid { grid-template-columns: 1fr; }
+  .ret-about__grid { grid-template-columns: 1fr; }
+  .ret-contact__form { grid-template-columns: 1fr; }
+  .ret-footer { grid-template-columns: 1fr; gap: 24px; text-align: center; }
+  .ret-footer__nav { flex-wrap: wrap; }
+  .ret-footer__meta { align-items: center; }
+}
+
+/* ============================================================
+   Site additions — static public one-pager (retconsulting.be)
+   ============================================================ */
+html { scroll-behavior: smooth; }
+section[id] { scroll-margin-top: 96px; }
+
+/* Header — sticky, full-bleed */
+.site-header {
+  position: sticky; top: 0; z-index: var(--z-nav);
+  background: var(--paper); border-bottom: 1px solid var(--rule);
+}
+.site-header__inner {
+  max-width: 1100px; margin: 0 auto; width: 100%; box-sizing: border-box;
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 14px 32px;
+}
+.site-header__brand { display: flex; align-items: center; }
+.site-header__brand img { height: 54px; display: block; }
+.site-header__right { display: flex; align-items: center; gap: 28px; }
+
+/* Inline wordmark — recolors with the theme tokens */
+.brandmark { height: 54px; width: auto; display: block; }
+.brandmark .bm-ret { fill: var(--ink); }
+.brandmark .bm-consult { fill: var(--ink-2); }
+.brandmark .bm-rule { stroke: var(--rule); }
+.brandmark .bm-tree { fill: var(--pine); stroke: var(--pine); }
+
+/* Theme toggle */
+.ret-theme {
+  display: inline-flex; align-items: center; justify-content: center;
+  width: 38px; height: 38px; padding: 0;
+  background: transparent; border: 1px solid var(--rule); border-radius: var(--r-2);
+  color: var(--ink-2); cursor: pointer;
+  transition: border-color var(--dur-fast) var(--ease), color var(--dur-fast) var(--ease);
+}
+.ret-theme:hover { border-color: var(--ink-3); color: var(--ink); }
+.ret-theme svg { width: 18px; height: 18px; display: block; }
+.ret-theme .icon-moon { display: none; }
+[data-theme="dark"] .ret-theme .icon-sun { display: none; }
+[data-theme="dark"] .ret-theme .icon-moon { display: block; }
+
+/* About — facts card in place of portrait */
+.ret-about__card {
+  background: var(--paper-soft); border: 1px solid var(--rule);
+  border-radius: var(--r-2); padding: var(--s-6);
+  display: flex; flex-direction: column; gap: var(--s-5);
+}
+.ret-about__mark { display: flex; align-items: center; gap: 12px; }
+.ret-about__mark img { height: 46px; display: block; }
+.ret-about__mark span { font-family: var(--font-sans); font-size: 15px; font-weight: 500; color: var(--ink); }
+.ret-about__tags { display: flex; flex-wrap: wrap; gap: 8px; }
+.ret-about__facts { display: grid; gap: 14px; margin: 0; }
+.ret-about__facts > div { display: flex; flex-direction: column; gap: 3px; }
+.ret-about__facts dt {
+  font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.14em;
+  text-transform: uppercase; color: var(--ink-3);
+}
+.ret-about__facts dd { margin: 0; font-size: 14px; color: var(--ink-2); }
+
+/* Contact — direct line under the form */
+.ret-contact__direct { margin-top: 28px; font-size: 14px; color: var(--ink-3); }
+.ret-contact__direct a { font-family: var(--font-mono); }
+
+/* Footer legal identifiers */
+.ret-footer__legal { font-family: var(--font-mono); font-size: 11px; color: var(--ink-3); line-height: 1.6; }
+
+@media (max-width: 800px) {
+  .ret-header__nav { display: none; }
+  .site-header__right { gap: 14px; }
+  .ret-hero { padding: 56px 0 48px; }
+  .ret-services, .ret-about, .ret-contact { padding: 64px 0; }
+}

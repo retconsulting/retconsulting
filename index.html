@@ -1,0 +1,275 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>RET Consulting — Product owner & business analyst</title>
+<meta name="description" content="RET Consulting — Redha Etbaz, product owner et business analyst indépendant pour le logiciel d'entreprise à grande échelle. Missions Agile et projets sur demande. Belgique."/>
+<meta name="author" content="RET Consulting SRL"/>
+<meta property="og:type" content="website"/>
+<meta property="og:title" content="RET Consulting — Product owner & business analyst"/>
+<meta property="og:description" content="Product owner et business analyst indépendant pour le logiciel d'entreprise à grande échelle. Missions Agile et projets sur demande."/>
+<meta property="og:url" content="https://retconsulting.be/"/>
+<meta property="og:image" content="https://retconsulting.be/assets/logo-monogram.svg"/>
+<meta name="theme-color" content="#EFEAE3"/>
+<link rel="icon" href="assets/logo-monogram.svg"/>
+<link rel="stylesheet" href="assets/colors_and_type.css"/>
+<link rel="stylesheet" href="assets/styles.css"/>
+<script>
+  // Set theme before paint to avoid flash.
+  (function () {
+    try {
+      var saved = localStorage.getItem('ret-theme');
+      var dark = saved ? saved === 'dark'
+                       : window.matchMedia('(prefers-color-scheme: dark)').matches;
+      if (dark) document.documentElement.setAttribute('data-theme', 'dark');
+    } catch (e) {}
+  })();
+</script>
+</head>
+<body>
+<div class="app" id="top">
+
+  <header class="site-header">
+    <div class="site-header__inner">
+      <a class="site-header__brand" href="#top" aria-label="RET Consulting — accueil">
+        <svg class="brandmark" viewBox="0 0 130 110" fill="none" role="img" aria-label="RET Consulting">
+          <g transform="translate(56, 4)">
+            <path class="bm-tree" d="M9 0 L3 8 L6 8 L0 16 L18 16 L12 8 L15 8 Z"/>
+            <line class="bm-tree" x1="9" y1="16" x2="9" y2="20" stroke-width="1.4" stroke-linecap="round"/>
+          </g>
+          <text class="bm-ret" x="65" y="74" text-anchor="middle" font-family="'Source Serif 4','Tiempos Text',Georgia,serif" font-size="48" font-weight="400" letter-spacing="-1.5">RET</text>
+          <line class="bm-rule" x1="20" y1="84" x2="110" y2="84" stroke-width="1"/>
+          <text class="bm-consult" x="65" y="100" text-anchor="middle" font-family="'Geist','Söhne',system-ui,sans-serif" font-size="11" font-weight="500" letter-spacing="2.4">CONSULTING</text>
+        </svg>
+      </a>
+      <div class="site-header__right">
+        <nav class="ret-header__nav" aria-label="Navigation principale">
+          <a class="ret-header__link" href="#services">Ce que je fais</a>
+          <a class="ret-header__link" href="#about">Profil</a>
+          <a class="ret-header__link" href="#contact">Contact</a>
+        </nav>
+        <button type="button" class="ret-theme" id="themeToggle" aria-label="Basculer le thème clair / sombre">
+          <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" aria-hidden="true">
+            <circle cx="12" cy="12" r="4.2"/>
+            <path d="M12 2.5v2.4M12 19.1v2.4M4.2 4.2l1.7 1.7M18.1 18.1l1.7 1.7M2.5 12h2.4M19.1 12h2.4M4.2 19.8l1.7-1.7M18.1 5.9l1.7-1.7"/>
+          </svg>
+          <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M20 14.5A8 8 0 0 1 9.5 4a6.5 6.5 0 1 0 10.5 10.5z"/>
+          </svg>
+        </button>
+        <a class="ret-btn ret-btn--secondary" href="#contact">Me contacter</a>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <div class="container">
+
+      <section class="ret-hero" id="hero">
+        <div class="ret-hero__eyebrow">PRODUCT OWNER · BUSINESS ANALYST</div>
+        <h1 class="ret-hero__title">
+          Je cadre, je priorise, je <em>livre.</em>
+        </h1>
+        <p class="ret-hero__lede">
+          Je fais le lien entre ce que veut le métier et ce que construit la technique.
+          Gros logiciel d'entreprise, application mobile ou site web — je clarifie ce qu'il
+          faut construire, et je m'assure que ça sort vraiment.
+        </p>
+        <div class="ret-hero__cta">
+          <a class="ret-btn ret-btn--primary" href="#contact">Me contacter</a>
+          <a class="ret-btn ret-btn--ghost" href="#services">Ce que je fais</a>
+        </div>
+        <div class="ret-hero__meta">
+          <span>Missions et projets sur demande</span>
+          <span class="ret-hero__dot"></span>
+          <span>Basé en Belgique — sur site ou à distance</span>
+        </div>
+      </section>
+
+      <section class="ret-services" id="services">
+        <div class="ret-services__head">
+          <span class="eyebrow">Ce que je fais</span>
+          <h2>Trois façons de travailler ensemble.</h2>
+        </div>
+        <div class="ret-services__grid">
+          <article class="ret-service">
+            <span class="ret-service__num">01</span>
+            <h3 class="ret-service__title">Pilotage produit</h3>
+            <p class="ret-service__body">
+              Je décide quoi construire en premier, et pourquoi. Je traduis les priorités
+              du métier en un plan clair pour l'équipe — et je tiens le cap jusqu'à la
+              livraison.
+            </p>
+          </article>
+          <article class="ret-service">
+            <span class="ret-service__num">02</span>
+            <h3 class="ret-service__title">Analyse du besoin et technique</h3>
+            <p class="ret-service__body">
+              Je clarifie ce qu'il faut vraiment, côté métier comme côté technique, avant
+              que ça coûte cher. Je creuse le besoin, les données, les contraintes — et je
+              mets tout noir sur blanc pour que chacun construise la même chose.
+            </p>
+          </article>
+          <article class="ret-service">
+            <span class="ret-service__num">03</span>
+            <h3 class="ret-service__title">Projets sur demande</h3>
+            <p class="ret-service__body">
+              Une appli iOS, un site, un outil interne ? Je prends le projet en main, de
+              l'idée à la mise en ligne. Cadré, simple, fini.
+            </p>
+          </article>
+        </div>
+      </section>
+
+      <section class="ret-about" id="about">
+        <div class="ret-about__head">
+          <span class="eyebrow">Profil</span>
+          <h2>Une personne. Huit ans de produit et d'analyse.</h2>
+        </div>
+        <div class="ret-about__grid">
+          <aside class="ret-about__card">
+            <div class="ret-about__mark">
+              <img src="assets/logo-monogram.svg" alt=""/>
+              <span>RET Consulting SRL</span>
+            </div>
+            <div>
+              <span class="eyebrow" style="display:block;margin-bottom:12px;">Certifications</span>
+              <div class="ret-about__tags">
+                <span class="ret-tag">SAFe POPM</span>
+                <span class="ret-tag">PSPO I &amp; II</span>
+                <span class="ret-tag">PSM I</span>
+                <span class="ret-tag">Google UX</span>
+                <span class="ret-tag">ITIL</span>
+              </div>
+            </div>
+            <dl class="ret-about__facts">
+              <div>
+                <dt>Rôle</dt>
+                <dd>Product owner &middot; Business analyst</dd>
+              </div>
+              <div>
+                <dt>Localisation</dt>
+                <dd>Belgique — sur site ou à distance</dd>
+              </div>
+              <div>
+                <dt>Langues</dt>
+                <dd>Français (natif), anglais (courant)</dd>
+              </div>
+            </dl>
+          </aside>
+          <div class="ret-about__prose">
+            <p>
+              Je suis Redha Etbaz, ingénieur de gestion (UCLouvain). RET Consulting, c'est
+              moi — un seul interlocuteur, du premier échange à la livraison.
+            </p>
+            <p>
+              Depuis 2018, j'accompagne des produits dans la pharma, le rail international
+              et le secteur public. Souvent de gros systèmes, avec beaucoup de monde autour
+              de la table.
+            </p>
+            <p>
+              <em>Je vais au concret.</em> Comprendre le besoin, trancher les priorités,
+              tester, documenter — le travail peu glamour qui fait qu'un produit sort vraiment.
+            </p>
+            <p>
+              Français, anglais. En mission partout en Belgique et à distance.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <section class="ret-contact" id="contact">
+        <div class="ret-contact__head">
+          <span class="eyebrow">Contact</span>
+          <h2>Dis-moi sur quoi tu travailles.</h2>
+          <p class="ret-contact__lede">
+            Quelques lignes suffisent. Je réponds en français ou en anglais, sous deux jours ouvrés.
+          </p>
+        </div>
+        <form class="ret-contact__form" id="contactForm">
+          <div class="ret-field">
+            <label for="cf-name">Ton nom</label>
+            <input class="ret-input" id="cf-name" name="name" placeholder="Prénom Nom" required/>
+          </div>
+          <div class="ret-field">
+            <label for="cf-email">Email</label>
+            <input class="ret-input" id="cf-email" name="email" type="email" placeholder="toi@entreprise.be" required/>
+          </div>
+          <div class="ret-field ret-field--full">
+            <label for="cf-message">Sur quoi tu travailles ?</label>
+            <textarea class="ret-input" id="cf-message" name="message" rows="5" placeholder="Quelques phrases suffisent." required></textarea>
+          </div>
+          <div class="ret-field ret-field--full ret-field--actions">
+            <button type="submit" class="ret-btn ret-btn--primary">Envoyer</button>
+            <span class="ret-contact__small">Ouvre ton client mail avec le message pré-rempli.</span>
+          </div>
+        </form>
+        <p class="ret-contact__direct">
+          Ou directement — <a href="mailto:retbaz@retconsulting.be">retbaz@retconsulting.be</a>
+        </p>
+      </section>
+
+    </div>
+  </main>
+
+  <footer class="ret-footer">
+    <div class="ret-footer__brand">
+      <img src="assets/logo-monogram.svg" alt="RET"/>
+      <div>
+        <div class="ret-footer__name">RET Consulting SRL</div>
+        <div class="ret-footer__addr">Belgique</div>
+      </div>
+    </div>
+    <nav class="ret-footer__nav">
+      <a href="#top">Accueil</a>
+      <a href="#services">Ce que je fais</a>
+      <a href="#about">Profil</a>
+      <a href="#contact">Contact</a>
+    </nav>
+    <div class="ret-footer__meta">
+      <span>&copy; <span id="year">2026</span> RET Consulting SRL</span>
+    </div>
+  </footer>
+
+</div>
+
+<script>
+  // Theme toggle
+  (function () {
+    var btn = document.getElementById('themeToggle');
+    if (!btn) return;
+    btn.addEventListener('click', function () {
+      var isDark = document.documentElement.getAttribute('data-theme') === 'dark';
+      if (isDark) {
+        document.documentElement.removeAttribute('data-theme');
+        try { localStorage.setItem('ret-theme', 'light'); } catch (e) {}
+      } else {
+        document.documentElement.setAttribute('data-theme', 'dark');
+        try { localStorage.setItem('ret-theme', 'dark'); } catch (e) {}
+      }
+    });
+  })();
+
+  // Contact form → mailto (no backend needed)
+  (function () {
+    var form = document.getElementById('contactForm');
+    if (!form) return;
+    form.addEventListener('submit', function (e) {
+      e.preventDefault();
+      var name = document.getElementById('cf-name').value.trim();
+      var email = document.getElementById('cf-email').value.trim();
+      var message = document.getElementById('cf-message').value.trim();
+      var subject = 'Contact via retconsulting.be — ' + name;
+      var body = message + '\n\n— ' + name + ' (' + email + ')';
+      window.location.href = 'mailto:retbaz@retconsulting.be'
+        + '?subject=' + encodeURIComponent(subject)
+        + '&body=' + encodeURIComponent(body);
+    });
+  })();
+
+  // Current year
+  document.getElementById('year').textContent = new Date().getFullYear();
+</script>
+</body>
+</html>

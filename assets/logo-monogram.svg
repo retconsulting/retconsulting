@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 96 96" fill="none">
+  <rect width="96" height="96" rx="16" fill="#EFEAE3"></rect>
+  <rect x="0.5" y="0.5" width="95" height="95" rx="15.5" fill="none" stroke="#D8CEC2"></rect>
+  <text x="48" y="60" text-anchor="middle" font-family="&#39;Source Serif 4&#39;, &#39;Tiempos Text&#39;, Georgia, serif" font-size="40" font-weight="400" letter-spacing="-1.4" fill="#1A1F1D">RET</text>
+  
+  <g transform="translate(42, 70)">
+    <path d="M6 0 L1 6 L3 6 L0 11 L12 11 L9 6 L11 6 Z" fill="#2D5D54"></path>
+    <line x1="6" y1="11" x2="6" y2="13" stroke="#2D5D54" stroke-width="1.2" stroke-linecap="round"></line>
+  </g>
+</svg>
