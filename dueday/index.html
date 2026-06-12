@@ -60,7 +60,15 @@
   .feature { display: grid; grid-template-columns: 1fr 1fr; gap: var(--s-7, 48px); align-items: center; margin-bottom: var(--s-9, 96px); }
   .feature--flip .feature__shot { order: 2; }
   .feature__shot { text-align: center; }
-  .feature__shot img { width: 100%; max-width: 300px; height: auto; border: 1px solid var(--rule); border-radius: 24px; }
+  /* Screenshot plates: tinted panel, phone cropped with a fade, one focus per screen */
+  .shot-panel { display: flex; justify-content: center; overflow: hidden; background: var(--paper-deep); border: 1px solid var(--rule); border-radius: 12px; aspect-ratio: 4 / 5; max-width: 360px; margin: 0 auto; }
+  .shot-panel img { width: 72%; height: auto; align-self: flex-start; border: 1px solid var(--rule); border-radius: 28px; }
+  .shot-panel--top { padding-top: 36px; }
+  .shot-panel--top img { -webkit-mask-image: linear-gradient(to bottom, #000 0%, #000 68%, transparent 96%); mask-image: linear-gradient(to bottom, #000 0%, #000 68%, transparent 96%); }
+  .shot-panel--mid { align-items: center; }
+  .shot-panel--mid img { align-self: center; -webkit-mask-image: linear-gradient(to bottom, transparent 4%, #000 26%, #000 74%, transparent 96%); mask-image: linear-gradient(to bottom, transparent 4%, #000 26%, #000 74%, transparent 96%); }
+  .shot-panel--bottom { align-items: flex-end; padding-bottom: 36px; }
+  .shot-panel--bottom img { align-self: flex-end; -webkit-mask-image: linear-gradient(to bottom, transparent 4%, #000 32%, #000 100%); mask-image: linear-gradient(to bottom, transparent 4%, #000 32%, #000 100%); }
   .feature h2 { font-family: 'Source Serif 4', Georgia, serif; font-weight: 400; font-size: clamp(24px, 3.5vw, 32px); line-height: 1.2; color: var(--ink); margin: var(--s-2, 12px) 0 var(--s-3, 16px); }
   .feature p { font-size: 15.5px; line-height: 1.65; max-width: 480px; margin: 0 0 var(--s-2, 12px); }
   .extras { border-top: 1px solid var(--rule); padding-top: var(--s-6, 40px); margin-bottom: var(--s-8, 64px); display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--s-5, 32px); }
@@ -128,7 +136,9 @@
 
   <section class="feature">
     <div class="feature__shot">
-      <img src="assets/shot-accueil.webp" alt="Écran d'accueil de dueday : prochaine échéance, total du mois et cartes de coûts" width="589" height="1280" fetchpriority="high"/>
+      <div class="shot-panel shot-panel--top">
+        <img src="assets/shot-accueil.webp" alt="Écran d'accueil de dueday : prochaine échéance, total du mois et cartes de coûts" width="589" height="1280" fetchpriority="high"/>
+      </div>
     </div>
     <div>
       <div class="eyebrow">Accueil</div>
@@ -140,7 +150,9 @@
 
   <section class="feature feature--flip">
     <div class="feature__shot">
-      <img src="assets/shot-calendrier.webp" alt="Calendrier de dueday : chaque paiement sur son jour, avec la pastille du jour de paye" width="589" height="1280" loading="lazy" decoding="async"/>
+      <div class="shot-panel shot-panel--mid">
+        <img src="assets/shot-calendrier.webp" alt="Calendrier de dueday : chaque paiement sur son jour, avec la pastille du jour de paye" width="589" height="1280" loading="lazy" decoding="async"/>
+      </div>
     </div>
     <div>
       <div class="eyebrow">Calendrier</div>
@@ -152,7 +164,9 @@
 
   <section class="feature">
     <div class="feature__shot">
-      <img src="assets/shot-analyse.webp" alt="Page Analyse de dueday : total mensuel, part du revenu, répartition par catégorie et top 5 des coûts" width="589" height="1280" loading="lazy" decoding="async"/>
+      <div class="shot-panel shot-panel--bottom">
+        <img src="assets/shot-analyse.webp" alt="Page Analyse de dueday : total mensuel, part du revenu, répartition par catégorie et top 5 des coûts" width="589" height="1280" loading="lazy" decoding="async"/>
+      </div>
     </div>
     <div>
       <div class="eyebrow">Analyse</div>

@@ -171,12 +171,25 @@
   padding: 32px;
   margin-bottom: 48px;
 }
+.ret-work__feature-shot {
+  display: flex;
+  justify-content: center;
+  overflow: hidden;
+  background: var(--paper-deep);
+  border: 1px solid var(--rule);
+  border-radius: var(--r-3);
+  aspect-ratio: 4 / 5;
+  padding-top: 24px;
+}
 .ret-work__feature-shot img {
-  width: 100%;
+  width: 78%;
   height: auto;
   display: block;
+  align-self: flex-start;
   border: 1px solid var(--rule);
-  border-radius: 16px;
+  border-radius: 22px;
+  -webkit-mask-image: linear-gradient(to bottom, #000 0%, #000 66%, transparent 96%);
+  mask-image: linear-gradient(to bottom, #000 0%, #000 66%, transparent 96%);
 }
 .ret-work__feature-status {
   display: block;
