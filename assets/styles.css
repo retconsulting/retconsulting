@@ -92,8 +92,9 @@
 .ret-hero__cta { display: flex; gap: 12px; margin-bottom: 56px; }
 .ret-hero__meta {
   display: flex;
+  flex-wrap: wrap;
   align-items: center;
-  gap: 14px;
+  gap: 10px 14px;
   font-family: var(--font-mono);
   font-size: 12px;
   letter-spacing: 0.06em;
@@ -148,9 +149,65 @@
   line-height: 1.55;
   color: var(--ink-2);
 }
+.ret-service__mode {
+  display: block;
+  margin-top: 20px;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.08em;
+  color: var(--ink-3);
+}
 
 /* ---------- Work list ---------- */
 .ret-work { padding: 96px 0; border-bottom: 1px solid var(--rule); }
+.ret-work__feature {
+  display: grid;
+  grid-template-columns: 200px 1fr;
+  gap: 40px;
+  align-items: center;
+  background: var(--paper-soft);
+  border: 1px solid var(--rule);
+  border-radius: var(--r-2);
+  padding: 32px;
+  margin-bottom: 48px;
+}
+.ret-work__feature-shot img {
+  width: 100%;
+  height: auto;
+  display: block;
+  border: 1px solid var(--rule);
+  border-radius: 16px;
+}
+.ret-work__feature-status {
+  display: block;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--pine);
+  margin-bottom: 12px;
+}
+.ret-work__feature-body h3 {
+  font-family: var(--font-serif);
+  font-size: 26px;
+  font-weight: 400;
+  letter-spacing: -0.018em;
+  color: var(--ink);
+  margin: 0 0 12px 0;
+}
+.ret-work__feature-body p {
+  font-size: 15px;
+  line-height: 1.6;
+  color: var(--ink-2);
+  max-width: 56ch;
+  margin: 0 0 12px 0;
+}
+.ret-work__feature-body .ret-btn { margin-top: 8px; }
+.ret-work__note {
+  margin-top: 20px;
+  font-size: 13px;
+  color: var(--ink-3);
+}
 .ret-work__head { margin-bottom: 40px; }
 .ret-work__head .eyebrow { display: block; margin-bottom: 16px; }
 .ret-work__head h2 {
@@ -417,18 +474,31 @@
 /* responsive */
 @media (max-width: 800px) {
   .ret-services__grid { grid-template-columns: 1fr; }
+  .ret-work__feature { grid-template-columns: 1fr; gap: 24px; }
+  .ret-work__feature-shot img { max-width: 220px; margin: 0 auto; }
   .ret-about__grid { grid-template-columns: 1fr; }
   .ret-contact__form { grid-template-columns: 1fr; }
   .ret-footer { grid-template-columns: 1fr; gap: 24px; text-align: center; }
-  .ret-footer__nav { flex-wrap: wrap; }
+  .ret-footer__nav { flex-wrap: wrap; justify-content: center; }
   .ret-footer__meta { align-items: center; }
 }
 
 /* ============================================================
    Site additions — static public one-pager (retconsulting.be)
    ============================================================ */
-html { scroll-behavior: smooth; }
+@media (prefers-reduced-motion: no-preference) {
+  html { scroll-behavior: smooth; }
+}
 section[id] { scroll-margin-top: 96px; }
+
+/* Skip link — hidden until keyboard focus */
+.skip-link {
+  position: absolute; left: -9999px; top: 0; z-index: calc(var(--z-nav) + 1);
+  font-family: var(--font-sans); font-size: 14px;
+  background: var(--pine); color: var(--paper-soft);
+  padding: 10px 16px; border-radius: 0 0 var(--r-2) 0;
+}
+.skip-link:focus { left: 0; text-decoration: none; }
 
 /* Header — sticky, full-bleed */
 .site-header {

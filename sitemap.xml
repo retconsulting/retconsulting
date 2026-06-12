@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:xhtml="http://www.w3.org/1999/xhtml">
+  <url>
+    <loc>https://retconsulting.be/</loc>
+    <lastmod>2026-06-12</lastmod>
+  </url>
+  <url>
+    <loc>https://retconsulting.be/dueday/</loc>
+    <lastmod>2026-06-12</lastmod>
+  </url>
+  <url>
+    <loc>https://retconsulting.be/dueday/privacy/</loc>
+    <lastmod>2026-06-12</lastmod>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://retconsulting.be/dueday/privacy/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://retconsulting.be/dueday/privacy/en/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://retconsulting.be/dueday/privacy/"/>
+  </url>
+  <url>
+    <loc>https://retconsulting.be/dueday/privacy/en/</loc>
+    <lastmod>2026-06-12</lastmod>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://retconsulting.be/dueday/privacy/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://retconsulting.be/dueday/privacy/en/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://retconsulting.be/dueday/privacy/"/>
+  </url>
+  <url>
+    <loc>https://retconsulting.be/dueday/support/</loc>
+    <lastmod>2026-06-12</lastmod>
+  </url>
+</urlset>

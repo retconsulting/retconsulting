@@ -6,11 +6,15 @@
 <title>Privacy policy · dueday</title>
 <meta name="description" content="Privacy policy for the dueday iOS app: no data collected, 100% offline."/>
 <meta name="author" content="RET Consulting SRL"/>
-<meta name="robots" content="noindex"/>
+<link rel="canonical" href="https://retconsulting.be/dueday/privacy/en/"/>
+<link rel="alternate" hreflang="fr" href="https://retconsulting.be/dueday/privacy/"/>
+<link rel="alternate" hreflang="en" href="https://retconsulting.be/dueday/privacy/en/"/>
+<link rel="alternate" hreflang="x-default" href="https://retconsulting.be/dueday/privacy/"/>
 <meta name="theme-color" content="#EFEAE3"/>
 <link rel="icon" href="../../../assets/logo-glyph.svg"/>
 <link rel="icon" href="../../../assets/logo-glyph-dark.svg" media="(prefers-color-scheme: dark)"/>
 <link rel="stylesheet" href="../../../assets/colors_and_type.css"/>
+<link rel="stylesheet" href="../../assets/dueday.css"/>
 <script>
   // Set theme before paint to avoid flash.
   (function () {
@@ -38,6 +42,24 @@
 </style>
 </head>
 <body>
+<header class="dd-header">
+  <div class="dd-header__inner">
+    <a class="dd-header__brand" href="../../../" aria-label="RET Consulting, back to home">
+      <img class="mark-light" src="../../../assets/logo-monogram.svg" alt=""/>
+      <img class="mark-dark" src="../../../assets/logo-monogram-dark.svg" alt=""/>
+      <span>RET Consulting</span>
+    </a>
+    <button type="button" class="dd-theme" id="themeToggle" aria-label="Dark theme" aria-pressed="false">
+      <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" aria-hidden="true">
+        <circle cx="12" cy="12" r="4.2"/>
+        <path d="M12 2.5v2.4M12 19.1v2.4M4.2 4.2l1.7 1.7M18.1 18.1l1.7 1.7M2.5 12h2.4M19.1 12h2.4M4.2 19.8l1.7-1.7M18.1 5.9l1.7-1.7"/>
+      </svg>
+      <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <path d="M20 14.5A8 8 0 0 1 9.5 4a6.5 6.5 0 1 0 10.5 10.5z"/>
+      </svg>
+    </button>
+  </div>
+</header>
 <main class="legal">
   <div class="legal__eyebrow">dueday · iOS app</div>
   <h1>Privacy policy</h1>
@@ -80,5 +102,6 @@
     <a href="../../support/">dueday support</a> · <a href="https://retconsulting.be/">retconsulting.be</a>
   </footer>
 </main>
+<script src="../../assets/dueday.js"></script>
 </body>
 </html>

@@ -6,6 +6,7 @@
 <title>dueday · vos coûts récurrents, au clair</title>
 <meta name="description" content="dueday rassemble vos abonnements, loyer et factures sur un seul écran et vous prévient avant chaque échéance. 100 % hors-ligne, sans compte, gratuit. Application iOS par RET Consulting."/>
 <meta name="author" content="RET Consulting SRL"/>
+<link rel="canonical" href="https://retconsulting.be/dueday/"/>
 <meta property="og:type" content="website"/>
 <meta property="og:title" content="dueday · vos coûts récurrents, au clair"/>
 <meta property="og:description" content="Abonnements, loyer, factures : un seul écran clair, des rappels avant chaque échéance. 100 % hors-ligne, sans compte, gratuit."/>
@@ -15,6 +16,24 @@
 <link rel="icon" href="../assets/logo-glyph.svg"/>
 <link rel="icon" href="../assets/logo-glyph-dark.svg" media="(prefers-color-scheme: dark)"/>
 <link rel="stylesheet" href="../assets/colors_and_type.css"/>
+<link rel="stylesheet" href="assets/dueday.css"/>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "MobileApplication",
+  "name": "dueday",
+  "operatingSystem": "iOS",
+  "applicationCategory": "FinanceApplication",
+  "description": "dueday rassemble vos abonnements, loyer et factures sur un seul écran et vous prévient avant chaque échéance. 100 % hors-ligne, sans compte, gratuit.",
+  "inLanguage": ["fr", "en"],
+  "offers": { "@type": "Offer", "price": "0", "priceCurrency": "EUR" },
+  "publisher": {
+    "@type": "Organization",
+    "name": "RET Consulting SRL",
+    "url": "https://retconsulting.be/"
+  }
+}
+</script>
 <script>
   // Set theme before paint to avoid flash.
   (function () {
@@ -49,14 +68,37 @@
   .extras p { font-size: 14px; line-height: 1.55; margin: 0; }
   .page__footer { border-top: 1px solid var(--rule); padding-top: var(--s-4, 24px); font-size: 13.5px; color: var(--ink-3); }
   .page__footer a { color: var(--ink-3); }
+  .making { border-top: 1px solid var(--rule); padding-top: var(--s-6, 40px); margin-bottom: var(--s-8, 64px); }
+  .making > h2 { font-family: 'Source Serif 4', Georgia, serif; font-weight: 400; font-size: clamp(24px, 3.5vw, 32px); line-height: 1.2; color: var(--ink); margin: var(--s-2, 12px) 0 var(--s-4, 24px); }
+  .making__grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--s-3, 16px); margin-bottom: var(--s-4, 24px); }
+  .making__close { font-size: 15px; color: var(--ink-2); max-width: 620px; }
+  .making__close a { color: var(--pine); }
   @media (max-width: 760px) {
-    .promises, .extras { grid-template-columns: 1fr; }
+    .promises, .extras, .making__grid { grid-template-columns: 1fr; }
     .feature { grid-template-columns: 1fr; gap: var(--s-4, 24px); }
     .feature--flip .feature__shot { order: 0; }
   }
 </style>
 </head>
 <body>
+<header class="dd-header">
+  <div class="dd-header__inner">
+    <a class="dd-header__brand" href="../" aria-label="RET Consulting, retour à l'accueil">
+      <img class="mark-light" src="../assets/logo-monogram.svg" alt=""/>
+      <img class="mark-dark" src="../assets/logo-monogram-dark.svg" alt=""/>
+      <span>RET Consulting</span>
+    </a>
+    <button type="button" class="dd-theme" id="themeToggle" aria-label="Thème sombre" aria-pressed="false">
+      <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" aria-hidden="true">
+        <circle cx="12" cy="12" r="4.2"/>
+        <path d="M12 2.5v2.4M12 19.1v2.4M4.2 4.2l1.7 1.7M18.1 18.1l1.7 1.7M2.5 12h2.4M19.1 12h2.4M4.2 19.8l1.7-1.7M18.1 5.9l1.7-1.7"/>
+      </svg>
+      <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <path d="M20 14.5A8 8 0 0 1 9.5 4a6.5 6.5 0 1 0 10.5 10.5z"/>
+      </svg>
+    </button>
+  </div>
+</header>
 <main class="page">
 
   <div class="eyebrow">RET Consulting · application iOS</div>
@@ -86,7 +128,7 @@
 
   <section class="feature">
     <div class="feature__shot">
-      <img src="assets/shot-accueil.png" alt="Écran d'accueil de dueday : prochaine échéance, total du mois et cartes de coûts" width="589" height="1280" loading="lazy"/>
+      <img src="assets/shot-accueil.webp" alt="Écran d'accueil de dueday : prochaine échéance, total du mois et cartes de coûts" width="589" height="1280" fetchpriority="high"/>
     </div>
     <div>
       <div class="eyebrow">Accueil</div>
@@ -98,7 +140,7 @@
 
   <section class="feature feature--flip">
     <div class="feature__shot">
-      <img src="assets/shot-calendrier.png" alt="Calendrier de dueday : chaque paiement sur son jour, avec la pastille du jour de paye" width="589" height="1280" loading="lazy"/>
+      <img src="assets/shot-calendrier.webp" alt="Calendrier de dueday : chaque paiement sur son jour, avec la pastille du jour de paye" width="589" height="1280" loading="lazy" decoding="async"/>
     </div>
     <div>
       <div class="eyebrow">Calendrier</div>
@@ -110,7 +152,7 @@
 
   <section class="feature">
     <div class="feature__shot">
-      <img src="assets/shot-analyse.png" alt="Page Analyse de dueday : total mensuel, part du revenu, répartition par catégorie et top 5 des coûts" width="589" height="1280" loading="lazy"/>
+      <img src="assets/shot-analyse.webp" alt="Page Analyse de dueday : total mensuel, part du revenu, répartition par catégorie et top 5 des coûts" width="589" height="1280" loading="lazy" decoding="async"/>
     </div>
     <div>
       <div class="eyebrow">Analyse</div>
@@ -135,11 +177,32 @@
     </div>
   </section>
 
+  <section class="making" aria-label="Derrière le produit">
+    <div class="eyebrow">Derrière le produit</div>
+    <h2>Un produit mené <em>de bout en bout</em></h2>
+    <div class="making__grid">
+      <div class="promise">
+        <h2>Le besoin</h2>
+        <p>Savoir ce que l'on paie chaque mois, sans tableur à entretenir et sans compte à créer. Le cahier des charges tenait en une phrase : tout voir, être prévenu à temps.</p>
+      </div>
+      <div class="promise">
+        <h2>Les choix</h2>
+        <p>100 % hors-ligne plutôt qu'un serveur : plus simple, plus fiable, et la confidentialité est réglée par construction. Pas de compte, pas de publicité, gratuit.</p>
+      </div>
+      <div class="promise">
+        <h2>La livraison</h2>
+        <p>Cadrage, design, développement et préparation App Store menés en interne par RET Consulting, du premier croquis à la version finale.</p>
+      </div>
+    </div>
+    <p class="making__close">C'est le même travail que RET Consulting mène en mission pour ses clients : cadrer, trancher, livrer. <a href="../">En savoir plus</a>.</p>
+  </section>
+
   <footer class="page__footer">
     RET CONSULTING SRL · Siège social : Digue des Peupliers 71/B2-5, 7000 Mons (Belgique) · BCE 1022.588.549 · TVA BE 1022.588.549 · RPM Hainaut, division Mons · <a href="mailto:retbaz@retconsulting.be">retbaz@retconsulting.be</a><br/>
     <a href="privacy/">Politique de confidentialité</a> · <a href="support/">Support</a> · <a href="https://retconsulting.be/">retconsulting.be</a>
   </footer>
 
 </main>
+<script src="assets/dueday.js"></script>
 </body>
 </html>
