@@ -1,0 +1,144 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>dueday · vos coûts récurrents, au clair</title>
+<meta name="description" content="dueday rassemble vos abonnements, loyer et factures sur un seul écran et vous prévient avant chaque échéance. 100 % hors-ligne, sans compte, gratuit. Application iOS par RET Consulting."/>
+<meta name="author" content="RET Consulting SRL"/>
+<meta property="og:type" content="website"/>
+<meta property="og:title" content="dueday · vos coûts récurrents, au clair"/>
+<meta property="og:description" content="Abonnements, loyer, factures : un seul écran clair, des rappels avant chaque échéance. 100 % hors-ligne, sans compte, gratuit."/>
+<meta property="og:url" content="https://retconsulting.be/dueday/"/>
+<meta property="og:image" content="https://retconsulting.be/dueday/assets/shot-accueil.png"/>
+<meta name="theme-color" content="#EFEAE3"/>
+<link rel="icon" href="../assets/logo-glyph.svg"/>
+<link rel="icon" href="../assets/logo-glyph-dark.svg" media="(prefers-color-scheme: dark)"/>
+<link rel="stylesheet" href="../assets/colors_and_type.css"/>
+<script>
+  // Set theme before paint to avoid flash.
+  (function () {
+    try {
+      var saved = localStorage.getItem('ret-theme');
+      var dark = saved ? saved === 'dark'
+                       : window.matchMedia('(prefers-color-scheme: dark)').matches;
+      if (dark) document.documentElement.setAttribute('data-theme', 'dark');
+    } catch (e) {}
+  })();
+</script>
+<style>
+  body { margin: 0; background: var(--paper); color: var(--ink-2); }
+  .page { max-width: var(--content-max, 1200px); margin: 0 auto; padding: var(--s-7, 48px) var(--s-4, 24px) var(--s-9, 96px); }
+  .eyebrow { font-family: 'Geist Mono', ui-monospace, monospace; font-size: 12px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--ink-3); }
+  .hero { max-width: 760px; margin: var(--s-7, 48px) 0 var(--s-8, 64px); }
+  .hero h1 { font-family: 'Source Serif 4', Georgia, serif; font-weight: 400; font-size: clamp(34px, 6vw, 56px); line-height: 1.08; color: var(--ink); margin: var(--s-3, 16px) 0 var(--s-3, 16px); letter-spacing: -0.5px; }
+  .hero p { font-size: 17px; line-height: 1.6; max-width: 620px; margin: 0 0 var(--s-4, 24px); }
+  .hero__badge { display: inline-block; font-family: 'Geist Mono', ui-monospace, monospace; font-size: 12px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--pine); border: 1px solid var(--pine); border-radius: 999px; padding: 8px 16px; }
+  .promises { display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--s-3, 16px); margin: 0 0 var(--s-9, 96px); }
+  .promise { border: 1px solid var(--rule); background: var(--paper-soft); border-radius: 6px; padding: var(--s-4, 24px); }
+  .promise h2 { font-family: 'Source Serif 4', Georgia, serif; font-weight: 500; font-size: 19px; color: var(--ink); margin: 0 0 6px; }
+  .promise p { font-size: 14.5px; line-height: 1.55; margin: 0; }
+  .feature { display: grid; grid-template-columns: 1fr 1fr; gap: var(--s-7, 48px); align-items: center; margin-bottom: var(--s-9, 96px); }
+  .feature:nth-child(even) .feature__shot { order: 2; }
+  .feature__shot { text-align: center; }
+  .feature__shot img { width: 100%; max-width: 320px; border: 1px solid var(--rule); border-radius: 28px; }
+  .feature h2 { font-family: 'Source Serif 4', Georgia, serif; font-weight: 400; font-size: clamp(24px, 3.5vw, 32px); line-height: 1.2; color: var(--ink); margin: var(--s-2, 12px) 0 var(--s-3, 16px); }
+  .feature p { font-size: 15.5px; line-height: 1.65; max-width: 480px; margin: 0 0 var(--s-2, 12px); }
+  .extras { border-top: 1px solid var(--rule); padding-top: var(--s-6, 40px); margin-bottom: var(--s-8, 64px); display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--s-5, 32px); }
+  .extras h3 { font-family: 'Inter', 'Helvetica Neue', Arial, sans-serif; font-weight: 600; font-size: 15px; color: var(--ink); margin: 0 0 6px; }
+  .extras p { font-size: 14px; line-height: 1.55; margin: 0; }
+  .page__footer { border-top: 1px solid var(--rule); padding-top: var(--s-4, 24px); font-size: 13.5px; color: var(--ink-3); }
+  .page__footer a { color: var(--ink-3); }
+  @media (max-width: 760px) {
+    .promises, .extras { grid-template-columns: 1fr; }
+    .feature { grid-template-columns: 1fr; gap: var(--s-4, 24px); }
+    .feature:nth-child(even) .feature__shot { order: 0; }
+  }
+</style>
+</head>
+<body>
+<main class="page">
+
+  <div class="eyebrow">RET Consulting · application iOS</div>
+
+  <section class="hero">
+    <h1>dueday. Vos coûts récurrents, <em>au clair</em>.</h1>
+    <p>Abonnements, loyer, énergie, assurances : dueday les rassemble sur un seul écran lisible et vous prévient avant chaque échéance. Vous savez exactement ce que vous payez, et quand.</p>
+    <!-- Quand l'app est publiée : remplacer par
+         <a class="hero__badge" href="https://apps.apple.com/app/idXXXXXXXXX">Télécharger sur l'App Store</a> -->
+    <span class="hero__badge">Bientôt sur l'App Store</span>
+  </section>
+
+  <section class="promises" aria-label="Engagements">
+    <div class="promise">
+      <h2>Confidentialité totale</h2>
+      <p>100 % hors-ligne : rien ne quitte votre appareil. Aucune donnée collectée, jamais. Pas un octet ne transite par un serveur.</p>
+    </div>
+    <div class="promise">
+      <h2>Sans compte</h2>
+      <p>Aucune inscription, aucun email. Vous ouvrez l'app et vous commencez.</p>
+    </div>
+    <div class="promise">
+      <h2>Gratuit, pour toujours</h2>
+      <p>Toutes les fonctions essentielles, sans frais et sans limite de durée. Seules d'éventuelles options purement cosmétiques pourraient un jour être payantes.</p>
+    </div>
+  </section>
+
+  <section class="feature">
+    <div class="feature__shot">
+      <img src="assets/shot-accueil.png" alt="Écran d'accueil de dueday : prochaine échéance, total du mois et cartes de coûts" width="589" height="1280" loading="lazy"/>
+    </div>
+    <div>
+      <div class="eyebrow">Accueil</div>
+      <h2>L'essentiel en un <em>coup d'œil</em></h2>
+      <p>Vos prochains paiements, le total du mois et toutes vos cartes de coûts, triables par échéance, prix, nom ou catégorie.</p>
+      <p>Les cycles mensuels, trimestriels et annuels sont convertis en équivalent mensuel : un loyer et une assurance annuelle se comparent enfin sur la même base.</p>
+    </div>
+  </section>
+
+  <section class="feature">
+    <div class="feature__shot">
+      <img src="assets/shot-calendrier.png" alt="Calendrier de dueday : chaque paiement sur son jour, avec la pastille du jour de paye" width="589" height="1280" loading="lazy"/>
+    </div>
+    <div>
+      <div class="eyebrow">Calendrier</div>
+      <h2>Chaque paiement, <em>sur son jour</em></h2>
+      <p>Le mois entier d'un regard : chaque échéance posée sur sa date, le détail à un tap, et votre jour de paye marqué d'une pastille verte.</p>
+      <p>Deux rappels discrets si vous le souhaitez : la veille et le jour même, aux horaires que vous choisissez. Les paiements d'un même jour sont regroupés en une seule notification.</p>
+    </div>
+  </section>
+
+  <section class="feature">
+    <div class="feature__shot">
+      <img src="assets/shot-analyse.png" alt="Page Analyse de dueday : total mensuel, part du revenu, répartition par catégorie et top 5 des coûts" width="589" height="1280" loading="lazy"/>
+    </div>
+    <div>
+      <div class="eyebrow">Analyse</div>
+      <h2>Vos dépenses, <em>mises en perspective</em></h2>
+      <p>Total mensuel, répartition par catégorie, top 5 de vos coûts, et vos dépenses mesurées face à votre budget et à votre revenu.</p>
+      <p>De quoi répondre à la seule question qui compte : où part l'argent, et est-ce que ça tient dans le mois.</p>
+    </div>
+  </section>
+
+  <section class="extras" aria-label="Et aussi">
+    <div>
+      <h3>Widgets</h3>
+      <p>Écran d'accueil (3 tailles) et écran verrouillé : prochaine échéance, total du mois, agenda des paiements à venir.</p>
+    </div>
+    <div>
+      <h3>Vos données vous appartiennent</h3>
+      <p>Export et import de sauvegarde en JSON, à l'endroit que vous choisissez. Tout supprimer tient en un bouton.</p>
+    </div>
+    <div>
+      <h3>À votre goût</h3>
+      <p>4 thèmes de couleur, icônes alternatives, interface en français et en anglais.</p>
+    </div>
+  </section>
+
+  <footer class="page__footer">
+    RET Consulting SRL · Belgique · <a href="privacy/">Politique de confidentialité</a> · <a href="support/">Support</a> · <a href="https://retconsulting.be/">retconsulting.be</a>
+  </footer>
+
+</main>
+</body>
+</html>
