@@ -4,7 +4,7 @@
    ========================================================================== */
 
 .site { position: relative; overflow-x: clip; background: var(--canvas); }
-html { scroll-behavior: smooth; }
+html { scroll-behavior: smooth; color-scheme: light; }
 section[id], #main { scroll-margin-top: 96px; }
 
 .dotfield { background-color: var(--canvas); background-image: var(--dot-grid); background-size: var(--dot-size) var(--dot-size); }
