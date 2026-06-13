@@ -92,7 +92,7 @@ section[id] { scroll-margin-top: 96px; }
   .hero__flowstep { animation: none; }
   .hero__flowstep:nth-child(2) { background-color: var(--cognac-wash); border-color: var(--border-accent); }
 }
-.hero__canvas .stamp { position: absolute; top: 18px; left: 18px; z-index: 3; display: flex; align-items: center; gap: 8px;
+.hero__canvas .stamp { position: absolute; top: 18px; left: 50%; transform: translateX(-50%); z-index: 3; display: flex; align-items: center; gap: 8px;
   padding: 8px 12px; border-radius: var(--r-pill);
   background: var(--glass-fill); -webkit-backdrop-filter: blur(var(--blur-strong)) saturate(1.5); backdrop-filter: blur(var(--blur-strong)) saturate(1.5);
   border: 1px solid var(--glass-border); box-shadow: var(--glass-shadow);
@@ -113,8 +113,8 @@ section[id] { scroll-margin-top: 96px; }
 .section__head--split { display: grid; grid-template-columns: 1fr auto; gap: 24px; align-items: end; }
 .section__title { font-family: var(--font-display); font-weight: 700; color: var(--ink); font-size: clamp(2rem, 1.3rem + 2.4vw, 3rem); line-height: 1.02; letter-spacing: -.03em; margin: 14px 0 0; max-width: 20ch; text-wrap: balance; }
 .section__lead { font-family: var(--font-body); font-weight: 300; font-size: 1.1rem; line-height: 1.55; color: var(--ink-2); max-width: 44ch; margin: 16px 0 0; }
-/* transition bands carry the blueprint dot grid so glass cards have texture to frost */
-.band { background-color: var(--canvas-sunken); background-image: var(--dot-grid); background-size: var(--dot-size) var(--dot-size); }
+/* transition bands = solid sunken fill (DS); the dot grid lives only on hero + first content section */
+.band { background: var(--canvas-sunken); }
 
 /* ---------- Services grid ---------- */
 .services { max-width: var(--container); margin-inline: auto; padding-inline: var(--gutter);
@@ -255,16 +255,17 @@ section[id] { scroll-margin-top: 96px; }
   font-family: var(--font-mono); font-size: 11px; letter-spacing: .08em; color: var(--ink-2); }
 .footer__legal a { color: var(--ink-2); text-decoration: underline; }
 
-/* ---------- Floating contact dock ---------- */
-.contactdock { position: fixed; right: 22px; bottom: 22px; z-index: 80; display: inline-flex; align-items: center; gap: 12px;
-  padding: 10px 18px 10px 14px; border-radius: var(--r-pill); text-decoration: none;
+/* ---------- Floating contact dock (single line, low-profile) ---------- */
+.contactdock { position: fixed; right: 20px; bottom: 20px; z-index: 80; display: inline-flex; align-items: center; gap: 9px;
+  padding: 7px 16px 7px 8px; border-radius: var(--r-pill); text-decoration: none;
   background: var(--glass-fill-deep); border: 1px solid var(--glass-border);
   -webkit-backdrop-filter: blur(var(--blur-strong)) saturate(1.5); backdrop-filter: blur(var(--blur-strong)) saturate(1.5);
-  box-shadow: var(--shadow-lg); animation: dockin var(--dur-slow) var(--ease-out) both; }
-.contactdock__icon { width: 34px; height: 34px; border-radius: 999px; display: grid; place-items: center; background: var(--accent); color: #fff; }
-.contactdock__icon svg { stroke-width: 1.5; }
-.contactdock .txt { font-family: var(--font-body); font-size: 13px; font-weight: 600; color: var(--ink); }
-.contactdock .sub { font-family: var(--font-mono); font-size: 9px; letter-spacing: .12em; text-transform: uppercase; color: var(--ink-3); }
+  box-shadow: var(--shadow-md); animation: dockin var(--dur-slow) var(--ease-out) both;
+  transition: transform var(--dur-base) var(--ease-out), box-shadow var(--dur-base) var(--ease-out); }
+.contactdock:hover { transform: translateY(-2px); box-shadow: var(--shadow-lg); }
+.contactdock__icon { width: 28px; height: 28px; border-radius: 999px; display: grid; place-items: center; background: var(--accent); color: #fff; flex: none; }
+.contactdock__icon svg { stroke-width: 1.5; width: 15px; height: 15px; }
+.contactdock .txt { font-family: var(--font-body); font-size: 13px; font-weight: 600; color: var(--ink); line-height: 1; padding-right: 4px; }
 @keyframes dockin { from { opacity: 0; transform: translateY(16px); } to { opacity: 1; transform: none; } }
 
 /* ---------- Sub-page header (legal, dueday) ---------- */
@@ -302,7 +303,7 @@ section[id] { scroll-margin-top: 96px; }
 .legalfacts dd { margin: 0; font-family: var(--font-body); font-size: 15px; color: var(--ink-2); }
 .legalfacts a { color: var(--accent); }
 
-/* ========== dueday — "App overview" kit (phone showcase + feature grid + dark CTA) ========== */
+/* ========== dueday — "App overview" kit (screenshot showcase + feature grid + dark CTA) ========== */
 .dd-main .section { padding-block: clamp(40px, 5vw, 72px); }
 .dd-main .section__head { margin-bottom: clamp(20px, 2.5vw, 32px); }
 .dd-badge { display: inline-flex; align-items: center; gap: 8px; font-family: var(--font-mono); font-size: 12px; letter-spacing: .14em; text-transform: uppercase;
@@ -312,7 +313,7 @@ section[id] { scroll-margin-top: 96px; }
 .dd-card h3 { font-family: var(--font-display); font-weight: 700; font-size: 1.15rem; letter-spacing: -.01em; color: var(--ink); margin: 0 0 8px; }
 .dd-card p { font-family: var(--font-body); font-size: .95rem; line-height: 1.55; color: var(--ink-2); margin: 0; }
 
-/* App hero: copy + a phone with a cognac glow and floating glass widget */
+/* App hero: copy + a screenshot plate with a cognac glow and floating glass widget */
 .apphero__grid { max-width: var(--container-wide); margin-inline: auto; padding: clamp(28px,4vw,56px) var(--gutter) clamp(20px,3vw,36px);
   display: grid; grid-template-columns: 1.02fr .98fr; gap: clamp(28px,4vw,56px); align-items: center; }
 .apphero h1 { font-family: var(--font-display); font-weight: 700; font-size: clamp(2.4rem,1.4rem+4vw,4.2rem); line-height: 1; letter-spacing: -.035em; color: var(--ink); margin: 16px 0 18px; text-wrap: balance; }
@@ -321,19 +322,20 @@ section[id] { scroll-margin-top: 96px; }
 .apphero__visual { position: relative; display: flex; justify-content: center; }
 .apphero__glow { position: absolute; width: 80%; aspect-ratio: 1; border-radius: 50%; top: 4%; left: 50%; transform: translateX(-50%);
   background: radial-gradient(circle, rgba(176,125,84,.32), transparent 66%); filter: blur(10px); z-index: 0; }
-.apphero__float { position: absolute; z-index: 3; right: -8px; top: 24%; width: 196px; padding: 15px 17px; border-radius: var(--r-lg);
+.apphero__float { position: absolute; z-index: 3; right: -8px; top: 22%; width: 224px; padding: 15px 18px; border-radius: var(--r-lg);
   background: var(--glass-fill-deep); border: 1px solid var(--glass-border);
   -webkit-backdrop-filter: blur(var(--blur-strong)) saturate(1.6); backdrop-filter: blur(var(--blur-strong)) saturate(1.6); box-shadow: var(--shadow-lg); }
-.apphero__float .cap { font-family: var(--font-mono); font-size: 9px; letter-spacing: .14em; text-transform: uppercase; color: var(--ink-3); }
-.apphero__float .row { display: flex; align-items: center; gap: 7px; margin-top: 6px; font-family: var(--font-display); font-weight: 700; font-size: 15px; color: var(--ink); }
+.apphero__float .cap { font-family: var(--font-mono); font-size: 9px; letter-spacing: .14em; text-transform: uppercase; color: var(--accent-label); }
+.apphero__float .row { display: flex; align-items: flex-start; gap: 8px; margin-top: 8px; font-family: var(--font-display); font-weight: 600; font-size: 13.5px; line-height: 1.4; color: var(--ink); }
+.apphero__float .row .ret-diamond { margin-top: 6px; flex: none; }
 .apphero__pill { position: absolute; z-index: 3; left: -6px; top: 13%; }
 
-/* Phone bezel holding a real screenshot */
-.dd-phone { position: relative; z-index: 2; width: 100%; max-width: 264px; aspect-ratio: 9/19.5; border-radius: 46px;
-  background: #0c0c0e; padding: 7px; box-sizing: border-box; box-shadow: var(--shadow-float), 0 0 0 1px rgba(24,24,27,.1); }
-.dd-phone__screen { position: relative; width: 100%; height: 100%; border-radius: 39px; overflow: hidden; background: #fff; }
-.dd-phone__screen img { width: 100%; height: 100%; object-fit: cover; object-position: top center; display: block; }
-.dd-phone__island { position: absolute; top: 8px; left: 50%; transform: translateX(-50%); width: 31%; height: 22px; border-radius: 14px; background: #000; z-index: 2; }
+/* Frameless screenshot plate (hero + showcase) — a real screenshot floating on the
+   canvas/band as a rounded card, no iOS device chrome (no bezel, no dynamic island). */
+.shot { position: relative; z-index: 2; width: 100%; border-radius: var(--r-2xl); overflow: hidden;
+  border: 1px solid var(--line); box-shadow: var(--shadow-float); background: var(--surface); }
+.shot img { display: block; width: 100%; height: auto; }
+.apphero__shot { max-width: 282px; margin-inline: auto; }
 
 /* Feature grid */
 .features { max-width: var(--container); margin-inline: auto; padding-inline: var(--gutter);
@@ -347,11 +349,14 @@ section[id] { scroll-margin-top: 96px; }
 .feat__t { font-family: var(--font-display); font-weight: 700; font-size: 1.2rem; letter-spacing: -.01em; color: var(--ink); margin: 0 0 8px; }
 .feat__d { font-family: var(--font-body); font-size: .92rem; line-height: 1.55; color: var(--ink-2); margin: 0; }
 
-/* Screenshot showcase — phones on the dot grid with glass captions */
+/* Screenshot showcase — frameless screenshots on the solid band, glass captions.
+   Subgrid keeps the three caption boxes the same height across columns. */
 .showcase { max-width: var(--container-wide); margin-inline: auto; padding-inline: var(--gutter);
-  display: flex; gap: clamp(16px,3vw,44px); justify-content: center; align-items: flex-start; flex-wrap: wrap; }
-.showcase__item { display: flex; flex-direction: column; align-items: center; gap: 18px; width: 264px; max-width: 100%; }
-.showcase__cap { text-align: center; padding: 14px 20px; border-radius: var(--r-lg);
+  display: grid; grid-template-columns: repeat(3, minmax(0, 264px)); grid-template-rows: auto auto;
+  gap: 18px clamp(16px,3vw,44px); justify-content: center; align-items: start; }
+.showcase__item { display: grid; grid-template-rows: subgrid; grid-row: span 2; gap: 18px; justify-items: center; }
+.showcase__cap { height: 100%; display: flex; flex-direction: column; justify-content: center; text-align: center;
+  padding: 16px 20px; border-radius: var(--r-lg);
   background: var(--glass-fill); border: 1px solid var(--glass-border); box-shadow: var(--glass-shadow);
   -webkit-backdrop-filter: blur(var(--blur-glass)) saturate(1.5); backdrop-filter: blur(var(--blur-glass)) saturate(1.5); }
 .showcase__cap .ix { font-family: var(--font-mono); font-size: 10px; letter-spacing: .14em; text-transform: uppercase; color: var(--accent-label); }
@@ -396,6 +401,10 @@ section[id] { scroll-margin-top: 96px; }
   .apphero__float { display: none; }
   .footer__main { grid-template-columns: 1fr; }
   .contact__form { grid-template-columns: 1fr; }
+  /* showcase: collapse the 3-up subgrid to a single centred column */
+  .showcase { grid-template-columns: minmax(0, 320px); grid-template-rows: none; }
+  .showcase__item { grid-row: auto; grid-template-rows: none; display: flex; flex-direction: column; align-items: center; gap: 16px; }
+  .showcase__cap { height: auto; }
 }
 @media (max-width: 600px) {
   /* narrow canvas: top-align the cascade below the FIG_01 stamp instead of centring it */
@@ -403,7 +412,8 @@ section[id] { scroll-margin-top: 96px; }
 }
 @media (max-width: 560px) {
   .legalfacts > div { grid-template-columns: 1fr; gap: 4px; }
-  .contactdock .txtwrap { display: none; }
+  .contactdock .txt { display: none; }
+  .contactdock { padding: 7px; }
   .expgrid { grid-template-columns: 1fr; }
 }
 
