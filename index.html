@@ -374,7 +374,7 @@
             <button type="submit" class="ret-btn ret-btn--primary ret-btn--md">Send <span class="ret-btn__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="M13 6l6 6-6 6"/></svg></span></button>
             <span class="contact__small">Opens your email client with the message pre-filled.</span>
           </div>
-          <div class="contact__thanks" id="contactThanks" hidden>
+          <div class="contact__thanks" id="contactThanks" tabindex="-1" hidden>
             <h3>Your message is ready.</h3>
             <p>Your email client should have opened with the message below. If nothing happened, copy it and send it to <a href="mailto:retbaz@retconsulting.be">retbaz@retconsulting.be</a>.</p>
             <textarea class="ret-input" id="contactCopy" rows="5" readonly aria-label="Your message, ready to copy"></textarea>
@@ -460,6 +460,7 @@
         thanks.hidden = false;
         if (copyStatus) copyStatus.textContent = '';
         thanks.scrollIntoView({ block: 'nearest' });
+        thanks.focus();
       }
     });
     if (copyBtn && copyArea) {
