@@ -264,7 +264,7 @@ hr { border: 0; border-top: 1px solid var(--rule); margin: var(--s-7) 0; }
 .ret-input {
   font-family: var(--font-sans); font-size: var(--t-body); color: var(--ink);
   background: var(--paper-soft); border: 1px solid var(--rule); border-radius: var(--r-2);
-  padding: 12px 14px; width: 100%;
+  padding: 12px 14px; width: 100%; box-sizing: border-box;
   transition: border-color var(--dur-fast) var(--ease), box-shadow var(--dur-fast) var(--ease);
 }
 .ret-input::placeholder { color: var(--ink-3); }
