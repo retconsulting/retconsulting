@@ -18,7 +18,7 @@ section[id] { scroll-margin-top: 96px; }
 .skip-link { position: absolute; left: -9999px; top: 0; z-index: 100;
   background: var(--accent); color: #fff; padding: 10px 16px; border-radius: 0 0 var(--r-sm) 0;
   font-family: var(--font-body); font-size: 14px; }
-.skip-link:focus { left: 0; }
+.skip-link:focus { left: 0; box-shadow: var(--shadow-md); outline: 2px solid #fff; outline-offset: -4px; }
 
 /* ---------- Sticky frosted nav ---------- */
 .nav { position: sticky; top: 0; z-index: 60; padding: 14px var(--gutter); }
@@ -80,7 +80,7 @@ section[id] { scroll-margin-top: 96px; }
   box-shadow: var(--shadow-float); border: 1px solid var(--line); aspect-ratio: 4 / 4.7;
   background:
     radial-gradient(130% 95% at 16% 6%, rgba(255,255,255,.92), rgba(255,255,255,0) 52%),
-    linear-gradient(158deg, var(--canvas) 0%, var(--canvas-sunken) 60%, #E9E9EF 100%);
+    linear-gradient(158deg, var(--canvas) 0%, var(--canvas-sunken) 100%);
   display: flex; flex-direction: column; justify-content: center; gap: 12px; padding: clamp(26px,3.5vw,40px); }
 .hero__watermark { position: absolute; right: -14%; bottom: -16%; width: 70%; opacity: .07; pointer-events: none; }
 .hero__flow { position: relative; z-index: 2; display: flex; flex-direction: column; gap: 12px; }
@@ -202,7 +202,7 @@ section[id] { scroll-margin-top: 96px; }
 .pcard--soon .pcard__desc { color: var(--ink-3); }
 .pcard__body .ret-btn { margin-top: 18px; align-self: flex-start; }
 .carousel__nav { display: flex; gap: 10px; justify-content: flex-end; max-width: var(--container-wide); margin: 6px auto 0; padding-inline: var(--gutter); }
-.carousel__btn { width: 44px; height: 44px; border-radius: 999px; display: grid; place-items: center; cursor: pointer; color: var(--ink);
+.carousel__btn { width: 44px; height: 44px; border-radius: var(--r-pill); display: grid; place-items: center; cursor: pointer; color: var(--ink);
   background: var(--surface); border: 1px solid var(--border-strong); box-shadow: var(--shadow-sm);
   transition: transform var(--dur-base) var(--ease-out), border-color var(--dur-base), background var(--dur-base); }
 .carousel__btn:hover { transform: translateY(-2px); border-color: var(--ink); }
@@ -265,7 +265,7 @@ section[id] { scroll-margin-top: 96px; }
 .contact__field--full { grid-column: 1 / -1; }
 .contact__field label { font-family: var(--font-mono); font-size: 10px; letter-spacing: .16em; text-transform: uppercase; color: rgba(255,255,255,.6); }
 .contact__form .ret-input { background: rgba(255,255,255,.06); border-color: rgba(255,255,255,.16); color: #fff; }
-.contact__form .ret-input::placeholder { color: rgba(255,255,255,.4); }
+.contact__form .ret-input::placeholder { color: rgba(255,255,255,.55); }
 .contact__form .ret-input:focus { border-color: var(--cognac-soft); box-shadow: 0 0 0 3px rgba(200,160,124,.25); }
 .contact__actions { grid-column: 1/-1; display: flex; align-items: center; gap: 16px; flex-wrap: wrap; margin-top: 4px; }
 .contact__small { font-family: var(--font-mono); font-size: 11px; color: rgba(255,255,255,.5); }
@@ -301,7 +301,8 @@ section[id] { scroll-margin-top: 96px; }
   box-shadow: var(--shadow-md), var(--shadow-inset-hi); animation: dockin var(--dur-slow) var(--ease-out) both;
   transition: transform var(--dur-base) var(--ease-out), box-shadow var(--dur-base) var(--ease-out); }
 .contactdock:hover { transform: translateY(-2px); box-shadow: var(--shadow-lg); }
-.contactdock__icon { width: 28px; height: 28px; border-radius: 999px; display: grid; place-items: center; background: var(--accent); color: #fff; flex: none; }
+.contactdock:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; transform: translateY(-2px); box-shadow: var(--shadow-lg); }
+.contactdock__icon { width: 28px; height: 28px; border-radius: var(--r-pill); display: grid; place-items: center; background: var(--accent); color: #fff; flex: none; }
 .contactdock__icon svg { stroke-width: 1.5; width: 15px; height: 15px; }
 .contactdock .txt { font-family: var(--font-body); font-size: 13px; font-weight: 600; color: var(--ink); line-height: 1; padding-right: 4px; }
 @keyframes dockin { from { opacity: 0; transform: translateY(16px); } to { opacity: 1; transform: none; } }
@@ -317,8 +318,8 @@ section[id] { scroll-margin-top: 96px; }
 .subhead__back { font-family: var(--font-mono); font-size: 11px; letter-spacing: .12em; text-transform: uppercase; color: var(--accent-text); text-decoration: none;
   display: inline-flex; align-items: center; gap: 8px; padding: 9px 16px; border-radius: var(--r-pill);
   border: 1px solid var(--border-accent); background: var(--cognac-wash);
-  transition: background var(--dur-base) var(--ease-out), border-color var(--dur-base) var(--ease-out), color var(--dur-base) var(--ease-out); }
-.subhead__back:hover { background: var(--accent); border-color: var(--accent); color: #fff; }
+  transition: background var(--dur-base) var(--ease-out), border-color var(--dur-base) var(--ease-out), color var(--dur-base) var(--ease-out), transform var(--dur-base) var(--ease-out), box-shadow var(--dur-base) var(--ease-out); }
+.subhead__back:hover { background: var(--accent); border-color: var(--accent); color: #fff; transform: translateY(-2px); box-shadow: var(--shadow-md); }
 .subhead__back svg { stroke-width: 1.6; }
 
 /* ---------- Prose pages (legal, dueday product + legal) ---------- */
@@ -345,9 +346,11 @@ section[id] { scroll-margin-top: 96px; }
 .dd-main .section { padding-block: clamp(40px, 5vw, 72px); }
 .dd-main .section__head { margin-bottom: clamp(20px, 2.5vw, 32px); }
 .dd-badge { display: inline-flex; align-items: center; gap: 8px; font-family: var(--font-mono); font-size: 12px; letter-spacing: .14em; text-transform: uppercase;
-  color: var(--accent-text); background: var(--accent-wash); border-radius: var(--r-pill); padding: 9px 16px; }
+  color: var(--accent-text); background: var(--accent-wash); border-radius: var(--r-pill); padding: 9px 16px; box-shadow: var(--shadow-sm); }
 .dd-card { background: var(--glass-fill-deep); border: 1px solid var(--glass-border); border-radius: var(--r-xl); box-shadow: var(--shadow-md); padding: 26px;
-  -webkit-backdrop-filter: blur(var(--blur-glass)) saturate(1.5); backdrop-filter: blur(var(--blur-glass)) saturate(1.5); }
+  -webkit-backdrop-filter: blur(var(--blur-glass)) saturate(1.5); backdrop-filter: blur(var(--blur-glass)) saturate(1.5);
+  transition: transform var(--dur-base) var(--ease-out), box-shadow var(--dur-base) var(--ease-out), border-color var(--dur-base); }
+.dd-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-lg); border-color: var(--border-accent); }
 .dd-card h3 { font-family: var(--font-display); font-weight: 700; font-size: 1.15rem; letter-spacing: -.01em; color: var(--ink); margin: 0 0 8px; }
 .dd-card p { font-family: var(--font-body); font-size: .95rem; line-height: 1.55; color: var(--ink-2); margin: 0; }
 
@@ -466,6 +469,8 @@ section[id] { scroll-margin-top: 96px; }
 }
 @media (max-width: 560px) {
   .legalfacts > div { grid-template-columns: 1fr; gap: 4px; }
+  .about__facts > div { grid-template-columns: 1fr; gap: 4px; }
+  .about__facts dt { padding-top: 0; }
   .contactdock .txt { display: none; }
   .contactdock { padding: 7px; }
   .expgrid { grid-template-columns: 1fr; }
@@ -474,6 +479,20 @@ section[id] { scroll-margin-top: 96px; }
 /* Keyboard focus parity on text links (buttons/inputs already covered) */
 .nav__link:focus-visible, .footer__col a:focus-visible, .footer__legal a:focus-visible,
 .subhead__back:focus-visible, .nav__brand:focus-visible,
-.prose a:focus-visible, .about__facts a:focus-visible, .legalfacts a:focus-visible, .svc__desc a:focus-visible {
+.prose a:focus-visible, .about__facts a:focus-visible, .legalfacts a:focus-visible, .svc__desc a:focus-visible,
+.carousel__btn:focus-visible, .nav__toggle:focus-visible, .contactdock:focus-visible {
   outline: 2px solid var(--accent); outline-offset: 2px; border-radius: var(--r-xs);
 }
+
+/* Unified inline-link hover (the cognac prose-style links across pages) */
+.prose a, .legalfacts a, .footer__legal a, .svc__desc a, .about__facts a { transition: color var(--dur-base) var(--ease-out); }
+.prose a:hover, .legalfacts a:hover, .footer__legal a:hover, .svc__desc a:hover, .about__facts a:hover {
+  color: var(--accent-hover); text-decoration: underline; }
+
+/* Carousel scroll region: keyboard-focusable, visible focus */
+.carousel__track:focus-visible { outline: 2px solid var(--accent); outline-offset: 4px; border-radius: var(--r-md); }
+
+/* DS polish — collapse card titles to two tiers (primary .svc__title 1.4rem, secondary 1.2rem)
+   and align small content-card radii to --r-xl (was a mix of r-lg/r-xl) */
+.step__t, .feat__t, .dd-card h3, .expcard__title, .pcard__title { font-size: 1.2rem; }
+.step, .showcase__cap, .prose__card { border-radius: var(--r-xl); }
