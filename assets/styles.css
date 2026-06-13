@@ -461,6 +461,31 @@
   font-size: 11px;
   color: var(--ink-3);
 }
+.ret-footer__meta a { color: var(--ink-2); text-decoration: underline; }
+
+/* ---------- Legal information page ---------- */
+.legal-page { padding: 80px 0 120px; max-width: 720px; }
+.legal-page .eyebrow { display: block; margin-bottom: 16px; }
+.legal-page h1 {
+  font-family: var(--font-serif); font-weight: 400;
+  font-size: clamp(2rem, 4vw, 3rem); letter-spacing: -0.02em; line-height: 1.1;
+  color: var(--ink); margin: 0 0 40px 0;
+}
+.legal-page__facts { display: grid; gap: 0; margin: 0; }
+.legal-page__facts > div {
+  display: grid; grid-template-columns: 220px 1fr; gap: 16px;
+  padding: 18px 0; border-top: 1px solid var(--rule);
+}
+.legal-page__facts > div:last-child { border-bottom: 1px solid var(--rule); }
+.legal-page__facts dt {
+  font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.14em;
+  text-transform: uppercase; color: var(--ink-3); padding-top: 2px;
+}
+.legal-page__facts dd { margin: 0; font-size: 15px; color: var(--ink-2); }
+.legal-page__note { margin-top: 32px; font-size: 14px; color: var(--ink-3); max-width: 60ch; }
+@media (max-width: 640px) {
+  .legal-page__facts > div { grid-template-columns: 1fr; gap: 4px; }
+}
 
 /* responsive */
 @media (max-width: 800px) {
