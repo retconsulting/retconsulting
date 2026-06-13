@@ -10,6 +10,7 @@
    page's <head> (alongside the preconnect hints) instead of an @import here.
    A nested @import (HTML -> ds.css -> fonts.css -> Google CSS) forced a
    request waterfall; the direct <link> starts the fetch during HTML parse.
-   Reference URL:
-   https://fonts.googleapis.com/css2?family=Archivo:ital,wght@0,100..900;1,100..900&family=IBM+Plex+Mono:wght@300;400;500;600&display=swap
+   Reference URL (subset to what the site actually uses: Archivo roman axis
+   only — no italic anywhere — and IBM Plex Mono at 400 only):
+   https://fonts.googleapis.com/css2?family=Archivo:wght@100..900&family=IBM+Plex+Mono:wght@400&display=swap
    ========================================================================== */
