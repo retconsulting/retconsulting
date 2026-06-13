@@ -95,6 +95,31 @@ textarea.ret-input { resize: vertical; line-height: 1.5; }
   -webkit-backdrop-filter: none; backdrop-filter: none; }
 .ret-hpill--inline .ret-hpill__icon { width: 16px; height: 16px; }
 .ret-hpill--inline .ret-hpill__icon svg { width: 14px; height: 14px; }
+/* Sequential accent pulse — inline pills light up one at a time, left to right, then settle.
+   Each pill shares one timeline; animation-delay staggers them by a third so only one is lit at once.
+   Transforms are visual-only, so the surrounding copy never reflows. */
+@keyframes ret-hpill-seq {
+  0%, 26%, 100% {
+    transform: rotate(var(--tilt, 0deg));
+    background: var(--surface); border-color: var(--border-strong);
+    color: var(--ink); box-shadow: var(--shadow-sm);
+  }
+  7% {
+    transform: rotate(calc(var(--tilt, 0deg) + 6deg)) translateY(-3px) scale(1.05);
+    background: var(--cognac-wash); border-color: var(--accent);
+    color: var(--accent-text); box-shadow: 0 9px 22px -8px rgba(176, 125, 84, .55);
+  }
+  17% {
+    transform: rotate(calc(var(--tilt, 0deg) - 3deg)) translateY(-3px) scale(1.05);
+    background: var(--cognac-wash); border-color: var(--accent);
+    color: var(--accent-text); box-shadow: 0 9px 22px -8px rgba(176, 125, 84, .55);
+  }
+}
+.ret-hpill--seq {
+  transform: rotate(var(--tilt, 0deg));
+  animation: ret-hpill-seq var(--seq-dur, 3.9s) var(--ease-soft) infinite;
+  will-change: transform;
+}
 
 /* ---------- Glass badge ---------- */
 .glassbadge { display: inline-flex; align-items: center; gap: 7px; padding: 7px 12px; border-radius: var(--r-pill);
@@ -109,4 +134,7 @@ textarea.ret-input { resize: vertical; line-height: 1.5; }
 @media (prefers-reduced-motion: reduce) {
   * { animation-duration: .001ms !important; transition-duration: .001ms !important; }
   html { scroll-behavior: auto; }
+  /* fully halt the looping pills (the .001ms hack keeps an infinite animation cycling);
+     the base transform keeps the static resting tilt, and the layer hint is dropped */
+  .ret-hpill--seq { animation: none !important; will-change: auto; }
 }
