@@ -68,9 +68,8 @@ section[id] { scroll-margin-top: 96px; }
 .hero__canvas { position: relative; border-radius: var(--r-3xl); overflow: hidden;
   box-shadow: var(--shadow-float); border: 1px solid var(--line); aspect-ratio: 4 / 4.7;
   background:
-    radial-gradient(52% 44% at 13% 92%, rgba(176,125,84,.34), transparent 66%),
     radial-gradient(130% 95% at 16% 6%, rgba(255,255,255,.92), rgba(255,255,255,0) 52%),
-    linear-gradient(158deg, var(--canvas) 0%, var(--canvas-sunken) 46%, var(--cognac-wash) 100%);
+    linear-gradient(158deg, var(--canvas) 0%, var(--canvas-sunken) 60%, #E9E9EF 100%);
   display: flex; flex-direction: column; justify-content: center; gap: 12px; padding: clamp(26px,3.5vw,40px); }
 .hero__watermark { position: absolute; right: -14%; bottom: -16%; width: 70%; opacity: .07; pointer-events: none; }
 .hero__flow { position: relative; z-index: 2; display: flex; flex-direction: column; gap: 12px; }
@@ -321,17 +320,10 @@ section[id] { scroll-margin-top: 96px; }
 .apphero h1 .accent { color: var(--accent); }
 .apphero p { font-family: var(--font-body); font-weight: 300; font-size: clamp(1.05rem,.98rem+.5vw,1.25rem); line-height: 1.55; color: var(--ink-2); max-width: 46ch; margin: 0 0 26px; }
 .apphero__visual { position: relative; display: flex; justify-content: center; }
-/* Warm cognac "material" field behind the phone — gives the floating glass
-   widgets real colour to refract (the DS frosts its glass over cognac imagery).
-   Dense warm cores sit in the OFF-phone zones where the pill (upper-left) and
-   the float (right) overhang, so the frost reads warm there, not over the
-   bright screenshot. */
-.apphero__glow { position: absolute; inset: -14% -12%; z-index: 0; border-radius: 50%; pointer-events: none;
-  background:
-    radial-gradient(46% 40% at 80% 34%, rgba(176,125,84,.56), transparent 68%),
-    radial-gradient(40% 34% at 8% 22%, rgba(176,125,84,.50), transparent 66%),
-    radial-gradient(74% 70% at 50% 54%, rgba(200,160,124,.30), transparent 74%);
-  filter: blur(20px); }
+/* Soft, colourless lift behind the phone — a faint cool halo, no cognac tint */
+.apphero__glow { position: absolute; width: 76%; aspect-ratio: 1; top: 6%; left: 50%; transform: translateX(-50%);
+  z-index: 0; border-radius: 50%; pointer-events: none;
+  background: radial-gradient(circle, rgba(255,255,255,.72), transparent 70%); filter: blur(12px); }
 .apphero__float { position: absolute; z-index: 3; right: -8px; top: 22%; width: 224px; padding: 15px 18px; border-radius: var(--r-lg);
   background: var(--glass-fill-deep); border: 1px solid var(--glass-border);
   -webkit-backdrop-filter: blur(var(--blur-strong)) saturate(1.6); backdrop-filter: blur(var(--blur-strong)) saturate(1.6);
