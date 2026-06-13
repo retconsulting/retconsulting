@@ -8,6 +8,12 @@ html { scroll-behavior: smooth; }
 section[id] { scroll-margin-top: 96px; }
 
 .dotfield { background-color: var(--canvas); background-image: var(--dot-grid); background-size: var(--dot-size) var(--dot-size); }
+/* dot grid + a soft cognac glow behind it — gives frosted-glass surfaces something to refract */
+.glow-canvas { position: relative; background-color: var(--canvas);
+  background-image:
+    radial-gradient(72% 52% at 50% 34%, rgba(176,125,84,.18), rgba(176,125,84,0) 70%),
+    var(--dot-grid);
+  background-size: 100% 100%, var(--dot-size) var(--dot-size); }
 
 .skip-link { position: absolute; left: -9999px; top: 0; z-index: 100;
   background: var(--accent); color: #fff; padding: 10px 16px; border-radius: 0 0 var(--r-sm) 0;
@@ -276,34 +282,73 @@ section[id] { scroll-margin-top: 96px; }
 .legalfacts dd { margin: 0; font-family: var(--font-body); font-size: 15px; color: var(--ink-2); }
 .legalfacts a { color: var(--accent); }
 
-/* ---------- dueday product page ---------- */
-/* tighter vertical rhythm than the home (the product page has many sections) */
-.dd-main .section { padding-block: clamp(36px, 4.5vw, 60px); }
-.dd-main .dd-feature { gap: clamp(24px, 3vw, 44px); }
+/* ========== dueday — "App overview" kit (phone showcase + feature grid + dark CTA) ========== */
+.dd-main .section { padding-block: clamp(40px, 5vw, 72px); }
 .dd-main .section__head { margin-bottom: clamp(20px, 2.5vw, 32px); }
-.dd-hero { max-width: var(--container); margin-inline: auto; padding: clamp(28px,4vw,52px) var(--gutter) clamp(24px,3vw,40px); }
-.dd-hero h1 { font-family: var(--font-display); font-weight: 700; font-size: clamp(2.4rem,1.4rem+4vw,4.2rem); line-height: 1; letter-spacing: -.035em; color: var(--ink); margin: 18px 0 18px; text-wrap: balance; }
-.dd-hero h1 .accent { color: var(--accent); }
-.dd-hero p { font-family: var(--font-body); font-weight: 300; font-size: clamp(1.05rem,.98rem+.5vw,1.25rem); line-height: 1.55; color: var(--ink-2); max-width: 50ch; margin: 0 0 26px; }
 .dd-badge { display: inline-flex; align-items: center; gap: 8px; font-family: var(--font-mono); font-size: 12px; letter-spacing: .14em; text-transform: uppercase;
   color: var(--accent-text); background: var(--accent-wash); border-radius: var(--r-pill); padding: 9px 16px; }
-.dd-card { background: var(--surface); border: 1px solid var(--line); border-radius: var(--r-lg); box-shadow: var(--shadow-sm); padding: 26px; }
+.dd-card { background: var(--glass-fill-deep); border: 1px solid var(--glass-border); border-radius: var(--r-xl); box-shadow: var(--shadow-md); padding: 26px;
+  -webkit-backdrop-filter: blur(var(--blur-glass)) saturate(1.5); backdrop-filter: blur(var(--blur-glass)) saturate(1.5); }
 .dd-card h3 { font-family: var(--font-display); font-weight: 700; font-size: 1.15rem; letter-spacing: -.01em; color: var(--ink); margin: 0 0 8px; }
 .dd-card p { font-family: var(--font-body); font-size: .95rem; line-height: 1.55; color: var(--ink-2); margin: 0; }
-.dd-feature__eyebrow { font-family: var(--font-mono); font-size: 11px; letter-spacing: .16em; text-transform: uppercase; color: var(--accent-label); }
-.dd-feature h2 { font-family: var(--font-display); font-weight: 700; font-size: clamp(1.6rem,1.2rem+1.6vw,2.2rem); line-height: 1.08; letter-spacing: -.02em; color: var(--ink); margin: 12px 0 16px; }
-.dd-feature h2 .accent { color: var(--accent); }
-.dd-feature p { font-family: var(--font-body); font-size: 1rem; line-height: 1.65; color: var(--ink-2); max-width: 48ch; margin: 0 0 12px; }
-.dd-promises { max-width: var(--container); margin: 0 auto; padding-inline: var(--gutter);
+
+/* App hero: copy + a phone with a cognac glow and floating glass widget */
+.apphero__grid { max-width: var(--container-wide); margin-inline: auto; padding: clamp(28px,4vw,56px) var(--gutter) clamp(20px,3vw,36px);
+  display: grid; grid-template-columns: 1.02fr .98fr; gap: clamp(28px,4vw,56px); align-items: center; }
+.apphero h1 { font-family: var(--font-display); font-weight: 700; font-size: clamp(2.4rem,1.4rem+4vw,4.2rem); line-height: 1; letter-spacing: -.035em; color: var(--ink); margin: 16px 0 18px; text-wrap: balance; }
+.apphero h1 .accent { color: var(--accent); }
+.apphero p { font-family: var(--font-body); font-weight: 300; font-size: clamp(1.05rem,.98rem+.5vw,1.25rem); line-height: 1.55; color: var(--ink-2); max-width: 46ch; margin: 0 0 26px; }
+.apphero__visual { position: relative; display: flex; justify-content: center; }
+.apphero__glow { position: absolute; width: 80%; aspect-ratio: 1; border-radius: 50%; top: 4%; left: 50%; transform: translateX(-50%);
+  background: radial-gradient(circle, rgba(176,125,84,.32), transparent 66%); filter: blur(10px); z-index: 0; }
+.apphero__float { position: absolute; z-index: 3; right: -8px; top: 24%; width: 196px; padding: 15px 17px; border-radius: var(--r-lg);
+  background: var(--glass-fill-deep); border: 1px solid var(--glass-border);
+  -webkit-backdrop-filter: blur(var(--blur-strong)) saturate(1.6); backdrop-filter: blur(var(--blur-strong)) saturate(1.6); box-shadow: var(--shadow-lg); }
+.apphero__float .cap { font-family: var(--font-mono); font-size: 9px; letter-spacing: .14em; text-transform: uppercase; color: var(--ink-3); }
+.apphero__float .row { display: flex; align-items: center; gap: 7px; margin-top: 6px; font-family: var(--font-display); font-weight: 700; font-size: 15px; color: var(--ink); }
+.apphero__pill { position: absolute; z-index: 3; left: -6px; top: 13%; }
+
+/* Phone bezel holding a real screenshot */
+.dd-phone { position: relative; z-index: 2; width: 100%; max-width: 264px; aspect-ratio: 9/19.5; border-radius: 46px;
+  background: #0c0c0e; padding: 7px; box-sizing: border-box; box-shadow: var(--shadow-float), 0 0 0 1px rgba(24,24,27,.1); }
+.dd-phone__screen { position: relative; width: 100%; height: 100%; border-radius: 39px; overflow: hidden; background: #fff; }
+.dd-phone__screen img { width: 100%; height: 100%; object-fit: cover; object-position: top center; display: block; }
+.dd-phone__island { position: absolute; top: 8px; left: 50%; transform: translateX(-50%); width: 31%; height: 22px; border-radius: 14px; background: #000; z-index: 2; }
+
+/* Feature grid */
+.features { max-width: var(--container); margin-inline: auto; padding-inline: var(--gutter);
   display: grid; grid-template-columns: repeat(3,1fr); gap: var(--card-gap); }
-.dd-feature { max-width: var(--container); margin: 0 auto; padding: 0 var(--gutter); display: grid; grid-template-columns: 1fr 1fr; gap: clamp(28px,4vw,56px); align-items: center; }
-.dd-feature--flip .dd-feature__shot { order: 2; }
-.dd-feature__shot { display: grid; place-items: start center; overflow: hidden; background: var(--canvas-sunken);
-  border: 1px solid var(--line); border-radius: var(--r-2xl); aspect-ratio: 4/5; padding-top: 30px; box-shadow: var(--shadow-md); }
-.dd-feature__shot img { width: 70%; height: auto; display: block; border-radius: var(--r-md); }
-.dd-feature__shot--top img { -webkit-mask-image: linear-gradient(to bottom,#000 0%,#000 68%,transparent 96%); mask-image: linear-gradient(to bottom,#000 0%,#000 68%,transparent 96%); }
-.dd-feature__shot--mid { place-items: center; } .dd-feature__shot--mid img { -webkit-mask-image: linear-gradient(to bottom,transparent 4%,#000 26%,#000 74%,transparent 96%); mask-image: linear-gradient(to bottom,transparent 4%,#000 26%,#000 74%,transparent 96%); }
-.dd-feature__shot--bottom { place-items: end center; padding: 0 0 30px; } .dd-feature__shot--bottom img { -webkit-mask-image: linear-gradient(to bottom,transparent 4%,#000 32%,#000 100%); mask-image: linear-gradient(to bottom,transparent 4%,#000 32%,#000 100%); }
+.feat { padding: 28px; background: var(--glass-fill-deep); border: 1px solid var(--glass-border); border-radius: var(--r-xl); box-shadow: var(--shadow-md);
+  -webkit-backdrop-filter: blur(var(--blur-glass)) saturate(1.5); backdrop-filter: blur(var(--blur-glass)) saturate(1.5);
+  transition: transform var(--dur-base) var(--ease-out), box-shadow var(--dur-base) var(--ease-out), border-color var(--dur-base); }
+.feat:hover { transform: translateY(-4px); box-shadow: var(--shadow-lg); border-color: var(--border-accent); }
+.feat__icon { width: 48px; height: 48px; border-radius: var(--r-md); display: grid; place-items: center; background: var(--cognac-wash); color: var(--cognac-ink); margin-bottom: 20px; }
+.feat__icon svg { stroke-width: 1.5; }
+.feat__t { font-family: var(--font-display); font-weight: 700; font-size: 1.2rem; letter-spacing: -.01em; color: var(--ink); margin: 0 0 8px; }
+.feat__d { font-family: var(--font-body); font-size: .92rem; line-height: 1.55; color: var(--ink-2); margin: 0; }
+
+/* Screenshot showcase — phones on the dot grid with glass captions */
+.showcase { max-width: var(--container-wide); margin-inline: auto; padding-inline: var(--gutter);
+  display: flex; gap: clamp(16px,3vw,44px); justify-content: center; align-items: flex-start; flex-wrap: wrap; }
+.showcase__item { display: flex; flex-direction: column; align-items: center; gap: 18px; width: 264px; max-width: 100%; }
+.showcase__cap { text-align: center; padding: 14px 20px; border-radius: var(--r-lg);
+  background: var(--glass-fill); border: 1px solid var(--glass-border); box-shadow: var(--glass-shadow);
+  -webkit-backdrop-filter: blur(var(--blur-glass)) saturate(1.5); backdrop-filter: blur(var(--blur-glass)) saturate(1.5); }
+.showcase__cap .ix { font-family: var(--font-mono); font-size: 10px; letter-spacing: .14em; text-transform: uppercase; color: var(--accent-label); }
+.showcase__cap .t { display: block; font-family: var(--font-display); font-weight: 700; font-size: 1.05rem; color: var(--ink); letter-spacing: -.01em; margin-top: 4px; }
+.showcase__cap .d { font-family: var(--font-body); font-weight: 300; font-size: .9rem; color: var(--ink-2); margin-top: 6px; line-height: 1.5; }
+
+/* Download CTA band (dark) */
+.appcta { position: relative; max-width: var(--container); margin: 0 auto; padding: clamp(36px,5vw,64px) clamp(28px,5vw,64px);
+  border-radius: var(--r-3xl); background: var(--ink); color: #fff; overflow: hidden; box-shadow: var(--shadow-float); }
+.appcta__dots { position: absolute; inset: 0; opacity: .5; background-image: radial-gradient(circle, rgba(255,255,255,.12) 1px, transparent 1.2px); background-size: 22px 22px; }
+.appcta__inner { position: relative; z-index: 2; display: grid; grid-template-columns: 1.3fr .7fr; gap: 40px; align-items: center; }
+.appcta h2 { font-family: var(--font-display); font-weight: 700; font-size: clamp(2rem,1.3rem+2.4vw,3rem); letter-spacing: -.03em; line-height: 1.02; margin: 14px 0 0; text-wrap: balance; }
+.appcta h2 .accent { color: var(--cognac-soft); }
+.appcta p { font-family: var(--font-body); font-weight: 300; color: rgba(255,255,255,.72); font-size: 1.05rem; line-height: 1.55; margin: 16px 0 0; max-width: 40ch; }
+.appcta .ret-tag { color: var(--cognac-soft); }
+.appcta__side { justify-self: start; }
+.appcta__side .dd-badge { background: rgba(200,160,124,.16); color: var(--cognac-soft); }
 
 /* ---------- Responsive ---------- */
 @media (max-width: 980px) {
@@ -316,13 +361,15 @@ section[id] { scroll-margin-top: 96px; }
   .about { grid-template-columns: 1fr; }
   .contact__inner { grid-template-columns: 1fr; }
   .footer__main { grid-template-columns: 1fr 1fr; }
-  .dd-feature { grid-template-columns: 1fr; } .dd-feature--flip .dd-feature__shot { order: 0; }
+  .apphero__grid { grid-template-columns: 1fr; } .apphero__visual { order: -1; }
+  .features { grid-template-columns: repeat(2,1fr); } .appcta__inner { grid-template-columns: 1fr; }
 }
 @media (max-width: 720px) {
   .nav__links { display: none; }
   .services { grid-template-columns: 1fr; }
   .approach { grid-template-columns: 1fr; }
-  .dd-promises { grid-template-columns: 1fr; }
+  .features { grid-template-columns: 1fr; }
+  .apphero__float { display: none; }
   .footer__main { grid-template-columns: 1fr; }
   .contact__form { grid-template-columns: 1fr; }
   .hero__float { left: 0; }
