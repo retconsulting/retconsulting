@@ -198,22 +198,47 @@
       <span class="ret-tag">[PORTFOLIO]</span>
       <h2 class="section__title">Built end to end.</h2>
     </div>
-    <div class="cases">
-      <div class="case-feature">
-        <div class="case-feature__media">
-          <img src="dueday/assets/shot-accueil.webp" alt="dueday home screen: next payment, monthly total and cost cards" width="589" height="1280" loading="lazy" decoding="async"/>
-        </div>
-        <div class="case-feature__body">
-          <span class="case-feature__status">iOS app · coming to the App Store</span>
-          <h3 class="case-feature__title">dueday</h3>
-          <p>An iOS app that gathers subscriptions, rent and bills on one screen, with a reminder before each due date. Scoped, designed and built end to end in-house: the same work sold in service 03, taken from idea to a finished product.</p>
-          <div class="case-feature__badges">
-            <span class="glassbadge">100% offline</span>
-            <span class="glassbadge">No account</span>
-            <span class="glassbadge">Free</span>
+    <div class="carousel">
+      <ul class="carousel__track" id="workTrack">
+        <li class="pcard">
+          <div class="pcard__cover">
+            <span class="pcard__tag">iOS app</span>
+            <span class="pcard__glyph"><svg width="46" height="46" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><rect x="6" y="2.5" width="12" height="19" rx="2.5"/><path d="M10 5.5h4"/><path d="M11 18.5h2"/></svg></span>
+            <span class="pcard__name">dueday</span>
           </div>
-          <a class="ret-btn ret-btn--secondary ret-btn--md" href="dueday/">See the project <span class="ret-btn__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7"/><path d="M8 7h9v9"/></svg></span></a>
-        </div>
+          <div class="pcard__body">
+            <span class="pcard__status"><span class="ret-diamond"></span>Coming to the App Store</span>
+            <h3 class="pcard__title">A recurring-cost tracker</h3>
+            <p class="pcard__desc">Subscriptions, rent and bills on one screen, with a reminder before each due date. Scoped, designed and built end to end.</p>
+            <a class="ret-btn ret-btn--secondary ret-btn--sm" href="dueday/">See the project <span class="ret-btn__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7"/><path d="M8 7h9v9"/></svg></span></a>
+          </div>
+        </li>
+        <li class="pcard pcard--soon">
+          <div class="pcard__cover pcard__cover--soon">
+            <span class="pcard__soonbadge">Coming soon</span>
+            <span class="pcard__glyph"><svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 8.5v7M8.5 12h7"/></svg></span>
+          </div>
+          <div class="pcard__body">
+            <span class="pcard__status pcard__status--muted">Next project</span>
+            <h3 class="pcard__title">In the works</h3>
+            <p class="pcard__desc">A new product, taken from idea to launch.</p>
+          </div>
+        </li>
+        <li class="pcard pcard--soon">
+          <div class="pcard__cover pcard__cover--soon">
+            <span class="pcard__soonbadge">Coming soon</span>
+            <span class="pcard__glyph"><svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7.5v5l3.5 2"/></svg></span>
+          </div>
+          <div class="pcard__body">
+            <span class="pcard__status pcard__status--muted">Next up</span>
+            <h3 class="pcard__title">In the pipeline</h3>
+            <p class="pcard__desc">Another build taking shape. Details soon.</p>
+          </div>
+        </li>
+      </ul>
+      <div class="carousel__nav" id="workNav">
+        <button type="button" class="carousel__btn" data-dir="-1" aria-label="Previous projects"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6"/></svg></button>
+        <button type="button" class="carousel__btn" data-dir="1" aria-label="Next projects"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6l6 6-6 6"/></svg></button>
       </div>
     </div>
   </section>
@@ -430,6 +455,24 @@
       entries.forEach(function (e) { if (e.isIntersecting) setActive(map[e.target.id]); });
     }, { rootMargin: '-45% 0px -50% 0px', threshold: 0 });
     sections.forEach(function (s) { obs.observe(s); });
+  })();
+
+  // Portfolio carousel: arrow nav, disabled at ends, hidden when the track fits
+  (function () {
+    var track = document.getElementById('workTrack');
+    var nav = document.getElementById('workNav');
+    if (!track || !nav) return;
+    var btns = Array.prototype.slice.call(nav.querySelectorAll('.carousel__btn'));
+    var step = function () { var c = track.querySelector('.pcard'); var g = parseInt(getComputedStyle(track).gap, 10) || 24; return c ? c.getBoundingClientRect().width + g : 320; };
+    var update = function () {
+      var max = track.scrollWidth - track.clientWidth - 1;
+      nav.style.display = max > 2 ? '' : 'none';
+      btns.forEach(function (b) { var d = Number(b.getAttribute('data-dir')); b.disabled = d < 0 ? track.scrollLeft <= 2 : track.scrollLeft >= max; });
+    };
+    btns.forEach(function (b) { b.addEventListener('click', function () { track.scrollBy({ left: step() * Number(b.getAttribute('data-dir')), behavior: 'smooth' }); }); });
+    track.addEventListener('scroll', update, { passive: true });
+    window.addEventListener('resize', update);
+    update();
   })();
 
   document.getElementById('year').textContent = new Date().getFullYear();
