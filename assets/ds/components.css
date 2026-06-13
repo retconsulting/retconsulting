@@ -66,19 +66,23 @@
 .ret-input:focus { outline: none; border-color: var(--accent); box-shadow: 0 0 0 3px rgba(176,125,84,.18); }
 textarea.ret-input { resize: vertical; line-height: 1.5; }
 
-/* ---------- Highlight pill (frosted icon + text chip) ---------- */
-.ret-pill {
-  display: inline-flex; align-items: center; gap: 9px;
-  padding: 9px 15px 9px 11px; border-radius: var(--r-pill);
+/* ---------- Highlight pill — frosted icon+text chip (ported verbatim from HighlightPill) ---------- */
+.ret-hpill {
+  display: inline-flex; align-items: center; gap: 8px; padding: 7px 14px 7px 9px;
+  border-radius: var(--r-pill); font-family: var(--font-body); font-size: var(--t-sm);
+  font-weight: var(--w-semibold); letter-spacing: -.005em; color: var(--ink); white-space: nowrap;
   background: var(--glass-fill); border: 1px solid var(--glass-border);
   -webkit-backdrop-filter: blur(var(--blur-glass)) saturate(1.4); backdrop-filter: blur(var(--blur-glass)) saturate(1.4);
   box-shadow: var(--glass-shadow);
-  font-family: var(--font-body); font-size: 13px; font-weight: 500; color: var(--ink-2);
+  transition: transform var(--dur-base) var(--ease-out), box-shadow var(--dur-base) var(--ease-out);
 }
-.ret-pill__icon { display: inline-flex; width: 28px; height: 28px; border-radius: 999px; place-items: center; display: grid;
-  background: var(--canvas-sunken); color: var(--ink); }
-.ret-pill--accent .ret-pill__icon { background: var(--accent); color: #fff; }
-.ret-pill svg { stroke-width: 1.5; }
+.ret-hpill__icon { display: inline-flex; width: 20px; height: 20px; align-items: center; justify-content: center; border-radius: var(--r-pill); color: var(--accent); flex: none; }
+.ret-hpill__icon svg { width: 16px; height: 16px; stroke-width: 1.6; }
+.ret-hpill--accent { background: var(--cognac-wash); border-color: var(--border-accent); color: var(--accent-text); }
+.ret-hpill--accent .ret-hpill__icon { color: var(--cognac); }
+.ret-hpill--solid { background: var(--ink); color: #fff; border-color: transparent; }
+.ret-hpill--solid .ret-hpill__icon { color: var(--cognac-soft); }
+.ret-hpill--lift:hover { transform: translateY(-2px) rotate(0deg) !important; box-shadow: var(--shadow-lg); }
 
 /* ---------- Glass badge ---------- */
 .glassbadge { display: inline-flex; align-items: center; gap: 7px; padding: 7px 12px; border-radius: var(--r-pill);
