@@ -12,12 +12,11 @@
 <meta property="og:description" content="Abonnements, loyer, factures : un seul écran clair, des rappels avant chaque échéance. 100 % hors-ligne, sans compte, gratuit."/>
 <meta property="og:url" content="https://retconsulting.be/dueday/"/>
 <meta property="og:image" content="https://retconsulting.be/dueday/assets/shot-accueil.png"/>
-<meta name="theme-color" content="#EFEAE3" media="(prefers-color-scheme: light)"/>
-<meta name="theme-color" content="#15171A" media="(prefers-color-scheme: dark)"/>
+<meta name="theme-color" content="#F4F4F7"/>
 <link rel="icon" href="../assets/logo-glyph.svg"/>
 <link rel="icon" href="../assets/logo-glyph-dark.svg" media="(prefers-color-scheme: dark)"/>
-<link rel="stylesheet" href="../assets/colors_and_type.css"/>
-<link rel="stylesheet" href="assets/dueday.css"/>
+<link rel="apple-touch-icon" href="../assets/apple-touch-icon.png"/>
+<link rel="stylesheet" href="../assets/ds.css"/>
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -28,198 +27,111 @@
   "description": "dueday rassemble vos abonnements, loyer et factures sur un seul écran et vous prévient avant chaque échéance. 100 % hors-ligne, sans compte, gratuit.",
   "inLanguage": ["fr", "en"],
   "offers": { "@type": "Offer", "price": "0", "priceCurrency": "EUR" },
-  "publisher": {
-    "@type": "Organization",
-    "name": "RET Consulting SRL",
-    "url": "https://retconsulting.be/"
-  }
+  "publisher": { "@type": "Organization", "name": "RET Consulting SRL", "url": "https://retconsulting.be/" }
 }
 </script>
-<script>
-  // Set theme before paint to avoid flash.
-  (function () {
-    try {
-      var saved = localStorage.getItem('ret-theme');
-      var dark = saved ? saved === 'dark'
-                       : window.matchMedia('(prefers-color-scheme: dark)').matches;
-      if (dark) document.documentElement.setAttribute('data-theme', 'dark');
-    } catch (e) {}
-  })();
-</script>
-<style>
-  body { margin: 0; background: var(--paper); color: var(--ink-2); }
-  .page { max-width: var(--content-max, 1200px); margin: 0 auto; padding: var(--s-7, 48px) var(--s-4, 24px) var(--s-9, 96px); }
-  .eyebrow { font-family: 'Geist Mono', ui-monospace, monospace; font-size: 12px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--ink-3); }
-  .hero { max-width: 760px; margin: var(--s-7, 48px) 0 var(--s-8, 64px); }
-  .hero h1 { font-family: 'Source Serif 4', Georgia, serif; font-weight: 400; font-size: clamp(34px, 6vw, 56px); line-height: 1.08; color: var(--ink); margin: var(--s-3, 16px) 0 var(--s-3, 16px); letter-spacing: -0.5px; }
-  .hero p { font-size: 17px; line-height: 1.6; max-width: 620px; margin: 0 0 var(--s-4, 24px); }
-  /* status pill, not a button — the clickable bordered form returns with the real App Store link */
-  .hero__badge { display: inline-block; font-family: 'Geist Mono', ui-monospace, monospace; font-size: 12px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--pine-deep); background: var(--pine-soft); border-radius: 999px; padding: 8px 16px; }
-  [data-theme="dark"] .hero__badge { color: var(--pine); } /* lighter mint for AA contrast on dark pine-soft */
-  .promises { display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--s-3, 16px); margin: 0 0 var(--s-9, 96px); }
-  .promise { border: 1px solid var(--rule); background: var(--paper-soft); border-radius: 6px; padding: var(--s-4, 24px); }
-  .promise h2 { font-family: 'Source Serif 4', Georgia, serif; font-weight: 500; font-size: 19px; color: var(--ink); margin: 0 0 6px; }
-  .promise p { font-size: 14.5px; line-height: 1.55; margin: 0; }
-  .feature { display: grid; grid-template-columns: 1fr 1fr; gap: var(--s-7, 48px); align-items: center; margin-bottom: var(--s-9, 96px); }
-  .feature--flip .feature__shot { order: 2; }
-  .feature__shot { text-align: center; }
-  /* Screenshot plates: tinted panel, phone cropped with a fade, one focus per screen */
-  .shot-panel { display: flex; justify-content: center; overflow: hidden; background: var(--paper-deep); border: 1px solid var(--rule); border-radius: 12px; aspect-ratio: 4 / 5; max-width: 360px; margin: 0 auto; }
-  .shot-panel img { width: 72%; height: auto; align-self: flex-start; border: 1px solid var(--rule); border-radius: 28px; }
-  .shot-panel--top { padding-top: 36px; }
-  .shot-panel--top img { -webkit-mask-image: linear-gradient(to bottom, #000 0%, #000 68%, transparent 96%); mask-image: linear-gradient(to bottom, #000 0%, #000 68%, transparent 96%); }
-  .shot-panel--mid { align-items: center; }
-  .shot-panel--mid img { align-self: center; -webkit-mask-image: linear-gradient(to bottom, transparent 4%, #000 26%, #000 74%, transparent 96%); mask-image: linear-gradient(to bottom, transparent 4%, #000 26%, #000 74%, transparent 96%); }
-  .shot-panel--bottom { align-items: flex-end; padding-bottom: 36px; }
-  .shot-panel--bottom img { align-self: flex-end; -webkit-mask-image: linear-gradient(to bottom, transparent 4%, #000 32%, #000 100%); mask-image: linear-gradient(to bottom, transparent 4%, #000 32%, #000 100%); }
-  .feature h2 { font-family: 'Source Serif 4', Georgia, serif; font-weight: 400; font-size: clamp(24px, 3.5vw, 32px); line-height: 1.2; color: var(--ink); margin: var(--s-2, 12px) 0 var(--s-3, 16px); }
-  .feature p { font-size: 15.5px; line-height: 1.65; max-width: 480px; margin: 0 0 var(--s-2, 12px); }
-  .extras { border-top: 1px solid var(--rule); padding-top: var(--s-6, 40px); margin-bottom: var(--s-8, 64px); display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--s-5, 32px); }
-  .extras h3 { font-family: 'Inter', 'Helvetica Neue', Arial, sans-serif; font-weight: 600; font-size: 15px; color: var(--ink); margin: 0 0 6px; }
-  .extras p { font-size: 14px; line-height: 1.55; margin: 0; }
-  .page__footer { border-top: 1px solid var(--rule); padding-top: var(--s-4, 24px); font-size: 13.5px; color: var(--ink-3); }
-  .page__footer a { color: var(--ink-3); }
-  .making { border-top: 1px solid var(--rule); padding-top: var(--s-6, 40px); margin-bottom: var(--s-8, 64px); }
-  .making > h2 { font-family: 'Source Serif 4', Georgia, serif; font-weight: 400; font-size: clamp(24px, 3.5vw, 32px); line-height: 1.2; color: var(--ink); margin: var(--s-2, 12px) 0 var(--s-4, 24px); }
-  .making__grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--s-3, 16px); margin-bottom: var(--s-4, 24px); }
-  .making__close { font-size: 15px; color: var(--ink-2); max-width: 620px; }
-  .making__close a { color: var(--pine); }
-  @media (max-width: 760px) {
-    .promises, .extras, .making__grid { grid-template-columns: 1fr; }
-    .feature { grid-template-columns: 1fr; gap: var(--s-4, 24px); }
-    .feature--flip .feature__shot { order: 0; }
-  }
-</style>
 </head>
-<body>
-<header class="dd-header">
-  <div class="dd-header__inner">
-    <a class="dd-header__brand" href="../" aria-label="RET Consulting, retour à l'accueil">
-      <img class="mark-light" src="../assets/logo-monogram.svg" alt=""/>
-      <img class="mark-dark" src="../assets/logo-monogram-dark.svg" alt=""/>
-      <span>RET Consulting</span>
+<body class="site">
+<a class="skip-link" href="#main">Aller au contenu</a>
+
+<header class="subhead">
+  <div class="subhead__inner">
+    <a class="nav__brand" href="../" aria-label="RET Consulting, retour à l'accueil">
+      <img class="nav__brand-glyph" src="../assets/logo-glyph.svg" alt=""/>
+      <span class="nav__brand-wordmark"><span class="w">RET</span><span class="d">Consulting</span></span>
     </a>
-    <button type="button" class="dd-theme" id="themeToggle" aria-label="Thème sombre" aria-pressed="false">
-      <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" aria-hidden="true">
-        <circle cx="12" cy="12" r="4.2"/>
-        <path d="M12 2.5v2.4M12 19.1v2.4M4.2 4.2l1.7 1.7M18.1 18.1l1.7 1.7M2.5 12h2.4M19.1 12h2.4M4.2 19.8l1.7-1.7M18.1 5.9l1.7-1.7"/>
-      </svg>
-      <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-        <path d="M20 14.5A8 8 0 0 1 9.5 4a6.5 6.5 0 1 0 10.5 10.5z"/>
-      </svg>
-    </button>
+    <a class="subhead__back" href="../"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5"/><path d="M11 18l-6-6 6-6"/></svg>Retour à l'accueil</a>
   </div>
 </header>
-<main class="page">
 
-  <div class="eyebrow">RET Consulting · application iOS</div>
+<main id="main" class="dotfield">
 
-  <section class="hero">
-    <h1>dueday. Vos coûts récurrents, <em>au clair</em>.</h1>
+  <section class="dd-hero">
+    <span class="ret-eyebrow">RET Consulting · application iOS</span>
+    <h1>dueday. Vos coûts récurrents, <span class="accent">au clair</span>.</h1>
     <p>Abonnements, loyer, énergie, assurances : dueday les rassemble sur un seul écran lisible et vous prévient avant chaque échéance. Vous savez exactement ce que vous payez, et quand.</p>
     <!-- Quand l'app est publiée : remplacer par
-         <a class="hero__badge" href="https://apps.apple.com/app/idXXXXXXXXX">Télécharger sur l'App Store</a> -->
-    <span class="hero__badge">Bientôt sur l'App Store</span>
+         <a class="ret-btn ret-btn--primary ret-btn--md" href="https://apps.apple.com/app/idXXXXXXXXX">Télécharger sur l'App Store</a> -->
+    <span class="dd-badge"><span class="ret-diamond"></span>Bientôt sur l'App Store</span>
   </section>
 
-  <section class="promises" aria-label="Engagements">
-    <div class="promise">
-      <h2>Confidentialité totale</h2>
-      <p>100 % hors-ligne : rien ne quitte votre appareil. Aucune donnée collectée, jamais. Pas un octet ne transite par un serveur.</p>
-    </div>
-    <div class="promise">
-      <h2>Sans compte</h2>
-      <p>Aucune inscription, aucun email. Vous ouvrez l'app et vous commencez.</p>
-    </div>
-    <div class="promise">
-      <h2>Gratuit, pour toujours</h2>
-      <p>Toutes les fonctions essentielles, sans frais et sans limite de durée. Seules d'éventuelles options purement cosmétiques pourraient un jour être payantes.</p>
+  <section class="section" style="padding-top:0;" aria-label="Engagements">
+    <div class="dd-promises">
+      <div class="dd-card"><h3>Confidentialité totale</h3><p>100 % hors-ligne : rien ne quitte votre appareil. Aucune donnée collectée, jamais. Pas un octet ne transite par un serveur.</p></div>
+      <div class="dd-card"><h3>Sans compte</h3><p>Aucune inscription, aucun email. Vous ouvrez l'app et vous commencez.</p></div>
+      <div class="dd-card"><h3>Gratuit, pour toujours</h3><p>Toutes les fonctions essentielles, sans frais et sans limite de durée. Seules d'éventuelles options purement cosmétiques pourraient un jour être payantes.</p></div>
     </div>
   </section>
 
-  <section class="feature">
-    <div class="feature__shot">
-      <div class="shot-panel shot-panel--top">
+  <section class="section">
+    <div class="dd-feature">
+      <div class="dd-feature__shot dd-feature__shot--top">
         <img src="assets/shot-accueil.webp" alt="Écran d'accueil de dueday : prochaine échéance, total du mois et cartes de coûts" width="589" height="1280" fetchpriority="high"/>
       </div>
-    </div>
-    <div>
-      <div class="eyebrow">Accueil</div>
-      <h2>L'essentiel en un <em>coup d'œil</em></h2>
-      <p>Vos prochains paiements, le total du mois et toutes vos cartes de coûts, triables par échéance, prix, nom ou catégorie.</p>
-      <p>Les cycles mensuels, trimestriels et annuels sont convertis en équivalent mensuel : un loyer et une assurance annuelle se comparent enfin sur la même base.</p>
+      <div class="dd-feature__copy">
+        <span class="dd-feature__eyebrow">Accueil</span>
+        <h2>L'essentiel en un <span class="accent">coup d'œil</span></h2>
+        <p>Vos prochains paiements, le total du mois et toutes vos cartes de coûts, triables par échéance, prix, nom ou catégorie.</p>
+        <p>Les cycles mensuels, trimestriels et annuels sont convertis en équivalent mensuel : un loyer et une assurance annuelle se comparent enfin sur la même base.</p>
+      </div>
     </div>
   </section>
 
-  <section class="feature feature--flip">
-    <div class="feature__shot">
-      <div class="shot-panel shot-panel--mid">
+  <section class="section">
+    <div class="dd-feature dd-feature--flip">
+      <div class="dd-feature__shot dd-feature__shot--mid">
         <img src="assets/shot-calendrier.webp" alt="Calendrier de dueday : chaque paiement sur son jour, avec la pastille du jour de paye" width="589" height="1280" loading="lazy" decoding="async"/>
       </div>
-    </div>
-    <div>
-      <div class="eyebrow">Calendrier</div>
-      <h2>Chaque paiement, <em>sur son jour</em></h2>
-      <p>Le mois entier d'un regard : chaque échéance posée sur sa date, le détail à un tap, et votre jour de paye marqué d'une pastille verte.</p>
-      <p>Deux rappels discrets si vous le souhaitez : la veille et le jour même, aux horaires que vous choisissez. Les paiements d'un même jour sont regroupés en une seule notification.</p>
+      <div class="dd-feature__copy">
+        <span class="dd-feature__eyebrow">Calendrier</span>
+        <h2>Chaque paiement, <span class="accent">sur son jour</span></h2>
+        <p>Le mois entier d'un regard : chaque échéance posée sur sa date, le détail à un tap, et votre jour de paye marqué d'une pastille verte.</p>
+        <p>Deux rappels discrets si vous le souhaitez : la veille et le jour même, aux horaires que vous choisissez. Les paiements d'un même jour sont regroupés en une seule notification.</p>
+      </div>
     </div>
   </section>
 
-  <section class="feature">
-    <div class="feature__shot">
-      <div class="shot-panel shot-panel--bottom">
+  <section class="section">
+    <div class="dd-feature">
+      <div class="dd-feature__shot dd-feature__shot--bottom">
         <img src="assets/shot-analyse.webp" alt="Page Analyse de dueday : total mensuel, part du revenu, répartition par catégorie et top 5 des coûts" width="589" height="1280" loading="lazy" decoding="async"/>
       </div>
-    </div>
-    <div>
-      <div class="eyebrow">Analyse</div>
-      <h2>Vos dépenses, <em>mises en perspective</em></h2>
-      <p>Total mensuel, répartition par catégorie, top 5 de vos coûts, et vos dépenses mesurées face à votre budget et à votre revenu.</p>
-      <p>De quoi répondre à la seule question qui compte : où part l'argent, et est-ce que ça tient dans le mois.</p>
+      <div class="dd-feature__copy">
+        <span class="dd-feature__eyebrow">Analyse</span>
+        <h2>Vos dépenses, <span class="accent">mises en perspective</span></h2>
+        <p>Total mensuel, répartition par catégorie, top 5 de vos coûts, et vos dépenses mesurées face à votre budget et à votre revenu.</p>
+        <p>De quoi répondre à la seule question qui compte : où part l'argent, et est-ce que ça tient dans le mois.</p>
+      </div>
     </div>
   </section>
 
-  <section class="extras" aria-label="Et aussi">
-    <div>
-      <h3>Widgets</h3>
-      <p>Écran d'accueil (3 tailles) et écran verrouillé : prochaine échéance, total du mois, agenda des paiements à venir.</p>
-    </div>
-    <div>
-      <h3>Vos données vous appartiennent</h3>
-      <p>Export et import de sauvegarde en JSON, à l'endroit que vous choisissez. Tout supprimer tient en un bouton.</p>
-    </div>
-    <div>
-      <h3>À votre goût</h3>
-      <p>4 thèmes de couleur, icônes alternatives, interface en français et en anglais.</p>
+  <section class="section" aria-label="Et aussi">
+    <div class="section__head"><span class="ret-eyebrow">Et aussi</span></div>
+    <div class="dd-promises">
+      <div class="dd-card"><h3>Widgets</h3><p>Écran d'accueil (3 tailles) et écran verrouillé : prochaine échéance, total du mois, agenda des paiements à venir.</p></div>
+      <div class="dd-card"><h3>Vos données vous appartiennent</h3><p>Export et import de sauvegarde en JSON, à l'endroit que vous choisissez. Tout supprimer tient en un bouton.</p></div>
+      <div class="dd-card"><h3>À votre goût</h3><p>4 thèmes de couleur, icônes alternatives, interface en français et en anglais.</p></div>
     </div>
   </section>
 
-  <section class="making" aria-label="Derrière le produit">
-    <div class="eyebrow">Derrière le produit</div>
-    <h2>Un produit mené <em>de bout en bout</em></h2>
-    <div class="making__grid">
-      <div class="promise">
-        <h2>Le besoin</h2>
-        <p>Savoir ce que l'on paie chaque mois, sans tableur à entretenir et sans compte à créer. Le cahier des charges tenait en une phrase : tout voir, être prévenu à temps.</p>
-      </div>
-      <div class="promise">
-        <h2>Les choix</h2>
-        <p>100 % hors-ligne plutôt qu'un serveur : plus simple, plus fiable, et la confidentialité est réglée par construction. Pas de compte, pas de publicité, gratuit.</p>
-      </div>
-      <div class="promise">
-        <h2>La livraison</h2>
-        <p>Cadrage, design, développement et préparation App Store menés en interne par RET Consulting, du premier croquis à la version finale.</p>
-      </div>
+  <section class="section band" aria-label="Derrière le produit">
+    <div class="section__head"><span class="ret-eyebrow">Derrière le produit</span><h2 class="section__title">Un produit mené de bout en bout.</h2></div>
+    <div class="dd-promises">
+      <div class="dd-card"><h3>Le besoin</h3><p>Savoir ce que l'on paie chaque mois, sans tableur à entretenir et sans compte à créer. Le cahier des charges tenait en une phrase : tout voir, être prévenu à temps.</p></div>
+      <div class="dd-card"><h3>Les choix</h3><p>100 % hors-ligne plutôt qu'un serveur : plus simple, plus fiable, et la confidentialité est réglée par construction. Pas de compte, pas de publicité, gratuit.</p></div>
+      <div class="dd-card"><h3>La livraison</h3><p>Cadrage, design, développement et préparation App Store menés en interne par RET Consulting, du premier croquis à la version finale.</p></div>
     </div>
-    <p class="making__close">C'est le même travail que RET Consulting mène en mission pour ses clients : cadrer, trancher, livrer. <a href="../">En savoir plus</a>.</p>
+    <p style="max-width:var(--container);margin:24px auto 0;padding-inline:var(--gutter);font-family:var(--font-body);font-size:1rem;color:var(--ink-2);">C'est le même travail que RET Consulting mène en mission pour ses clients : cadrer, trancher, livrer. <a href="../" style="color:var(--accent);">En savoir plus</a>.</p>
   </section>
-
-  <footer class="page__footer">
-    RET CONSULTING SRL · Siège social : Digue des Peupliers 71/B2-5, 7000 Mons (Belgique) · BCE 1022.588.549 · TVA BE 1022.588.549 · RPM Hainaut, division Mons · <a href="mailto:retbaz@retconsulting.be">retbaz@retconsulting.be</a><br/>
-    <a href="privacy/">Politique de confidentialité</a> · <a href="support/">Support</a> · <a href="https://retconsulting.be/">retconsulting.be</a>
-  </footer>
 
 </main>
-<script src="assets/dueday.js"></script>
+
+<footer class="footer">
+  <div class="footer__legal" style="flex-direction:column;align-items:flex-start;gap:10px;line-height:1.6;">
+    <span>RET CONSULTING SRL · Siège social : Digue des Peupliers 71/B2-5, 7000 Mons (Belgique) · BCE 1022.588.549 · TVA BE 1022.588.549 · RPM Hainaut, division Mons · <a href="mailto:retbaz@retconsulting.be">retbaz@retconsulting.be</a></span>
+    <span><a href="privacy/">Politique de confidentialité</a> · <a href="support/">Support</a> · <a href="https://retconsulting.be/">retconsulting.be</a></span>
+  </div>
+</footer>
+
 </body>
 </html>

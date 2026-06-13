@@ -1,0 +1,72 @@
+/* ==========================================================================
+   RET · Colors
+   Cool-gray "strategic canvas" + pure-white cards + cognac leather accent.
+   Base ramps first, then semantic aliases. Use the aliases in components.
+   ========================================================================== */
+:root {
+  /* — Cool neutral canvas ramp — */
+  --canvas:          #F4F4F7;  /* page background (off-white cool gray) */
+  --canvas-sunken:   #ECECF1;  /* recessed bands / transition areas      */
+  --canvas-raised:   #FBFBFD;  /* faint raised fill                      */
+  --surface:         #FFFFFF;  /* content cards                          */
+  --surface-2:       #FAFAFC;  /* secondary card / inset                 */
+
+  /* — Ink ramp (charcoal → faint) — */
+  --ink:             #18181B;  /* primary text, near-black               */
+  --ink-2:           #3F3F46;  /* secondary text                         */
+  --ink-3:           #646470;  /* muted / supporting (darkened for WCAG AA on canvas + band) */
+  --ink-4:           #A1A1AA;  /* faint / disabled — decorative only, not for text       */
+  --ink-5:           #C9C9D0;  /* hairline-on-light, placeholder         */
+
+  /* — Cognac / tan leather accent ramp — */
+  --cognac:          #B07D54;  /* primary accent                         */
+  --cognac-deep:     #8F6240;  /* hover / pressed                        */
+  --cognac-soft:     #C8A07C;  /* light accent, decorative               */
+  --cognac-wash:     #F1E7DD;  /* tinted surface wash                    */
+  --cognac-ink:      #6A4326;  /* accent text on wash                    */
+  --cognac-text:     #855B3B;  /* accent used as small text — WCAG AA on canvas/band */
+
+  /* — Lines & dots — */
+  --dot:             #AFAFAF;  /* blueprint micro-dot grid               */
+  --line:            rgba(24, 24, 27, 0.08);  /* hairline border         */
+  --line-strong:     rgba(24, 24, 27, 0.14);  /* emphasized border       */
+  --line-cognac:     rgba(176, 125, 84, 0.32);/* accent border           */
+
+  /* — Frosted glass materials — */
+  --glass-fill:      rgba(255, 255, 255, 0.62);
+  --glass-fill-deep: rgba(248, 248, 251, 0.78);
+  --glass-border:    rgba(255, 255, 255, 0.70);
+  --glass-tint:      rgba(176, 125, 84, 0.06);
+
+  /* — Status (used sparingly; tuned to the muted palette) — */
+  --positive:        #4F7A5B;
+  --positive-wash:   #E7EFE9;
+  --caution:         #9A7B3E;
+  --caution-wash:    #F2EADA;
+  --critical:        #9B4A41;
+  --critical-wash:   #F1E3E1;
+
+  /* ===== Semantic aliases — prefer these in components ===== */
+  --bg-page:         var(--canvas);
+  --bg-sunken:       var(--canvas-sunken);
+  --surface-card:    var(--surface);
+  --surface-inset:   var(--surface-2);
+
+  --text-primary:    var(--ink);
+  --text-secondary:  var(--ink-2);
+  --text-muted:      var(--ink-3);
+  --text-faint:      var(--ink-3);
+  --text-on-accent:  #FFFFFF;
+  --text-meta:       var(--ink-3);   /* technical metadata labels (AA-safe gray) */
+
+  --accent:          var(--cognac);
+  --accent-hover:    var(--cognac-deep);
+  --accent-soft:     var(--cognac-soft);
+  --accent-wash:     var(--cognac-wash);
+  --accent-text:     var(--cognac-ink);
+  --accent-label:    var(--cognac-text);  /* cognac as small uppercase text */
+
+  --border-subtle:   var(--line);
+  --border-strong:   var(--line-strong);
+  --border-accent:   var(--line-cognac);
+}

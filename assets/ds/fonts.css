@@ -1,0 +1,9 @@
+/* ==========================================================================
+   RET · Webfonts
+   Loaded from Google Fonts. Archivo ships its full variable weight axis
+   (100–900) so the thin↔black display contrast works; IBM Plex Mono powers
+   the technical metadata labels.
+   NOTE: served from the Google Fonts CDN rather than self-hosted binaries.
+   If you need offline/self-hosted woff2, ask and we'll vendor them in.
+   ========================================================================== */
+@import url('https://fonts.googleapis.com/css2?family=Archivo:ital,wght@0,100..900;1,100..900&family=IBM+Plex+Mono:wght@300;400;500;600&display=swap');

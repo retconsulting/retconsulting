@@ -1,0 +1,31 @@
+/* ==========================================================================
+   RET · Spacing & layout
+   4px base rhythm. Generous container gutters; modular-card grid gaps.
+   Gutter / section / card gaps are fixed tokens; base.css scales the gutter
+   down on small viewports.
+   ========================================================================== */
+:root {
+  --space-0:   0;
+  --space-1:   4px;
+  --space-2:   8px;
+  --space-3:   12px;
+  --space-4:   16px;
+  --space-5:   20px;
+  --space-6:   24px;
+  --space-8:   32px;
+  --space-10:  40px;
+  --space-12:  48px;
+  --space-16:  64px;
+  --space-20:  80px;
+  --space-24:  96px;
+  --space-32:  128px;
+  --space-40:  160px;
+
+  /* — Layout — */
+  --container:        1200px;  /* primary content max-width   */
+  --container-wide:   1360px;  /* full hero / canvas          */
+  --container-narrow: 760px;   /* prose / focused copy        */
+  --gutter:           64px;    /* @kind spacing */
+  --section-gap:      120px;   /* @kind spacing */
+  --card-gap:         24px;    /* @kind spacing */
+}

@@ -7,131 +7,93 @@
 <meta name="description" content="Support de l'application iOS dueday : contact et questions fréquentes. Support for the dueday iOS app."/>
 <meta name="author" content="RET Consulting SRL"/>
 <link rel="canonical" href="https://retconsulting.be/dueday/support/"/>
-<meta name="theme-color" content="#EFEAE3" media="(prefers-color-scheme: light)"/>
-<meta name="theme-color" content="#15171A" media="(prefers-color-scheme: dark)"/>
+<meta name="theme-color" content="#F4F4F7"/>
 <link rel="icon" href="../../assets/logo-glyph.svg"/>
 <link rel="icon" href="../../assets/logo-glyph-dark.svg" media="(prefers-color-scheme: dark)"/>
-<link rel="stylesheet" href="../../assets/colors_and_type.css"/>
-<link rel="stylesheet" href="../assets/dueday.css"/>
-<script>
-  // Set theme before paint to avoid flash.
-  (function () {
-    try {
-      var saved = localStorage.getItem('ret-theme');
-      var dark = saved ? saved === 'dark'
-                       : window.matchMedia('(prefers-color-scheme: dark)').matches;
-      if (dark) document.documentElement.setAttribute('data-theme', 'dark');
-    } catch (e) {}
-  })();
-</script>
-<style>
-  body { margin: 0; background: var(--paper); color: var(--ink-2); }
-  .legal { max-width: var(--prose-max, 720px); margin: 0 auto; padding: var(--s-8, 64px) var(--s-4, 24px) var(--s-9, 96px); }
-  .legal__eyebrow { font-family: 'Geist Mono', ui-monospace, monospace; font-size: 12px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--ink-3); margin-bottom: var(--s-3, 16px); }
-  .legal h1 { font-family: 'Source Serif 4', Georgia, serif; font-weight: 400; font-size: clamp(28px, 5vw, 40px); line-height: 1.15; color: var(--ink); margin: 0 0 var(--s-2, 12px); }
-  .legal h2 { font-family: 'Source Serif 4', Georgia, serif; font-weight: 500; font-size: 20px; color: var(--ink); margin: var(--s-6, 40px) 0 var(--s-2, 12px); }
-  .legal h3 { font-family: 'Inter', 'Helvetica Neue', Arial, sans-serif; font-weight: 600; font-size: 15.5px; color: var(--ink); margin: var(--s-4, 24px) 0 4px; }
-  .legal p, .legal li { font-size: 15.5px; line-height: 1.65; }
-  .legal p { margin: 0 0 var(--s-2, 12px); }
-  .legal a { color: var(--pine); }
-  .legal__meta { font-size: 13.5px; color: var(--ink-3); margin-bottom: var(--s-6, 40px); }
-  .legal__contact { border: 1px solid var(--rule); background: var(--paper-soft); padding: var(--s-3, 16px) var(--s-4, 24px); border-radius: 6px; }
-  .legal__footer { margin-top: var(--s-8, 64px); padding-top: var(--s-4, 24px); border-top: 1px solid var(--rule); font-size: 13.5px; color: var(--ink-3); }
-  .legal__footer a { color: var(--ink-3); }
-  .legal__divider { margin: var(--s-8, 64px) 0 0; padding-top: var(--s-6, 40px); border-top: 1px solid var(--rule); }
-</style>
+<link rel="apple-touch-icon" href="../../assets/apple-touch-icon.png"/>
+<link rel="stylesheet" href="../../assets/ds.css"/>
 </head>
-<body>
-<header class="dd-header">
-  <div class="dd-header__inner">
-    <a class="dd-header__brand" href="../../" aria-label="RET Consulting, retour à l'accueil">
-      <img class="mark-light" src="../../assets/logo-monogram.svg" alt=""/>
-      <img class="mark-dark" src="../../assets/logo-monogram-dark.svg" alt=""/>
-      <span>RET Consulting</span>
-    </a>
-    <button type="button" class="dd-theme" id="themeToggle" aria-label="Thème sombre" aria-pressed="false">
-      <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" aria-hidden="true">
-        <circle cx="12" cy="12" r="4.2"/>
-        <path d="M12 2.5v2.4M12 19.1v2.4M4.2 4.2l1.7 1.7M18.1 18.1l1.7 1.7M2.5 12h2.4M19.1 12h2.4M4.2 19.8l1.7-1.7M18.1 5.9l1.7-1.7"/>
-      </svg>
-      <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-        <path d="M20 14.5A8 8 0 0 1 9.5 4a6.5 6.5 0 1 0 10.5 10.5z"/>
-      </svg>
-    </button>
+<body class="site">
+<a class="skip-link" href="#main">Aller au contenu</a>
+
+<header class="subhead"><div class="subhead__inner">
+    <a class="nav__brand" href="/" aria-label="RET Consulting"><img class="nav__brand-glyph" src="../../assets/logo-glyph.svg" alt=""/><span class="nav__brand-wordmark"><span class="w">RET</span><span class="d">Consulting</span></span></a>
+    <a class="subhead__back" href="/dueday/"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5"/><path d="M11 18l-6-6 6-6"/></svg>Retour à dueday</a>
+  </div></header>
+
+<main id="main" class="dotfield">
+  <div class="prose">
+    <span class="prose__eyebrow">dueday · application iOS</span>
+    <h1>Support</h1>
+    <p class="prose__meta">dueday est une application iOS de suivi des coûts récurrents, éditée par RET Consulting SRL (Belgique). · <a href="#english">English below</a></p>
+
+    <p class="prose__card"><strong>Nous contacter :</strong> <a href="mailto:retbaz@retconsulting.be">retbaz@retconsulting.be</a><br/>
+    Nous répondons généralement sous 2 jours ouvrables (FR/EN).</p>
+
+    <h2>Questions fréquentes</h2>
+
+    <h3>Où sont stockées mes données ?</h3>
+    <p>Uniquement sur votre appareil. dueday fonctionne 100 % hors-ligne et ne collecte aucune donnée. Voir la <a href="/dueday/privacy/">politique de confidentialité</a>.</p>
+
+    <h3>Faut-il créer un compte ?</h3>
+    <p>Non. Aucune inscription, aucun email.</p>
+
+    <h3>Comment sauvegarder mes données ?</h3>
+    <p>Réglages, puis Données, puis Exporter : un fichier JSON est créé là où vous le choisissez (Fichiers, iCloud Drive…). Importez-le sur un nouvel appareil via Réglages, Données, Importer.</p>
+
+    <h3>Les rappels ne s'affichent pas ?</h3>
+    <p>Vérifiez Réglages iOS, Notifications, dueday, puis dans l'app Réglages, Notifications. Les paiements d'un même jour sont regroupés en une seule notification.</p>
+
+    <h3>Comment supprimer toutes mes données ?</h3>
+    <p>Réglages, Données, Tout réinitialiser. Ou désinstallez simplement l'app : tout disparaît avec elle.</p>
+
+    <h3>Un conseil ?</h3>
+    <p>Pensez à exporter une sauvegarde JSON régulièrement, notamment avant de changer d'appareil. L'application est fournie en l'état.</p>
+
+    <h3>L'app est-elle vraiment gratuite ?</h3>
+    <p>Oui. Toutes les fonctions essentielles sont gratuites, sans limite de durée. Seules d'éventuelles options purement cosmétiques pourraient un jour être payantes.</p>
+
+    <h3>Le widget ne se met pas à jour ?</h3>
+    <p>Ouvrez l'app une fois (le widget se synchronise à l'ouverture), ou retirez puis ré-ajoutez le widget.</p>
+
+    <section id="english" lang="en">
+      <span class="prose__eyebrow">dueday · iOS app</span>
+      <h2>Support (English)</h2>
+      <p>dueday is an iOS recurring-cost tracker published by RET Consulting SRL (Belgium).</p>
+
+      <p class="prose__card"><strong>Contact us:</strong> <a href="mailto:retbaz@retconsulting.be">retbaz@retconsulting.be</a><br/>
+      We usually reply within 2 business days (EN/FR).</p>
+
+      <h3>Where is my data stored?</h3>
+      <p>Only on your device. dueday works 100% offline and collects no data. See the <a href="/dueday/privacy/en/">privacy policy</a>.</p>
+
+      <h3>Do I need an account?</h3>
+      <p>No. No signup, no email.</p>
+
+      <h3>How do I back up my data?</h3>
+      <p>Settings, then Data, then Export: a JSON file is saved wherever you choose (Files, iCloud Drive…). Restore on a new device via Settings, Data, Import.</p>
+
+      <h3>Reminders not showing?</h3>
+      <p>Check iOS Settings, Notifications, dueday, then the app's Settings, Notifications. Same-day payments are grouped into a single notification.</p>
+
+      <h3>How do I delete all my data?</h3>
+      <p>Settings, Data, Reset all. Or simply uninstall the app: everything is removed with it.</p>
+
+      <h3>One tip?</h3>
+      <p>Export a JSON backup regularly, especially before switching devices. The app is provided as is.</p>
+
+      <h3>Is the app really free?</h3>
+      <p>Yes. Every core feature is free, with no time limit. Only optional, purely cosmetic extras could ever become paid.</p>
+
+      <h3>Widget not updating?</h3>
+      <p>Open the app once (the widget syncs on launch), or remove and re-add the widget.</p>
+    </section>
   </div>
-</header>
-<main class="legal">
-  <div class="legal__eyebrow">dueday · application iOS</div>
-  <h1>Support</h1>
-  <p class="legal__meta">dueday est une application iOS de suivi des coûts récurrents, éditée par RET Consulting SRL (Belgique). · <a href="#english">English below</a></p>
-
-  <p class="legal__contact"><strong>Nous contacter :</strong> <a href="mailto:retbaz@retconsulting.be">retbaz@retconsulting.be</a><br/>
-  Nous répondons généralement sous 2 jours ouvrables (FR/EN).</p>
-
-  <h2>Questions fréquentes</h2>
-
-  <h3>Où sont stockées mes données ?</h3>
-  <p>Uniquement sur votre appareil. dueday fonctionne 100 % hors-ligne et ne collecte aucune donnée. Voir la <a href="../privacy/">politique de confidentialité</a>.</p>
-
-  <h3>Faut-il créer un compte ?</h3>
-  <p>Non. Aucune inscription, aucun email.</p>
-
-  <h3>Comment sauvegarder mes données ?</h3>
-  <p>Réglages, puis Données, puis Exporter : un fichier JSON est créé là où vous le choisissez (Fichiers, iCloud Drive…). Importez-le sur un nouvel appareil via Réglages, Données, Importer.</p>
-
-  <h3>Les rappels ne s'affichent pas ?</h3>
-  <p>Vérifiez Réglages iOS, Notifications, dueday, puis dans l'app Réglages, Notifications. Les paiements d'un même jour sont regroupés en une seule notification.</p>
-
-  <h3>Comment supprimer toutes mes données ?</h3>
-  <p>Réglages, Données, Tout réinitialiser. Ou désinstallez simplement l'app : tout disparaît avec elle.</p>
-
-  <h3>Un conseil ?</h3>
-  <p>Pensez à exporter une sauvegarde JSON régulièrement, notamment avant de changer d'appareil. L'application est fournie en l'état.</p>
-
-  <h3>L'app est-elle vraiment gratuite ?</h3>
-  <p>Oui. Toutes les fonctions essentielles sont gratuites, sans limite de durée. Seules d'éventuelles options purement cosmétiques pourraient un jour être payantes.</p>
-
-  <h3>Le widget ne se met pas à jour ?</h3>
-  <p>Ouvrez l'app une fois (le widget se synchronise à l'ouverture), ou retirez puis ré-ajoutez le widget.</p>
-
-  <section id="english" class="legal__divider" lang="en">
-    <div class="legal__eyebrow">dueday · iOS app</div>
-    <h2>Support (English)</h2>
-    <p>dueday is an iOS recurring-cost tracker published by RET Consulting SRL (Belgium).</p>
-
-    <p class="legal__contact"><strong>Contact us:</strong> <a href="mailto:retbaz@retconsulting.be">retbaz@retconsulting.be</a><br/>
-    We usually reply within 2 business days (EN/FR).</p>
-
-    <h3>Where is my data stored?</h3>
-    <p>Only on your device. dueday works 100% offline and collects no data. See the <a href="../privacy/en/">privacy policy</a>.</p>
-
-    <h3>Do I need an account?</h3>
-    <p>No. No signup, no email.</p>
-
-    <h3>How do I back up my data?</h3>
-    <p>Settings, then Data, then Export: a JSON file is saved wherever you choose (Files, iCloud Drive…). Restore on a new device via Settings, Data, Import.</p>
-
-    <h3>Reminders not showing?</h3>
-    <p>Check iOS Settings, Notifications, dueday, then the app's Settings, Notifications. Same-day payments are grouped into a single notification.</p>
-
-    <h3>How do I delete all my data?</h3>
-    <p>Settings, Data, Reset all. Or simply uninstall the app: everything is removed with it.</p>
-
-    <h3>One tip?</h3>
-    <p>Export a JSON backup regularly, especially before switching devices. The app is provided as is.</p>
-
-    <h3>Is the app really free?</h3>
-    <p>Yes. Every core feature is free, with no time limit. Only optional, purely cosmetic extras could ever become paid.</p>
-
-    <h3>Widget not updating?</h3>
-    <p>Open the app once (the widget syncs on launch), or remove and re-add the widget.</p>
-  </section>
-
-  <footer class="legal__footer">
-    RET CONSULTING SRL · Siège social : Digue des Peupliers 71/B2-5, 7000 Mons (Belgique) · BCE 1022.588.549 · TVA BE 1022.588.549 · RPM Hainaut, division Mons · <a href="mailto:retbaz@retconsulting.be">retbaz@retconsulting.be</a><br/>
-    <a href="../privacy/">Politique de confidentialité</a> · <a href="https://retconsulting.be/">retconsulting.be</a>
-  </footer>
 </main>
-<script src="../assets/dueday.js"></script>
+
+<footer class="footer"><div class="footer__legal" style="flex-direction:column;align-items:flex-start;gap:10px;line-height:1.6;">
+    <span>RET CONSULTING SRL · Siège social : Digue des Peupliers 71/B2-5, 7000 Mons (Belgique) · BCE 1022.588.549 · TVA BE 1022.588.549 · RPM Hainaut, division Mons · <a href="mailto:retbaz@retconsulting.be">retbaz@retconsulting.be</a></span>
+    <span><a href="/dueday/privacy/">Politique de confidentialité</a> · <a href="https://retconsulting.be/">retconsulting.be</a></span>
+  </div></footer>
 </body>
 </html>

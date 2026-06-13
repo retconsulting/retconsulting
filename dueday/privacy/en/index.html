@@ -10,99 +10,65 @@
 <link rel="alternate" hreflang="fr" href="https://retconsulting.be/dueday/privacy/"/>
 <link rel="alternate" hreflang="en" href="https://retconsulting.be/dueday/privacy/en/"/>
 <link rel="alternate" hreflang="x-default" href="https://retconsulting.be/dueday/privacy/"/>
-<meta name="theme-color" content="#EFEAE3" media="(prefers-color-scheme: light)"/>
-<meta name="theme-color" content="#15171A" media="(prefers-color-scheme: dark)"/>
+<meta name="theme-color" content="#F4F4F7"/>
 <link rel="icon" href="../../../assets/logo-glyph.svg"/>
 <link rel="icon" href="../../../assets/logo-glyph-dark.svg" media="(prefers-color-scheme: dark)"/>
-<link rel="stylesheet" href="../../../assets/colors_and_type.css"/>
-<link rel="stylesheet" href="../../assets/dueday.css"/>
-<script>
-  // Set theme before paint to avoid flash.
-  (function () {
-    try {
-      var saved = localStorage.getItem('ret-theme');
-      var dark = saved ? saved === 'dark'
-                       : window.matchMedia('(prefers-color-scheme: dark)').matches;
-      if (dark) document.documentElement.setAttribute('data-theme', 'dark');
-    } catch (e) {}
-  })();
-</script>
-<style>
-  body { margin: 0; background: var(--paper); color: var(--ink-2); }
-  .legal { max-width: var(--prose-max, 720px); margin: 0 auto; padding: var(--s-8, 64px) var(--s-4, 24px) var(--s-9, 96px); }
-  .legal__eyebrow { font-family: 'Geist Mono', ui-monospace, monospace; font-size: 12px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--ink-3); margin-bottom: var(--s-3, 16px); }
-  .legal h1 { font-family: 'Source Serif 4', Georgia, serif; font-weight: 400; font-size: clamp(28px, 5vw, 40px); line-height: 1.15; color: var(--ink); margin: 0 0 var(--s-2, 12px); }
-  .legal h2 { font-family: 'Source Serif 4', Georgia, serif; font-weight: 500; font-size: 20px; color: var(--ink); margin: var(--s-6, 40px) 0 var(--s-2, 12px); }
-  .legal p, .legal li { font-size: 15.5px; line-height: 1.65; }
-  .legal a { color: var(--pine); }
-  .legal__meta { font-size: 13.5px; color: var(--ink-3); margin-bottom: var(--s-6, 40px); }
-  .legal__summary { border: 1px solid var(--rule); background: var(--paper-soft); padding: var(--s-3, 16px) var(--s-4, 24px); border-radius: 6px; }
-  .legal__footer { margin-top: var(--s-8, 64px); padding-top: var(--s-4, 24px); border-top: 1px solid var(--rule); font-size: 13.5px; color: var(--ink-3); }
-  .legal__footer a { color: var(--ink-3); }
-  .legal__lang { font-size: 13.5px; }
-</style>
+<link rel="apple-touch-icon" href="../../../assets/apple-touch-icon.png"/>
+<link rel="stylesheet" href="../../../assets/ds.css"/>
 </head>
-<body>
-<header class="dd-header">
-  <div class="dd-header__inner">
-    <a class="dd-header__brand" href="../../../" aria-label="RET Consulting, back to home">
-      <img class="mark-light" src="../../../assets/logo-monogram.svg" alt=""/>
-      <img class="mark-dark" src="../../../assets/logo-monogram-dark.svg" alt=""/>
-      <span>RET Consulting</span>
-    </a>
-    <button type="button" class="dd-theme" id="themeToggle" aria-label="Dark theme" aria-pressed="false">
-      <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" aria-hidden="true">
-        <circle cx="12" cy="12" r="4.2"/>
-        <path d="M12 2.5v2.4M12 19.1v2.4M4.2 4.2l1.7 1.7M18.1 18.1l1.7 1.7M2.5 12h2.4M19.1 12h2.4M4.2 19.8l1.7-1.7M18.1 5.9l1.7-1.7"/>
-      </svg>
-      <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-        <path d="M20 14.5A8 8 0 0 1 9.5 4a6.5 6.5 0 1 0 10.5 10.5z"/>
-      </svg>
-    </button>
+<body class="site">
+<a class="skip-link" href="#main">Skip to content</a>
+
+<header class="subhead">
+  <div class="subhead__inner">
+    <a class="nav__brand" href="/" aria-label="RET Consulting"><img class="nav__brand-glyph" src="../../../assets/logo-glyph.svg" alt=""/><span class="nav__brand-wordmark"><span class="w">RET</span><span class="d">Consulting</span></span></a>
+    <a class="subhead__back" href="/dueday/"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5"/><path d="M11 18l-6-6 6-6"/></svg>Back to dueday</a>
   </div>
 </header>
-<main class="legal">
-  <div class="legal__eyebrow">dueday · iOS app</div>
-  <h1>Privacy policy</h1>
-  <p class="legal__meta">Last updated: 12 June 2026 · <span class="legal__lang"><a href="../">Lire en français</a></span></p>
 
-  <p class="legal__summary"><strong>In short: dueday collects no data. None.</strong> The app works 100% offline and contains no networking code.</p>
+<main id="main" class="dotfield">
+  <div class="prose">
+    <span class="prose__eyebrow">dueday · iOS app</span>
+    <h1>Privacy policy</h1>
+    <p class="prose__meta">Last updated: 12 June 2026 · <span class="legal__lang"><a href="/dueday/privacy/">Lire en français</a></span></p>
 
-  <p>dueday is published by RET CONSULTING SRL, a Belgian limited liability company, registered office: Digue des Peupliers 71/B2-5, 7000 Mons, Belgium, company no. (CBE) 1022.588.549, VAT BE 1022.588.549, RLE Hainaut, Mons division ("we"). These details also appear on dueday's App Store page, in the trader information required by Regulation (EU) 2022/2065 (DSA). Contact: <a href="mailto:retbaz@retconsulting.be">retbaz@retconsulting.be</a>.</p>
+    <p class="prose__card"><strong>In short: dueday collects no data. None.</strong> The app works 100% offline and contains no networking code.</p>
 
-  <h2>1. No data collection</h2>
-  <p>dueday does not collect, transmit, sell or share any personal data or usage data. The app contains no network communication of any kind, no user accounts, no signup, no advertising, no trackers and no analytics.</p>
+    <p>dueday is published by RET CONSULTING SRL, a Belgian limited liability company, registered office: Digue des Peupliers 71/B2-5, 7000 Mons, Belgium, company no. (CBE) 1022.588.549, VAT BE 1022.588.549, RLE Hainaut, Mons division ("we"). These details also appear on dueday's App Store page, in the trader information required by Regulation (EU) 2022/2065 (DSA). Contact: <a href="mailto:retbaz@retconsulting.be">retbaz@retconsulting.be</a>.</p>
 
-  <h2>2. Local storage only</h2>
-  <p>Everything you enter (recurring costs, budget, income, payday, preferences) is stored exclusively on your device. It is shared only with the dueday widget on that same device. We never have access to it.</p>
+    <h2>1. No data collection</h2>
+    <p>dueday does not collect, transmit, sell or share any personal data or usage data. The app contains no network communication of any kind, no user accounts, no signup, no advertising, no trackers and no analytics.</p>
 
-  <h2>3. Backups</h2>
-  <ul>
-    <li>If you use the export feature, a JSON file is created at the location you choose (including, if you so decide, a cloud service such as iCloud Drive). This is entirely user-initiated and under your control.</li>
-    <li>As with any iOS app, dueday's local data may be included in your device backup (iCloud or computer) depending on your iOS settings. That mechanism is operated by Apple and governed by your agreement with Apple.</li>
-  </ul>
+    <h2>2. Local storage only</h2>
+    <p>Everything you enter (recurring costs, budget, income, payday, preferences) is stored exclusively on your device. It is shared only with the dueday widget on that same device. We never have access to it.</p>
 
-  <h2>4. Notifications</h2>
-  <p>dueday's reminders are local notifications, scheduled and shown by iOS on your device. No remote push notifications are used and no server is involved. You can disable them at any time in iOS Settings or in the app.</p>
+    <h2>3. Backups</h2>
+    <ul>
+      <li>If you use the export feature, a JSON file is created at the location you choose (including, if you so decide, a cloud service such as iCloud Drive). This is entirely user-initiated and under your control.</li>
+      <li>As with any iOS app, dueday's local data may be included in your device backup (iCloud or computer) depending on your iOS settings. That mechanism is operated by Apple and governed by your agreement with Apple.</li>
+    </ul>
 
-  <h2>5. No third-party SDKs</h2>
-  <p>dueday embeds no third-party software development kits: no analytics, no ad networks, no crash-reporting services.</p>
+    <h2>4. Notifications</h2>
+    <p>dueday's reminders are local notifications, scheduled and shown by iOS on your device. No remote push notifications are used and no server is involved. You can disable them at any time in iOS Settings or in the app.</p>
 
-  <h2>6. GDPR</h2>
-  <p>RET CONSULTING SRL processes no personal data within the meaning of Regulation (EU) 2016/679 (GDPR) in connection with dueday: since no data ever reaches us, there is no controller and no processing on our side. You exercise access, rectification and erasure directly on your device (by editing or deleting data in the app, or uninstalling it). Should you nevertheless wish to lodge a complaint, the competent authority in Belgium is the <a href="https://www.dataprotectionauthority.be" rel="noopener">Data Protection Authority</a>.</p>
+    <h2>5. No third-party SDKs</h2>
+    <p>dueday embeds no third-party software development kits: no analytics, no ad networks, no crash-reporting services.</p>
 
-  <h2>7. Changes</h2>
-  <p>If a future version of dueday were to change any of these practices, this policy would be updated before that version is released, and the App Store "App Privacy" label would be adjusted accordingly.</p>
+    <h2>6. GDPR</h2>
+    <p>RET CONSULTING SRL processes no personal data within the meaning of Regulation (EU) 2016/679 (GDPR) in connection with dueday: since no data ever reaches us, there is no controller and no processing on our side. You exercise access, rectification and erasure directly on your device (by editing or deleting data in the app, or uninstalling it). Should you nevertheless wish to lodge a complaint, the competent authority in Belgium is the <a href="https://www.dataprotectionauthority.be" rel="noopener">Data Protection Authority</a>.</p>
 
-  <h2>8. Governing law and contact</h2>
-  <p>This policy is governed by Belgian law.<br/>
-  Contact: <a href="mailto:retbaz@retconsulting.be">retbaz@retconsulting.be</a></p>
+    <h2>7. Changes</h2>
+    <p>If a future version of dueday were to change any of these practices, this policy would be updated before that version is released, and the App Store "App Privacy" label would be adjusted accordingly.</p>
 
-  <footer class="legal__footer">
-    RET CONSULTING SRL · Registered office: Digue des Peupliers 71/B2-5, 7000 Mons, Belgium · CBE 1022.588.549 · VAT BE 1022.588.549 · RLE Hainaut, Mons division · <a href="mailto:retbaz@retconsulting.be">retbaz@retconsulting.be</a><br/>
-    <a href="../../support/">dueday support</a> · <a href="https://retconsulting.be/">retconsulting.be</a>
-  </footer>
+    <h2>8. Governing law and contact</h2>
+    <p>This policy is governed by Belgian law.<br/>
+    Contact: <a href="mailto:retbaz@retconsulting.be">retbaz@retconsulting.be</a></p>
+  </div>
 </main>
-<script src="../../assets/dueday.js"></script>
+
+<footer class="footer"><div class="footer__legal" style="flex-direction:column;align-items:flex-start;gap:10px;line-height:1.6;">
+  <span>RET CONSULTING SRL · Registered office: Digue des Peupliers 71/B2-5, 7000 Mons, Belgium · CBE 1022.588.549 · VAT BE 1022.588.549 · RLE Hainaut, Mons division · <a href="mailto:retbaz@retconsulting.be">retbaz@retconsulting.be</a></span>
+  <span><a href="/dueday/support/">dueday support</a> · <a href="https://retconsulting.be/">retconsulting.be</a></span>
+</div></footer>
 </body>
 </html>

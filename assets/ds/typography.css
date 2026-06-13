@@ -1,0 +1,46 @@
+/* ==========================================================================
+   RET · Typography
+   Archivo — geometric grotesque, full thin→black range for high contrast.
+   IBM Plex Mono — technical metadata labels ([STRATEGY_MODULE_01], etc).
+   Sizes are fixed (desktop) tokens; fluid hero sizing is applied locally with
+   clamp() in layout CSS to keep these tokens cleanly machine-readable.
+   ========================================================================== */
+:root {
+  --font-display: "Archivo", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  --font-body:    "Archivo", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  --font-mono:    "IBM Plex Mono", ui-monospace, "SF Mono", Menlo, monospace;
+
+  /* — Weights — */
+  --w-thin:       460;   /* @kind font */
+  --w-light:      300;   /* @kind font */
+  --w-regular:    400;   /* @kind font */
+  --w-medium:     500;   /* @kind font */
+  --w-semibold:   600;   /* @kind font */
+  --w-bold:       700;   /* @kind font */
+  --w-black:      700;   /* @kind font */
+
+  /* — Type scale (rem) — */
+  --t-mega:    5.5rem;     /* @kind font */
+  --t-display: 3.75rem;    /* @kind font */
+  --t-h1:      2.75rem;    /* @kind font */
+  --t-h2:      2rem;       /* @kind font */
+  --t-h3:      1.4rem;     /* @kind font */
+  --t-lead:    1.2rem;     /* @kind font */
+  --t-body:    1rem;       /* @kind font */
+  --t-sm:      0.875rem;   /* @kind font */
+  --t-xs:      0.75rem;    /* @kind font */
+  --t-meta:    0.6875rem;  /* @kind font */
+
+  /* — Line heights — */
+  --lh-tight:    1.02;   /* @kind font */
+  --lh-snug:     1.16;   /* @kind font */
+  --lh-normal:   1.5;    /* @kind font */
+  --lh-relaxed:  1.62;   /* @kind font */
+
+  /* — Tracking — */
+  --track-mega:    -0.03em;   /* @kind font */
+  --track-tight:   -0.015em;  /* @kind font */
+  --track-normal:  0;         /* @kind font */
+  --track-meta:    0.16em;    /* @kind font */
+  --track-eyebrow: 0.28em;    /* @kind font */
+}

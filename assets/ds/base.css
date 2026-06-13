@@ -1,0 +1,93 @@
+/* ==========================================================================
+   RET · Base & primitives
+   Page defaults + a small set of reusable building blocks (dot grid, glass,
+   floating card, metadata label). Components reference tokens directly; these
+   classes are conveniences for specimen cards and UI-kit layouts.
+   ========================================================================== */
+
+*, *::before, *::after { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  background: var(--bg-page);
+  color: var(--text-primary);
+  font-family: var(--font-body);
+  font-size: var(--t-body);
+  line-height: var(--lh-normal);
+  font-weight: var(--w-regular);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+::selection { background: var(--cognac-soft); color: #fff; }
+
+/* — Blueprint micro-dot grid surface — */
+.ret-dotgrid {
+  background-color: var(--bg-page);
+  background-image: var(--dot-grid);
+  background-size: var(--dot-size) var(--dot-size);
+}
+/* fades the dot field out toward the edges, like a strategic canvas */
+.ret-dotgrid--vignette {
+  background-image:
+    radial-gradient(ellipse 80% 70% at 50% 40%, #000 55%, transparent 100%),
+    var(--dot-grid);
+  background-size: 100% 100%, var(--dot-size) var(--dot-size);
+  -webkit-mask-image: radial-gradient(ellipse 85% 80% at 50% 45%, #000 60%, transparent 100%);
+          mask-image: radial-gradient(ellipse 85% 80% at 50% 45%, #000 60%, transparent 100%);
+}
+
+/* — Frosted glass — */
+.ret-glass {
+  background: var(--glass-fill);
+  -webkit-backdrop-filter: blur(var(--blur-glass)) saturate(1.4);
+          backdrop-filter: blur(var(--blur-glass)) saturate(1.4);
+  border: 1px solid var(--glass-border);
+  box-shadow: var(--glass-shadow);
+}
+.ret-glass--deep {
+  background: var(--glass-fill-deep);
+  -webkit-backdrop-filter: blur(var(--blur-strong)) saturate(1.5);
+          backdrop-filter: blur(var(--blur-strong)) saturate(1.5);
+}
+
+/* — Floating white card — */
+.ret-card {
+  background: var(--surface-card);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--r-xl);
+  box-shadow: var(--shadow-md);
+}
+
+/* — Technical metadata label: [STRATEGY_MODULE_01] — */
+.ret-meta {
+  font-family: var(--font-mono);
+  font-size: var(--t-meta);
+  font-weight: var(--w-regular);
+  letter-spacing: var(--track-meta);
+  text-transform: uppercase;
+  color: var(--text-meta);
+}
+
+/* — Uppercase tracked eyebrow — */
+.ret-eyebrow {
+  font-family: var(--font-mono);
+  font-size: var(--t-xs);
+  font-weight: var(--w-medium);
+  letter-spacing: var(--track-eyebrow);
+  text-transform: uppercase;
+  color: var(--accent-label);
+}
+
+/* — Layout containers — */
+.ret-container { width: 100%; max-width: var(--container); margin-inline: auto; padding-inline: var(--gutter); }
+.ret-container--wide   { max-width: var(--container-wide); }
+.ret-container--narrow { max-width: var(--container-narrow); }
+
+/* Scale the gutter + section rhythm down on small viewports */
+@media (max-width: 900px) {
+  :root { --gutter: 32px; --section-gap: 88px; }
+}
+@media (max-width: 560px) {
+  :root { --gutter: 20px; --section-gap: 64px; }
+}
