@@ -373,7 +373,8 @@ section[id] { scroll-margin-top: 96px; }
 .apphero__float .cap { font-family: var(--font-mono); font-size: 9px; letter-spacing: .14em; text-transform: uppercase; color: var(--accent-label); }
 .apphero__float .row { display: flex; align-items: flex-start; gap: 8px; margin-top: 8px; font-family: var(--font-display); font-weight: 600; font-size: 13.5px; line-height: 1.4; color: var(--ink); }
 .apphero__float .row .ret-diamond { margin-top: 6px; flex: none; }
-.apphero__pill { position: absolute; z-index: 3; left: -6px; top: 13%; }
+/* floating value pills — cascade down the phone's left edge, lightly overlapping it (top/left set per pill) */
+.apphero__pill { position: absolute; z-index: 3; }
 
 /* Frameless screenshot plate (hero + showcase) — a real screenshot floating on the
    canvas/band as a rounded card, no iOS device chrome (no bezel, no dynamic island). */
