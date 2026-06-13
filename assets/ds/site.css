@@ -172,15 +172,24 @@ section[id] { scroll-margin-top: 96px; }
 .case-feature__body p { font-family: var(--font-body); font-size: 1rem; line-height: 1.6; color: var(--ink-2); margin: 0 0 14px; max-width: 56ch; }
 .case-feature__badges { display: flex; gap: 8px; flex-wrap: wrap; margin: 18px 0; }
 
-.caselist { list-style: none; margin: 0; padding: 0; display: grid; gap: var(--card-gap); }
-.caserow { display: grid; grid-template-columns: 120px 1fr; gap: 8px 28px; align-items: start;
-  background: var(--surface); border: 1px solid var(--line); border-radius: var(--r-lg); box-shadow: var(--shadow-sm); padding: 26px 30px;
-  transition: box-shadow var(--dur-base) var(--ease-out), border-color var(--dur-base); }
-.caserow:hover { box-shadow: var(--shadow-md); border-color: var(--border-accent); }
-.caserow__yr { font-family: var(--font-mono); font-size: 12px; letter-spacing: .04em; color: var(--ink-3); padding-top: 4px; }
-.caserow__title { font-family: var(--font-display); font-weight: 700; font-size: 1.15rem; letter-spacing: -.01em; color: var(--ink); margin: 0; }
-.caserow__sector { font-family: var(--font-mono); font-size: 10px; letter-spacing: .12em; text-transform: uppercase; color: var(--accent-label); margin: 6px 0 0; }
-.caserow__scope { font-family: var(--font-body); font-size: .92rem; line-height: 1.55; color: var(--ink-2); margin: 10px 0 0; max-width: 74ch; }
+/* Client-experience review cards — duotone industry plate + glass label chip */
+.expgrid { max-width: var(--container); margin-inline: auto; padding-inline: var(--gutter);
+  display: grid; grid-template-columns: repeat(4, 1fr); gap: var(--card-gap); list-style: none; }
+.expcard { display: flex; flex-direction: column; overflow: hidden; background: var(--surface);
+  border: 1px solid var(--line); border-radius: var(--r-xl); box-shadow: var(--shadow-md);
+  transition: transform var(--dur-base) var(--ease-out), box-shadow var(--dur-base) var(--ease-out), border-color var(--dur-base); }
+.expcard:hover { transform: translateY(-5px); box-shadow: var(--shadow-lg); border-color: var(--border-accent); }
+.expcard__media { position: relative; aspect-ratio: 3 / 2; overflow: hidden; background: var(--canvas-sunken); }
+.expcard__media img { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform var(--dur-slow) var(--ease-out); }
+.expcard:hover .expcard__media img { transform: scale(1.04); }
+.expcard__chip { position: absolute; top: 12px; left: 12px; z-index: 2;
+  font-family: var(--font-mono); font-size: 10px; letter-spacing: .14em; text-transform: uppercase; color: var(--ink-2);
+  padding: 6px 11px; border-radius: var(--r-pill); background: var(--glass-fill); border: 1px solid var(--glass-border); box-shadow: var(--glass-shadow);
+  -webkit-backdrop-filter: blur(var(--blur-glass)) saturate(1.4); backdrop-filter: blur(var(--blur-glass)) saturate(1.4); }
+.expcard__body { display: flex; flex-direction: column; gap: 6px; padding: 18px 20px 22px; }
+.expcard__ref { display: flex; align-items: center; gap: 8px; font-family: var(--font-mono); font-size: 10.5px; letter-spacing: .1em; text-transform: uppercase; color: var(--accent-label); }
+.expcard__title { font-family: var(--font-display); font-weight: 700; font-size: 1.1rem; line-height: 1.18; letter-spacing: -.01em; color: var(--ink); margin: 2px 0 0; }
+.expcard__scope { font-family: var(--font-body); font-size: .86rem; line-height: 1.5; color: var(--ink-2); margin: 4px 0 0; }
 .cases__note { max-width: var(--container); margin: 22px auto 0; padding-inline: var(--gutter); font-family: var(--font-mono); font-size: 11px; letter-spacing: .04em; color: var(--ink-2); }
 
 /* ---------- About ---------- */
@@ -371,21 +380,22 @@ section[id] { scroll-margin-top: 96px; }
   .approach { grid-template-columns: repeat(3,1fr); }
   .case-feature { grid-template-columns: 1fr; }
   .case-feature__media { max-width: 300px; margin: 0 auto; }
+  .expgrid { grid-template-columns: repeat(2, 1fr); }
   .about { grid-template-columns: 1fr; }
   .contact__inner { grid-template-columns: 1fr; }
   .footer__main { grid-template-columns: 1fr 1fr; }
   .apphero__grid { grid-template-columns: 1fr; } .apphero__visual { order: -1; }
   .features { grid-template-columns: repeat(2,1fr); } .appcta__inner { grid-template-columns: 1fr; }
 }
+/* hide the inline nav links early enough that brand + CTA never overflow the bar */
+@media (max-width: 880px) { .nav__links { display: none; } }
 @media (max-width: 720px) {
-  .nav__links { display: none; }
   .services { grid-template-columns: 1fr; }
   .approach { grid-template-columns: 1fr; }
   .features { grid-template-columns: 1fr; }
   .apphero__float { display: none; }
   .footer__main { grid-template-columns: 1fr; }
   .contact__form { grid-template-columns: 1fr; }
-  .caserow { grid-template-columns: 1fr; }
 }
 @media (max-width: 600px) {
   /* narrow canvas: top-align the cascade below the FIG_01 stamp instead of centring it */
@@ -394,6 +404,7 @@ section[id] { scroll-margin-top: 96px; }
 @media (max-width: 560px) {
   .legalfacts > div { grid-template-columns: 1fr; gap: 4px; }
   .contactdock .txtwrap { display: none; }
+  .expgrid { grid-template-columns: 1fr; }
 }
 
 /* Keyboard focus parity on text links (buttons/inputs already covered) */
