@@ -67,7 +67,12 @@ section[id], #main { scroll-margin-top: 96px; }
 .hero { position: relative; padding: clamp(40px, 7vw, 96px) 0 clamp(56px, 7vw, 104px); }
 .hero__grid { max-width: var(--container-wide); margin-inline: auto; padding-inline: var(--gutter);
   display: grid; grid-template-columns: 1.05fr 0.95fr; gap: clamp(28px, 4vw, 56px); align-items: center; }
-.hero__eyebrow { display: flex; align-items: center; gap: 14px; margin-bottom: 26px; flex-wrap: wrap; }
+.hero__eyebrow { display: flex; width: fit-content; max-width: 100%; align-items: center; gap: 12px; margin-bottom: 26px; flex-wrap: wrap;
+  padding: 9px 16px; border-radius: var(--r-pill);
+  background: linear-gradient(0deg, rgba(176,125,84,.10), rgba(176,125,84,.10)), var(--glass-fill);
+  border: 1px solid var(--glass-border);
+  -webkit-backdrop-filter: blur(var(--blur-glass)) saturate(1.5); backdrop-filter: blur(var(--blur-glass)) saturate(1.5);
+  box-shadow: var(--glass-shadow); }
 .hero__title { font-family: var(--font-display); font-weight: 700; color: var(--ink);
   font-size: clamp(2.3rem, 1.3rem + 3vw, 3.5rem); line-height: 1.04; letter-spacing: -.03em; margin: 0; text-wrap: balance; }
 .hero__title .thin { display: block; font-weight: 560; color: var(--ink-2); letter-spacing: -.02em; }
