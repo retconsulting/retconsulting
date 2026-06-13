@@ -58,11 +58,23 @@ section[id] { scroll-margin-top: 96px; }
 .hero__divider { width: 1px; height: 34px; background: var(--line-strong); }
 
 .hero__visual { position: relative; }
-.hero__imgcard { position: relative; border-radius: var(--r-3xl); overflow: hidden;
+/* Abstract "method" canvas: dotted white card + orbital watermark + frosted flow chips */
+.hero__canvas { position: relative; border-radius: var(--r-3xl); overflow: hidden;
   box-shadow: var(--shadow-float); border: 1px solid var(--line); aspect-ratio: 4 / 4.4;
-  background: var(--canvas-sunken); display: grid; place-items: center; }
-.hero__imgcard img { width: 78%; height: auto; display: block; }
-.hero__imgcard .stamp { position: absolute; top: 18px; left: 18px; display: flex; align-items: center; gap: 8px;
+  background-color: var(--surface); background-image: var(--dot-grid); background-size: var(--dot-size) var(--dot-size);
+  display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 14px; padding: clamp(28px,4vw,44px); }
+.hero__watermark { position: absolute; right: -10%; bottom: -12%; width: 64%; opacity: .055; pointer-events: none; }
+.hero__flow { position: relative; z-index: 2; display: flex; flex-direction: column; gap: 14px; width: 100%; }
+.hero__flowstep { display: flex; flex-direction: column; gap: 5px; padding: 15px 20px; border-radius: var(--r-lg); width: 74%; align-self: flex-start; box-sizing: border-box;
+  background: var(--glass-fill); border: 1px solid var(--glass-border);
+  -webkit-backdrop-filter: blur(var(--blur-glass)) saturate(1.4); backdrop-filter: blur(var(--blur-glass)) saturate(1.4); box-shadow: var(--glass-shadow); }
+.hero__flowstep:nth-child(2) { align-self: center; }
+.hero__flowstep:nth-child(3) { align-self: flex-end; }
+.hero__flowstep-ix { font-family: var(--font-mono); font-size: 10px; letter-spacing: .14em; text-transform: uppercase; color: var(--accent-label); }
+.hero__flowstep-label { font-family: var(--font-display); font-weight: 700; font-size: 16px; letter-spacing: -.01em; color: var(--ink); }
+.hero__flowstep--accent { background: var(--cognac-wash); border-color: var(--border-accent); }
+.hero__flowstep--accent .hero__flowstep-label { color: var(--accent-text); }
+.hero__canvas .stamp { position: absolute; top: 18px; left: 18px; z-index: 3; display: flex; align-items: center; gap: 8px;
   padding: 8px 12px; border-radius: var(--r-pill);
   background: var(--glass-fill); -webkit-backdrop-filter: blur(var(--blur-strong)) saturate(1.5); backdrop-filter: blur(var(--blur-strong)) saturate(1.5);
   border: 1px solid var(--glass-border); box-shadow: var(--glass-shadow);
@@ -225,9 +237,12 @@ section[id] { scroll-margin-top: 96px; }
   background: var(--glass-fill); border: 1px solid var(--glass-border);
   -webkit-backdrop-filter: blur(var(--blur-glass)) saturate(1.5); backdrop-filter: blur(var(--blur-glass)) saturate(1.5);
   box-shadow: var(--glass-shadow); }
-.subhead__back { font-family: var(--font-mono); font-size: 11px; letter-spacing: .12em; text-transform: uppercase; color: var(--ink-2); text-decoration: none; display: inline-flex; align-items: center; gap: 8px; }
-.subhead__back:hover { color: var(--accent); }
-.subhead__back svg { stroke-width: 1.5; }
+.subhead__back { font-family: var(--font-mono); font-size: 11px; letter-spacing: .12em; text-transform: uppercase; color: var(--accent-text); text-decoration: none;
+  display: inline-flex; align-items: center; gap: 8px; padding: 9px 16px; border-radius: var(--r-pill);
+  border: 1px solid var(--border-accent); background: var(--cognac-wash);
+  transition: background var(--dur-base) var(--ease-out), border-color var(--dur-base) var(--ease-out), color var(--dur-base) var(--ease-out); }
+.subhead__back:hover { background: var(--accent); border-color: var(--accent); color: #fff; }
+.subhead__back svg { stroke-width: 1.6; }
 
 /* ---------- Prose pages (legal, dueday product + legal) ---------- */
 .prose { max-width: var(--container-narrow); margin-inline: auto; padding: clamp(40px,6vw,80px) var(--gutter) clamp(80px,9vw,120px); }
@@ -250,7 +265,11 @@ section[id] { scroll-margin-top: 96px; }
 .legalfacts a { color: var(--accent); }
 
 /* ---------- dueday product page ---------- */
-.dd-hero { max-width: var(--container); margin-inline: auto; padding: clamp(36px,6vw,80px) var(--gutter) clamp(40px,5vw,64px); }
+/* tighter vertical rhythm than the home (the product page has many sections) */
+.dd-main .section { padding-block: clamp(36px, 4.5vw, 60px); }
+.dd-main .dd-feature { gap: clamp(24px, 3vw, 44px); }
+.dd-main .section__head { margin-bottom: clamp(20px, 2.5vw, 32px); }
+.dd-hero { max-width: var(--container); margin-inline: auto; padding: clamp(28px,4vw,52px) var(--gutter) clamp(24px,3vw,40px); }
 .dd-hero h1 { font-family: var(--font-display); font-weight: 700; font-size: clamp(2.4rem,1.4rem+4vw,4.2rem); line-height: 1; letter-spacing: -.035em; color: var(--ink); margin: 18px 0 18px; text-wrap: balance; }
 .dd-hero h1 .accent { color: var(--accent); }
 .dd-hero p { font-family: var(--font-body); font-weight: 300; font-size: clamp(1.05rem,.98rem+.5vw,1.25rem); line-height: 1.55; color: var(--ink-2); max-width: 50ch; margin: 0 0 26px; }
