@@ -5,5 +5,11 @@
    the technical metadata labels.
    NOTE: served from the Google Fonts CDN rather than self-hosted binaries.
    If you need offline/self-hosted woff2, ask and we'll vendor them in.
+
+   The webfonts are now loaded via a direct <link rel="stylesheet"> in each
+   page's <head> (alongside the preconnect hints) instead of an @import here.
+   A nested @import (HTML -> ds.css -> fonts.css -> Google CSS) forced a
+   request waterfall; the direct <link> starts the fetch during HTML parse.
+   Reference URL:
+   https://fonts.googleapis.com/css2?family=Archivo:ital,wght@0,100..900;1,100..900&family=IBM+Plex+Mono:wght@300;400;500;600&display=swap
    ========================================================================== */
-@import url('https://fonts.googleapis.com/css2?family=Archivo:ital,wght@0,100..900;1,100..900&family=IBM+Plex+Mono:wght@300;400;500;600&display=swap');
