@@ -89,5 +89,5 @@ body {
   :root { --gutter: 32px; --section-gap: 88px; }
 }
 @media (max-width: 560px) {
-  :root { --gutter: 20px; --section-gap: 64px; }
+  :root { --gutter: 24px; --section-gap: 64px; }
 }

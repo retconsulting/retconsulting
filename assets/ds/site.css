@@ -73,7 +73,7 @@ section[id], #main { scroll-margin-top: 96px; }
 .hero__title .thin { display: block; font-weight: 560; color: var(--ink-2); letter-spacing: -.02em; }
 .hero__title .accent { color: var(--accent); }
 .hero__lead { font-family: var(--font-body); font-weight: 300; font-size: clamp(1.05rem, .98rem + .5vw, 1.3rem);
-  line-height: 1.55; color: var(--ink-2); max-width: 48ch; margin: 26px 0 0; }
+  line-height: 1.85; color: var(--ink-2); max-width: 52ch; margin: 26px 0 0; }
 .hero__highlights { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 26px; }
 .hero__actions { display: flex; align-items: center; gap: 14px; margin-top: 34px; flex-wrap: wrap; }
 .hero__proof { display: flex; align-items: center; gap: 26px; margin-top: 40px; flex-wrap: wrap; }
@@ -192,7 +192,10 @@ section[id], #main { scroll-margin-top: 96px; }
 .pcard:hover { transform: translateY(-5px); box-shadow: var(--shadow-lg); border-color: var(--border-accent); }
 .pcard__cover { position: relative; aspect-ratio: 16 / 10; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 12px;
   background-color: var(--canvas-sunken); background-image: var(--dot-grid); background-size: var(--dot-size) var(--dot-size); }
-.pcard__cover--soon { background-color: var(--canvas); }
+/* upcoming cards read as ghosted placeholder slots, clearly secondary to the real project */
+.pcard--soon { background: transparent; border-style: dashed; border-color: var(--border-strong); box-shadow: none; }
+.pcard--soon:hover { transform: none; box-shadow: none; border-color: var(--border-strong); }
+.pcard__cover--soon { background-color: transparent; background-image: none; }
 .pcard__glyph { color: var(--ink); display: grid; place-items: center; }
 .pcard__glyph svg { stroke-width: 1.4; }
 .pcard--soon .pcard__glyph { color: var(--ink-4); }
@@ -478,7 +481,11 @@ section[id], #main { scroll-margin-top: 96px; }
   .features { grid-template-columns: 1fr; }
   .apphero__float { display: none; }
   .apphero__pill { display: none; }
-  .footer__main { grid-template-columns: 1fr; }
+  /* footer: brand spans the top, the link sections sit side by side (no long vertical list) */
+  .footer__main { grid-template-columns: 1fr 1fr; gap: 24px 20px; }
+  .footer__brandcol { grid-column: 1 / -1; }
+  .footer__main > .footer__col:last-child { grid-column: 1 / -1; }
+  .footer__col a { overflow-wrap: anywhere; }
   .contact__form { grid-template-columns: 1fr; }
   /* showcase: collapse the 3-up subgrid to a single centred column */
   .showcase { grid-template-columns: minmax(0, 320px); grid-template-rows: none; }

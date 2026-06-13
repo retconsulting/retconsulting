@@ -89,6 +89,12 @@ textarea.ret-input { resize: vertical; line-height: 1.5; }
   50%      { transform: rotate(calc(var(--tilt, 0deg) + var(--tilt-amp, 2deg))); }
 }
 .ret-hpill--tilt { animation: ret-pilltilt var(--tilt-dur, 2.4s) var(--ease-soft) infinite; will-change: transform; }
+/* inline chip embedded in flowing copy (static resting tilt via inline transform, no animation) */
+.ret-hpill--inline { display: inline-flex; vertical-align: middle; gap: 6px; padding: 3px 11px 3px 8px; margin: 0 3px;
+  background: var(--surface); border-color: var(--border-strong); box-shadow: var(--shadow-sm);
+  -webkit-backdrop-filter: none; backdrop-filter: none; }
+.ret-hpill--inline .ret-hpill__icon { width: 16px; height: 16px; }
+.ret-hpill--inline .ret-hpill__icon svg { width: 14px; height: 14px; }
 
 /* ---------- Glass badge ---------- */
 .glassbadge { display: inline-flex; align-items: center; gap: 7px; padding: 7px 12px; border-radius: var(--r-pill);
