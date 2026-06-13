@@ -88,7 +88,7 @@ textarea.ret-input { resize: vertical; line-height: 1.5; }
   0%, 100% { transform: rotate(var(--tilt, 0deg)); }
   50%      { transform: rotate(calc(var(--tilt, 0deg) + var(--tilt-amp, 2deg))); }
 }
-.ret-hpill--tilt { animation: ret-pilltilt var(--tilt-dur, 4.5s) var(--ease-soft) infinite; will-change: transform; }
+.ret-hpill--tilt { animation: ret-pilltilt var(--tilt-dur, 2.4s) var(--ease-soft) infinite; will-change: transform; }
 
 /* ---------- Glass badge ---------- */
 .glassbadge { display: inline-flex; align-items: center; gap: 7px; padding: 7px 12px; border-radius: var(--r-pill);
