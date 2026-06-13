@@ -43,8 +43,10 @@
   border-radius: 8px;
   color: var(--ink-2);
   cursor: pointer;
+  transition: border-color var(--dur-fast) var(--ease), color var(--dur-fast) var(--ease);
 }
 .dd-theme:hover { border-color: var(--ink-3); color: var(--ink); }
+.dd-theme:active { transform: translateY(1px); }
 .dd-theme svg { width: 18px; height: 18px; display: block; }
 .dd-theme .icon-moon { display: none; }
 [data-theme="dark"] .dd-theme .icon-sun { display: none; }
@@ -53,3 +55,25 @@
 /* Footer links — underlined for contrast on muted ink */
 .page__footer a,
 .legal__footer a { text-decoration: underline; }
+
+/* Keyboard focus parity — DS pine ring */
+.dd-theme:focus-visible,
+.dd-header__brand:focus-visible,
+.page__footer a:focus-visible,
+.legal__footer a:focus-visible {
+  outline: none;
+  box-shadow: var(--focus-ring);
+  border-radius: var(--r-1);
+}
+
+/* Theme toggle — transient colour fade (class added by dueday.js for ~260ms) */
+html.theme-fade,
+html.theme-fade *,
+html.theme-fade *::before,
+html.theme-fade *::after {
+  transition: background-color var(--dur-base) var(--ease),
+              color var(--dur-base) var(--ease),
+              border-color var(--dur-base) var(--ease),
+              fill var(--dur-base) var(--ease),
+              stroke var(--dur-base) var(--ease) !important;
+}

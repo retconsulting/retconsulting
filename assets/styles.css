@@ -16,20 +16,7 @@
   box-sizing: border-box;
 }
 
-/* ---------- Header ---------- */
-.ret-header {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 20px 32px;
-  max-width: 1100px;
-  margin: 0 auto;
-  width: 100%;
-  box-sizing: border-box;
-  border-bottom: 1px solid var(--rule);
-}
-.ret-header__brand { cursor: pointer; display: flex; align-items: center; }
-.ret-header__brand img { height: 64px; display: block; }
+/* ---------- Header nav (sticky header layout lives in the "Site additions" block below) ---------- */
 .ret-header__nav { display: flex; gap: 32px; }
 .ret-header__link {
   font-family: var(--font-sans);
@@ -158,9 +145,37 @@
   color: var(--ink-3);
 }
 
+/* ---------- Process (how an engagement starts) ---------- */
+.ret-process { padding: 96px 0; border-bottom: 1px solid var(--rule); }
+.ret-process__head { margin-bottom: 48px; }
+.ret-process__head .eyebrow { display: block; margin-bottom: 16px; }
+.ret-process__head h2 {
+  font-family: var(--font-serif);
+  font-size: clamp(1.75rem, 2.6vw, 2.5rem);
+  letter-spacing: -0.018em;
+  line-height: 1.15;
+}
+.ret-process__grid {
+  list-style: none; margin: 0; padding: 0;
+  display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px;
+}
+.ret-process__step { padding-top: 20px; border-top: 1px solid var(--rule); }
+.ret-process__num {
+  font-family: var(--font-mono); font-size: 12px; letter-spacing: 0.18em;
+  color: var(--pine); display: block; margin-bottom: 16px;
+}
+.ret-process__step h3 {
+  font-family: var(--font-sans); font-size: 18px; font-weight: 500;
+  letter-spacing: -0.005em; color: var(--ink); margin: 0 0 8px 0;
+}
+.ret-process__step p {
+  font-size: 14.5px; line-height: 1.55; color: var(--ink-2); margin: 0; max-width: 34ch;
+}
+
 /* ---------- Work list ---------- */
 .ret-work { padding: 96px 0; border-bottom: 1px solid var(--rule); }
 .ret-work__feature {
+  position: relative;
   display: grid;
   grid-template-columns: 200px 1fr;
   gap: 40px;
@@ -170,6 +185,13 @@
   border-radius: var(--r-2);
   padding: 32px;
   margin-bottom: 48px;
+  transition: border-color var(--dur-fast) var(--ease);
+}
+.ret-work__feature:hover { border-color: var(--ink-3); }
+/* the single link spans the whole card → one tab stop, whole card clickable */
+.ret-work__feature-link::after { content: ''; position: absolute; inset: 0; }
+.ret-work__feature:has(.ret-work__feature-link:focus-visible) {
+  border-color: var(--pine); box-shadow: var(--focus-ring);
 }
 .ret-work__feature-shot {
   display: flex;
@@ -221,6 +243,34 @@
   font-size: 13px;
   color: var(--ink-3);
 }
+
+/* ---------- Testimonials (ready to fill — see commented block in index.html) ---------- */
+.ret-quotes { padding: 96px 0; border-bottom: 1px solid var(--rule); }
+.ret-quotes__head { margin-bottom: 48px; }
+.ret-quotes__head .eyebrow { display: block; margin-bottom: 16px; }
+.ret-quotes__head h2 {
+  font-family: var(--font-serif);
+  font-size: clamp(1.75rem, 2.6vw, 2.5rem);
+  letter-spacing: -0.018em;
+  line-height: 1.15;
+}
+.ret-quotes__grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 24px; }
+.ret-quote {
+  margin: 0;
+  border-left: 2px solid var(--pine);
+  background: var(--paper-soft);
+  border-radius: 0 var(--r-2) var(--r-2) 0;
+  padding: 28px 32px;
+}
+.ret-quote p {
+  font-family: var(--font-serif); font-style: italic;
+  font-size: 18px; line-height: 1.5; color: var(--ink); margin: 0 0 16px 0;
+}
+.ret-quote footer {
+  font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.1em;
+  text-transform: uppercase; color: var(--ink-3);
+}
+.ret-quotes__more { margin-top: 28px; font-size: 14px; color: var(--ink-3); }
 .ret-work__head { margin-bottom: 40px; }
 .ret-work__head .eyebrow { display: block; margin-bottom: 16px; }
 .ret-work__head h2 {
@@ -230,30 +280,12 @@
   line-height: 1.15;
   margin-bottom: 28px;
 }
-.ret-work__filters { display: flex; gap: 8px; }
-.ret-chip {
-  font-family: var(--font-sans);
-  font-size: 13px;
-  padding: 6px 14px;
-  border-radius: var(--r-pill);
-  border: 1px solid var(--rule);
-  background: transparent;
-  color: var(--ink-2);
-  cursor: pointer;
-  transition: all var(--dur-fast) var(--ease);
-}
-.ret-chip:hover { border-color: var(--ink-3); color: var(--ink); }
-.ret-chip.is-active {
-  background: var(--ink);
-  color: var(--paper-soft);
-  border-color: var(--ink);
-}
 .ret-work__list { list-style: none; padding: 0; margin: 0; }
 .ret-work__row {
   display: grid;
-  grid-template-columns: 80px 1fr auto;
-  align-items: center;
-  gap: 24px;
+  grid-template-columns: 80px 1fr;
+  align-items: start;
+  gap: 8px 24px;
   padding: 24px 0;
   border-top: 1px solid var(--rule);
 }
@@ -263,6 +295,7 @@
   font-size: 12px;
   color: var(--ink-3);
   letter-spacing: 0.04em;
+  padding-top: 3px;
 }
 .ret-work__title {
   font-family: var(--font-sans);
@@ -277,58 +310,13 @@
   font-size: 13px;
   color: var(--ink-3);
 }
-
-/* ---------- Writing ---------- */
-.ret-writing { padding: 96px 0; border-bottom: 1px solid var(--rule); }
-.ret-writing__head { margin-bottom: 40px; max-width: 60ch; }
-.ret-writing__head .eyebrow { display: block; margin-bottom: 16px; }
-.ret-writing__head h2 {
-  font-family: var(--font-serif);
-  font-size: clamp(1.75rem, 2.6vw, 2.5rem);
-  letter-spacing: -0.018em;
-  line-height: 1.15;
-  margin-bottom: 16px;
-}
-.ret-writing__lede {
-  font-size: 17px;
-  line-height: 1.55;
+.ret-work__scope {
+  font-family: var(--font-sans);
+  font-size: 13.5px;
+  line-height: 1.5;
   color: var(--ink-2);
-}
-.ret-writing__lede em {
-  font-family: var(--font-serif);
-  font-style: italic;
-}
-.ret-writing__list { list-style: none; padding: 0; margin: 0; }
-.ret-writing__row {
-  display: grid;
-  grid-template-columns: 120px 1fr 80px;
-  align-items: baseline;
-  gap: 24px;
-  padding: 22px 0;
-  border-top: 1px solid var(--rule);
-  cursor: pointer;
-  transition: background var(--dur-fast) var(--ease);
-}
-.ret-writing__row:last-child { border-bottom: 1px solid var(--rule); }
-.ret-writing__row:hover { background: var(--paper-soft); }
-.ret-writing__date {
-  font-family: var(--font-mono);
-  font-size: 12px;
-  color: var(--ink-3);
-  letter-spacing: 0.04em;
-}
-.ret-writing__title {
-  font-family: var(--font-serif);
-  font-size: 22px;
-  letter-spacing: -0.018em;
-  color: var(--ink);
-  cursor: pointer;
-}
-.ret-writing__min {
-  font-family: var(--font-mono);
-  font-size: 12px;
-  color: var(--ink-3);
-  text-align: right;
+  margin: 8px 0 0 0;
+  max-width: 72ch;
 }
 
 /* ---------- About ---------- */
@@ -345,27 +333,7 @@
   display: grid;
   grid-template-columns: 320px 1fr;
   gap: 56px;
-  align-items: start;
-}
-.ret-about__portrait {
-  aspect-ratio: 4 / 5;
-  background: var(--paper-deep);
-  border: 1px solid var(--rule);
-  border-radius: var(--r-2);
-  position: relative;
-  overflow: hidden;
-}
-.ret-about__portrait-inner {
-  position: absolute; inset: 0;
-  display: flex; align-items: center; justify-content: center;
-  background: linear-gradient(135deg, var(--paper-deep), var(--rule));
-}
-.ret-about__caption {
-  font-family: var(--font-mono);
-  font-size: 11px;
-  letter-spacing: 0.18em;
-  text-transform: uppercase;
-  color: var(--ink-3);
+  align-items: center;
 }
 .ret-about__prose p {
   font-size: 17px;
@@ -428,7 +396,9 @@
   border-radius: var(--r-2);
   padding: 32px;
   max-width: 640px;
+  margin-top: 24px;
 }
+.ret-contact__thanks[hidden] { display: none; }
 .ret-contact__thanks h3 {
   font-family: var(--font-serif);
   font-size: 22px;
@@ -436,7 +406,14 @@
   color: var(--pine-deep);
   margin-bottom: 8px;
 }
-.ret-contact__thanks p { color: var(--ink-2); }
+.ret-contact__thanks p { color: var(--ink-2); margin-bottom: 16px; }
+.ret-contact__thanks textarea {
+  width: 100%; box-sizing: border-box; margin-bottom: 16px; resize: vertical;
+  font-family: var(--font-mono); font-size: 13px; line-height: 1.5;
+}
+.ret-contact__thanks-actions { display: flex; align-items: center; gap: 16px; flex-wrap: wrap; }
+/* copy status sits on the pine-soft surface → ink-2 keeps AA contrast in both themes */
+.ret-contact__thanks .ret-contact__small { color: var(--ink-2); }
 
 /* ---------- Footer ---------- */
 .ret-footer {
@@ -473,6 +450,7 @@
   font-size: 13px;
   color: var(--ink-2);
   cursor: pointer;
+  white-space: nowrap;
 }
 .ret-footer__meta {
   display: flex;
@@ -487,6 +465,8 @@
 /* responsive */
 @media (max-width: 800px) {
   .ret-services__grid { grid-template-columns: 1fr; }
+  .ret-process__grid { grid-template-columns: 1fr; }
+  .ret-quotes__grid { grid-template-columns: 1fr; }
   .ret-work__feature { grid-template-columns: 1fr; gap: 24px; }
   .ret-work__feature-shot img { max-width: 220px; margin: 0 auto; }
   .ret-about__grid { grid-template-columns: 1fr; }
@@ -551,10 +531,33 @@ section[id] { scroll-margin-top: 96px; }
   transition: border-color var(--dur-fast) var(--ease), color var(--dur-fast) var(--ease);
 }
 .ret-theme:hover { border-color: var(--ink-3); color: var(--ink); }
+.ret-theme:active { transform: translateY(1px); }
 .ret-theme svg { width: 18px; height: 18px; display: block; }
 .ret-theme .icon-moon { display: none; }
 [data-theme="dark"] .ret-theme .icon-sun { display: none; }
 [data-theme="dark"] .ret-theme .icon-moon { display: block; }
+
+/* Keyboard focus parity — DS pine ring on the elements that fell back to the browser default */
+.ret-header__link:focus-visible,
+.ret-theme:focus-visible,
+.site-header__brand:focus-visible,
+.ret-footer__nav a:focus-visible {
+  outline: none;
+  box-shadow: var(--focus-ring);
+  border-radius: var(--r-1);
+}
+
+/* Theme toggle — transient colour fade (class added by JS for ~260ms, skipped under reduced-motion) */
+html.theme-fade,
+html.theme-fade *,
+html.theme-fade *::before,
+html.theme-fade *::after {
+  transition: background-color var(--dur-base) var(--ease),
+              color var(--dur-base) var(--ease),
+              border-color var(--dur-base) var(--ease),
+              fill var(--dur-base) var(--ease),
+              stroke var(--dur-base) var(--ease) !important;
+}
 
 /* About — facts card in place of portrait */
 .ret-about__card {
@@ -578,12 +581,15 @@ section[id] { scroll-margin-top: 96px; }
 .ret-contact__direct { margin-top: 28px; font-size: 14px; color: var(--ink-3); }
 .ret-contact__direct a { font-family: var(--font-mono); }
 
-/* Footer legal identifiers */
-.ret-footer__legal { font-family: var(--font-mono); font-size: 11px; color: var(--ink-3); line-height: 1.6; }
-
 @media (max-width: 800px) {
   .ret-header__nav { display: none; }
+  .site-header__inner { padding: 12px 20px; }
   .site-header__right { gap: 14px; }
   .ret-hero { padding: 56px 0 48px; }
-  .ret-services, .ret-about, .ret-contact { padding: 64px 0; }
+  .ret-services, .ret-process, .ret-work, .ret-about, .ret-contact { padding: 64px 0; }
+}
+
+/* Narrow phones: the header CTA would overflow — the hero already has one */
+@media (max-width: 560px) {
+  .site-header .ret-btn--secondary { display: none; }
 }

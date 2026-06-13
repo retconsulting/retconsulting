@@ -15,7 +15,8 @@
 <meta property="og:image:type" content="image/png"/>
 <meta property="og:image:width" content="512"/>
 <meta property="og:image:height" content="512"/>
-<meta name="theme-color" content="#EFEAE3"/>
+<meta name="theme-color" content="#EFEAE3" media="(prefers-color-scheme: light)"/>
+<meta name="theme-color" content="#15171A" media="(prefers-color-scheme: dark)"/>
 <link rel="icon" href="assets/logo-glyph.svg"/>
 <link rel="icon" href="assets/logo-glyph-dark.svg" media="(prefers-color-scheme: dark)"/>
 <link rel="apple-touch-icon" href="assets/apple-touch-icon.png"/>
@@ -173,15 +174,39 @@
         </div>
       </section>
 
+      <section class="ret-process" id="process" aria-label="How an engagement starts">
+        <div class="ret-process__head">
+          <span class="eyebrow">How it works</span>
+          <h2>How an engagement starts.</h2>
+        </div>
+        <ol class="ret-process__grid">
+          <li class="ret-process__step">
+            <span class="ret-process__num">01</span>
+            <h3>Intro call</h3>
+            <p>A 30-minute call to understand what you need. No commitment.</p>
+          </li>
+          <li class="ret-process__step">
+            <span class="ret-process__num">02</span>
+            <h3>Written proposal</h3>
+            <p>A short proposal with scope, approach and a timeline you can act on.</p>
+          </li>
+          <li class="ret-process__step">
+            <span class="ret-process__num">03</span>
+            <h3>Work starts</h3>
+            <p>Work begins with a clear rhythm and a single point of contact: me.</p>
+          </li>
+        </ol>
+      </section>
+
       <section class="ret-work" id="work">
         <div class="ret-work__head">
           <span class="eyebrow">Selected work</span>
           <h2>Portfolio.</h2>
         </div>
         <div class="ret-work__feature">
-          <a class="ret-work__feature-shot" href="dueday/" aria-label="dueday, the project page">
+          <div class="ret-work__feature-shot">
             <img src="dueday/assets/shot-accueil.webp" alt="dueday home screen: next payment, monthly total and cost cards" width="589" height="1280" loading="lazy" decoding="async"/>
-          </a>
+          </div>
           <div class="ret-work__feature-body">
             <span class="ret-work__feature-status">iOS app · coming to the App Store</span>
             <h3>dueday</h3>
@@ -193,7 +218,7 @@
               Scoped, designed and built end to end in-house: the same work
               sold in service 03, taken from idea to a finished product.
             </p>
-            <a class="ret-btn ret-btn--ghost" href="dueday/">See the project</a>
+            <a class="ret-btn ret-btn--ghost ret-work__feature-link" href="dueday/">See the project</a>
           </div>
         </div>
         <ul class="ret-work__list">
@@ -202,6 +227,7 @@
             <div>
               <h3 class="ret-work__title">Business product owner, ERP programme</h3>
               <span class="ret-work__client">Pharmaceutical sector</span>
+              <p class="ret-work__scope">Owning the business backlog on an SAP S/4HANA programme: functional specifications, UAT with key users, and alignment between business and IT.</p>
             </div>
           </li>
           <li class="ret-work__row">
@@ -209,6 +235,7 @@
             <div>
               <h3 class="ret-work__title">Product owner, rolling-stock maintenance platform</h3>
               <span class="ret-work__client">International rail transport</span>
+              <p class="ret-work__scope">Vision and roadmap for a maintenance (CMMS) platform: backlog ownership, stakeholder workshops and delivery in a SAFe setup.</p>
             </div>
           </li>
           <li class="ret-work__row">
@@ -216,6 +243,7 @@
             <div>
               <h3 class="ret-work__title">Product owner, digital public services</h3>
               <span class="ret-work__client">Public sector</span>
+              <p class="ret-work__scope">Requirements, functional specifications and coordination with delivery teams on digital public services.</p>
             </div>
           </li>
           <li class="ret-work__row">
@@ -223,11 +251,39 @@
             <div>
               <h3 class="ret-work__title">Product and business analyst</h3>
               <span class="ret-work__client">Pharmaceutical sector</span>
+              <p class="ret-work__scope">Requirements analysis, functional specifications and UAT coordination across business and technical stakeholders.</p>
             </div>
           </li>
         </ul>
         <p class="ret-work__note">Client names are withheld under confidentiality agreements. Details on request.</p>
       </section>
+
+      <!-- ============================================================
+           TESTIMONIALS — ready to publish.
+           Paste 2-3 short excerpts from your LinkedIn recommendations,
+           anonymised by role + sector ONLY (never a client's or a
+           person's name). Then delete the two comment markers around
+           the <section> below to make it live. The CSS is already in
+           assets/styles.css (.ret-quotes).
+           ============================================================
+      <section class="ret-quotes" id="testimonials">
+        <div class="ret-quotes__head">
+          <span class="eyebrow">What they say</span>
+          <h2>From the people I worked with.</h2>
+        </div>
+        <div class="ret-quotes__grid">
+          <blockquote class="ret-quote">
+            <p>Short excerpt of the recommendation, two or three lines.</p>
+            <footer>Delivery manager · international rail transport</footer>
+          </blockquote>
+          <blockquote class="ret-quote">
+            <p>Another short excerpt.</p>
+            <footer>Programme lead · pharmaceutical sector</footer>
+          </blockquote>
+        </div>
+        <p class="ret-quotes__more">Full, signed recommendations on <a href="https://www.linkedin.com/in/retbaz/" rel="me noopener">LinkedIn</a>.</p>
+      </section>
+           ============================================================ -->
 
       <section class="ret-about" id="about">
         <div class="ret-about__head">
@@ -326,6 +382,15 @@
             <span class="ret-contact__small">Opens your email client with the message pre-filled.</span>
           </div>
         </form>
+        <div class="ret-contact__thanks" id="contactThanks" hidden>
+          <h3>Almost there.</h3>
+          <p>Your email client should have opened with the message below. If nothing happened, copy it and send it to <a href="mailto:retbaz@retconsulting.be">retbaz@retconsulting.be</a>.</p>
+          <textarea class="ret-input" id="contactCopy" rows="6" readonly aria-label="Your message, ready to copy"></textarea>
+          <div class="ret-contact__thanks-actions">
+            <button type="button" class="ret-btn ret-btn--primary" id="copyMessage">Copy message</button>
+            <span class="ret-contact__small" id="copyStatus" role="status" aria-live="polite"></span>
+          </div>
+        </div>
         <p class="ret-contact__direct">
           Or directly: <a href="mailto:retbaz@retconsulting.be">retbaz@retconsulting.be</a>
         </p>
@@ -360,32 +425,42 @@
 </div>
 
 <script>
-  // Theme toggle
+  // Theme toggle (with a short colour fade)
   (function () {
     var btn = document.getElementById('themeToggle');
     if (!btn) return;
+    var root = document.documentElement;
+    var allowMotion = !window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    var fadeTimer;
     var sync = function () {
-      var isDark = document.documentElement.getAttribute('data-theme') === 'dark';
-      btn.setAttribute('aria-pressed', isDark ? 'true' : 'false');
+      btn.setAttribute('aria-pressed', root.getAttribute('data-theme') === 'dark' ? 'true' : 'false');
     };
     sync();
     btn.addEventListener('click', function () {
-      var isDark = document.documentElement.getAttribute('data-theme') === 'dark';
-      if (isDark) {
-        document.documentElement.removeAttribute('data-theme');
+      if (allowMotion) {
+        root.classList.add('theme-fade');
+        clearTimeout(fadeTimer);
+        fadeTimer = setTimeout(function () { root.classList.remove('theme-fade'); }, 260);
+      }
+      if (root.getAttribute('data-theme') === 'dark') {
+        root.removeAttribute('data-theme');
         try { localStorage.setItem('ret-theme', 'light'); } catch (e) {}
       } else {
-        document.documentElement.setAttribute('data-theme', 'dark');
+        root.setAttribute('data-theme', 'dark');
         try { localStorage.setItem('ret-theme', 'dark'); } catch (e) {}
       }
       sync();
     });
   })();
 
-  // Contact form → mailto (no backend needed)
+  // Contact form → mailto, with a copyable fallback (no backend)
   (function () {
     var form = document.getElementById('contactForm');
     if (!form) return;
+    var thanks = document.getElementById('contactThanks');
+    var copyArea = document.getElementById('contactCopy');
+    var copyBtn = document.getElementById('copyMessage');
+    var copyStatus = document.getElementById('copyStatus');
     form.addEventListener('submit', function (e) {
       e.preventDefault();
       var name = document.getElementById('cf-name').value.trim();
@@ -396,7 +471,54 @@
       window.location.href = 'mailto:retbaz@retconsulting.be'
         + '?subject=' + encodeURIComponent(subject)
         + '&body=' + encodeURIComponent(body);
+      if (thanks && copyArea) {
+        copyArea.value = 'To: retbaz@retconsulting.be\nSubject: ' + subject + '\n\n' + body;
+        thanks.hidden = false;
+        if (copyStatus) copyStatus.textContent = '';
+        thanks.scrollIntoView({ block: 'nearest' });
+      }
     });
+    if (copyBtn && copyArea) {
+      copyBtn.addEventListener('click', function () {
+        var done = function () { if (copyStatus) copyStatus.textContent = 'Copied.'; };
+        var fallback = function () {
+          copyArea.focus(); copyArea.select();
+          if (copyStatus) copyStatus.textContent = 'Press Ctrl/Cmd + C to copy.';
+        };
+        if (navigator.clipboard && navigator.clipboard.writeText) {
+          navigator.clipboard.writeText(copyArea.value).then(done, fallback);
+        } else {
+          try { copyArea.focus(); copyArea.select(); document.execCommand('copy'); done(); }
+          catch (err) { fallback(); }
+        }
+      });
+    }
+  })();
+
+  // Scroll-spy: light the nav link of the section currently in view
+  (function () {
+    var links = Array.prototype.slice.call(document.querySelectorAll('.ret-header__link'));
+    if (!links.length || !('IntersectionObserver' in window)) return;
+    var map = {};
+    links.forEach(function (a) {
+      var href = a.getAttribute('href');
+      if (href && href.charAt(0) === '#') map[href.slice(1)] = a;
+    });
+    var sections = Object.keys(map)
+      .map(function (id) { return document.getElementById(id); })
+      .filter(Boolean);
+    if (!sections.length) return;
+    var current = null;
+    var setActive = function (a) {
+      if (current === a) return;
+      links.forEach(function (l) { l.classList.remove('is-active'); l.removeAttribute('aria-current'); });
+      if (a) { a.classList.add('is-active'); a.setAttribute('aria-current', 'true'); }
+      current = a;
+    };
+    var obs = new IntersectionObserver(function (entries) {
+      entries.forEach(function (e) { if (e.isIntersecting) setActive(map[e.target.id]); });
+    }, { rootMargin: '-45% 0px -50% 0px', threshold: 0 });
+    sections.forEach(function (s) { obs.observe(s); });
   })();
 
   // Current year
