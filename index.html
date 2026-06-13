@@ -414,6 +414,16 @@
   </div>
 </footer>
 
+<div class="scrim-bottom" aria-hidden="true"></div>
+
+<a class="scrollnav" href="#top" id="scrollnav" aria-label="Reading progress; back to top">
+  <span class="scrollnav__ring">
+    <svg class="scrollnav__dial" viewBox="0 0 36 36" aria-hidden="true"><circle class="scrollnav__track" cx="18" cy="18" r="15.5"/><circle class="scrollnav__bar" id="scrollnavBar" cx="18" cy="18" r="15.5"/></svg>
+    <span class="scrollnav__chev"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M6 14l6-6 6 6"/></svg></span>
+  </span>
+  <span class="scrollnav__label" id="scrollnavLabel">Home</span>
+</a>
+
 <a class="contactdock" href="#contact" aria-label="Get in touch">
   <span class="contactdock__icon"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg></span>
   <span class="txt">Get in touch</span>
@@ -504,6 +514,36 @@
     track.addEventListener('scroll', update, { passive: true });
     window.addEventListener('resize', update);
     update();
+  })();
+
+  // Floating scroll-progress pill: ring tracks scroll %, label shows the current section, click scrolls to top
+  (function () {
+    var nav = document.getElementById('scrollnav');
+    var bar = document.getElementById('scrollnavBar');
+    var label = document.getElementById('scrollnavLabel');
+    if (!nav || !bar || !label) return;
+    var CIRC = 97.39;
+    var SECTIONS = [['hero', 'Home'], ['services', 'What I do'], ['about', 'Who I am'], ['work', 'Portfolio'], ['experience', 'Experience'], ['process', 'How it works'], ['contact', 'Contact']];
+    var rm = window.matchMedia('(prefers-reduced-motion: reduce)');
+    var ticking = false;
+    var render = function () {
+      ticking = false;
+      var st = window.pageYOffset || document.documentElement.scrollTop || 0;
+      var docH = (document.documentElement.scrollHeight - window.innerHeight) || 1;
+      var p = Math.min(1, Math.max(0, st / docH));
+      bar.style.strokeDashoffset = (CIRC * (1 - p)).toFixed(1);
+      var mid = st + window.innerHeight * 0.4, cur = SECTIONS[0];
+      for (var i = 0; i < SECTIONS.length; i++) {
+        var el = document.getElementById(SECTIONS[i][0]);
+        if (el && el.offsetTop <= mid) cur = SECTIONS[i];
+      }
+      if (label.textContent !== cur[1]) label.textContent = cur[1];
+    };
+    var onScroll = function () { if (!ticking) { ticking = true; window.requestAnimationFrame(render); } };
+    window.addEventListener('scroll', onScroll, { passive: true });
+    window.addEventListener('resize', onScroll);
+    nav.addEventListener('click', function (e) { e.preventDefault(); window.scrollTo({ top: 0, behavior: rm.matches ? 'auto' : 'smooth' }); });
+    render();
   })();
 
   document.getElementById('year').textContent = new Date().getFullYear();

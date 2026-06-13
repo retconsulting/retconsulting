@@ -334,6 +334,31 @@ section[id], #main { scroll-margin-top: 96px; }
 .contactdock .txt { font-family: var(--font-body); font-size: 13px; font-weight: 600; color: var(--ink); line-height: 1; padding-right: 4px; }
 @keyframes dockin { from { opacity: 0; transform: translateY(16px); } to { opacity: 1; transform: none; } }
 
+/* ---------- Bottom blur scrim + scroll-progress section pill ---------- */
+.scrim-bottom { position: fixed; left: 0; right: 0; bottom: 0; height: 104px; z-index: 78; pointer-events: none;
+  -webkit-backdrop-filter: blur(5px); backdrop-filter: blur(5px);
+  background: linear-gradient(to top, var(--canvas), rgba(244,244,247,0));
+  -webkit-mask-image: linear-gradient(to top, #000 0%, #000 28%, transparent 100%);
+  mask-image: linear-gradient(to top, #000 0%, #000 28%, transparent 100%); }
+.scrollnav { position: fixed; bottom: 22px; left: 50%; transform: translateX(-50%); z-index: 81;
+  display: inline-flex; align-items: center; gap: 9px; padding: 6px 18px 6px 6px; border-radius: var(--r-pill);
+  text-decoration: none; cursor: pointer; background: var(--glass-fill-deep); border: 1px solid var(--glass-border);
+  -webkit-backdrop-filter: blur(var(--blur-strong)) saturate(1.5); backdrop-filter: blur(var(--blur-strong)) saturate(1.5);
+  box-shadow: var(--shadow-md), var(--shadow-inset-hi); animation: dockincenter var(--dur-slow) var(--ease-out) both;
+  transition: transform var(--dur-base) var(--ease-out), box-shadow var(--dur-base) var(--ease-out); }
+@keyframes dockincenter { from { opacity: 0; transform: translateX(-50%) translateY(16px); } to { opacity: 1; transform: translateX(-50%); } }
+.scrollnav:hover { transform: translateX(-50%) translateY(-2px); box-shadow: var(--shadow-lg), var(--shadow-inset-hi); }
+.scrollnav:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
+.scrollnav__ring { position: relative; width: 34px; height: 34px; flex: none; }
+.scrollnav__ring svg.scrollnav__dial { display: block; width: 34px; height: 34px; }
+.scrollnav__track, .scrollnav__bar { fill: none; stroke-width: 2.4; }
+.scrollnav__track { stroke: var(--ink-5); }
+.scrollnav__bar { stroke: var(--accent); stroke-linecap: round; stroke-dasharray: 97.39; stroke-dashoffset: 97.39;
+  transform: rotate(-90deg); transform-origin: 18px 18px; transition: stroke-dashoffset .12s linear; }
+.scrollnav__chev { position: absolute; top: 50%; left: 50%; transform: translate(-50%,-50%); width: 13px; height: 13px; color: var(--ink-2); }
+.scrollnav__chev svg { display: block; width: 13px; height: 13px; stroke-width: 2; }
+.scrollnav__label { font-family: var(--font-body); font-size: 14px; font-weight: 600; color: var(--ink); line-height: 1; padding-right: 2px; }
+
 /* ---------- Sub-page header (legal, dueday) ---------- */
 .subhead { position: sticky; top: 0; z-index: 60; padding: 14px var(--gutter); }
 .subhead__inner { max-width: var(--container-wide); margin-inline: auto;
