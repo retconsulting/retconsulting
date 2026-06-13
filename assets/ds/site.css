@@ -24,7 +24,7 @@ section[id], #main { scroll-margin-top: 96px; }
 .prose-page > * { position: relative; z-index: 1; }
 
 .skip-link { position: absolute; left: -9999px; top: 0; z-index: 100;
-  background: var(--accent); color: #fff; padding: 10px 16px; border-radius: 0 0 var(--r-sm) 0;
+  background: var(--ink); color: #fff; padding: 10px 16px; border-radius: 0 0 var(--r-sm) 0;
   font-family: var(--font-body); font-size: 14px; }
 .skip-link:focus { left: 0; box-shadow: var(--shadow-md); outline: 2px solid #fff; outline-offset: -4px; }
 
@@ -272,7 +272,7 @@ section[id], #main { scroll-margin-top: 96px; }
 .about__skills > .ret-tag { display: block; margin-bottom: 14px; }
 .about__skills-row { display: flex; flex-wrap: wrap; justify-content: center; gap: 10px; max-width: 540px; }
 .about__skills-row .ret-hpill { background: var(--surface); border-color: var(--border-strong); box-shadow: var(--shadow-sm); -webkit-backdrop-filter: none; backdrop-filter: none; }
-.about__prose .accent { color: var(--accent); font-weight: 500; }
+.about__prose .accent { color: var(--cognac-text); font-weight: 500; }
 
 /* ---------- Contact (dark CTA panel + form) ---------- */
 .contact__panel { position: relative; max-width: var(--container); margin: 0 auto; padding: clamp(36px,5vw,64px) clamp(28px,5vw,64px);
