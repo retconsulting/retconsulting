@@ -233,11 +233,14 @@ section[id], #main { scroll-margin-top: 96px; }
   font-family: var(--font-mono); font-size: 10px; letter-spacing: .14em; text-transform: uppercase; color: var(--ink-2);
   padding: 6px 11px; border-radius: var(--r-pill); background: var(--glass-fill); border: 1px solid var(--glass-border); box-shadow: var(--glass-shadow);
   -webkit-backdrop-filter: blur(var(--blur-glass)) saturate(1.4); backdrop-filter: blur(var(--blur-glass)) saturate(1.4); }
-.expcard__body { display: flex; flex-direction: column; gap: 6px; padding: 18px 20px 22px; }
+.expcard__body { display: flex; flex-direction: column; gap: 6px; padding: 18px 20px 22px; flex: 1; }
+/* product-type pill pinned to the bottom-centre of each card (tilts like the hero pills) */
+.expcard__pill { display: flex; justify-content: center; margin-top: auto; padding-top: 18px; }
+.expcard__pill .ret-hpill { background: var(--canvas-sunken); border-color: var(--line); box-shadow: var(--shadow-sm); }
 .expcard__ref { display: flex; align-items: center; gap: 8px; font-family: var(--font-mono); font-size: 10.5px; letter-spacing: .1em; text-transform: uppercase; color: var(--accent-label); }
 .expcard__title { font-family: var(--font-display); font-weight: 700; font-size: 1.1rem; line-height: 1.18; letter-spacing: -.01em; color: var(--ink); margin: 2px 0 0; }
 .expcard__scope { font-family: var(--font-body); font-size: .86rem; line-height: 1.5; color: var(--ink-2); margin: 4px 0 0; }
-.cases__note { max-width: var(--container); margin: 22px auto 0; padding-inline: var(--gutter); font-family: var(--font-mono); font-size: 11px; letter-spacing: .04em; color: var(--ink-2); }
+.cases__note { max-width: var(--container); margin: 22px auto 0; padding-inline: var(--gutter); font-family: var(--font-mono); font-size: 11px; letter-spacing: .04em; color: var(--ink-2); text-align: center; }
 
 /* ---------- About ---------- */
 .about { max-width: var(--container); margin-inline: auto; padding-inline: var(--gutter);
@@ -256,6 +259,11 @@ section[id], #main { scroll-margin-top: 96px; }
 .about__facts a:hover { text-decoration: underline; }
 .about__prose p { font-family: var(--font-body); font-size: 1.15rem; line-height: 1.65; color: var(--ink-2); margin: 0 0 20px; max-width: 56ch; }
 .about__prose p:last-child { margin-bottom: 0; }
+/* skill pills under the profile prose (tilt like the hero pills; white on the sunken band) */
+.about__skills { margin-top: 30px; }
+.about__skills > .ret-tag { display: block; margin-bottom: 14px; }
+.about__skills-row { display: flex; flex-wrap: wrap; gap: 10px; }
+.about__skills-row .ret-hpill { background: var(--surface); border-color: var(--line); box-shadow: var(--shadow-sm); }
 .about__prose .accent { color: var(--accent); font-weight: 500; }
 
 /* ---------- Contact (dark CTA panel + form) ---------- */
@@ -392,6 +400,8 @@ section[id], #main { scroll-margin-top: 96px; }
   border: 1px solid var(--line); box-shadow: var(--shadow-float); background: var(--surface); }
 .shot img { display: block; width: 100%; height: auto; }
 .apphero__shot { max-width: 282px; margin-inline: auto; }
+/* phone-width positioning context so the floating pills anchor onto the screenshot edge */
+.apphero__device { position: relative; width: 282px; max-width: 100%; margin-inline: auto; }
 
 /* Feature grid */
 .features { max-width: var(--container); margin-inline: auto; padding-inline: var(--gutter);
