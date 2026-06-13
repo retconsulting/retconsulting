@@ -236,15 +236,15 @@ section[id], #main { scroll-margin-top: 96px; }
 .expcard__body { display: flex; flex-direction: column; gap: 6px; padding: 18px 20px 22px; flex: 1; }
 /* product-type pill pinned to the bottom-centre of each card (tilts like the hero pills) */
 .expcard__pill { display: flex; justify-content: center; margin-top: auto; padding-top: 18px; }
-.expcard__pill .ret-hpill { background: var(--canvas-sunken); border-color: var(--line); box-shadow: var(--shadow-sm); }
-.expcard__ref { display: flex; align-items: center; gap: 8px; font-family: var(--font-mono); font-size: 10.5px; letter-spacing: .1em; text-transform: uppercase; color: var(--accent-label); }
+.expcard__pill .ret-hpill { background: var(--canvas-sunken); border-color: var(--border-strong); box-shadow: var(--shadow-sm); -webkit-backdrop-filter: none; backdrop-filter: none; }
+.expcard__ref { display: flex; align-items: center; gap: 8px; font-family: var(--font-mono); font-size: 10.5px; letter-spacing: .1em; text-transform: uppercase; color: var(--ink-3); }
 .expcard__title { font-family: var(--font-display); font-weight: 700; font-size: 1.1rem; line-height: 1.18; letter-spacing: -.01em; color: var(--ink); margin: 2px 0 0; }
 .expcard__scope { font-family: var(--font-body); font-size: .86rem; line-height: 1.5; color: var(--ink-2); margin: 4px 0 0; }
 .cases__note { max-width: var(--container); margin: 22px auto 0; padding-inline: var(--gutter); font-family: var(--font-mono); font-size: 11px; letter-spacing: .04em; color: var(--ink-2); text-align: center; }
 
 /* ---------- About ---------- */
 .about { max-width: var(--container); margin-inline: auto; padding-inline: var(--gutter);
-  display: grid; grid-template-columns: 360px 1fr; gap: 48px; align-items: center; }
+  display: grid; grid-template-columns: 360px 1fr; gap: 48px; align-items: start; }
 .about__card { background: var(--surface); border: 1px solid var(--line); border-radius: var(--r-xl); box-shadow: var(--shadow-md);
   padding: 30px; display: flex; flex-direction: column; gap: 24px; }
 .about__brand { display: flex; align-items: center; gap: 12px; }
@@ -263,7 +263,7 @@ section[id], #main { scroll-margin-top: 96px; }
 .about__skills { margin-top: 30px; }
 .about__skills > .ret-tag { display: block; margin-bottom: 14px; }
 .about__skills-row { display: flex; flex-wrap: wrap; gap: 10px; }
-.about__skills-row .ret-hpill { background: var(--surface); border-color: var(--line); box-shadow: var(--shadow-sm); }
+.about__skills-row .ret-hpill { background: var(--surface); border-color: var(--border-strong); box-shadow: var(--shadow-sm); -webkit-backdrop-filter: none; backdrop-filter: none; }
 .about__prose .accent { color: var(--accent); font-weight: 500; }
 
 /* ---------- Contact (dark CTA panel + form) ---------- */
@@ -340,6 +340,8 @@ section[id], #main { scroll-margin-top: 96px; }
   transition: background var(--dur-base) var(--ease-out), border-color var(--dur-base) var(--ease-out), color var(--dur-base) var(--ease-out), transform var(--dur-base) var(--ease-out), box-shadow var(--dur-base) var(--ease-out); }
 .subhead__back:hover { background: var(--accent); border-color: var(--accent); color: #fff; transform: translateY(-2px); box-shadow: var(--shadow-md); }
 .subhead__back svg { stroke-width: 1.6; }
+/* very narrow screens: collapse the back button to icon-only so the sticky header never overflows */
+@media (max-width: 480px) { .subhead__back { font-size: 0; gap: 0; padding: 10px; } }
 
 /* ---------- Prose pages (legal, dueday product + legal) ---------- */
 .prose { max-width: var(--container-narrow); margin-inline: auto; padding: clamp(40px,6vw,80px) var(--gutter) clamp(80px,9vw,120px); }
