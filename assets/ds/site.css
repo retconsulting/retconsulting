@@ -50,8 +50,8 @@ section[id] { scroll-margin-top: 96px; }
   display: grid; grid-template-columns: 1.05fr 0.95fr; gap: clamp(28px, 4vw, 56px); align-items: center; }
 .hero__eyebrow { display: flex; align-items: center; gap: 14px; margin-bottom: 26px; flex-wrap: wrap; }
 .hero__title { font-family: var(--font-display); font-weight: 700; color: var(--ink);
-  font-size: clamp(2.9rem, 1.2rem + 6vw, 5.4rem); line-height: .98; letter-spacing: -.035em; margin: 0; text-wrap: balance; }
-.hero__title .thin { display: block; font-weight: 460; color: var(--ink-3); letter-spacing: -.02em; }
+  font-size: clamp(2.5rem, 1.5rem + 3.4vw, 4.1rem); line-height: 1.02; letter-spacing: -.03em; margin: 0; text-wrap: balance; }
+.hero__title .thin { display: block; font-weight: 560; color: var(--ink-2); letter-spacing: -.02em; }
 .hero__title .accent { color: var(--accent); }
 .hero__lead { font-family: var(--font-body); font-weight: 300; font-size: clamp(1.05rem, .98rem + .5vw, 1.3rem);
   line-height: 1.55; color: var(--ink-2); max-width: 48ch; margin: 26px 0 0; }
@@ -97,12 +97,15 @@ section[id] { scroll-margin-top: 96px; }
   background: var(--glass-fill); -webkit-backdrop-filter: blur(var(--blur-strong)) saturate(1.5); backdrop-filter: blur(var(--blur-strong)) saturate(1.5);
   border: 1px solid var(--glass-border); box-shadow: var(--glass-shadow);
   font-family: var(--font-mono); font-size: 10px; letter-spacing: .14em; text-transform: uppercase; color: var(--ink-2); }
-.hero__float { position: absolute; left: -28px; bottom: 34px; width: 250px; padding: 18px 20px; border-radius: var(--r-xl);
-  background: var(--glass-fill-deep); border: 1px solid var(--glass-border);
-  -webkit-backdrop-filter: blur(var(--blur-strong)) saturate(1.5); backdrop-filter: blur(var(--blur-strong)) saturate(1.5);
-  box-shadow: var(--shadow-lg); }
+/* Availability widget: a clearly-frosted layer overhanging the canvas corner,
+   well clear of the step cascade (which is pushed to the right). */
+.hero__float { position: absolute; left: -26px; bottom: -18px; width: 232px; padding: 15px 17px; border-radius: var(--r-xl);
+  background: var(--glass-fill); border: 1px solid var(--glass-border);
+  -webkit-backdrop-filter: blur(var(--blur-strong)) saturate(1.8); backdrop-filter: blur(var(--blur-strong)) saturate(1.8);
+  box-shadow: var(--shadow-float); }
 .hero__float .cap { font-family: var(--font-mono); font-size: 10px; letter-spacing: .14em; text-transform: uppercase; color: var(--ink-3); }
-.hero__float .row { display: flex; align-items: center; gap: 8px; margin-top: 8px; font-family: var(--font-display); font-weight: 700; font-size: 16px; color: var(--ink); letter-spacing: -.01em; }
+.hero__float .row { display: flex; align-items: center; gap: 8px; margin-top: 7px; font-family: var(--font-display); font-weight: 700; font-size: 15px; color: var(--ink); letter-spacing: -.01em; }
+.hero__float .sub { font-family: var(--font-body); font-weight: 400; font-size: 12.5px; color: var(--ink-3); margin-top: 5px; }
 
 /* ---------- Section scaffolding ---------- */
 .section { padding-block: var(--section-gap); }
@@ -142,9 +145,17 @@ section[id] { scroll-margin-top: 96px; }
 .approach { list-style: none; margin: 0 auto; max-width: var(--container); margin-inline: auto; padding-inline: var(--gutter);
   display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--card-gap); }
 .step { padding: 26px; border-radius: var(--r-lg); background: var(--glass-fill-deep); border: 1px solid var(--glass-border); box-shadow: var(--shadow-sm);
-  -webkit-backdrop-filter: blur(var(--blur-glass)) saturate(1.4); backdrop-filter: blur(var(--blur-glass)) saturate(1.4); }
+  -webkit-backdrop-filter: blur(var(--blur-glass)) saturate(1.4); backdrop-filter: blur(var(--blur-glass)) saturate(1.4);
+  transition: transform var(--dur-base) var(--ease-out), box-shadow var(--dur-base) var(--ease-out), border-color var(--dur-base); }
+.step:hover { transform: translateY(-4px); box-shadow: var(--shadow-lg); border-color: var(--border-accent); }
+.step__head { display: flex; align-items: center; justify-content: space-between; margin-bottom: 22px; }
+.step__icon { width: 48px; height: 48px; border-radius: var(--r-md); display: grid; place-items: center;
+  background: var(--cognac-wash); color: var(--cognac-ink); transition: background var(--dur-base), color var(--dur-base); }
+.step:hover .step__icon { background: var(--accent); color: #fff; }
+.step__icon svg { stroke-width: 1.5; }
 .step__no { font-family: var(--font-mono); font-size: 11px; letter-spacing: .14em; color: var(--accent-label); }
-.step__t { font-family: var(--font-display); font-weight: 700; font-size: 1.15rem; color: var(--ink); margin: 14px 0 8px; letter-spacing: -.01em; }
+.step:hover .step__no { color: var(--accent); }
+.step__t { font-family: var(--font-display); font-weight: 700; font-size: 1.15rem; color: var(--ink); margin: 0 0 8px; letter-spacing: -.01em; }
 .step__d { font-family: var(--font-body); font-size: .9rem; line-height: 1.5; color: var(--ink-2); margin: 0; }
 
 /* ---------- Work / cases ---------- */
@@ -354,6 +365,8 @@ section[id] { scroll-margin-top: 96px; }
 @media (max-width: 980px) {
   .hero__grid { grid-template-columns: 1fr; }
   .hero__visual { order: -1; max-width: 460px; }
+  /* stacked layout: drop the availability widget below the canvas (no overhang, no step overlap) */
+  .hero__float { position: static; left: auto; bottom: auto; width: auto; margin-top: 18px; }
   .services { grid-template-columns: repeat(2,1fr); }
   .approach { grid-template-columns: repeat(3,1fr); }
   .case-feature { grid-template-columns: 1fr; }
@@ -372,8 +385,11 @@ section[id] { scroll-margin-top: 96px; }
   .apphero__float { display: none; }
   .footer__main { grid-template-columns: 1fr; }
   .contact__form { grid-template-columns: 1fr; }
-  .hero__float { left: 0; }
   .caserow { grid-template-columns: 1fr; }
+}
+@media (max-width: 600px) {
+  /* narrow canvas: top-align the cascade below the FIG_01 stamp instead of centring it */
+  .hero__canvas { aspect-ratio: auto; justify-content: flex-start; padding-top: 58px; padding-bottom: 30px; }
 }
 @media (max-width: 560px) {
   .legalfacts > div { grid-template-columns: 1fr; gap: 4px; }

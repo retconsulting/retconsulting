@@ -83,6 +83,12 @@ textarea.ret-input { resize: vertical; line-height: 1.5; }
 .ret-hpill--solid { background: var(--ink); color: #fff; border-color: transparent; }
 .ret-hpill--solid .ret-hpill__icon { color: var(--cognac-soft); }
 .ret-hpill--lift:hover { transform: translateY(-2px) rotate(0deg) !important; box-shadow: var(--shadow-lg); }
+/* Slow, organic tilt — each pill rocks around its own resting angle (--tilt) */
+@keyframes ret-pilltilt {
+  0%, 100% { transform: rotate(var(--tilt, 0deg)); }
+  50%      { transform: rotate(calc(var(--tilt, 0deg) + var(--tilt-amp, 2deg))); }
+}
+.ret-hpill--tilt { animation: ret-pilltilt var(--tilt-dur, 8s) var(--ease-soft) infinite; will-change: transform; }
 
 /* ---------- Glass badge ---------- */
 .glassbadge { display: inline-flex; align-items: center; gap: 7px; padding: 7px 12px; border-radius: var(--r-pill);
