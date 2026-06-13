@@ -137,4 +137,6 @@ textarea.ret-input { resize: vertical; line-height: 1.5; }
   /* fully halt the looping pills (the .001ms hack keeps an infinite animation cycling);
      the base transform keeps the static resting tilt, and the layer hint is dropped */
   .ret-hpill--seq { animation: none !important; will-change: auto; }
+  /* the global rule only zeroes durations, not scroll-behavior — kill the carousel's smooth glide too */
+  .carousel__track { scroll-behavior: auto; }
 }
