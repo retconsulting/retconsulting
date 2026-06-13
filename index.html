@@ -61,7 +61,7 @@
       <img class="nav__brand-glyph" src="assets/logo-mark.svg" alt=""/>
       <span class="nav__brand-wordmark"><span class="w">RET</span><span class="d">Consulting</span></span>
     </a>
-    <nav class="nav__links" aria-label="Main navigation">
+    <nav class="nav__links" id="navmenu" aria-label="Main navigation">
       <a class="nav__link" href="#services">What I do</a>
       <a class="nav__link" href="#work">Portfolio</a>
       <a class="nav__link" href="#experience">Experience</a>
@@ -75,6 +75,10 @@
         <span class="ret-btn__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7"/><path d="M8 7h9v9"/></svg></span>
       </a>
     </div>
+    <button class="nav__toggle" type="button" aria-expanded="false" aria-controls="navmenu" aria-label="Open menu">
+      <svg class="nav__toggle-open" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M3 6h18M3 12h18M3 18h18"/></svg>
+      <svg class="nav__toggle-close" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M6 6l12 12M18 6 6 18"/></svg>
+    </button>
   </div>
 </header>
 
@@ -456,6 +460,19 @@
       entries.forEach(function (e) { if (e.isIntersecting) setActive(map[e.target.id]); });
     }, { rootMargin: '-45% 0px -50% 0px', threshold: 0 });
     sections.forEach(function (s) { obs.observe(s); });
+  })();
+
+  // Mobile nav: hamburger disclosure menu
+  (function () {
+    var toggle = document.querySelector('.nav__toggle');
+    var menu = document.getElementById('navmenu');
+    if (!toggle || !menu) return;
+    var close = function () { menu.classList.remove('is-open'); toggle.setAttribute('aria-expanded', 'false'); toggle.setAttribute('aria-label', 'Open menu'); };
+    var open = function () { menu.classList.add('is-open'); toggle.setAttribute('aria-expanded', 'true'); toggle.setAttribute('aria-label', 'Close menu'); };
+    toggle.addEventListener('click', function () { menu.classList.contains('is-open') ? close() : open(); });
+    menu.addEventListener('click', function (e) { if (e.target.closest('.nav__link')) close(); });
+    document.addEventListener('keydown', function (e) { if (e.key === 'Escape') close(); });
+    document.addEventListener('click', function (e) { if (!e.target.closest('.nav__inner')) close(); });
   })();
 
   // Portfolio carousel: arrow nav, disabled at ends, hidden when the track fits
