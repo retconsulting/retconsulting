@@ -561,3 +561,27 @@ section[id], #main { scroll-margin-top: 96px; }
    and align small content-card radii to --r-xl (was a mix of r-lg/r-xl) */
 .step__t, .feat__t, .dd-card h3, .expcard__title, .pcard__title { font-size: 1.2rem; }
 .step, .showcase__cap, .prose__card { border-radius: var(--r-xl); }
+
+/* ---------- Print: drop floating chrome, flatten decoration, ink-friendly ----------
+   Affects printing / save-as-PDF only (useful for the legal + privacy documents).
+   Screen rendering is untouched. */
+@media print {
+  /* floating + interactive-only chrome has no place on paper */
+  .scrim-bottom, .scrollnav, .contactdock, .nav__toggle { display: none !important; }
+  /* glass, shadows and blur are screen effects — flatten for clean ink */
+  *, *::before, *::after {
+    box-shadow: none !important; text-shadow: none !important;
+    -webkit-backdrop-filter: none !important; backdrop-filter: none !important;
+  }
+  html, body, .site, .nav, .subhead, .footer, section, .band, .dotfield, .prose-page { background: #fff !important; }
+  .ret-dotgrid, .ret-dotgrid--vignette, .dotfield { background-image: none !important; }
+  .prose-page::before, .ret-dotgrid::before { display: none !important; }
+  .nav, .subhead { position: static !important; }
+  /* dark CTA panels become legible on white paper */
+  .contact__panel, .appcta { background: #fff !important; border: 1px solid #ddd !important; }
+  .contact__panel-dots, .appcta__dots { display: none !important; }
+  .contact__panel *, .appcta * { color: var(--ink) !important; }
+  .contact__form .ret-input { background: #fff !important; border-color: #ccc !important; }
+  a { color: var(--ink) !important; }
+  @page { margin: 1.5cm; }
+}
