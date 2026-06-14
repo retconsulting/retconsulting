@@ -583,5 +583,8 @@ section[id], #main { scroll-margin-top: 96px; }
   .contact__panel *, .appcta * { color: var(--ink) !important; }
   .contact__form .ret-input { background: #fff !important; border-color: #ccc !important; }
   a { color: var(--ink) !important; }
+  /* keep cards, fact rows and headings from splitting across printed pages */
+  .prose__card, .legalfacts > div, .svc, .step, .dd-card, .expcard, .feat { break-inside: avoid; }
+  h1, h2, h3 { break-after: avoid; }
   @page { margin: 1.5cm; }
 }
