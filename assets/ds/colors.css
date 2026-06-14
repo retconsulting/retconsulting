@@ -60,6 +60,7 @@
   --text-meta:       var(--ink-3);   /* technical metadata labels (AA-safe gray) */
 
   --accent:          var(--cognac);
+  --accent-btn:      #94663F;  /* darker cognac for FILLED buttons — white text = WCAG AA (4.98:1) vs 3.55:1 for #B07D54 */
   --accent-hover:    var(--cognac-deep);
   --accent-soft:     var(--cognac-soft);
   --accent-wash:     var(--cognac-wash);

@@ -25,7 +25,7 @@
 .ret-btn--md { font-size: var(--t-body); padding: 13px 24px; }
 .ret-btn--lg { font-size: var(--t-lead); padding: 17px 32px; }
 
-.ret-btn--primary { box-shadow: var(--shadow-accent); }
+.ret-btn--primary { --_bg: var(--accent-btn); box-shadow: var(--shadow-accent); }
 .ret-btn--primary:hover { --_bg: var(--accent-hover); box-shadow: 0 22px 46px -16px rgba(143,98,64,.5); transform: translateY(-1px); }
 
 .ret-btn--secondary { --_bg: var(--surface); --_fg: var(--text-primary); --_bd: var(--border-strong); box-shadow: var(--shadow-sm); }
