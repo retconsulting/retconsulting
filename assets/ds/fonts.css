@@ -1,16 +1,48 @@
 /* ==========================================================================
-   RET · Webfonts
-   Loaded from Google Fonts. Archivo ships its full variable weight axis
-   (100–900) so the thin↔black display contrast works; IBM Plex Mono powers
-   the technical metadata labels.
-   NOTE: served from the Google Fonts CDN rather than self-hosted binaries.
-   If you need offline/self-hosted woff2, ask and we'll vendor them in.
-
-   The webfonts are now loaded via a direct <link rel="stylesheet"> in each
-   page's <head> (alongside the preconnect hints) instead of an @import here.
-   A nested @import (HTML -> ds.css -> fonts.css -> Google CSS) forced a
-   request waterfall; the direct <link> starts the fetch during HTML parse.
-   Reference URL (subset to what the site actually uses: Archivo roman axis
-   only — no italic anywhere — and IBM Plex Mono at 400 only):
-   https://fonts.googleapis.com/css2?family=Archivo:wght@100..900&family=IBM+Plex+Mono:wght@400&display=swap
+   RET · Webfonts — SELF-HOSTED (no third-party request, GDPR-clean)
+   Archivo (variable 100–900) + IBM Plex Mono (400). Both SIL Open Font
+   License 1.1 — self-hosting + commercial use permitted. License + copyright
+   bundled in /assets/fonts/ (Archivo-OFL.txt, IBMPlexMono-OFL.txt).
+   woff2 from Google Fonts (the OFL files), subset to latin + latin-ext.
+   Served locally → no IP sent to Google, no consent needed.
    ========================================================================== */
+
+/* Archivo — latin */
+@font-face {
+  font-family: 'Archivo';
+  font-style: normal;
+  font-weight: 100 900;
+  font-stretch: 100%;
+  font-display: swap;
+  src: url(../fonts/archivo-latin.woff2) format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+/* Archivo — latin-ext */
+@font-face {
+  font-family: 'Archivo';
+  font-style: normal;
+  font-weight: 100 900;
+  font-stretch: 100%;
+  font-display: swap;
+  src: url(../fonts/archivo-latin-ext.woff2) format('woff2');
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+
+/* IBM Plex Mono — latin */
+@font-face {
+  font-family: 'IBM Plex Mono';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url(../fonts/ibm-plex-mono-latin.woff2) format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+/* IBM Plex Mono — latin-ext */
+@font-face {
+  font-family: 'IBM Plex Mono';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url(../fonts/ibm-plex-mono-latin-ext.woff2) format('woff2');
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
