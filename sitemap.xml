@@ -3,32 +3,72 @@
         xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
     <loc>https://retconsulting.be/</loc>
-    <lastmod>2026-06-13</lastmod>
+    <lastmod>2026-06-14</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://retconsulting.be/"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://retconsulting.be/fr/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://retconsulting.be/"/>
+  </url>
+  <url>
+    <loc>https://retconsulting.be/fr/</loc>
+    <lastmod>2026-06-14</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://retconsulting.be/"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://retconsulting.be/fr/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://retconsulting.be/"/>
   </url>
   <url>
     <loc>https://retconsulting.be/legal/</loc>
-    <lastmod>2026-06-13</lastmod>
+    <lastmod>2026-06-14</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://retconsulting.be/legal/"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://retconsulting.be/legal/fr/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://retconsulting.be/legal/"/>
+  </url>
+  <url>
+    <loc>https://retconsulting.be/legal/fr/</loc>
+    <lastmod>2026-06-14</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://retconsulting.be/legal/"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://retconsulting.be/legal/fr/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://retconsulting.be/legal/"/>
   </url>
   <url>
     <loc>https://retconsulting.be/dueday/</loc>
-    <lastmod>2026-06-13</lastmod>
+    <lastmod>2026-06-14</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://retconsulting.be/dueday/"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://retconsulting.be/dueday/fr/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://retconsulting.be/dueday/"/>
+  </url>
+  <url>
+    <loc>https://retconsulting.be/dueday/fr/</loc>
+    <lastmod>2026-06-14</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://retconsulting.be/dueday/"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://retconsulting.be/dueday/fr/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://retconsulting.be/dueday/"/>
   </url>
   <url>
     <loc>https://retconsulting.be/dueday/privacy/</loc>
-    <lastmod>2026-06-13</lastmod>
-    <xhtml:link rel="alternate" hreflang="fr" href="https://retconsulting.be/dueday/privacy/"/>
-    <xhtml:link rel="alternate" hreflang="en" href="https://retconsulting.be/dueday/privacy/en/"/>
+    <lastmod>2026-06-14</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://retconsulting.be/dueday/privacy/"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://retconsulting.be/dueday/privacy/fr/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://retconsulting.be/dueday/privacy/"/>
   </url>
   <url>
-    <loc>https://retconsulting.be/dueday/privacy/en/</loc>
-    <lastmod>2026-06-13</lastmod>
-    <xhtml:link rel="alternate" hreflang="fr" href="https://retconsulting.be/dueday/privacy/"/>
-    <xhtml:link rel="alternate" hreflang="en" href="https://retconsulting.be/dueday/privacy/en/"/>
+    <loc>https://retconsulting.be/dueday/privacy/fr/</loc>
+    <lastmod>2026-06-14</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://retconsulting.be/dueday/privacy/"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://retconsulting.be/dueday/privacy/fr/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://retconsulting.be/dueday/privacy/"/>
   </url>
   <url>
     <loc>https://retconsulting.be/dueday/support/</loc>
-    <lastmod>2026-06-13</lastmod>
+    <lastmod>2026-06-14</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://retconsulting.be/dueday/support/"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://retconsulting.be/dueday/support/fr/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://retconsulting.be/dueday/support/"/>
+  </url>
+  <url>
+    <loc>https://retconsulting.be/dueday/support/fr/</loc>
+    <lastmod>2026-06-14</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://retconsulting.be/dueday/support/"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://retconsulting.be/dueday/support/fr/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://retconsulting.be/dueday/support/"/>
   </url>
 </urlset>
