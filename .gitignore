@@ -7,3 +7,6 @@ RET Consulting Design System v2/
 
 # overnight autonomous-loop journal (local-only operational log)
 OVERNIGHT_LOG.md
+
+# product backlog (local-only: internal planning, must never be served on the public site)
+backlog.json
