@@ -604,3 +604,36 @@ section[id], #main { scroll-margin-top: 96px; }
   h1, h2, h3 { break-after: avoid; }
   @page { margin: 1.5cm; }
 }
+
+/* ---------- FIG_02 service map ---------- */
+/* Swimlane figure closing the #services section: mirrors the hero FIG_01 canvas
+   (same gradient/radius/float shadow, same centred glass stamp). The chart is an
+   inline SVG, so its strokes/text are styled here via classes using the DS tokens. */
+.svcmap-wrap { max-width: var(--container); margin-inline: auto; padding-inline: var(--gutter); margin-top: clamp(32px, 4vw, 56px); }
+.svcmap { position: relative; margin: 0; border-radius: var(--r-3xl); border: 1px solid var(--line); box-shadow: var(--shadow-float);
+  background: radial-gradient(130% 95% at 16% 6%, rgba(255,255,255,.92), rgba(255,255,255,0) 52%), radial-gradient(78% 52% at 24% 100%, rgba(176,125,84,.24), rgba(176,125,84,0) 68%), linear-gradient(158deg, var(--canvas) 0%, var(--canvas-sunken) 100%);
+  padding: clamp(24px, 4vw, 48px); padding-top: clamp(56px, 6vw, 72px); }
+.svcmap .stamp { position: absolute; top: 18px; left: 50%; transform: translateX(-50%); z-index: 3; display: flex; align-items: center; gap: 8px;
+  padding: 8px 12px; border-radius: var(--r-pill);
+  background: var(--glass-fill); -webkit-backdrop-filter: blur(var(--blur-strong)) saturate(1.5); backdrop-filter: blur(var(--blur-strong)) saturate(1.5);
+  border: 1px solid var(--glass-border); box-shadow: var(--glass-shadow);
+  font-family: var(--font-mono); font-size: 10px; letter-spacing: .14em; text-transform: uppercase; color: var(--ink-2); }
+.svcmap__scroll { overflow-x: auto; -webkit-overflow-scrolling: touch; }
+.svcmap__svg { display: block; width: 100%; min-width: 920px; height: auto; }
+/* SVG marks (inline SVG inherits these via class) */
+.svcmap__grid line { stroke: var(--line); stroke-width: 1; }
+.svcmap__solid { stroke: var(--ink); stroke-width: 2; stroke-linecap: round; }
+.svcmap__dash { stroke: var(--ink-3); stroke-width: 1.5; stroke-linecap: round; stroke-dasharray: 1 7; }
+.svcmap__dots circle { fill: var(--ink); }
+.svcmap__rings circle { fill: var(--surface); stroke: var(--ink); stroke-width: 2; }
+.svcmap__diamond { fill: var(--accent); }
+.svcmap__colhead { font-family: var(--font-mono); font-size: 10px; font-weight: 500; letter-spacing: .08em; fill: var(--ink-3); }
+.svcmap__rowtitle { font-family: var(--font-display); font-weight: 650; font-size: 17px; letter-spacing: -.01em; fill: var(--ink); }
+.svcmap__rowsub { font-family: var(--font-mono); font-weight: 400; font-size: 9.5px; letter-spacing: .08em; fill: var(--ink-3); }
+/* Legend */
+.svcmap__legend { display: flex; flex-wrap: wrap; gap: 18px; justify-content: center; margin-top: 14px;
+  font-family: var(--font-mono); font-size: 10.5px; letter-spacing: .1em; text-transform: uppercase; color: var(--ink-3); }
+.svcmap__key { display: inline-flex; align-items: center; gap: 8px; }
+.svcmap__key-line { flex: none; width: 22px; height: 0; border-top: 2px solid var(--ink); }
+.svcmap__key-dash { flex: none; width: 22px; height: 0; border-top: 2px dotted var(--ink-3); }
+@media print { .svcmap__scroll { overflow: visible !important; } .svcmap { break-inside: avoid; box-shadow: none !important; } }
