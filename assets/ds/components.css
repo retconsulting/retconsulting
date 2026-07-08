@@ -18,6 +18,9 @@
   -webkit-appearance: none; text-decoration: none;
 }
 .ret-btn:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
+/* Motion v2 button-press: transform is already in the transition list above, and this rule
+   already presses the button (scale .97) — kept as-is rather than layering a flatter
+   translateY(1px) on top, which would just override it via equal specificity. */
 .ret-btn:active { transform: translateY(0) scale(.97); }
 .ret-btn:disabled, .ret-btn[aria-disabled="true"] { opacity: .45; pointer-events: none; }
 
@@ -65,6 +68,8 @@
 }
 .ret-input::placeholder { color: var(--ink-3); }
 .ret-input:focus { outline: none; border-color: var(--accent); box-shadow: 0 0 0 3px rgba(176,125,84,.18); }
+/* keyboard-specific ring on top of :focus (mouse-focus keeps the .18 opacity above) */
+.ret-input:focus-visible { border-color: var(--accent); box-shadow: 0 0 0 3px rgba(176,125,84,.14); }
 textarea.ret-input { resize: vertical; line-height: 1.5; }
 
 /* ---------- Highlight pill — frosted icon+text chip (ported verbatim from HighlightPill) ---------- */
@@ -145,4 +150,13 @@ textarea.ret-input { resize: vertical; line-height: 1.5; }
   .appmock__line { stroke-dashoffset: 0 !important; }
   .appmock__end { opacity: 1 !important; transform: none !important; }
   .ret-hpill--tilt { animation: none !important; will-change: auto; }
+  /* Motion v2: the global *{transition-duration:.001ms} above already snaps the FIG_02/FIG_03
+     row-focus opacity fades, the nav-stuck background/box-shadow deepen, the langtoggle wash,
+     the link underline-wipe background-size, and the navMenuIn dropdown-entrance animation to
+     effectively instant — hover/focus STATE changes (colour, opacity endpoint, underline reveal)
+     still happen, only their animated transition is removed. #copyStatus needs one explicit
+     override: its resting state is opacity:0 (hidden until JS adds .is-shown), and the .001ms
+     hack only speeds up a transition, it does not change that resting value — without this rule
+     a reduced-motion visitor would never see the copy-fallback status text appear. */
+  #copyStatus { opacity: 1 !important; transform: none !important; }
 }

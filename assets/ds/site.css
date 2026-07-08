@@ -37,6 +37,7 @@ section[id], #main { scroll-margin-top: 96px; }
   background: var(--glass-fill); border: 1px solid var(--glass-border);
   -webkit-backdrop-filter: blur(var(--blur-glass)) saturate(1.5); backdrop-filter: blur(var(--blur-glass)) saturate(1.5);
   box-shadow: var(--glass-shadow);
+  transition: background-color var(--dur-base) var(--ease-out), box-shadow var(--dur-base) var(--ease-out);
 }
 .nav__brand { display: inline-flex; align-items: center; gap: 11px; text-decoration: none; transition: opacity var(--dur-base) var(--ease-out); }
 .nav__brand:hover { opacity: .72; }
@@ -191,7 +192,6 @@ section[id], #main { scroll-margin-top: 96px; }
 .svc__title { font-family: var(--font-display); font-weight: 700; font-size: 1.4rem; letter-spacing: -.01em; color: var(--ink); margin: 0 0 10px; }
 .svc__desc { font-family: var(--font-body); font-size: .95rem; line-height: 1.55; color: var(--ink-2); margin: 0; }
 .svc__desc a { color: var(--cognac-text); text-decoration: none; }
-.svc__desc a:hover { text-decoration: underline; }
 .svc__foot { margin-top: auto; padding-top: 22px; display: flex; align-items: center; gap: 8px;
   font-family: var(--font-mono); font-size: 11px; letter-spacing: .12em; text-transform: uppercase; color: var(--ink-3); }
 .svc:hover .svc__foot { color: var(--accent); }
@@ -236,20 +236,20 @@ section[id], #main { scroll-margin-top: 96px; }
 .pcard__body .ret-btn { margin-top: 18px; align-self: flex-start; }
 
 /* Client-experience review cards — duotone industry plate + glass label chip */
-.expgrid { max-width: var(--container); margin-inline: auto; padding-inline: var(--gutter);
+.expgrid { position: relative; max-width: var(--container); margin-inline: auto; padding-inline: var(--gutter);
   display: grid; grid-template-columns: repeat(5, 1fr); gap: var(--card-gap); list-style: none; }
 .expcard { display: flex; flex-direction: column; overflow: hidden; background: var(--surface);
   border: 1px solid var(--line); border-radius: var(--r-xl); box-shadow: var(--shadow-md);
   transition: transform var(--dur-base) var(--ease-out), box-shadow var(--dur-base) var(--ease-out), border-color var(--dur-base) var(--ease-out); }
 .expcard:hover { transform: translateY(var(--card-lift)); box-shadow: var(--shadow-lg); border-color: var(--border-accent); }
 .expcard__media { position: relative; aspect-ratio: 3 / 2; overflow: hidden; background: var(--canvas-sunken); }
-.expcard__media img { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform var(--dur-slow) var(--ease-out); }
-.expcard:hover .expcard__media img { transform: scale(1.04); }
-/* Icon media panel: stand-in for the 5th (Tech) mission card, no photo available; duotone gray-to-cognac tile echoing the real photo plates */
+/* Icon media panel: all 5 mission cards now use this duotone gray-to-cognac tile with a line-art
+   glyph (photo plates retired; the old .expcard__media img + hover-zoom rules are gone with them) */
 .expcard__media--icon { display: grid; place-items: center; background: linear-gradient(145deg, #D9D9DF 0%, #CFC8C1 55%, #BFA588 100%); }
-.expcard__glyph { color: var(--ink-2); opacity: .42; }
+.expcard__glyph { color: var(--ink-2); opacity: .42; transition: opacity var(--dur-base) var(--ease-out); }
 .expcard__glyph svg { width: 44%; max-width: 130px; height: auto; display: block; }
-.expcard__chip { position: absolute; top: 12px; left: 12px; z-index: 2;
+.expcard:hover .expcard__glyph { opacity: .6; }
+.expcard__chip { position: absolute; top: 12px; right: 12px; z-index: 2;
   font-family: var(--font-mono); font-size: 10px; letter-spacing: .14em; text-transform: uppercase; color: var(--ink-2);
   padding: 6px 11px; border-radius: var(--r-pill); background: var(--glass-fill); border: 1px solid var(--glass-border); box-shadow: var(--glass-shadow);
   -webkit-backdrop-filter: blur(var(--blur-glass)) saturate(1.4); backdrop-filter: blur(var(--blur-glass)) saturate(1.4); }
@@ -260,6 +260,27 @@ section[id], #main { scroll-margin-top: 96px; }
 .expcard__ref { display: flex; align-items: center; gap: 8px; font-family: var(--font-mono); font-size: 10.5px; letter-spacing: .1em; text-transform: uppercase; color: var(--ink-3); }
 .expcard__title { font-family: var(--font-display); font-weight: 700; font-size: 1.1rem; line-height: 1.18; letter-spacing: -.01em; color: var(--ink); margin: 2px 0 0; }
 .expcard__scope { font-family: var(--font-body); font-size: .86rem; line-height: 1.5; color: var(--ink-2); margin: 4px 0 0; }
+
+/* Experience cards: icon panels + chronological arrows
+   Four .expgrid__arrow <li>s (--i: 1..4) sit between the 5 mission cards, desktop-only, marking
+   the chronological read order. Absolutely positioned against .expgrid (position:relative above),
+   each centred in the gap between column N and N+1.
+   .expgrid has padding-inline: var(--gutter) — for an absolutely positioned child, percentages on
+   `left` resolve against the PADDING box (i.e. 100% = the full --gutter-to-gutter box, not just the
+   content track between the cards). So the column width has to be derived by first stripping both
+   side gutters out of 100%, and the result then needs var(--gutter) added back so the offset is
+   measured from the card track's own left edge rather than the box's outer edge. */
+.expgrid__arrow { display: none; }
+@media (min-width: 981px) {
+  .expgrid__arrow { display: grid; place-items: center; position: absolute; top: 50%;
+    left: calc(var(--gutter) + ((((100% - (var(--gutter) * 2) - (var(--card-gap) * 4)) / 5) + var(--card-gap)) * var(--i)) - (var(--card-gap) / 2));
+    transform: translate(-50%, -50%); color: var(--ink-3); pointer-events: none; }
+  .expgrid__arrow svg { display: block; }
+}
+/* arrows are children 6-9 of the .expgrid .reveal-group; the explicit nth-child stagger above only
+   covers children 2-5 (the cards), so without this they'd fade in with zero delay, ahead of card 5 */
+html.reveal-on .expgrid.is-in > .expgrid__arrow { transition-delay: calc(var(--reveal-stagger) * 5); }
+
 .cases__note { max-width: var(--container); margin: 22px auto 0; padding-inline: var(--gutter); font-family: var(--font-mono); font-size: 11px; letter-spacing: .04em; color: var(--ink-2); text-align: center; }
 
 /* ---------- About ---------- */
@@ -267,16 +288,15 @@ section[id], #main { scroll-margin-top: 96px; }
   display: grid; grid-template-columns: 360px 1fr; gap: 48px; align-items: start; }
 .about__card { background: var(--surface); border: 1px solid var(--line); border-radius: var(--r-xl); box-shadow: var(--shadow-md);
   padding: 30px; display: flex; flex-direction: column; gap: 24px; }
-.about__brand { display: flex; align-items: center; gap: 12px; }
-.about__brand img { width: 40px; height: 40px; }
-.about__brand span { font-family: var(--font-display); font-weight: 700; font-size: 15px; color: var(--ink); }
-.about__tags { display: flex; flex-wrap: wrap; gap: 8px; }
+/* personal identity header (this card is about Redha, not the company) */
+.about__id { display: flex; flex-direction: column; gap: 7px; }
+.about__name { font-family: var(--font-display); font-weight: 700; font-size: 1.3rem; letter-spacing: -.015em; color: var(--ink); }
+.about__role { font-family: var(--font-mono); font-size: 9.5px; letter-spacing: .13em; text-transform: uppercase; color: var(--ink-3); line-height: 1.6; }
 .about__facts { display: grid; gap: 0; margin: 0; }
 .about__facts > div { display: grid; grid-template-columns: 110px 1fr; gap: 14px; padding: 12px 0; border-top: 1px solid var(--line); }
 .about__facts dt { font-family: var(--font-mono); font-size: 10px; letter-spacing: .14em; text-transform: uppercase; color: var(--ink-3); padding-top: 2px; }
 .about__facts dd { margin: 0; font-family: var(--font-body); font-size: 13.5px; color: var(--ink-2); }
 .about__facts a { color: var(--cognac-text); text-decoration: none; }
-.about__facts a:hover { text-decoration: underline; }
 .about__prose p { font-family: var(--font-body); font-size: 1.15rem; line-height: 1.65; color: var(--ink-2); margin: 0 0 20px; max-width: 56ch; }
 .about__prose p:last-child { margin-bottom: 0; }
 /* skill pills under the profile prose (tilt like the hero pills; white on the sunken band) */
@@ -285,6 +305,14 @@ section[id], #main { scroll-margin-top: 96px; }
 .about__skills-row { display: flex; flex-wrap: wrap; justify-content: center; gap: 10px; max-width: 540px; }
 .about__skills-row .ret-hpill { background: var(--surface); border-color: var(--border-strong); box-shadow: var(--shadow-sm); -webkit-backdrop-filter: none; backdrop-filter: none; }
 .about__prose .accent { color: var(--cognac-text); font-weight: 500; }
+/* certification seals: mono initials in a double-ring roundel; deliberately static (non-interactive, no hover) */
+.about__certs { margin-top: 30px; }
+.about__certs > .ret-tag { display: block; margin-bottom: 16px; }
+.certbadges { list-style: none; display: flex; flex-wrap: wrap; gap: 16px 18px; margin: 0; padding: 0; }
+.certbadge { width: 64px; height: 64px; border-radius: var(--r-pill); display: grid; place-items: center; text-align: center; padding: 4px;
+  background: var(--surface); border: 1px solid var(--border-strong); outline: 1px solid var(--line); outline-offset: 3px; box-shadow: var(--shadow-sm);
+  font-family: var(--font-mono); font-size: 9.5px; letter-spacing: .05em; text-transform: uppercase; color: var(--ink-2); line-height: 1.2; }
+.about__certline { font-family: var(--font-body); font-size: 14px; line-height: 1.6; color: var(--ink-2); margin: 20px 0 0; max-width: 46ch; }
 
 /* ---------- Contact (dark CTA panel + form) ---------- */
 .contact__panel { position: relative; max-width: var(--container); margin: 0 auto; padding: clamp(36px,5vw,64px) clamp(28px,5vw,64px);
@@ -361,7 +389,7 @@ section[id], #main { scroll-margin-top: 96px; }
   transition: transform var(--dur-base) var(--ease-out), box-shadow var(--dur-base) var(--ease-out); }
 @keyframes dockincenter { from { opacity: 0; transform: translateX(-50%) translateY(16px); } to { opacity: 1; transform: translateX(-50%); } }
 .scrollnav:hover { transform: translateX(-50%) translateY(-2px); box-shadow: var(--shadow-lg), var(--shadow-inset-hi); }
-.scrollnav:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
+.scrollnav:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; transform: translateX(-50%) translateY(-2px); box-shadow: var(--shadow-lg), var(--shadow-inset-hi); }
 .scrollnav__ring { position: relative; width: 34px; height: 34px; flex: none; }
 .scrollnav__ring svg.scrollnav__dial { display: block; width: 34px; height: 34px; }
 .scrollnav__track, .scrollnav__bar { fill: none; stroke-width: 2.4; }
@@ -519,7 +547,8 @@ section[id], #main { scroll-margin-top: 96px; }
     flex-direction: column; align-items: stretch; gap: 2px; padding: 10px;
     background: var(--surface); border: 1px solid var(--line); border-radius: var(--r-lg); box-shadow: var(--shadow-lg);
     display: none; }
-  .nav__links.is-open { display: flex; }
+  .nav__links.is-open { display: flex; animation: navMenuIn 180ms var(--ease-out); }
+  @keyframes navMenuIn { from { opacity: 0; transform: translateY(-6px); } to { opacity: 1; transform: none; } }
   .nav__link { padding: 12px 14px; min-height: 44px; display: flex; align-items: center; font-size: 15px; }
   /* the dropdown carries Contact and the floating dock is the persistent CTA — drop the inline one */
   .nav__cta { display: none; }
@@ -574,10 +603,13 @@ section[id], #main { scroll-margin-top: 96px; }
   transform: translateY(var(--card-lift)); box-shadow: var(--shadow-lg); border-color: var(--border-accent);
 }
 
-/* Unified inline-link hover (the cognac prose-style links across pages) */
+/* Unified inline-link hover (the cognac prose-style links across pages).
+   Underline itself now lives in the Motion v2 wipe rule below for every selector
+   here except .footer__legal a (out of the wipe's scope — keeps its instant underline). */
 .prose a, .legalfacts a, .footer__legal a, .svc__desc a, .about__facts a { transition: color var(--dur-base) var(--ease-out); }
 .prose a:hover, .legalfacts a:hover, .footer__legal a:hover, .svc__desc a:hover, .about__facts a:hover {
-  color: var(--cognac-ink); text-decoration: underline; }
+  color: var(--cognac-ink); }
+.footer__legal a:hover { text-decoration: underline; }
 
 /* DS polish — collapse card titles to two tiers (primary .svc__title 1.4rem, secondary 1.2rem)
    and align small content-card radii to --r-xl (was a mix of r-lg/r-xl) */
@@ -784,3 +816,57 @@ html.reveal-on .fproj.is-in .appmock__end { opacity: 1; transform: scale(1); }
 
 /* ---------- Motion: contact-thanks fade-in (plays when the submit handler removes [hidden]) ---------- */
 @keyframes contactThanksIn { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: none; } }
+
+/* ==========================================================================
+   Motion v2: interactivity
+   Hover/focus layer on top of the shipped scroll-reveal system: FIG_02/FIG_03
+   row-focus dimming, sticky-nav deepen-on-scroll, the cognac underline wipe on
+   inline text links, langtoggle hover wash, and the contact-form focus flow.
+   Every selector here targeting sibling-owned markup hooks (.svcmap__row,
+   .tl__seg, .nav-sentinel, html.nav-stuck, #copyStatus.is-shown) is inert
+   until that markup lands — additive only, no base layout change.
+   ========================================================================== */
+
+/* FIG_02 service map + FIG_03 timeline: hovering one row/segment dims the rest.
+   CSS-only via :has() — browsers without :has() support simply skip the dimming
+   and the figure renders exactly as before (progressive enhancement). */
+.svcmap__row, .tl__seg { transition: opacity var(--dur-base) var(--ease-out); }
+.svcmap__svg:has(.svcmap__row:hover) .svcmap__row { opacity: .35; }
+.svcmap__svg:has(.svcmap__row:hover) .svcmap__row:hover { opacity: 1; }
+.tl__svg:has(.tl__seg:hover) .tl__seg { opacity: .35; }
+.tl__svg:has(.tl__seg:hover) .tl__seg:hover { opacity: 1; }
+.svcmap__hit, .tl__hit { pointer-events: all; }
+
+/* Sticky nav deepens once scrolled past a 1px sentinel at the top of <main>
+   (an IntersectionObserver toggles html.nav-stuck; transition lives on .nav__inner itself). */
+.nav-sentinel { position: absolute; top: 0; left: 0; width: 1px; height: 1px; pointer-events: none; }
+html.nav-stuck .nav__inner { background: var(--glass-fill-deep); box-shadow: var(--shadow-lg); }
+
+/* Cognac underline wipe on inline text links (button-styled .ret-btn anchors are a
+   separate component and stay out of this selector list). Replaces the instant
+   hover underline that .svc__desc a / .about__facts a had, and the always-on browser
+   default underline that .prose a / .legalfacts a / .contact__direct a relied on —
+   all five now draw the underline in on hover/focus instead. Colour behaviour (the
+   :hover colour swap above, and .contact__direct a's cognac-soft) is unchanged. */
+.prose a, .legalfacts a, .svc__desc a, .about__facts a, .contact__direct a {
+  text-decoration: none;
+  background-image: linear-gradient(currentColor, currentColor);
+  background-repeat: no-repeat; background-position: 0 100%; background-size: 0% 1px;
+  transition: background-size var(--dur-base) var(--ease-out), color var(--dur-base) var(--ease-out);
+}
+.prose a:hover, .prose a:focus-visible,
+.legalfacts a:hover, .legalfacts a:focus-visible,
+.svc__desc a:hover, .svc__desc a:focus-visible,
+.about__facts a:hover, .about__facts a:focus-visible,
+.contact__direct a:hover, .contact__direct a:focus-visible { background-size: 100% 1px; }
+
+/* Language toggle hover wash (colour/background transition already declared on .langtoggle__opt);
+   the active pill keeps its cognac wash rather than flashing to the neutral hover wash. */
+.langtoggle__opt:hover:not(.is-active), .langtoggle__opt:focus-visible:not(.is-active) { background: rgba(24,24,27,.05); }
+
+/* Contact-form focus flow: field label picks up the cognac accent while its input has focus,
+   and the mailto-fallback copy status slides/fades in only once the submit handler marks it shown. */
+.contact__field label { transition: color var(--dur-base) var(--ease-out); }
+.contact__field:focus-within label { color: var(--cognac-text); }
+#copyStatus { opacity: 0; transform: translateX(4px); transition: opacity var(--dur-base) var(--ease-out), transform var(--dur-base) var(--ease-out); }
+#copyStatus.is-shown { opacity: 1; transform: none; }
