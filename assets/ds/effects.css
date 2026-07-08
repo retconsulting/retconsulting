@@ -22,6 +22,9 @@
   --shadow-accent: 0 18px 40px -16px rgba(176,125,84,0.45);
   --shadow-inset-hi: inset 0 1px 0 rgba(255,255,255,0.7);
 
+  /* — Card interaction — */
+  --card-lift: -6px;  /* unified hover/focus lift for .svc/.expcard/.pcard/.dd-card/.feat */
+
   /* — Frosted glass — */
   --blur-glass:   18px;
   --blur-strong:  34px;
@@ -37,4 +40,7 @@
   --dur-fast:   140ms;   /* @kind other */
   --dur-base:   240ms;   /* @kind other */
   --dur-slow:   420ms;   /* @kind other */
+  --dur-reveal:     600ms; /* scroll-reveal fade/rise duration */
+  --reveal-dist:    16px;  /* scroll-reveal translateY distance */
+  --reveal-stagger: 80ms;  /* per-child stagger inside a .reveal-group */
 }

@@ -30,6 +30,7 @@
 <link rel="apple-touch-icon" href="/assets/apple-touch-icon.png"/>
 <link rel="manifest" href="/site.webmanifest"/>
 <meta name="apple-mobile-web-app-title" content="RET"/>
+<script>if('IntersectionObserver' in window && !matchMedia('(prefers-reduced-motion:reduce)').matches){document.documentElement.classList.add('reveal-on');}</script>
 <link rel="stylesheet" href="/assets/ds.css"/>
 <script type="application/ld+json">
 {
@@ -77,7 +78,6 @@
       <a class="nav__link" href="#about">Qui je suis</a>
       <a class="nav__link" href="#work">Réalisations</a>
       <a class="nav__link" href="#experience">Expérience</a>
-      <a class="nav__link" href="#process">Déroulé</a>
     </nav>
     <span class="nav__spacer"></span>
     <div class="langtoggle" role="group" aria-label="Language / Langue">
@@ -113,11 +113,6 @@
           <a class="ret-btn ret-btn--secondary ret-btn--lg" href="#services">Ce que je fais</a>
           <a class="ret-btn ret-btn--secondary ret-btn--lg" href="#about">Qui je suis</a>
         </div>
-        <div class="hero__proof">
-          <div class="hero__proofitem"><span class="n">8 ans</span><span class="l">En produit et analyse</span></div>
-          <div class="hero__proofitem"><span class="n">4 secteurs</span><span class="l">Des sciences de la vie au public</span></div>
-          <div class="hero__proofitem"><span class="n">FR · EN</span><span class="l">Langues de travail</span></div>
-        </div>
       </div>
       <div class="hero__visual">
         <div class="hero__canvas">
@@ -140,12 +135,44 @@
     </div>
   </section>
 
+  <section class="trustbar band" aria-labelledby="cred-h">
+    <h2 id="cred-h" class="trustbar__sr">Références en un coup d'œil</h2>
+    <div class="trustbar__inner">
+      <div class="trustbar__card reveal">
+        <div class="trustbar__col">
+          <p class="trustbar__k">EXPÉRIENCE</p>
+          <p class="trustbar__v"><span class="trustbar__num">8</span> <span class="trustbar__unit">ans</span></p>
+          <p class="trustbar__cap">En produit et analyse, dans cinq secteurs.</p>
+        </div>
+        <div class="trustbar__col">
+          <p class="trustbar__k" id="cred-cert-k">CERTIFICATIONS</p>
+          <ul class="trustbar__chips" aria-labelledby="cred-cert-k">
+            <li class="ret-tag ret-tag--boxed">SAFe POPM</li>
+            <li class="ret-tag ret-tag--boxed">PSPO I &amp; II</li>
+            <li class="ret-tag ret-tag--boxed">PSM I</li>
+            <li class="ret-tag ret-tag--boxed">Google UX</li>
+            <li class="ret-tag ret-tag--boxed">ITIL</li>
+          </ul>
+          <p class="trustbar__cap">Certifié en Scrum et SAFe, ainsi que Google UX et ITIL.</p>
+        </div>
+        <div class="trustbar__col">
+          <p class="trustbar__k" id="cred-lang-k">LANGUES</p>
+          <ul class="trustbar__chips" aria-labelledby="cred-lang-k">
+            <li class="ret-tag ret-tag--boxed" aria-label="Français">FR</li>
+            <li class="ret-tag ret-tag--boxed" aria-label="Anglais">EN</li>
+          </ul>
+          <p class="trustbar__cap">Français natif, anglais courant. À distance ou sur site.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <section class="section dotfield" id="services">
-    <div class="section__head">
+    <div class="section__head reveal-group">
       <span class="ret-tag">[CE_QUE_JE_FAIS]</span>
       <h2 class="section__title">Deux façons de travailler ensemble.</h2>
     </div>
-    <div class="services">
+    <div class="services reveal-group">
       <article class="svc">
         <div class="svc__head">
           <span class="svc__icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="8.5"/><circle cx="12" cy="12" r="4.5"/><circle cx="12" cy="12" r="0.6"/></svg></span>
@@ -177,7 +204,7 @@
       </article>
     </div>
     <div class="svcmap-wrap">
-      <figure class="svcmap" role="img" aria-label="Carte des services sur le cycle de livraison. Product owner, mission à temps plein : porte la vision produit, la stratégie, la feuille de route et le backlog, puis passe la main et reste en support. Business / functional analyst, mission à temps plein : en support des premières phases produit, porte les spécifications, le design et développement, les tests et la validation, puis passe la main au déploiement. Sites web et apps, projet à la demande : porté de bout en bout, de la vision produit au déploiement. Formation E2E, à la demande après le déploiement.">
+      <figure class="svcmap reveal" role="img" aria-label="Carte des services sur le cycle de livraison. Product owner, mission à temps plein : porte la vision produit, la stratégie, la feuille de route et le backlog, puis passe la main et reste en support. Business / functional analyst, mission à temps plein : en support des premières phases produit, porte les spécifications, le design et développement, les tests et la validation, puis passe la main au déploiement. Sites web et apps, projet à la demande : porté de bout en bout, de la vision produit au déploiement. Formation E2E, à la demande après le déploiement.">
         <span class="stamp"><span class="ret-diamond"></span>FIG_02 · CARTE DES SERVICES</span>
         <div class="svcmap__scroll">
           <svg class="svcmap__svg" viewBox="0 0 1180 640" aria-hidden="true" focusable="false">
@@ -261,10 +288,10 @@
   </section>
 
   <section class="section band" id="about">
-    <div class="section__head">
+    <div class="section__head reveal-group">
       <span class="ret-tag">[QUI_JE_SUIS]</span>
       <h2 class="section__title">Hello, moi c'est Redha <span aria-hidden="true">👋</span></h2>
-      <p class="section__lead">Plus de 8 ans en gestion de produits, comme PO et BA.</p>
+      <p class="section__lead">Product owner et business analyst indépendant, basé en Belgique. Du besoin métier au produit livré.</p>
     </div>
     <div class="about">
       <aside class="about__card">
@@ -281,7 +308,7 @@
         </div>
         <dl class="about__facts">
           <div><dt>Rôle</dt><dd>Product owner · Business analyst · Analyste fonctionnel</dd></div>
-          <div><dt>Secteurs</dt><dd>Sciences de la vie · Transport (ferroviaire) · Secteur public · Services professionnels</dd></div>
+          <div><dt>Secteurs</dt><dd>Sciences de la vie · Transport (ferroviaire) · Secteur public · Services professionnels · Tech</dd></div>
           <div><dt>Produits</dt><dd>Applications mobiles (<a href="/dueday/fr/">dueday</a>) · Applications web · Logiciels d'entreprise (ERP)</dd></div>
           <div><dt>LinkedIn</dt><dd><a href="https://www.linkedin.com/in/retbaz/" rel="me noopener">linkedin.com/in/retbaz</a></dd></div>
           <div><dt>Langues</dt><dd>Français (langue maternelle), anglais (courant)</dd></div>
@@ -289,7 +316,7 @@
       </aside>
       <div class="about__prose">
         <p>Je suis <span class="accent">product owner et business analyst</span>. RET Consulting, c'est moi : votre interlocuteur unique, du cadrage à la livraison.</p>
-        <p>Depuis 2018, je livre des produits dans les sciences de la vie, le ferroviaire international, le secteur public et les services professionnels : de grands systèmes complexes, avec de nombreuses parties prenantes à aligner.</p>
+        <p>Depuis 2018, je livre des produits dans les technologies, les sciences de la vie, le ferroviaire international, le secteur public et les services professionnels : de grands systèmes complexes, avec de nombreuses parties prenantes à aligner.</p>
         <p>Je reste concret. Comprendre le besoin, trancher les priorités, tester, documenter : le travail de l'ombre qui fait aboutir un produit.</p>
         <div class="about__skills">
           <span class="ret-tag">[COMPÉTENCES]</span>
@@ -306,62 +333,166 @@
   </section>
 
   <section class="section" id="work">
-    <div class="section__head">
+    <div class="section__head reveal-group">
       <span class="ret-tag">[RÉALISATIONS]</span>
       <h2 class="section__title">Des produits menés de l'idée au lancement.</h2>
+      <p class="section__lead">Cadré, conçu, développé et livré de bout en bout.</p>
     </div>
-    <div class="carousel">
-      <ul class="carousel__track" id="workTrack" tabindex="0" aria-label="Projets, défilement horizontal">
-        <li class="pcard">
-          <div class="pcard__cover">
-            <span class="pcard__tag">App iOS</span>
-            <span class="pcard__glyph"><svg width="46" height="46" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><rect x="6" y="2.5" width="12" height="19" rx="2.5"/><path d="M10 5.5h4"/><path d="M11 18.5h2"/></svg></span>
-            <span class="pcard__name">dueday</span>
+    <div class="fproj-wrap">
+      <article class="fproj reveal">
+        <div class="fproj__preview">
+          <div class="appmock">
+            <div class="appmock__bar">
+              <span class="appmock__dots"><i></i><i></i><i></i></span>
+              <span class="appmock__live"><span class="appmock__livedot"></span>Live</span>
+            </div>
+            <div class="appmock__screen">
+              <span class="appmock__k">EXEMPLE</span>
+              <p class="appmock__total"><span class="appmock__amt">&euro;214</span><span class="appmock__per">/mois</span></p>
+              <svg class="appmock__chart" viewBox="0 0 300 80" preserveAspectRatio="none" aria-hidden="true" focusable="false">
+                <polyline class="appmock__line" pathLength="1" points="0,64 30,58 60,62 90,48 120,52 150,40 180,44 210,30 240,34 270,22 300,18"/>
+                <circle class="appmock__end" cx="296" cy="18" r="3.5"/>
+              </svg>
+              <span class="appmock__span">12 mois</span>
+              <div class="appmock__seg"><i style="--w:40%"></i><i style="--w:26%"></i><i style="--w:20%"></i><i style="--w:14%"></i></div>
+              <ul class="appmock__rows">
+                <li><span class="appmock__ic"></span><span class="appmock__t"></span><span class="appmock__v"></span></li>
+                <li><span class="appmock__ic"></span><span class="appmock__t"></span><span class="appmock__v"></span></li>
+                <li><span class="appmock__ic"></span><span class="appmock__t"></span><span class="appmock__v"></span></li>
+                <li><span class="appmock__ic"></span><span class="appmock__t"></span><span class="appmock__v"></span></li>
+              </ul>
+            </div>
           </div>
-          <div class="pcard__body">
-            <span class="pcard__status"><span class="ret-diamond"></span>Sur l'App Store</span>
-            <h3 class="pcard__title">Un suivi des coûts récurrents</h3>
-            <p class="pcard__desc">Abonnements, loyer et factures sur un seul écran, avec un rappel avant chaque échéance. Cadré, conçu et développé de bout en bout.</p>
-            <a class="ret-btn ret-btn--secondary ret-btn--sm" href="/dueday/fr/">Voir le projet <span class="ret-btn__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7"/><path d="M8 7h9v9"/></svg></span></a>
+        </div>
+        <div class="fproj__detail">
+          <span class="fproj__status"><span class="ret-diamond"></span>Sur l'App Store</span>
+          <h3 class="fproj__name">dueday</h3>
+          <p class="fproj__desc">Chaque abonnement et coût fixe au même endroit, leur total, et un rappel avant chaque échéance. Le même travail de bout en bout que je propose ci-dessus, cadré, livré et disponible sur l'App Store.</p>
+          <dl class="fproj__facts">
+            <div><dt>Quoi</dt><dd>Suivi de coûts récurrents</dd></div>
+            <div><dt>Plateforme</dt><dd>iOS · App Store</dd></div>
+            <div><dt>Prix</dt><dd>Gratuit</dd></div>
+            <div><dt>Rôle</dt><dd>Conçu en solo, de l'idée au lancement</dd></div>
+          </dl>
+          <div class="fproj__actions">
+            <a class="ret-btn ret-btn--primary ret-btn--md" href="https://apps.apple.com/be/app/dueday-co%C3%BBts-r%C3%A9currents/id6779892758">Télécharger sur l'App Store <span class="ret-btn__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7"/><path d="M8 7h9v9"/></svg></span></a>
+            <a class="ret-btn ret-btn--secondary ret-btn--md" href="/dueday/fr/">Voir le projet</a>
           </div>
-        </li>
-        <li class="pcard pcard--soon">
-          <div class="pcard__cover pcard__cover--soon">
-            <span class="pcard__soonbadge">Bientôt</span>
-            <span class="pcard__glyph"><svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 8.5v7M8.5 12h7"/></svg></span>
-          </div>
-          <div class="pcard__body">
-            <span class="pcard__status pcard__status--muted">Prochain projet</span>
-            <h3 class="pcard__title">En préparation</h3>
-            <p class="pcard__desc">Un nouveau produit, mené de l'idée au lancement.</p>
-          </div>
-        </li>
-        <li class="pcard pcard--soon">
-          <div class="pcard__cover pcard__cover--soon">
-            <span class="pcard__soonbadge">Bientôt</span>
-            <span class="pcard__glyph"><svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7.5v5l3.5 2"/></svg></span>
-          </div>
-          <div class="pcard__body">
-            <span class="pcard__status pcard__status--muted">À venir</span>
-            <h3 class="pcard__title">À l'étude</h3>
-            <p class="pcard__desc">Un autre projet qui prend forme. Bientôt plus de détails.</p>
-          </div>
-        </li>
-      </ul>
-      <div class="carousel__nav" id="workNav" role="group" aria-label="Contrôles du carrousel de projets">
-        <button type="button" class="carousel__btn" data-dir="-1" aria-label="Projets précédents"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6"/></svg></button>
-        <button type="button" class="carousel__btn" data-dir="1" aria-label="Projets suivants"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6l6 6-6 6"/></svg></button>
-      </div>
+        </div>
+      </article>
     </div>
+    <ul class="fproj-next">
+      <li class="pcard pcard--soon">
+        <div class="pcard__cover pcard__cover--soon">
+          <span class="pcard__soonbadge">Bientôt</span>
+          <span class="pcard__glyph"><svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 8.5v7M8.5 12h7"/></svg></span>
+        </div>
+        <div class="pcard__body">
+          <span class="pcard__status pcard__status--muted">Prochain projet</span>
+          <h3 class="pcard__title">En préparation</h3>
+          <p class="pcard__desc">Un nouveau produit, mené de l'idée au lancement.</p>
+        </div>
+      </li>
+      <li class="pcard pcard--soon">
+        <div class="pcard__cover pcard__cover--soon">
+          <span class="pcard__soonbadge">Bientôt</span>
+          <span class="pcard__glyph"><svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7.5v5l3.5 2"/></svg></span>
+        </div>
+        <div class="pcard__body">
+          <span class="pcard__status pcard__status--muted">À venir</span>
+          <h3 class="pcard__title">À l'étude</h3>
+          <p class="pcard__desc">Un autre projet qui prend forme. Bientôt plus de détails.</p>
+        </div>
+      </li>
+    </ul>
   </section>
 
   <section class="section band" id="experience">
-    <div class="section__head">
+    <div class="section__head reveal-group">
       <span class="ret-tag">[EXPÉRIENCE_CLIENT]</span>
       <h2 class="section__title">Là où j'ai livré.</h2>
       <p class="section__lead">Missions sélectionnées, de la plus récente à la plus ancienne.</p>
     </div>
-    <ul class="expgrid">
+    <div class="tl-wrap">
+      <figure class="timeline reveal" role="img" aria-label="Chronologie des missions. Tech, de 2018 à 2020, 24 mois. Sciences de la vie, de 2020 à 2022, 24 mois. Secteur public, de 2022 à 2023, 12 mois. Ferroviaire, de 2023 à 2025, 24 mois. Sciences de la vie, depuis 2025, en cours. Secteurs : tech, sciences de la vie, ferroviaire, secteur public, services professionnels.">
+        <span class="stamp"><span class="ret-diamond"></span>FIG_03 · CHRONOLOGIE</span>
+        <ul class="tl__sectors">
+          <li class="tl__sector"><span class="tl__sicon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><circle cx="6" cy="7" r="2"/><circle cx="18" cy="7" r="2"/><circle cx="12" cy="17" r="2.4"/><path d="M8 7h8"/><path d="M7 8.7 10.5 15"/><path d="M17 8.7 13.5 15"/></svg></span>Sciences de la vie</li>
+          <li class="tl__sector"><span class="tl__sicon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M7 3v18M17 3v18"/><path d="M5 8h14M5 13h14M5 18h14"/></svg></span>Ferroviaire</li>
+          <li class="tl__sector"><span class="tl__sicon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M4 9 12 4l8 5"/><path d="M5 9h14"/><path d="M6 9v9M10 9v9M14 9v9M18 9v9"/><path d="M4 20h16"/></svg></span>Secteur public</li>
+          <li class="tl__sector"><span class="tl__sicon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><rect x="3.5" y="7.5" width="17" height="12" rx="2"/><path d="M8.5 7.5V6a2 2 0 0 1 2-2h3a2 2 0 0 1 2 2v1.5"/><path d="M3.5 13h17"/></svg></span>Services professionnels</li>
+          <li class="tl__sector"><span class="tl__sicon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><rect x="6" y="6" width="12" height="12" rx="2"/><rect x="9.5" y="9.5" width="5" height="5" rx="1"/><path d="M9 6V3M15 6V3M9 21v-3M15 21v-3M6 9H3M6 15H3M21 9h-3M21 15h-3"/></svg></span>Tech</li>
+        </ul>
+        <div class="tl__scroll">
+          <svg class="tl__svg" viewBox="0 0 1180 460" aria-hidden="true" focusable="false">
+            <line class="tl__axis" x1="48" y1="400" x2="1104" y2="400"/>
+            <g class="tl__ticks">
+              <line class="tl__tick" x1="60" y1="400" x2="60" y2="408"/>
+              <line class="tl__tick" x1="188" y1="400" x2="188" y2="408"/>
+              <line class="tl__tick" x1="316" y1="400" x2="316" y2="408"/>
+              <line class="tl__tick" x1="444" y1="400" x2="444" y2="408"/>
+              <line class="tl__tick" x1="572" y1="400" x2="572" y2="408"/>
+              <line class="tl__tick" x1="700" y1="400" x2="700" y2="408"/>
+              <line class="tl__tick" x1="828" y1="400" x2="828" y2="408"/>
+              <line class="tl__tick" x1="956" y1="400" x2="956" y2="408"/>
+              <line class="tl__tick" x1="1084" y1="400" x2="1084" y2="408"/>
+            </g>
+            <g class="tl__years">
+              <text class="tl__year" text-anchor="middle" x="60" y="428">2018</text>
+              <text class="tl__year" text-anchor="middle" x="188" y="428">2019</text>
+              <text class="tl__year" text-anchor="middle" x="316" y="428">2020</text>
+              <text class="tl__year" text-anchor="middle" x="444" y="428">2021</text>
+              <text class="tl__year" text-anchor="middle" x="572" y="428">2022</text>
+              <text class="tl__year" text-anchor="middle" x="700" y="428">2023</text>
+              <text class="tl__year" text-anchor="middle" x="828" y="428">2024</text>
+              <text class="tl__year" text-anchor="middle" x="956" y="428">2025</text>
+              <text class="tl__year" text-anchor="middle" x="1084" y="428">2026</text>
+            </g>
+            <g class="tl__drops">
+              <line class="tl__drop" x1="60" y1="360" x2="60" y2="400"/>
+              <line class="tl__drop" x1="316" y1="300" x2="316" y2="400"/>
+              <line class="tl__drop" x1="572" y1="240" x2="572" y2="400"/>
+              <line class="tl__drop" x1="700" y1="180" x2="700" y2="400"/>
+              <line class="tl__drop" x1="956" y1="120" x2="956" y2="400"/>
+            </g>
+            <line class="tl__solid" x1="60" y1="360" x2="316" y2="360"/>
+            <line class="tl__solid" x1="316" y1="300" x2="572" y2="300"/>
+            <line class="tl__solid" x1="572" y1="240" x2="700" y2="240"/>
+            <line class="tl__solid" x1="700" y1="180" x2="956" y2="180"/>
+            <line class="tl__now" x1="956" y1="120" x2="1084" y2="120"/>
+            <line class="tl__nowline" x1="1084" y1="100" x2="1084" y2="400"/>
+            <g class="tl__rings">
+              <circle class="tl__ring" cx="60" cy="360" r="7"/>
+              <circle class="tl__ring" cx="316" cy="300" r="7"/>
+              <circle class="tl__ring" cx="572" cy="240" r="7"/>
+              <circle class="tl__ring" cx="700" cy="180" r="7"/>
+              <circle class="tl__ring--now" cx="956" cy="120" r="7"/>
+            </g>
+            <g class="tl__marks">
+              <rect class="tl__diamond" x="310.5" y="354.5" width="11" height="11" transform="rotate(45 316 360)"/>
+              <rect class="tl__diamond" x="566.5" y="294.5" width="11" height="11" transform="rotate(45 572 300)"/>
+              <rect class="tl__diamond" x="694.5" y="234.5" width="11" height="11" transform="rotate(45 700 240)"/>
+              <rect class="tl__diamond" x="950.5" y="174.5" width="11" height="11" transform="rotate(45 956 180)"/>
+            </g>
+            <g class="tl__labels">
+              <text class="tl__name" x="60" y="330">Tech</text>
+              <text class="tl__dur" x="60" y="346">24 mois</text>
+              <text class="tl__name" x="316" y="270">Sciences de la vie</text>
+              <text class="tl__dur" x="316" y="286">24 mois</text>
+              <text class="tl__name" x="572" y="210">Secteur public</text>
+              <text class="tl__dur" x="572" y="226">12 mois</text>
+              <text class="tl__name" x="700" y="150">Ferroviaire</text>
+              <text class="tl__dur" x="700" y="166">24 mois</text>
+              <text class="tl__name" text-anchor="end" x="940" y="90">Sciences de la vie</text>
+              <text class="tl__dur" text-anchor="end" x="940" y="106">En cours</text>
+            </g>
+            <text class="tl__nowlab" text-anchor="end" x="1084" y="92">AUJOURD'HUI · 2026</text>
+            <text class="tl__note" text-anchor="end" x="1104" y="450">Détail complet dans la liste ci-dessous ↓</text>
+          </svg>
+        </div>
+      </figure>
+    </div>
+    <ul class="expgrid reveal-group">
       <li class="expcard">
         <div class="expcard__media">
           <span class="expcard__chip">Sciences de la vie</span>
@@ -410,45 +541,27 @@
           <div class="expcard__pill"><span class="ret-hpill ret-hpill--lift ret-hpill--tilt" style="--tilt:1.8deg;--tilt-amp:-2deg;--tilt-dur:2.5s;animation-delay:-1.3s"><span class="ret-hpill__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><rect x="3.5" y="3.5" width="7" height="7" rx="1.5"/><rect x="13.5" y="3.5" width="7" height="7" rx="1.5"/><rect x="3.5" y="13.5" width="7" height="7" rx="1.5"/><rect x="13.5" y="13.5" width="7" height="7" rx="1.5"/></svg></span><span>Logiciel d'entreprise</span></span></div>
         </div>
       </li>
+      <li class="expcard">
+        <div class="expcard__media expcard__media--icon">
+          <span class="expcard__chip">Tech</span>
+          <span class="expcard__glyph"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"><rect x="6" y="6" width="12" height="12" rx="2"/><rect x="9.5" y="9.5" width="5" height="5" rx="1"/><path d="M9 6V3M15 6V3M9 21v-3M15 21v-3M6 9H3M6 15H3M21 9h-3M21 15h-3"/></svg></span>
+        </div>
+        <div class="expcard__body">
+          <span class="expcard__ref"><span class="ret-diamond"></span>2018&ndash;2020 · Licences logicielles</span>
+          <h3 class="expcard__title">Analyste de licences logicielles</h3>
+          <p class="expcard__scope">Analyse des licences et des droits d'usage logiciels au sein des systèmes d'entreprise, en appui de la conformité et des achats.</p>
+          <div class="expcard__pill"><span class="ret-hpill ret-hpill--lift ret-hpill--tilt" style="--tilt:-2deg;--tilt-amp:2deg;--tilt-dur:2.4s;animation-delay:-0.5s"><span class="ret-hpill__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><rect x="3.5" y="3.5" width="7" height="7" rx="1.5"/><rect x="13.5" y="3.5" width="7" height="7" rx="1.5"/><rect x="3.5" y="13.5" width="7" height="7" rx="1.5"/><rect x="13.5" y="13.5" width="7" height="7" rx="1.5"/></svg></span><span>Logiciel d'entreprise</span></span></div>
+        </div>
+      </li>
     </ul>
     <p class="cases__note">Les noms des clients sont couverts par des accords de confidentialité. Détails sur demande.</p>
-  </section>
-
-  <section class="section" id="process">
-    <div class="section__head">
-      <span class="ret-tag">[DÉROULÉ]</span>
-      <h2 class="section__title">Comment démarre une mission.</h2>
-    </div>
-    <ol class="approach">
-      <li class="step">
-        <div class="step__head">
-          <span class="step__icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg></span>
-          <span class="step__no">STEP_01</span>
-        </div>
-        <h3 class="step__t">Premier échange</h3><p class="step__d">Un appel de 30 minutes pour comprendre votre besoin. Sans engagement.</p>
-      </li>
-      <li class="step">
-        <div class="step__head">
-          <span class="step__icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6"/><path d="M9 13h6"/><path d="M9 17h4"/></svg></span>
-          <span class="step__no">STEP_02</span>
-        </div>
-        <h3 class="step__t">Proposition écrite</h3><p class="step__d">Une proposition concise : périmètre, approche et délais, prêts à décider.</p>
-      </li>
-      <li class="step">
-        <div class="step__head">
-          <span class="step__icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="4.5" width="16" height="11" rx="1.5"/><path d="M2 19.5h20"/></svg></span>
-          <span class="step__no">STEP_03</span>
-        </div>
-        <h3 class="step__t">C'est parti</h3><p class="step__d">Le travail démarre, avec un rythme clair et un interlocuteur unique : moi.</p>
-      </li>
-    </ol>
   </section>
 
   <section class="section" id="contact">
     <div class="contact__panel">
       <div class="contact__panel-dots"></div>
       <div class="contact__inner">
-        <div class="contact__copy">
+        <div class="contact__copy reveal-group">
           <span class="ret-tag" style="color:var(--cognac-soft);">[CONTACT]</span>
           <h2>Dites-moi ce qu'il vous <span class="accent">faut.</span></h2>
           <p>Que vous ayez un cahier des charges précis, une idée encore floue ou simplement besoin d'un second avis sur le périmètre, quelques lignes suffisent. Je réponds en français ou en anglais, sous deux jours ouvrés.</p>
@@ -490,7 +603,6 @@
       <a href="#about">Qui je suis</a>
       <a href="#work">Réalisations</a>
       <a href="#experience">Expérience</a>
-      <a href="#process">Déroulé</a>
       <a href="#contact">Contact</a>
     </div>
     <div class="footer__col">
@@ -596,25 +708,6 @@
     document.addEventListener('click', function (e) { if (!e.target.closest('.nav__inner')) close(); });
   })();
 
-  // Carrousel réalisations : flèches, désactivées aux extrémités, masquées si tout tient
-  (function () {
-    var track = document.getElementById('workTrack');
-    var nav = document.getElementById('workNav');
-    if (!track || !nav) return;
-    var btns = Array.prototype.slice.call(nav.querySelectorAll('.carousel__btn'));
-    var step = function () { var c = track.querySelector('.pcard'); var g = parseInt(getComputedStyle(track).gap, 10) || 24; return c ? c.getBoundingClientRect().width + g : 320; };
-    var update = function () {
-      var max = track.scrollWidth - track.clientWidth - 1;
-      nav.style.display = max > 2 ? '' : 'none';
-      btns.forEach(function (b) { var d = Number(b.getAttribute('data-dir')); b.disabled = d < 0 ? track.scrollLeft <= 2 : track.scrollLeft >= max; });
-    };
-    var rm = window.matchMedia('(prefers-reduced-motion: reduce)');
-    btns.forEach(function (b) { b.addEventListener('click', function () { track.scrollBy({ left: step() * Number(b.getAttribute('data-dir')), behavior: rm.matches ? 'auto' : 'smooth' }); }); });
-    track.addEventListener('scroll', update, { passive: true });
-    window.addEventListener('resize', update);
-    update();
-  })();
-
   // Pilule de progression : l'anneau suit le scroll, le label affiche la section, clic = retour en haut
   (function () {
     var nav = document.getElementById('scrollnav');
@@ -622,7 +715,7 @@
     var label = document.getElementById('scrollnavLabel');
     if (!nav || !bar || !label) return;
     var CIRC = 97.39;
-    var SECTIONS = [['hero', 'Accueil'], ['services', 'Ce que je fais'], ['about', 'Qui je suis'], ['work', 'Réalisations'], ['experience', 'Expérience'], ['process', 'Déroulé'], ['contact', 'Contact']];
+    var SECTIONS = [['hero', 'Accueil'], ['services', 'Ce que je fais'], ['about', 'Qui je suis'], ['work', 'Réalisations'], ['experience', 'Expérience'], ['contact', 'Contact']];
     var rm = window.matchMedia('(prefers-reduced-motion: reduce)');
     var ticking = false;
     var render = function () {
@@ -643,6 +736,24 @@
     window.addEventListener('resize', onScroll);
     nav.addEventListener('click', function (e) { e.preventDefault(); window.scrollTo({ top: 0, behavior: rm.matches ? 'auto' : 'smooth' }); });
     render();
+  })();
+
+  // Révélation au scroll : fait apparaître (fondu + montée) les éléments .reveal / .reveal-group à la première intersection
+  (function () {
+    if (!document.documentElement.classList.contains('reveal-on')) return;
+    var els = document.querySelectorAll('.reveal,.reveal-group');
+    if (!els.length) return;
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        if (!entry.isIntersecting) return;
+        var el = entry.target;
+        el.style.willChange = 'opacity,transform';
+        el.classList.add('is-in');
+        el.addEventListener('transitionend', function h() { el.style.willChange = ''; el.removeEventListener('transitionend', h); });
+        io.unobserve(el);
+      });
+    }, { threshold: 0, rootMargin: '0px 0px -12% 0px' });
+    els.forEach(function (el) { io.observe(el); });
   })();
 
   document.getElementById('year').textContent = new Date().getFullYear();

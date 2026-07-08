@@ -30,6 +30,7 @@
 <link rel="apple-touch-icon" href="assets/apple-touch-icon.png"/>
 <link rel="manifest" href="/site.webmanifest"/>
 <meta name="apple-mobile-web-app-title" content="RET"/>
+<script>if('IntersectionObserver' in window && !matchMedia('(prefers-reduced-motion:reduce)').matches){document.documentElement.classList.add('reveal-on');}</script>
 <link rel="stylesheet" href="assets/ds.css"/>
 <script type="application/ld+json">
 {
@@ -77,7 +78,6 @@
       <a class="nav__link" href="#about">Who I am</a>
       <a class="nav__link" href="#work">Portfolio</a>
       <a class="nav__link" href="#experience">Experience</a>
-      <a class="nav__link" href="#process">How it works</a>
     </nav>
     <span class="nav__spacer"></span>
     <div class="langtoggle" role="group" aria-label="Language / Langue">
@@ -86,7 +86,7 @@
     </div>
     <div class="nav__cta">
       <a class="ret-btn ret-btn--primary ret-btn--sm" href="#contact">
-        Get in touch
+        Contact me
         <span class="ret-btn__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7"/><path d="M8 7h9v9"/></svg></span>
       </a>
     </div>
@@ -109,14 +109,9 @@
         <h1 class="hero__title"><span class="thin">From business need to</span><span class="accent">delivered product.</span></h1>
         <p class="hero__lead">Bridging what the business needs and what the technical team builds: <span class="ret-hpill ret-hpill--inline ret-hpill--seq" style="--tilt:-2deg;animation-delay:0s"><span class="ret-hpill__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><rect x="3.5" y="3.5" width="7" height="7" rx="1.5"/><rect x="13.5" y="3.5" width="7" height="7" rx="1.5"/><rect x="3.5" y="13.5" width="7" height="7" rx="1.5"/><rect x="13.5" y="13.5" width="7" height="7" rx="1.5"/></svg></span><span>Enterprise Software</span></span> on large programmes, a <span class="ret-hpill ret-hpill--inline ret-hpill--seq" style="--tilt:1.6deg;animation-delay:1.3s"><span class="ret-hpill__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><rect x="6" y="2.5" width="12" height="19" rx="2.5"/><path d="M11 18.5h2"/></svg></span><span>Mobile App</span></span> like dueday, and the occasional <span class="ret-hpill ret-hpill--inline ret-hpill--seq" style="--tilt:-1.4deg;animation-delay:2.6s"><span class="ret-hpill__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4.5" width="18" height="15" rx="2"/><path d="M3 9h18"/><path d="M6.5 6.7h.01M9 6.7h.01"/></svg></span><span>Web App</span></span>. Clear on what to build, then through to delivery.</p>
         <div class="hero__actions">
-          <a class="ret-btn ret-btn--primary ret-btn--lg" href="#contact">Get in touch <span class="ret-btn__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7"/><path d="M8 7h9v9"/></svg></span></a>
+          <a class="ret-btn ret-btn--primary ret-btn--lg" href="#contact">Contact me <span class="ret-btn__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7"/><path d="M8 7h9v9"/></svg></span></a>
           <a class="ret-btn ret-btn--secondary ret-btn--lg" href="#services">What I do</a>
           <a class="ret-btn ret-btn--secondary ret-btn--lg" href="#about">Who I am</a>
-        </div>
-        <div class="hero__proof">
-          <div class="hero__proofitem"><span class="n">8 yrs</span><span class="l">In product &amp; analysis</span></div>
-          <div class="hero__proofitem"><span class="n">4 sectors</span><span class="l">Life sciences to public sector</span></div>
-          <div class="hero__proofitem"><span class="n">FR · EN</span><span class="l">Working languages</span></div>
         </div>
       </div>
       <div class="hero__visual">
@@ -140,12 +135,44 @@
     </div>
   </section>
 
+  <section class="trustbar band" aria-labelledby="cred-h">
+    <h2 id="cred-h" class="trustbar__sr">Credentials at a glance</h2>
+    <div class="trustbar__inner">
+      <div class="trustbar__card reveal">
+        <div class="trustbar__col">
+          <p class="trustbar__k">EXPERIENCE</p>
+          <p class="trustbar__v"><span class="trustbar__num">8</span> <span class="trustbar__unit">years</span></p>
+          <p class="trustbar__cap">In product and analysis, across five sectors.</p>
+        </div>
+        <div class="trustbar__col">
+          <p class="trustbar__k" id="cred-cert-k">CERTIFICATIONS</p>
+          <ul class="trustbar__chips" aria-labelledby="cred-cert-k">
+            <li class="ret-tag ret-tag--boxed">SAFe POPM</li>
+            <li class="ret-tag ret-tag--boxed">PSPO I &amp; II</li>
+            <li class="ret-tag ret-tag--boxed">PSM I</li>
+            <li class="ret-tag ret-tag--boxed">Google UX</li>
+            <li class="ret-tag ret-tag--boxed">ITIL</li>
+          </ul>
+          <p class="trustbar__cap">Certified in Scrum and SAFe, plus Google UX and ITIL.</p>
+        </div>
+        <div class="trustbar__col">
+          <p class="trustbar__k" id="cred-lang-k">LANGUAGES</p>
+          <ul class="trustbar__chips" aria-labelledby="cred-lang-k">
+            <li class="ret-tag ret-tag--boxed" aria-label="French">FR</li>
+            <li class="ret-tag ret-tag--boxed" aria-label="English">EN</li>
+          </ul>
+          <p class="trustbar__cap">French native, English fluent. Remote or on-site.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <section class="section dotfield" id="services">
-    <div class="section__head">
+    <div class="section__head reveal-group">
       <span class="ret-tag">[WHAT_I_DO]</span>
       <h2 class="section__title">Two ways to work together.</h2>
     </div>
-    <div class="services">
+    <div class="services reveal-group">
       <article class="svc">
         <div class="svc__head">
           <span class="svc__icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="8.5"/><circle cx="12" cy="12" r="4.5"/><circle cx="12" cy="12" r="0.6"/></svg></span>
@@ -177,7 +204,7 @@
       </article>
     </div>
     <div class="svcmap-wrap">
-      <figure class="svcmap" role="img" aria-label="Service map across the delivery cycle. Product owner, full-time mission: owns product vision, strategy, roadmap and backlog, then hands over and stays in support. Business or functional analyst, full-time mission: supports the early product phases, owns requirement specification, design and build, test and validate, then hands over at deploy and hypercare. Websites and apps, on-demand project: owned end to end, from product vision to deploy and hypercare. E2E training, delivered on demand after deployment.">
+      <figure class="svcmap reveal" role="img" aria-label="Service map across the delivery cycle. Product owner, full-time mission: owns product vision, strategy, roadmap and backlog, then hands over and stays in support. Business or functional analyst, full-time mission: supports the early product phases, owns requirement specification, design and build, test and validate, then hands over at deploy and hypercare. Websites and apps, on-demand project: owned end to end, from product vision to deploy and hypercare. E2E training, delivered on demand after deployment.">
         <span class="stamp"><span class="ret-diamond"></span>FIG_02 · SERVICE MAP</span>
         <div class="svcmap__scroll">
           <svg class="svcmap__svg" viewBox="0 0 1180 640" aria-hidden="true" focusable="false">
@@ -261,10 +288,10 @@
   </section>
 
   <section class="section band" id="about">
-    <div class="section__head">
+    <div class="section__head reveal-group">
       <span class="ret-tag">[WHO_I_AM]</span>
       <h2 class="section__title">Hi, I'm Redha <span aria-hidden="true">👋</span></h2>
-      <p class="section__lead">8+ years of product management as PO and BA.</p>
+      <p class="section__lead">Independent product owner and business analyst, based in Belgium. From business need to delivered product.</p>
     </div>
     <div class="about">
       <aside class="about__card">
@@ -281,7 +308,7 @@
         </div>
         <dl class="about__facts">
           <div><dt>Role</dt><dd>Product owner · Business analyst · Functional analyst</dd></div>
-          <div><dt>Sectors</dt><dd>Life sciences · Transportation (rail) · Public sector · Professional services</dd></div>
+          <div><dt>Sectors</dt><dd>Life sciences · Transportation (rail) · Public sector · Professional services · Tech</dd></div>
           <div><dt>Products</dt><dd>Mobile apps (<a href="dueday/">dueday</a>) · Web apps · Enterprise software (ERP)</dd></div>
           <div><dt>LinkedIn</dt><dd><a href="https://www.linkedin.com/in/retbaz/" rel="me noopener">linkedin.com/in/retbaz</a></dd></div>
           <div><dt>Languages</dt><dd>French (native), English (fluent)</dd></div>
@@ -289,7 +316,7 @@
       </aside>
       <div class="about__prose">
         <p>I'm a <span class="accent">product owner and analyst</span>. RET Consulting is represented by me, your single point of contact throughout our collaboration.</p>
-        <p>Since 2018, I've delivered products across life sciences, international rail, the public sector and professional services: large, complex systems with many stakeholders to bring together.</p>
+        <p>Since 2018, I've delivered products across technology, life sciences, international rail, the public sector and professional services: large, complex systems with many stakeholders to bring together.</p>
         <p>I keep it concrete. Understand the need, settle the priorities, test, document: the unglamorous work that gets a product out the door.</p>
         <div class="about__skills">
           <span class="ret-tag">[SKILLS]</span>
@@ -306,62 +333,166 @@
   </section>
 
   <section class="section" id="work">
-    <div class="section__head">
+    <div class="section__head reveal-group">
       <span class="ret-tag">[PORTFOLIO]</span>
       <h2 class="section__title">Products I take from idea to launch.</h2>
+      <p class="section__lead">Scoped, designed, built and shipped end to end.</p>
     </div>
-    <div class="carousel">
-      <ul class="carousel__track" id="workTrack" tabindex="0" aria-label="Projects, horizontally scrollable">
-        <li class="pcard">
-          <div class="pcard__cover">
-            <span class="pcard__tag">iOS app</span>
-            <span class="pcard__glyph"><svg width="46" height="46" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><rect x="6" y="2.5" width="12" height="19" rx="2.5"/><path d="M10 5.5h4"/><path d="M11 18.5h2"/></svg></span>
-            <span class="pcard__name">dueday</span>
+    <div class="fproj-wrap">
+      <article class="fproj reveal">
+        <div class="fproj__preview">
+          <div class="appmock">
+            <div class="appmock__bar">
+              <span class="appmock__dots"><i></i><i></i><i></i></span>
+              <span class="appmock__live"><span class="appmock__livedot"></span>Live</span>
+            </div>
+            <div class="appmock__screen">
+              <span class="appmock__k">SAMPLE DATA</span>
+              <p class="appmock__total"><span class="appmock__amt">&euro;214</span><span class="appmock__per">/mo</span></p>
+              <svg class="appmock__chart" viewBox="0 0 300 80" preserveAspectRatio="none" aria-hidden="true" focusable="false">
+                <polyline class="appmock__line" pathLength="1" points="0,64 30,58 60,62 90,48 120,52 150,40 180,44 210,30 240,34 270,22 300,18"/>
+                <circle class="appmock__end" cx="296" cy="18" r="3.5"/>
+              </svg>
+              <span class="appmock__span">12 months</span>
+              <div class="appmock__seg"><i style="--w:40%"></i><i style="--w:26%"></i><i style="--w:20%"></i><i style="--w:14%"></i></div>
+              <ul class="appmock__rows">
+                <li><span class="appmock__ic"></span><span class="appmock__t"></span><span class="appmock__v"></span></li>
+                <li><span class="appmock__ic"></span><span class="appmock__t"></span><span class="appmock__v"></span></li>
+                <li><span class="appmock__ic"></span><span class="appmock__t"></span><span class="appmock__v"></span></li>
+                <li><span class="appmock__ic"></span><span class="appmock__t"></span><span class="appmock__v"></span></li>
+              </ul>
+            </div>
           </div>
-          <div class="pcard__body">
-            <span class="pcard__status"><span class="ret-diamond"></span>On the App Store</span>
-            <h3 class="pcard__title">A recurring-cost tracker</h3>
-            <p class="pcard__desc">Subscriptions, rent and bills on one screen, with a reminder before each due date. Scoped, designed and built end to end.</p>
-            <a class="ret-btn ret-btn--secondary ret-btn--sm" href="dueday/">See the project <span class="ret-btn__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7"/><path d="M8 7h9v9"/></svg></span></a>
+        </div>
+        <div class="fproj__detail">
+          <span class="fproj__status"><span class="ret-diamond"></span>On the App Store</span>
+          <h3 class="fproj__name">dueday</h3>
+          <p class="fproj__desc">Every subscription and fixed cost in one place, what they add up to, and a reminder before each due date. The same end to end build I offer above, scoped, shipped and live on the App Store.</p>
+          <dl class="fproj__facts">
+            <div><dt>What</dt><dd>Recurring-cost tracker</dd></div>
+            <div><dt>Platform</dt><dd>iOS · App Store</dd></div>
+            <div><dt>Price</dt><dd>Free</dd></div>
+            <div><dt>Role</dt><dd>Built solo, idea to launch</dd></div>
+          </dl>
+          <div class="fproj__actions">
+            <a class="ret-btn ret-btn--primary ret-btn--md" href="https://apps.apple.com/be/app/dueday-co%C3%BBts-r%C3%A9currents/id6779892758">Download on the App Store <span class="ret-btn__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7"/><path d="M8 7h9v9"/></svg></span></a>
+            <a class="ret-btn ret-btn--secondary ret-btn--md" href="dueday/">See the project</a>
           </div>
-        </li>
-        <li class="pcard pcard--soon">
-          <div class="pcard__cover pcard__cover--soon">
-            <span class="pcard__soonbadge">Coming soon</span>
-            <span class="pcard__glyph"><svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 8.5v7M8.5 12h7"/></svg></span>
-          </div>
-          <div class="pcard__body">
-            <span class="pcard__status pcard__status--muted">Next project</span>
-            <h3 class="pcard__title">In the works</h3>
-            <p class="pcard__desc">A new product, taken from idea to launch.</p>
-          </div>
-        </li>
-        <li class="pcard pcard--soon">
-          <div class="pcard__cover pcard__cover--soon">
-            <span class="pcard__soonbadge">Coming soon</span>
-            <span class="pcard__glyph"><svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7.5v5l3.5 2"/></svg></span>
-          </div>
-          <div class="pcard__body">
-            <span class="pcard__status pcard__status--muted">Next up</span>
-            <h3 class="pcard__title">In the pipeline</h3>
-            <p class="pcard__desc">Another build taking shape. Details soon.</p>
-          </div>
-        </li>
-      </ul>
-      <div class="carousel__nav" id="workNav" role="group" aria-label="Project carousel controls">
-        <button type="button" class="carousel__btn" data-dir="-1" aria-label="Previous projects"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6"/></svg></button>
-        <button type="button" class="carousel__btn" data-dir="1" aria-label="Next projects"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6l6 6-6 6"/></svg></button>
-      </div>
+        </div>
+      </article>
     </div>
+    <ul class="fproj-next">
+      <li class="pcard pcard--soon">
+        <div class="pcard__cover pcard__cover--soon">
+          <span class="pcard__soonbadge">Coming soon</span>
+          <span class="pcard__glyph"><svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 8.5v7M8.5 12h7"/></svg></span>
+        </div>
+        <div class="pcard__body">
+          <span class="pcard__status pcard__status--muted">Next project</span>
+          <h3 class="pcard__title">In the works</h3>
+          <p class="pcard__desc">A new product, taken from idea to launch.</p>
+        </div>
+      </li>
+      <li class="pcard pcard--soon">
+        <div class="pcard__cover pcard__cover--soon">
+          <span class="pcard__soonbadge">Coming soon</span>
+          <span class="pcard__glyph"><svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7.5v5l3.5 2"/></svg></span>
+        </div>
+        <div class="pcard__body">
+          <span class="pcard__status pcard__status--muted">Next up</span>
+          <h3 class="pcard__title">In the pipeline</h3>
+          <p class="pcard__desc">Another build taking shape. Details soon.</p>
+        </div>
+      </li>
+    </ul>
   </section>
 
   <section class="section band" id="experience">
-    <div class="section__head">
+    <div class="section__head reveal-group">
       <span class="ret-tag">[CLIENT_EXPERIENCE]</span>
       <h2 class="section__title">Where I've delivered.</h2>
       <p class="section__lead">Selected missions, most recent first.</p>
     </div>
-    <ul class="expgrid">
+    <div class="tl-wrap">
+      <figure class="timeline reveal" role="img" aria-label="Delivery timeline. Technology, 2018 to 2020, 24 months. Life sciences, 2020 to 2022, 24 months. Public sector, 2022 to 2023, 12 months. Rail, 2023 to 2025, 24 months. Life sciences, since 2025, ongoing. Sectors delivered in: technology, life sciences, rail, public sector, professional services.">
+        <span class="stamp"><span class="ret-diamond"></span>FIG_03 · TIMELINE</span>
+        <ul class="tl__sectors">
+          <li class="tl__sector"><span class="tl__sicon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><circle cx="6" cy="7" r="2"/><circle cx="18" cy="7" r="2"/><circle cx="12" cy="17" r="2.4"/><path d="M8 7h8"/><path d="M7 8.7 10.5 15"/><path d="M17 8.7 13.5 15"/></svg></span>Life sciences</li>
+          <li class="tl__sector"><span class="tl__sicon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M7 3v18M17 3v18"/><path d="M5 8h14M5 13h14M5 18h14"/></svg></span>Rail</li>
+          <li class="tl__sector"><span class="tl__sicon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M4 9 12 4l8 5"/><path d="M5 9h14"/><path d="M6 9v9M10 9v9M14 9v9M18 9v9"/><path d="M4 20h16"/></svg></span>Public sector</li>
+          <li class="tl__sector"><span class="tl__sicon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><rect x="3.5" y="7.5" width="17" height="12" rx="2"/><path d="M8.5 7.5V6a2 2 0 0 1 2-2h3a2 2 0 0 1 2 2v1.5"/><path d="M3.5 13h17"/></svg></span>Professional services</li>
+          <li class="tl__sector"><span class="tl__sicon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><rect x="6" y="6" width="12" height="12" rx="2"/><rect x="9.5" y="9.5" width="5" height="5" rx="1"/><path d="M9 6V3M15 6V3M9 21v-3M15 21v-3M6 9H3M6 15H3M21 9h-3M21 15h-3"/></svg></span>Tech</li>
+        </ul>
+        <div class="tl__scroll">
+          <svg class="tl__svg" viewBox="0 0 1180 460" aria-hidden="true" focusable="false">
+            <line class="tl__axis" x1="48" y1="400" x2="1104" y2="400"/>
+            <g class="tl__ticks">
+              <line class="tl__tick" x1="60" y1="400" x2="60" y2="408"/>
+              <line class="tl__tick" x1="188" y1="400" x2="188" y2="408"/>
+              <line class="tl__tick" x1="316" y1="400" x2="316" y2="408"/>
+              <line class="tl__tick" x1="444" y1="400" x2="444" y2="408"/>
+              <line class="tl__tick" x1="572" y1="400" x2="572" y2="408"/>
+              <line class="tl__tick" x1="700" y1="400" x2="700" y2="408"/>
+              <line class="tl__tick" x1="828" y1="400" x2="828" y2="408"/>
+              <line class="tl__tick" x1="956" y1="400" x2="956" y2="408"/>
+              <line class="tl__tick" x1="1084" y1="400" x2="1084" y2="408"/>
+            </g>
+            <g class="tl__years">
+              <text class="tl__year" text-anchor="middle" x="60" y="428">2018</text>
+              <text class="tl__year" text-anchor="middle" x="188" y="428">2019</text>
+              <text class="tl__year" text-anchor="middle" x="316" y="428">2020</text>
+              <text class="tl__year" text-anchor="middle" x="444" y="428">2021</text>
+              <text class="tl__year" text-anchor="middle" x="572" y="428">2022</text>
+              <text class="tl__year" text-anchor="middle" x="700" y="428">2023</text>
+              <text class="tl__year" text-anchor="middle" x="828" y="428">2024</text>
+              <text class="tl__year" text-anchor="middle" x="956" y="428">2025</text>
+              <text class="tl__year" text-anchor="middle" x="1084" y="428">2026</text>
+            </g>
+            <g class="tl__drops">
+              <line class="tl__drop" x1="60" y1="360" x2="60" y2="400"/>
+              <line class="tl__drop" x1="316" y1="300" x2="316" y2="400"/>
+              <line class="tl__drop" x1="572" y1="240" x2="572" y2="400"/>
+              <line class="tl__drop" x1="700" y1="180" x2="700" y2="400"/>
+              <line class="tl__drop" x1="956" y1="120" x2="956" y2="400"/>
+            </g>
+            <line class="tl__solid" x1="60" y1="360" x2="316" y2="360"/>
+            <line class="tl__solid" x1="316" y1="300" x2="572" y2="300"/>
+            <line class="tl__solid" x1="572" y1="240" x2="700" y2="240"/>
+            <line class="tl__solid" x1="700" y1="180" x2="956" y2="180"/>
+            <line class="tl__now" x1="956" y1="120" x2="1084" y2="120"/>
+            <line class="tl__nowline" x1="1084" y1="100" x2="1084" y2="400"/>
+            <g class="tl__rings">
+              <circle class="tl__ring" cx="60" cy="360" r="7"/>
+              <circle class="tl__ring" cx="316" cy="300" r="7"/>
+              <circle class="tl__ring" cx="572" cy="240" r="7"/>
+              <circle class="tl__ring" cx="700" cy="180" r="7"/>
+              <circle class="tl__ring--now" cx="956" cy="120" r="7"/>
+            </g>
+            <g class="tl__marks">
+              <rect class="tl__diamond" x="310.5" y="354.5" width="11" height="11" transform="rotate(45 316 360)"/>
+              <rect class="tl__diamond" x="566.5" y="294.5" width="11" height="11" transform="rotate(45 572 300)"/>
+              <rect class="tl__diamond" x="694.5" y="234.5" width="11" height="11" transform="rotate(45 700 240)"/>
+              <rect class="tl__diamond" x="950.5" y="174.5" width="11" height="11" transform="rotate(45 956 180)"/>
+            </g>
+            <g class="tl__labels">
+              <text class="tl__name" x="60" y="330">Tech</text>
+              <text class="tl__dur" x="60" y="346">24 mo</text>
+              <text class="tl__name" x="316" y="270">Life sciences</text>
+              <text class="tl__dur" x="316" y="286">24 mo</text>
+              <text class="tl__name" x="572" y="210">Public sector</text>
+              <text class="tl__dur" x="572" y="226">12 mo</text>
+              <text class="tl__name" x="700" y="150">Rail</text>
+              <text class="tl__dur" x="700" y="166">24 mo</text>
+              <text class="tl__name" text-anchor="end" x="1000" y="90">Life sciences</text>
+              <text class="tl__dur" text-anchor="end" x="1000" y="106">Ongoing</text>
+            </g>
+            <text class="tl__nowlab" text-anchor="end" x="1084" y="92">NOW · 2026</text>
+            <text class="tl__note" text-anchor="end" x="1104" y="450">Full detail in the list below ↓</text>
+          </svg>
+        </div>
+      </figure>
+    </div>
+    <ul class="expgrid reveal-group">
       <li class="expcard">
         <div class="expcard__media">
           <span class="expcard__chip">Life Sciences</span>
@@ -410,46 +541,28 @@
           <div class="expcard__pill"><span class="ret-hpill ret-hpill--lift ret-hpill--tilt" style="--tilt:1.8deg;--tilt-amp:-2deg;--tilt-dur:2.5s;animation-delay:-1.3s"><span class="ret-hpill__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><rect x="3.5" y="3.5" width="7" height="7" rx="1.5"/><rect x="13.5" y="3.5" width="7" height="7" rx="1.5"/><rect x="3.5" y="13.5" width="7" height="7" rx="1.5"/><rect x="13.5" y="13.5" width="7" height="7" rx="1.5"/></svg></span><span>Enterprise Software</span></span></div>
         </div>
       </li>
+      <li class="expcard">
+        <div class="expcard__media expcard__media--icon">
+          <span class="expcard__chip">Tech</span>
+          <span class="expcard__glyph"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"><rect x="6" y="6" width="12" height="12" rx="2"/><rect x="9.5" y="9.5" width="5" height="5" rx="1"/><path d="M9 6V3M15 6V3M9 21v-3M15 21v-3M6 9H3M6 15H3M21 9h-3M21 15h-3"/></svg></span>
+        </div>
+        <div class="expcard__body">
+          <span class="expcard__ref"><span class="ret-diamond"></span>2018&ndash;2020 · Software licensing</span>
+          <h3 class="expcard__title">Software license analyst</h3>
+          <p class="expcard__scope">Software licensing and entitlement analysis across enterprise systems, supporting compliance and procurement decisions.</p>
+          <div class="expcard__pill"><span class="ret-hpill ret-hpill--lift ret-hpill--tilt" style="--tilt:-2deg;--tilt-amp:2deg;--tilt-dur:2.4s;animation-delay:-0.5s"><span class="ret-hpill__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><rect x="3.5" y="3.5" width="7" height="7" rx="1.5"/><rect x="13.5" y="3.5" width="7" height="7" rx="1.5"/><rect x="3.5" y="13.5" width="7" height="7" rx="1.5"/><rect x="13.5" y="13.5" width="7" height="7" rx="1.5"/></svg></span><span>Enterprise Software</span></span></div>
+        </div>
+      </li>
     </ul>
     <p class="cases__note">Client names are withheld under confidentiality agreements. Details on request.</p>
-  </section>
-
-  <section class="section" id="process">
-    <div class="section__head">
-      <span class="ret-tag">[HOW_IT_WORKS]</span>
-      <h2 class="section__title">How an engagement starts.</h2>
-    </div>
-    <ol class="approach">
-      <li class="step">
-        <div class="step__head">
-          <span class="step__icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg></span>
-          <span class="step__no">STEP_01</span>
-        </div>
-        <h3 class="step__t">Intro call</h3><p class="step__d">A 30-minute call to understand what you need. No commitment.</p>
-      </li>
-      <li class="step">
-        <div class="step__head">
-          <span class="step__icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6"/><path d="M9 13h6"/><path d="M9 17h4"/></svg></span>
-          <span class="step__no">STEP_02</span>
-        </div>
-        <h3 class="step__t">Written proposal</h3><p class="step__d">A short proposal with scope, approach and a timeline you can act on.</p>
-      </li>
-      <li class="step">
-        <div class="step__head">
-          <span class="step__icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="4.5" width="16" height="11" rx="1.5"/><path d="M2 19.5h20"/></svg></span>
-          <span class="step__no">STEP_03</span>
-        </div>
-        <h3 class="step__t">Work starts</h3><p class="step__d">Work begins with a clear rhythm and a single point of contact: me.</p>
-      </li>
-    </ol>
   </section>
 
   <section class="section" id="contact">
     <div class="contact__panel">
       <div class="contact__panel-dots"></div>
       <div class="contact__inner">
-        <div class="contact__copy">
-          <span class="ret-tag" style="color:var(--cognac-soft);">[GET_IN_TOUCH]</span>
+        <div class="contact__copy reveal-group">
+          <span class="ret-tag" style="color:var(--cognac-soft);">[CONTACT_ME]</span>
           <h2>Tell me what you <span class="accent">need.</span></h2>
           <p>Whether you have a defined brief, a rough idea, or just want a second opinion on scope, a few lines are enough. I reply in English or French, within two business days.</p>
           <p class="contact__direct">Or directly: <a href="mailto:retbaz@retconsulting.be">retbaz@retconsulting.be</a></p>
@@ -490,7 +603,6 @@
       <a href="#about">Who I am</a>
       <a href="#work">Portfolio</a>
       <a href="#experience">Experience</a>
-      <a href="#process">How it works</a>
       <a href="#contact">Contact</a>
     </div>
     <div class="footer__col">
@@ -522,9 +634,9 @@
   <span class="scrollnav__label" id="scrollnavLabel">Home</span>
 </a>
 
-<a class="contactdock" href="#contact" aria-label="Get in touch">
+<a class="contactdock" href="#contact" aria-label="Contact me">
   <span class="contactdock__icon"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg></span>
-  <span class="txt">Get in touch</span>
+  <span class="txt">Contact me</span>
 </a>
 
 <script>
@@ -596,25 +708,6 @@
     document.addEventListener('click', function (e) { if (!e.target.closest('.nav__inner')) close(); });
   })();
 
-  // Portfolio carousel: arrow nav, disabled at ends, hidden when the track fits
-  (function () {
-    var track = document.getElementById('workTrack');
-    var nav = document.getElementById('workNav');
-    if (!track || !nav) return;
-    var btns = Array.prototype.slice.call(nav.querySelectorAll('.carousel__btn'));
-    var step = function () { var c = track.querySelector('.pcard'); var g = parseInt(getComputedStyle(track).gap, 10) || 24; return c ? c.getBoundingClientRect().width + g : 320; };
-    var update = function () {
-      var max = track.scrollWidth - track.clientWidth - 1;
-      nav.style.display = max > 2 ? '' : 'none';
-      btns.forEach(function (b) { var d = Number(b.getAttribute('data-dir')); b.disabled = d < 0 ? track.scrollLeft <= 2 : track.scrollLeft >= max; });
-    };
-    var rm = window.matchMedia('(prefers-reduced-motion: reduce)');
-    btns.forEach(function (b) { b.addEventListener('click', function () { track.scrollBy({ left: step() * Number(b.getAttribute('data-dir')), behavior: rm.matches ? 'auto' : 'smooth' }); }); });
-    track.addEventListener('scroll', update, { passive: true });
-    window.addEventListener('resize', update);
-    update();
-  })();
-
   // Floating scroll-progress pill: ring tracks scroll %, label shows the current section, click scrolls to top
   (function () {
     var nav = document.getElementById('scrollnav');
@@ -622,7 +715,7 @@
     var label = document.getElementById('scrollnavLabel');
     if (!nav || !bar || !label) return;
     var CIRC = 97.39;
-    var SECTIONS = [['hero', 'Home'], ['services', 'What I do'], ['about', 'Who I am'], ['work', 'Portfolio'], ['experience', 'Experience'], ['process', 'How it works'], ['contact', 'Contact']];
+    var SECTIONS = [['hero', 'Home'], ['services', 'What I do'], ['about', 'Who I am'], ['work', 'Portfolio'], ['experience', 'Experience'], ['contact', 'Contact']];
     var rm = window.matchMedia('(prefers-reduced-motion: reduce)');
     var ticking = false;
     var render = function () {
@@ -643,6 +736,24 @@
     window.addEventListener('resize', onScroll);
     nav.addEventListener('click', function (e) { e.preventDefault(); window.scrollTo({ top: 0, behavior: rm.matches ? 'auto' : 'smooth' }); });
     render();
+  })();
+
+  // Scroll-reveal: fades/rises .reveal and .reveal-group elements into place once, on first intersect
+  (function () {
+    if (!document.documentElement.classList.contains('reveal-on')) return;
+    var els = document.querySelectorAll('.reveal,.reveal-group');
+    if (!els.length) return;
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        if (!entry.isIntersecting) return;
+        var el = entry.target;
+        el.style.willChange = 'opacity,transform';
+        el.classList.add('is-in');
+        el.addEventListener('transitionend', function h() { el.style.willChange = ''; el.removeEventListener('transitionend', h); });
+        io.unobserve(el);
+      });
+    }, { threshold: 0, rootMargin: '0px 0px -12% 0px' });
+    els.forEach(function (el) { io.observe(el); });
   })();
 
   document.getElementById('year').textContent = new Date().getFullYear();

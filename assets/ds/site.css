@@ -76,7 +76,7 @@ section[id], #main { scroll-margin-top: 96px; }
 .nav__toggle[aria-expanded="true"] .nav__toggle-close { display: block; }
 
 /* ---------- Hero ---------- */
-.hero { position: relative; padding: clamp(40px, 7vw, 96px) 0 clamp(16px, 2vw, 28px); }
+.hero { position: relative; padding: clamp(28px, 3.6vw, 56px) 0 clamp(52px, 5.5vw, 84px); }
 .hero__grid { max-width: var(--container-wide); margin-inline: auto; padding-inline: var(--gutter);
   display: grid; grid-template-columns: 1.1fr 0.9fr; gap: clamp(28px, 4vw, 56px); align-items: center; }
 .hero__eyebrow { display: flex; width: fit-content; max-width: 100%; align-items: center; gap: 12px; margin-bottom: 26px; flex-wrap: wrap;
@@ -93,10 +93,6 @@ section[id], #main { scroll-margin-top: 96px; }
   line-height: 1.85; color: var(--ink-2); max-width: 52ch; margin: 26px 0 0; }
 .hero__highlights { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 26px; }
 .hero__actions { display: flex; align-items: center; gap: 14px; margin-top: 34px; flex-wrap: wrap; }
-.hero__proof { display: flex; align-items: center; gap: clamp(16px, 1.6vw, 24px); margin-top: 40px; flex-wrap: wrap; }
-.hero__proofitem { display: flex; flex-direction: column; gap: 2px; }
-.hero__proofitem .n { font-family: var(--font-display); font-weight: 700; font-size: 26px; color: var(--ink); letter-spacing: -.02em; }
-.hero__proofitem .l { font-family: var(--font-mono); font-size: 10px; letter-spacing: .14em; text-transform: uppercase; color: var(--ink-3); }
 
 .hero__visual { position: relative; }
 /* Abstract "method" canvas: themed gradient + orbital watermark + frosted flow chips */
@@ -143,6 +139,28 @@ section[id], #main { scroll-margin-top: 96px; }
 .hero__float .row { display: flex; align-items: center; gap: 8px; margin-top: 7px; font-family: var(--font-display); font-weight: 700; font-size: 15px; color: var(--ink); letter-spacing: -.01em; }
 .hero__float .sub { font-family: var(--font-body); font-weight: 400; font-size: 12.5px; color: var(--ink-3); margin-top: 5px; }
 
+/* ---------- Credential ledger (trustbar) ---------- */
+/* symmetric block padding so the card sits centred in its sunken plateau; the FIG_01
+   shadow is held by the hero's own bottom padding above, not by this band's top pad */
+.trustbar { padding-block: clamp(26px, 3.2vw, 42px); }
+.trustbar__sr { position:absolute; width:1px; height:1px; padding:0; margin:-1px; overflow:hidden; clip:rect(0 0 0 0); clip-path:inset(50%); white-space:nowrap; border:0; }
+.trustbar__inner { max-width: var(--container); margin-inline:auto; padding-inline: var(--gutter); }
+.trustbar__card { background: var(--surface); border:1px solid var(--line); border-radius: var(--r-2xl); box-shadow: var(--shadow-md);
+  padding: clamp(24px,3vw,34px) clamp(8px,1.4vw,18px); display:grid; grid-template-columns: 0.85fr 1.5fr 0.9fr; align-items:stretch; }
+.trustbar__col { display:flex; flex-direction:column; justify-content:flex-start; padding-inline: clamp(18px,2.6vw,38px); }
+.trustbar__col + .trustbar__col { border-left:1px solid var(--line); }
+.trustbar__k { font-family:var(--font-mono); font-size:var(--t-meta); letter-spacing:var(--track-meta); text-transform:uppercase; color:var(--ink-3); line-height:1; margin:0 0 12px; }
+.trustbar__v { margin:0; display:flex; align-items:baseline; gap:8px; }
+.trustbar__num { font-family:var(--font-display); font-weight:700; font-size:clamp(2.4rem,1.8rem + 2vw,3.25rem); line-height:1; letter-spacing:-.03em; color:var(--accent); }
+.trustbar__unit { font-family:var(--font-display); font-weight:700; font-size:clamp(1rem,.9rem + .4vw,1.25rem); color:var(--ink); }
+.trustbar__chips { display:flex; flex-wrap:wrap; gap:8px; list-style:none; margin:0; padding:0; }
+.trustbar__cap { font-family:var(--font-body); font-weight:400; font-size:13.5px; line-height:1.5; color:var(--ink-2); margin:14px 0 0; max-width:32ch; }
+@media (max-width: 820px) {
+  .trustbar__card { grid-template-columns:1fr; }
+  .trustbar__col { padding-inline: clamp(4px,2vw,12px); padding-block: clamp(16px,4vw,22px); }
+  .trustbar__col + .trustbar__col { border-left:0; border-top:1px solid var(--line); }
+}
+
 /* ---------- Section scaffolding ---------- */
 .section { padding-block: var(--section-gap); }
 /* first section right after the hero: the hero already carries its own bottom padding,
@@ -161,8 +179,8 @@ section[id], #main { scroll-margin-top: 96px; }
 .svc { position: relative; display: flex; flex-direction: column; padding: 30px; min-height: 320px;
   background: var(--glass-fill-deep); border: 1px solid var(--glass-border); border-radius: var(--r-xl); box-shadow: var(--shadow-md);
   -webkit-backdrop-filter: blur(var(--blur-glass)) saturate(1.4); backdrop-filter: blur(var(--blur-glass)) saturate(1.4);
-  transition: transform var(--dur-base) var(--ease-out), box-shadow var(--dur-base) var(--ease-out), border-color var(--dur-base); }
-.svc:hover { transform: translateY(-5px); box-shadow: var(--shadow-lg); border-color: var(--border-accent); }
+  transition: transform var(--dur-base) var(--ease-out), box-shadow var(--dur-base) var(--ease-out), border-color var(--dur-base) var(--ease-out); }
+.svc:hover { transform: translateY(var(--card-lift)); box-shadow: var(--shadow-lg); border-color: var(--border-accent); }
 .svc__head { display: flex; align-items: center; justify-content: space-between; margin-bottom: 30px; }
 .svc__icon { width: 52px; height: 52px; border-radius: var(--r-md); display: grid; place-items: center;
   background: var(--canvas-sunken); color: var(--ink); transition: background var(--dur-base), color var(--dur-base); }
@@ -185,35 +203,14 @@ section[id], #main { scroll-margin-top: 96px; }
 .svc__tag { font-family: var(--font-body); font-size: 12.5px; font-weight: 500; line-height: 1; color: var(--ink-2);
   background: var(--surface); border: 1px solid var(--border-strong); border-radius: var(--r-pill); padding: 6px 11px; }
 
-/* ---------- Approach strip ---------- */
-.approach { list-style: none; margin: 0 auto; max-width: var(--container); margin-inline: auto; padding-inline: var(--gutter);
-  display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--card-gap); }
-.step { padding: 26px; border-radius: var(--r-lg); background: var(--glass-fill-deep); border: 1px solid var(--glass-border); box-shadow: var(--shadow-sm);
-  -webkit-backdrop-filter: blur(var(--blur-glass)) saturate(1.4); backdrop-filter: blur(var(--blur-glass)) saturate(1.4);
-  transition: transform var(--dur-base) var(--ease-out), box-shadow var(--dur-base) var(--ease-out), border-color var(--dur-base); }
-.step:hover { transform: translateY(-4px); box-shadow: var(--shadow-lg); border-color: var(--border-accent); }
-.step__head { display: flex; align-items: center; justify-content: space-between; margin-bottom: 22px; }
-.step__icon { width: 48px; height: 48px; border-radius: var(--r-md); display: grid; place-items: center;
-  background: var(--cognac-wash); color: var(--cognac-ink); transition: background var(--dur-base), color var(--dur-base); }
-.step:hover .step__icon { background: var(--accent); color: #fff; }
-.step__icon svg { stroke-width: 1.5; }
-.step__no { font-family: var(--font-mono); font-size: 11px; letter-spacing: .14em; color: var(--accent-label); }
-.step:hover .step__no { color: var(--accent); }
-.step__t { font-family: var(--font-display); font-weight: 700; font-size: 1.15rem; color: var(--ink); margin: 0 0 8px; letter-spacing: -.01em; }
-.step__d { font-family: var(--font-body); font-size: .9rem; line-height: 1.5; color: var(--ink-2); margin: 0; }
 
 /* ---------- Work / cases ---------- */
 .cases { max-width: var(--container); margin-inline: auto; padding-inline: var(--gutter); }
-/* Portfolio carousel — scroll-snap track of project cards (one live, the rest "coming soon") */
-.carousel { position: relative; }
-.carousel__track { list-style: none; margin: 0 auto; max-width: var(--container-wide);
-  display: flex; gap: var(--card-gap); overflow-x: auto; scroll-snap-type: x mandatory; scroll-behavior: smooth;
-  padding: 6px var(--gutter) 20px; scrollbar-width: none; -ms-overflow-style: none; }
-.carousel__track::-webkit-scrollbar { display: none; }
+/* Secondary "coming soon" cards, below the featured project (see .fproj further down) */
 .pcard { scroll-snap-align: start; flex: 0 0 clamp(280px, 72vw, 416px); display: flex; flex-direction: column; overflow: hidden;
   background: var(--surface); border: 1px solid var(--line); border-radius: var(--r-xl); box-shadow: var(--shadow-md);
-  transition: transform var(--dur-base) var(--ease-out), box-shadow var(--dur-base) var(--ease-out), border-color var(--dur-base); }
-.pcard:hover { transform: translateY(-5px); box-shadow: var(--shadow-lg); border-color: var(--border-accent); }
+  transition: transform var(--dur-base) var(--ease-out), box-shadow var(--dur-base) var(--ease-out), border-color var(--dur-base) var(--ease-out); }
+.pcard:hover { transform: translateY(var(--card-lift)); box-shadow: var(--shadow-lg); border-color: var(--border-accent); }
 .pcard__cover { position: relative; aspect-ratio: 16 / 10; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 12px;
   background-color: var(--canvas-sunken); background-image: var(--dot-grid); background-size: var(--dot-size) var(--dot-size); }
 /* upcoming cards read as ghosted placeholder slots, clearly secondary to the real project */
@@ -237,25 +234,21 @@ section[id], #main { scroll-margin-top: 96px; }
 .pcard__desc { font-family: var(--font-body); font-size: .92rem; line-height: 1.55; color: var(--ink-2); margin: 4px 0 0; }
 .pcard--soon .pcard__desc { color: var(--ink-3); }
 .pcard__body .ret-btn { margin-top: 18px; align-self: flex-start; }
-.carousel__nav { display: flex; gap: 10px; justify-content: flex-end; max-width: var(--container-wide); margin: 6px auto 0; padding-inline: var(--gutter); }
-.carousel__btn { width: 44px; height: 44px; border-radius: var(--r-pill); display: grid; place-items: center; cursor: pointer; color: var(--ink);
-  background: var(--surface); border: 1px solid var(--border-strong); box-shadow: var(--shadow-sm);
-  transition: transform var(--dur-base) var(--ease-out), border-color var(--dur-base), background var(--dur-base); }
-.carousel__btn:hover { transform: translateY(-2px); border-color: var(--ink); }
-.carousel__btn:disabled { opacity: .3; pointer-events: none; }
-.carousel__btn:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
-.carousel__btn svg { width: 18px; height: 18px; stroke-width: 1.6; }
 
 /* Client-experience review cards — duotone industry plate + glass label chip */
 .expgrid { max-width: var(--container); margin-inline: auto; padding-inline: var(--gutter);
-  display: grid; grid-template-columns: repeat(4, 1fr); gap: var(--card-gap); list-style: none; }
+  display: grid; grid-template-columns: repeat(5, 1fr); gap: var(--card-gap); list-style: none; }
 .expcard { display: flex; flex-direction: column; overflow: hidden; background: var(--surface);
   border: 1px solid var(--line); border-radius: var(--r-xl); box-shadow: var(--shadow-md);
-  transition: transform var(--dur-base) var(--ease-out), box-shadow var(--dur-base) var(--ease-out), border-color var(--dur-base); }
-.expcard:hover { transform: translateY(-5px); box-shadow: var(--shadow-lg); border-color: var(--border-accent); }
+  transition: transform var(--dur-base) var(--ease-out), box-shadow var(--dur-base) var(--ease-out), border-color var(--dur-base) var(--ease-out); }
+.expcard:hover { transform: translateY(var(--card-lift)); box-shadow: var(--shadow-lg); border-color: var(--border-accent); }
 .expcard__media { position: relative; aspect-ratio: 3 / 2; overflow: hidden; background: var(--canvas-sunken); }
 .expcard__media img { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform var(--dur-slow) var(--ease-out); }
 .expcard:hover .expcard__media img { transform: scale(1.04); }
+/* Icon media panel: stand-in for the 5th (Tech) mission card, no photo available; duotone gray-to-cognac tile echoing the real photo plates */
+.expcard__media--icon { display: grid; place-items: center; background: linear-gradient(145deg, #D9D9DF 0%, #CFC8C1 55%, #BFA588 100%); }
+.expcard__glyph { color: var(--ink-2); opacity: .42; }
+.expcard__glyph svg { width: 44%; max-width: 130px; height: auto; display: block; }
 .expcard__chip { position: absolute; top: 12px; left: 12px; z-index: 2;
   font-family: var(--font-mono); font-size: 10px; letter-spacing: .14em; text-transform: uppercase; color: var(--ink-2);
   padding: 6px 11px; border-radius: var(--r-pill); background: var(--glass-fill); border: 1px solid var(--glass-border); box-shadow: var(--glass-shadow);
@@ -313,7 +306,8 @@ section[id], #main { scroll-margin-top: 96px; }
 .contact__form .ret-input:focus { border-color: var(--cognac-soft); box-shadow: 0 0 0 3px rgba(200,160,124,.25); }
 .contact__actions { grid-column: 1/-1; display: flex; align-items: center; gap: 16px; flex-wrap: wrap; margin-top: 4px; }
 .contact__small { font-family: var(--font-mono); font-size: 11px; color: rgba(255,255,255,.5); }
-.contact__thanks { grid-column: 1/-1; border: 1px solid var(--cognac-soft); border-radius: var(--r-md); padding: 24px; background: rgba(200,160,124,.1); }
+.contact__thanks { grid-column: 1/-1; border: 1px solid var(--cognac-soft); border-radius: var(--r-md); padding: 24px; background: rgba(200,160,124,.1);
+  animation: contactThanksIn var(--dur-slow) var(--ease-out); }
 .contact__thanks[hidden] { display: none; }
 .contact__thanks h3 { font-family: var(--font-display); font-weight: 700; font-size: 1.2rem; color: #fff; margin: 0 0 8px; }
 .contact__thanks p { color: rgba(255,255,255,.75); margin: 0 0 14px; font-size: .95rem; line-height: 1.5; }
@@ -422,8 +416,8 @@ section[id], #main { scroll-margin-top: 96px; }
   color: var(--accent-text); background: var(--accent-wash); border-radius: var(--r-pill); padding: 9px 16px; box-shadow: var(--shadow-sm); }
 .dd-card { background: var(--glass-fill-deep); border: 1px solid var(--glass-border); border-radius: var(--r-xl); box-shadow: var(--shadow-md); padding: 26px;
   -webkit-backdrop-filter: blur(var(--blur-glass)) saturate(1.5); backdrop-filter: blur(var(--blur-glass)) saturate(1.5);
-  transition: transform var(--dur-base) var(--ease-out), box-shadow var(--dur-base) var(--ease-out), border-color var(--dur-base); }
-.dd-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-lg); border-color: var(--border-accent); }
+  transition: transform var(--dur-base) var(--ease-out), box-shadow var(--dur-base) var(--ease-out), border-color var(--dur-base) var(--ease-out); }
+.dd-card:hover { transform: translateY(var(--card-lift)); box-shadow: var(--shadow-lg); border-color: var(--border-accent); }
 .dd-card h3 { font-family: var(--font-display); font-weight: 700; font-size: 1.15rem; letter-spacing: -.01em; color: var(--ink); margin: 0 0 8px; }
 .dd-card p { font-family: var(--font-body); font-size: .95rem; line-height: 1.55; color: var(--ink-2); margin: 0; }
 
@@ -462,8 +456,8 @@ section[id], #main { scroll-margin-top: 96px; }
   display: grid; grid-template-columns: repeat(3,1fr); gap: var(--card-gap); }
 .feat { padding: 28px; background: var(--glass-fill-deep); border: 1px solid var(--glass-border); border-radius: var(--r-xl); box-shadow: var(--shadow-md);
   -webkit-backdrop-filter: blur(var(--blur-glass)) saturate(1.5); backdrop-filter: blur(var(--blur-glass)) saturate(1.5);
-  transition: transform var(--dur-base) var(--ease-out), box-shadow var(--dur-base) var(--ease-out), border-color var(--dur-base); }
-.feat:hover { transform: translateY(-4px); box-shadow: var(--shadow-lg); border-color: var(--border-accent); }
+  transition: transform var(--dur-base) var(--ease-out), box-shadow var(--dur-base) var(--ease-out), border-color var(--dur-base) var(--ease-out); }
+.feat:hover { transform: translateY(var(--card-lift)); box-shadow: var(--shadow-lg); border-color: var(--border-accent); }
 .feat__icon { width: 48px; height: 48px; border-radius: var(--r-md); display: grid; place-items: center; background: var(--cognac-wash); color: var(--cognac-ink); margin-bottom: 20px; }
 .feat__icon svg { stroke-width: 1.5; }
 .feat__t { font-family: var(--font-display); font-weight: 700; font-size: 1.2rem; letter-spacing: -.01em; color: var(--ink); margin: 0 0 8px; }
@@ -498,8 +492,10 @@ section[id], #main { scroll-margin-top: 96px; }
 /* ---------- Responsive ---------- */
 @media (max-width: 980px) {
   .services { grid-template-columns: 1fr; }
-  .approach { grid-template-columns: repeat(3,1fr); }
   .expgrid { grid-template-columns: repeat(2, 1fr); }
+  /* 5 cards in a 2-col grid leaves the 5th (Tech) alone on its own row: centre it at
+     single-column width instead of letting it sit stranded on the left */
+  .expcard:nth-child(5) { grid-column: 1 / -1; max-width: calc(50% - (var(--card-gap) / 2)); margin-inline: auto; }
   .about { grid-template-columns: 1fr; }
   .contact__inner { grid-template-columns: 1fr; }
   .footer__main { grid-template-columns: 1fr 1fr; }
@@ -507,13 +503,12 @@ section[id], #main { scroll-margin-top: 96px; }
   .features { grid-template-columns: repeat(2,1fr); } .appcta__inner { grid-template-columns: 1fr; }
 }
 /* ≤1240: single-column hero + hamburger nav. Past this width the 2-col copy column
-   has to fit the title, lead and the 3-stat proof row on one line (the longest is the
-   FR "Des sciences de la vie au public" ≈ 564px, which needs a ~584px column → ~1240px
-   viewport). Below it we switch to the stacked layout + hamburger together so the two
-   never look cramped. */
+   has to fit the title, lead and action buttons comfortably (the longest wrap risk is the
+   FR lead line), which needs a ~584px column → ~1240px viewport. Below it we switch to the
+   stacked layout + hamburger together so the two never look cramped. */
 @media (max-width: 1240px) {
-  /* hero → single column: copy spans full width (proof fits on one line), the
-     method canvas and availability widget stack underneath */
+  /* hero → single column: copy spans full width, the method canvas and
+     availability widget stack underneath */
   .hero__grid { grid-template-columns: 1fr; }
   .hero__visual { max-width: 460px; margin-top: 8px; }
   .hero__float { position: static; left: auto; bottom: auto; width: auto; margin-top: 18px; }
@@ -530,7 +525,6 @@ section[id], #main { scroll-margin-top: 96px; }
   .nav__cta { display: none; }
 }
 @media (max-width: 720px) {
-  .approach { grid-template-columns: 1fr; }
   .features { grid-template-columns: 1fr; }
   .apphero__float { display: none; }
   .apphero__pill { display: none; }
@@ -562,23 +556,28 @@ section[id], #main { scroll-margin-top: 96px; }
   .contactdock .txt { display: none; }
   .contactdock { padding: 7px; }
   .expgrid { grid-template-columns: 1fr; }
+  /* single column now: the 5th-card centring trick from the 980px tier no longer applies */
+  .expcard:nth-child(5) { grid-column: auto; max-width: none; margin-inline: 0; }
 }
 
 /* Keyboard focus parity on text links (buttons/inputs already covered) */
 .nav__link:focus-visible, .footer__col a:focus-visible, .footer__legal a:focus-visible,
 .subhead__back:focus-visible, .nav__brand:focus-visible,
 .prose a:focus-visible, .about__facts a:focus-visible, .legalfacts a:focus-visible, .svc__desc a:focus-visible,
-.carousel__btn:focus-visible, .nav__toggle:focus-visible, .contactdock:focus-visible {
+.nav__toggle:focus-visible, .contactdock:focus-visible {
   outline: 2px solid var(--accent); outline-offset: 2px; border-radius: var(--r-xs);
+}
+
+/* Card hover-lift keyboard parity (no-op today — none of these cards are wrapped in a link —
+   but keeps behaviour consistent the moment one becomes focusable) */
+.svc:focus-visible, .pcard:focus-visible, .expcard:focus-visible, .dd-card:focus-visible, .feat:focus-visible {
+  transform: translateY(var(--card-lift)); box-shadow: var(--shadow-lg); border-color: var(--border-accent);
 }
 
 /* Unified inline-link hover (the cognac prose-style links across pages) */
 .prose a, .legalfacts a, .footer__legal a, .svc__desc a, .about__facts a { transition: color var(--dur-base) var(--ease-out); }
 .prose a:hover, .legalfacts a:hover, .footer__legal a:hover, .svc__desc a:hover, .about__facts a:hover {
   color: var(--cognac-ink); text-decoration: underline; }
-
-/* Carousel scroll region: keyboard-focusable, visible focus */
-.carousel__track:focus-visible { outline: 2px solid var(--accent); outline-offset: 4px; border-radius: var(--r-md); }
 
 /* DS polish — collapse card titles to two tiers (primary .svc__title 1.4rem, secondary 1.2rem)
    and align small content-card radii to --r-xl (was a mix of r-lg/r-xl) */
@@ -644,3 +643,144 @@ section[id], #main { scroll-margin-top: 96px; }
 .svcmap__key-line { flex: none; width: 22px; height: 0; border-top: 2px solid var(--ink); }
 .svcmap__key-dash { flex: none; width: 22px; height: 0; border-top: 2px dotted var(--ink-3); }
 @media print { .svcmap__scroll { overflow: visible !important; } .svcmap { break-inside: avoid; box-shadow: none !important; } }
+
+/* ---------- FIG_03 experience timeline ---------- */
+/* Staircase of real missions closing the #experience head, above the mission cards.
+   Same card recipe + stamp as FIG_02 svcmap; adds a sector strip above the chart. */
+.tl-wrap { max-width: var(--container); margin-inline: auto; padding-inline: var(--gutter); margin-bottom: clamp(28px, 4vw, 48px); }
+.timeline { position: relative; margin: 0; border-radius: var(--r-3xl); border: 1px solid var(--line); box-shadow: var(--shadow-float);
+  background: radial-gradient(130% 95% at 16% 6%, rgba(255,255,255,.92), rgba(255,255,255,0) 52%), radial-gradient(78% 52% at 24% 100%, rgba(176,125,84,.24), rgba(176,125,84,0) 68%), linear-gradient(158deg, var(--canvas) 0%, var(--canvas-sunken) 100%);
+  padding: clamp(24px, 4vw, 48px); padding-top: clamp(56px, 6vw, 72px); }
+.timeline .stamp { position: absolute; top: 18px; left: 50%; transform: translateX(-50%); z-index: 3; display: flex; align-items: center; gap: 8px;
+  padding: 8px 12px; border-radius: var(--r-pill);
+  background: var(--glass-fill); -webkit-backdrop-filter: blur(var(--blur-strong)) saturate(1.5); backdrop-filter: blur(var(--blur-strong)) saturate(1.5);
+  border: 1px solid var(--glass-border); box-shadow: var(--glass-shadow);
+  font-family: var(--font-mono); font-size: 10px; letter-spacing: .14em; text-transform: uppercase; color: var(--ink-2); }
+/* Sector strip */
+.tl__sectors { display: flex; flex-wrap: wrap; justify-content: center; list-style: none; margin: 0 0 10px; padding: 0 0 18px; border-bottom: 1px solid var(--line); }
+.tl__sector { display: flex; align-items: center; gap: 8px; padding-inline: clamp(10px, 2vw, 26px); font-family: var(--font-body); font-size: 13.5px; color: var(--ink-2); }
+.tl__sector + .tl__sector { border-left: 1px solid var(--line); }
+.tl__sicon svg { display: block; width: 19px; height: 19px; stroke-width: 1.5; color: var(--ink-3); }
+/* Chart */
+.tl__scroll { overflow-x: auto; -webkit-overflow-scrolling: touch; }
+.tl__svg { display: block; width: 100%; min-width: 860px; height: auto; }
+.tl__axis { stroke: var(--line-strong); stroke-width: 1; }
+.tl__tick { stroke: var(--ink-3); stroke-width: 1; }
+.tl__drop { stroke: var(--line); stroke-width: 1; }
+.tl__solid { stroke: var(--ink); stroke-width: 2; stroke-linecap: round; }
+.tl__now { stroke: var(--accent); stroke-width: 2; stroke-linecap: round; }
+.tl__nowline { stroke: var(--ink-3); stroke-width: 1.5; stroke-dasharray: 1 7; stroke-linecap: round; }
+.tl__ring { fill: var(--surface); stroke: var(--ink); stroke-width: 2; }
+.tl__ring--now { fill: var(--surface); stroke: var(--accent); stroke-width: 2; }
+.tl__diamond { fill: var(--accent); }
+.tl__year { font-family: var(--font-mono); font-size: 11px; letter-spacing: .04em; fill: var(--ink-3); }
+.tl__name { font-family: var(--font-display); font-weight: 700; font-size: 16px; letter-spacing: -.01em; fill: var(--ink); }
+.tl__dur { font-family: var(--font-mono); font-size: 10.5px; letter-spacing: .04em; fill: var(--ink-3); }
+.tl__nowlab { font-family: var(--font-mono); font-size: 11px; letter-spacing: .08em; fill: var(--accent); }
+.tl__note { font-family: var(--font-mono); font-size: 10.5px; letter-spacing: .06em; fill: var(--ink-3); }
+@media (max-width: 680px) { .tl__sectors { flex-wrap: wrap; justify-content: center; gap: 12px 22px; } .tl__sector { border-left: none !important; padding-inline: 0; } }
+@media print { .tl__scroll { overflow: visible; } .timeline { break-inside: avoid; } }
+
+/* ---------- Featured project (dueday) ---------- */
+/* The #work section leads with one full-width showcase (this block) instead of a carousel;
+   the two "coming soon" placeholders (still .pcard/.pcard--soon) sit in a row underneath. */
+.fproj-wrap { max-width: var(--container); margin-inline: auto; padding-inline: var(--gutter); }
+.fproj { max-width: var(--container); margin-inline: auto; padding: clamp(24px, 3vw, 40px);
+  background: var(--surface); border: 1px solid var(--line); border-radius: var(--r-3xl); box-shadow: var(--shadow-md);
+  display: grid; grid-template-columns: 1fr 1fr; gap: clamp(28px, 4vw, 56px); align-items: center; }
+
+/* Detail column */
+.fproj__detail { display: flex; flex-direction: column; gap: 14px; }
+.fproj__status { display: flex; align-items: center; gap: 8px; font-family: var(--font-mono); font-size: 10.5px; letter-spacing: .1em; text-transform: uppercase; color: var(--accent-label); }
+.fproj__name { font-family: var(--font-display); font-weight: 700; font-size: clamp(1.8rem, 1.2rem + 1.6vw, 2.4rem); letter-spacing: -.02em; color: var(--ink); margin: 0; }
+.fproj__desc { font-family: var(--font-body); font-size: 1.05rem; line-height: 1.6; color: var(--ink-2); margin: 0; max-width: 46ch; }
+.fproj__facts { display: grid; gap: 0; margin: 4px 0 0; }
+.fproj__facts > div { display: grid; grid-template-columns: 110px 1fr; gap: 14px; padding: 10px 0; border-top: 1px solid var(--line); }
+.fproj__facts dt { font-family: var(--font-mono); font-size: 11px; letter-spacing: .14em; text-transform: uppercase; color: var(--ink-3); padding-top: 2px; }
+.fproj__facts dd { margin: 0; font-family: var(--font-body); font-size: 14px; color: var(--ink); }
+.fproj__actions { display: flex; align-items: center; gap: 12px; flex-wrap: wrap; margin-top: 6px; }
+
+/* App-preview mock — a stylised skeleton screen, not a real screenshot (dueday's UI is FR-only so far) */
+.appmock { background: var(--canvas-sunken); border: 1px solid var(--line); border-radius: var(--r-2xl); overflow: hidden; box-shadow: var(--shadow-md); }
+.appmock__bar { display: flex; align-items: center; justify-content: space-between; padding: 14px 16px; }
+.appmock__dots { display: flex; align-items: center; gap: 5px; }
+.appmock__dots i { display: block; width: 7px; height: 7px; border-radius: 2px; background: var(--ink-3); opacity: .3; }
+.appmock__live { display: flex; align-items: center; gap: 6px; font-family: var(--font-mono); font-size: 10.5px; letter-spacing: .06em; text-transform: uppercase; color: var(--ink-2); }
+.appmock__livedot { display: block; width: 7px; height: 7px; border-radius: 50%; background: var(--accent); }
+.appmock__screen { background: var(--surface); margin: 0 14px 14px; border-radius: var(--r-md); padding: clamp(16px, 2.5vw, 22px); }
+.appmock__k { font-family: var(--font-mono); font-size: 10px; letter-spacing: .16em; text-transform: uppercase; color: var(--ink-3); }
+.appmock__total { display: flex; align-items: baseline; margin: 6px 0 0; }
+.appmock__amt { font-family: var(--font-display); font-weight: 700; font-size: clamp(2rem, 1.4rem + 1.6vw, 2.75rem); letter-spacing: -.03em; color: var(--ink); }
+.appmock__per { font-family: var(--font-body); font-size: 1rem; color: var(--ink-3); margin-left: 4px; }
+.appmock__chart { display: block; width: 100%; height: 64px; margin: 10px 0 6px; }
+.appmock__line { fill: none; stroke: var(--accent); stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; vector-effect: non-scaling-stroke; }
+.appmock__end { fill: var(--accent); }
+.appmock__span { font-family: var(--font-mono); font-size: 9.5px; letter-spacing: .1em; text-transform: uppercase; color: var(--ink-3); }
+.appmock__seg { display: flex; gap: 4px; margin-top: 16px; }
+.appmock__seg i { display: block; width: var(--w); height: 8px; border-radius: var(--r-pill); background: var(--line-strong); }
+.appmock__seg i:first-child { background: var(--ink); }
+.appmock__rows { list-style: none; margin: 16px 0 0; padding: 0; display: flex; flex-direction: column; gap: 12px; }
+.appmock__rows li { display: flex; align-items: center; gap: 12px; }
+.appmock__ic { flex: none; width: 28px; height: 28px; border-radius: var(--r-sm); background: var(--canvas-sunken); border: 1px solid var(--line); }
+.appmock__t { flex: 0 0 40%; height: 9px; border-radius: var(--r-pill); background: var(--line-strong); }
+.appmock__rows li:nth-child(1) .appmock__t { flex-basis: 44%; }
+.appmock__rows li:nth-child(2) .appmock__t { flex-basis: 36%; }
+.appmock__rows li:nth-child(3) .appmock__t { flex-basis: 50%; }
+.appmock__rows li:nth-child(4) .appmock__t { flex-basis: 40%; }
+.appmock__v { flex: none; margin-left: auto; width: 46px; height: 9px; border-radius: var(--r-pill); background: var(--line); }
+
+/* Secondary "coming soon" row underneath the featured project */
+.fproj-next { list-style: none; margin: clamp(20px, 3vw, 32px) 0 0; padding: 0;
+  display: grid; grid-template-columns: 1fr 1fr; gap: var(--card-gap);
+  max-width: var(--container); margin-inline: auto; padding-inline: var(--gutter); }
+
+@media (max-width: 900px) {
+  .fproj { grid-template-columns: 1fr; }
+  .fproj-next { grid-template-columns: 1fr; }
+}
+
+/* ==========================================================================
+   Motion: scroll-reveal system
+   Everything below is scoped under html.reveal-on (set by a synchronous
+   pre-paint <head> script only when IntersectionObserver is supported AND
+   prefers-reduced-motion is not set). Without that class every .reveal /
+   .reveal-group element is plain, static, fully-visible markup — no JS, no
+   reduced-motion, no exceptions. See F5 in components.css for the belt-and-
+   braces reduced-motion override.
+   ========================================================================== */
+html.reveal-on .reveal{opacity:0;transform:translateY(var(--reveal-dist));transition:opacity var(--dur-reveal) var(--ease-out),transform var(--dur-reveal) var(--ease-out);transition-delay:var(--reveal-delay,0ms)}
+html.reveal-on .reveal.is-in{opacity:1;transform:none}
+html.reveal-on .reveal-group{transform:translateY(var(--reveal-dist));transition:transform var(--dur-reveal) var(--ease-out)}
+html.reveal-on .reveal-group.is-in{transform:none}
+html.reveal-on .reveal-group>*{opacity:0;transition:opacity var(--dur-reveal) var(--ease-out)}
+html.reveal-on .reveal-group.is-in>*{opacity:1}
+html.reveal-on .reveal-group.is-in>:nth-child(2){transition-delay:calc(var(--reveal-stagger)*1)}
+html.reveal-on .reveal-group.is-in>:nth-child(3){transition-delay:calc(var(--reveal-stagger)*2)}
+html.reveal-on .reveal-group.is-in>:nth-child(4){transition-delay:calc(var(--reveal-stagger)*3)}
+html.reveal-on .reveal-group.is-in>:nth-child(5){transition-delay:calc(var(--reveal-stagger)*4)}
+
+/* ---------- Motion: load-entrance cascade (nav settle + hero copy/visual) ---------- */
+@keyframes navSettle { from { opacity: 0; transform: translateY(-10px); } to { opacity: 1; transform: none; } }
+html.reveal-on .nav__inner { animation: navSettle var(--dur-slow) var(--ease-out) both; }
+
+@keyframes heroRise { from { opacity: 0; transform: translateY(12px); } to { opacity: 1; transform: none; } }
+/* H1 is the likely LCP element: transform-only (no opacity fade) so it paints at full opacity immediately */
+@keyframes heroRiseSolid { from { transform: translateY(12px); } to { transform: none; } }
+html.reveal-on .hero__eyebrow { animation: heroRise var(--dur-slow) var(--ease-out) both; }
+html.reveal-on .hero__title   { animation: heroRiseSolid var(--dur-slow) var(--ease-out) both; animation-delay: 70ms; }
+html.reveal-on .hero__lead    { animation: heroRise var(--dur-slow) var(--ease-out) both; animation-delay: 150ms; }
+html.reveal-on .hero__actions { animation: heroRise var(--dur-slow) var(--ease-out) both; animation-delay: 230ms; }
+/* right column settles just after the copy, reusing the existing dockin load vocabulary */
+html.reveal-on .hero__canvas { animation: dockin var(--dur-slow) var(--ease-out) both; animation-delay: 120ms; }
+html.reveal-on .hero__float  { animation: dockin var(--dur-slow) var(--ease-out) both; animation-delay: 340ms; }
+
+/* ---------- Motion: dueday sparkline draw-in (the one moving cognac) ---------- */
+/* keyed off .fproj.is-in, already set by the Tier-1 scroll-reveal IO — no extra JS */
+html.reveal-on .appmock__line { stroke-dasharray: 1; stroke-dashoffset: 1; }
+html.reveal-on .fproj.is-in .appmock__line { stroke-dashoffset: 0; transition: stroke-dashoffset 900ms var(--ease-out); }
+html.reveal-on .appmock__end { opacity: 0; transform: scale(.4); transform-box: fill-box; transform-origin: center;
+  transition: opacity var(--dur-base) var(--ease-out), transform var(--dur-base) var(--ease-out); transition-delay: 820ms; }
+html.reveal-on .fproj.is-in .appmock__end { opacity: 1; transform: scale(1); }
+
+/* ---------- Motion: contact-thanks fade-in (plays when the submit handler removes [hidden]) ---------- */
+@keyframes contactThanksIn { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: none; } }
