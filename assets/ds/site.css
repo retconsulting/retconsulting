@@ -176,7 +176,7 @@ section[id], #main { scroll-margin-top: 96px; }
 
 /* ---------- Services grid ---------- */
 .services { max-width: var(--container); margin-inline: auto; padding-inline: var(--gutter);
-  display: grid; grid-template-columns: repeat(2, 1fr); gap: var(--card-gap); }
+  display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--card-gap); }
 .svc { position: relative; display: flex; flex-direction: column; padding: 30px; min-height: 320px;
   background: var(--glass-fill-deep); border: 1px solid var(--glass-border); border-radius: var(--r-xl); box-shadow: var(--shadow-md);
   -webkit-backdrop-filter: blur(var(--blur-glass)) saturate(1.4); backdrop-filter: blur(var(--blur-glass)) saturate(1.4);
