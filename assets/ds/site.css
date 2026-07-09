@@ -305,12 +305,12 @@ html.reveal-on .expgrid.is-in > .expgrid__arrow { transition-delay: calc(var(--r
 .about__skills-row { display: flex; flex-wrap: wrap; justify-content: center; gap: 10px; max-width: 540px; }
 .about__skills-row .ret-hpill { background: var(--surface); border-color: var(--border-strong); box-shadow: var(--shadow-sm); -webkit-backdrop-filter: none; backdrop-filter: none; }
 .about__prose .accent { color: var(--cognac-text); font-weight: 500; }
-/* certification seals: mono initials in a double-ring roundel; deliberately static (non-interactive, no hover) */
+/* certification seals: mono initials in a double-ring roundel; two centred rows echoing the skills chips above (deliberately static, no hover) */
 .about__certs { margin-top: 30px; }
 .about__certs > .ret-tag { display: block; margin-bottom: 16px; }
-.certbadges { list-style: none; display: flex; flex-wrap: wrap; justify-content: center; gap: 18px 20px; margin: 0; padding: 0; max-width: 250px; }
+.certbadges { list-style: none; display: flex; flex-wrap: wrap; justify-content: center; gap: 18px 20px; margin: 0; padding: 0; max-width: 272px; }
 .certbadge { width: 64px; height: 64px; border-radius: var(--r-pill); display: grid; place-items: center; text-align: center; padding: 4px;
-  background: var(--surface); border: 1px solid var(--border-strong); outline: 1px solid var(--line); outline-offset: 3px; box-shadow: var(--shadow-sm);
+  background: var(--surface); border: 1px solid var(--border-accent); outline: 1px solid var(--border-accent); outline-offset: 3px; box-shadow: var(--shadow-sm);
   font-family: var(--font-mono); font-size: 9.5px; letter-spacing: .05em; text-transform: uppercase; color: var(--ink-2); line-height: 1.2; }
 .about__certline { font-family: var(--font-body); font-size: 14px; line-height: 1.6; color: var(--ink-2); margin: 32px 0 0; max-width: 46ch; }
 
