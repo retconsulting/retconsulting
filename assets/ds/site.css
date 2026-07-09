@@ -308,11 +308,11 @@ html.reveal-on .expgrid.is-in > .expgrid__arrow { transition-delay: calc(var(--r
 /* certification seals: mono initials in a double-ring roundel; two centred rows echoing the skills chips above (deliberately static, no hover) */
 .about__certs { margin-top: 30px; }
 .about__certs > .ret-tag { display: block; margin-bottom: 16px; }
-.certbadges { list-style: none; display: flex; flex-wrap: wrap; justify-content: center; gap: 18px 20px; margin: 0; padding: 0; max-width: 272px; }
+.certbadges { list-style: none; display: flex; flex-wrap: wrap; justify-content: center; gap: 18px 20px; margin: 0 auto; padding: 0; max-width: 272px; }
 .certbadge { width: 64px; height: 64px; border-radius: var(--r-pill); display: grid; place-items: center; text-align: center; padding: 4px;
   background: var(--surface); border: 1px solid var(--border-accent); outline: 1px solid var(--border-accent); outline-offset: 3px; box-shadow: var(--shadow-sm);
   font-family: var(--font-mono); font-size: 9.5px; font-weight: 700; letter-spacing: .05em; text-transform: uppercase; color: var(--ink-2); line-height: 1.2; }
-.about__certline { font-family: var(--font-body); font-size: 14px; line-height: 1.7; color: var(--ink-2); margin: 40px auto 0; max-width: 46ch; text-align: center; }
+.about__certline { font-family: var(--font-body); font-size: 14px; line-height: 1.7; color: var(--ink-2); margin: 60px auto 0; max-width: 46ch; text-align: center; }
 
 /* ---------- Contact (dark CTA panel + form) ---------- */
 .contact__panel { position: relative; max-width: var(--container); margin: 0 auto; padding: clamp(36px,5vw,64px) clamp(28px,5vw,64px);
