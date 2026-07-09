@@ -657,7 +657,8 @@ html.reveal-on .expgrid.is-in > .expgrid__arrow { transition-delay: calc(var(--r
   border: 1px solid var(--glass-border); box-shadow: var(--glass-shadow);
   font-family: var(--font-mono); font-size: 10px; letter-spacing: .14em; text-transform: uppercase; color: var(--ink-2); }
 .svcmap__scroll { overflow-x: auto; -webkit-overflow-scrolling: touch; }
-.svcmap__svg { display: block; width: 100%; min-width: 920px; height: auto; }
+.svcmap__stage { position: relative; min-width: 920px; }
+.svcmap__svg { display: block; width: 100%; height: auto; }
 /* SVG marks (inline SVG inherits these via class) */
 .svcmap__grid line { stroke: var(--line); stroke-width: 1; }
 .svcmap__solid { stroke: var(--ink); stroke-width: 2; stroke-linecap: round; }
@@ -674,7 +675,38 @@ html.reveal-on .expgrid.is-in > .expgrid__arrow { transition-delay: calc(var(--r
 .svcmap__key { display: inline-flex; align-items: center; gap: 8px; }
 .svcmap__key-line { flex: none; width: 22px; height: 0; border-top: 2px solid var(--ink); }
 .svcmap__key-dash { flex: none; width: 22px; height: 0; border-top: 2px dotted var(--ink-3); }
-@media print { .svcmap__scroll { overflow: visible !important; } .svcmap { break-inside: avoid; box-shadow: none !important; } }
+/* Hover popovers: one glass card per offer (same recipe as .hero__float), pre-rendered
+   in a layer over the SVG. Shown CSS-only via :has() below (Motion v2 block) — browsers
+   without :has() never show them, same progressive enhancement as the row dimming.
+   pointer-events:none keeps hover ownership on the SVG hit rects (no flicker). */
+.svcmap__pops { position: absolute; inset: 0; pointer-events: none; }
+.svcmap__pop { position: absolute; width: min(320px, 46%); padding: 14px 17px; border-radius: var(--r-xl);
+  background: var(--glass-fill); border: 1px solid var(--glass-border);
+  -webkit-backdrop-filter: blur(var(--blur-strong)) saturate(1.8); backdrop-filter: blur(var(--blur-strong)) saturate(1.8);
+  box-shadow: var(--glass-shadow);
+  opacity: 0; visibility: hidden;
+  transition: opacity var(--dur-base) var(--ease-out), transform var(--dur-base) var(--ease-out), visibility 0s linear var(--dur-base); }
+.svcmap__pop .cap { font-family: var(--font-mono); font-size: 10px; letter-spacing: .14em; text-transform: uppercase; color: var(--ink-3); }
+.svcmap__pop .row { display: flex; align-items: center; gap: 8px; margin-top: 7px;
+  font-family: var(--font-display); font-weight: 700; font-size: 15px; color: var(--ink); letter-spacing: -.01em; }
+.svcmap__pop p { font-family: var(--font-body); font-weight: 400; font-size: 12.5px; line-height: 1.5; color: var(--ink-2); margin: 7px 0 0; }
+/* Caret: glass diamond pointing at the hovered row's line; z-index -1 tucks the inner
+   half behind the card so only the protruding tip shows. */
+.svcmap__pop::after { content: ""; position: absolute; z-index: -1; width: 12px; height: 12px;
+  background: var(--glass-fill); border: 1px solid var(--glass-border);
+  -webkit-backdrop-filter: blur(var(--blur-strong)) saturate(1.8); backdrop-filter: blur(var(--blur-strong)) saturate(1.8);
+  transform: rotate(45deg); }
+/* Anchors, in stage percentages of the 1180×640 viewBox. Row 1 sits under the column
+   heads, so its card opens BELOW the line (caret up); rows 2–4 open ABOVE (caret down). */
+.svcmap__pop--po  { top: calc(25.8% + 18px); left: 72.5%; transform: translate(-50%, -6px); }
+.svcmap__pop--po::after  { top: -6.5px; left: 50%; margin-left: -6px; }
+.svcmap__pop--ba  { bottom: calc(53.1% + 18px); left: 67.8%; transform: translate(-50%, 6px); }
+.svcmap__pop--ba::after  { bottom: -6.5px; left: 50%; margin-left: -6px; }
+.svcmap__pop--web { bottom: calc(32.1% + 18px); left: 53.8%; transform: translate(-50%, 6px); }
+.svcmap__pop--web::after { bottom: -6.5px; left: 50%; margin-left: -6px; }
+.svcmap__pop--e2e { bottom: calc(11% + 18px); right: 12px; transform: translateY(6px); }
+.svcmap__pop--e2e::after { bottom: -6.5px; right: 92px; }
+@media print { .svcmap__scroll { overflow: visible !important; } .svcmap { break-inside: avoid; box-shadow: none !important; } .svcmap__pops { display: none !important; } }
 
 /* ---------- FIG_03 experience timeline ---------- */
 /* Staircase of real missions closing the #experience head, above the mission cards.
@@ -836,6 +868,19 @@ html.reveal-on .fproj.is-in .appmock__end { opacity: 1; transform: scale(1); }
 .tl__svg:has(.tl__seg:hover) .tl__seg { opacity: .35; }
 .tl__svg:has(.tl__seg:hover) .tl__seg:hover { opacity: 1; }
 .svcmap__hit, .tl__hit { pointer-events: all; }
+
+/* FIG_02 popovers: revealed by the same :has() row-hover that drives the dimming. */
+.svcmap:has([data-row="po"]:hover)  .svcmap__pop--po,
+.svcmap:has([data-row="ba"]:hover)  .svcmap__pop--ba,
+.svcmap:has([data-row="web"]:hover) .svcmap__pop--web,
+.svcmap:has([data-row="e2e"]:hover) .svcmap__pop--e2e {
+  opacity: 1; visibility: visible;
+  transition: opacity var(--dur-base) var(--ease-out), transform var(--dur-base) var(--ease-out), visibility 0s;
+}
+.svcmap:has([data-row="po"]:hover)  .svcmap__pop--po  { transform: translate(-50%, 0); }
+.svcmap:has([data-row="ba"]:hover)  .svcmap__pop--ba  { transform: translate(-50%, 0); }
+.svcmap:has([data-row="web"]:hover) .svcmap__pop--web { transform: translate(-50%, 0); }
+.svcmap:has([data-row="e2e"]:hover) .svcmap__pop--e2e { transform: translateY(0); }
 
 /* Sticky nav deepens once scrolled past a 1px sentinel at the top of <main>
    (an IntersectionObserver toggles html.nav-stuck; transition lives on .nav__inner itself). */

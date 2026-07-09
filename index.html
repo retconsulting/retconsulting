@@ -208,6 +208,7 @@
       <figure class="svcmap reveal" role="img" aria-label="Service map across the delivery cycle. Product owner, full-time mission: owns product vision, strategy, roadmap and backlog, then hands over and stays in support. Business or functional analyst, full-time mission: supports the early product phases, owns requirement specification, design and build, test and validate, then hands over at deploy and hypercare. Websites and apps, on-demand project: owned end to end, from product vision to deploy and hypercare. E2E training, delivered on demand after deployment.">
         <span class="stamp"><span class="ret-diamond"></span>FIG_02 · SERVICE MAP</span>
         <div class="svcmap__scroll">
+          <div class="svcmap__stage">
           <svg class="svcmap__svg" viewBox="0 0 1180 640" aria-hidden="true" focusable="false">
             <g class="svcmap__grid">
               <line x1="250" y1="66" x2="250" y2="600"/>
@@ -231,7 +232,7 @@
               <text class="svcmap__colhead" text-anchor="middle"><tspan x="1020" y="36">DEPLOY</tspan><tspan x="1020" y="50">&amp; HYPERCARE</tspan></text>
               <text class="svcmap__colhead" text-anchor="middle"><tspan x="1130" y="36">E2E</tspan><tspan x="1130" y="50">TRAINING</tspan></text>
             </g>
-            <g class="svcmap__row" fill="none">
+            <g class="svcmap__row" data-row="po" fill="none">
               <rect class="svcmap__hit" x="0" y="110" width="1180" height="110" fill="transparent"/>
               <path class="svcmap__solid" d="M250 165H580"/>
               <path class="svcmap__dash" d="M580 165H1130"/>
@@ -251,7 +252,7 @@
                 <text class="svcmap__rowsub" x="4" y="178">FULL-TIME MISSION</text>
               </g>
             </g>
-            <g class="svcmap__row" fill="none">
+            <g class="svcmap__row" data-row="ba" fill="none">
               <rect class="svcmap__hit" x="0" y="245" width="1180" height="110" fill="transparent"/>
               <path class="svcmap__dash" d="M250 300H580"/>
               <path class="svcmap__solid" d="M580 300H1020"/>
@@ -273,7 +274,7 @@
                 <text class="svcmap__rowsub" x="4" y="322">FULL-TIME MISSION</text>
               </g>
             </g>
-            <g class="svcmap__row" fill="none">
+            <g class="svcmap__row" data-row="web" fill="none">
               <rect class="svcmap__hit" x="0" y="380" width="1180" height="110" fill="transparent"/>
               <path class="svcmap__solid" d="M250 435H1020"/>
               <g class="svcmap__dots">
@@ -295,7 +296,7 @@
                 <text class="svcmap__rowsub" x="4" y="448">ON-DEMAND PROJECT</text>
               </g>
             </g>
-            <g class="svcmap__row" fill="none">
+            <g class="svcmap__row" data-row="e2e" fill="none">
               <rect class="svcmap__hit" x="0" y="515" width="1180" height="110" fill="transparent"/>
               <path class="svcmap__dash" d="M1020 570H1130"/>
               <g class="svcmap__rings">
@@ -310,6 +311,33 @@
               </g>
             </g>
           </svg>
+          <div class="svcmap__pops" aria-hidden="true">
+            <div class="svcmap__pop svcmap__pop--po">
+              <span class="cap">Full-time mission</span>
+              <div class="row"><span class="ret-diamond"></span>Product owner</div>
+              <p>One person owns the product: vision, strategy, roadmap and a backlog ready to build from.</p>
+              <p>Eight years across five sectors keep decisions tied to business value, so the team ships what matters first.</p>
+            </div>
+            <div class="svcmap__pop svcmap__pop--ba">
+              <span class="cap">Full-time mission</span>
+              <div class="row"><span class="ret-diamond"></span>Business / functional analyst</div>
+              <p>Business needs turned into requirements and specifications developers can build from, then validated before release.</p>
+              <p>Comfortable on both sides: plain language with your teams, precise detail in the specs.</p>
+            </div>
+            <div class="svcmap__pop svcmap__pop--web">
+              <span class="cap">On-demand project</span>
+              <div class="row"><span class="ret-diamond"></span>Websites &amp; apps</div>
+              <p>A defined scope taken from idea to launch: design, build, test, deploy and a clean handover.</p>
+              <p>One senior profile carries the whole cycle, so nothing is lost between roles.</p>
+            </div>
+            <div class="svcmap__pop svcmap__pop--e2e">
+              <span class="cap">On-demand training</span>
+              <div class="row"><span class="ret-diamond"></span>E2E training</div>
+              <p>Hands-on training for your key users once the product is live, on site or remote.</p>
+              <p>Built by the person who wrote the specifications, so it matches how the product really works.</p>
+            </div>
+          </div>
+          </div>
         </div>
         <figcaption class="svcmap__legend">
           <span class="svcmap__key"><span class="svcmap__key-line"></span>Responsible</span>
