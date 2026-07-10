@@ -96,8 +96,6 @@ section[id], #main { scroll-margin-top: 96px; }
 .hero__title .accent { color: var(--accent); }
 .hero__lead { font-family: var(--font-body); font-weight: 300; font-size: clamp(1.05rem, .98rem + .5vw, 1.3rem);
   line-height: 1.85; color: var(--ink-2); max-width: 52ch; margin: 26px 0 0; }
-/* Signature line opening the lead: its own first line, bold in plain ink */
-.hero__sig { display: block; margin-top: 0; margin-bottom: 10px; font-weight: 700; color: var(--ink); }
 .hero__highlights { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 26px; }
 .hero__actions { display: flex; align-items: center; gap: 14px; margin-top: 34px; flex-wrap: wrap; }
 
