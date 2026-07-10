@@ -31,7 +31,7 @@
 <link rel="manifest" href="/site.webmanifest"/>
 <meta name="apple-mobile-web-app-title" content="RET"/>
 <script>if('IntersectionObserver' in window && !matchMedia('(prefers-reduced-motion:reduce)').matches){document.documentElement.classList.add('reveal-on');}</script>
-<link rel="stylesheet" href="assets/ds.css?v=20260710"/>
+<link rel="stylesheet" href="assets/ds.css?v=20260710c"/>
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -116,7 +116,7 @@
         </div>
       </div>
       <div class="hero__visual">
-        <div class="hero__canvas">
+        <div class="hero__canvas" data-tilt>
           <span class="stamp"><span class="ret-diamond"></span>FIG_01 · METHOD</span>
           <img class="hero__watermark" src="assets/logo-mark.svg" alt=""/>
           <div class="hero__flow">
@@ -174,52 +174,103 @@
       <h2 class="section__title">Three ways to work together.</h2>
     </div>
     <div class="services reveal-group">
-      <article class="svc">
-        <div class="svc__head">
-          <span class="svc__icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="8.5"/><circle cx="12" cy="12" r="4.5"/><circle cx="12" cy="12" r="0.6"/></svg></span>
-          <span class="svc__no">01</span>
+      <article class="svc" data-flip data-tilt>
+        <div class="svc__inner">
+          <div class="svc__face svc__face--front">
+            <div class="svc__head">
+              <span class="svc__icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="8.5"/><circle cx="12" cy="12" r="4.5"/><circle cx="12" cy="12" r="0.6"/></svg></span>
+              <span class="svc__no">01</span>
+            </div>
+            <h3 class="svc__title">Full-time consultancy</h3>
+            <p class="svc__desc">One senior profile embedded in your team, from your goals to what ships: working out what to build first and why, then turning it into the requirements and specifications the team builds from.</p>
+            <ul class="svc__tags">
+              <li class="svc__tag">Product Owner</li>
+              <li class="svc__tag">Business Analyst</li>
+              <li class="svc__tag">Functional Analyst</li>
+            </ul>
+            <div class="svc__foot">Full-time equivalent · on-site or remote<button type="button" class="svc__more" aria-expanded="false" aria-label="More about Full-time consultancy"><span class="svc__more-label">Learn more</span><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7"/><path d="M8 7h9v9"/></svg></button></div>
+          </div>
+          <div class="svc__face svc__face--back" aria-hidden="true">
+            <div class="svc__backhead">
+              <span class="svc__backtag">WHY_ME · 01</span>
+              <button type="button" class="svc__close" aria-label="Close"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M6 6l12 12M18 6 6 18"/></svg></button>
+            </div>
+            <h4 class="svc__backtitle">Proof from the field.</h4>
+            <ul class="svc__proof">
+              <li>Business product owner on a live SAP S/4HANA programme in life sciences: functional specifications, UAT with key users, business-IT alignment.</li>
+              <li>Product owner for rolling-stock maintenance in international rail: vision, roadmap and backlog in a SAFe setup.</li>
+              <li>Before that: product owner on digital public services, analyst roles in life sciences and software licensing. Eight years, five sectors.</li>
+            </ul>
+            <p class="svc__backfoot">Certified SAFe POPM, PSPO I &amp; II, PSM I. <a href="#experience">See the track record</a></p>
+          </div>
         </div>
-        <h3 class="svc__title">Full-time consultancy</h3>
-        <p class="svc__desc">One senior profile embedded in your team, from your goals to what ships: working out what to build first and why, then turning it into the requirements and specifications the team builds from.</p>
-        <ul class="svc__tags">
-          <li class="svc__tag">Product Owner</li>
-          <li class="svc__tag">Business Analyst</li>
-          <li class="svc__tag">Functional Analyst</li>
-        </ul>
-        <div class="svc__foot">Full-time equivalent · on-site or remote<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7"/><path d="M8 7h9v9"/></svg></div>
       </article>
-      <article class="svc">
-        <div class="svc__head">
-          <span class="svc__icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3.5" y="3.5" width="7" height="7" rx="1.5"/><rect x="13.5" y="3.5" width="7" height="7" rx="1.5"/><rect x="3.5" y="13.5" width="7" height="7" rx="1.5"/><rect x="13.5" y="13.5" width="7" height="7" rx="1.5"/></svg></span>
-          <span class="svc__no">02</span>
+      <article class="svc" data-flip data-tilt>
+        <div class="svc__inner">
+          <div class="svc__face svc__face--front">
+            <div class="svc__head">
+              <span class="svc__icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3.5" y="3.5" width="7" height="7" rx="1.5"/><rect x="13.5" y="3.5" width="7" height="7" rx="1.5"/><rect x="3.5" y="13.5" width="7" height="7" rx="1.5"/><rect x="13.5" y="13.5" width="7" height="7" rx="1.5"/></svg></span>
+              <span class="svc__no">02</span>
+            </div>
+            <h3 class="svc__title">Projects on demand</h3>
+            <p class="svc__desc">A defined scope, taken from idea to launch and handed over clean. Latest project: <a href="dueday/">dueday</a>, a free iOS cost tracker.</p>
+            <ul class="svc__tags">
+              <li class="svc__tag">iOS apps</li>
+              <li class="svc__tag">Mac apps</li>
+              <li class="svc__tag">Websites</li>
+            </ul>
+            <div class="svc__foot">Fixed scope · idea to launch<button type="button" class="svc__more" aria-expanded="false" aria-label="More about Projects on demand"><span class="svc__more-label">Learn more</span><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7"/><path d="M8 7h9v9"/></svg></button></div>
+          </div>
+          <div class="svc__face svc__face--back" aria-hidden="true">
+            <div class="svc__backhead">
+              <span class="svc__backtag">WHY_ME · 02</span>
+              <button type="button" class="svc__close" aria-label="Close"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M6 6l12 12M18 6 6 18"/></svg></button>
+            </div>
+            <h4 class="svc__backtitle">Shipped, start to finish.</h4>
+            <ul class="svc__proof">
+              <li>dueday, a free iOS cost tracker: idea, design, build and App Store release, handled solo.</li>
+              <li>This website: designed, written and built by hand, bilingual, fast and dependency-free.</li>
+              <li>The same discipline as my enterprise work: a clear scope, working software, a clean handover.</li>
+            </ul>
+            <p class="svc__backfoot"><a href="#work">See the portfolio</a></p>
+          </div>
         </div>
-        <h3 class="svc__title">Projects on demand</h3>
-        <p class="svc__desc">A defined scope, taken from idea to launch and handed over clean. Latest project: <a href="dueday/">dueday</a>, a free iOS cost tracker.</p>
-        <ul class="svc__tags">
-          <li class="svc__tag">iOS apps</li>
-          <li class="svc__tag">Mac apps</li>
-          <li class="svc__tag">Websites</li>
-        </ul>
-        <div class="svc__foot">Fixed scope · idea to launch<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7"/><path d="M8 7h9v9"/></svg></div>
       </article>
-      <article class="svc">
-        <div class="svc__head">
-          <span class="svc__icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="m12 4.5 9.5 4.5-9.5 4.5L2.5 9 12 4.5Z"/><path d="M6.5 11.5v4.2c0 1.3 2.5 2.8 5.5 2.8s5.5-1.5 5.5-2.8v-4.2"/><path d="M21.5 9v4.5"/></svg></span>
-          <span class="svc__no">03</span>
+      <article class="svc" data-flip data-tilt>
+        <div class="svc__inner">
+          <div class="svc__face svc__face--front">
+            <div class="svc__head">
+              <span class="svc__icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="m12 4.5 9.5 4.5-9.5 4.5L2.5 9 12 4.5Z"/><path d="M6.5 11.5v4.2c0 1.3 2.5 2.8 5.5 2.8s5.5-1.5 5.5-2.8v-4.2"/><path d="M21.5 9v4.5"/></svg></span>
+              <span class="svc__no">03</span>
+            </div>
+            <h3 class="svc__title">Training on demand</h3>
+            <p class="svc__desc">Practical sessions on the Product Owner and Business Analyst roles, and on generative AI from the basics to advanced use. Delivered to large organisations and small teams, for technical profiles and knowledge workers alike.</p>
+            <ul class="svc__tags">
+              <li class="svc__tag">Generative AI</li>
+              <li class="svc__tag">Agentic workflows</li>
+              <li class="svc__tag">Automation</li>
+              <li class="svc__tag">Agile methodologies</li>
+            </ul>
+            <div class="svc__foot">On demand · on-site or remote<button type="button" class="svc__more" aria-expanded="false" aria-label="More about Training on demand"><span class="svc__more-label">Learn more</span><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7"/><path d="M8 7h9v9"/></svg></button></div>
+          </div>
+          <div class="svc__face svc__face--back" aria-hidden="true">
+            <div class="svc__backhead">
+              <span class="svc__backtag">WHY_ME · 03</span>
+              <button type="button" class="svc__close" aria-label="Close"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M6 6l12 12M18 6 6 18"/></svg></button>
+            </div>
+            <h4 class="svc__backtitle">Training grounded in practice.</h4>
+            <ul class="svc__proof">
+              <li>Generative AI trainer for several multinationals, on introductory and advanced tracks.</li>
+              <li>Sessions that take non-coders from their first prompts to agentic workflows they run on their own.</li>
+              <li>Grounded in daily practice: I build with LLMs and agents in real products, and train the Product Owner and Business Analyst roles from the same experience.</li>
+            </ul>
+            <p class="svc__backfoot"><a href="#contact">Ask for a programme</a></p>
+          </div>
         </div>
-        <h3 class="svc__title">Training on demand</h3>
-        <p class="svc__desc">Practical sessions on the Product Owner and Business Analyst roles, and on generative AI from the basics to advanced use. Delivered to large organisations and small teams, for technical profiles and knowledge workers alike.</p>
-        <ul class="svc__tags">
-          <li class="svc__tag">Generative AI</li>
-          <li class="svc__tag">Agentic workflows</li>
-          <li class="svc__tag">Automation</li>
-          <li class="svc__tag">Agile methodologies</li>
-        </ul>
-        <div class="svc__foot">On demand · on-site or remote<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7"/><path d="M8 7h9v9"/></svg></div>
       </article>
     </div>
     <div class="svcmap-wrap">
-      <figure class="svcmap reveal" role="img" aria-label="Service map across the delivery cycle. Product owner, full-time mission: owns product vision, strategy, roadmap and backlog, then hands over and stays in support. Business or functional analyst, full-time mission: supports the early product phases, owns requirement specification, design and build, test and validate, then hands over at deploy and hypercare. Websites and apps, on-demand project: owned end to end, from product vision to deploy and hypercare. E2E training, delivered on demand after deployment.">
+      <figure class="svcmap reveal" data-tilt role="img" aria-label="Service map across the delivery cycle. Product owner, full-time mission: owns product vision, strategy, roadmap and backlog, then hands over and stays in support. Business or functional analyst, full-time mission: supports the early product phases, owns requirement specification, design and build, test and validate, then hands over at deploy and hypercare. Websites and apps, on-demand project: owned end to end, from product vision to deploy and hypercare. E2E training, delivered on demand after deployment.">
         <span class="stamp"><span class="ret-diamond"></span>FIG_02 · SERVICE MAP</span>
         <div class="svcmap__scroll">
           <div class="svcmap__stage">
@@ -421,7 +472,7 @@
       <p class="section__lead">Scoped, designed, built and shipped end to end.</p>
     </div>
     <div class="fproj-wrap">
-      <article class="fproj reveal">
+      <article class="fproj reveal" data-tilt>
         <div class="fproj__preview">
           <div class="appmock">
             <div class="appmock__bar">
@@ -496,7 +547,7 @@
       <p class="section__lead">Selected missions, 2018 to today.</p>
     </div>
     <div class="tl-wrap">
-      <figure class="timeline reveal" role="img" aria-label="Delivery timeline. Technology, 2018 to 2020, 24 months. Life sciences, 2020 to 2022, 24 months. Public sector, 2022 to 2023, 12 months. Rail, 2023 to 2025, 24 months. Life sciences, since 2025, ongoing. Sectors delivered in: technology, life sciences, rail, public sector, professional services.">
+      <figure class="timeline reveal" data-tilt role="img" aria-label="Delivery timeline. Technology, 2018 to 2020, software license analyst, 24 months. Life sciences, 2020 to 2022, product and business analyst, 24 months. Public sector, 2022 to 2023, product owner, 12 months. Rail, 2023 to 2025, product owner on a CMMS platform, 24 months. Life sciences, since 2025, business product owner on an ERP programme, ongoing. Sectors delivered in: technology, life sciences, rail, public sector, professional services.">
         <span class="stamp"><span class="ret-diamond"></span>FIG_03 · TIMELINE</span>
         <ul class="tl__sectors">
           <li class="tl__sector"><span class="tl__sicon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><circle cx="6" cy="7" r="2"/><circle cx="18" cy="7" r="2"/><circle cx="12" cy="17" r="2.4"/><path d="M8 7h8"/><path d="M7 8.7 10.5 15"/><path d="M17 8.7 13.5 15"/></svg></span>Life sciences</li>
@@ -506,6 +557,7 @@
           <li class="tl__sector"><span class="tl__sicon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><rect x="6" y="6" width="12" height="12" rx="2"/><rect x="9.5" y="9.5" width="5" height="5" rx="1"/><path d="M9 6V3M15 6V3M9 21v-3M15 21v-3M6 9H3M6 15H3M21 9h-3M21 15h-3"/></svg></span>Tech</li>
         </ul>
         <div class="tl__scroll">
+          <div class="tl__stage">
           <svg class="tl__svg" viewBox="0 0 1180 460" aria-hidden="true" focusable="false">
             <line class="tl__axis" x1="48" y1="400" x2="1104" y2="400"/>
             <g class="tl__ticks">
@@ -530,45 +582,50 @@
               <text class="tl__year" text-anchor="middle" x="956" y="428">2025</text>
               <text class="tl__year" text-anchor="middle" x="1084" y="428">2026</text>
             </g>
-            <g class="tl__seg">
+            <g class="tl__seg" data-exp="1">
               <rect class="tl__hit" x="48" y="316" width="280" height="56" fill="transparent"/>
               <line class="tl__drop" x1="60" y1="360" x2="60" y2="400"/>
               <line class="tl__solid" x1="60" y1="360" x2="316" y2="360"/>
               <circle class="tl__ring" cx="60" cy="360" r="7"/>
               <text class="tl__name" x="60" y="330">Tech</text>
-              <text class="tl__dur" x="60" y="346">24 mo</text>
+              <text class="tl__role" x="60" y="346">Software license analyst</text>
+              <text class="tl__dur" text-anchor="end" x="316" y="346">24 mo</text>
             </g>
-            <g class="tl__seg">
+            <g class="tl__seg" data-exp="2">
               <rect class="tl__hit" x="304" y="256" width="280" height="56" fill="transparent"/>
               <line class="tl__drop" x1="316" y1="300" x2="316" y2="400"/>
               <line class="tl__solid" x1="316" y1="300" x2="572" y2="300"/>
               <circle class="tl__ring" cx="316" cy="300" r="7"/>
               <text class="tl__name" x="316" y="270">Life sciences</text>
-              <text class="tl__dur" x="316" y="286">24 mo</text>
+              <text class="tl__role" x="316" y="286">Product &amp; business analyst</text>
+              <text class="tl__dur" text-anchor="end" x="572" y="286">24 mo</text>
             </g>
-            <g class="tl__seg">
+            <g class="tl__seg" data-exp="3">
               <rect class="tl__hit" x="560" y="196" width="152" height="56" fill="transparent"/>
               <line class="tl__drop" x1="572" y1="240" x2="572" y2="400"/>
               <line class="tl__solid" x1="572" y1="240" x2="700" y2="240"/>
               <circle class="tl__ring" cx="572" cy="240" r="7"/>
               <text class="tl__name" x="572" y="210">Public sector</text>
-              <text class="tl__dur" x="572" y="226">12 mo</text>
+              <text class="tl__role" x="572" y="226">Product owner</text>
+              <text class="tl__dur" text-anchor="end" x="700" y="226">12 mo</text>
             </g>
-            <g class="tl__seg">
+            <g class="tl__seg" data-exp="4">
               <rect class="tl__hit" x="688" y="136" width="280" height="56" fill="transparent"/>
               <line class="tl__drop" x1="700" y1="180" x2="700" y2="400"/>
               <line class="tl__solid" x1="700" y1="180" x2="956" y2="180"/>
               <circle class="tl__ring" cx="700" cy="180" r="7"/>
               <text class="tl__name" x="700" y="150">Rail</text>
-              <text class="tl__dur" x="700" y="166">24 mo</text>
+              <text class="tl__role" x="700" y="166">Product owner, CMMS</text>
+              <text class="tl__dur" text-anchor="end" x="956" y="166">24 mo</text>
             </g>
-            <g class="tl__seg">
+            <g class="tl__seg" data-exp="5">
               <rect class="tl__hit" x="944" y="76" width="152" height="56" fill="transparent"/>
               <line class="tl__drop" x1="956" y1="120" x2="956" y2="400"/>
               <line class="tl__now" x1="956" y1="120" x2="1084" y2="120"/>
               <circle class="tl__ring--now" cx="956" cy="120" r="7"/>
               <text class="tl__name" text-anchor="end" x="1000" y="90">Life sciences</text>
-              <text class="tl__dur" text-anchor="end" x="1000" y="106">Ongoing</text>
+              <text class="tl__role" x="956" y="106">Business PO</text>
+              <text class="tl__dur" text-anchor="end" x="1084" y="106">Ongoing</text>
             </g>
             <g class="tl__marks">
               <rect class="tl__diamond" x="310.5" y="354.5" width="11" height="11" transform="rotate(45 316 360)"/>
@@ -578,77 +635,44 @@
             </g>
             <line class="tl__nowline" x1="1084" y1="100" x2="1084" y2="400"/>
             <text class="tl__nowlab" text-anchor="end" x="1084" y="92">NOW · 2026</text>
-            <text class="tl__note" text-anchor="end" x="1104" y="450">Full detail in the list below ↓</text>
+            <text class="tl__note" text-anchor="end" x="1104" y="450">Hover a segment for details</text>
           </svg>
+          <div class="tl__pops" aria-hidden="true">
+            <div class="tl__pop tl__pop--1">
+              <div class="tl__pop-head"><span class="tl__pop-chip">Tech</span><span class="tl__pop-ref">2018&ndash;2020 · Software licensing</span></div>
+              <span class="tl__pop-title">Software license analyst</span>
+              <p class="tl__pop-scope">Software licensing and entitlement analysis across enterprise systems, supporting compliance and procurement decisions.</p>
+              <span class="ret-hpill" style="--tilt:0"><span class="ret-hpill__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><rect x="3.5" y="3.5" width="7" height="7" rx="1.5"/><rect x="13.5" y="3.5" width="7" height="7" rx="1.5"/><rect x="3.5" y="13.5" width="7" height="7" rx="1.5"/><rect x="13.5" y="13.5" width="7" height="7" rx="1.5"/></svg></span><span>Enterprise Software</span></span>
+            </div>
+            <div class="tl__pop tl__pop--2">
+              <div class="tl__pop-head"><span class="tl__pop-chip">Life Sciences</span><span class="tl__pop-ref">2020&ndash;2022 · Analysis &amp; UAT</span></div>
+              <span class="tl__pop-title">Product and business analyst</span>
+              <p class="tl__pop-scope">Requirements analysis, functional specifications and UAT coordination across business and technical teams.</p>
+              <span class="ret-hpill" style="--tilt:0"><span class="ret-hpill__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><rect x="3.5" y="3.5" width="7" height="7" rx="1.5"/><rect x="13.5" y="3.5" width="7" height="7" rx="1.5"/><rect x="3.5" y="13.5" width="7" height="7" rx="1.5"/><rect x="13.5" y="13.5" width="7" height="7" rx="1.5"/></svg></span><span>Enterprise Software</span></span>
+            </div>
+            <div class="tl__pop tl__pop--3">
+              <div class="tl__pop-head"><span class="tl__pop-chip">Public Sector</span><span class="tl__pop-ref">2022&ndash;2023 · Digital services</span></div>
+              <span class="tl__pop-title">Product owner, digital public services</span>
+              <p class="tl__pop-scope">Requirements, functional specifications and coordination with delivery teams on digital public services.</p>
+              <span class="ret-hpill" style="--tilt:0"><span class="ret-hpill__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><rect x="6" y="2.5" width="12" height="19" rx="2.5"/><path d="M11 18.5h2"/></svg></span><span>Mobile Apps</span></span>
+            </div>
+            <div class="tl__pop tl__pop--4">
+              <div class="tl__pop-head"><span class="tl__pop-chip">Rail</span><span class="tl__pop-ref">2023&ndash;2025 · CMMS platform</span></div>
+              <span class="tl__pop-title">Product owner, rolling-stock maintenance</span>
+              <p class="tl__pop-scope">Vision, roadmap and backlog for a maintenance (CMMS) platform, with stakeholder workshops and delivery in a SAFe setup.</p>
+              <span class="ret-hpill" style="--tilt:0"><span class="ret-hpill__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4.5" width="18" height="15" rx="2"/><path d="M3 9h18"/><path d="M6.5 6.7h.01M9 6.7h.01"/></svg></span><span>Web Apps</span></span>
+            </div>
+            <div class="tl__pop tl__pop--5">
+              <div class="tl__pop-head"><span class="tl__pop-chip">Life Sciences</span><span class="tl__pop-ref">Since 2025 · ERP / S/4HANA</span></div>
+              <span class="tl__pop-title">Business product owner, ERP programme</span>
+              <p class="tl__pop-scope">Backlog ownership on an SAP S/4HANA programme: functional specifications, UAT with key users, and business-IT alignment.</p>
+              <span class="ret-hpill" style="--tilt:0"><span class="ret-hpill__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><rect x="3.5" y="3.5" width="7" height="7" rx="1.5"/><rect x="13.5" y="3.5" width="7" height="7" rx="1.5"/><rect x="3.5" y="13.5" width="7" height="7" rx="1.5"/><rect x="13.5" y="13.5" width="7" height="7" rx="1.5"/></svg></span><span>Enterprise Software</span></span>
+            </div>
+          </div>
+          </div>
         </div>
       </figure>
     </div>
-    <ul class="expgrid reveal-group">
-      <li class="expcard">
-        <div class="expcard__media expcard__media--icon">
-          <span class="expcard__chip">Tech</span>
-          <span class="expcard__glyph"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"><rect x="6" y="6" width="12" height="12" rx="2"/><rect x="9.5" y="9.5" width="5" height="5" rx="1"/><path d="M9 6V3M15 6V3M9 21v-3M15 21v-3M6 9H3M6 15H3M21 9h-3M21 15h-3"/></svg></span>
-        </div>
-        <div class="expcard__body">
-          <span class="expcard__ref"><span class="ret-diamond"></span>2018&ndash;2020 · Software licensing</span>
-          <h3 class="expcard__title">Software license analyst</h3>
-          <p class="expcard__scope">Software licensing and entitlement analysis across enterprise systems, supporting compliance and procurement decisions.</p>
-          <div class="expcard__pill"><span class="ret-hpill ret-hpill--lift ret-hpill--tilt" style="--tilt:-2deg;--tilt-amp:2deg;--tilt-dur:2.4s;animation-delay:-0.5s"><span class="ret-hpill__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><rect x="3.5" y="3.5" width="7" height="7" rx="1.5"/><rect x="13.5" y="3.5" width="7" height="7" rx="1.5"/><rect x="3.5" y="13.5" width="7" height="7" rx="1.5"/><rect x="13.5" y="13.5" width="7" height="7" rx="1.5"/></svg></span><span>Enterprise Software</span></span></div>
-        </div>
-      </li>
-      <li class="expcard">
-        <div class="expcard__media expcard__media--icon">
-          <span class="expcard__chip">Life Sciences</span>
-          <span class="expcard__glyph"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="6" cy="7" r="2"/><circle cx="18" cy="7" r="2"/><circle cx="12" cy="17" r="2.4"/><path d="M8 7h8"/><path d="M7 8.7 10.5 15"/><path d="M17 8.7 13.5 15"/></svg></span>
-        </div>
-        <div class="expcard__body">
-          <span class="expcard__ref"><span class="ret-diamond"></span>2020&ndash;2022 · Analysis &amp; UAT</span>
-          <h3 class="expcard__title">Product and business analyst</h3>
-          <p class="expcard__scope">Requirements analysis, functional specifications and UAT coordination across business and technical teams.</p>
-          <div class="expcard__pill"><span class="ret-hpill ret-hpill--lift ret-hpill--tilt" style="--tilt:1.8deg;--tilt-amp:-2deg;--tilt-dur:2.5s;animation-delay:-1.3s"><span class="ret-hpill__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><rect x="3.5" y="3.5" width="7" height="7" rx="1.5"/><rect x="13.5" y="3.5" width="7" height="7" rx="1.5"/><rect x="3.5" y="13.5" width="7" height="7" rx="1.5"/><rect x="13.5" y="13.5" width="7" height="7" rx="1.5"/></svg></span><span>Enterprise Software</span></span></div>
-        </div>
-      </li>
-      <li class="expcard">
-        <div class="expcard__media expcard__media--icon">
-          <span class="expcard__chip">Public Sector</span>
-          <span class="expcard__glyph"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 9 12 4l8 5"/><path d="M5 9h14"/><path d="M6 9v9M10 9v9M14 9v9M18 9v9"/><path d="M4 20h16"/></svg></span>
-        </div>
-        <div class="expcard__body">
-          <span class="expcard__ref"><span class="ret-diamond"></span>2022&ndash;2023 · Digital services</span>
-          <h3 class="expcard__title">Product owner, digital public services</h3>
-          <p class="expcard__scope">Requirements, functional specifications and coordination with delivery teams on digital public services.</p>
-          <div class="expcard__pill"><span class="ret-hpill ret-hpill--lift ret-hpill--tilt" style="--tilt:-1.5deg;--tilt-amp:2deg;--tilt-dur:2.6s;animation-delay:-0.6s"><span class="ret-hpill__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><rect x="6" y="2.5" width="12" height="19" rx="2.5"/><path d="M11 18.5h2"/></svg></span><span>Mobile Apps</span></span></div>
-        </div>
-      </li>
-      <li class="expcard">
-        <div class="expcard__media expcard__media--icon">
-          <span class="expcard__chip">Rail</span>
-          <span class="expcard__glyph"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 3v18M17 3v18"/><path d="M5 8h14M5 13h14M5 18h14"/></svg></span>
-        </div>
-        <div class="expcard__body">
-          <span class="expcard__ref"><span class="ret-diamond"></span>2023&ndash;2025 · CMMS platform</span>
-          <h3 class="expcard__title">Product owner, rolling-stock maintenance</h3>
-          <p class="expcard__scope">Vision, roadmap and backlog for a maintenance (CMMS) platform, with stakeholder workshops and delivery in a SAFe setup.</p>
-          <div class="expcard__pill"><span class="ret-hpill ret-hpill--lift ret-hpill--tilt" style="--tilt:2deg;--tilt-amp:-2deg;--tilt-dur:2.2s;animation-delay:-1s"><span class="ret-hpill__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4.5" width="18" height="15" rx="2"/><path d="M3 9h18"/><path d="M6.5 6.7h.01M9 6.7h.01"/></svg></span><span>Web Apps</span></span></div>
-        </div>
-      </li>
-      <li class="expcard">
-        <div class="expcard__media expcard__media--icon">
-          <span class="expcard__chip">Life Sciences</span>
-          <span class="expcard__glyph"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="6" cy="7" r="2"/><circle cx="18" cy="7" r="2"/><circle cx="12" cy="17" r="2.4"/><path d="M8 7h8"/><path d="M7 8.7 10.5 15"/><path d="M17 8.7 13.5 15"/></svg></span>
-        </div>
-        <div class="expcard__body">
-          <span class="expcard__ref"><span class="ret-diamond"></span>Since 2025 · ERP / S/4HANA</span>
-          <h3 class="expcard__title">Business product owner, ERP programme</h3>
-          <p class="expcard__scope">Backlog ownership on an SAP S/4HANA programme: functional specifications, UAT with key users, and business-IT alignment.</p>
-          <div class="expcard__pill"><span class="ret-hpill ret-hpill--lift ret-hpill--tilt" style="--tilt:-2deg;--tilt-amp:2deg;--tilt-dur:2.4s;animation-delay:-0.3s"><span class="ret-hpill__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><rect x="3.5" y="3.5" width="7" height="7" rx="1.5"/><rect x="13.5" y="3.5" width="7" height="7" rx="1.5"/><rect x="3.5" y="13.5" width="7" height="7" rx="1.5"/><rect x="13.5" y="13.5" width="7" height="7" rx="1.5"/></svg></span><span>Enterprise Software</span></span></div>
-        </div>
-      </li>
-      <li class="expgrid__arrow" style="--i:1" aria-hidden="true"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12h15"/><path d="m13 6 6 6-6 6"/></svg></li>
-      <li class="expgrid__arrow" style="--i:2" aria-hidden="true"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12h15"/><path d="m13 6 6 6-6 6"/></svg></li>
-      <li class="expgrid__arrow" style="--i:3" aria-hidden="true"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12h15"/><path d="m13 6 6 6-6 6"/></svg></li>
-      <li class="expgrid__arrow" style="--i:4" aria-hidden="true"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12h15"/><path d="m13 6 6 6-6 6"/></svg></li>
-    </ul>
     <p class="cases__note">Client names are withheld under confidentiality agreements. Details on request.</p>
   </section>
 
@@ -816,10 +840,10 @@
     var render = function () {
       ticking = false;
       var st = window.pageYOffset || document.documentElement.scrollTop || 0;
-      var docH = (document.documentElement.scrollHeight - window.innerHeight) || 1;
+      var docH = (document.documentElement.scrollHeight - document.documentElement.clientHeight) || 1;
       var p = Math.min(1, Math.max(0, st / docH));
       bar.style.strokeDashoffset = (CIRC * (1 - p)).toFixed(1);
-      var mid = st + window.innerHeight * 0.4, cur = SECTIONS[0];
+      var mid = st + document.documentElement.clientHeight * 0.4, cur = SECTIONS[0];
       for (var i = 0; i < SECTIONS.length; i++) {
         var el = document.getElementById(SECTIONS[i][0]);
         if (el && el.offsetTop <= mid) cur = SECTIONS[i];
@@ -860,5 +884,144 @@
 
   document.getElementById('year').textContent = new Date().getFullYear();
 </script>
+<script>
+(function () {
+  var cards = document.querySelectorAll('.svc[data-flip]');
+  if (!cards.length) return;
+  var mqRM = window.matchMedia('(prefers-reduced-motion: reduce)');
+  var DUR = 650, open = null;
+  var veil = document.createElement('div');
+  veil.className = 'flipveil'; veil.setAttribute('aria-hidden', 'true');
+  document.body.appendChild(veil);
+  function dur() { return mqRM.matches ? 0 : DUR; }
+  function center(card) {
+    var tw = Math.min(560, document.documentElement.clientWidth - 32);
+    var th = Math.min(Math.max(card._baseH, 430), document.documentElement.clientHeight - 48);
+    card.style.top = Math.round((document.documentElement.clientHeight - th) / 2) + 'px';
+    card.style.left = Math.round((document.documentElement.clientWidth - tw) / 2) + 'px';
+    card.style.width = tw + 'px'; card.style.height = th + 'px';
+  }
+  function openCard(card, trigger) {
+    if (open) return;
+    var r = card.getBoundingClientRect();
+    card._baseH = r.height;
+    var ph = document.createElement('div');
+    ph.setAttribute('aria-hidden', 'true');
+    ph.style.height = r.height + 'px';
+    card.parentNode.insertBefore(ph, card);
+    document.body.appendChild(card);
+    card.style.position = 'fixed';
+    card.style.top = r.top + 'px'; card.style.left = r.left + 'px';
+    card.style.width = r.width + 'px'; card.style.height = r.height + 'px';
+    card.style.margin = '0';
+    card.classList.add('is-lifted');
+    document.documentElement.classList.add('flip-open');
+    void card.offsetWidth;
+    center(card);
+    card.classList.add('is-flipped');
+    card.querySelector('.svc__face--back').removeAttribute('aria-hidden');
+    card.querySelector('.svc__face--front').setAttribute('aria-hidden', 'true');
+    if (trigger) trigger.setAttribute('aria-expanded', 'true');
+    window.setTimeout(function () { card.classList.add('is-settled'); }, dur() + 80);
+    open = { card: card, ph: ph, trigger: trigger || null };
+    var cb = card.querySelector('.svc__close');
+    if (cb) cb.focus();
+  }
+  function closeCard() {
+    if (!open) return;
+    var o = open; open = null;
+    var card = o.card, ph = o.ph;
+    var r = ph.getBoundingClientRect();
+    card.classList.remove('is-settled');
+    var inn = card.querySelector('.svc__inner');
+    inn.style.removeProperty('--tx'); inn.style.removeProperty('--ty');
+    card.classList.remove('is-flipped');
+    card.style.top = r.top + 'px'; card.style.left = r.left + 'px';
+    card.style.width = r.width + 'px'; card.style.height = r.height + 'px';
+    document.documentElement.classList.remove('flip-open');
+    card.querySelector('.svc__face--back').setAttribute('aria-hidden', 'true');
+    card.querySelector('.svc__face--front').removeAttribute('aria-hidden');
+    window.setTimeout(function () {
+      if (ph.parentNode) { ph.parentNode.insertBefore(card, ph); ph.parentNode.removeChild(ph); }
+      card.classList.remove('is-lifted');
+      card.removeAttribute('style');
+      if (o.trigger) { o.trigger.setAttribute('aria-expanded', 'false'); o.trigger.focus(); }
+    }, dur() + 60);
+  }
+  cards.forEach(function (card) {
+    var inner = card.querySelector('.svc__inner');
+    card.addEventListener('click', function (e) {
+      var a = e.target.closest('a');
+      if (a && card.classList.contains('is-flipped') && (a.getAttribute('href') || '').charAt(0) === '#') {
+        e.preventDefault();
+        var h = a.getAttribute('href');
+        closeCard();
+        window.setTimeout(function () { location.hash = h; }, dur() + 80);
+        return;
+      }
+      if (a) return;
+      if (e.target.closest('.svc__close')) { closeCard(); return; }
+      if (!card.classList.contains('is-flipped')) openCard(card, card.querySelector('.svc__more'));
+    });
+    card.addEventListener('pointermove', function (e) {
+      if (!open || open.card !== card || !card.classList.contains('is-settled') || mqRM.matches) return;
+      var r = card.getBoundingClientRect();
+      var px = (e.clientX - r.left) / r.width - 0.5;
+      var py = (e.clientY - r.top) / r.height - 0.5;
+      inner.style.setProperty('--tx', (py * -3).toFixed(2) + 'deg');
+      inner.style.setProperty('--ty', (px * -3).toFixed(2) + 'deg');
+    });
+    card.addEventListener('pointerleave', function () {
+      inner.style.setProperty('--tx', '0deg'); inner.style.setProperty('--ty', '0deg');
+    });
+  });
+  veil.addEventListener('click', closeCard);
+  document.addEventListener('keydown', function (e) {
+    if (!open) return;
+    if (e.key === 'Escape') { closeCard(); return; }
+    if (e.key === 'Tab') {
+      var f = open.card.querySelectorAll('.svc__face--back button, .svc__face--back a[href]');
+      if (!f.length) return;
+      var first = f[0], last = f[f.length - 1];
+      if (e.shiftKey && document.activeElement === first) { e.preventDefault(); last.focus(); }
+      else if (!e.shiftKey && document.activeElement === last) { e.preventDefault(); first.focus(); }
+    }
+  });
+  window.addEventListener('resize', function () { if (open) center(open.card); });
+})();
+</script>
+<script>
+(function () {
+  if (!matchMedia('(hover: hover) and (pointer: fine)').matches) return;
+  if (matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  var el = null, raf = 0, ev = null;
+  function reset(n) { if (n) { n.style.setProperty('--rtx', '0deg'); n.style.setProperty('--rty', '0deg'); } }
+  function apply() {
+    raf = 0;
+    if (!el || !ev) return;
+    var r = el.getBoundingClientRect();
+    var amp = parseFloat(getComputedStyle(el).getPropertyValue('--tilt-amp')) || 2;
+    var px = (ev.clientX - r.left) / r.width - 0.5;
+    var py = (ev.clientY - r.top) / r.height - 0.5;
+    el.style.setProperty('--rtx', (py * 2 * amp).toFixed(2) + 'deg');
+    el.style.setProperty('--rty', (px * -2 * amp).toFixed(2) + 'deg');
+  }
+  document.addEventListener('pointermove', function (e) {
+    var t = e.target.closest ? e.target.closest('[data-tilt]') : null;
+    if (t && t.classList.contains('is-lifted')) t = null;
+    if (t !== el) { reset(el); el = t; }
+    if (!el) return;
+    ev = e;
+    if (!raf) raf = requestAnimationFrame(apply);
+  }, { passive: true });
+  document.addEventListener('pointerout', function (e) {
+    if (el && !e.relatedTarget) { reset(el); el = null; }
+  }, { passive: true });
+})();
+</script>
+<div class="flipbrand" aria-hidden="true">
+  <img class="flipbrand__glyph" src="assets/logo-mark.svg" alt=""/>
+  <span class="flipbrand__word"><span class="w">RET</span><span class="d">Consulting</span></span>
+</div>
 </body>
 </html>

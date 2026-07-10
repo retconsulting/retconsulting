@@ -147,6 +147,8 @@ section[id], #main { scroll-margin-top: 96px; }
   .hero__flowstep { animation: none; }
   .hero__flowstep:nth-child(2) { background-color: var(--cognac-wash); border-color: var(--border-accent); }
   .hero__sig-name { animation: none; background: none; color: var(--accent); }
+  /* the global duration zeroing does not kill transition-delays: zero the flip crossfade delays */
+  .svc__face--front > *, .svc__face--back > * { transition-delay: 0s !important; }
 }
 .hero__canvas .stamp { position: absolute; top: 18px; left: 50%; transform: translateX(-50%); z-index: 3; display: flex; align-items: center; gap: 8px;
   padding: 8px 12px; border-radius: var(--r-pill);
@@ -170,8 +172,8 @@ section[id], #main { scroll-margin-top: 96px; }
 .trustbar__sr { position:absolute; width:1px; height:1px; padding:0; margin:-1px; overflow:hidden; clip:rect(0 0 0 0); clip-path:inset(50%); white-space:nowrap; border:0; }
 .trustbar__inner { max-width: var(--container); margin-inline:auto; padding-inline: var(--gutter); }
 .trustbar__card { background: var(--surface); border:1px solid var(--line); border-radius: var(--r-2xl); box-shadow: var(--shadow-md);
-  padding: clamp(24px,3vw,34px) clamp(8px,1.4vw,18px); display:grid; grid-template-columns: 0.85fr 1.5fr 0.9fr; align-items:stretch; }
-.trustbar__col { display:flex; flex-direction:column; justify-content:flex-start; padding-inline: clamp(18px,2.6vw,38px); }
+  padding: clamp(24px,3vw,34px) clamp(8px,1.4vw,18px); display:grid; grid-template-columns: repeat(3, 1fr); align-items:stretch; }
+.trustbar__col { display:flex; flex-direction:column; justify-content:center; padding-inline: clamp(18px,2.6vw,38px); }
 .trustbar__col + .trustbar__col { border-left:1px solid var(--line); }
 .trustbar__k { font-family:var(--font-mono); font-size:var(--t-meta); letter-spacing:var(--track-meta); text-transform:uppercase; color:var(--ink-3); line-height:1; margin:0 0 12px; }
 .trustbar__v { margin:0; display:flex; align-items:baseline; gap:8px; }
@@ -200,11 +202,20 @@ section[id], #main { scroll-margin-top: 96px; }
 /* ---------- Services grid ---------- */
 .services { max-width: var(--container); margin-inline: auto; padding-inline: var(--gutter);
   display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--card-gap); }
-.svc { position: relative; display: flex; flex-direction: column; padding: 30px; min-height: 320px;
-  background: var(--glass-fill-deep); border: 1px solid var(--glass-border); border-radius: var(--r-xl); box-shadow: var(--shadow-md);
-  -webkit-backdrop-filter: blur(var(--blur-glass)) saturate(1.4); backdrop-filter: blur(var(--blur-glass)) saturate(1.4);
-  transition: transform var(--dur-base) var(--ease-out), box-shadow var(--dur-base) var(--ease-out), border-color var(--dur-base) var(--ease-out); }
-.svc:hover { transform: translateY(var(--card-lift)); box-shadow: var(--shadow-lg); border-color: var(--border-accent); }
+/* Card surface lives on the FACES (not .svc) so the panel itself does the 3D turn:
+   .svc is a transparent positioning shell; .svc__face--front paints the exact same
+   box as before (padding 30px, glass, border, r-xl, shadow-md) so rest render is
+   pixel-identical. */
+.svc { position: relative; display: flex; flex-direction: column; padding: 0; min-height: 320px;
+  transition: transform var(--dur-base) var(--ease-out); }
+.svc:hover { transform: translateY(var(--card-lift)) perspective(1100px) rotateX(var(--rtx, 0deg)) rotateY(var(--rty, 0deg)); }
+.svc__face { padding: 30px; background: var(--glass-fill-deep); border: 1px solid var(--glass-border);
+  border-radius: var(--r-xl); box-shadow: var(--shadow-md);
+  transition: box-shadow var(--dur-base) var(--ease-out), border-color var(--dur-base) var(--ease-out); }
+.svc:hover .svc__face--front { box-shadow: var(--shadow-lg); border-color: var(--border-accent); }
+/* while pinned/flying: solid surface (backdrop-filter inside a 3D context is buggy across browsers) */
+.svc.is-lifted .svc__face { background: var(--surface); -webkit-backdrop-filter: none; backdrop-filter: none;
+  box-shadow: var(--shadow-float); }
 .svc__head { display: flex; align-items: center; justify-content: space-between; margin-bottom: 30px; }
 .svc__icon { width: 52px; height: 52px; border-radius: var(--r-md); display: grid; place-items: center;
   background: var(--canvas-sunken); color: var(--ink); transition: background var(--dur-base), color var(--dur-base); }
@@ -226,6 +237,84 @@ section[id], #main { scroll-margin-top: 96px; }
 .svc__tag { font-family: var(--font-body); font-size: 12.5px; font-weight: 500; line-height: 1; color: var(--ink-2);
   background: var(--surface); border: 1px solid var(--border-strong); border-radius: var(--r-pill); padding: 6px 11px; }
 
+/* Service card flip: pinned fixed + fly-to-centre + 3D turn, veil blurs the site behind */
+.svc[data-flip] { cursor: pointer; perspective: 1400px; }
+.svc__inner { position: relative; flex: 1; display: flex; flex-direction: column;
+  transform-style: preserve-3d; transition: transform .65s var(--ease-out); }
+.svc.is-flipped .svc__inner { transform: rotateY(180deg) rotateX(var(--tx, 0deg)) rotateY(var(--ty, 0deg)); }
+/* once the fly-to-centre settles, shorten the inner transition so the pointer tilt feels live */
+.svc.is-settled .svc__inner { transition: transform .18s var(--ease-out); }
+.svc__face--front { display: flex; flex-direction: column; flex: 1; min-height: 0;
+  -webkit-backdrop-filter: blur(var(--blur-glass)) saturate(1.4); backdrop-filter: blur(var(--blur-glass)) saturate(1.4);
+  -webkit-backface-visibility: hidden; backface-visibility: hidden; }
+.svc.is-flipped .svc__face--front { visibility: hidden; transition: visibility 0s .32s; }
+.svc__face--back { position: absolute; inset: 0; display: flex; flex-direction: column;
+  overflow-y: auto; overscroll-behavior: contain; transform: rotateY(180deg);
+  -webkit-backface-visibility: hidden; backface-visibility: hidden;
+  visibility: hidden; transition: visibility 0s .32s; }
+.svc.is-flipped .svc__face--back { visibility: visible; transition: visibility 0s; }
+.svc.is-lifted { z-index: 86; transform: none !important;
+  transition: top .65s var(--ease-out), left .65s var(--ease-out),
+    width .65s var(--ease-out), height .65s var(--ease-out); }
+/* the panel does the 3D turn; the copy swaps with a quick fade so it never reads as skewed */
+.svc__face--front > * { transition: opacity .22s linear .36s; }
+.svc.is-flipped .svc__face--front > * { opacity: 0; transition: opacity .16s linear; }
+.svc__face--back > * { opacity: 0; transition: opacity .16s linear; }
+.svc.is-flipped .svc__face--back > * { opacity: 1; transition: opacity .22s linear .36s; }
+.flipveil { position: fixed; inset: 0; z-index: 84; opacity: 0; pointer-events: none;
+  background: rgba(24,24,27,.16);
+  -webkit-backdrop-filter: blur(var(--blur-glass)) saturate(1.15);
+  backdrop-filter: blur(var(--blur-glass)) saturate(1.15);
+  transition: opacity .5s var(--ease-out); }
+html.flip-open .flipveil { opacity: 1; pointer-events: auto; }
+html.flip-open body { overflow: hidden; }
+/* RET brand pill fading in bottom-centre over the veil while a card is turned
+   (same language as the nav pill; above the veil (84), below the card (86)) */
+.flipbrand { position: fixed; left: 50%; bottom: 26px; transform: translate(-50%, 12px); z-index: 85;
+  display: inline-flex; align-items: center; gap: 11px; padding: 12px 20px;
+  background: var(--surface); border: 1px solid var(--line); border-radius: var(--r-pill); box-shadow: var(--shadow-md);
+  opacity: 0; pointer-events: none;
+  transition: opacity .5s var(--ease-out), transform .5s var(--ease-out); }
+html.flip-open .flipbrand { opacity: 1; transform: translate(-50%, 0); }
+.flipbrand__glyph { width: 26px; height: 26px; display: block; }
+.flipbrand__word { display: flex; flex-direction: column; align-items: center; line-height: 1; }
+.flipbrand__word .w { font-family: var(--font-display); font-weight: 700; font-size: 15px; letter-spacing: -.02em; color: var(--ink); }
+.flipbrand__word .d { font-family: var(--font-mono); font-size: 8px; letter-spacing: .2em; text-transform: uppercase; color: var(--ink-3); margin-top: 2px; margin-right: -.2em; }
+@media (max-width: 560px), (max-height: 700px) { .flipbrand { display: none; } }
+/* Card back: proof-of-value panel (WHY_ME) */
+.svc__backhead { display: flex; align-items: center; justify-content: space-between; margin-bottom: 14px; }
+.svc__backtag { font-family: var(--font-mono); font-size: 11px; letter-spacing: .14em; text-transform: uppercase; color: var(--ink-3); }
+.svc__close { width: 34px; height: 34px; border-radius: var(--r-pill); border: 1px solid var(--line);
+  background: var(--surface-2); color: var(--ink-2); display: grid; place-items: center; cursor: pointer; flex: none; }
+.svc__close:hover { border-color: var(--border-accent); color: var(--accent); }
+.svc__backtitle { font-family: var(--font-display); font-weight: 700; font-size: 1.15rem; color: var(--ink); margin: 0 0 12px; }
+.svc__proof { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 12px; }
+.svc__proof li { position: relative; padding-left: 18px; font-family: var(--font-body); font-size: .92rem; line-height: 1.55; color: var(--ink-2); }
+.svc__proof li::before { content: ""; position: absolute; left: 2px; top: .55em; width: 7px; height: 7px;
+  background: var(--accent); transform: rotate(45deg); }
+.svc__backfoot { margin-top: auto; padding-top: 16px; font-family: var(--font-body); font-size: .9rem; color: var(--ink-2); }
+.svc__backfoot a { color: var(--cognac-text); text-decoration: none; }
+/* Front-foot arrow now lives in a real button; on card hover (or button focus) it morphs
+   into a "Learn more" pill on --accent-btn (AA white text). The button is ALWAYS
+   absolutely positioned inside the foot (its in-flow footprint of 22px arrow + 8px gap
+   is reserved by the foot's 30px padding-right), so the pill expansion never takes part
+   in layout: the caption cannot re-wrap and the card height is mathematically constant
+   on hover, whatever the label/caption lengths (EN or FR). right 0 -> -10px keeps the
+   arrow optically pinned while the padding grows 4 -> 14px. */
+.svc__foot { position: relative; padding-right: 30px; }
+.svc__more { position: absolute; right: 0; top: calc(50% + 11px); transform: translateY(-50%);
+  display: inline-flex; align-items: center; gap: 0; padding: 4px; margin: 0;
+  background: none; border: 0; border-radius: var(--r-pill); cursor: pointer; color: inherit;
+  transition: background var(--dur-base) var(--ease-out), color var(--dur-base) var(--ease-out),
+    padding var(--dur-base) var(--ease-out), gap var(--dur-base) var(--ease-out), right var(--dur-base) var(--ease-out); }
+.svc__more-label { max-width: 0; opacity: 0; overflow: hidden; white-space: nowrap;
+  font-family: var(--font-mono); font-size: 10.5px; letter-spacing: .1em; text-transform: uppercase;
+  transition: max-width var(--dur-base) var(--ease-out), opacity var(--dur-base) var(--ease-out); }
+.svc:hover .svc__more, .svc__more:focus-visible { background: var(--accent-btn); color: #fff; padding: 9px 14px; right: -10px; gap: 7px; }
+.svc:hover .svc__more .svc__more-label, .svc__more:focus-visible .svc__more-label { max-width: 130px; opacity: 1; }
+/* inside the pill the foot's 3px arrow nudge would crowd the pill edge: soften it */
+.svc:hover .svc__more svg { transform: translate(1px, -1px); }
+.svc__more:focus-visible, .svc__close:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
 
 /* ---------- Work / cases ---------- */
 .cases { max-width: var(--container); margin-inline: auto; padding-inline: var(--gutter); }
@@ -264,7 +353,7 @@ section[id], #main { scroll-margin-top: 96px; }
 .expcard { display: flex; flex-direction: column; overflow: hidden; background: var(--surface);
   border: 1px solid var(--line); border-radius: var(--r-xl); box-shadow: var(--shadow-md);
   transition: transform var(--dur-base) var(--ease-out), box-shadow var(--dur-base) var(--ease-out), border-color var(--dur-base) var(--ease-out); }
-.expcard:hover { transform: translateY(var(--card-lift)); box-shadow: var(--shadow-lg); border-color: var(--border-accent); }
+.expcard:hover { transform: translateY(var(--card-lift)) perspective(1100px) rotateX(var(--rtx, 0deg)) rotateY(var(--rty, 0deg)); box-shadow: var(--shadow-lg); border-color: var(--border-accent); }
 .expcard__media { position: relative; aspect-ratio: 3 / 2; overflow: hidden; background: var(--canvas-sunken); }
 /* Icon media panel: all 5 mission cards now use this duotone gray-to-cognac tile with a line-art
    glyph (photo plates retired; the old .expcard__media img + hover-zoom rules are gone with them) */
@@ -468,7 +557,7 @@ html.reveal-on .expgrid.is-in > .expgrid__arrow { transition-delay: calc(var(--r
 .dd-card { background: var(--glass-fill-deep); border: 1px solid var(--glass-border); border-radius: var(--r-xl); box-shadow: var(--shadow-md); padding: 26px;
   -webkit-backdrop-filter: blur(var(--blur-glass)) saturate(1.5); backdrop-filter: blur(var(--blur-glass)) saturate(1.5);
   transition: transform var(--dur-base) var(--ease-out), box-shadow var(--dur-base) var(--ease-out), border-color var(--dur-base) var(--ease-out); }
-.dd-card:hover { transform: translateY(var(--card-lift)); box-shadow: var(--shadow-lg); border-color: var(--border-accent); }
+.dd-card:hover { transform: translateY(var(--card-lift)) perspective(1100px) rotateX(var(--rtx, 0deg)) rotateY(var(--rty, 0deg)); box-shadow: var(--shadow-lg); border-color: var(--border-accent); }
 .dd-card h3 { font-family: var(--font-display); font-weight: 700; font-size: 1.15rem; letter-spacing: -.01em; color: var(--ink); margin: 0 0 8px; }
 .dd-card p { font-family: var(--font-body); font-size: .95rem; line-height: 1.55; color: var(--ink-2); margin: 0; }
 
@@ -508,7 +597,7 @@ html.reveal-on .expgrid.is-in > .expgrid__arrow { transition-delay: calc(var(--r
 .feat { padding: 28px; background: var(--glass-fill-deep); border: 1px solid var(--glass-border); border-radius: var(--r-xl); box-shadow: var(--shadow-md);
   -webkit-backdrop-filter: blur(var(--blur-glass)) saturate(1.5); backdrop-filter: blur(var(--blur-glass)) saturate(1.5);
   transition: transform var(--dur-base) var(--ease-out), box-shadow var(--dur-base) var(--ease-out), border-color var(--dur-base) var(--ease-out); }
-.feat:hover { transform: translateY(var(--card-lift)); box-shadow: var(--shadow-lg); border-color: var(--border-accent); }
+.feat:hover { transform: translateY(var(--card-lift)) perspective(1100px) rotateX(var(--rtx, 0deg)) rotateY(var(--rty, 0deg)); box-shadow: var(--shadow-lg); border-color: var(--border-accent); }
 .feat__icon { width: 48px; height: 48px; border-radius: var(--r-md); display: grid; place-items: center; background: var(--cognac-wash); color: var(--cognac-ink); margin-bottom: 20px; }
 .feat__icon svg { stroke-width: 1.5; }
 .feat__t { font-family: var(--font-display); font-weight: 700; font-size: 1.2rem; letter-spacing: -.01em; color: var(--ink); margin: 0 0 8px; }
@@ -645,6 +734,9 @@ html.reveal-on .expgrid.is-in > .expgrid__arrow { transition-delay: calc(var(--r
 @media print {
   /* floating + interactive-only chrome has no place on paper */
   .scrim-bottom, .scrollnav, .contactdock, .nav__toggle { display: none !important; }
+  /* service-card flip is interactive-only: print the front face, drop veil/close/back/brand */
+  .flipveil, .svc__close, .flipbrand { display: none !important; }
+  .svc__face--back { display: none !important; }
   /* glass, shadows and blur are screen effects — flatten for clean ink */
   *, *::before, *::after {
     box-shadow: none !important; text-shadow: none !important;
@@ -766,7 +858,8 @@ html.reveal-on .expgrid.is-in > .expgrid__arrow { transition-delay: calc(var(--r
 .tl__sicon svg { display: block; width: 19px; height: 19px; stroke-width: 1.5; color: var(--ink-3); }
 /* Chart */
 .tl__scroll { overflow-x: auto; -webkit-overflow-scrolling: touch; }
-.tl__svg { display: block; width: 100%; min-width: 860px; height: auto; }
+.tl__stage { position: relative; min-width: 860px; }
+.tl__svg { display: block; width: 100%; height: auto; }
 .tl__axis { stroke: var(--line-strong); stroke-width: 1; }
 .tl__tick { stroke: var(--ink-3); stroke-width: 1; }
 .tl__drop { stroke: var(--line); stroke-width: 1; }
@@ -778,11 +871,60 @@ html.reveal-on .expgrid.is-in > .expgrid__arrow { transition-delay: calc(var(--r
 .tl__diamond { fill: var(--accent); }
 .tl__year { font-family: var(--font-mono); font-size: 11px; letter-spacing: .04em; fill: var(--ink-3); }
 .tl__name { font-family: var(--font-display); font-weight: 700; font-size: 16px; letter-spacing: -.01em; fill: var(--ink); }
-.tl__dur { font-family: var(--font-mono); font-size: 10.5px; letter-spacing: .04em; fill: var(--ink-3); }
+.tl__dur, .tl__role { font-family: var(--font-mono); font-size: 10.5px; letter-spacing: .04em; fill: var(--ink-3); }
 .tl__nowlab { font-family: var(--font-mono); font-size: 11px; letter-spacing: .08em; fill: var(--accent); }
 .tl__note { font-family: var(--font-mono); font-size: 10.5px; letter-spacing: .06em; fill: var(--ink-3); }
+/* Hover popovers: one glass card per mission (same deep-glass recipe as .svcmap__pop),
+   pre-rendered in a layer over the SVG and revealed CSS-only via :has() (Motion v2 block).
+   Content mirrors the expcard below each pop's segment; inert (aria-hidden,
+   pointer-events:none) so hover ownership stays on the SVG hit rects. */
+.tl__pops { position: absolute; inset: 0; pointer-events: none; z-index: 10; }
+.tl__pop { position: absolute; width: min(320px, 90%); padding: 14px 17px; border-radius: var(--r-xl);
+  background: linear-gradient(152deg, rgba(255,255,255,.58) 0%, rgba(255,255,255,.32) 55%, rgba(255,255,255,.50) 100%);
+  border: 1px solid rgba(255,255,255,.80);
+  -webkit-backdrop-filter: blur(var(--blur-strong)) saturate(2.2) brightness(1.06);
+  backdrop-filter: blur(var(--blur-strong)) saturate(2.2) brightness(1.06);
+  box-shadow: 0 18px 48px -16px rgba(24,24,27,.22), inset 0 1px 0 rgba(255,255,255,.90), inset 0 -1px 0 rgba(255,255,255,.30);
+  opacity: 0; visibility: hidden;
+  transition: opacity var(--dur-base) var(--ease-out), transform var(--dur-base) var(--ease-out), visibility 0s linear var(--dur-base); }
+.tl__pop::after { content: ""; position: absolute; z-index: -1; width: 12px; height: 12px;
+  background: linear-gradient(152deg, rgba(255,255,255,.58) 0%, rgba(255,255,255,.32) 55%, rgba(255,255,255,.50) 100%);
+  border: 1px solid rgba(255,255,255,.80);
+  -webkit-backdrop-filter: blur(var(--blur-strong)) saturate(2.2) brightness(1.06);
+  backdrop-filter: blur(var(--blur-strong)) saturate(2.2) brightness(1.06);
+  transform: rotate(45deg); }
+.tl__pop-head { display: flex; align-items: center; gap: 10px; }
+.tl__pop-chip { flex: none; font-family: var(--font-mono); font-size: 10px; letter-spacing: .14em; text-transform: uppercase; color: var(--ink-2);
+  padding: 6px 11px; border-radius: var(--r-pill); background: var(--glass-fill); border: 1px solid var(--glass-border); box-shadow: var(--glass-shadow); }
+.tl__pop-ref { font-family: var(--font-mono); font-size: 10px; letter-spacing: .08em; text-transform: uppercase; color: var(--ink-3); }
+.tl__pop-title { display: block; margin-top: 10px; font-family: var(--font-display); font-weight: 700; font-size: 15px; letter-spacing: -.01em; color: var(--ink); }
+.tl__pop-scope { font-family: var(--font-body); font-weight: 400; font-size: 12.5px; line-height: 1.5; color: var(--ink-2); margin: 7px 0 0; }
+.tl__pop .ret-hpill { margin-top: 12px; background: var(--canvas-sunken); border-color: var(--border-strong); box-shadow: var(--shadow-sm);
+  -webkit-backdrop-filter: none; backdrop-filter: none; }
+/* Anchors, in stage percentages of the 1180x460 viewBox: each caret aims at its
+   segment's start ring. Segments 1-2 (bottom of the staircase) open ABOVE their line,
+   clear of the segment's own name/role labels (caret down); segments 3-5 open BELOW
+   (caret up). Pops 1 and 5 are edge-anchored with a fixed caret offset so the caret
+   stays on the ring at any stage width. */
+.tl__pop--1 { bottom: calc(21.7% + 48px); left: calc(5.1% - 36px); transform: translateY(6px); }
+.tl__pop--1::after { bottom: -6.5px; left: 30px; }
+.tl__pop--2 { bottom: calc(34.8% + 48px); left: 26.8%; transform: translate(-50%, 6px); }
+.tl__pop--2::after { bottom: -6.5px; left: 50%; margin-left: -6px; }
+.tl__pop--3 { top: calc(52.2% + 18px); left: 48.5%; transform: translate(-50%, -6px); }
+.tl__pop--3::after { top: -6.5px; left: 50%; margin-left: -6px; }
+.tl__pop--4 { top: calc(39.1% + 18px); left: 59.3%; transform: translate(-50%, -6px); }
+.tl__pop--4::after { top: -6.5px; left: 50%; margin-left: -6px; }
+.tl__pop--5 { top: calc(26.1% + 18px); left: calc(81% - 272px); transform: translateY(-6px); }
+.tl__pop--5::after { top: -6.5px; right: 42px; }
+/* ≥1100px the stage (min 860px) fits without scrolling (container gutters 128px +
+   figure padding up to 96px + border 2px -> fits from ~1076px): release the scroll
+   clip so the pops float above the figure without truncation. Below the breakpoint
+   the mobile scroll keeps its clip (hover barely exists on touch). */
+@media (min-width: 1100px) {
+  .tl__scroll { overflow: visible; }
+}
 @media (max-width: 680px) { .tl__sectors { flex-wrap: wrap; justify-content: center; gap: 12px 22px; } .tl__sector { border-left: none !important; padding-inline: 0; } }
-@media print { .tl__scroll { overflow: visible; } .timeline { break-inside: avoid; } }
+@media print { .tl__scroll { overflow: visible; } .timeline { break-inside: avoid; } .tl__pops { display: none !important; } }
 
 /* ---------- Featured project (dueday) ---------- */
 /* The #work section leads with one full-width showcase (this block) instead of a carousel;
@@ -920,6 +1062,39 @@ html.reveal-on .fproj.is-in .appmock__end { opacity: 1; transform: scale(1); }
 .svcmap:has([data-row="ba"]:hover)  .svcmap__pop--ba  { transform: translate(-100%, 0); }
 .svcmap:has([data-row="web"]:hover) .svcmap__pop--web { transform: translate(-100%, 0); }
 .svcmap:has([data-row="e2e"]:hover) .svcmap__pop--e2e { transform: translateY(0); }
+
+/* FIG_03 popovers: revealed by the same :has() segment-hover that drives the dimming. */
+.timeline:has(.tl__seg[data-exp="1"]:hover) .tl__pop--1,
+.timeline:has(.tl__seg[data-exp="2"]:hover) .tl__pop--2,
+.timeline:has(.tl__seg[data-exp="3"]:hover) .tl__pop--3,
+.timeline:has(.tl__seg[data-exp="4"]:hover) .tl__pop--4,
+.timeline:has(.tl__seg[data-exp="5"]:hover) .tl__pop--5 {
+  opacity: 1; visibility: visible;
+  transition: opacity var(--dur-base) var(--ease-out), transform var(--dur-base) var(--ease-out), visibility 0s;
+}
+.timeline:has(.tl__seg[data-exp="1"]:hover) .tl__pop--1 { transform: translateY(0); }
+.timeline:has(.tl__seg[data-exp="2"]:hover) .tl__pop--2 { transform: translate(-50%, 0); }
+.timeline:has(.tl__seg[data-exp="3"]:hover) .tl__pop--3 { transform: translate(-50%, 0); }
+.timeline:has(.tl__seg[data-exp="4"]:hover) .tl__pop--4 { transform: translate(-50%, 0); }
+.timeline:has(.tl__seg[data-exp="5"]:hover) .tl__pop--5 { transform: translateY(0); }
+
+/* Pointer tilt on hover for [data-tilt] cards: a page-level pointermove script feeds
+   --rtx/--rty (dedicated vars, never --tx/--ty which drive the OPEN service card's
+   inner tilt). Vars default to 0deg so markup without JS renders identically; the
+   script itself bails on touch and reduced-motion. */
+[data-tilt] { --tilt-amp: 2; }
+.fproj[data-tilt] { --tilt-amp: 1; }
+.hero__canvas[data-tilt], .svcmap[data-tilt], .timeline[data-tilt] { --tilt-amp: 1.2; }
+.shot[data-tilt] { --tilt-amp: 1.5; }
+/* none of these had a hover transform (nothing overwritten) nor a transform transition;
+   the FIG_02/FIG_03 pops live INSIDE the tilting figure so they rotate with it and
+   their carets stay aimed at the rings/diamonds. */
+.fproj[data-tilt], .hero__canvas[data-tilt], .shot[data-tilt],
+.svcmap[data-tilt], .timeline[data-tilt] { transition: transform var(--dur-base) var(--ease-out); }
+.fproj[data-tilt]:hover, .hero__canvas[data-tilt]:hover, .shot[data-tilt]:hover,
+.svcmap[data-tilt]:hover, .timeline[data-tilt]:hover {
+  transform: perspective(1100px) rotateX(var(--rtx, 0deg)) rotateY(var(--rty, 0deg));
+}
 
 /* Sticky nav deepens once scrolled past a 1px sentinel at the top of <main>
    (an IntersectionObserver toggles html.nav-stuck; transition lives on .nav__inner itself). */
