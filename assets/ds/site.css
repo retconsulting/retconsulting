@@ -92,28 +92,8 @@ section[id], #main { scroll-margin-top: 96px; }
 .hero__title .accent { color: var(--accent); }
 .hero__lead { font-family: var(--font-body); font-weight: 300; font-size: clamp(1.05rem, .98rem + .5vw, 1.3rem);
   line-height: 1.85; color: var(--ink-2); max-width: 52ch; margin: 26px 0 0; }
-/* Signature line opening the lead: own first line, with the name in cognac swept by a
-   soft continuous shimmer (a narrow --cognac-soft highlight crossing an --accent
-   resting tone; gradient-on-text via background-clip, neutralised in the reduced-motion
-   block below). The gradient stays --accent dominant so the name matches the H1 accent
-   exactly at rest; note the background shorthand comes BEFORE background-size (a
-   shorthand after it would reset the size). */
-.hero__sig { display: block; margin-top: 0; margin-bottom: 10px; }
-.hero__sig-name {
-  font-weight: 640;
-  background: linear-gradient(100deg,
-    var(--accent) 0%, var(--accent) 44%,
-    var(--cognac-soft) 50%,
-    var(--accent) 56%, var(--accent) 100%);
-  background-size: 250% 100%;
-  -webkit-background-clip: text; background-clip: text;
-  color: transparent;
-  animation: sig-shimmer 4.5s linear infinite;
-}
-@keyframes sig-shimmer {
-  0% { background-position: 115% 0; }
-  100% { background-position: -115% 0; }
-}
+/* Signature line opening the lead: its own first line, bold in plain ink */
+.hero__sig { display: block; margin-top: 0; margin-bottom: 10px; font-weight: 700; color: var(--ink); }
 .hero__highlights { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 26px; }
 .hero__actions { display: flex; align-items: center; gap: 14px; margin-top: 34px; flex-wrap: wrap; }
 
@@ -131,12 +111,16 @@ section[id], #main { scroll-margin-top: 96px; }
 .hero__flowstep { box-sizing: border-box; width: 62%; display: flex; flex-direction: column; gap: 4px; padding: 13px 18px; border-radius: var(--r-md);
   background: var(--glass-fill); border: 1px solid var(--glass-border);
   -webkit-backdrop-filter: blur(var(--blur-strong)) saturate(1.6); backdrop-filter: blur(var(--blur-strong)) saturate(1.6); box-shadow: var(--glass-shadow);
-  animation: flowpulse 10s var(--ease-soft) infinite; }
-.hero__flowstep:nth-child(1) { margin-left: 0%;  animation-delay: 0s; }
-.hero__flowstep:nth-child(2) { margin-left: 9%;  animation-delay: 2s; }
-.hero__flowstep:nth-child(3) { margin-left: 18%; animation-delay: 4s; }
-.hero__flowstep:nth-child(4) { margin-left: 27%; animation-delay: 6s; }
-.hero__flowstep:nth-child(5) { margin-left: 36%; animation-delay: 8s; }
+  animation: flowpulse 12s var(--ease-soft) infinite; }
+.hero__flowstep:nth-child(1) { margin-left: 0%;    animation-delay: 0s; }
+.hero__flowstep:nth-child(2) { margin-left: 7.6%;  animation-delay: 2s; }
+.hero__flowstep:nth-child(3) { margin-left: 15.2%; animation-delay: 4s; }
+.hero__flowstep:nth-child(4) { margin-left: 22.8%; animation-delay: 6s; }
+.hero__flowstep:nth-child(5) { margin-left: 30.4%; animation-delay: 8s; }
+/* box 6 breaks the uniform 7.6% pitch on purpose: pushed further right (width trimmed
+   to match) so its left edge clears the Availability widget, which overhangs the
+   canvas's opposite (bottom-left) corner: see .hero__float left/bottom below. */
+.hero__flowstep:nth-child(6) { margin-left: 48%; width: 52%; animation-delay: 10s; }
 .hero__flowstep-ix { font-family: var(--font-mono); font-size: 9.5px; letter-spacing: .14em; text-transform: uppercase; color: var(--accent-label); }
 .hero__flowstep-label { font-family: var(--font-display); font-weight: 700; font-size: 15px; letter-spacing: -.01em; color: var(--ink); white-space: nowrap; }
 @keyframes flowpulse {
@@ -146,7 +130,6 @@ section[id], #main { scroll-margin-top: 96px; }
 @media (prefers-reduced-motion: reduce) {
   .hero__flowstep { animation: none; }
   .hero__flowstep:nth-child(2) { background-color: var(--cognac-wash); border-color: var(--border-accent); }
-  .hero__sig-name { animation: none; background: none; color: var(--accent); }
   /* the global duration zeroing does not kill transition-delays: zero the flip crossfade delays */
   .svc__face--front > *, .svc__face--back > * { transition-delay: 0s !important; }
 }
@@ -157,30 +140,65 @@ section[id], #main { scroll-margin-top: 96px; }
   font-family: var(--font-mono); font-size: 10px; letter-spacing: .14em; text-transform: uppercase; color: var(--ink-2); }
 /* Availability widget: a clearly-frosted layer overhanging the canvas corner,
    well clear of the step cascade (which is pushed to the right). */
-.hero__float { position: absolute; left: -26px; bottom: -18px; width: 232px; padding: 15px 17px; border-radius: var(--r-xl);
+.hero__float { position: absolute; left: -44px; bottom: -30px; width: 252px; padding: 15px 17px; border-radius: var(--r-xl);
   background: var(--glass-fill); border: 1px solid var(--glass-border);
   -webkit-backdrop-filter: blur(var(--blur-strong)) saturate(1.8); backdrop-filter: blur(var(--blur-strong)) saturate(1.8);
   box-shadow: var(--shadow-float), var(--shadow-inset-hi); }
 .hero__float .cap { font-family: var(--font-mono); font-size: 10px; letter-spacing: .14em; text-transform: uppercase; color: var(--ink-3); }
-.hero__float .row { display: flex; align-items: center; gap: 8px; margin-top: 7px; font-family: var(--font-display); font-weight: 700; font-size: 15px; color: var(--ink); letter-spacing: -.01em; }
-.hero__float .sub { font-family: var(--font-body); font-weight: 400; font-size: 12.5px; color: var(--ink-3); margin-top: 5px; }
+/* Availability slots: one line per offering, cognac diamond = open, muted = booked */
+.hero__slots { list-style: none; margin: 10px 0 0; padding: 0; }
+.hero__slots .slot { display: flex; align-items: center; gap: 8px; }
+.hero__slots .slot + .slot { margin-top: 8px; }
+.slot__dot { width: 7px; height: 7px; flex: none; background: var(--accent); transform: rotate(45deg); }
+.slot--off .slot__dot { background: var(--ink-5); }
+.slot__label { flex: 1 1 auto; font-family: var(--font-display); font-weight: 650; font-size: 13px; letter-spacing: -.01em; color: var(--ink); white-space: nowrap; }
+.slot--off .slot__label { color: var(--ink-3); font-weight: 500; }
+.slot__state { flex: none; font-family: var(--font-mono); font-size: 9.5px; letter-spacing: .12em; text-transform: uppercase; color: var(--cognac-text); }
+.slot--off .slot__state { color: var(--ink-3); }
 
 /* ---------- Credential ledger (trustbar) ---------- */
 /* symmetric block padding so the card sits centred in its sunken plateau; the FIG_01
    shadow is held by the hero's own bottom padding above, not by this band's top pad */
-.trustbar { padding-block: clamp(26px, 3.2vw, 42px); }
+.trustbar { padding-block: 0; }
+.trustbar--about { margin-top: clamp(30px, 4vw, 48px); }
 .trustbar__sr { position:absolute; width:1px; height:1px; padding:0; margin:-1px; overflow:hidden; clip:rect(0 0 0 0); clip-path:inset(50%); white-space:nowrap; border:0; }
 .trustbar__inner { max-width: var(--container); margin-inline:auto; padding-inline: var(--gutter); }
 .trustbar__card { background: var(--surface); border:1px solid var(--line); border-radius: var(--r-2xl); box-shadow: var(--shadow-md);
-  padding: clamp(24px,3vw,34px) clamp(8px,1.4vw,18px); display:grid; grid-template-columns: repeat(3, 1fr); align-items:stretch; }
-.trustbar__col { display:flex; flex-direction:column; justify-content:center; padding-inline: clamp(18px,2.6vw,38px); }
+  padding: clamp(16px,2vw,24px) clamp(8px,1.4vw,18px); display:grid; grid-template-columns: repeat(3, 1fr); align-items:stretch; }
+/* Harmonised distribution: the three titles sit on one shared top line, then each
+   column's content block (.trustbar__body) centres itself in the remaining height
+   with a uniform 14px rhythm (no per-component ad-hoc top margins). */
+.trustbar__col { display:flex; flex-direction:column; align-items:center; text-align:center; padding-inline: clamp(18px,2.6vw,38px); }
 .trustbar__col + .trustbar__col { border-left:1px solid var(--line); }
-.trustbar__k { font-family:var(--font-mono); font-size:var(--t-meta); letter-spacing:var(--track-meta); text-transform:uppercase; color:var(--ink-3); line-height:1; margin:0 0 12px; }
-.trustbar__v { margin:0; display:flex; align-items:baseline; gap:8px; }
-.trustbar__num { font-family:var(--font-display); font-weight:700; font-size:clamp(2.4rem,1.8rem + 2vw,3.25rem); line-height:1; letter-spacing:-.03em; color:var(--accent); }
-.trustbar__unit { font-family:var(--font-display); font-weight:700; font-size:clamp(1rem,.9rem + .4vw,1.25rem); color:var(--ink); }
-.trustbar__chips { display:flex; flex-wrap:wrap; gap:8px; list-style:none; margin:0; padding:0; }
-.trustbar__cap { font-family:var(--font-body); font-weight:400; font-size:13.5px; line-height:1.5; color:var(--ink-2); margin:14px 0 0; max-width:32ch; }
+.trustbar__k { font-family:var(--font-mono); font-size:var(--t-meta); letter-spacing:var(--track-meta); text-transform:uppercase; color:var(--ink-3); line-height:1; margin:0 0 16px; }
+.trustbar__body { flex:1 1 auto; width:100%; display:flex; flex-direction:column; justify-content:center; align-items:center; gap:12px; }
+.trustbar__cap { font-family:var(--font-body); font-weight:400; font-size:13.5px; line-height:1.5; color:var(--ink-2); margin:0; max-width:32ch; }
+/* EXPERIENCE column: sector marks as fixed-width squircle tiles (same language as the
+   service cards' .svc__icon: sunken squircle, ink line-art, accent fill + lift on hover),
+   name beneath on up to two centred lines. Every item reserves two label lines so the
+   tiles share one baseline; fixed 80px items keep the row (and its 3+2 wrap) regular.
+   The tile is the <svg> itself: 46px border-box with 13px padding = the 20px glyph. */
+.trustbar__sectors { display:flex; flex-wrap:wrap; justify-content:center; align-items:flex-start; list-style:none; margin:0; padding:0; gap:6px; }
+.trustbar__sectors li { display:flex; flex-direction:column; align-items:center; gap:5px; width:72px; flex:none; cursor:default; }
+.trustbar__sectors svg { display:block; box-sizing:border-box; width:40px; height:40px; padding:10px; flex:none;
+  border-radius:var(--r-md); background:var(--canvas-sunken); color:var(--ink); stroke-width:1.5;
+  box-shadow:var(--shadow-sm);
+  transition:background var(--dur-base) var(--ease-out), color var(--dur-base) var(--ease-out),
+    transform var(--dur-base) var(--ease-out), box-shadow var(--dur-base) var(--ease-out); }
+.trustbar__sectors li:hover svg { background:var(--accent); color:#fff; transform:translateY(-2px); box-shadow:var(--shadow-md); }
+.trustbar__sectors span { font-family:var(--font-mono); font-size:8.5px; letter-spacing:.06em; text-transform:uppercase; color:var(--ink-3); text-align:center; line-height:1.35; min-height:2.55em; }
+/* SKILLS column: reuse the about-page white pill treatment (.about__skills-row .ret-hpill),
+   compacted hard so eight pills wrap in a few tidy centred rows in the narrow column
+   (double class: the base .about__skills-row rule later in the file sets gap 10px) */
+.about__skills-row.trustbar__skills { max-width: 100%; gap: 6px; }
+.trustbar__skills .ret-hpill { padding: 4px 8px 4px 6px; font-size: 11px; gap: 5px; letter-spacing: 0; }
+.trustbar__skills .ret-hpill__icon { width: 14px; height: 14px; }
+.trustbar__skills .ret-hpill__icon svg { width: 12px; height: 12px; }
+/* CERTIFICATIONS column: reuse the about-page seal badges, shrunk to fit two tidy rows of
+   three; extra top margin so the seals' outer ring doesn't crowd the column title.
+   (double class beats the base .certbadges rule declared later in this file) */
+.trustbar__badges.certbadges { margin: 0 auto; max-width: 208px; gap: 10px 12px; }
+.trustbar .certbadge { width: 56px; height: 56px; font-size: 8.5px; letter-spacing: .03em; }
 @media (max-width: 820px) {
   .trustbar__card { grid-template-columns:1fr; }
   .trustbar__col { padding-inline: clamp(4px,2vw,12px); padding-block: clamp(16px,4vw,22px); }
@@ -229,6 +247,11 @@ section[id], #main { scroll-margin-top: 96px; }
 .svc__foot { margin-top: auto; padding-top: 22px; display: flex; align-items: center; gap: 8px;
   font-family: var(--font-mono); font-size: 11px; letter-spacing: .12em; text-transform: uppercase; color: var(--ink-3); }
 .svc:hover .svc__foot { color: var(--accent); }
+/* the caption fades out while the Learn-more pill expands over it (see .svc__more below):
+   span stays in flow (no layout shift), just becomes invisible under the pill */
+.svc__cap { transition: opacity var(--dur-base) var(--ease-out); }
+.svc:hover .svc__cap { opacity: 0; }
+.svc:has(.svc__more:focus-visible) .svc__cap { opacity: 0; }
 .svc__foot svg { stroke-width: 1.5; margin-left: auto; flex: none; transition: transform var(--dur-base) var(--ease-out); }
 .svc:hover .svc__foot svg { transform: translate(3px, -3px); }
 
@@ -397,8 +420,16 @@ html.reveal-on .expgrid.is-in > .expgrid__arrow { transition-delay: calc(var(--r
 
 /* ---------- About ---------- */
 .about { max-width: var(--container); margin-inline: auto; padding-inline: var(--gutter);
-  display: grid; grid-template-columns: 360px 1fr; gap: 48px; align-items: start; }
-.about__card { background: var(--surface); border: 1px solid var(--line); border-radius: var(--r-xl); box-shadow: var(--shadow-md);
+  display: grid; grid-template-columns: 360px 1fr; gap: 48px; align-items: center; }
+/* the about head sits tighter than other sections: no lead paragraph under the title */
+#about .section__head { margin-bottom: clamp(20px, 2.5vw, 32px); }
+/* same canvas treatment as the FIG_02 plate: white glow top-left, cognac wash rising
+   from the bottom-left corner over the cool canvas ramp */
+.about__card { border: 1px solid var(--line); border-radius: var(--r-xl); box-shadow: var(--shadow-md);
+  background:
+    radial-gradient(130% 95% at 16% 6%, rgba(255,255,255,.92), rgba(255,255,255,0) 52%),
+    radial-gradient(78% 52% at 24% 100%, rgba(176,125,84,.24), rgba(176,125,84,0) 68%),
+    linear-gradient(158deg, var(--canvas) 0%, var(--canvas-sunken) 100%);
   padding: 30px; display: flex; flex-direction: column; gap: 24px; }
 /* personal identity header (this card is about Redha, not the company) */
 .about__id { display: flex; flex-direction: column; gap: 7px; }
@@ -417,13 +448,41 @@ html.reveal-on .expgrid.is-in > .expgrid__arrow { transition-delay: calc(var(--r
 .about__skills-row { display: flex; flex-wrap: wrap; justify-content: center; gap: 10px; max-width: 540px; }
 .about__skills-row .ret-hpill { background: var(--surface); border-color: var(--border-strong); box-shadow: var(--shadow-sm); -webkit-backdrop-filter: none; backdrop-filter: none; }
 .about__prose .accent { color: var(--cognac-text); font-weight: 500; }
-/* certification seals: mono initials in a double-ring roundel; two centred rows echoing the skills chips above (deliberately static, no hover); centred on the same 540px axis as the skills group above */
+/* certification seals: frosted double-ring roundel, cognac-marked; two centred rows echoing the
+   skills chips above; hover/focus lifts the seal and reveals the full certification name in a
+   small glass popover (::after, CSS-only), centred on the same 540px axis as the skills group above */
 .about__certs { margin-top: 30px; max-width: 540px; }
 .about__certs > .ret-tag { display: block; margin-bottom: 16px; }
 .certbadges { list-style: none; display: flex; flex-wrap: wrap; justify-content: center; gap: 18px 20px; margin: 0 auto; padding: 0; max-width: 272px; }
-.certbadge { width: 64px; height: 64px; border-radius: var(--r-pill); display: grid; place-items: center; text-align: center; padding: 4px;
-  background: var(--surface); border: 1px solid var(--border-accent); outline: 1px solid var(--border-accent); outline-offset: 3px; box-shadow: var(--shadow-sm);
-  font-family: var(--font-mono); font-size: 9.5px; font-weight: 700; letter-spacing: .05em; text-transform: uppercase; color: var(--ink-2); line-height: 1.2; }
+.certbadge { position: relative; width: 64px; height: 64px; border-radius: var(--r-pill); display: grid; place-items: center; text-align: center; padding: 4px;
+  background: var(--glass-fill); border: 1.5px solid var(--cognac); outline: 1px solid var(--line-cognac); outline-offset: 3px;
+  -webkit-backdrop-filter: blur(var(--blur-glass)) saturate(1.4); backdrop-filter: blur(var(--blur-glass)) saturate(1.4);
+  box-shadow: var(--shadow-sm), var(--shadow-inset-hi);
+  font-family: var(--font-mono); font-size: 9.5px; font-weight: 700; letter-spacing: .05em; text-transform: uppercase; color: var(--ink-2); line-height: 1.2;
+  cursor: default; transition: transform var(--dur-base) var(--ease-out), box-shadow var(--dur-base) var(--ease-out); }
+.certbadge:hover, .certbadge:focus-visible { transform: translateY(-3px) scale(1.06); box-shadow: var(--shadow-lg), var(--shadow-inset-hi); z-index: 2; outline: none; }
+/* Full certification name, CSS-only popover sourced from data-full (no JS).
+   The seals sit on WHITE surfaces (trustbar card), where a translucent glass fill is
+   invisible: the card must be effectively solid and exist through its border + shadow
+   (same read as the FIG_02 pop over the grey canvas). Card on ::after (z6), diamond
+   caret on ::before (z5, free: the seal's ring is the outline property, not a pseudo)
+   so the caret's inner half hides behind the card and only the protruding tip shows. */
+.certbadge::after { content: attr(data-full); position: absolute; left: 50%; bottom: calc(100% + 10px); z-index: 6;
+  transform: translate(-50%, 6px); white-space: nowrap; padding: 11px 15px; border-radius: var(--r-md);
+  background: var(--surface);
+  border: 1px solid var(--line);
+  box-shadow: 0 18px 44px -14px rgba(24,24,27,.30), 0 2px 8px -2px rgba(24,24,27,.10), inset 0 1px 0 rgba(255,255,255,.9);
+  font-family: var(--font-body); font-size: 12.5px; font-weight: 550; letter-spacing: 0; text-transform: none; color: var(--ink);
+  opacity: 0; pointer-events: none; transition: opacity var(--dur-base) var(--ease-out), transform var(--dur-base) var(--ease-out); }
+.certbadge::before { content: ""; position: absolute; left: 50%; bottom: calc(100% + 5px); z-index: 5;
+  width: 12px; height: 12px; margin-left: -6px;
+  background: var(--surface);
+  border: 1px solid var(--line);
+  box-shadow: 0 6px 16px -6px rgba(24,24,27,.18);
+  transform: translateY(6px) rotate(45deg);
+  opacity: 0; pointer-events: none; transition: opacity var(--dur-base) var(--ease-out), transform var(--dur-base) var(--ease-out); }
+.certbadge:hover::after, .certbadge:focus-visible::after { opacity: 1; transform: translate(-50%, 0); }
+.certbadge:hover::before, .certbadge:focus-visible::before { opacity: 1; transform: translateY(0) rotate(45deg); }
 .about__certs .about__certline { font-family: var(--font-body); font-size: 14px; line-height: 1.7; color: var(--ink-2); margin: 44px auto 0; max-width: 46ch; text-align: center; }
 
 /* ---------- Contact (dark CTA panel + form) ---------- */
@@ -473,18 +532,8 @@ html.reveal-on .expgrid.is-in > .expgrid__arrow { transition-delay: calc(var(--r
 /* slim footer (sub-pages with only the legal bar): drop the orphan divider above it */
 .footer--slim .footer__legal { margin-top: 0; border-top: 0; padding-top: 28px; }
 
-/* ---------- Floating contact dock (single line, low-profile) ---------- */
-.contactdock { position: fixed; right: 20px; bottom: 20px; z-index: 80; display: inline-flex; align-items: center; gap: 9px;
-  padding: 7px 16px 7px 8px; border-radius: var(--r-pill); text-decoration: none;
-  background: var(--glass-fill-deep); border: 1px solid var(--glass-border);
-  -webkit-backdrop-filter: blur(var(--blur-strong)) saturate(1.5); backdrop-filter: blur(var(--blur-strong)) saturate(1.5);
-  box-shadow: var(--shadow-md), var(--shadow-inset-hi); animation: dockin var(--dur-slow) var(--ease-out) both;
-  transition: transform var(--dur-base) var(--ease-out), box-shadow var(--dur-base) var(--ease-out); }
-.contactdock:hover { transform: translateY(-2px); box-shadow: var(--shadow-lg); }
-.contactdock:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; transform: translateY(-2px); box-shadow: var(--shadow-lg); }
-.contactdock__icon { width: 28px; height: 28px; border-radius: var(--r-pill); display: grid; place-items: center; background: var(--accent); color: #fff; flex: none; }
-.contactdock__icon svg { stroke-width: 1.5; width: 15px; height: 15px; }
-.contactdock .txt { font-family: var(--font-body); font-size: 13px; font-weight: 600; color: var(--ink); line-height: 1; padding-right: 4px; }
+/* (the floating contact dock was removed 2026-07-10: redundant with the top-bar CTA;
+   dockin stays: the hero canvas + availability widget load-in reuse it) */
 @keyframes dockin { from { opacity: 0; transform: translateY(16px); } to { opacity: 1; transform: none; } }
 
 /* ---------- Bottom blur scrim + scroll-progress section pill ---------- */
@@ -493,6 +542,17 @@ html.reveal-on .expgrid.is-in > .expgrid__arrow { transition-delay: calc(var(--r
   background: linear-gradient(to top, var(--canvas), rgba(244,244,247,0));
   -webkit-mask-image: linear-gradient(to top, #000 0%, #000 28%, transparent 100%);
   mask-image: linear-gradient(to top, #000 0%, #000 28%, transparent 100%); }
+/* Top twin of the bottom scrim: same blur, same height, gradient/mask flipped. z 59 = one
+   below the sticky nav (60) so the nav itself stays sharp and clickable while the content
+   scrolling under it blurs. Faded out at the very top of the page (no .nav-stuck yet):
+   at scroll 0 it would pointlessly veil the hero's first pixels. */
+.scrim-top { position: fixed; left: 0; right: 0; top: 0; height: 104px; z-index: 59; pointer-events: none;
+  -webkit-backdrop-filter: blur(5px); backdrop-filter: blur(5px);
+  background: linear-gradient(to bottom, var(--canvas), rgba(244,244,247,0));
+  -webkit-mask-image: linear-gradient(to bottom, #000 0%, #000 28%, transparent 100%);
+  mask-image: linear-gradient(to bottom, #000 0%, #000 28%, transparent 100%);
+  transition: opacity var(--dur-base) var(--ease-out); }
+html:not(.nav-stuck) .scrim-top { opacity: 0; }
 .scrollnav { position: fixed; bottom: 22px; left: 50%; transform: translateX(-50%); z-index: 81;
   display: inline-flex; align-items: center; gap: 9px; padding: 6px 18px 6px 6px; border-radius: var(--r-pill);
   text-decoration: none; cursor: pointer; background: var(--glass-fill-deep); border: 1px solid var(--glass-border);
@@ -688,14 +748,14 @@ html.reveal-on .expgrid.is-in > .expgrid__arrow { transition-delay: calc(var(--r
   .hero__canvas { aspect-ratio: auto; justify-content: flex-start; padding-top: 58px; padding-bottom: 30px; }
   /* method chips: stop indenting and let labels wrap so nothing clips on phones */
   .hero__flowstep { width: auto; max-width: 100%; margin-left: 0 !important; }
+  /* box 6's desktop-only width trim (nth-child specificity beats the rule above) must not leak here */
+  .hero__flowstep:nth-child(6) { width: auto; }
   .hero__flowstep-label { white-space: normal; }
 }
 @media (max-width: 560px) {
   .legalfacts > div { grid-template-columns: 1fr; gap: 4px; }
   .about__facts > div { grid-template-columns: 1fr; gap: 4px; }
   .about__facts dt { padding-top: 0; }
-  .contactdock .txt { display: none; }
-  .contactdock { padding: 7px; }
   .expgrid { grid-template-columns: 1fr; }
   /* single column now: the 5th-card centring trick from the 980px tier no longer applies */
   .expcard:nth-child(5) { grid-column: auto; max-width: none; margin-inline: 0; }
@@ -705,7 +765,7 @@ html.reveal-on .expgrid.is-in > .expgrid__arrow { transition-delay: calc(var(--r
 .nav__link:focus-visible, .footer__col a:focus-visible, .footer__legal a:focus-visible,
 .subhead__back:focus-visible, .nav__brand:focus-visible,
 .prose a:focus-visible, .about__facts a:focus-visible, .legalfacts a:focus-visible, .svc__desc a:focus-visible,
-.nav__toggle:focus-visible, .contactdock:focus-visible {
+.nav__toggle:focus-visible {
   outline: 2px solid var(--accent); outline-offset: 2px; border-radius: var(--r-xs);
 }
 
@@ -733,7 +793,7 @@ html.reveal-on .expgrid.is-in > .expgrid__arrow { transition-delay: calc(var(--r
    Screen rendering is untouched. */
 @media print {
   /* floating + interactive-only chrome has no place on paper */
-  .scrim-bottom, .scrollnav, .contactdock, .nav__toggle { display: none !important; }
+  .scrim-bottom, .scrim-top, .scrollnav, .nav__toggle { display: none !important; }
   /* service-card flip is interactive-only: print the front face, drop veil/close/back/brand */
   .flipveil, .svc__close, .flipbrand { display: none !important; }
   .svc__face--back { display: none !important; }
@@ -978,6 +1038,14 @@ html.reveal-on .expgrid.is-in > .expgrid__arrow { transition-delay: calc(var(--r
 .fproj-next { list-style: none; margin: clamp(20px, 3vw, 32px) 0 0; padding: 0;
   display: grid; grid-template-columns: 1fr 1fr; gap: var(--card-gap);
   max-width: var(--container); margin-inline: auto; padding-inline: var(--gutter); }
+/* compact ghost variant: these are discreet teasers, not full project cards; the cover
+   drops its 16/10 aspect for a short content-sized band, glyph and type one notch down
+   (roughly half the stock .pcard height) */
+.fproj-next .pcard__cover--soon { aspect-ratio: auto; padding: 22px 16px 16px; gap: 8px; }
+.fproj-next .pcard__glyph svg { width: 28px; height: 28px; }
+.fproj-next .pcard__body { padding: 12px 20px 18px; gap: 4px; }
+.fproj-next .pcard__title { font-size: 1.05rem; }
+.fproj-next .pcard__desc { font-size: .85rem; margin: 2px 0 0; }
 
 @media (max-width: 900px) {
   .fproj { grid-template-columns: 1fr; }
