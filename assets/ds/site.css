@@ -23,6 +23,9 @@ section[id], #main { scroll-margin-top: 96px; }
   mask-image: linear-gradient(to bottom, #000 0%, rgba(0,0,0,0) 50%); }
 .prose-page > * { position: relative; z-index: 1; }
 
+/* programmatic focus targets (skip-link, anchor fixup): keep them focusable for AT,
+   but never draw the UA blue ring around whole containers */
+#main:focus, #main:focus-visible, .contact__thanks:focus, .contact__thanks:focus-visible { outline: none; }
 .skip-link { position: absolute; left: -9999px; top: 0; z-index: 100;
   background: var(--ink); color: #fff; padding: 10px 16px; border-radius: 0 0 var(--r-sm) 0;
   font-family: var(--font-body); font-size: 14px; }
