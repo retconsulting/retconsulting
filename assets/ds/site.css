@@ -79,7 +79,11 @@ section[id], #main { scroll-margin-top: 96px; }
 /* ---------- Hero ---------- */
 .hero { position: relative; padding: clamp(28px, 3.6vw, 56px) 0 clamp(52px, 5.5vw, 84px); }
 .hero__grid { max-width: var(--container-wide); margin-inline: auto; padding-inline: var(--gutter);
-  display: grid; grid-template-columns: 1.1fr 0.9fr; gap: clamp(28px, 4vw, 56px); align-items: center; }
+  display: grid; grid-template-columns: 1.1fr 0.9fr; gap: clamp(28px, 4vw, 56px); align-items: stretch; }
+/* the copy column breathes to match FIG_01: eyebrow pinned to the canvas top, CTAs to its
+   bottom, the leftover height spread evenly between the blocks on top of their base
+   margins (2-col layout only; reset in the single-column breakpoint) */
+.hero__copy { display: flex; flex-direction: column; justify-content: space-between; align-items: flex-start; }
 .hero__eyebrow { display: flex; width: fit-content; max-width: 100%; align-items: center; gap: 12px; margin-bottom: 26px; flex-wrap: wrap;
   padding: 9px 16px; border-radius: var(--r-pill);
   background: linear-gradient(0deg, rgba(176,125,84,.10), rgba(176,125,84,.10)), var(--glass-fill);
@@ -730,6 +734,7 @@ html:not(.nav-stuck) .scrim-top { opacity: 0; }
   /* hero → single column: copy spans full width, the method canvas and
      availability widget stack underneath */
   .hero__grid { grid-template-columns: 1fr; }
+  .hero__copy { display: block; }
   .hero__visual { max-width: 460px; margin-top: 8px; }
   .hero__float { position: static; left: auto; bottom: auto; width: auto; margin-top: 18px; }
   /* nav → hamburger dropdown */
