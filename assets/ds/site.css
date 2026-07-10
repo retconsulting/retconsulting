@@ -92,6 +92,28 @@ section[id], #main { scroll-margin-top: 96px; }
 .hero__title .accent { color: var(--accent); }
 .hero__lead { font-family: var(--font-body); font-weight: 300; font-size: clamp(1.05rem, .98rem + .5vw, 1.3rem);
   line-height: 1.85; color: var(--ink-2); max-width: 52ch; margin: 26px 0 0; }
+/* Signature line opening the lead: own first line, with the name in cognac swept by a
+   soft continuous shimmer (a narrow --cognac-soft highlight crossing an --accent
+   resting tone; gradient-on-text via background-clip, neutralised in the reduced-motion
+   block below). The gradient stays --accent dominant so the name matches the H1 accent
+   exactly at rest; note the background shorthand comes BEFORE background-size (a
+   shorthand after it would reset the size). */
+.hero__sig { display: block; margin-top: 0; margin-bottom: 10px; }
+.hero__sig-name {
+  font-weight: 640;
+  background: linear-gradient(100deg,
+    var(--accent) 0%, var(--accent) 44%,
+    var(--cognac-soft) 50%,
+    var(--accent) 56%, var(--accent) 100%);
+  background-size: 250% 100%;
+  -webkit-background-clip: text; background-clip: text;
+  color: transparent;
+  animation: sig-shimmer 4.5s linear infinite;
+}
+@keyframes sig-shimmer {
+  0% { background-position: 115% 0; }
+  100% { background-position: -115% 0; }
+}
 .hero__highlights { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 26px; }
 .hero__actions { display: flex; align-items: center; gap: 14px; margin-top: 34px; flex-wrap: wrap; }
 
@@ -124,6 +146,7 @@ section[id], #main { scroll-margin-top: 96px; }
 @media (prefers-reduced-motion: reduce) {
   .hero__flowstep { animation: none; }
   .hero__flowstep:nth-child(2) { background-color: var(--cognac-wash); border-color: var(--border-accent); }
+  .hero__sig-name { animation: none; background: none; color: var(--accent); }
 }
 .hero__canvas .stamp { position: absolute; top: 18px; left: 50%; transform: translateX(-50%); z-index: 3; display: flex; align-items: center; gap: 8px;
   padding: 8px 12px; border-radius: var(--r-pill);
