@@ -1173,13 +1173,13 @@ html.reveal-on .fproj.is-in .appmock__end { opacity: 1; transform: scale(1); }
 [data-tilt] { --tilt-amp: 2; }
 .fproj[data-tilt] { --tilt-amp: 1; }
 .hero__canvas[data-tilt], .svcmap[data-tilt], .timeline[data-tilt] { --tilt-amp: 1.2; }
-.shot[data-tilt] { --tilt-amp: 1.5; }
+.shot[data-tilt], .about__card[data-tilt] { --tilt-amp: 1.5; }
 /* none of these had a hover transform (nothing overwritten) nor a transform transition;
    the FIG_02/FIG_03 pops live INSIDE the tilting figure so they rotate with it and
    their carets stay aimed at the rings/diamonds. */
-.fproj[data-tilt], .hero__canvas[data-tilt], .shot[data-tilt],
+.fproj[data-tilt], .hero__canvas[data-tilt], .shot[data-tilt], .about__card[data-tilt],
 .svcmap[data-tilt], .timeline[data-tilt] { transition: transform var(--dur-base) var(--ease-out); }
-.fproj[data-tilt]:hover, .hero__canvas[data-tilt]:hover, .shot[data-tilt]:hover,
+.fproj[data-tilt]:hover, .hero__canvas[data-tilt]:hover, .shot[data-tilt]:hover, .about__card[data-tilt]:hover,
 .svcmap[data-tilt]:hover, .timeline[data-tilt]:hover {
   transform: perspective(1100px) rotateX(var(--rtx, 0deg)) rotateY(var(--rty, 0deg));
 }
