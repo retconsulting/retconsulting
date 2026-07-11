@@ -1149,6 +1149,74 @@ html.reveal-on .appmock__end { opacity: 0; transform: scale(.4); transform-box: 
   transition: opacity var(--dur-base) var(--ease-out), transform var(--dur-base) var(--ease-out); transition-delay: 820ms; }
 html.reveal-on .fproj.is-in .appmock__end { opacity: 1; transform: scale(1); }
 
+/* ---------- Motion: FIG_02 / FIG_03 blueprint draw-in (Plan 008) ---------- */
+/* At first reveal the two SVG figures DRAW instead of a plain fade-up: ink strokes
+   trace in (pathLength=1 normalised dash), ink nodes pop (opacity + scale from centre),
+   and every cognac mark (handover diamonds, the "now" segment) fades in ON THE SPOT.
+   Cognac never travels, per the site motion law: only ink strokes are drawn.
+   Keyed off .is-in (already toggled once by the Tier-1 scroll-reveal IO) and scoped
+   under html.reveal-on, so JS-off and reduced-motion render the figures fully drawn and
+   static. One-shot: .is-in is never removed, so each figure plays once. The .svcmap__hit
+   / .tl__hit rects and the hover popovers sit outside every selector here, so the row
+   dimming and the pops keep working during and after the draw. */
+@keyframes figdraw { to { stroke-dashoffset: 0; } }
+@keyframes figpop  { from { opacity: 0; transform: scale(.6); } to { opacity: 1; transform: scale(1); } }
+@keyframes figfade { from { opacity: 0; } to { opacity: 1; } }
+
+/* Pre-state (hidden), scoped under html.reveal-on ONLY so it never applies without the
+   motion gate (JS-off / reduced-motion never receive the class, so the figures stay
+   fully visible). */
+html.reveal-on .timeline .tl__axis,
+html.reveal-on .timeline .tl__solid,
+html.reveal-on .timeline .tl__drop,
+html.reveal-on .svcmap .svcmap__solid { stroke-dasharray: 1; stroke-dashoffset: 1; }
+html.reveal-on .timeline .tl__ring,
+html.reveal-on .timeline .tl__ring--now,
+html.reveal-on .svcmap .svcmap__rings circle,
+html.reveal-on .svcmap .svcmap__dots circle { opacity: 0; transform-box: fill-box; transform-origin: center; }
+html.reveal-on .timeline .tl__now,
+html.reveal-on .timeline .tl__diamond,
+html.reveal-on .svcmap .svcmap__diamond,
+html.reveal-on .svcmap .svcmap__dash { opacity: 0; }
+
+/* FIG_03 timeline: axis first, then each segment left to right (--seg 0..4 on .tl__seg,
+   plus --seg on each .tl__diamond so the handover marks land as their line arrives). */
+html.reveal-on .timeline.is-in .tl__axis { animation: figdraw 440ms var(--ease-out) forwards; }
+html.reveal-on .timeline.is-in .tl__solid,
+html.reveal-on .timeline.is-in .tl__drop { animation: figdraw 420ms var(--ease-out) forwards; animation-delay: calc(180ms + var(--seg, 0) * 120ms); }
+html.reveal-on .timeline.is-in .tl__ring,
+html.reveal-on .timeline.is-in .tl__ring--now { animation: figpop 280ms var(--ease-out) forwards; animation-delay: calc(150ms + var(--seg, 0) * 120ms); }
+html.reveal-on .timeline.is-in .tl__now { animation: figfade 300ms var(--ease-out) forwards; animation-delay: calc(340ms + var(--seg, 0) * 120ms); }
+html.reveal-on .timeline.is-in .tl__diamond { animation: figfade 280ms var(--ease-out) forwards; animation-delay: calc(600ms + var(--seg, 0) * 120ms); }
+
+/* FIG_02 service map: no axis; lanes cascade top to bottom (--row 0..3 on .svcmap__row,
+   inherited by the lane's solid, support dashes, dots, rings and diamond). */
+html.reveal-on .svcmap.is-in .svcmap__solid { animation: figdraw 420ms var(--ease-out) forwards; animation-delay: calc(120ms + var(--row, 0) * 130ms); }
+html.reveal-on .svcmap.is-in .svcmap__dash { animation: figfade 300ms var(--ease-out) forwards; animation-delay: calc(220ms + var(--row, 0) * 130ms); }
+html.reveal-on .svcmap.is-in .svcmap__rings circle { animation: figpop 280ms var(--ease-out) forwards; animation-delay: calc(100ms + var(--row, 0) * 130ms); }
+html.reveal-on .svcmap.is-in .svcmap__dots circle { animation: figpop 280ms var(--ease-out) forwards; animation-delay: calc(260ms + var(--row, 0) * 130ms); }
+html.reveal-on .svcmap.is-in .svcmap__diamond { animation: figfade 280ms var(--ease-out) forwards; animation-delay: calc(540ms + var(--row, 0) * 130ms); }
+
+/* Belt-and-braces: if reduced-motion is toggled at runtime while html.reveal-on is
+   already set (the load-time gate already excludes reduced-motion), snap every pre-state
+   to its final visible value. Mirrors the .appmock__line reset in components.css (F5),
+   which this file is not permitted to touch. transform is never reset here, so the
+   diamonds keep their rotate() presentation attribute. */
+@media (prefers-reduced-motion: reduce) {
+  html.reveal-on .timeline .tl__axis,
+  html.reveal-on .timeline .tl__solid,
+  html.reveal-on .timeline .tl__drop,
+  html.reveal-on .svcmap .svcmap__solid { stroke-dashoffset: 0 !important; }
+  html.reveal-on .timeline .tl__ring,
+  html.reveal-on .timeline .tl__ring--now,
+  html.reveal-on .timeline .tl__now,
+  html.reveal-on .timeline .tl__diamond,
+  html.reveal-on .svcmap .svcmap__rings circle,
+  html.reveal-on .svcmap .svcmap__dots circle,
+  html.reveal-on .svcmap .svcmap__diamond,
+  html.reveal-on .svcmap .svcmap__dash { opacity: 1 !important; }
+}
+
 /* ---------- Motion: contact-thanks fade-in (plays when the submit handler removes [hidden]) ---------- */
 @keyframes contactThanksIn { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: none; } }
 
