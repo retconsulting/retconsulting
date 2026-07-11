@@ -23,6 +23,12 @@
    translateY(1px) on top, which would just override it via equal specificity. */
 .ret-btn:active { transform: translateY(0) scale(.97); }
 .ret-btn:disabled, .ret-btn[aria-disabled="true"] { opacity: .45; pointer-events: none; }
+/* Transient submit-in-progress state (contact form send button): the disabled dim above
+   reads too faint against .ret-btn--primary's dark/cognac fills, so keep it near-legible
+   while the label swaps to its "sending" text. */
+.ret-btn--primary[aria-disabled="true"] { opacity: .9; }
+.btn-label { transition: opacity var(--dur-fast) var(--ease-out); }
+.ret-btn[aria-disabled="true"] .btn-label { opacity: .85; }
 
 .ret-btn--sm { font-size: var(--t-sm); padding: 9px 16px; }
 .ret-btn--md { font-size: var(--t-body); padding: 13px 24px; }

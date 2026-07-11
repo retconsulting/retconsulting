@@ -31,7 +31,7 @@
 <link rel="manifest" href="/site.webmanifest"/>
 <meta name="apple-mobile-web-app-title" content="RET"/>
 <script>if('IntersectionObserver' in window && !matchMedia('(prefers-reduced-motion:reduce)').matches){document.documentElement.classList.add('reveal-on');}</script>
-<link rel="stylesheet" href="assets/ds.css?v=20260711c"/>
+<link rel="stylesheet" href="assets/ds.css?v=20260711d"/>
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -179,7 +179,7 @@
             <li data-tip="Product owner on digital public services." tabindex="0" aria-label="Public sector: Product owner on digital public services."><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 9 12 4l8 5"/><path d="M5 9h14"/><path d="M6 9v9M10 9v9M14 9v9M18 9v9"/><path d="M4 20h16"/></svg><span>Public sector</span></li>
             <li data-tip="Delivery within consulting practices, for enterprise clients." tabindex="0" aria-label="Professional services: Delivery within consulting practices, for enterprise clients."><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3.5" y="7.5" width="17" height="12" rx="2"/><path d="M8.5 7.5V6a2 2 0 0 1 2-2h3a2 2 0 0 1 2 2v1.5"/><path d="M3.5 13h17"/></svg><span>Professional services</span></li>
             <li data-tip="Software licensing and entitlement analysis." tabindex="0" aria-label="Tech: Software licensing and entitlement analysis."><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="6" y="6" width="12" height="12" rx="2"/><rect x="9.5" y="9.5" width="5" height="5" rx="1"/><path d="M9 6V3M15 6V3M9 21v-3M15 21v-3M6 9H3M6 15H3M21 9h-3M21 15h-3"/></svg><span>Tech</span></li>
-          </ul><p class="trustbar__cap">8+ years of proven product experience.</p></div>
+          </ul><p class="trustbar__cap"><span data-countup="8" data-suffix="+">8+</span> years of proven product experience.</p></div>
         </div>
         <div class="trustbar__col">
           <p class="trustbar__k">SKILLS</p>
@@ -610,7 +610,7 @@
             </div>
             <div class="appmock__screen">
               <span class="appmock__k">SAMPLE DATA</span>
-              <p class="appmock__total"><span class="appmock__amt">&euro;214</span><span class="appmock__per">/mo</span></p>
+              <p class="appmock__total"><span class="appmock__amt">&euro;<span data-countup="214">214</span></span><span class="appmock__per">/mo</span></p>
               <svg class="appmock__chart" viewBox="0 0 300 80" preserveAspectRatio="none" aria-hidden="true" focusable="false">
                 <polyline class="appmock__line" pathLength="1" points="0,64 30,58 60,62 90,48 120,52 150,40 180,44 210,30 240,34 270,22 300,18"/>
                 <circle class="appmock__end" cx="296" cy="18" r="3.5"/>
@@ -684,7 +684,7 @@
           <div class="contact__field"><label for="cf-email">Email</label><input class="ret-input" id="cf-email" name="email" type="email" autocomplete="email" placeholder="you@company.com" required/></div>
           <div class="contact__field contact__field--full"><label for="cf-message">What do you need help with?</label><textarea class="ret-input" id="cf-message" name="message" rows="4" placeholder="A few sentences are enough." required></textarea></div>
           <div class="contact__actions">
-            <button type="submit" class="ret-btn ret-btn--primary ret-btn--md">Send <span class="ret-btn__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="M13 6l6 6-6 6"/></svg></span></button>
+            <button type="submit" class="ret-btn ret-btn--primary ret-btn--md"><span class="btn-label">Send</span> <span class="ret-btn__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="M13 6l6 6-6 6"/></svg></span></button>
             <span class="contact__small">Opens your email client with the message pre-filled.</span>
           </div>
           <div class="contact__thanks" id="contactThanks" tabindex="-1" hidden>
@@ -756,6 +756,9 @@
     var copyArea = document.getElementById('contactCopy');
     var copyBtn = document.getElementById('copyMessage');
     var copyStatus = document.getElementById('copyStatus');
+    var sendBtn = form.querySelector('button[type=submit]');
+    var sendLabel = sendBtn ? sendBtn.querySelector('.btn-label') : null;
+    var BTN_SENDING = 'Opening your email app';
     form.addEventListener('submit', function (e) {
       e.preventDefault();
       var name = document.getElementById('cf-name').value.trim();
@@ -763,6 +766,16 @@
       var message = document.getElementById('cf-message').value.trim();
       var subject = 'Contact from ' + name + ' via retconsulting.be';
       var body = message + '\n\n' + name + ' (' + email + ')';
+      if (sendBtn && sendLabel) {
+        var sendRestore = sendLabel.textContent;
+        sendBtn.style.minWidth = sendBtn.offsetWidth + 'px';
+        sendBtn.setAttribute('aria-disabled', 'true');
+        sendLabel.textContent = BTN_SENDING;
+        window.setTimeout(function () {
+          sendLabel.textContent = sendRestore;
+          sendBtn.removeAttribute('aria-disabled');
+        }, 1600);
+      }
       window.location.href = 'mailto:retbaz@retconsulting.be?subject=' + encodeURIComponent(subject) + '&body=' + encodeURIComponent(body);
       if (thanks && copyArea) {
         copyArea.value = 'To: retbaz@retconsulting.be\nSubject: ' + subject + '\n\n' + body;
@@ -861,6 +874,31 @@
         io.unobserve(el);
       });
     }, { threshold: 0, rootMargin: '0px 0px -12% 0px' });
+    els.forEach(function (el) { io.observe(el); });
+  })();
+
+  // Count-up: proof numbers (8+ years, dueday's €214) animate from 0 on first reveal
+  (function () {
+    var els = document.querySelectorAll('[data-countup]');
+    if (!els.length || !('IntersectionObserver' in window)) return;
+    var rm = matchMedia('(prefers-reduced-motion: reduce)').matches;
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (en) {
+        if (!en.isIntersecting) return;
+        io.unobserve(en.target);
+        var el = en.target, end = parseInt(el.getAttribute('data-countup'), 10),
+            suf = el.getAttribute('data-suffix') || '', t0 = null;
+        if (rm) { el.textContent = end + suf; return; }
+        function step(ts) {
+          if (!t0) t0 = ts;
+          var p = Math.min((ts - t0) / 600, 1);
+          p = 1 - Math.pow(1 - p, 3);                       /* easeOutCubic, cohérent --ease-out */
+          el.textContent = Math.round(end * p) + suf;
+          if (p < 1) requestAnimationFrame(step);
+        }
+        requestAnimationFrame(step);
+      });
+    }, { threshold: 0.6 });
     els.forEach(function (el) { io.observe(el); });
   })();
 

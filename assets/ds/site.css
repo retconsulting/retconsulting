@@ -586,8 +586,8 @@ html.reveal-on .expgrid.is-in > .expgrid__arrow { transition-delay: calc(var(--r
 .footer--slim .footer__legal { margin-top: 0; border-top: 0; padding-top: 28px; }
 
 /* (the floating contact dock was removed 2026-07-10: redundant with the top-bar CTA;
-   dockin stays: the hero canvas + availability widget load-in reuse it) */
-@keyframes dockin { from { opacity: 0; transform: translateY(16px); } to { opacity: 1; transform: none; } }
+   loadRise stays: the hero canvas + availability widget load-in reuse it) */
+@keyframes loadRise { from { opacity: 0; transform: translateY(16px); } to { opacity: 1; transform: none; } }
 
 /* ---------- Bottom blur scrim + scroll-progress section pill ---------- */
 .scrim-bottom { position: fixed; left: 0; right: 0; bottom: 0; height: 104px; z-index: 78; pointer-events: none;
@@ -610,9 +610,9 @@ html:not(.nav-stuck) .scrim-top { opacity: 0; }
   display: inline-flex; align-items: center; gap: 9px; padding: 6px 18px 6px 6px; border-radius: var(--r-pill);
   text-decoration: none; cursor: pointer; background: var(--glass-fill-deep); border: 1px solid var(--glass-border);
   -webkit-backdrop-filter: blur(var(--blur-strong)) saturate(1.5); backdrop-filter: blur(var(--blur-strong)) saturate(1.5);
-  box-shadow: var(--shadow-md), var(--shadow-inset-hi); animation: dockincenter var(--dur-slow) var(--ease-out) both;
+  box-shadow: var(--shadow-md), var(--shadow-inset-hi); animation: loadRiseCentered var(--dur-slow) var(--ease-out) both;
   transition: transform var(--dur-base) var(--ease-out), box-shadow var(--dur-base) var(--ease-out); }
-@keyframes dockincenter { from { opacity: 0; transform: translateX(-50%) translateY(16px); } to { opacity: 1; transform: translateX(-50%); } }
+@keyframes loadRiseCentered { from { opacity: 0; transform: translateX(-50%) translateY(16px); } to { opacity: 1; transform: translateX(-50%); } }
 .scrollnav:hover { transform: translateX(-50%) translateY(-2px); box-shadow: var(--shadow-lg), var(--shadow-inset-hi); }
 .scrollnav:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; transform: translateX(-50%) translateY(-2px); box-shadow: var(--shadow-lg), var(--shadow-inset-hi); }
 .scrollnav__ring { position: relative; width: 34px; height: 34px; flex: none; }
@@ -1137,9 +1137,9 @@ html.reveal-on .hero__eyebrow { animation: heroRise var(--dur-slow) var(--ease-o
 html.reveal-on .hero__title   { animation: heroRiseSolid var(--dur-slow) var(--ease-out) both; animation-delay: 70ms; }
 html.reveal-on .hero__lead    { animation: heroRise var(--dur-slow) var(--ease-out) both; animation-delay: 150ms; }
 html.reveal-on .hero__actions { animation: heroRise var(--dur-slow) var(--ease-out) both; animation-delay: 230ms; }
-/* right column settles just after the copy, reusing the existing dockin load vocabulary */
-html.reveal-on .hero__canvas { animation: dockin var(--dur-slow) var(--ease-out) both; animation-delay: 120ms; }
-html.reveal-on .hero__float  { animation: dockin var(--dur-slow) var(--ease-out) both; animation-delay: 340ms; }
+/* right column settles just after the copy, reusing the existing loadRise load vocabulary */
+html.reveal-on .hero__canvas { animation: loadRise var(--dur-slow) var(--ease-out) both; animation-delay: 120ms; }
+html.reveal-on .hero__float  { animation: loadRise var(--dur-slow) var(--ease-out) both; animation-delay: 340ms; }
 
 /* ---------- Motion: dueday sparkline draw-in (the one moving cognac) ---------- */
 /* keyed off .fproj.is-in, already set by the Tier-1 scroll-reveal IO — no extra JS */
@@ -1361,3 +1361,13 @@ html.nav-stuck .nav__inner { background: var(--glass-fill-deep); box-shadow: var
 .contact__field:focus-within label { color: var(--cognac-text); }
 #copyStatus { opacity: 0; transform: translateX(4px); transition: opacity var(--dur-base) var(--ease-out), transform var(--dur-base) var(--ease-out); }
 #copyStatus.is-shown { opacity: 1; transform: none; }
+
+/* Fixed-width digits while the count-up script (8+ years, dueday's €214) ticks through
+   intermediate values, so the animation never nudges neighbouring text/layout. */
+[data-countup] { font-variant-numeric: tabular-nums; }
+
+/* MPA View Transitions: soft crossfade between same-origin navigations (language toggle,
+   internal links). No-op outside Chromium; disabled for reduced motion. */
+@media (prefers-reduced-motion: no-preference) {
+  @view-transition { navigation: auto; }
+}
