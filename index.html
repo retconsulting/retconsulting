@@ -31,7 +31,7 @@
 <link rel="manifest" href="/site.webmanifest"/>
 <meta name="apple-mobile-web-app-title" content="RET"/>
 <script>if('IntersectionObserver' in window && !matchMedia('(prefers-reduced-motion:reduce)').matches){document.documentElement.classList.add('reveal-on');}</script>
-<link rel="stylesheet" href="assets/ds.css?v=20260711a"/>
+<link rel="stylesheet" href="assets/ds.css?v=20260711b"/>
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -1043,5 +1043,20 @@
   <img class="flipbrand__glyph" src="assets/logo-mark.svg" alt=""/>
   <span class="flipbrand__word"><span class="w">RET</span><span class="d">Consulting</span></span>
 </div>
+<script>
+(function () {
+  if (matchMedia('(hover: hover) and (pointer: fine)').matches) return; // desktop : hover natif
+  var SEL = '[data-tip], .certbadge[data-full], .svcmap__row[data-row], .tl__seg[data-exp]';
+  var cur = null;
+  function clear() { if (cur) { cur.classList.remove('is-tapped'); cur = null; } }
+  document.addEventListener('click', function (e) {
+    var t = e.target.closest(SEL);
+    if (!t) { clear(); return; }
+    if (t === cur) { clear(); return; }        // 2e tap = ferme
+    clear(); cur = t; t.classList.add('is-tapped');
+  }, true);
+  window.addEventListener('scroll', clear, { passive: true });
+})();
+</script>
 </body>
 </html>

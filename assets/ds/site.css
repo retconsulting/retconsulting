@@ -473,7 +473,7 @@ html.reveal-on .expgrid.is-in > .expgrid__arrow { transition-delay: calc(var(--r
   box-shadow: var(--shadow-sm), var(--shadow-inset-hi);
   font-family: var(--font-mono); font-size: 9.5px; font-weight: 700; letter-spacing: .05em; text-transform: uppercase; color: var(--ink-2); line-height: 1.2;
   cursor: default; transition: transform var(--dur-base) var(--ease-out), box-shadow var(--dur-base) var(--ease-out); }
-.certbadge:hover, .certbadge:focus-visible { transform: translateY(-3px) scale(1.06); box-shadow: var(--shadow-lg), var(--shadow-inset-hi); z-index: 2; outline: none; }
+.certbadge:hover, .certbadge:focus-visible, .certbadge.is-tapped { transform: translateY(-3px) scale(1.06); box-shadow: var(--shadow-lg), var(--shadow-inset-hi); z-index: 2; outline: none; }
 /* Full certification name, CSS-only popover sourced from data-full (no JS).
    The seals sit on WHITE surfaces (trustbar card), where a translucent glass fill is
    invisible: the card must be effectively solid and exist through its border + shadow
@@ -494,8 +494,8 @@ html.reveal-on .expgrid.is-in > .expgrid__arrow { transition-delay: calc(var(--r
   box-shadow: 0 6px 16px -6px rgba(24,24,27,.18);
   transform: translateY(6px) rotate(45deg);
   opacity: 0; pointer-events: none; transition: opacity var(--dur-base) var(--ease-out), transform var(--dur-base) var(--ease-out); }
-.certbadge:hover::after, .certbadge:focus-visible::after { opacity: 1; transform: translate(-50%, 0); }
-.certbadge:hover::before, .certbadge:focus-visible::before { opacity: 1; transform: translateY(0) rotate(45deg); }
+.certbadge:hover::after, .certbadge:focus-visible::after, .certbadge.is-tapped::after { opacity: 1; transform: translate(-50%, 0); }
+.certbadge:hover::before, .certbadge:focus-visible::before, .certbadge.is-tapped::before { opacity: 1; transform: translateY(0) rotate(45deg); }
 /* Generic info bubble (FIG_02-style, SOLID surface: translucent glass is unreadable
    over white cards) for the credential sector tiles and skill pills, driven by data-tip.
    Same recipe as the certbadge popover; multi-line, centred above the host. */
@@ -512,9 +512,9 @@ html.reveal-on .expgrid.is-in > .expgrid__arrow { transition-delay: calc(var(--r
   background: var(--surface); border: 1px solid var(--line); box-shadow: 0 6px 16px -6px rgba(24,24,27,.18);
   transform: translateY(6px) rotate(45deg);
   opacity: 0; pointer-events: none; transition: opacity var(--dur-base) var(--ease-out), transform var(--dur-base) var(--ease-out); }
-[data-tip]:hover::after, [data-tip]:focus-visible::after { opacity: 1; transform: translate(-50%, 0); }
-[data-tip]:hover::before, [data-tip]:focus-visible::before { opacity: 1; transform: translateY(0) rotate(45deg); }
-[data-tip]:hover, [data-tip]:focus-visible { z-index: 5; }
+[data-tip]:hover::after, [data-tip]:focus-visible::after, [data-tip].is-tapped::after { opacity: 1; transform: translate(-50%, 0); }
+[data-tip]:hover::before, [data-tip]:focus-visible::before, [data-tip].is-tapped::before { opacity: 1; transform: translateY(0) rotate(45deg); }
+[data-tip]:hover, [data-tip]:focus-visible, [data-tip].is-tapped { z-index: 5; }
 
 .about__certs .about__certline { font-family: var(--font-body); font-size: 14px; line-height: 1.7; color: var(--ink-2); margin: 44px auto 0; max-width: 46ch; text-align: center; }
 
@@ -1151,39 +1151,61 @@ html.reveal-on .fproj.is-in .appmock__end { opacity: 1; transform: scale(1); }
    CSS-only via :has() — browsers without :has() support simply skip the dimming
    and the figure renders exactly as before (progressive enhancement). */
 .svcmap__row, .tl__seg { transition: opacity var(--dur-base) var(--ease-out); }
-.svcmap__svg:has(.svcmap__row:hover) .svcmap__row { opacity: .35; }
-.svcmap__svg:has(.svcmap__row:hover) .svcmap__row:hover { opacity: 1; }
-.tl__svg:has(.tl__seg:hover) .tl__seg { opacity: .35; }
-.tl__svg:has(.tl__seg:hover) .tl__seg:hover { opacity: 1; }
+.svcmap__svg:has(.svcmap__row:hover) .svcmap__row,
+.svcmap__svg:has(.svcmap__row.is-tapped) .svcmap__row { opacity: .35; }
+.svcmap__svg:has(.svcmap__row:hover) .svcmap__row:hover,
+.svcmap__svg:has(.svcmap__row.is-tapped) .svcmap__row.is-tapped { opacity: 1; }
+.tl__svg:has(.tl__seg:hover) .tl__seg,
+.tl__svg:has(.tl__seg.is-tapped) .tl__seg { opacity: .35; }
+.tl__svg:has(.tl__seg:hover) .tl__seg:hover,
+.tl__svg:has(.tl__seg.is-tapped) .tl__seg.is-tapped { opacity: 1; }
 .svcmap__hit, .tl__hit { pointer-events: all; }
 
 /* FIG_02 popovers: revealed by the same :has() row-hover that drives the dimming. */
 .svcmap:has([data-row="po"]:hover)  .svcmap__pop--po,
 .svcmap:has([data-row="ba"]:hover)  .svcmap__pop--ba,
 .svcmap:has([data-row="web"]:hover) .svcmap__pop--web,
-.svcmap:has([data-row="e2e"]:hover) .svcmap__pop--e2e {
+.svcmap:has([data-row="e2e"]:hover) .svcmap__pop--e2e,
+.svcmap:has([data-row="po"].is-tapped)  .svcmap__pop--po,
+.svcmap:has([data-row="ba"].is-tapped)  .svcmap__pop--ba,
+.svcmap:has([data-row="web"].is-tapped) .svcmap__pop--web,
+.svcmap:has([data-row="e2e"].is-tapped) .svcmap__pop--e2e {
   opacity: 1; visibility: visible;
   transition: opacity var(--dur-base) var(--ease-out), transform var(--dur-base) var(--ease-out), visibility 0s;
 }
-.svcmap:has([data-row="po"]:hover)  .svcmap__pop--po  { transform: translate(-50%, 0); }
-.svcmap:has([data-row="ba"]:hover)  .svcmap__pop--ba  { transform: translate(-100%, 0); }
-.svcmap:has([data-row="web"]:hover) .svcmap__pop--web { transform: translate(-100%, 0); }
-.svcmap:has([data-row="e2e"]:hover) .svcmap__pop--e2e { transform: translateY(0); }
+.svcmap:has([data-row="po"]:hover)  .svcmap__pop--po,
+.svcmap:has([data-row="po"].is-tapped)  .svcmap__pop--po  { transform: translate(-50%, 0); }
+.svcmap:has([data-row="ba"]:hover)  .svcmap__pop--ba,
+.svcmap:has([data-row="ba"].is-tapped)  .svcmap__pop--ba  { transform: translate(-100%, 0); }
+.svcmap:has([data-row="web"]:hover) .svcmap__pop--web,
+.svcmap:has([data-row="web"].is-tapped) .svcmap__pop--web { transform: translate(-100%, 0); }
+.svcmap:has([data-row="e2e"]:hover) .svcmap__pop--e2e,
+.svcmap:has([data-row="e2e"].is-tapped) .svcmap__pop--e2e { transform: translateY(0); }
 
 /* FIG_03 popovers: revealed by the same :has() segment-hover that drives the dimming. */
 .timeline:has(.tl__seg[data-exp="1"]:hover) .tl__pop--1,
 .timeline:has(.tl__seg[data-exp="2"]:hover) .tl__pop--2,
 .timeline:has(.tl__seg[data-exp="3"]:hover) .tl__pop--3,
 .timeline:has(.tl__seg[data-exp="4"]:hover) .tl__pop--4,
-.timeline:has(.tl__seg[data-exp="5"]:hover) .tl__pop--5 {
+.timeline:has(.tl__seg[data-exp="5"]:hover) .tl__pop--5,
+.timeline:has(.tl__seg[data-exp="1"].is-tapped) .tl__pop--1,
+.timeline:has(.tl__seg[data-exp="2"].is-tapped) .tl__pop--2,
+.timeline:has(.tl__seg[data-exp="3"].is-tapped) .tl__pop--3,
+.timeline:has(.tl__seg[data-exp="4"].is-tapped) .tl__pop--4,
+.timeline:has(.tl__seg[data-exp="5"].is-tapped) .tl__pop--5 {
   opacity: 1; visibility: visible;
   transition: opacity var(--dur-base) var(--ease-out), transform var(--dur-base) var(--ease-out), visibility 0s;
 }
-.timeline:has(.tl__seg[data-exp="1"]:hover) .tl__pop--1 { transform: translateY(0); }
-.timeline:has(.tl__seg[data-exp="2"]:hover) .tl__pop--2 { transform: translate(-50%, 0); }
-.timeline:has(.tl__seg[data-exp="3"]:hover) .tl__pop--3 { transform: translate(-50%, 0); }
-.timeline:has(.tl__seg[data-exp="4"]:hover) .tl__pop--4 { transform: translate(-50%, 0); }
-.timeline:has(.tl__seg[data-exp="5"]:hover) .tl__pop--5 { transform: translateY(0); }
+.timeline:has(.tl__seg[data-exp="1"]:hover) .tl__pop--1,
+.timeline:has(.tl__seg[data-exp="1"].is-tapped) .tl__pop--1 { transform: translateY(0); }
+.timeline:has(.tl__seg[data-exp="2"]:hover) .tl__pop--2,
+.timeline:has(.tl__seg[data-exp="2"].is-tapped) .tl__pop--2 { transform: translate(-50%, 0); }
+.timeline:has(.tl__seg[data-exp="3"]:hover) .tl__pop--3,
+.timeline:has(.tl__seg[data-exp="3"].is-tapped) .tl__pop--3 { transform: translate(-50%, 0); }
+.timeline:has(.tl__seg[data-exp="4"]:hover) .tl__pop--4,
+.timeline:has(.tl__seg[data-exp="4"].is-tapped) .tl__pop--4 { transform: translate(-50%, 0); }
+.timeline:has(.tl__seg[data-exp="5"]:hover) .tl__pop--5,
+.timeline:has(.tl__seg[data-exp="5"].is-tapped) .tl__pop--5 { transform: translateY(0); }
 
 /* Pointer tilt on hover for [data-tilt] cards: a page-level pointermove script feeds
    --rtx/--rty (dedicated vars, never --tx/--ty which drive the OPEN service card's
