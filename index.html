@@ -911,14 +911,15 @@
     card.querySelector('.svc__face--back').removeAttribute('aria-hidden');
     card.querySelector('.svc__face--front').setAttribute('aria-hidden', 'true');
     if (trigger) trigger.setAttribute('aria-expanded', 'true');
-    window.setTimeout(function () { card.classList.add('is-settled'); }, dur() + 80);
-    open = { card: card, ph: ph, trigger: trigger || null };
+    var settleTimer = window.setTimeout(function () { card.classList.add('is-settled'); }, dur() + 80);
+    open = { card: card, ph: ph, trigger: trigger || null, settleTimer: settleTimer };
     var cb = card.querySelector('.svc__close');
     if (cb) cb.focus();
   }
   function closeCard() {
     if (!open) return;
     var o = open; open = null;
+    window.clearTimeout(o.settleTimer);
     var card = o.card, ph = o.ph;
     var r = ph.getBoundingClientRect();
     card.classList.remove('is-settled');
