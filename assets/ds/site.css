@@ -137,6 +137,10 @@ section[id], #main { scroll-margin-top: 96px; }
   .hero__flowstep:nth-child(2) { background-color: var(--cognac-wash); border-color: var(--border-accent); }
   /* the global duration zeroing does not kill transition-delays: zero the flip crossfade delays */
   .svc__face--front > *, .svc__face--back > * { transition-delay: 0s !important; }
+  /* … nor the hover-intent delays (140ms tips/seals, 120ms FIG_02/FIG_03 pops): zero those too */
+  [data-tip]::after, [data-tip]::before,
+  .certbadge::after, .certbadge::before,
+  .svcmap__pop, .tl__pop { transition-delay: 0s !important; }
 }
 .hero__canvas .stamp { position: absolute; top: 18px; left: 50%; transform: translateX(-50%); z-index: 3; display: flex; align-items: center; gap: 8px;
   padding: 8px 12px; border-radius: var(--r-pill);
@@ -494,8 +498,13 @@ html.reveal-on .expgrid.is-in > .expgrid__arrow { transition-delay: calc(var(--r
   box-shadow: 0 6px 16px -6px rgba(24,24,27,.18);
   transform: translateY(6px) rotate(45deg);
   opacity: 0; pointer-events: none; transition: opacity var(--dur-base) var(--ease-out), transform var(--dur-base) var(--ease-out); }
-.certbadge:hover::after, .certbadge:focus-visible::after, .certbadge.is-tapped::after { opacity: 1; transform: translate(-50%, 0); }
-.certbadge:hover::before, .certbadge:focus-visible::before, .certbadge.is-tapped::before { opacity: 1; transform: translateY(0) rotate(45deg); }
+/* Hover-intent: same 140ms entry delay as the generic [data-tip] bubble below;
+   focus-visible (keyboard) and .is-tapped (touch) stay instant: intent is already
+   explicit there. Exit stays instant either way (base rule, no delay). */
+.certbadge:hover::after { opacity: 1; transform: translate(-50%, 0); transition-delay: 140ms; }
+.certbadge:focus-visible::after, .certbadge.is-tapped::after { opacity: 1; transform: translate(-50%, 0); }
+.certbadge:hover::before { opacity: 1; transform: translateY(0) rotate(45deg); transition-delay: 140ms; }
+.certbadge:focus-visible::before, .certbadge.is-tapped::before { opacity: 1; transform: translateY(0) rotate(45deg); }
 /* Generic info bubble (FIG_02-style, SOLID surface: translucent glass is unreadable
    over white cards) for the credential sector tiles and skill pills, driven by data-tip.
    Same recipe as the certbadge popover; multi-line, centred above the host. */
@@ -512,8 +521,14 @@ html.reveal-on .expgrid.is-in > .expgrid__arrow { transition-delay: calc(var(--r
   background: var(--surface); border: 1px solid var(--line); box-shadow: 0 6px 16px -6px rgba(24,24,27,.18);
   transform: translateY(6px) rotate(45deg);
   opacity: 0; pointer-events: none; transition: opacity var(--dur-base) var(--ease-out), transform var(--dur-base) var(--ease-out); }
-[data-tip]:hover::after, [data-tip]:focus-visible::after, [data-tip].is-tapped::after { opacity: 1; transform: translate(-50%, 0); }
-[data-tip]:hover::before, [data-tip]:focus-visible::before, [data-tip].is-tapped::before { opacity: 1; transform: translateY(0) rotate(45deg); }
+/* Hover-intent: the bubble waits 140ms before opening (sweeping the row shouldn't
+   flash every tip), but focus-visible (keyboard) and .is-tapped (touch) open
+   immediately: intent is already explicit there. Exit stays instant either way
+   (no delay on the base rule). */
+[data-tip]:hover::after { opacity: 1; transform: translate(-50%, 0); transition-delay: 140ms; }
+[data-tip]:focus-visible::after, [data-tip].is-tapped::after { opacity: 1; transform: translate(-50%, 0); }
+[data-tip]:hover::before { opacity: 1; transform: translateY(0) rotate(45deg); transition-delay: 140ms; }
+[data-tip]:focus-visible::before, [data-tip].is-tapped::before { opacity: 1; transform: translateY(0) rotate(45deg); }
 [data-tip]:hover, [data-tip]:focus-visible, [data-tip].is-tapped { z-index: 5; }
 
 .about__certs .about__certline { font-family: var(--font-body); font-size: 14px; line-height: 1.7; color: var(--ink-2); margin: 44px auto 0; max-width: 46ch; text-align: center; }
@@ -1173,6 +1188,13 @@ html.reveal-on .fproj.is-in .appmock__end { opacity: 1; transform: scale(1); }
   opacity: 1; visibility: visible;
   transition: opacity var(--dur-base) var(--ease-out), transform var(--dur-base) var(--ease-out), visibility 0s;
 }
+/* hover-intent: the panel waits 120ms before opening ON HOVER ONLY (row dimming stays
+   instant, it guides the eye while the cursor travels; .is-tapped opens immediately,
+   a tap is explicit intent) */
+.svcmap:has([data-row="po"]:hover)  .svcmap__pop--po,
+.svcmap:has([data-row="ba"]:hover)  .svcmap__pop--ba,
+.svcmap:has([data-row="web"]:hover) .svcmap__pop--web,
+.svcmap:has([data-row="e2e"]:hover) .svcmap__pop--e2e { transition-delay: 120ms; }
 .svcmap:has([data-row="po"]:hover)  .svcmap__pop--po,
 .svcmap:has([data-row="po"].is-tapped)  .svcmap__pop--po  { transform: translate(-50%, 0); }
 .svcmap:has([data-row="ba"]:hover)  .svcmap__pop--ba,
@@ -1196,6 +1218,13 @@ html.reveal-on .fproj.is-in .appmock__end { opacity: 1; transform: scale(1); }
   opacity: 1; visibility: visible;
   transition: opacity var(--dur-base) var(--ease-out), transform var(--dur-base) var(--ease-out), visibility 0s;
 }
+/* hover-intent: same 120ms entry delay as FIG_02, ON HOVER ONLY (dimming instant,
+   .is-tapped immediate: a tap is explicit intent) */
+.timeline:has(.tl__seg[data-exp="1"]:hover) .tl__pop--1,
+.timeline:has(.tl__seg[data-exp="2"]:hover) .tl__pop--2,
+.timeline:has(.tl__seg[data-exp="3"]:hover) .tl__pop--3,
+.timeline:has(.tl__seg[data-exp="4"]:hover) .tl__pop--4,
+.timeline:has(.tl__seg[data-exp="5"]:hover) .tl__pop--5 { transition-delay: 120ms; }
 .timeline:has(.tl__seg[data-exp="1"]:hover) .tl__pop--1,
 .timeline:has(.tl__seg[data-exp="1"].is-tapped) .tl__pop--1 { transform: translateY(0); }
 .timeline:has(.tl__seg[data-exp="2"]:hover) .tl__pop--2,
@@ -1224,6 +1253,12 @@ html.reveal-on .fproj.is-in .appmock__end { opacity: 1; transform: scale(1); }
 .svcmap[data-tilt]:hover, .timeline[data-tilt]:hover {
   transform: perspective(1100px) rotateX(var(--rtx, 0deg)) rotateY(var(--rty, 0deg));
 }
+
+/* Press feedback: interactive non-buttons acknowledge the tap/click before anything flies */
+.svc[data-flip]:active:not(.is-lifted) { transform: scale(.985); transition-duration: 80ms; }
+.certbadge:active { transform: translateY(-1px) scale(1.0); transition-duration: 80ms; }
+.trustbar__sectors li:active svg { transform: translateY(0) scale(.94); transition-duration: 80ms; }
+.trustbar__skills .ret-hpill:active { transform: translateY(0) scale(.96) !important; transition-duration: 80ms; }
 
 /* Sticky nav deepens once scrolled past a 1px sentinel at the top of <main>
    (an IntersectionObserver toggles html.nav-stuck; transition lives on .nav__inner itself). */
