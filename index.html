@@ -878,7 +878,7 @@
   var cards = document.querySelectorAll('.svc[data-flip]');
   if (!cards.length) return;
   var mqRM = window.matchMedia('(prefers-reduced-motion: reduce)');
-  var DUR = 650, open = null;
+  var DUR = parseFloat(getComputedStyle(document.documentElement).getPropertyValue('--dur-flip')) || 650, open = null;
   var veil = document.createElement('div');
   veil.className = 'flipveil'; veil.setAttribute('aria-hidden', 'true');
   document.body.appendChild(veil);

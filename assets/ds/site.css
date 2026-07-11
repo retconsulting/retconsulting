@@ -268,32 +268,32 @@ section[id], #main { scroll-margin-top: 96px; }
 /* Service card flip: pinned fixed + fly-to-centre + 3D turn, veil blurs the site behind */
 .svc[data-flip] { cursor: pointer; perspective: 1400px; }
 .svc__inner { position: relative; flex: 1; display: flex; flex-direction: column;
-  transform-style: preserve-3d; transition: transform .65s var(--ease-out); }
+  transform-style: preserve-3d; transition: transform var(--dur-flip) var(--ease-out); }
 .svc.is-flipped .svc__inner { transform: rotateY(180deg) rotateX(var(--tx, 0deg)) rotateY(var(--ty, 0deg)); }
 /* once the fly-to-centre settles, shorten the inner transition so the pointer tilt feels live */
 .svc.is-settled .svc__inner { transition: transform .18s var(--ease-out); }
 .svc__face--front { display: flex; flex-direction: column; flex: 1; min-height: 0;
   -webkit-backdrop-filter: blur(var(--blur-glass)) saturate(1.4); backdrop-filter: blur(var(--blur-glass)) saturate(1.4);
   -webkit-backface-visibility: hidden; backface-visibility: hidden; }
-.svc.is-flipped .svc__face--front { visibility: hidden; transition: visibility 0s .32s; }
+.svc.is-flipped .svc__face--front { visibility: hidden; transition: visibility 0s var(--dur-flip-half); }
 .svc__face--back { position: absolute; inset: 0; display: flex; flex-direction: column;
   overflow-y: auto; overscroll-behavior: contain; transform: rotateY(180deg);
   -webkit-backface-visibility: hidden; backface-visibility: hidden;
-  visibility: hidden; transition: visibility 0s .32s; }
+  visibility: hidden; transition: visibility 0s var(--dur-flip-half); }
 .svc.is-flipped .svc__face--back { visibility: visible; transition: visibility 0s; }
 .svc.is-lifted { z-index: 86; transform: none !important;
-  transition: top .65s var(--ease-out), left .65s var(--ease-out),
-    width .65s var(--ease-out), height .65s var(--ease-out); }
+  transition: top var(--dur-flip) var(--ease-out), left var(--dur-flip) var(--ease-out),
+    width var(--dur-flip) var(--ease-out), height var(--dur-flip) var(--ease-out); }
 /* the panel does the 3D turn; the copy swaps with a quick fade so it never reads as skewed */
-.svc__face--front > * { transition: opacity .22s linear .36s; }
-.svc.is-flipped .svc__face--front > * { opacity: 0; transition: opacity .16s linear; }
-.svc__face--back > * { opacity: 0; transition: opacity .16s linear; }
-.svc.is-flipped .svc__face--back > * { opacity: 1; transition: opacity .22s linear .36s; }
+.svc__face--front > * { transition: opacity var(--dur-fade-in) linear var(--delay-fade-in); }
+.svc.is-flipped .svc__face--front > * { opacity: 0; transition: opacity var(--dur-fade-out) linear; }
+.svc__face--back > * { opacity: 0; transition: opacity var(--dur-fade-out) linear; }
+.svc.is-flipped .svc__face--back > * { opacity: 1; transition: opacity var(--dur-fade-in) linear var(--delay-fade-in); }
 .flipveil { position: fixed; inset: 0; z-index: 84; opacity: 0; pointer-events: none;
   background: rgba(24,24,27,.16);
   -webkit-backdrop-filter: blur(var(--blur-glass)) saturate(1.15);
   backdrop-filter: blur(var(--blur-glass)) saturate(1.15);
-  transition: opacity .5s var(--ease-out); }
+  transition: opacity var(--dur-veil) var(--ease-out); }
 html.flip-open .flipveil { opacity: 1; pointer-events: auto; }
 html.flip-open body { overflow: hidden; }
 /* RET brand pill fading in bottom-centre over the veil while a card is turned
