@@ -29,7 +29,7 @@
 .ret-btn--lg { font-size: var(--t-lead); padding: 17px 32px; }
 
 .ret-btn--primary { --_bg: var(--accent-btn); box-shadow: var(--shadow-accent); }
-.ret-btn--primary:hover { --_bg: var(--accent-hover); box-shadow: 0 22px 46px -16px rgba(143,98,64,.5); transform: translateY(-1px); }
+.ret-btn--primary:hover { --_bg: var(--accent-hover); box-shadow: 0 22px 46px -16px rgba(122,70,36,.55); transform: translateY(-1px); }
 
 .ret-btn--secondary { --_bg: var(--surface); --_fg: var(--text-primary); --_bd: var(--border-strong); box-shadow: var(--shadow-sm); }
 .ret-btn--secondary:hover { --_bd: var(--ink); transform: translateY(-1px); box-shadow: var(--shadow-md); }

@@ -20,7 +20,7 @@
 
   /* — Cognac / tan leather accent ramp — */
   --cognac:          #B07D54;  /* primary accent                         */
-  --cognac-deep:     #8F6240;  /* hover / pressed                        */
+  --cognac-deep:     #7A4624;  /* hover / pressed — richer than --accent-btn (7.7:1 on white) */
   --cognac-soft:     #C8A07C;  /* light accent, decorative               */
   --cognac-wash:     #F1E7DD;  /* tinted surface wash                    */
   --cognac-ink:      #6A4326;  /* accent text on wash                    */
@@ -60,7 +60,7 @@
   --text-meta:       var(--ink-3);   /* technical metadata labels (AA-safe gray) */
 
   --accent:          var(--cognac);
-  --accent-btn:      #94663F;  /* darker cognac for FILLED buttons — white text = WCAG AA (4.98:1) vs 3.55:1 for #B07D54 */
+  --accent-btn:      #9C5A2E;  /* richer, more saturated cognac for FILLED buttons — white text = WCAG AA (5.4:1) vs 3.55:1 for #B07D54 */
   --accent-hover:    var(--cognac-deep);
   --accent-soft:     var(--cognac-soft);
   --accent-wash:     var(--cognac-wash);
