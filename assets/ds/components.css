@@ -31,7 +31,12 @@
 /* Context-inverted primary: ink on light surfaces (max contrast against the pale canvas),
    cognac on the dark panels (.contact__panel/.appcta, scoped in site.css) where ink would
    vanish into the background. The arrow icon carries the accent on the ink version. */
-.ret-btn--primary { --_bg: var(--ink); box-shadow: 0 18px 40px -16px rgba(24,24,27,.4), inset 0 1px 0 rgba(255,255,255,.12); }
+.ret-btn--primary { --_bg: var(--ink); box-shadow: 0 18px 40px -16px rgba(24,24,27,.4), inset 0 1px 0 rgba(255,255,255,.12);
+  /* explicit soft sheen (was only an inset-highlight artefact at large sizes): a light
+     veil fading from the top edge plus a faint darkening at the base, size-independent
+     so the gradient reads the same at every breakpoint, on both the ink and the
+     dark-panel cognac variants (the overlay rides on top of --_bg) */
+  background-image: linear-gradient(180deg, rgba(255,255,255,.14) 0%, rgba(255,255,255,.04) 38%, rgba(0,0,0,.10) 100%); }
 .ret-btn--primary:hover { --_bg: #000; box-shadow: 0 22px 46px -16px rgba(24,24,27,.5); transform: translateY(-1px); }
 .ret-btn--primary .ret-btn__icon { color: var(--cognac-soft); }
 
