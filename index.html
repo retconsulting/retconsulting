@@ -31,7 +31,7 @@
 <link rel="manifest" href="/site.webmanifest"/>
 <meta name="apple-mobile-web-app-title" content="RET"/>
 <script>if('IntersectionObserver' in window && !matchMedia('(prefers-reduced-motion:reduce)').matches){document.documentElement.classList.add('reveal-on');}</script>
-<link rel="stylesheet" href="assets/ds.css?v=20260710k"/>
+<link rel="stylesheet" href="assets/ds.css?v=20260711a"/>
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -883,12 +883,11 @@
   veil.className = 'flipveil'; veil.setAttribute('aria-hidden', 'true');
   document.body.appendChild(veil);
   function dur() { return mqRM.matches ? 0 : DUR; }
-  function center(card) {
+  function target(card) {
     var tw = Math.min(560, document.documentElement.clientWidth - 32);
     var th = Math.min(Math.max(card._baseH, 430), document.documentElement.clientHeight - 48);
-    card.style.top = Math.round((document.documentElement.clientHeight - th) / 2) + 'px';
-    card.style.left = Math.round((document.documentElement.clientWidth - tw) / 2) + 'px';
-    card.style.width = tw + 'px'; card.style.height = th + 'px';
+    return { x: Math.round((document.documentElement.clientWidth - tw) / 2),
+             y: Math.round((document.documentElement.clientHeight - th) / 2), w: tw, h: th };
   }
   function openCard(card, trigger) {
     if (open) return;
@@ -906,13 +905,25 @@
     card.classList.add('is-lifted');
     document.documentElement.classList.add('flip-open');
     void card.offsetWidth;
-    center(card);
+    var t = target(card);
+    card.style.setProperty('--fx', (t.x - r.left) + 'px');
+    card.style.setProperty('--fy', (t.y - r.top) + 'px');
+    card.style.setProperty('--fsx', (t.w / r.width).toFixed(4));
+    card.style.setProperty('--fsy', (t.h / r.height).toFixed(4));
     card.classList.add('is-flipped');
     card.querySelector('.svc__face--back').removeAttribute('aria-hidden');
     card.querySelector('.svc__face--front').setAttribute('aria-hidden', 'true');
     if (trigger) trigger.setAttribute('aria-expanded', 'true');
     var settleTimer = window.setTimeout(function () { card.classList.add('is-settled'); }, dur() + 80);
-    open = { card: card, ph: ph, trigger: trigger || null, settleTimer: settleTimer };
+    var landTimer = window.setTimeout(function () {
+      if (!open || open.card !== card) return;
+      card.classList.add('is-landed');
+      card.style.top = t.y + 'px'; card.style.left = t.x + 'px';
+      card.style.width = t.w + 'px'; card.style.height = t.h + 'px';
+      card.style.removeProperty('--fx'); card.style.removeProperty('--fy');
+      card.style.removeProperty('--fsx'); card.style.removeProperty('--fsy');
+    }, dur() + 20);
+    open = { card: card, ph: ph, trigger: trigger || null, settleTimer: settleTimer, landTimer: landTimer };
     var cb = card.querySelector('.svc__close');
     if (cb) cb.focus();
   }
@@ -920,20 +931,34 @@
     if (!open) return;
     var o = open; open = null;
     window.clearTimeout(o.settleTimer);
+    window.clearTimeout(o.landTimer);
     var card = o.card, ph = o.ph;
-    var r = ph.getBoundingClientRect();
     card.classList.remove('is-settled');
     var inn = card.querySelector('.svc__inner');
     inn.style.removeProperty('--tx'); inn.style.removeProperty('--ty');
+    var r = ph.getBoundingClientRect();
+    var cur = card.getBoundingClientRect();
+    card.classList.remove('is-landed');
+    card.style.transition = 'none'; // hard-cut any in-flight transform transition so the reset below cannot be interpolated
+    card.style.top = cur.top + 'px'; card.style.left = cur.left + 'px';
+    card.style.width = cur.width + 'px'; card.style.height = cur.height + 'px';
+    card.style.setProperty('--fx', '0px'); card.style.setProperty('--fy', '0px');
+    card.style.setProperty('--fsx', '1'); card.style.setProperty('--fsy', '1');
+    void card.offsetWidth; // commit the reset with transitions off: no animatable value survives to interfere below
+    card.style.removeProperty('transition'); // restore the declared transition for a clean, fresh flight back
+    card.style.setProperty('--fx', (r.left - cur.left) + 'px');
+    card.style.setProperty('--fy', (r.top - cur.top) + 'px');
+    card.style.setProperty('--fsx', (r.width / cur.width).toFixed(4));
+    card.style.setProperty('--fsy', (r.height / cur.height).toFixed(4));
     card.classList.remove('is-flipped');
-    card.style.top = r.top + 'px'; card.style.left = r.left + 'px';
-    card.style.width = r.width + 'px'; card.style.height = r.height + 'px';
     document.documentElement.classList.remove('flip-open');
     card.querySelector('.svc__face--back').setAttribute('aria-hidden', 'true');
     card.querySelector('.svc__face--front').removeAttribute('aria-hidden');
     window.setTimeout(function () {
       if (ph.parentNode) { ph.parentNode.insertBefore(card, ph); ph.parentNode.removeChild(ph); }
       card.classList.remove('is-lifted');
+      card.style.removeProperty('--fx'); card.style.removeProperty('--fy');
+      card.style.removeProperty('--fsx'); card.style.removeProperty('--fsy');
       card.removeAttribute('style');
       if (o.trigger) { o.trigger.setAttribute('aria-expanded', 'false'); o.trigger.focus(); }
     }, dur() + 60);
@@ -977,7 +1002,12 @@
       else if (!e.shiftKey && document.activeElement === last) { e.preventDefault(); first.focus(); }
     }
   });
-  window.addEventListener('resize', function () { if (open) center(open.card); });
+  window.addEventListener('resize', function () {
+    if (!open || !open.card.classList.contains('is-landed')) return;
+    var t = target(open.card);
+    open.card.style.top = t.y + 'px'; open.card.style.left = t.x + 'px';
+    open.card.style.width = t.w + 'px'; open.card.style.height = t.h + 'px';
+  });
 })();
 </script>
 <script>

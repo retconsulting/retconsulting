@@ -281,9 +281,17 @@ section[id], #main { scroll-margin-top: 96px; }
   -webkit-backface-visibility: hidden; backface-visibility: hidden;
   visibility: hidden; transition: visibility 0s var(--dur-flip-half); }
 .svc.is-flipped .svc__face--back { visibility: visible; transition: visibility 0s; }
-.svc.is-lifted { z-index: 86; transform: none !important;
-  transition: top var(--dur-flip) var(--ease-out), left var(--dur-flip) var(--ease-out),
-    width var(--dur-flip) var(--ease-out), height var(--dur-flip) var(--ease-out); }
+/* compositor-only flight: the pinned card keeps its SOURCE layout box for the whole
+   flight and moves via translate+scale (--f* vars set by the flip script); the real
+   target layout is snapped once on landing (.is-landed drops transform transitions so
+   the snap and the var purge are invisible). The !important overrides the rest-tilt
+   hover transform, whose script already guards on .is-lifted anyway. */
+.svc.is-lifted { z-index: 86;
+  transform: translate(var(--fx, 0px), var(--fy, 0px)) scale(var(--fsx, 1), var(--fsy, 1)) !important;
+  transform-origin: top left;
+  will-change: transform;
+  transition: transform var(--dur-flip) var(--ease-out), box-shadow var(--dur-flip) var(--ease-out); }
+.svc.is-lifted.is-landed { transition: box-shadow var(--dur-flip) var(--ease-out); }
 /* the panel does the 3D turn; the copy swaps with a quick fade so it never reads as skewed */
 .svc__face--front > * { transition: opacity var(--dur-fade-in) linear var(--delay-fade-in); }
 .svc.is-flipped .svc__face--front > * { opacity: 0; transition: opacity var(--dur-fade-out) linear; }
