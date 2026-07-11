@@ -50,5 +50,5 @@
   --dur-veil:        500ms; /* backdrop veil fade */
   --dur-fade-out:    160ms; /* crossfade: outgoing copy */
   --dur-fade-in:     220ms; /* crossfade: incoming copy */
-  --delay-fade-in:   360ms; /* crossfade: incoming waits past mid-rotation */
+  --delay-fade-in:   680ms; /* crossfade: incoming waits until the flight has LANDED (scale = identity), otherwise the copy renders stretched on the still-scaling panel */
 }

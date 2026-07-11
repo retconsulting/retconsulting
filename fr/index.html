@@ -31,7 +31,7 @@
 <link rel="manifest" href="/site.webmanifest"/>
 <meta name="apple-mobile-web-app-title" content="RET"/>
 <script>if('IntersectionObserver' in window && !matchMedia('(prefers-reduced-motion:reduce)').matches){document.documentElement.classList.add('reveal-on');}</script>
-<link rel="stylesheet" href="/assets/ds.css?v=20260711d"/>
+<link rel="stylesheet" href="/assets/ds.css?v=20260711e"/>
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -992,14 +992,14 @@
     document.documentElement.classList.remove('flip-open');
     card.querySelector('.svc__face--back').setAttribute('aria-hidden', 'true');
     card.querySelector('.svc__face--front').removeAttribute('aria-hidden');
-    window.setTimeout(function () {
+    window.setTimeout(function () {   // dur()+320: past the front copy fade-in (680+220ms post-close) so reparenting never snaps a half-faded text
       if (ph.parentNode) { ph.parentNode.insertBefore(card, ph); ph.parentNode.removeChild(ph); }
       card.classList.remove('is-lifted');
       card.style.removeProperty('--fx'); card.style.removeProperty('--fy');
       card.style.removeProperty('--fsx'); card.style.removeProperty('--fsy');
       card.removeAttribute('style');
       if (o.trigger) { o.trigger.setAttribute('aria-expanded', 'false'); o.trigger.focus(); }
-    }, dur() + 60);
+    }, dur() + 320);
   }
   cards.forEach(function (card) {
     var inner = card.querySelector('.svc__inner');
