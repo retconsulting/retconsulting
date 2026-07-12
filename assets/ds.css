@@ -1,10 +1,10 @@
 /* RET Consulting — design system v2 entry. Link this file.
    Order: fonts → tokens → base → components → site layout. */
 @import "ds/fonts.css";
-@import "ds/colors.css?v=20260712l";
+@import "ds/colors.css?v=20260712m";
 @import "ds/typography.css";
 @import "ds/spacing.css";
-@import "ds/effects.css?v=20260712l";
+@import "ds/effects.css?v=20260712m";
 @import "ds/base.css";
-@import "ds/components.css?v=20260712l";
-@import "ds/site.css?v=20260712l";
+@import "ds/components.css?v=20260712m";
+@import "ds/site.css?v=20260712m";
