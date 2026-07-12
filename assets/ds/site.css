@@ -1492,13 +1492,14 @@ html.reveal-on .blogfig[data-tilt]:hover { transform: perspective(1100px) rotate
 .article__callout p { margin: 0; color: var(--ink-2); font-family: var(--font-body); font-size: .98rem; line-height: 1.6; max-width: none; }
 /* Closed-vs-open loop mini diagram: two calm blueprint panels, no stamp (lighter than FIG_B1) */
 /* ANATOMY — one loop, all four parts on a single mechanism */
-.anatfig { margin: 24px 0 0; max-width: 65ch; background: var(--surface); border: 1px solid var(--line); border-radius: var(--r-lg); box-shadow: var(--shadow-sm); overflow: hidden; }
+.anatfig { margin: 24px 0 0; max-width: 65ch; border: 1px solid var(--line); border-radius: var(--r-lg); box-shadow: var(--shadow-sm); overflow: hidden;
+  background: radial-gradient(125% 95% at 14% 0%, rgba(255,255,255,.94), rgba(255,255,255,0) 55%), radial-gradient(82% 62% at 17% 106%, rgba(176,125,84,.17), rgba(176,125,84,0) 64%), linear-gradient(158deg, #FFFFFF 0%, var(--canvas-sunken) 100%); }
 .anatfig__bar { display: flex; align-items: center; justify-content: space-between; gap: 12px; padding: 10px 16px; background: var(--canvas); border-bottom: 1px solid var(--line); }
 .anatfig__title { font-family: var(--font-mono); font-size: 10px; letter-spacing: .14em; text-transform: uppercase; color: var(--ink-2); }
 .anatfig__meta { font-family: var(--font-mono); font-size: 9px; letter-spacing: .1em; text-transform: uppercase; color: var(--cognac-text); }
 .anatfig__stage { padding: 20px 18px 6px; display: flex; justify-content: center; }
 .anatfig__svg { width: 100%; max-width: 540px; height: auto; }
-.anatfig__key { list-style: none; margin: 0; padding: 2px 18px 6px; display: grid; grid-template-columns: 1fr 1fr; gap: 0 28px; }
+.anatfig__key { list-style: none; margin: 0; padding: 2px 18px 16px; display: grid; grid-template-columns: 1fr 1fr; gap: 0 28px; }
 .anatfig__key li { display: grid; grid-template-columns: auto 1fr; gap: 11px; align-items: baseline; padding: 11px 0; border-top: 1px solid var(--line); }
 .anatfig__n { font-family: var(--font-mono); font-size: 11px; font-weight: 600; color: var(--ink-3); }
 .anatfig__n--fb { color: var(--cognac-text); }
@@ -1506,7 +1507,6 @@ html.reveal-on .blogfig[data-tilt]:hover { transform: perspective(1100px) rotate
 .anatfig__kname { font-family: var(--font-mono); font-size: 10px; letter-spacing: .1em; text-transform: uppercase; color: var(--ink); margin-right: 7px; }
 .anatfig__kname--fb { color: var(--cognac-text); }
 .anatfig__most { font-family: var(--font-mono); font-size: 8.5px; letter-spacing: .08em; text-transform: uppercase; color: var(--cognac-text); white-space: nowrap; }
-.article .anatfig__cap { margin: 0; padding: 6px 20px 18px; max-width: none; text-align: center; font-family: var(--font-body); font-size: .86rem; line-height: 1.45; color: var(--ink-2); }
 @media (max-width: 560px) { .anatfig__key { grid-template-columns: 1fr; gap: 0; } }
 
 .article__six { display: grid; grid-template-columns: repeat(3,1fr); gap: 10px; margin: 22px 0 0; padding: 0; list-style: none; max-width: 65ch; }
