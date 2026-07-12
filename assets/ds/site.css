@@ -1491,12 +1491,6 @@ html.reveal-on .blogfig[data-tilt]:hover { transform: perspective(1100px) rotate
 .article__callout-mark svg { width: 15px; height: 15px; }
 .article__callout p { margin: 0; color: var(--ink-2); font-family: var(--font-body); font-size: .98rem; line-height: 1.6; max-width: none; }
 /* Closed-vs-open loop mini diagram: two calm blueprint panels, no stamp (lighter than FIG_B1) */
-.loopfig { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin: 24px 0 0; max-width: 65ch; padding: 0; }
-.loopfig__panel { background: var(--surface); border: 1px solid var(--line); border-radius: var(--r-lg); box-shadow: var(--shadow-sm); padding: 20px 18px 18px; display: flex; flex-direction: column; align-items: center; gap: 12px; }
-.loopfig__svg { width: 100%; max-width: 190px; height: auto; }
-.loopfig__k { display: block; font-family: var(--font-mono); font-size: 10.5px; letter-spacing: .12em; text-transform: uppercase; color: var(--accent); margin-bottom: 5px; }
-.article .loopfig__cap { margin: 0; text-align: center; font-family: var(--font-body); font-size: .86rem; line-height: 1.45; color: var(--ink-2); max-width: none; }
-@media (max-width: 560px) { .loopfig { grid-template-columns: 1fr; gap: 12px; } }
 /* ANATOMY — one loop, all four parts on a single mechanism */
 .anatfig { margin: 24px 0 0; max-width: 65ch; background: var(--surface); border: 1px solid var(--line); border-radius: var(--r-lg); box-shadow: var(--shadow-sm); overflow: hidden; }
 .anatfig__bar { display: flex; align-items: center; justify-content: space-between; gap: 12px; padding: 10px 16px; background: var(--canvas); border-bottom: 1px solid var(--line); }
@@ -1514,16 +1508,7 @@ html.reveal-on .blogfig[data-tilt]:hover { transform: perspective(1100px) rotate
 .anatfig__most { font-family: var(--font-mono); font-size: 8.5px; letter-spacing: .08em; text-transform: uppercase; color: var(--cognac-text); white-space: nowrap; }
 .article .anatfig__cap { margin: 0; padding: 6px 20px 18px; max-width: none; text-align: center; font-family: var(--font-body); font-size: .86rem; line-height: 1.45; color: var(--ink-2); }
 @media (max-width: 560px) { .anatfig__key { grid-template-columns: 1fr; gap: 0; } }
-/* Optional, calm: signal flows along the cognac feedback return. Off under reduced motion. */
-@media (prefers-reduced-motion: no-preference) {
-  .anat-fb { stroke-dasharray: 4 3; animation: anatflow 2.8s linear infinite; }
-}
-@keyframes anatflow { to { stroke-dashoffset: -14; } }
 
-/* Closed vs open comparison: add a centred Versus chip (mirrors the promptfig idiom) */
-.loopfig { position: relative; }
-.loopfig__versus { position: absolute; top: 50%; left: 50%; transform: translate(-50%,-50%); z-index: 2; font-family: var(--font-mono); font-size: 9px; letter-spacing: .16em; text-transform: uppercase; color: var(--ink-3); background: var(--surface); border: 1px solid var(--line); border-radius: var(--r-pill); padding: 4px 12px; box-shadow: var(--shadow-xs); }
-@media (max-width: 560px) { .loopfig__versus { top: 50%; } }
 .article__six { display: grid; grid-template-columns: repeat(3,1fr); gap: 10px; margin: 22px 0 0; padding: 0; list-style: none; max-width: 65ch; }
 .article__six li { background: var(--surface); border: 1px solid var(--line); border-radius: var(--r-md); padding: 14px 16px; }
 .article__six .six__head { display: flex; align-items: center; gap: 7px; margin-bottom: 6px; }
