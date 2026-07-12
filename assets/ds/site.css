@@ -1511,6 +1511,6 @@ html.reveal-on .blogfig[data-tilt]:hover { transform: perspective(1100px) rotate
 .article-end__title { font-family: var(--font-display); font-weight: 700; font-size: clamp(1.7rem,1.2rem+1.8vw,2.5rem); letter-spacing: -.02em; line-height: 1.05; color: #fff; margin: 14px 0 0; text-wrap: balance; }
 .article-end__title .accent { color: var(--cognac-soft); }
 .article-end p { font-family: var(--font-body); font-weight: 300; color: rgba(255,255,255,.74); font-size: 1.05rem; line-height: 1.6; margin: 18px 0 0; max-width: 62ch; }
-.article-end .ret-btn { margin-top: clamp(26px,3vw,34px); }
+.article-end .ret-btn { margin-top: clamp(26px,3vw,34px); display: flex; width: fit-content; margin-left: auto; }
 @media print { .blogfig-wrap, .article__cta, .article-end-wrap { break-inside: avoid; } .blogfig { box-shadow: none !important; } .blogfig__wm, .bpost__wm { display: none; }
   .article-end { background: #fff !important; color: var(--ink) !important; box-shadow: none !important; border: 1px solid #ddd; } .article-end__dots { display: none !important; } .article-end *, .article-end__title .accent { color: var(--ink) !important; } }
