@@ -1505,6 +1505,19 @@ html.reveal-on .blogfig[data-tilt]:hover { transform: perspective(1100px) rotate
 .article__six .k { display: block; font-family: var(--font-mono); font-size: 10px; letter-spacing: .1em; text-transform: uppercase; color: var(--cognac-text); margin-bottom: 6px; }
 .article__six .six__head .k { margin-bottom: 0; }
 .article__six .v { display: block; font-family: var(--font-body); font-size: .83rem; line-height: 1.4; color: var(--ink-2); }
+/* Continuous cognac spotlight sweeping the six parts one at a time, in reading order */
+.article__six li { animation: sixtint 7.2s var(--ease-soft) infinite; }
+.article__six li:nth-child(2) { animation-delay: 1.2s; }
+.article__six li:nth-child(3) { animation-delay: 2.4s; }
+.article__six li:nth-child(4) { animation-delay: 3.6s; }
+.article__six li:nth-child(5) { animation-delay: 4.8s; }
+.article__six li:nth-child(6) { animation-delay: 6s; }
+@keyframes sixtint {
+  0% { background-color: var(--surface); border-color: var(--line); box-shadow: none; }
+  3%, 15% { background-color: var(--cognac-wash); border-color: var(--border-accent); box-shadow: var(--shadow-sm); }
+  18%, 100% { background-color: var(--surface); border-color: var(--line); box-shadow: none; }
+}
+@media (prefers-reduced-motion: reduce) { .article__six li { animation: none !important; } }
 @media (max-width: 700px) { .article__six { grid-template-columns: 1fr 1fr; } }
 /* Prompt-engineering before/after: one card, two rows (off-hand vs engineered) */
 .promptfig { margin: 24px 0 0; max-width: 65ch; background: var(--surface); border: 1px solid var(--line); border-radius: var(--r-lg); box-shadow: var(--shadow-sm); overflow: hidden; display: grid; grid-template-rows: 1fr 1fr; }
@@ -1562,11 +1575,18 @@ html.reveal-on .blogfig[data-tilt]:hover { transform: perspective(1100px) rotate
 /* Selector sweeps the plan top to bottom (hcur = highlight on during a step's slot),
    ticking each box as it lands (htk = check stays lit from its slot until the reset),
    and the assistant's "Now" text follows the selector (reuses the hcur timing). */
-.harnessfig__list li:nth-child(1) .hstep__hl, .harnessfig__nowstack .hnow:nth-child(1) { animation: hcur1 10s linear infinite; }
-.harnessfig__list li:nth-child(2) .hstep__hl, .harnessfig__nowstack .hnow:nth-child(2) { animation: hcur2 10s linear infinite; }
-.harnessfig__list li:nth-child(3) .hstep__hl, .harnessfig__nowstack .hnow:nth-child(3) { animation: hcur3 10s linear infinite; }
-.harnessfig__list li:nth-child(4) .hstep__hl, .harnessfig__nowstack .hnow:nth-child(4) { animation: hcur4 10s linear infinite; }
-.harnessfig__list li:nth-child(5) .hstep__hl, .harnessfig__nowstack .hnow:nth-child(5) { animation: hcur5 10s linear infinite; }
+.harnessfig__list li:nth-child(1) .hstep__hl { animation: hcur1 10s linear infinite; }
+.harnessfig__list li:nth-child(2) .hstep__hl { animation: hcur2 10s linear infinite; }
+.harnessfig__list li:nth-child(3) .hstep__hl { animation: hcur3 10s linear infinite; }
+.harnessfig__list li:nth-child(4) .hstep__hl { animation: hcur4 10s linear infinite; }
+.harnessfig__list li:nth-child(5) .hstep__hl { animation: hcur5 10s linear infinite; }
+/* The assistant title switches INSTANTLY (hard cut, no crossfade) as the selector lands,
+   and step 5 holds through the reset so the panel never blanks. */
+.harnessfig__nowstack .hnow:nth-child(1) { animation: hnow1 10s steps(1) infinite; }
+.harnessfig__nowstack .hnow:nth-child(2) { animation: hnow2 10s steps(1) infinite; }
+.harnessfig__nowstack .hnow:nth-child(3) { animation: hnow3 10s steps(1) infinite; }
+.harnessfig__nowstack .hnow:nth-child(4) { animation: hnow4 10s steps(1) infinite; }
+.harnessfig__nowstack .hnow:nth-child(5) { animation: hnow5 10s steps(1) infinite; }
 .harnessfig__list li:nth-child(1) .hmark__on { animation: htk1 10s var(--ease-out) infinite; }
 .harnessfig__list li:nth-child(2) .hmark__on { animation: htk2 10s var(--ease-out) infinite; }
 .harnessfig__list li:nth-child(3) .hmark__on { animation: htk3 10s var(--ease-out) infinite; }
@@ -1577,6 +1597,11 @@ html.reveal-on .blogfig[data-tilt]:hover { transform: perspective(1100px) rotate
 @keyframes hcur3 { 0%, 31% { opacity: 0; } 34%, 47% { opacity: 1; } 50%, 100% { opacity: 0; } }
 @keyframes hcur4 { 0%, 47% { opacity: 0; } 50%, 63% { opacity: 1; } 66%, 100% { opacity: 0; } }
 @keyframes hcur5 { 0%, 63% { opacity: 0; } 66%, 79% { opacity: 1; } 82%, 100% { opacity: 0; } }
+@keyframes hnow1 { 0% { opacity: 1; } 18% { opacity: 0; } 100% { opacity: 0; } }
+@keyframes hnow2 { 0% { opacity: 0; } 18% { opacity: 1; } 34% { opacity: 0; } 100% { opacity: 0; } }
+@keyframes hnow3 { 0% { opacity: 0; } 34% { opacity: 1; } 50% { opacity: 0; } 100% { opacity: 0; } }
+@keyframes hnow4 { 0% { opacity: 0; } 50% { opacity: 1; } 66% { opacity: 0; } 100% { opacity: 0; } }
+@keyframes hnow5 { 0% { opacity: 0; } 66% { opacity: 1; } 100% { opacity: 1; } }
 @keyframes htk1 { 0%, 4% { opacity: 0; } 11%, 86% { opacity: 1; } 91%, 100% { opacity: 0; } }
 @keyframes htk2 { 0%, 20% { opacity: 0; } 27%, 86% { opacity: 1; } 91%, 100% { opacity: 0; } }
 @keyframes htk3 { 0%, 36% { opacity: 0; } 43%, 86% { opacity: 1; } 91%, 100% { opacity: 0; } }
