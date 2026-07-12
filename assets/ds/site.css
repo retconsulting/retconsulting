@@ -1445,6 +1445,17 @@ html.reveal-on .bpost:hover { transform: translateY(var(--card-lift)) perspectiv
 html.reveal-on .blogfig[data-tilt]:hover { transform: perspective(1100px) rotateX(var(--rtx,0deg)) rotateY(var(--rty,0deg)); }
 @media (max-width: 560px) { .blogfig { padding-top: clamp(52px,10vw,64px); } }
 
+/* FIG_B1 orbiting satellites: the orbit group rotates around the dial centre
+   (view-box 240,240) while the satellite counter-rotates about its own centre,
+   so the icon and its cognac accent arc stay upright as they travel the ring.
+   Continuous linear motion, per-orbit period via --odur, RM-gated. */
+@keyframes dial-orbit { to { transform: rotate(1turn); } }
+.dial__orbit { transform-box: view-box; transform-origin: 240px 240px; animation: dial-orbit var(--odur,48s) linear infinite; }
+.dial__sat { transform-box: fill-box; transform-origin: center; animation: dial-orbit var(--odur,48s) linear infinite reverse; }
+.dial__orbit--ccw { animation-direction: reverse; }
+.dial__orbit--ccw .dial__sat { animation-direction: normal; }
+@media (prefers-reduced-motion: reduce) { .dial__orbit, .dial__sat { animation: none; } }
+
 .article-wrap { max-width: var(--container-narrow); margin-inline: auto; padding: clamp(8px,2vw,16px) var(--gutter) clamp(64px,7vw,96px); }
 .article__kicker { display: block; font-family: var(--font-mono); font-size: 11px; letter-spacing: .14em; text-transform: uppercase; color: var(--cognac-text); margin-bottom: 6px; }
 .article h2 { font-family: var(--font-display); font-weight: 700; font-size: 1.35rem; letter-spacing: -.01em; line-height: 1.25; color: var(--ink); margin: clamp(36px,4vw,52px) 0 0; }

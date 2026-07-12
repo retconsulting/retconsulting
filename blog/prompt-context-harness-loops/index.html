@@ -29,7 +29,7 @@
 <link rel="icon" href="/assets/logo-glyph-dark.svg" media="(prefers-color-scheme: dark)"/>
 <link rel="apple-touch-icon" href="/assets/apple-touch-icon.png"/>
 <script>if('IntersectionObserver' in window && !matchMedia('(prefers-reduced-motion:reduce)').matches){document.documentElement.classList.add('reveal-on');}</script>
-<link rel="stylesheet" href="/assets/ds.css?v=20260711f"/>
+<link rel="stylesheet" href="/assets/ds.css?v=20260712a"/>
 <script type="application/ld+json">
 {"@context":"https://schema.org","@graph":[{"@type":"BlogPosting","headline":"Prompt → Context → Harness → Loops","datePublished":"2026-07-11","dateModified":"2026-07-11","inLanguage":"en","author":{"@type":"Person","name":"Redha Etbaz","url":"https://retconsulting.be/"},"publisher":{"@type":"Organization","name":"RET Consulting","logo":{"@type":"ImageObject","url":"https://retconsulting.be/assets/icon-512.png"}},"image":"https://retconsulting.be/assets/icon-512.png","description":"From prompt engineering to loop engineering: the whole ladder in plain language, and what it changes for your team.","mainEntityOfPage":{"@type":"WebPage","@id":"https://retconsulting.be/blog/prompt-context-harness-loops/"},"url":"https://retconsulting.be/blog/prompt-context-harness-loops/"},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://retconsulting.be/"},{"@type":"ListItem","position":2,"name":"Blog","item":"https://retconsulting.be/blog/"},{"@type":"ListItem","position":3,"name":"Prompt → Context → Harness → Loops","item":"https://retconsulting.be/blog/prompt-context-harness-loops/"}]}]}
 </script>
@@ -69,27 +69,69 @@
               <line x1="87.2" y1="87.2" x2="392.8" y2="392.8"/>
               <line x1="392.8" y1="87.2" x2="87.2" y2="392.8"/>
             </g>
-            <!-- LOOPS orbit (cognac) + its satellite: the loop icon -->
+            <defs>
+              <radialGradient id="fb1-w" cx="50%" cy="30%" r="80%">
+                <stop offset="0" stop-color="#FFFFFF"/>
+                <stop offset="1" stop-color="#EBEBF0"/>
+              </radialGradient>
+              <linearGradient id="fb1-c" x1="0" y1="0" x2="0" y2="1">
+                <stop offset="0" stop-color="#C48F63"/>
+                <stop offset="1" stop-color="#9C5A2E"/>
+              </linearGradient>
+              <filter id="fb1-sh" x="-80%" y="-80%" width="260%" height="300%">
+                <feDropShadow dx="0" dy="5" stdDeviation="5" flood-color="#18181B" flood-opacity=".20"/>
+              </filter>
+              <filter id="fb1-shc" x="-80%" y="-80%" width="260%" height="300%">
+                <feDropShadow dx="0" dy="6" stdDeviation="6" flood-color="#9C5A2E" flood-opacity=".42"/>
+              </filter>
+            </defs>
+            <!-- LOOPS orbit (cognac) + circling satellite: the loop icon -->
             <circle cx="240" cy="240" r="188" fill="none" stroke="#B07D54" stroke-width="1.8"/>
-            <circle cx="402.8" cy="146" r="16" fill="#FFFFFF" stroke="#B07D54" stroke-width="1.6"/>
-            <g transform="translate(394.8,138) scale(0.667)" fill="none" stroke="#B07D54" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round">
-              <path d="M3 12a9 9 0 0 1 15-6.7L21 8"/><path d="M21 3v5h-5"/>
-              <path d="M21 12a9 9 0 0 1-15 6.7L3 16"/><path d="M3 21v-5h5"/>
+            <g class="dial__orbit" style="--odur:64s">
+              <g transform="translate(402.8,146)">
+                <g class="dial__sat">
+                  <circle r="21.5" fill="none" stroke="#B07D54" stroke-width="1" stroke-opacity=".4" stroke-dasharray="2.5 5.2"/>
+                  <g filter="url(#fb1-shc)"><circle r="16" fill="url(#fb1-c)" stroke="#8F5330" stroke-opacity=".5" stroke-width="1"/></g>
+                  <circle r="14.6" fill="none" stroke="#FFFFFF" stroke-opacity=".35" stroke-width="1"/>
+                  <g transform="translate(-8,-8) scale(0.667)" fill="none" stroke="#FFFFFF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M3 12a9 9 0 0 1 15-6.7L21 8"/><path d="M21 3v5h-5"/>
+                    <path d="M21 12a9 9 0 0 1-15 6.7L3 16"/><path d="M3 21v-5h5"/>
+                  </g>
+                </g>
+              </g>
             </g>
             <!-- spacer orbit -->
             <circle cx="240" cy="240" r="160" fill="none" stroke="#C9C9D0" stroke-width="1" stroke-dasharray="2 9" opacity=".7"/>
-            <!-- HARNESS orbit + its satellite: the terminal -->
+            <!-- HARNESS orbit + circling satellite: the terminal -->
             <circle cx="240" cy="240" r="132" fill="none" stroke="#3F3F46" stroke-width="1.5"/>
-            <circle cx="108" cy="240" r="16" fill="#FFFFFF" stroke="#3F3F46" stroke-width="1.5"/>
-            <text x="108" y="244.5" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="11" letter-spacing="0.5" fill="#18181B">&gt;_</text>
-            <!-- CONTEXT orbit + its satellite: the document -->
+            <g class="dial__orbit dial__orbit--ccw" style="--odur:46s">
+              <g transform="translate(108,240)">
+                <g class="dial__sat">
+                  <circle r="21.5" fill="none" stroke="#9C9CA6" stroke-width="1" stroke-opacity=".55" stroke-dasharray="2.5 5.2"/>
+                  <g filter="url(#fb1-sh)"><circle r="16" fill="url(#fb1-w)" stroke="#D6D6DE" stroke-width="1"/></g>
+                  <circle r="16" fill="none" stroke="#B07D54" stroke-width="1.8" stroke-linecap="round" stroke-dasharray="14 86.5" stroke-dashoffset="32.4"/>
+                  <text y="4.5" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="11" letter-spacing="0.5" fill="#18181B">&gt;_</text>
+                </g>
+              </g>
+            </g>
+            <!-- CONTEXT orbit + circling satellite: the document -->
             <circle cx="240" cy="240" r="86" fill="none" stroke="#3F3F46" stroke-width="1.5" stroke-dasharray="14 9"/>
-            <circle cx="300.8" cy="300.8" r="16" fill="#FFFFFF" stroke="#3F3F46" stroke-width="1.5"/>
-            <g transform="translate(292.8,292.8) scale(0.667)" fill="none" stroke="#3F3F46" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round">
-              <path d="M7 3.5h7l4 4v13H7z"/><path d="M14 3.5V8h4"/><path d="M9.5 12h7M9.5 15.5h7"/>
+            <g class="dial__orbit" style="--odur:30s">
+              <g transform="translate(300.8,300.8)">
+                <g class="dial__sat">
+                  <circle r="21.5" fill="none" stroke="#9C9CA6" stroke-width="1" stroke-opacity=".55" stroke-dasharray="2.5 5.2"/>
+                  <g filter="url(#fb1-sh)"><circle r="16" fill="url(#fb1-w)" stroke="#D6D6DE" stroke-width="1"/></g>
+                  <circle r="16" fill="none" stroke="#B07D54" stroke-width="1.8" stroke-linecap="round" stroke-dasharray="14 86.5" stroke-dashoffset="32.4"/>
+                  <g transform="translate(-8,-8) scale(0.667)" fill="none" stroke="#3F3F46" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M7 3.5h7l4 4v13H7z"/><path d="M14 3.5V8h4"/><path d="M9.5 12h7M9.5 15.5h7"/>
+                  </g>
+                </g>
+              </g>
             </g>
             <!-- PROMPT core: the writing hand -->
-            <circle cx="240" cy="240" r="42" fill="#FFFFFF" stroke="#18181B" stroke-width="1.5"/>
+            <g filter="url(#fb1-sh)"><circle cx="240" cy="240" r="42" fill="url(#fb1-w)" stroke="#18181B" stroke-width="1.5"/></g>
+            <circle cx="240" cy="240" r="42" fill="none" stroke="#B07D54" stroke-width="2" stroke-linecap="round" stroke-dasharray="22 241.9" stroke-dashoffset="208.9"/>
+            <circle cx="240" cy="240" r="39.5" fill="none" stroke="#FFFFFF" stroke-opacity=".5" stroke-width="1.2"/>
             <g transform="translate(227,227) scale(1.08)" fill="none" stroke="#18181B" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
               <path d="M12 20h9"/><path d="M16.5 3.5a2.12 2.12 0 0 1 3 3L7 19l-4 1 1-4 12.5-12.5z"/>
             </g>
