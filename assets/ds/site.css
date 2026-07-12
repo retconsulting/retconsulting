@@ -1404,7 +1404,7 @@ html.nav-stuck .nav__inner { background: var(--glass-fill-deep); box-shadow: var
   transition: transform var(--dur-base) var(--ease-out), box-shadow var(--dur-base) var(--ease-out), border-color var(--dur-base) var(--ease-out); }
 .bpost:hover { transform: translateY(var(--card-lift)) perspective(1100px) rotateX(var(--rtx,0deg)) rotateY(var(--rty,0deg)); box-shadow: var(--shadow-lg); border-color: var(--border-accent); }
 .bpost:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
-.bpost__cover { position: relative; min-height: 260px; background:
+.bpost__cover { position: relative; overflow: hidden; min-height: 260px; background:
   radial-gradient(130% 95% at 16% 6%, rgba(255,255,255,.92), rgba(255,255,255,0) 52%),
   radial-gradient(78% 52% at 24% 100%, rgba(176,125,84,.24), rgba(176,125,84,0) 68%),
   linear-gradient(158deg, var(--canvas) 0%, var(--canvas-sunken) 100%); }
