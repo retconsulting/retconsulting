@@ -162,21 +162,21 @@
 
   <div class="article-wrap">
     <div class="article">
-      <h2><span class="article__kicker">01 / PROMPT</span>You write, it answers</h2>
+      <h2><span class="article__kicker">01 / PROMPT ENGINEERING</span>You write, it answers</h2>
       <p>Prompt engineering is the art of writing good instructions. Tell an assistant: you are a customer service agent, stay polite, stay helpful. From then on it plays that role for every question. Everything it needs fits in a single message.</p>
       <p>Ask it how many cheeseburgers you would need to stack to reach the Moon, and it works the answer out from what it already knows. No search, no tools, no documents. One question, one answer. That is prompt engineering, and it remains the foundation of everything that follows.</p>
 
-      <h2><span class="article__kicker">02 / CONTEXT</span>It fetches what it needs</h2>
+      <h2><span class="article__kicker">02 / CONTEXT ENGINEERING</span>It fetches what it needs</h2>
       <p>Your prompt lives inside the model's context window: its working memory. And there is plenty of room left in there. The next step was to let the assistant fill that memory itself: open your files, query a database, search the web, call your business tools.</p>
       <p>Ask what NASA discovered this week and a prompt alone cannot answer, because the model's knowledge stops at its training date. The assistant has to search, read and select before it can reply. That is context engineering.</p>
       <div class="article__callout"><p>Notice what just appeared: a loop. Search, read, decide whether that is enough, search again. The assistant runs it on its own, until it judges the context sufficient.</p></div>
 
-      <h2><span class="article__kicker">03 / HARNESS</span>Someone keeps the plan</h2>
+      <h2><span class="article__kicker">03 / HARNESS ENGINEERING</span>Someone keeps the plan</h2>
       <p>Context has a hard limit: the window fills up. On any task longer than a few minutes, the assistant starts summarising its own memory to make room, and details leak at every pass. Like a colleague taking notes of their own notes: by the third generation, the nuance is gone.</p>
       <p>The fix is to manage the work from outside. A harness keeps the plan, the task list and the progress state outside the window, feeds the assistant one step at a time, and ticks each step off. Ask an agent to rebuild a large, complex website end to end: the harness is what stops it choking halfway.</p>
       <div class="article__callout"><p>Second loop, one level up: task after task, until the list is empty.</p></div>
 
-      <h2><span class="article__kicker">04 / LOOPS</span>Nobody presses the button</h2>
+      <h2><span class="article__kicker">04 / LOOP ENGINEERING</span>Nobody presses the button</h2>
       <p>Look back at those three levels. Each one still starts with a human typing a request. Loop engineering removes that last dependency: the system prompts itself, on a schedule, on an event, on a detected problem.</p>
       <p>A concrete picture. Imagine a site that tracks World Cup scores, built once with the three layers above. Matches happen every day. Instead of asking for updates each morning, you set a loop: every hour, check for new results and publish them; when a user reports a bug, reproduce it, fix it, verify the fix. The system maintains itself. You review the outcome, not the keystrokes.</p>
       <p>Running that reliably takes a handful of ingredients, and Addy Osmani names six: automation for the schedules and triggers, isolated workspaces so parallel changes never collide, reusable skills, connectors to your tools, subagents that verify the work, and state that survives between runs.</p>

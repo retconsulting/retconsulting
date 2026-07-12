@@ -162,21 +162,21 @@
 
   <div class="article-wrap">
     <div class="article">
-      <h2><span class="article__kicker">01 / PROMPT</span>Vous écrivez, il répond</h2>
+      <h2><span class="article__kicker">01 / PROMPT ENGINEERING</span>Vous écrivez, il répond</h2>
       <p>Le prompt engineering, c'est l'art d'écrire de bonnes instructions. Dites à un assistant : vous êtes un agent du service client, restez poli, restez utile. Dès lors, il tient ce rôle pour chaque question. Tout ce dont il a besoin tient dans un seul message.</p>
       <p>Demandez-lui combien de cheeseburgers il faudrait empiler pour atteindre la Lune : il calcule la réponse à partir de ce qu'il sait déjà. Pas de recherche, pas d'outils, pas de documents. Une question, une réponse. C'est le prompt engineering, et ça reste le socle de tout le reste.</p>
 
-      <h2><span class="article__kicker">02 / CONTEXT</span>Il va chercher ce qu'il lui faut</h2>
+      <h2><span class="article__kicker">02 / CONTEXT ENGINEERING</span>Il va chercher ce qu'il lui faut</h2>
       <p>Votre prompt vit dans la fenêtre de contexte du modèle : sa mémoire de travail. Et il y reste beaucoup de place. L'étape suivante a été de laisser l'assistant remplir cette mémoire lui-même : ouvrir vos fichiers, interroger une base de données, chercher sur le web, appeler vos outils métier.</p>
       <p>Demandez ce que la NASA a découvert cette semaine : un prompt seul ne peut pas répondre, la connaissance du modèle s'arrête à sa date d'entraînement. L'assistant doit chercher, lire et trier avant de répondre. C'est le context engineering.</p>
       <div class="article__callout"><p>Remarquez ce qui vient d'apparaître : une boucle. Chercher, lire, juger si c'est suffisant, chercher encore. L'assistant la fait tourner seul, jusqu'à estimer son contexte suffisant.</p></div>
 
-      <h2><span class="article__kicker">03 / HARNESS</span>Quelqu'un tient le plan</h2>
+      <h2><span class="article__kicker">03 / HARNESS ENGINEERING</span>Quelqu'un tient le plan</h2>
       <p>Le contexte a une limite dure : la fenêtre se remplit. Sur toute tâche de plus de quelques minutes, l'assistant se met à résumer sa propre mémoire pour faire de la place, et des détails fuient à chaque passage. Comme un collègue qui prend des notes de ses propres notes : à la troisième génération, la nuance a disparu.</p>
       <p>La solution : piloter le travail de l'extérieur. Un harnais garde le plan, la liste des tâches et l'état d'avancement hors de la fenêtre, sert à l'assistant une étape à la fois, et coche au fur et à mesure. Demandez à un agent de reconstruire de bout en bout un site vaste et complexe : c'est le harnais qui l'empêche de caler à mi-chemin.</p>
       <div class="article__callout"><p>Deuxième boucle, un niveau au-dessus : tâche après tâche, jusqu'à vider la liste.</p></div>
 
-      <h2><span class="article__kicker">04 / LOOPS</span>Plus personne n'appuie sur le bouton</h2>
+      <h2><span class="article__kicker">04 / LOOP ENGINEERING</span>Plus personne n'appuie sur le bouton</h2>
       <p>Regardez ces trois niveaux : chacun commence encore par un humain qui tape une demande. Le loop engineering supprime cette dernière dépendance : le système se sollicite lui-même, sur un horaire, sur un événement, sur un problème détecté.</p>
       <p>Une image concrète. Imaginez un site qui suit les scores de la Coupe du monde, construit une fois avec les trois couches précédentes. Les matchs ont lieu tous les jours. Plutôt que de demander la mise à jour chaque matin, vous posez une boucle : toutes les heures, vérifier les nouveaux résultats et les publier ; quand un utilisateur signale un bug, le reproduire, le corriger, vérifier le correctif. Le système s'entretient seul. Vous validez le résultat, pas les frappes clavier.</p>
       <p>Pour que ça tourne de façon fiable, il faut une poignée d'ingrédients, et Addy Osmani en nomme six : l'automatisation pour les horaires et déclencheurs, des espaces de travail isolés pour que les changements parallèles ne se percutent jamais, des compétences réutilisables, des connecteurs vers vos outils, des sous-agents qui vérifient le travail, et un état qui survit entre les exécutions.</p>
