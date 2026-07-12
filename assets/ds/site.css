@@ -22,6 +22,12 @@ section[id], #main { scroll-margin-top: 96px; }
   -webkit-mask-image: linear-gradient(to bottom, #000 0%, rgba(0,0,0,0) 50%);
   mask-image: linear-gradient(to bottom, #000 0%, rgba(0,0,0,0) 50%); }
 .prose-page > * { position: relative; z-index: 1; }
+/* Blog article: confine the dot field to the header band so it never sits behind the
+   lead paragraph or the body (the article is long, so the default 50%-of-page fade
+   keeps dots strong through the reading column and hurts legibility). */
+.prose-page:has(.article-head)::before {
+  -webkit-mask-image: linear-gradient(to bottom, #000 0, #000 90px, transparent 216px);
+  mask-image: linear-gradient(to bottom, #000 0, #000 90px, transparent 216px); }
 
 /* programmatic focus targets (skip-link, anchor fixup): keep them focusable for AT,
    but never draw the UA blue ring around whole containers */
