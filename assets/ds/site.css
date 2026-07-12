@@ -1487,7 +1487,11 @@ html.reveal-on .blogfig[data-tilt]:hover { transform: perspective(1100px) rotate
 @media (max-width: 560px) { .loopfig { grid-template-columns: 1fr; gap: 12px; } }
 .article__six { display: grid; grid-template-columns: repeat(3,1fr); gap: 10px; margin: 22px 0 0; padding: 0; list-style: none; max-width: 65ch; }
 .article__six li { background: var(--surface); border: 1px solid var(--line); border-radius: var(--r-md); padding: 14px 16px; }
+.article__six .six__head { display: flex; align-items: center; gap: 7px; margin-bottom: 6px; }
+.article__six .six__icon { flex: none; width: 16px; height: 16px; color: var(--cognac-text); }
+.article__six .six__icon svg { width: 100%; height: 100%; display: block; }
 .article__six .k { display: block; font-family: var(--font-mono); font-size: 10px; letter-spacing: .1em; text-transform: uppercase; color: var(--cognac-text); margin-bottom: 6px; }
+.article__six .six__head .k { margin-bottom: 0; }
 .article__six .v { display: block; font-family: var(--font-body); font-size: .83rem; line-height: 1.4; color: var(--ink-2); }
 @media (max-width: 700px) { .article__six { grid-template-columns: 1fr 1fr; } }
 .article__cta { margin-top: clamp(40px,5vw,64px); background: var(--surface); border: 1px solid var(--line); border-radius: var(--r-2xl); box-shadow: var(--shadow-md); padding: clamp(24px,4vw,36px); display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 20px; }
