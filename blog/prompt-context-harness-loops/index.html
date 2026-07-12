@@ -28,7 +28,7 @@
 <link rel="icon" href="/assets/logo-glyph-dark.svg" media="(prefers-color-scheme: dark)"/>
 <link rel="apple-touch-icon" href="/assets/apple-touch-icon.png"/>
 <script>if('IntersectionObserver' in window && !matchMedia('(prefers-reduced-motion:reduce)').matches){document.documentElement.classList.add('reveal-on');}</script>
-<link rel="stylesheet" href="/assets/ds.css?v=20260712z"/>
+<link rel="stylesheet" href="/assets/ds.css?v=20260713b"/>
 <script type="application/ld+json">
 {"@context":"https://schema.org","@graph":[{"@type":"BlogPosting","headline":"From Prompt to Loop Engineering, a simple guide for the non-coders and knowledge workers","datePublished":"2026-07-11","dateModified":"2026-07-11","inLanguage":"en","articleSection":"AI","keywords":"AI, Explainer","author":{"@type":"Person","name":"Redha Etbaz","url":"https://retconsulting.be/"},"publisher":{"@type":"Organization","name":"RET Consulting","logo":{"@type":"ImageObject","url":"https://retconsulting.be/assets/icon-512.png"}},"image":"https://retconsulting.be/assets/icon-512.png","description":"From prompt engineering to loop engineering: the whole ladder in plain language, and what it changes for your team.","mainEntityOfPage":{"@type":"WebPage","@id":"https://retconsulting.be/blog/prompt-context-harness-loops/"},"url":"https://retconsulting.be/blog/prompt-context-harness-loops/"},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://retconsulting.be/"},{"@type":"ListItem","position":2,"name":"Blog","item":"https://retconsulting.be/blog/"},{"@type":"ListItem","position":3,"name":"From Prompt to Loop Engineering","item":"https://retconsulting.be/blog/prompt-context-harness-loops/"}]}]}
 </script>
@@ -269,60 +269,68 @@
       </ul>
 
       <h2><span class="article__kicker">ANATOMY</span>What every loop needs</h2>
-      <p>You have now seen three loops in this guide: an assistant that searches until it has enough, a harness that works through a task list, an operation that rebuilds a report on its own each week. They do different jobs, yet every dependable loop is built from the same four parts, on the one running cycle below. Miss one, and the loop misbehaves.</p>
+      <p>You have now seen three loops in this guide: an assistant that searches until it has enough, a harness that works through a task list, an operation that rebuilds a report on its own each week. They do different jobs, yet every dependable loop is built from the same five parts, on the one running cycle below. Miss one, and the loop misbehaves.</p>
 
-      <figure class="anatfig reveal" role="group" aria-label="The anatomy of one loop: a goal feeds the work, the work-and-check loop corrects each result against the goal, a stop condition ends the run, and guardrails bound the whole loop.">
-        <div class="anatfig__bar"><span class="anatfig__title">Anatomy of one loop</span><span class="anatfig__meta">Four parts, one mechanism</span></div>
+      <figure class="anatfig reveal" role="group" aria-label="The anatomy of one loop: a trigger fires each run, a goal sets the target, the work-and-check loop corrects each result against the goal, a stop condition ends the run, and guardrails bound the whole loop.">
+        <div class="anatfig__bar"><span class="anatfig__title">Anatomy of one loop</span><span class="anatfig__meta">Five parts, one mechanism</span></div>
         <div class="anatfig__stage">
-          <svg class="anatfig__svg" viewBox="0 0 640 224" aria-hidden="true">
+          <svg class="anatfig__svg" viewBox="0 0 700 224" aria-hidden="true">
             <defs>
               <marker id="an-i" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0,1 L9,5 L0,9 z" fill="#3F3F46"/></marker>
               <marker id="an-c" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6.6" markerHeight="6.6" orient="auto"><path d="M0,1 L9,5 L0,9 z" fill="#B07D54"/></marker>
             </defs>
-            <!-- 04 guardrails: a soft dotted fence around the whole loop -->
-            <rect x="104" y="64" width="440" height="140" rx="30" fill="none" stroke="#B7B7BF" stroke-width="1.4" stroke-dasharray="0.5 6" stroke-linecap="round"/>
-            <!-- 01 goal enters and 03 stop leaves, aligned on the centre line, each crossing the fence -->
-            <line x1="80" y1="123" x2="170" y2="123" stroke="#3F3F46" stroke-width="1.6" marker-end="url(#an-i)"/>
-            <line x1="476" y1="123" x2="558" y2="123" stroke="#3F3F46" stroke-width="1.6" marker-end="url(#an-i)"/>
-            <!-- 02 loop: work and check exchange through two cognac arcs, forward on top and the correcting return below -->
-            <path d="M284,116 Q324,87 364,116" fill="none" stroke="#B07D54" stroke-width="2.1" marker-end="url(#an-c)"/>
-            <path class="anat-fb" d="M364,130 Q324,159 284,130" fill="none" stroke="#B07D54" stroke-width="2.1" marker-end="url(#an-c)"/>
-            <rect x="176" y="100" width="108" height="46" rx="14" fill="#FFFFFF" stroke="#18181B" stroke-width="1.5"/>
-            <text x="230" y="128" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="13.5" letter-spacing="1" fill="#18181B">WORK</text>
-            <rect x="364" y="100" width="108" height="46" rx="14" fill="#FFFFFF" stroke="#18181B" stroke-width="1.5"/>
-            <text x="418" y="128" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="13.5" letter-spacing="1" fill="#18181B">CHECK</text>
-            <!-- 01 goal: bullseye, just the number above -->
-            <circle cx="58" cy="123" r="15" fill="#FFFFFF" stroke="#18181B" stroke-width="1.5"/>
-            <circle cx="58" cy="123" r="7.5" fill="none" stroke="#18181B" stroke-width="1.5"/>
-            <circle cx="58" cy="123" r="2.3" fill="#18181B"/>
-            <circle cx="58" cy="90" r="10.5" fill="#FFFFFF" stroke="#B4B4BD" stroke-width="1.3"/>
-            <text x="58" y="94.4" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="12" fill="#3F3F46">1</text>
-            <!-- 03 stop: STOP inside the sign, just the number above -->
-            <path d="M576,99 L596,99 L610,113 L610,133 L596,147 L576,147 L562,133 L562,113 Z" fill="#FFFFFF" stroke="#18181B" stroke-width="1.5"/>
-            <text x="586" y="126.6" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="9.5" letter-spacing=".5" fill="#18181B">STOP</text>
-            <circle cx="586" cy="80" r="10.5" fill="#FFFFFF" stroke="#B4B4BD" stroke-width="1.3"/>
-            <text x="586" y="84.4" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="12" fill="#3F3F46">3</text>
-            <!-- 04 guardrails: number above, name below, above the fence -->
-            <circle cx="324" cy="24" r="10.5" fill="#FFFFFF" stroke="#B4B4BD" stroke-width="1.3"/>
-            <text x="324" y="28.4" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="12" fill="#3F3F46">4</text>
-            <text x="324" y="47" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="11.5" letter-spacing=".9" fill="#3F3F46">GUARDRAILS</text>
-            <line x1="324" y1="53" x2="324" y2="64" stroke="#C4C4CC" stroke-width="1" stroke-dasharray="1.5 3"/>
-            <!-- 02 loop: number above, name below, the one cognac accent -->
-            <line x1="324" y1="153" x2="324" y2="145" stroke="#CBA588" stroke-width="1.1" stroke-dasharray="1.5 3"/>
-            <circle cx="324" cy="165" r="10.5" fill="#FFFFFF" stroke="#B07D54" stroke-width="1.5"/>
-            <text x="324" y="169.4" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="12" fill="#855B3B">2</text>
-            <text x="324" y="188" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="11.5" letter-spacing=".9" fill="#855B3B">LOOP</text>
+            <!-- 05 guardrails: a soft dotted fence around the whole loop -->
+            <rect x="176" y="64" width="354" height="140" rx="30" fill="none" stroke="#B7B7BF" stroke-width="1.4" stroke-dasharray="0.5 6" stroke-linecap="round"/>
+            <!-- flow: trigger fires, goal enters, stop leaves, all on the centre line -->
+            <line x1="66" y1="123" x2="100" y2="123" stroke="#3F3F46" stroke-width="1.6" marker-end="url(#an-i)"/>
+            <line x1="136" y1="123" x2="202" y2="123" stroke="#3F3F46" stroke-width="1.6" marker-end="url(#an-i)"/>
+            <line x1="504" y1="123" x2="610" y2="123" stroke="#3F3F46" stroke-width="1.6" marker-end="url(#an-i)"/>
+            <!-- 03 loop: work and check exchange through two cognac arcs, forward on top and the correcting return below -->
+            <path d="M310,116 Q353,87 396,116" fill="none" stroke="#B07D54" stroke-width="2.1" marker-end="url(#an-c)"/>
+            <path class="anat-fb" d="M396,130 Q353,159 310,130" fill="none" stroke="#B07D54" stroke-width="2.1" marker-end="url(#an-c)"/>
+            <rect x="206" y="100" width="104" height="46" rx="14" fill="#FFFFFF" stroke="#18181B" stroke-width="1.5"/>
+            <text x="258" y="128" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="13.5" letter-spacing="1" fill="#18181B">WORK</text>
+            <rect x="396" y="100" width="104" height="46" rx="14" fill="#FFFFFF" stroke="#18181B" stroke-width="1.5"/>
+            <text x="448" y="128" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="13.5" letter-spacing="1" fill="#18181B">CHECK</text>
+            <!-- 01 trigger: a spark that fires each run, just the number above -->
+            <circle cx="48" cy="123" r="15" fill="#FFFFFF" stroke="#18181B" stroke-width="1.5"/>
+            <g transform="translate(48,123) scale(0.66) translate(-12,-12)"><path d="M13 2 L4 14 L11 14 L10 22 L20 9 L13 9 Z" fill="#18181B"/></g>
+            <circle cx="48" cy="90" r="10.5" fill="#FFFFFF" stroke="#B4B4BD" stroke-width="1.3"/>
+            <text x="48" y="94.4" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="12" fill="#3F3F46">1</text>
+            <!-- 02 goal: bullseye, just the number above -->
+            <circle cx="118" cy="123" r="15" fill="#FFFFFF" stroke="#18181B" stroke-width="1.5"/>
+            <circle cx="118" cy="123" r="7.5" fill="none" stroke="#18181B" stroke-width="1.5"/>
+            <circle cx="118" cy="123" r="2.3" fill="#18181B"/>
+            <circle cx="118" cy="90" r="10.5" fill="#FFFFFF" stroke="#B4B4BD" stroke-width="1.3"/>
+            <text x="118" y="94.4" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="12" fill="#3F3F46">2</text>
+            <!-- 04 stop: STOP inside the sign, just the number above -->
+            <path d="M628,99 L648,99 L662,113 L662,133 L648,147 L628,147 L614,133 L614,113 Z" fill="#FFFFFF" stroke="#18181B" stroke-width="1.5"/>
+            <text x="638" y="126.6" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="9.5" letter-spacing=".5" fill="#18181B">STOP</text>
+            <circle cx="638" cy="80" r="10.5" fill="#FFFFFF" stroke="#B4B4BD" stroke-width="1.3"/>
+            <text x="638" y="84.4" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="12" fill="#3F3F46">4</text>
+            <!-- 05 guardrails: number above, name below, above the fence -->
+            <circle cx="353" cy="24" r="10.5" fill="#FFFFFF" stroke="#B4B4BD" stroke-width="1.3"/>
+            <text x="353" y="28.4" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="12" fill="#3F3F46">5</text>
+            <text x="353" y="47" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="11.5" letter-spacing=".9" fill="#3F3F46">GUARDRAILS</text>
+            <line x1="353" y1="53" x2="353" y2="64" stroke="#C4C4CC" stroke-width="1" stroke-dasharray="1.5 3"/>
+            <!-- 03 loop: number above, name below, the one cognac accent -->
+            <line x1="353" y1="153" x2="353" y2="145" stroke="#CBA588" stroke-width="1.1" stroke-dasharray="1.5 3"/>
+            <circle cx="353" cy="165" r="10.5" fill="#FFFFFF" stroke="#B07D54" stroke-width="1.5"/>
+            <text x="353" y="169.4" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="12" fill="#855B3B">3</text>
+            <text x="353" y="188" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="11.5" letter-spacing=".9" fill="#855B3B">LOOP</text>
           </svg>
         </div>
         <ul class="anatfig__key">
-          <li><span class="anatfig__n">1</span><span class="anatfig__ktext"><span class="anatfig__kname">Goal</span>a target, and a clear definition of done.</span></li>
-          <li><span class="anatfig__n anatfig__n--fb">2</span><span class="anatfig__ktext"><span class="anatfig__kname anatfig__kname--fb">Loop</span>it works, checks the result against the goal, and corrects. <span class="anatfig__most">Matters most.</span></span></li>
-          <li><span class="anatfig__n">3</span><span class="anatfig__ktext"><span class="anatfig__kname">Stop</span>the brake that ends the run.</span></li>
-          <li><span class="anatfig__n">4</span><span class="anatfig__ktext"><span class="anatfig__kname">Guardrails</span>the limits it must stay inside.</span></li>
+          <li><span class="anatfig__n">1</span><span class="anatfig__ktext"><span class="anatfig__kname">Trigger</span>what starts a run: a schedule, an event, or a problem it spots.</span></li>
+          <li><span class="anatfig__n">2</span><span class="anatfig__ktext"><span class="anatfig__kname">Goal</span>a target, and a clear definition of done.</span></li>
+          <li><span class="anatfig__n anatfig__n--fb">3</span><span class="anatfig__ktext"><span class="anatfig__kname anatfig__kname--fb">Loop</span>it works, checks the result against the goal, and corrects.</span></li>
+          <li><span class="anatfig__n">4</span><span class="anatfig__ktext"><span class="anatfig__kname">Stop</span>the brake that ends the run.</span></li>
+          <li><span class="anatfig__n">5</span><span class="anatfig__ktext"><span class="anatfig__kname">Guardrails</span>the limits it must stay inside.</span></li>
         </ul>
       </figure>
 
-      <p>It starts with a <span class="term" data-tip="A loop's target and its definition of done. Without one, a loop cannot tell progress from motion." tabindex="0" aria-label="Goal: a loop's target and its definition of done; without one, a loop cannot tell progress from motion.">goal</span>. A loop needs a target and a clear definition of done: send the weekly summary, make the tests pass, answer the question. Without a goal it cannot tell progress from motion, and it never knows when to stop.</p>
+      <p>It starts with a <span class="term" data-tip="What sets a loop running: a fixed schedule, an event, or a problem the system detects. Without it, the loop just waits for you." tabindex="0" aria-label="Trigger: what sets a loop running, whether a fixed schedule, an event, or a problem the system detects; without it the loop just waits for you.">trigger</span>: what sets each run going. Instead of waiting for you to ask, a loop starts on a schedule, on an event like a new invoice arriving, or on a problem it detects. That is the shift this whole idea rests on: work that begins without you.</p>
+      <p>It also needs a <span class="term" data-tip="A loop's target and its definition of done. Without one, a loop cannot tell progress from motion." tabindex="0" aria-label="Goal: a loop's target and its definition of done; without one, a loop cannot tell progress from motion.">goal</span>, a target and a clear definition of done: send the weekly summary, make the tests pass, answer the question. Without a goal it cannot tell progress from motion, and it never knows when to stop.</p>
       <p>Then it needs <span class="term" data-tip="A loop's own check of its result against the goal, used to decide what to do next." tabindex="0" aria-label="Feedback: a loop's own check of its result against the goal, used to decide what to do next.">feedback</span>: after each pass, the loop compares what it produced against that goal. This one choice matters more than any other. A <span class="term" data-tip="A loop that checks its own result and corrects course. Self-correcting, and safe to trust with real work." tabindex="0" aria-label="Closed loop: a loop that checks its own result and corrects course, self-correcting and safe to trust with real work.">closed loop</span> checks its own result and corrects course, like a thermostat that keeps reading the room and nudging the heating until it reaches the temperature you set. A closed loop is self-correcting, and it is the only kind to trust with real work. An <span class="term" data-tip="A loop that follows a fixed plan and never checks the result. Simpler, but it drifts from reality." tabindex="0" aria-label="Open loop: a loop that follows a fixed plan and never checks the result, simpler but it drifts from reality.">open loop</span> follows a fixed plan and never looks back, like a sprinkler on a timer that waters the garden whether or not it rained in the night. Open loops are simpler, and they drift the moment reality stops matching the plan.</p>
 
       <p>Next, a <span class="term" data-tip="The rule that ends a loop: goal reached, budget spent, no progress, or a person calls a halt." tabindex="0" aria-label="Stop condition: the rule that ends a loop, whether the goal is reached, a budget is spent, progress stalls, or a person calls a halt.">stop condition</span>: a rule for when to end. The goal is reached, a budget of time or attempts is spent, progress has stalled, or a person calls a halt. This is the brake. A loop without one does not keep working in a useful way, it just keeps spending: time, money, and your patience, while the output turns to noise. Most of the worry about these systems is really the worry about a loop with no brake.</p>

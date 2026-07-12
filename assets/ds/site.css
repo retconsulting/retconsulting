@@ -1506,7 +1506,6 @@ html.reveal-on .blogfig[data-tilt]:hover { transform: perspective(1100px) rotate
 .article .anatfig__ktext { margin: 0; max-width: none; font-family: var(--font-body); font-size: .84rem; line-height: 1.45; color: var(--ink-2); }
 .anatfig__kname { font-family: var(--font-mono); font-size: 10px; letter-spacing: .1em; text-transform: uppercase; color: var(--ink); margin-right: 7px; }
 .anatfig__kname--fb { color: var(--cognac-text); }
-.anatfig__most { font-family: var(--font-mono); font-size: 8.5px; letter-spacing: .08em; text-transform: uppercase; color: var(--cognac-text); white-space: nowrap; }
 @media (max-width: 560px) { .anatfig__key { grid-template-columns: 1fr; gap: 0; } }
 
 .article__six { display: grid; grid-template-columns: repeat(3,1fr); gap: 10px; margin: 22px 0 0; padding: 0; list-style: none; max-width: 65ch; }
