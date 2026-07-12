@@ -29,7 +29,7 @@
 <link rel="icon" href="/assets/logo-glyph-dark.svg" media="(prefers-color-scheme: dark)"/>
 <link rel="apple-touch-icon" href="/assets/apple-touch-icon.png"/>
 <script>if('IntersectionObserver' in window && !matchMedia('(prefers-reduced-motion:reduce)').matches){document.documentElement.classList.add('reveal-on');}</script>
-<link rel="stylesheet" href="/assets/ds.css?v=20260712e"/>
+<link rel="stylesheet" href="/assets/ds.css?v=20260712f"/>
 <script type="application/ld+json">
 {"@context":"https://schema.org","@graph":[{"@type":"BlogPosting","headline":"Du prompt au loop engineering, un guide simple pour les professionnels non-codeurs","datePublished":"2026-07-11","dateModified":"2026-07-11","inLanguage":"fr","author":{"@type":"Person","name":"Redha Etbaz","url":"https://retconsulting.be/fr/"},"publisher":{"@type":"Organization","name":"RET Consulting","logo":{"@type":"ImageObject","url":"https://retconsulting.be/assets/icon-512.png"}},"image":"https://retconsulting.be/assets/icon-512.png","description":"Du prompt engineering au loop engineering : toute l'échelle en langage clair, et ce que ça change pour votre équipe.","mainEntityOfPage":{"@type":"WebPage","@id":"https://retconsulting.be/blog/prompt-context-harness-loops/fr/"},"url":"https://retconsulting.be/blog/prompt-context-harness-loops/fr/"},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Accueil","item":"https://retconsulting.be/fr/"},{"@type":"ListItem","position":2,"name":"Blog","item":"https://retconsulting.be/blog/fr/"},{"@type":"ListItem","position":3,"name":"Du prompt au loop engineering","item":"https://retconsulting.be/blog/prompt-context-harness-loops/fr/"}]}]}
 </script>
@@ -54,7 +54,7 @@
     <h1 class="article-head__title">Du prompt au loop engineering, un guide simple pour les professionnels non-codeurs</h1>
     <p class="article-head__sub">Prompt → Context → Harness → Loops</p>
     <p class="article-head__meta"><time datetime="2026-07-11">2026-07-11</time> · 5 MIN DE LECTURE · PRODUIT &amp; IA</p>
-    <p class="article-head__lead">Un trimestre, un buzzword. Après le prompt engineering sont venus le context engineering, puis le harness engineering, et voici le loop engineering. Mes clients me demandent s'il faut s'en soucier. Réponse courte : le mot est neuf, l'idée non. Voici toute l'échelle, expliquée comme je l'explique en formation.</p>
+    <p class="article-head__lead">Prompt, contexte, harnais, boucle : quatre termes pour notre façon de travailler avec l'IA aujourd'hui, chacun une couche posée sur la précédente, pas des modes concurrentes entre lesquelles choisir. Lus ensemble, ils expliquent comment un assistant est passé de répondre à une seule question à mener une tâche entière tout seul. Savoir où se situe un travail sur cette échelle, c'est ce qui vous permet de décider quoi confier à l'IA, jusqu'où la laisser aller, et où une personne doit garder la main. Voici l'échelle de bas en haut, en langage clair et sans code, comme je l'explique en formation.</p>
   </div>
 
   <div class="blogfig-wrap">
@@ -195,6 +195,38 @@
       <p>Vous avez déjà vu trois boucles dans ce guide : un assistant qui cherche jusqu'à en avoir assez, un harnais qui déroule une liste de tâches, un site qui se tient à jour tout seul. Elles font des choses différentes, pourtant toute boucle fiable repose sur les mêmes quatre éléments. Il en manque un, et la boucle déraille.</p>
       <p>Tout commence par un <strong>objectif</strong>. Une boucle a besoin d'une cible et d'une définition claire de « terminé » : publier les nouveaux scores, faire passer les tests, répondre à la question. Sans objectif, elle ne distingue pas le vrai progrès de l'agitation, et elle ne sait jamais quand s'arrêter.</p>
       <p>Ensuite, il lui faut un <strong>retour</strong> : après chaque passage, la boucle compare ce qu'elle a produit à cet objectif. Ce seul choix compte plus que tous les autres. Une <strong>boucle fermée</strong> vérifie son propre résultat et corrige le tir, comme un thermostat qui relève sans cesse la température de la pièce et ajuste le chauffage jusqu'à atteindre la valeur que vous avez fixée. Une boucle fermée s'auto-corrige, et c'est la seule à qui confier un vrai travail. Une <strong>boucle ouverte</strong> suit un plan figé et ne se retourne jamais, comme un arroseur sur minuterie qui arrose le jardin qu'il ait plu ou non pendant la nuit. Les boucles ouvertes sont plus simples, et elles dérivent dès que la réalité cesse de coller au plan.</p>
+      <figure class="loopfig reveal-group" role="group" aria-label="Boucle fermée contre boucle ouverte">
+        <div class="loopfig__panel reveal">
+          <svg class="loopfig__svg" viewBox="0 0 200 140" aria-hidden="true">
+            <defs>
+              <marker id="cl-ah-i" viewBox="0 0 10 10" refX="7" refY="5" markerWidth="6.5" markerHeight="6.5" orient="auto"><path d="M0,1 L9,5 L0,9 z" fill="#3F3F46"/></marker>
+              <marker id="cl-ah-c" viewBox="0 0 10 10" refX="7" refY="5" markerWidth="6.5" markerHeight="6.5" orient="auto"><path d="M0,1 L9,5 L0,9 z" fill="#B07D54"/></marker>
+            </defs>
+            <path d="M72,62 Q100,40 128,62" fill="none" stroke="#3F3F46" stroke-width="1.6" marker-end="url(#cl-ah-i)"/>
+            <path d="M128,80 Q100,102 72,80" fill="none" stroke="#B07D54" stroke-width="1.9" marker-end="url(#cl-ah-c)"/>
+            <rect x="20" y="56" width="52" height="30" rx="15" fill="#FFFFFF" stroke="#18181B" stroke-width="1.4"/>
+            <text x="46" y="75" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="10.5" letter-spacing="0.5" fill="#18181B">FAIRE</text>
+            <rect x="128" y="56" width="56" height="30" rx="15" fill="#FFFFFF" stroke="#B07D54" stroke-width="1.6"/>
+            <text x="156" y="75" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="9.5" letter-spacing="0.5" fill="#855B3B">VÉRIFIER</text>
+          </svg>
+          <p class="loopfig__cap"><span class="loopfig__k">Boucle fermée</span>Elle vérifie son résultat et corrige. Fiable pour un vrai travail.</p>
+        </div>
+        <div class="loopfig__panel reveal">
+          <svg class="loopfig__svg" viewBox="0 0 200 140" aria-hidden="true">
+            <defs>
+              <marker id="op-ah-i" viewBox="0 0 10 10" refX="7" refY="5" markerWidth="6.5" markerHeight="6.5" orient="auto"><path d="M0,1 L9,5 L0,9 z" fill="#3F3F46"/></marker>
+            </defs>
+            <path d="M64,71 L83,71" fill="none" stroke="#3F3F46" stroke-width="1.6" marker-end="url(#op-ah-i)"/>
+            <path d="M131,71 L184,71" fill="none" stroke="#3F3F46" stroke-width="1.6" marker-end="url(#op-ah-i)"/>
+            <rect x="8" y="56" width="56" height="30" rx="15" fill="#FFFFFF" stroke="#18181B" stroke-width="1.4"/>
+            <text x="36" y="75" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="11" letter-spacing="0.5" fill="#18181B">PLAN</text>
+            <rect x="86" y="56" width="44" height="30" rx="15" fill="#FFFFFF" stroke="#18181B" stroke-width="1.4"/>
+            <text x="108" y="75" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="10.5" letter-spacing="0.5" fill="#18181B">FAIRE</text>
+          </svg>
+          <p class="loopfig__cap"><span class="loopfig__k">Boucle ouverte</span>Elle tourne une fois, sans vérifier. Elle dérive.</p>
+        </div>
+      </figure>
+
       <p>Vient ensuite une <strong>condition d'arrêt</strong> : une règle qui dit quand finir. L'objectif est atteint, un budget de temps ou de tentatives est épuisé, le progrès stagne, ou une personne met le holà. C'est le frein. Une boucle qui en manque ne continue pas à travailler utilement, elle continue seulement à dépenser : du temps, de l'argent et votre patience, pendant que le résultat vire au bruit. L'essentiel des craintes autour de ces systèmes, c'est la crainte d'une boucle sans frein.</p>
       <p>Enfin, des <strong>garde-fous</strong>. Puisque la boucle tourne sans que vous la surveilliez, vous décidez d'avance ce qu'elle peut toucher, jusqu'où elle peut aller, et quelles actions exigent l'accord d'un humain avant d'avoir lieu. L'objectif dit où va la boucle ; les garde-fous disent où elle ne doit jamais aller.</p>
 
