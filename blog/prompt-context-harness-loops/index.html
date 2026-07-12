@@ -9,7 +9,6 @@
 <meta name="author" content="RET Consulting SRL"/>
 <link rel="canonical" href="https://retconsulting.be/blog/prompt-context-harness-loops/"/>
 <link rel="alternate" hreflang="en" href="https://retconsulting.be/blog/prompt-context-harness-loops/"/>
-<link rel="alternate" hreflang="fr" href="https://retconsulting.be/blog/prompt-context-harness-loops/fr/"/>
 <link rel="alternate" hreflang="x-default" href="https://retconsulting.be/blog/prompt-context-harness-loops/"/>
 <meta property="og:type" content="article"/>
 <meta property="og:site_name" content="RET Consulting"/>
@@ -29,7 +28,7 @@
 <link rel="icon" href="/assets/logo-glyph-dark.svg" media="(prefers-color-scheme: dark)"/>
 <link rel="apple-touch-icon" href="/assets/apple-touch-icon.png"/>
 <script>if('IntersectionObserver' in window && !matchMedia('(prefers-reduced-motion:reduce)').matches){document.documentElement.classList.add('reveal-on');}</script>
-<link rel="stylesheet" href="/assets/ds.css?v=20260712k"/>
+<link rel="stylesheet" href="/assets/ds.css?v=20260712l"/>
 <script type="application/ld+json">
 {"@context":"https://schema.org","@graph":[{"@type":"BlogPosting","headline":"From Prompt to Loop Engineering, a simple guide for the non-coders and knowledge workers","datePublished":"2026-07-11","dateModified":"2026-07-11","inLanguage":"en","author":{"@type":"Person","name":"Redha Etbaz","url":"https://retconsulting.be/"},"publisher":{"@type":"Organization","name":"RET Consulting","logo":{"@type":"ImageObject","url":"https://retconsulting.be/assets/icon-512.png"}},"image":"https://retconsulting.be/assets/icon-512.png","description":"From prompt engineering to loop engineering: the whole ladder in plain language, and what it changes for your team.","mainEntityOfPage":{"@type":"WebPage","@id":"https://retconsulting.be/blog/prompt-context-harness-loops/"},"url":"https://retconsulting.be/blog/prompt-context-harness-loops/"},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://retconsulting.be/"},{"@type":"ListItem","position":2,"name":"Blog","item":"https://retconsulting.be/blog/"},{"@type":"ListItem","position":3,"name":"From Prompt to Loop Engineering","item":"https://retconsulting.be/blog/prompt-context-harness-loops/"}]}]}
 </script>
@@ -40,10 +39,6 @@
 <header class="subhead"><div class="subhead__inner">
     <a class="nav__brand" href="/" aria-label="RET Consulting, home"><img class="nav__brand-glyph" src="/assets/logo-mark.svg" alt=""/><span class="nav__brand-wordmark"><span class="w">RET</span><span class="d">Consulting</span></span></a>
     <div class="subhead__right">
-      <div class="langtoggle" role="group" aria-label="Language / Langue">
-        <a class="langtoggle__opt is-active" href="/blog/prompt-context-harness-loops/" hreflang="en" lang="en" aria-current="true">EN</a>
-        <a class="langtoggle__opt" href="/blog/prompt-context-harness-loops/fr/" hreflang="fr" lang="fr">FR</a>
-      </div>
       <a class="subhead__back" href="/blog/"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5"/><path d="M11 18l-6-6 6-6"/></svg>Back to blog</a>
     </div>
   </div></header>
@@ -164,8 +159,23 @@
   <div class="article-wrap">
     <div class="article">
       <h2><span class="article__kicker">01 / PROMPT ENGINEERING</span>You write, it answers</h2>
-      <p>Prompt engineering is the art of writing good instructions. Tell an assistant: you are a customer service agent, stay polite, stay helpful. From then on it plays that role for every question. Everything it needs fits in a single message.</p>
-      <p>Ask it how many cheeseburgers you would need to stack to reach the Moon, and it works the answer out from what it already knows. No search, no tools, no documents. One question, one answer. That is prompt engineering, and it remains the foundation of everything that follows.</p>
+      <p>Prompt engineering is the art of writing good instructions. The model does not read your mind, it reads your words. Give it a role, a clear task, the context it needs, and the shape you want the answer to take, and a rough request turns into a reliable one. Everything it needs fits in a single message.</p>
+
+      <figure class="promptfig reveal" role="group" aria-label="A vague prompt compared with an engineered prompt">
+        <div class="promptfig__row">
+          <span class="promptfig__tag">Off-hand</span>
+          <p class="promptfig__prompt promptfig__prompt--dim">&ldquo;Write an email to a client.&rdquo;</p>
+        </div>
+        <div class="promptfig__row promptfig__row--eng">
+          <span class="promptfig__tag promptfig__tag--eng">Engineered</span>
+          <p class="promptfig__prompt">&ldquo;You are my assistant. Write a short, warm email to a client whose invoice is a week overdue. Ask for a payment date and offer to resend it. Keep it to two short paragraphs, signed Redha.&rdquo;</p>
+          <ul class="promptfig__parts">
+            <li>Role</li><li>Task</li><li>Context</li><li>Constraints</li><li>Format</li>
+          </ul>
+        </div>
+      </figure>
+
+      <p>Same task, very different results. And at this level the model works only from what it already knows. Ask it to explain the difference between gross and net margin, or to soften a blunt message into something you can send, and it produces the answer on its own. No search, no tools, no documents: one question, one answer. That is prompt engineering, the foundation everything else is built on.</p>
 
       <h2><span class="article__kicker">02 / CONTEXT ENGINEERING</span>It fetches what it needs</h2>
       <p>Your <span class="term" data-tip="The instruction you type for the AI to act on." tabindex="0" aria-label="Prompt: the instruction you type for the AI to act on.">prompt</span> lives inside the model's <span class="term" data-tip="The AI's working memory: everything it can hold in mind at once. Its size is fixed." tabindex="0" aria-label="Context window: the AI's working memory, everything it can hold in mind at once, and its size is fixed.">context window</span>: its working memory. And there is plenty of room left in there. The next step was to let the assistant fill that memory itself: open your files, query a database, search the web, call your business tools.</p>
