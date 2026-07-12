@@ -28,7 +28,7 @@
 <link rel="icon" href="/assets/logo-glyph-dark.svg" media="(prefers-color-scheme: dark)"/>
 <link rel="apple-touch-icon" href="/assets/apple-touch-icon.png"/>
 <script>if('IntersectionObserver' in window && !matchMedia('(prefers-reduced-motion:reduce)').matches){document.documentElement.classList.add('reveal-on');}</script>
-<link rel="stylesheet" href="/assets/ds.css?v=20260712u"/>
+<link rel="stylesheet" href="/assets/ds.css?v=20260712v"/>
 <script type="application/ld+json">
 {"@context":"https://schema.org","@graph":[{"@type":"BlogPosting","headline":"From Prompt to Loop Engineering, a simple guide for the non-coders and knowledge workers","datePublished":"2026-07-11","dateModified":"2026-07-11","inLanguage":"en","articleSection":"AI","keywords":"AI, Explainer","author":{"@type":"Person","name":"Redha Etbaz","url":"https://retconsulting.be/"},"publisher":{"@type":"Organization","name":"RET Consulting","logo":{"@type":"ImageObject","url":"https://retconsulting.be/assets/icon-512.png"}},"image":"https://retconsulting.be/assets/icon-512.png","description":"From prompt engineering to loop engineering: the whole ladder in plain language, and what it changes for your team.","mainEntityOfPage":{"@type":"WebPage","@id":"https://retconsulting.be/blog/prompt-context-harness-loops/"},"url":"https://retconsulting.be/blog/prompt-context-harness-loops/"},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://retconsulting.be/"},{"@type":"ListItem","position":2,"name":"Blog","item":"https://retconsulting.be/blog/"},{"@type":"ListItem","position":3,"name":"From Prompt to Loop Engineering","item":"https://retconsulting.be/blog/prompt-context-harness-loops/"}]}]}
 </script>
@@ -269,38 +269,91 @@
       </ul>
 
       <h2><span class="article__kicker">ANATOMY</span>What every loop needs</h2>
-      <p>You have now seen three loops in this guide: an assistant that searches until it has enough, a harness that works through a task list, an operation that rebuilds a report on its own each week. They do different jobs, yet every dependable loop is built from the same four parts. Miss one and the loop misbehaves.</p>
+      <p>You have now seen three loops in this guide: an assistant that searches until it has enough, a harness that works through a task list, an operation that rebuilds a report on its own each week. They do different jobs, yet every dependable loop is built from the same four parts, on the one running cycle below. Miss one, and the loop misbehaves.</p>
+
+      <figure class="anatfig reveal" role="group" aria-label="The anatomy of one loop: a goal feeds the work, feedback checks each result and corrects, a stop condition ends the run, and guardrails bound the whole loop.">
+        <div class="anatfig__bar"><span class="anatfig__title">Anatomy of one loop</span><span class="anatfig__meta">Four parts, one mechanism</span></div>
+        <div class="anatfig__stage">
+          <svg class="anatfig__svg" viewBox="0 0 640 300" aria-hidden="true">
+            <defs>
+              <marker id="an-i" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0,1 L9,5 L0,9 z" fill="#3F3F46"/></marker>
+              <marker id="an-c" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6.5" markerHeight="6.5" orient="auto"><path d="M0,1 L9,5 L0,9 z" fill="#B07D54"/></marker>
+            </defs>
+            <rect x="104" y="92" width="440" height="120" rx="24" fill="none" stroke="#18181B" stroke-width="1.5" stroke-dasharray="7 5"/>
+            <line x1="78" y1="152" x2="178" y2="152" stroke="#3F3F46" stroke-width="1.6" marker-end="url(#an-i)"/>
+            <line x1="464" y1="152" x2="562" y2="152" stroke="#3F3F46" stroke-width="1.6" marker-end="url(#an-i)"/>
+            <line x1="294" y1="140" x2="348" y2="140" stroke="#3F3F46" stroke-width="1.6" marker-end="url(#an-i)"/>
+            <path class="anat-fb" d="M406,178 C406,206 238,206 238,180" fill="none" stroke="#B07D54" stroke-width="2" marker-end="url(#an-c)"/>
+            <rect x="182" y="126" width="112" height="52" rx="16" fill="#FFFFFF" stroke="#18181B" stroke-width="1.6"/>
+            <text x="238" y="157" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="14" letter-spacing="1" fill="#18181B">WORK</text>
+            <rect x="350" y="126" width="112" height="52" rx="16" fill="#FFFFFF" stroke="#18181B" stroke-width="1.6"/>
+            <text x="406" y="157" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="14" letter-spacing="1" fill="#18181B">CHECK</text>
+            <circle cx="58" cy="152" r="15" fill="none" stroke="#18181B" stroke-width="1.6"/>
+            <circle cx="58" cy="152" r="7.5" fill="none" stroke="#18181B" stroke-width="1.6"/>
+            <circle cx="58" cy="152" r="2.4" fill="#18181B"/>
+            <path d="M581.4,136 L594.6,136 L604,145.4 L604,158.6 L594.6,168 L581.4,168 L572,158.6 L572,145.4 Z" fill="#FFFFFF" stroke="#18181B" stroke-width="1.5"/>
+            <text x="58" y="100" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="12.5" letter-spacing=".8" fill="#18181B">GOAL</text>
+            <circle cx="58" cy="118" r="11" fill="#FFFFFF" stroke="#18181B" stroke-width="1.4"/>
+            <text x="58" y="122.5" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="12.5" fill="#18181B">1</text>
+            <text x="324" y="46" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="12.5" letter-spacing=".8" fill="#18181B">GUARDRAILS</text>
+            <circle cx="324" cy="66" r="11" fill="#FFFFFF" stroke="#18181B" stroke-width="1.4"/>
+            <text x="324" y="70.5" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="12.5" fill="#18181B">4</text>
+            <line x1="324" y1="77" x2="324" y2="92" stroke="#A1A1AA" stroke-width="1" stroke-dasharray="2 3"/>
+            <text x="588" y="100" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="12.5" letter-spacing=".8" fill="#18181B">STOP</text>
+            <circle cx="588" cy="118" r="11" fill="#FFFFFF" stroke="#18181B" stroke-width="1.4"/>
+            <text x="588" y="122.5" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="12.5" fill="#18181B">3</text>
+            <line x1="322" y1="220" x2="322" y2="206" stroke="#C8A07C" stroke-width="1" stroke-dasharray="2 3"/>
+            <circle cx="322" cy="231" r="11" fill="#FFFFFF" stroke="#B07D54" stroke-width="1.5"/>
+            <text x="322" y="235.5" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="12.5" fill="#855B3B">2</text>
+            <text x="322" y="256" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="12.5" letter-spacing=".8" fill="#855B3B">FEEDBACK</text>
+          </svg>
+        </div>
+        <ul class="anatfig__key">
+          <li><span class="anatfig__n">1</span><span class="anatfig__ktext"><span class="anatfig__kname">Goal</span>a target, and a clear definition of done.</span></li>
+          <li><span class="anatfig__n anatfig__n--fb">2</span><span class="anatfig__ktext"><span class="anatfig__kname anatfig__kname--fb">Feedback</span>it checks each result against the goal and corrects. <span class="anatfig__most">Matters most.</span></span></li>
+          <li><span class="anatfig__n">3</span><span class="anatfig__ktext"><span class="anatfig__kname">Stop</span>the brake that ends the run.</span></li>
+          <li><span class="anatfig__n">4</span><span class="anatfig__ktext"><span class="anatfig__kname">Guardrails</span>the limits it must stay inside.</span></li>
+        </ul>
+        <figcaption class="anatfig__cap">The same four parts sit on one loop: a goal to aim at, feedback to stay on course, a stop to end on, and guardrails to stay inside.</figcaption>
+      </figure>
+
       <p>It starts with a <span class="term" data-tip="A loop's target and its definition of done. Without one, a loop cannot tell progress from motion." tabindex="0" aria-label="Goal: a loop's target and its definition of done; without one, a loop cannot tell progress from motion.">goal</span>. A loop needs a target and a clear definition of done: send the weekly summary, make the tests pass, answer the question. Without a goal it cannot tell progress from motion, and it never knows when to stop.</p>
       <p>Then it needs <span class="term" data-tip="A loop's own check of its result against the goal, used to decide what to do next." tabindex="0" aria-label="Feedback: a loop's own check of its result against the goal, used to decide what to do next.">feedback</span>: after each pass, the loop compares what it produced against that goal. This one choice matters more than any other. A <span class="term" data-tip="A loop that checks its own result and corrects course. Self-correcting, and safe to trust with real work." tabindex="0" aria-label="Closed loop: a loop that checks its own result and corrects course, self-correcting and safe to trust with real work.">closed loop</span> checks its own result and corrects course, like a thermostat that keeps reading the room and nudging the heating until it reaches the temperature you set. A closed loop is self-correcting, and it is the only kind to trust with real work. An <span class="term" data-tip="A loop that follows a fixed plan and never checks the result. Simpler, but it drifts from reality." tabindex="0" aria-label="Open loop: a loop that follows a fixed plan and never checks the result, simpler but it drifts from reality.">open loop</span> follows a fixed plan and never looks back, like a sprinkler on a timer that waters the garden whether or not it rained in the night. Open loops are simpler, and they drift the moment reality stops matching the plan.</p>
-      <figure class="loopfig reveal-group" role="group" aria-label="Closed loop versus open loop">
+
+      <figure class="loopfig reveal-group" role="group" aria-label="Closed loop versus open loop: a closed loop checks its result against the goal and corrects onto it, while an open loop follows a fixed path and drifts past the goal.">
+        <span class="loopfig__versus">Versus</span>
         <div class="loopfig__panel reveal">
-          <svg class="loopfig__svg" viewBox="0 0 200 140" aria-hidden="true">
-            <defs>
-              <marker id="cl-ah-i" viewBox="0 0 10 10" refX="7" refY="5" markerWidth="6.5" markerHeight="6.5" orient="auto"><path d="M0,1 L9,5 L0,9 z" fill="#3F3F46"/></marker>
-              <marker id="cl-ah-c" viewBox="0 0 10 10" refX="7" refY="5" markerWidth="6.5" markerHeight="6.5" orient="auto"><path d="M0,1 L9,5 L0,9 z" fill="#B07D54"/></marker>
-            </defs>
-            <path d="M72,62 Q100,40 128,62" fill="none" stroke="#3F3F46" stroke-width="1.6" marker-end="url(#cl-ah-i)"/>
-            <path d="M128,80 Q100,102 72,80" fill="none" stroke="#B07D54" stroke-width="1.9" marker-end="url(#cl-ah-c)"/>
-            <rect x="20" y="56" width="52" height="30" rx="15" fill="#FFFFFF" stroke="#18181B" stroke-width="1.4"/>
-            <text x="46" y="75" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="11" letter-spacing="0.5" fill="#18181B">DO</text>
-            <rect x="128" y="56" width="56" height="30" rx="15" fill="#FFFFFF" stroke="#B07D54" stroke-width="1.6"/>
-            <text x="156" y="75" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="10.5" letter-spacing="0.5" fill="#855B3B">CHECK</text>
+          <svg class="loopfig__svg" viewBox="0 0 210 150" aria-hidden="true">
+            <defs><marker id="cl2-c" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6.5" markerHeight="6.5" orient="auto"><path d="M0,1 L9,5 L0,9 z" fill="#B07D54"/></marker></defs>
+            <circle cx="150" cy="80" r="14" fill="none" stroke="#18181B" stroke-width="1.5"/>
+            <circle cx="150" cy="80" r="7" fill="none" stroke="#18181B" stroke-width="1.5"/>
+            <circle cx="150" cy="80" r="2.2" fill="#18181B"/>
+            <text x="150" y="112" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="8.5" letter-spacing=".6" fill="#646470">GOAL</text>
+            <circle cx="24" cy="92" r="3.2" fill="#18181B"/>
+            <text x="24" y="112" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="8.5" letter-spacing=".6" fill="#646470">START</text>
+            <path d="M28,90 L138,82" fill="none" stroke="#A1A1AA" stroke-width="1" stroke-dasharray="2 3"/>
+            <path d="M28,90 C56,88 70,116 94,110" fill="none" stroke="#3F3F46" stroke-width="1.7"/>
+            <path d="M94,110 C122,110 126,86 137,82" fill="none" stroke="#B07D54" stroke-width="2" marker-end="url(#cl2-c)"/>
+            <path d="M144,80 l3,4 l7,-9.5" fill="none" stroke="#B07D54" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            <text x="84" y="136" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="8.5" letter-spacing=".8" fill="#855B3B">CHECKS, CORRECTS</text>
           </svg>
-          <p class="loopfig__cap"><span class="loopfig__k">Closed loop</span>It checks its result and corrects. Safe for real work.</p>
+          <p class="loopfig__cap"><span class="loopfig__k">Closed loop</span>It checks its result against the goal and corrects. It lands on target.</p>
         </div>
         <div class="loopfig__panel reveal">
-          <svg class="loopfig__svg" viewBox="0 0 200 140" aria-hidden="true">
-            <defs>
-              <marker id="op-ah-i" viewBox="0 0 10 10" refX="7" refY="5" markerWidth="6.5" markerHeight="6.5" orient="auto"><path d="M0,1 L9,5 L0,9 z" fill="#3F3F46"/></marker>
-            </defs>
-            <path d="M64,71 L83,71" fill="none" stroke="#3F3F46" stroke-width="1.6" marker-end="url(#op-ah-i)"/>
-            <path d="M131,71 L184,71" fill="none" stroke="#3F3F46" stroke-width="1.6" marker-end="url(#op-ah-i)"/>
-            <rect x="8" y="56" width="56" height="30" rx="15" fill="#FFFFFF" stroke="#18181B" stroke-width="1.4"/>
-            <text x="36" y="75" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="10.5" letter-spacing="0.5" fill="#18181B">PLAN</text>
-            <rect x="86" y="56" width="44" height="30" rx="15" fill="#FFFFFF" stroke="#18181B" stroke-width="1.4"/>
-            <text x="108" y="75" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="11" letter-spacing="0.5" fill="#18181B">DO</text>
+          <svg class="loopfig__svg" viewBox="0 0 210 150" aria-hidden="true">
+            <defs><marker id="op2-i" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0,1 L9,5 L0,9 z" fill="#3F3F46"/></marker></defs>
+            <circle cx="150" cy="80" r="14" fill="none" stroke="#18181B" stroke-width="1.5"/>
+            <circle cx="150" cy="80" r="7" fill="none" stroke="#18181B" stroke-width="1.5"/>
+            <circle cx="150" cy="80" r="2.2" fill="#18181B"/>
+            <text x="150" y="112" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="8.5" letter-spacing=".6" fill="#646470">GOAL</text>
+            <circle cx="24" cy="96" r="3.2" fill="#18181B"/>
+            <text x="24" y="116" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="8.5" letter-spacing=".6" fill="#646470">START</text>
+            <path d="M28,94 L196,44" fill="none" stroke="#3F3F46" stroke-width="1.7" marker-end="url(#op2-i)"/>
+            <line x1="150" y1="66" x2="150" y2="52" stroke="#A1A1AA" stroke-width="1" stroke-dasharray="2 3"/>
+            <text x="150" y="42" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="8.5" letter-spacing=".8" fill="#646470">DRIFTS PAST</text>
+            <text x="108" y="120" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="8.5" letter-spacing=".8" fill="#646470">NO CHECK</text>
           </svg>
-          <p class="loopfig__cap"><span class="loopfig__k">Open loop</span>It runs once and never checks. It drifts.</p>
+          <p class="loopfig__cap"><span class="loopfig__k">Open loop</span>It follows a fixed path and never checks. It drifts past the goal.</p>
         </div>
       </figure>
 
