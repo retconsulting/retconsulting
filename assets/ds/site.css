@@ -531,6 +531,15 @@ html.reveal-on .expgrid.is-in > .expgrid__arrow { transition-delay: calc(var(--r
 [data-tip]:focus-visible::before, [data-tip].is-tapped::before { opacity: 1; transform: translateY(0) rotate(45deg); }
 [data-tip]:hover, [data-tip]:focus-visible, [data-tip].is-tapped { z-index: 5; }
 
+/* Inline glossary pills in blog article prose: reuse the [data-tip] bubble engine
+   (each .term also carries data-tip); this only adds the subtle cognac pill visual.
+   white-space:nowrap keeps a multi-word term on one line so the centred tooltip
+   anchors to a single inline rect. */
+.article .term { white-space: nowrap; cursor: help; color: var(--cognac-text); font-weight: 500;
+  background: var(--cognac-wash); border-radius: 6px; padding: 0.04em 0.36em;
+  text-decoration: none; transition: background var(--dur-base) var(--ease-out); }
+.article .term:hover, .article .term:focus-visible { background: #E9D9C9; outline: none; }
+
 .about__certs .about__certline { font-family: var(--font-body); font-size: 14px; line-height: 1.7; color: var(--ink-2); margin: 44px auto 0; max-width: 46ch; text-align: center; }
 
 /* Dark panels invert the primary button back to cognac (ink-on-ink would vanish) */

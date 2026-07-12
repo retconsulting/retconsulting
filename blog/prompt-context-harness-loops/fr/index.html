@@ -29,7 +29,7 @@
 <link rel="icon" href="/assets/logo-glyph-dark.svg" media="(prefers-color-scheme: dark)"/>
 <link rel="apple-touch-icon" href="/assets/apple-touch-icon.png"/>
 <script>if('IntersectionObserver' in window && !matchMedia('(prefers-reduced-motion:reduce)').matches){document.documentElement.classList.add('reveal-on');}</script>
-<link rel="stylesheet" href="/assets/ds.css?v=20260712b"/>
+<link rel="stylesheet" href="/assets/ds.css?v=20260712c"/>
 <script type="application/ld+json">
 {"@context":"https://schema.org","@graph":[{"@type":"BlogPosting","headline":"Prompt → Context → Harness → Loops","datePublished":"2026-07-11","dateModified":"2026-07-11","inLanguage":"fr","author":{"@type":"Person","name":"Redha Etbaz","url":"https://retconsulting.be/fr/"},"publisher":{"@type":"Organization","name":"RET Consulting","logo":{"@type":"ImageObject","url":"https://retconsulting.be/assets/icon-512.png"}},"image":"https://retconsulting.be/assets/icon-512.png","description":"Du prompt engineering au loop engineering : toute l'échelle en langage clair, et ce que ça change pour votre équipe.","mainEntityOfPage":{"@type":"WebPage","@id":"https://retconsulting.be/blog/prompt-context-harness-loops/fr/"},"url":"https://retconsulting.be/blog/prompt-context-harness-loops/fr/"},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Accueil","item":"https://retconsulting.be/fr/"},{"@type":"ListItem","position":2,"name":"Blog","item":"https://retconsulting.be/blog/fr/"},{"@type":"ListItem","position":3,"name":"Prompt → Context → Harness → Loops","item":"https://retconsulting.be/blog/prompt-context-harness-loops/fr/"}]}]}
 </script>
@@ -132,7 +132,7 @@
             <!-- PROMPT core: LLM at the heart, the writing hand riding the innermost ring -->
             <g filter="url(#fb1-sh)"><circle cx="240" cy="240" r="42" fill="url(#fb1-w)" stroke="#18181B" stroke-width="1.5"/></g>
             <circle cx="240" cy="240" r="39.5" fill="none" stroke="#FFFFFF" stroke-opacity=".5" stroke-width="1.2"/>
-            <text x="240" y="245.8" text-anchor="middle" font-family="Archivo, sans-serif" font-weight="800" font-size="16" letter-spacing="0.5" fill="#B07D54">LLM</text>
+            <text x="240" y="244.4" text-anchor="middle" font-family="Archivo, sans-serif" font-weight="500" font-size="13" letter-spacing="0.5" fill="#B07D54">LLM</text>
             <g class="dial__orbit dial__orbit--ccw" style="--odur:20s">
               <g transform="translate(210.3,269.7)">
                 <g class="dial__sat">
@@ -167,19 +167,19 @@
       <p>Demandez-lui combien de cheeseburgers il faudrait empiler pour atteindre la Lune : il calcule la réponse à partir de ce qu'il sait déjà. Pas de recherche, pas d'outils, pas de documents. Une question, une réponse. C'est le prompt engineering, et ça reste le socle de tout le reste.</p>
 
       <h2><span class="article__kicker">02 / CONTEXT ENGINEERING</span>Il va chercher ce qu'il lui faut</h2>
-      <p>Votre prompt vit dans la fenêtre de contexte du modèle : sa mémoire de travail. Et il y reste beaucoup de place. L'étape suivante a été de laisser l'assistant remplir cette mémoire lui-même : ouvrir vos fichiers, interroger une base de données, chercher sur le web, appeler vos outils métier.</p>
-      <p>Demandez ce que la NASA a découvert cette semaine : un prompt seul ne peut pas répondre, la connaissance du modèle s'arrête à sa date d'entraînement. L'assistant doit chercher, lire et trier avant de répondre. C'est le context engineering.</p>
+      <p>Votre <span class="term" data-tip="L'instruction que vous tapez pour que l'IA agisse." tabindex="0" aria-label="Prompt : l'instruction que vous tapez pour que l'IA agisse.">prompt</span> vit dans la <span class="term" data-tip="La mémoire de travail de l'IA : tout ce qu'elle peut garder en tête à la fois. Sa taille est limitée." tabindex="0" aria-label="Fenêtre de contexte : la mémoire de travail de l'IA, tout ce qu'elle peut garder en tête à la fois, et sa taille est limitée.">fenêtre de contexte</span> du modèle : sa mémoire de travail. Et il y reste beaucoup de place. L'étape suivante a été de laisser l'assistant remplir cette mémoire lui-même : ouvrir vos fichiers, interroger une base de données, chercher sur le web, appeler vos outils métier.</p>
+      <p>Demandez ce que la NASA a découvert cette semaine : un prompt seul ne peut pas répondre, la connaissance du modèle s'arrête à sa <span class="term" data-tip="La date limite de ce que le modèle a appris. Il ignore tout ce qui s'est passé après." tabindex="0" aria-label="Date d'entraînement : la date limite de ce que le modèle a appris ; il ignore tout ce qui s'est passé après.">date d'entraînement</span>. L'assistant doit chercher, lire et trier avant de répondre. C'est le context engineering.</p>
       <div class="article__callout"><p>Remarquez ce qui vient d'apparaître : une boucle. Chercher, lire, juger si c'est suffisant, chercher encore. L'assistant la fait tourner seul, jusqu'à estimer son contexte suffisant.</p></div>
 
       <h2><span class="article__kicker">03 / HARNESS ENGINEERING</span>Quelqu'un tient le plan</h2>
       <p>Le contexte a une limite dure : la fenêtre se remplit. Sur toute tâche de plus de quelques minutes, l'assistant se met à résumer sa propre mémoire pour faire de la place, et des détails fuient à chaque passage. Comme un collègue qui prend des notes de ses propres notes : à la troisième génération, la nuance a disparu.</p>
-      <p>La solution : piloter le travail de l'extérieur. Un harnais garde le plan, la liste des tâches et l'état d'avancement hors de la fenêtre, sert à l'assistant une étape à la fois, et coche au fur et à mesure. Demandez à un agent de reconstruire de bout en bout un site vaste et complexe : c'est le harnais qui l'empêche de caler à mi-chemin.</p>
+      <p>La solution : piloter le travail de l'extérieur. Un <span class="term" data-tip="Une couche autour de l'IA qui garde le plan et lui sert une étape à la fois." tabindex="0" aria-label="Harnais : une couche autour de l'IA qui garde le plan et lui sert une étape à la fois.">harnais</span> garde le plan, la liste des tâches et l'état d'avancement hors de la fenêtre, sert à l'assistant une étape à la fois, et coche au fur et à mesure. Demandez à un <span class="term" data-tip="Une IA qui peut agir seule : utiliser des outils et enchaîner des étapes, pas seulement répondre." tabindex="0" aria-label="Agent : une IA qui peut agir seule, utiliser des outils et enchaîner des étapes, pas seulement répondre.">agent</span> de reconstruire de bout en bout un site vaste et complexe : c'est le harnais qui l'empêche de caler à mi-chemin.</p>
       <div class="article__callout"><p>Deuxième boucle, un niveau au-dessus : tâche après tâche, jusqu'à vider la liste.</p></div>
 
       <h2><span class="article__kicker">04 / LOOP ENGINEERING</span>Plus personne n'appuie sur le bouton</h2>
       <p>Regardez ces trois niveaux : chacun commence encore par un humain qui tape une demande. Le loop engineering supprime cette dernière dépendance : le système se sollicite lui-même, sur un horaire, sur un événement, sur un problème détecté.</p>
       <p>Une image concrète. Imaginez un site qui suit les scores de la Coupe du monde, construit une fois avec les trois couches précédentes. Les matchs ont lieu tous les jours. Plutôt que de demander la mise à jour chaque matin, vous posez une boucle : toutes les heures, vérifier les nouveaux résultats et les publier ; quand un utilisateur signale un bug, le reproduire, le corriger, vérifier le correctif. Le système s'entretient seul. Vous validez le résultat, pas les frappes clavier.</p>
-      <p>Pour que ça tourne de façon fiable, il faut une poignée d'ingrédients, et Addy Osmani en nomme six : l'automatisation pour les horaires et déclencheurs, des espaces de travail isolés pour que les changements parallèles ne se percutent jamais, des compétences réutilisables, des connecteurs vers vos outils, des sous-agents qui vérifient le travail, et un état qui survit entre les exécutions.</p>
+      <p>Pour que ça tourne de façon fiable, il faut une poignée d'ingrédients, et Addy Osmani en nomme six : l'automatisation pour les horaires et déclencheurs, des espaces de travail isolés pour que les changements parallèles ne se percutent jamais, des compétences réutilisables, des connecteurs vers vos outils, des <span class="term" data-tip="Des IA auxiliaires distinctes qui vérifient ou traitent une partie du travail." tabindex="0" aria-label="Sous-agents : des IA auxiliaires distinctes qui vérifient ou traitent une partie du travail.">sous-agents</span> qui vérifient le travail, et un état qui survit entre les exécutions.</p>
 
       <ul class="article__six">
         <li><span class="k">Automatisation</span><span class="v">Déclenche les tâches sur horaire ou événement.</span></li>
@@ -257,6 +257,20 @@
   document.addEventListener('pointerout', function (e) {
     if (el && !e.relatedTarget) { reset(el); el = null; }
   }, { passive: true });
+})();
+</script>
+<script>
+(function () {
+  if (matchMedia('(hover: hover) and (pointer: fine)').matches) return; // desktop: native hover
+  var cur = null;
+  function clear() { if (cur) { cur.classList.remove('is-tapped'); cur = null; } }
+  document.addEventListener('click', function (e) {
+    var t = e.target.closest ? e.target.closest('[data-tip]') : null;
+    if (!t) { clear(); return; }
+    if (t === cur) { clear(); return; }
+    clear(); cur = t; t.classList.add('is-tapped');
+  }, true);
+  window.addEventListener('scroll', clear, { passive: true });
 })();
 </script>
 </body>

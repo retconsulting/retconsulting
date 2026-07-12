@@ -29,7 +29,7 @@
 <link rel="icon" href="/assets/logo-glyph-dark.svg" media="(prefers-color-scheme: dark)"/>
 <link rel="apple-touch-icon" href="/assets/apple-touch-icon.png"/>
 <script>if('IntersectionObserver' in window && !matchMedia('(prefers-reduced-motion:reduce)').matches){document.documentElement.classList.add('reveal-on');}</script>
-<link rel="stylesheet" href="/assets/ds.css?v=20260712b"/>
+<link rel="stylesheet" href="/assets/ds.css?v=20260712c"/>
 <script type="application/ld+json">
 {"@context":"https://schema.org","@graph":[{"@type":"BlogPosting","headline":"Prompt → Context → Harness → Loops","datePublished":"2026-07-11","dateModified":"2026-07-11","inLanguage":"en","author":{"@type":"Person","name":"Redha Etbaz","url":"https://retconsulting.be/"},"publisher":{"@type":"Organization","name":"RET Consulting","logo":{"@type":"ImageObject","url":"https://retconsulting.be/assets/icon-512.png"}},"image":"https://retconsulting.be/assets/icon-512.png","description":"From prompt engineering to loop engineering: the whole ladder in plain language, and what it changes for your team.","mainEntityOfPage":{"@type":"WebPage","@id":"https://retconsulting.be/blog/prompt-context-harness-loops/"},"url":"https://retconsulting.be/blog/prompt-context-harness-loops/"},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://retconsulting.be/"},{"@type":"ListItem","position":2,"name":"Blog","item":"https://retconsulting.be/blog/"},{"@type":"ListItem","position":3,"name":"Prompt → Context → Harness → Loops","item":"https://retconsulting.be/blog/prompt-context-harness-loops/"}]}]}
 </script>
@@ -132,7 +132,7 @@
             <!-- PROMPT core: LLM at the heart, the writing hand riding the innermost ring -->
             <g filter="url(#fb1-sh)"><circle cx="240" cy="240" r="42" fill="url(#fb1-w)" stroke="#18181B" stroke-width="1.5"/></g>
             <circle cx="240" cy="240" r="39.5" fill="none" stroke="#FFFFFF" stroke-opacity=".5" stroke-width="1.2"/>
-            <text x="240" y="245.8" text-anchor="middle" font-family="Archivo, sans-serif" font-weight="800" font-size="16" letter-spacing="0.5" fill="#B07D54">LLM</text>
+            <text x="240" y="244.4" text-anchor="middle" font-family="Archivo, sans-serif" font-weight="500" font-size="13" letter-spacing="0.5" fill="#B07D54">LLM</text>
             <g class="dial__orbit dial__orbit--ccw" style="--odur:20s">
               <g transform="translate(210.3,269.7)">
                 <g class="dial__sat">
@@ -167,19 +167,19 @@
       <p>Ask it how many cheeseburgers you would need to stack to reach the Moon, and it works the answer out from what it already knows. No search, no tools, no documents. One question, one answer. That is prompt engineering, and it remains the foundation of everything that follows.</p>
 
       <h2><span class="article__kicker">02 / CONTEXT ENGINEERING</span>It fetches what it needs</h2>
-      <p>Your prompt lives inside the model's context window: its working memory. And there is plenty of room left in there. The next step was to let the assistant fill that memory itself: open your files, query a database, search the web, call your business tools.</p>
-      <p>Ask what NASA discovered this week and a prompt alone cannot answer, because the model's knowledge stops at its training date. The assistant has to search, read and select before it can reply. That is context engineering.</p>
+      <p>Your <span class="term" data-tip="The instruction you type for the AI to act on." tabindex="0" aria-label="Prompt: the instruction you type for the AI to act on.">prompt</span> lives inside the model's <span class="term" data-tip="The AI's working memory: everything it can hold in mind at once. Its size is fixed." tabindex="0" aria-label="Context window: the AI's working memory, everything it can hold in mind at once, and its size is fixed.">context window</span>: its working memory. And there is plenty of room left in there. The next step was to let the assistant fill that memory itself: open your files, query a database, search the web, call your business tools.</p>
+      <p>Ask what NASA discovered this week and a prompt alone cannot answer, because the model's knowledge stops at its <span class="term" data-tip="The cut-off point of what the model learned. It knows nothing that happened after it." tabindex="0" aria-label="Training date: the cut-off point of what the model learned; it knows nothing that happened after it.">training date</span>. The assistant has to search, read and select before it can reply. That is context engineering.</p>
       <div class="article__callout"><p>Notice what just appeared: a loop. Search, read, decide whether that is enough, search again. The assistant runs it on its own, until it judges the context sufficient.</p></div>
 
       <h2><span class="article__kicker">03 / HARNESS ENGINEERING</span>Someone keeps the plan</h2>
       <p>Context has a hard limit: the window fills up. On any task longer than a few minutes, the assistant starts summarising its own memory to make room, and details leak at every pass. Like a colleague taking notes of their own notes: by the third generation, the nuance is gone.</p>
-      <p>The fix is to manage the work from outside. A harness keeps the plan, the task list and the progress state outside the window, feeds the assistant one step at a time, and ticks each step off. Ask an agent to rebuild a large, complex website end to end: the harness is what stops it choking halfway.</p>
+      <p>The fix is to manage the work from outside. A <span class="term" data-tip="A layer around the AI that holds the plan and feeds it one step at a time." tabindex="0" aria-label="Harness: a layer around the AI that holds the plan and feeds it one step at a time.">harness</span> keeps the plan, the task list and the progress state outside the window, feeds the assistant one step at a time, and ticks each step off. Ask an <span class="term" data-tip="An AI that can act on its own: use tools and take steps, not just answer." tabindex="0" aria-label="Agent: an AI that can act on its own, using tools and taking steps, not just answering.">agent</span> to rebuild a large, complex website end to end: the harness is what stops it choking halfway.</p>
       <div class="article__callout"><p>Second loop, one level up: task after task, until the list is empty.</p></div>
 
       <h2><span class="article__kicker">04 / LOOP ENGINEERING</span>Nobody presses the button</h2>
       <p>Look back at those three levels. Each one still starts with a human typing a request. Loop engineering removes that last dependency: the system prompts itself, on a schedule, on an event, on a detected problem.</p>
       <p>A concrete picture. Imagine a site that tracks World Cup scores, built once with the three layers above. Matches happen every day. Instead of asking for updates each morning, you set a loop: every hour, check for new results and publish them; when a user reports a bug, reproduce it, fix it, verify the fix. The system maintains itself. You review the outcome, not the keystrokes.</p>
-      <p>Running that reliably takes a handful of ingredients, and Addy Osmani names six: automation for the schedules and triggers, isolated workspaces so parallel changes never collide, reusable skills, connectors to your tools, subagents that verify the work, and state that survives between runs.</p>
+      <p>Running that reliably takes a handful of ingredients, and Addy Osmani names six: automation for the schedules and triggers, isolated workspaces so parallel changes never collide, reusable skills, connectors to your tools, <span class="term" data-tip="Separate AI helpers that check or handle a slice of the work on their own." tabindex="0" aria-label="Subagents: separate AI helpers that check or handle a slice of the work on their own.">subagents</span> that verify the work, and state that survives between runs.</p>
 
       <ul class="article__six">
         <li><span class="k">Automation</span><span class="v">Runs tasks on a schedule or trigger.</span></li>
@@ -257,6 +257,20 @@
   document.addEventListener('pointerout', function (e) {
     if (el && !e.relatedTarget) { reset(el); el = null; }
   }, { passive: true });
+})();
+</script>
+<script>
+(function () {
+  if (matchMedia('(hover: hover) and (pointer: fine)').matches) return; // desktop: native hover
+  var cur = null;
+  function clear() { if (cur) { cur.classList.remove('is-tapped'); cur = null; } }
+  document.addEventListener('click', function (e) {
+    var t = e.target.closest ? e.target.closest('[data-tip]') : null;
+    if (!t) { clear(); return; }
+    if (t === cur) { clear(); return; }
+    clear(); cur = t; t.classList.add('is-tapped');
+  }, true);
+  window.addEventListener('scroll', clear, { passive: true });
 })();
 </script>
 </body>
