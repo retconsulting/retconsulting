@@ -1529,7 +1529,8 @@ html.reveal-on .blogfig[data-tilt]:hover { transform: perspective(1100px) rotate
 @media (prefers-reduced-motion: reduce) { .ctxwin__gauge-fill { animation: none; width: 62%; } }
 /* Harness engineering: the whole plan lives in the harness, one step goes to the assistant */
 .harnessfig { margin: 24px 0 0; max-width: 65ch; }
-.harnessfig__grid { display: grid; grid-template-columns: 1.18fr 72px 1fr; align-items: stretch; }
+.harnessfig__grid { display: grid; grid-template-columns: 1fr 72px 1fr; align-items: stretch; }
+.harnessfig__panel--worker { display: flex; flex-direction: column; }
 .harnessfig__panel { background: var(--surface); border: 1px solid var(--line); border-radius: var(--r-lg); box-shadow: var(--shadow-sm); overflow: hidden; }
 .harnessfig__head { display: flex; align-items: center; justify-content: space-between; gap: 8px; padding: 9px 13px; background: var(--canvas); border-bottom: 1px solid var(--line); }
 .harnessfig__title { font-family: var(--font-mono); font-size: 10px; letter-spacing: .12em; text-transform: uppercase; color: var(--ink-2); }
@@ -1544,11 +1545,19 @@ html.reveal-on .blogfig[data-tilt]:hover { transform: perspective(1100px) rotate
 .harnessfig__arrow { display: flex; flex-direction: column; align-items: center; gap: 4px; font-family: var(--font-mono); font-size: 8px; letter-spacing: .06em; text-transform: uppercase; color: var(--cognac-text); }
 .harnessfig__arrow svg { width: 30px; height: 12px; }
 .harnessfig__arrow--back { color: var(--ink-4); }
-.harnessfig__now { padding: 13px; }
+.harnessfig__now { flex: 1; display: flex; flex-direction: column; justify-content: center; padding: 13px; }
 .harnessfig__nowk { font-family: var(--font-mono); font-size: 9px; letter-spacing: .12em; text-transform: uppercase; color: var(--cognac-text); }
 .article .harnessfig__nowt { margin: 8px 0 0; max-width: none; font-family: var(--font-body); font-weight: 600; font-size: .95rem; line-height: 1.3; color: var(--ink); }
 .harnessfig__nowc { display: block; margin-top: 8px; font-family: var(--font-body); font-size: .8rem; line-height: 1.35; color: var(--ink-3); }
 .harnessfig__cap { margin-top: 12px; text-align: center; font-family: var(--font-mono); font-size: 10px; letter-spacing: .04em; color: var(--ink-3); }
+/* Ticked boxes: the checks draw in on a gentle loop; the active step's dot breathes */
+.hstep__check { stroke-dasharray: 14; }
+.harnessfig__list li:nth-child(1) .hstep__check { animation: htick 4.8s var(--ease-soft) infinite; }
+.harnessfig__list li:nth-child(2) .hstep__check { animation: htick 4.8s var(--ease-soft) .55s infinite; }
+@keyframes htick { 0% { stroke-dashoffset: 14; opacity: 0; } 14% { stroke-dashoffset: 0; opacity: 1; } 86% { stroke-dashoffset: 0; opacity: 1; } 95% { stroke-dashoffset: 0; opacity: 0; } 100% { stroke-dashoffset: 14; opacity: 0; } }
+.hstep.is-active .hstep__dot { transform-box: fill-box; transform-origin: center; animation: hdot 2.2s ease-in-out infinite; }
+@keyframes hdot { 0%, 100% { opacity: 1; transform: scale(1); } 50% { opacity: .5; transform: scale(.66); } }
+@media (prefers-reduced-motion: reduce) { .hstep__check { animation: none !important; stroke-dashoffset: 0; opacity: 1; } .hstep.is-active .hstep__dot { animation: none !important; } }
 @media (max-width: 620px) { .harnessfig__grid { grid-template-columns: 1fr; } .harnessfig__flow { flex-direction: row; justify-content: center; gap: 24px; padding: 10px 0; } .harnessfig__arrow svg { transform: rotate(90deg); } }
 .article__cta { margin-top: clamp(40px,5vw,64px); background: var(--surface); border: 1px solid var(--line); border-radius: var(--r-2xl); box-shadow: var(--shadow-md); padding: clamp(24px,4vw,36px); display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 20px; }
 .article__cta p { margin: 0; max-width: 44ch; font-family: var(--font-body); font-size: 1.02rem; line-height: 1.5; color: var(--ink-2); }
