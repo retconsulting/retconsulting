@@ -1443,6 +1443,12 @@ html.reveal-on .bpost:hover { transform: translateY(var(--card-lift)) perspectiv
 .article-head__sub { font-family: var(--font-display); font-weight: 600; font-size: clamp(1.1rem, .95rem + .8vw, 1.4rem); letter-spacing: -.01em; line-height: 1.2; color: var(--ink-2); margin: 12px 0 0; }
 .article-head__meta { font-family: var(--font-mono); font-size: 11.5px; letter-spacing: .12em; text-transform: uppercase; color: var(--ink-3); margin: 16px 0 0; }
 .article-head__lead { font-family: var(--font-body); font-weight: 300; font-size: 1.12rem; line-height: 1.6; color: var(--ink-2); max-width: 60ch; margin: 14px 0 0; }
+/* Two-axis taxonomy chips: subject (filled cognac) + type (outlined), on the article head and cards */
+.article-head__tax, .bpost__tax { display: flex; flex-wrap: wrap; gap: 7px; }
+.article-head__tax { margin: 16px 0 0; }
+.cat { display: inline-block; font-family: var(--font-mono); font-size: 10px; letter-spacing: .1em; text-transform: uppercase; padding: 4px 10px; border-radius: var(--r-pill); border: 1px solid transparent; line-height: 1.2; }
+.cat--subject { color: var(--cognac-text); background: var(--cognac-wash); border-color: var(--border-accent); }
+.cat--type { color: var(--ink-2); background: var(--surface); border-color: var(--border-strong); }
 
 .blogfig-wrap { max-width: var(--container); margin-inline: auto; padding-inline: var(--gutter); margin-top: clamp(28px,4vw,48px); }
 .blogfig { position: relative; margin: 0; overflow: hidden; border-radius: var(--r-3xl); border: 1px solid var(--line); box-shadow: var(--shadow-float);
