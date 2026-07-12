@@ -1542,28 +1542,52 @@ html.reveal-on .blogfig[data-tilt]:hover { transform: perspective(1100px) rotate
 .harnessfig__title { font-family: var(--font-mono); font-size: 10px; letter-spacing: .12em; text-transform: uppercase; color: var(--ink-2); }
 .harnessfig__meta { font-family: var(--font-mono); font-size: 9px; letter-spacing: .08em; text-transform: uppercase; color: var(--cognac-text); }
 .harnessfig__list { list-style: none; margin: 0; padding: 7px 7px; }
-.hstep { display: flex; align-items: center; gap: 9px; padding: 6px 8px; border-radius: var(--r-sm); font-family: var(--font-body); font-size: .84rem; line-height: 1.2; color: var(--ink-3); }
-.hstep.is-done { color: var(--ink-2); }
-.hstep.is-active { color: var(--ink); background: var(--cognac-wash); font-weight: 500; }
+.hstep { position: relative; display: flex; align-items: center; gap: 9px; padding: 7px 8px; border-radius: var(--r-sm); font-family: var(--font-body); font-size: .84rem; line-height: 1.2; color: var(--ink-2); }
+.hstep__hl { position: absolute; inset: 1px 3px; border-radius: var(--r-sm); background: var(--cognac-wash); opacity: 0; z-index: 0; }
+.hstep__mark, .hstep__label { position: relative; z-index: 1; }
 .hstep__mark { flex: none; width: 16px; height: 16px; }
-.hstep__mark svg { width: 100%; height: 100%; display: block; }
+.hstep__mark svg { width: 100%; height: 100%; display: block; overflow: visible; }
+.hmark__on { opacity: 0; }
 .harnessfig__flow { display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 14px; }
 .harnessfig__arrow { display: flex; flex-direction: column; align-items: center; gap: 4px; font-family: var(--font-mono); font-size: 8px; letter-spacing: .06em; text-transform: uppercase; color: var(--cognac-text); }
 .harnessfig__arrow svg { width: 30px; height: 12px; }
 .harnessfig__arrow--back { color: var(--ink-4); }
 .harnessfig__now { flex: 1; display: flex; flex-direction: column; justify-content: center; padding: 13px; }
 .harnessfig__nowk { font-family: var(--font-mono); font-size: 9px; letter-spacing: .12em; text-transform: uppercase; color: var(--cognac-text); }
-.article .harnessfig__nowt { margin: 8px 0 0; max-width: none; font-family: var(--font-body); font-weight: 600; font-size: .95rem; line-height: 1.3; color: var(--ink); }
+.harnessfig__nowstack { display: grid; margin: 8px 0 0; }
+.article .hnow { grid-area: 1 / 1; margin: 0; max-width: none; font-family: var(--font-body); font-weight: 600; font-size: .95rem; line-height: 1.3; color: var(--ink); opacity: 0; }
 .harnessfig__nowc { display: block; margin-top: 8px; font-family: var(--font-body); font-size: .8rem; line-height: 1.35; color: var(--ink-3); }
 .harnessfig__cap { margin-top: 12px; text-align: center; font-family: var(--font-mono); font-size: 10px; letter-spacing: .04em; color: var(--ink-3); }
 /* Ticked boxes: the checks draw in on a gentle loop; the active step's dot breathes */
-.hstep__check { stroke-dasharray: 14; }
-.harnessfig__list li:nth-child(1) .hstep__check { animation: htick 4.8s var(--ease-soft) infinite; }
-.harnessfig__list li:nth-child(2) .hstep__check { animation: htick 4.8s var(--ease-soft) .55s infinite; }
-@keyframes htick { 0% { stroke-dashoffset: 14; opacity: 0; } 14% { stroke-dashoffset: 0; opacity: 1; } 86% { stroke-dashoffset: 0; opacity: 1; } 95% { stroke-dashoffset: 0; opacity: 0; } 100% { stroke-dashoffset: 14; opacity: 0; } }
-.hstep.is-active .hstep__dot { transform-box: fill-box; transform-origin: center; animation: hdot 2.2s ease-in-out infinite; }
-@keyframes hdot { 0%, 100% { opacity: 1; transform: scale(1); } 50% { opacity: .5; transform: scale(.66); } }
-@media (prefers-reduced-motion: reduce) { .hstep__check { animation: none !important; stroke-dashoffset: 0; opacity: 1; } .hstep.is-active .hstep__dot { animation: none !important; } }
+/* Selector sweeps the plan top to bottom (hcur = highlight on during a step's slot),
+   ticking each box as it lands (htk = check stays lit from its slot until the reset),
+   and the assistant's "Now" text follows the selector (reuses the hcur timing). */
+.harnessfig__list li:nth-child(1) .hstep__hl, .harnessfig__nowstack .hnow:nth-child(1) { animation: hcur1 10s linear infinite; }
+.harnessfig__list li:nth-child(2) .hstep__hl, .harnessfig__nowstack .hnow:nth-child(2) { animation: hcur2 10s linear infinite; }
+.harnessfig__list li:nth-child(3) .hstep__hl, .harnessfig__nowstack .hnow:nth-child(3) { animation: hcur3 10s linear infinite; }
+.harnessfig__list li:nth-child(4) .hstep__hl, .harnessfig__nowstack .hnow:nth-child(4) { animation: hcur4 10s linear infinite; }
+.harnessfig__list li:nth-child(5) .hstep__hl, .harnessfig__nowstack .hnow:nth-child(5) { animation: hcur5 10s linear infinite; }
+.harnessfig__list li:nth-child(1) .hmark__on { animation: htk1 10s var(--ease-out) infinite; }
+.harnessfig__list li:nth-child(2) .hmark__on { animation: htk2 10s var(--ease-out) infinite; }
+.harnessfig__list li:nth-child(3) .hmark__on { animation: htk3 10s var(--ease-out) infinite; }
+.harnessfig__list li:nth-child(4) .hmark__on { animation: htk4 10s var(--ease-out) infinite; }
+.harnessfig__list li:nth-child(5) .hmark__on { animation: htk5 10s var(--ease-out) infinite; }
+@keyframes hcur1 { 0% { opacity: 1; } 15% { opacity: 1; } 18%, 100% { opacity: 0; } }
+@keyframes hcur2 { 0%, 15% { opacity: 0; } 18%, 31% { opacity: 1; } 34%, 100% { opacity: 0; } }
+@keyframes hcur3 { 0%, 31% { opacity: 0; } 34%, 47% { opacity: 1; } 50%, 100% { opacity: 0; } }
+@keyframes hcur4 { 0%, 47% { opacity: 0; } 50%, 63% { opacity: 1; } 66%, 100% { opacity: 0; } }
+@keyframes hcur5 { 0%, 63% { opacity: 0; } 66%, 79% { opacity: 1; } 82%, 100% { opacity: 0; } }
+@keyframes htk1 { 0%, 4% { opacity: 0; } 11%, 86% { opacity: 1; } 91%, 100% { opacity: 0; } }
+@keyframes htk2 { 0%, 20% { opacity: 0; } 27%, 86% { opacity: 1; } 91%, 100% { opacity: 0; } }
+@keyframes htk3 { 0%, 36% { opacity: 0; } 43%, 86% { opacity: 1; } 91%, 100% { opacity: 0; } }
+@keyframes htk4 { 0%, 52% { opacity: 0; } 59%, 86% { opacity: 1; } 91%, 100% { opacity: 0; } }
+@keyframes htk5 { 0%, 68% { opacity: 0; } 75%, 86% { opacity: 1; } 91%, 100% { opacity: 0; } }
+@media (prefers-reduced-motion: reduce) {
+  .hstep__hl, .hmark__on, .harnessfig__nowstack .hnow { animation: none !important; }
+  .harnessfig__list li:nth-child(1) .hmark__on, .harnessfig__list li:nth-child(2) .hmark__on { opacity: 1; }
+  .harnessfig__list li:nth-child(3) .hstep__hl { opacity: 1; }
+  .article .harnessfig__nowstack .hnow:nth-child(3) { opacity: 1; }
+}
 @media (max-width: 620px) { .harnessfig__grid { grid-template-columns: 1fr; } .harnessfig__flow { flex-direction: row; justify-content: center; gap: 24px; padding: 10px 0; } .harnessfig__arrow svg { transform: rotate(90deg); } }
 .article__cta { margin-top: clamp(40px,5vw,64px); background: var(--surface); border: 1px solid var(--line); border-radius: var(--r-2xl); box-shadow: var(--shadow-md); padding: clamp(24px,4vw,36px); display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 20px; }
 .article__cta p { margin: 0; max-width: 44ch; font-family: var(--font-body); font-size: 1.02rem; line-height: 1.5; color: var(--ink-2); }
