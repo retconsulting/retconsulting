@@ -1527,6 +1527,29 @@ html.reveal-on .blogfig[data-tilt]:hover { transform: perspective(1100px) rotate
 .ctxwin__v { font-family: var(--font-body); font-size: .9rem; line-height: 1.4; color: var(--ink-2); }
 @media (max-width: 560px) { .ctxwin__list li { grid-template-columns: 1fr; gap: 3px; } }
 @media (prefers-reduced-motion: reduce) { .ctxwin__gauge-fill { animation: none; width: 62%; } }
+/* Harness engineering: the whole plan lives in the harness, one step goes to the assistant */
+.harnessfig { margin: 24px 0 0; max-width: 65ch; }
+.harnessfig__grid { display: grid; grid-template-columns: 1.18fr 72px 1fr; align-items: stretch; }
+.harnessfig__panel { background: var(--surface); border: 1px solid var(--line); border-radius: var(--r-lg); box-shadow: var(--shadow-sm); overflow: hidden; }
+.harnessfig__head { display: flex; align-items: center; justify-content: space-between; gap: 8px; padding: 9px 13px; background: var(--canvas); border-bottom: 1px solid var(--line); }
+.harnessfig__title { font-family: var(--font-mono); font-size: 10px; letter-spacing: .12em; text-transform: uppercase; color: var(--ink-2); }
+.harnessfig__meta { font-family: var(--font-mono); font-size: 9px; letter-spacing: .08em; text-transform: uppercase; color: var(--cognac-text); }
+.harnessfig__list { list-style: none; margin: 0; padding: 7px 7px; }
+.hstep { display: flex; align-items: center; gap: 9px; padding: 6px 8px; border-radius: var(--r-sm); font-family: var(--font-body); font-size: .84rem; line-height: 1.2; color: var(--ink-3); }
+.hstep.is-done { color: var(--ink-2); }
+.hstep.is-active { color: var(--ink); background: var(--cognac-wash); font-weight: 500; }
+.hstep__mark { flex: none; width: 16px; height: 16px; }
+.hstep__mark svg { width: 100%; height: 100%; display: block; }
+.harnessfig__flow { display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 14px; }
+.harnessfig__arrow { display: flex; flex-direction: column; align-items: center; gap: 4px; font-family: var(--font-mono); font-size: 8px; letter-spacing: .06em; text-transform: uppercase; color: var(--cognac-text); }
+.harnessfig__arrow svg { width: 30px; height: 12px; }
+.harnessfig__arrow--back { color: var(--ink-4); }
+.harnessfig__now { padding: 13px; }
+.harnessfig__nowk { font-family: var(--font-mono); font-size: 9px; letter-spacing: .12em; text-transform: uppercase; color: var(--cognac-text); }
+.article .harnessfig__nowt { margin: 8px 0 0; max-width: none; font-family: var(--font-body); font-weight: 600; font-size: .95rem; line-height: 1.3; color: var(--ink); }
+.harnessfig__nowc { display: block; margin-top: 8px; font-family: var(--font-body); font-size: .8rem; line-height: 1.35; color: var(--ink-3); }
+.harnessfig__cap { margin-top: 12px; text-align: center; font-family: var(--font-mono); font-size: 10px; letter-spacing: .04em; color: var(--ink-3); }
+@media (max-width: 620px) { .harnessfig__grid { grid-template-columns: 1fr; } .harnessfig__flow { flex-direction: row; justify-content: center; gap: 24px; padding: 10px 0; } .harnessfig__arrow svg { transform: rotate(90deg); } }
 .article__cta { margin-top: clamp(40px,5vw,64px); background: var(--surface); border: 1px solid var(--line); border-radius: var(--r-2xl); box-shadow: var(--shadow-md); padding: clamp(24px,4vw,36px); display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 20px; }
 .article__cta p { margin: 0; max-width: 44ch; font-family: var(--font-body); font-size: 1.02rem; line-height: 1.5; color: var(--ink-2); }
 /* Dark conclusion panel (mirrors .contact__panel): ink ground, dot grid, cognac accents */
