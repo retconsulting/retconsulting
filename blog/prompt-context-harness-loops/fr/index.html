@@ -1,0 +1,180 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
+<meta name="format-detection" content="telephone=no"/>
+<title>Prompt → Context → Harness → Loops · RET Consulting Blog</title>
+<meta name="description" content="Du prompt engineering au loop engineering : toute l'échelle en langage clair, et ce que ça change pour votre équipe."/>
+<meta name="author" content="RET Consulting SRL"/>
+<link rel="canonical" href="https://retconsulting.be/blog/prompt-context-harness-loops/fr/"/>
+<link rel="alternate" hreflang="en" href="https://retconsulting.be/blog/prompt-context-harness-loops/"/>
+<link rel="alternate" hreflang="fr" href="https://retconsulting.be/blog/prompt-context-harness-loops/fr/"/>
+<link rel="alternate" hreflang="x-default" href="https://retconsulting.be/blog/prompt-context-harness-loops/"/>
+<meta property="og:type" content="article"/>
+<meta property="og:site_name" content="RET Consulting"/>
+<meta property="og:locale" content="fr_BE"/>
+<meta property="og:title" content="Prompt → Context → Harness → Loops · RET Consulting Blog"/>
+<meta property="og:description" content="Du prompt engineering au loop engineering : toute l'échelle en langage clair, et ce que ça change pour votre équipe."/>
+<meta property="og:url" content="https://retconsulting.be/blog/prompt-context-harness-loops/fr/"/>
+<meta property="og:image" content="https://retconsulting.be/assets/icon-512.png"/>
+<meta property="og:image:type" content="image/png"/>
+<meta property="og:image:width" content="512"/>
+<meta property="og:image:height" content="512"/>
+<meta property="og:image:alt" content="Logo RET Consulting"/>
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:image:alt" content="Logo RET Consulting"/>
+<meta name="theme-color" content="#F4F4F7"/>
+<link rel="icon" href="/assets/logo-glyph.svg"/>
+<link rel="icon" href="/assets/logo-glyph-dark.svg" media="(prefers-color-scheme: dark)"/>
+<link rel="apple-touch-icon" href="/assets/apple-touch-icon.png"/>
+<script>if('IntersectionObserver' in window && !matchMedia('(prefers-reduced-motion:reduce)').matches){document.documentElement.classList.add('reveal-on');}</script>
+<link rel="stylesheet" href="/assets/ds.css?v=20260711f"/>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@graph":[{"@type":"BlogPosting","headline":"Prompt → Context → Harness → Loops","datePublished":"2026-07-11","dateModified":"2026-07-11","inLanguage":"fr","author":{"@type":"Person","name":"Redha Etbaz","url":"https://retconsulting.be/fr/"},"publisher":{"@type":"Organization","name":"RET Consulting","logo":{"@type":"ImageObject","url":"https://retconsulting.be/assets/icon-512.png"}},"image":"https://retconsulting.be/assets/icon-512.png","description":"Du prompt engineering au loop engineering : toute l'échelle en langage clair, et ce que ça change pour votre équipe.","mainEntityOfPage":{"@type":"WebPage","@id":"https://retconsulting.be/blog/prompt-context-harness-loops/fr/"},"url":"https://retconsulting.be/blog/prompt-context-harness-loops/fr/"},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Accueil","item":"https://retconsulting.be/fr/"},{"@type":"ListItem","position":2,"name":"Blog","item":"https://retconsulting.be/blog/fr/"},{"@type":"ListItem","position":3,"name":"Prompt → Context → Harness → Loops","item":"https://retconsulting.be/blog/prompt-context-harness-loops/fr/"}]}]}
+</script>
+</head>
+<body class="site">
+<a class="skip-link" href="#main">Aller au contenu</a>
+
+<header class="subhead"><div class="subhead__inner">
+    <a class="nav__brand" href="/fr/" aria-label="RET Consulting, accueil"><img class="nav__brand-glyph" src="/assets/logo-mark.svg" alt=""/><span class="nav__brand-wordmark"><span class="w">RET</span><span class="d">Consulting</span></span></a>
+    <div class="subhead__right">
+      <div class="langtoggle" role="group" aria-label="Language / Langue">
+        <a class="langtoggle__opt" href="/blog/prompt-context-harness-loops/" hreflang="en" lang="en">EN</a>
+        <a class="langtoggle__opt is-active" href="/blog/prompt-context-harness-loops/fr/" hreflang="fr" lang="fr" aria-current="true">FR</a>
+      </div>
+      <a class="subhead__back" href="/fr/"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5"/><path d="M11 18l-6-6 6-6"/></svg>Retour au site</a>
+    </div>
+  </div></header>
+
+<main id="main" class="prose-page" tabindex="-1">
+  <div class="article-head">
+    <span class="ret-tag">[BLOG · 01]</span>
+    <h1 class="article-head__title">Prompt → Context → Harness → Loops</h1>
+    <p class="article-head__meta"><time datetime="2026-07-11">2026-07-11</time> · 5 MIN DE LECTURE · PRODUIT &amp; IA</p>
+    <p class="article-head__lead">Un trimestre, un buzzword. Après le prompt engineering sont venus le context engineering, puis le harness engineering, et voici le loop engineering. Mes clients me demandent s'il faut s'en soucier. Réponse courte : le mot est neuf, l'idée non. Voici toute l'échelle, expliquée comme je l'explique en formation.</p>
+  </div>
+
+  <div class="blogfig-wrap">
+    <figure class="blogfig reveal" data-tilt role="img" aria-label="Quatre boucles imbriquées. Prompt au centre, puis contexte, puis harnais, puis boucles sur l'anneau extérieur cognac.">
+      <span class="stamp"><span class="ret-diamond"></span>FIG_B1 · QUATRE BOUCLES</span>
+      <svg class="blogfig__svg" viewBox="0 0 480 320" preserveAspectRatio="xMidYMid meet" aria-hidden="true">
+        <g fill="none" stroke="#3F3F46" stroke-width="1.5">
+          <rect x="150" y="105" width="180" height="110" rx="26"/>
+          <rect x="110" y="75" width="260" height="170" rx="34"/>
+          <rect x="70" y="45" width="340" height="230" rx="42"/>
+          <rect x="30" y="15" width="420" height="290" rx="50" stroke="#B07D54" stroke-width="1.8"/>
+        </g>
+        <g font-family="IBM Plex Mono, monospace" font-size="10" letter-spacing="1.5" fill="#646470">
+          <text x="240" y="166" text-anchor="middle">PROMPT</text>
+          <text x="240" y="96" text-anchor="middle">CONTEXT</text>
+          <text x="240" y="66" text-anchor="middle">HARNESS</text>
+          <text x="240" y="36" text-anchor="middle" fill="#855B3B">LOOPS</text>
+        </g>
+        <rect x="234" y="299" width="11" height="11" transform="rotate(45 240 304.5)" fill="#B07D54"/>
+      </svg>
+    </figure>
+  </div>
+
+  <div class="article-wrap">
+    <div class="article">
+      <h2><span class="article__kicker">01 / PROMPT</span>Vous écrivez, il répond</h2>
+      <p>Le prompt engineering, c'est l'art d'écrire de bonnes instructions. Dites à un assistant : vous êtes un agent du service client, restez poli, restez utile. Dès lors, il tient ce rôle pour chaque question. Tout ce dont il a besoin tient dans un seul message.</p>
+      <p>Demandez-lui combien de cheeseburgers il faudrait empiler pour atteindre la Lune : il calcule la réponse à partir de ce qu'il sait déjà. Pas de recherche, pas d'outils, pas de documents. Une question, une réponse. C'est le prompt engineering, et ça reste le socle de tout le reste.</p>
+
+      <h2><span class="article__kicker">02 / CONTEXT</span>Il va chercher ce qu'il lui faut</h2>
+      <p>Votre prompt vit dans la fenêtre de contexte du modèle : sa mémoire de travail. Et il y reste beaucoup de place. L'étape suivante a été de laisser l'assistant remplir cette mémoire lui-même : ouvrir vos fichiers, interroger une base de données, chercher sur le web, appeler vos outils métier.</p>
+      <p>Demandez ce que la NASA a découvert cette semaine : un prompt seul ne peut pas répondre, la connaissance du modèle s'arrête à sa date d'entraînement. L'assistant doit chercher, lire et trier avant de répondre. C'est le context engineering.</p>
+      <div class="article__callout"><p>Remarquez ce qui vient d'apparaître : une boucle. Chercher, lire, juger si c'est suffisant, chercher encore. L'assistant la fait tourner seul, jusqu'à estimer son contexte suffisant.</p></div>
+
+      <h2><span class="article__kicker">03 / HARNESS</span>Quelqu'un tient le plan</h2>
+      <p>Le contexte a une limite dure : la fenêtre se remplit. Sur toute tâche de plus de quelques minutes, l'assistant se met à résumer sa propre mémoire pour faire de la place, et des détails fuient à chaque passage. Comme un collègue qui prend des notes de ses propres notes : à la troisième génération, la nuance a disparu.</p>
+      <p>La solution : piloter le travail de l'extérieur. Un harnais garde le plan, la liste des tâches et l'état d'avancement hors de la fenêtre, sert à l'assistant une étape à la fois, et coche au fur et à mesure. Demandez à un agent de reconstruire de bout en bout un site vaste et complexe : c'est le harnais qui l'empêche de caler à mi-chemin.</p>
+      <div class="article__callout"><p>Deuxième boucle, un niveau au-dessus : tâche après tâche, jusqu'à vider la liste.</p></div>
+
+      <h2><span class="article__kicker">04 / LOOPS</span>Plus personne n'appuie sur le bouton</h2>
+      <p>Regardez ces trois niveaux : chacun commence encore par un humain qui tape une demande. Le loop engineering supprime cette dernière dépendance : le système se sollicite lui-même, sur un horaire, sur un événement, sur un problème détecté.</p>
+      <p>Une image concrète. Imaginez un site qui suit les scores de la Coupe du monde, construit une fois avec les trois couches précédentes. Les matchs ont lieu tous les jours. Plutôt que de demander la mise à jour chaque matin, vous posez une boucle : toutes les heures, vérifier les nouveaux résultats et les publier ; quand un utilisateur signale un bug, le reproduire, le corriger, vérifier le correctif. Le système s'entretient seul. Vous validez le résultat, pas les frappes clavier.</p>
+      <p>Pour que ça tourne de façon fiable, il faut une poignée d'ingrédients, et Addy Osmani en nomme six : l'automatisation pour les horaires et déclencheurs, des espaces de travail isolés pour que les changements parallèles ne se percutent jamais, des compétences réutilisables, des connecteurs vers vos outils, des sous-agents qui vérifient le travail, et un état qui survit entre les exécutions.</p>
+
+      <ul class="article__six">
+        <li><span class="k">Automatisation</span><span class="v">Déclenche les tâches sur horaire ou événement.</span></li>
+        <li><span class="k">Espaces isolés</span><span class="v">Isolés pour que rien ne se percute.</span></li>
+        <li><span class="k">Compétences</span><span class="v">Des savoir-faire réutilisables que le système mobilise.</span></li>
+        <li><span class="k">Connecteurs</span><span class="v">Relient le système à vos outils métier.</span></li>
+        <li><span class="k">Sous-agents</span><span class="v">Des contrôles séparés qui vérifient le travail.</span></li>
+        <li><span class="k">État</span><span class="v">Ce qui survit d'une exécution à l'autre.</span></li>
+      </ul>
+
+      <h2><span class="article__kicker">VERDICT</span>Du vent, ou du vrai ?</h2>
+      <p>En partie du vent. Personne n'a encore montré un loop engineering produisant ce que les couches du dessous ne pouvaient pas produire, et un système qui se sollicite sans garde-fous génère surtout plus de volume, pas plus de valeur.</p>
+      <p>Mais la trajectoire est réelle, et chaque couche compte toujours : un prompt mal écrit reste mal écrit au cœur de la boucle la plus maligne. Ce qui grandit, c'est le périmètre de ce que vous pouvez déléguer : d'une réponse à une tâche, d'une tâche à un projet, d'un projet à une opération qui tourne seule.</p>
+
+      <h2><span class="article__kicker">ET ALORS</span>Ce que ça change pour vous</h2>
+      <p>Vous faites déjà du prompt engineering tous les jours, peut-être sans le nommer. La compétence suivante n'est pas de mieux taper vos demandes. C'est de concevoir les contrôles autour d'un système qui travaille sans vous : décider ce qui tourne sur horaire, ce qui est vérifié et par quoi, et où un humain doit rester dans la boucle. C'est une compétence produit plus que technique. Et ça s'apprend.</p>
+
+      <div class="article__cta">
+        <p>Cette échelle, des premiers prompts aux workflows que votre équipe fait tourner seule, c'est exactement ce que j'enseigne.</p>
+        <a class="ret-btn ret-btn--primary ret-btn--md" href="/fr/#contact">Demander une formation <span class="ret-btn__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7"/><path d="M8 7h9v9"/></svg></span></a>
+      </div>
+    </div>
+  </div>
+</main>
+
+<footer class="footer footer--slim"><div class="footer__legal">
+    <span>RET Consulting SRL</span>
+    <a href="/legal/fr/">Mentions légales</a>
+    <a href="https://retconsulting.be/fr/">retconsulting.be</a>
+  </div></footer>
+
+<script>
+  // Scroll-reveal: fades/rises .reveal and .reveal-group elements into place once, on first intersect
+  (function () {
+    if (!document.documentElement.classList.contains('reveal-on')) return;
+    var els = document.querySelectorAll('.reveal,.reveal-group');
+    if (!els.length) return;
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        if (!entry.isIntersecting) return;
+        var el = entry.target;
+        el.style.willChange = 'opacity,transform';
+        el.classList.add('is-in');
+        el.addEventListener('transitionend', function h() { el.style.willChange = ''; el.removeEventListener('transitionend', h); });
+        io.unobserve(el);
+      });
+    }, { threshold: 0, rootMargin: '0px 0px -12% 0px' });
+    els.forEach(function (el) { io.observe(el); });
+  })();
+</script>
+<script>
+(function () {
+  if (!matchMedia('(hover: hover) and (pointer: fine)').matches) return;
+  if (matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  var el = null, raf = 0, ev = null;
+  function reset(n) { if (n) { n.style.setProperty('--rtx', '0deg'); n.style.setProperty('--rty', '0deg'); } }
+  function apply() {
+    raf = 0;
+    if (!el || !ev) return;
+    var r = el.getBoundingClientRect();
+    var amp = parseFloat(getComputedStyle(el).getPropertyValue('--tilt-amp')) || 2;
+    var px = (ev.clientX - r.left) / r.width - 0.5;
+    var py = (ev.clientY - r.top) / r.height - 0.5;
+    el.style.setProperty('--rtx', (py * 2 * amp).toFixed(2) + 'deg');
+    el.style.setProperty('--rty', (px * -2 * amp).toFixed(2) + 'deg');
+  }
+  document.addEventListener('pointermove', function (e) {
+    var t = e.target.closest ? e.target.closest('[data-tilt]') : null;
+    if (t && t.classList.contains('is-lifted')) t = null;
+    if (t !== el) { reset(el); el = t; }
+    if (!el) return;
+    ev = e;
+    if (!raf) raf = requestAnimationFrame(apply);
+  }, { passive: true });
+  document.addEventListener('pointerout', function (e) {
+    if (el && !e.relatedTarget) { reset(el); el = null; }
+  }, { passive: true });
+})();
+</script>
+</body>
+</html>

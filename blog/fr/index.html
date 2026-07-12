@@ -1,0 +1,155 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
+<meta name="format-detection" content="telephone=no"/>
+<title>Blog · Notes de terrain produit &amp; IA · RET Consulting</title>
+<meta name="description" content="Le produit et l'IA générative en langage clair, par Redha Etbaz."/>
+<meta name="author" content="RET Consulting SRL"/>
+<link rel="canonical" href="https://retconsulting.be/blog/fr/"/>
+<link rel="alternate" hreflang="en" href="https://retconsulting.be/blog/"/>
+<link rel="alternate" hreflang="fr" href="https://retconsulting.be/blog/fr/"/>
+<link rel="alternate" hreflang="x-default" href="https://retconsulting.be/blog/"/>
+<meta property="og:type" content="website"/>
+<meta property="og:site_name" content="RET Consulting"/>
+<meta property="og:locale" content="fr_BE"/>
+<meta property="og:title" content="Blog · Notes de terrain produit &amp; IA · RET Consulting"/>
+<meta property="og:description" content="Le produit et l'IA générative en langage clair, par Redha Etbaz."/>
+<meta property="og:url" content="https://retconsulting.be/blog/fr/"/>
+<meta property="og:image" content="https://retconsulting.be/assets/icon-512.png"/>
+<meta property="og:image:type" content="image/png"/>
+<meta property="og:image:width" content="512"/>
+<meta property="og:image:height" content="512"/>
+<meta property="og:image:alt" content="Logo RET Consulting"/>
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:image:alt" content="Logo RET Consulting"/>
+<meta name="theme-color" content="#F4F4F7"/>
+<link rel="icon" href="/assets/logo-glyph.svg"/>
+<link rel="icon" href="/assets/logo-glyph-dark.svg" media="(prefers-color-scheme: dark)"/>
+<link rel="apple-touch-icon" href="/assets/apple-touch-icon.png"/>
+<script>if('IntersectionObserver' in window && !matchMedia('(prefers-reduced-motion:reduce)').matches){document.documentElement.classList.add('reveal-on');}</script>
+<link rel="stylesheet" href="/assets/ds.css?v=20260711f"/>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@graph":[{"@type":"Blog","@id":"https://retconsulting.be/blog/fr/","url":"https://retconsulting.be/blog/fr/","name":"Blog RET Consulting","description":"Le produit et l'IA générative en langage clair, par Redha Etbaz.","inLanguage":"fr","publisher":{"@type":"Organization","name":"RET Consulting","logo":{"@type":"ImageObject","url":"https://retconsulting.be/assets/icon-512.png"}},"blogPost":[{"@type":"BlogPosting","headline":"Prompt → Context → Harness → Loops","url":"https://retconsulting.be/blog/prompt-context-harness-loops/fr/","datePublished":"2026-07-11"}]},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Accueil","item":"https://retconsulting.be/fr/"},{"@type":"ListItem","position":2,"name":"Blog","item":"https://retconsulting.be/blog/fr/"}]}]}
+</script>
+</head>
+<body class="site">
+<a class="skip-link" href="#main">Aller au contenu</a>
+
+<header class="subhead"><div class="subhead__inner">
+    <a class="nav__brand" href="/fr/" aria-label="RET Consulting, accueil"><img class="nav__brand-glyph" src="/assets/logo-mark.svg" alt=""/><span class="nav__brand-wordmark"><span class="w">RET</span><span class="d">Consulting</span></span></a>
+    <div class="subhead__right">
+      <div class="langtoggle" role="group" aria-label="Language / Langue">
+        <a class="langtoggle__opt" href="/blog/" hreflang="en" lang="en">EN</a>
+        <a class="langtoggle__opt is-active" href="/blog/fr/" hreflang="fr" lang="fr" aria-current="true">FR</a>
+      </div>
+      <a class="subhead__back" href="/fr/"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5"/><path d="M11 18l-6-6 6-6"/></svg>Retour au site</a>
+    </div>
+  </div></header>
+
+<main id="main" class="prose-page" tabindex="-1">
+  <div class="blogwrap">
+    <div class="blogwrap__head reveal-group">
+      <span class="ret-tag">[BLOG]</span>
+      <h1 class="blogwrap__title">Notes de terrain.</h1>
+      <p class="blogwrap__lead">Le produit et l'IA, expliqués comme je les explique à mes clients : simplement, compromis compris.</p>
+    </div>
+
+    <div class="bloggrid reveal-group">
+      <a class="bpost reveal" data-tilt href="/blog/prompt-context-harness-loops/fr/">
+        <div class="bpost__cover">
+          <svg viewBox="0 0 480 320" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+            <g fill="none" stroke="#3F3F46" stroke-width="1.5">
+              <rect x="150" y="105" width="180" height="110" rx="26"/>
+              <rect x="110" y="75" width="260" height="170" rx="34"/>
+              <rect x="70" y="45" width="340" height="230" rx="42"/>
+              <rect x="30" y="15" width="420" height="290" rx="50" stroke="#B07D54" stroke-width="1.8"/>
+            </g>
+            <g font-family="IBM Plex Mono, monospace" font-size="10" letter-spacing="1.5" fill="#646470">
+              <text x="240" y="166" text-anchor="middle">PROMPT</text>
+              <text x="240" y="96" text-anchor="middle">CONTEXT</text>
+              <text x="240" y="66" text-anchor="middle">HARNESS</text>
+              <text x="240" y="36" text-anchor="middle" fill="#855B3B">LOOPS</text>
+            </g>
+            <rect x="234" y="299" width="11" height="11" transform="rotate(45 240 304.5)" fill="#B07D54"/>
+          </svg>
+        </div>
+        <div class="bpost__body">
+          <p class="bpost__meta"><time datetime="2026-07-11">2026-07-11</time> · 5 MIN DE LECTURE · PRODUIT &amp; IA</p>
+          <h2 class="bpost__title">Prompt → Context → Harness → Loops</h2>
+          <p class="bpost__excerpt">Prompt, contexte, harnais, boucles : le secteur empile un mot nouveau chaque trimestre. Voici toute l'échelle en langage clair, et ce que ça change pour votre équipe.</p>
+          <span class="bpost__more">Lire l'article <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7"/><path d="M8 7h9v9"/></svg></span>
+        </div>
+      </a>
+
+      <div class="bloggrid__soon">
+        <div class="bpost bpost--soon">
+          <p class="bpost__meta">BIENTÔT</p>
+          <p class="bpost__title">Des workflows agentiques en vraie livraison</p>
+        </div>
+        <div class="bpost bpost--soon">
+          <p class="bpost__meta">BIENTÔT</p>
+          <p class="bpost__title">Apprendre aux non-développeurs à piloter des agents</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</main>
+
+<footer class="footer footer--slim"><div class="footer__legal">
+    <span>RET Consulting SRL</span>
+    <a href="/legal/fr/">Mentions légales</a>
+    <a href="https://retconsulting.be/fr/">retconsulting.be</a>
+  </div></footer>
+
+<script>
+  // Scroll-reveal: fades/rises .reveal and .reveal-group elements into place once, on first intersect
+  (function () {
+    if (!document.documentElement.classList.contains('reveal-on')) return;
+    var els = document.querySelectorAll('.reveal,.reveal-group');
+    if (!els.length) return;
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        if (!entry.isIntersecting) return;
+        var el = entry.target;
+        el.style.willChange = 'opacity,transform';
+        el.classList.add('is-in');
+        el.addEventListener('transitionend', function h() { el.style.willChange = ''; el.removeEventListener('transitionend', h); });
+        io.unobserve(el);
+      });
+    }, { threshold: 0, rootMargin: '0px 0px -12% 0px' });
+    els.forEach(function (el) { io.observe(el); });
+  })();
+</script>
+<script>
+(function () {
+  if (!matchMedia('(hover: hover) and (pointer: fine)').matches) return;
+  if (matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  var el = null, raf = 0, ev = null;
+  function reset(n) { if (n) { n.style.setProperty('--rtx', '0deg'); n.style.setProperty('--rty', '0deg'); } }
+  function apply() {
+    raf = 0;
+    if (!el || !ev) return;
+    var r = el.getBoundingClientRect();
+    var amp = parseFloat(getComputedStyle(el).getPropertyValue('--tilt-amp')) || 2;
+    var px = (ev.clientX - r.left) / r.width - 0.5;
+    var py = (ev.clientY - r.top) / r.height - 0.5;
+    el.style.setProperty('--rtx', (py * 2 * amp).toFixed(2) + 'deg');
+    el.style.setProperty('--rty', (px * -2 * amp).toFixed(2) + 'deg');
+  }
+  document.addEventListener('pointermove', function (e) {
+    var t = e.target.closest ? e.target.closest('[data-tilt]') : null;
+    if (t && t.classList.contains('is-lifted')) t = null;
+    if (t !== el) { reset(el); el = t; }
+    if (!el) return;
+    ev = e;
+    if (!raf) raf = requestAnimationFrame(apply);
+  }, { passive: true });
+  document.addEventListener('pointerout', function (e) {
+    if (el && !e.relatedTarget) { reset(el); el = null; }
+  }, { passive: true });
+})();
+</script>
+</body>
+</html>
