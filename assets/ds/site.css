@@ -1438,7 +1438,7 @@ html.reveal-on .bpost:hover { transform: translateY(var(--card-lift)) perspectiv
 /* ---------- Blog article ---------- */
 /* Head (tag/H1/meta/lead) and body copy share the narrow prose column; FIG_B1 sits
    in its own wider wrap so the figure can breathe past the 65ch text measure. */
-.article-head { max-width: var(--container-narrow); margin-inline: auto; padding: clamp(28px,4vw,48px) var(--gutter) 0; }
+.article-head { max-width: 660px; margin-inline: auto; padding: clamp(28px,4vw,48px) var(--gutter) 0; }
 .article-head__title { font-family: var(--font-display); font-weight: 700; font-size: clamp(2rem,1.2rem+2.6vw,2.9rem); letter-spacing: -.03em; line-height: 1.08; color: var(--ink); margin: 14px 0 0; text-wrap: balance; }
 .article-head__sub { font-family: var(--font-display); font-weight: 600; font-size: clamp(1.1rem, .95rem + .8vw, 1.4rem); letter-spacing: -.01em; line-height: 1.2; color: var(--ink-2); margin: 12px 0 0; }
 .article-head__meta { font-family: var(--font-mono); font-size: 11.5px; letter-spacing: .12em; text-transform: uppercase; color: var(--ink-3); margin: 16px 0 0; }
@@ -1482,7 +1482,7 @@ html.reveal-on .blogfig[data-tilt]:hover { transform: perspective(1100px) rotate
 .dial__orbit--ccw .dial__sat { animation-direction: normal; }
 @media (prefers-reduced-motion: reduce) { .dial__orbit, .dial__sat { animation: none; } }
 
-.article-wrap { max-width: var(--container-narrow); margin-inline: auto; padding: clamp(8px,2vw,16px) var(--gutter) clamp(64px,7vw,96px); }
+.article-wrap { max-width: 660px; margin-inline: auto; padding: clamp(8px,2vw,16px) var(--gutter) clamp(64px,7vw,96px); }
 .article__kicker { display: block; font-family: var(--font-mono); font-size: 11px; letter-spacing: .14em; text-transform: uppercase; color: var(--accent); margin-bottom: 6px; }
 .article h2 { font-family: var(--font-display); font-weight: 700; font-size: 1.35rem; letter-spacing: -.01em; line-height: 1.25; color: var(--ink); margin: clamp(36px,4vw,52px) 0 0; }
 .article p { font-family: var(--font-body); font-size: 1.05rem; line-height: 1.7; color: var(--ink-2); max-width: 65ch; margin: 14px 0 0; }
