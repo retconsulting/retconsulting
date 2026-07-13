@@ -10,3 +10,6 @@ OVERNIGHT_LOG.md
 
 # product backlog (local-only: internal planning, must never be served on the public site)
 backlog.json
+
+# delegated-work planning notes (local-only, never commit)
+plans/
