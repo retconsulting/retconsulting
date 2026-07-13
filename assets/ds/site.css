@@ -1507,6 +1507,20 @@ html.reveal-on .blogfig[data-tilt]:hover { transform: perspective(1100px) rotate
 .anatfig__kname { font-family: var(--font-mono); font-size: 10px; letter-spacing: .1em; text-transform: uppercase; color: var(--ink); }
 .anatfig__kname--fb { color: var(--cognac-text); }
 
+/* Triggers figure: the four ways a loop wakes up */
+.trigfig { margin: 22px 0 0; max-width: 65ch; border: 1px solid var(--line); border-radius: var(--r-lg); box-shadow: var(--shadow-sm); overflow: hidden; background: var(--surface); }
+.trigfig__bar { display: flex; align-items: center; justify-content: space-between; gap: 12px; padding: 10px 16px; background: var(--canvas); border-bottom: 1px solid var(--line); }
+.trigfig__title { font-family: var(--font-mono); font-size: 10px; letter-spacing: .14em; text-transform: uppercase; color: var(--ink-2); }
+.trigfig__meta { font-family: var(--font-mono); font-size: 9px; letter-spacing: .1em; text-transform: uppercase; color: var(--cognac-text); }
+.trigfig__grid { display: grid; grid-template-columns: repeat(4,1fr); gap: 1px; background: var(--line); }
+.trigfig__item { background: var(--surface); padding: 16px 15px; display: flex; flex-direction: column; align-items: flex-start; }
+.trigfig__ico { flex: none; width: 34px; height: 34px; display: grid; place-items: center; border-radius: 50%; background: var(--cognac-wash); border: 1px solid var(--border-accent); color: var(--accent); margin-bottom: 10px; }
+.trigfig__ico svg { width: 17px; height: 17px; display: block; }
+.trigfig__k { font-family: var(--font-mono); font-size: 11px; letter-spacing: .08em; text-transform: uppercase; color: var(--ink); }
+.trigfig__t { margin-top: 3px; font-family: var(--font-mono); font-size: 8.5px; letter-spacing: .05em; text-transform: uppercase; color: var(--cognac-text); }
+.article .trigfig__v { margin: 8px 0 0; max-width: none; font-family: var(--font-body); font-size: .8rem; line-height: 1.42; color: var(--ink-2); }
+@media (max-width: 640px) { .trigfig__grid { grid-template-columns: 1fr 1fr; } }
+@media (max-width: 380px) { .trigfig__grid { grid-template-columns: 1fr; } }
 .article__six { display: grid; grid-template-columns: repeat(3,1fr); gap: 10px; margin: 22px 0 0; padding: 0; list-style: none; max-width: 65ch; }
 .article__six li { background: var(--surface); border: 1px solid var(--line); border-radius: var(--r-md); padding: 14px 16px; }
 .article__six .six__head { display: flex; align-items: center; gap: 7px; margin-bottom: 6px; }
@@ -1515,13 +1529,12 @@ html.reveal-on .blogfig[data-tilt]:hover { transform: perspective(1100px) rotate
 .article__six .k { display: block; font-family: var(--font-mono); font-size: 10px; letter-spacing: .1em; text-transform: uppercase; color: var(--cognac-text); margin-bottom: 6px; }
 .article__six .six__head .k { margin-bottom: 0; }
 .article__six .v { display: block; font-family: var(--font-body); font-size: .83rem; line-height: 1.4; color: var(--ink-2); }
-/* Continuous cognac spotlight sweeping the six parts one at a time, in reading order */
-.article__six li { animation: sixtint 7.2s var(--ease-soft) infinite; }
+/* Continuous cognac spotlight sweeping the five parts one at a time, in reading order */
+.article__six li { animation: sixtint 6s var(--ease-soft) infinite; }
 .article__six li:nth-child(2) { animation-delay: 1.2s; }
 .article__six li:nth-child(3) { animation-delay: 2.4s; }
 .article__six li:nth-child(4) { animation-delay: 3.6s; }
 .article__six li:nth-child(5) { animation-delay: 4.8s; }
-.article__six li:nth-child(6) { animation-delay: 6s; }
 @keyframes sixtint {
   0% { background-color: var(--surface); border-color: var(--line); box-shadow: none; }
   3%, 15% { background-color: var(--cognac-wash); border-color: var(--border-accent); box-shadow: var(--shadow-sm); }
