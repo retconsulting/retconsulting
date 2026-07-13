@@ -189,17 +189,17 @@
           <li><span class="ctxwin__k">Conversation</span><span class="ctxwin__v">Every turn so far, your messages and its replies.</span></li>
           <li><span class="ctxwin__k">Documents</span><span class="ctxwin__v">Files, records and notes you attach for reference.</span></li>
           <li><span class="ctxwin__k">Retrieved</span><span class="ctxwin__v">Live search results and records the model pulls in.</span></li>
-          <li><span class="ctxwin__k ctxwin__k--badge" data-tip="Model Context Protocol: an open standard that lets an assistant connect to external tools, data and services in a uniform way." tabindex="0" aria-label="MCP, Model Context Protocol: an open standard that lets an assistant connect to external tools, data and services in a uniform way.">MCP</span><span class="ctxwin__v">Tools and services reached through a standard protocol.</span></li>
+          <li><span class="ctxwin__k">Tool results</span><span class="ctxwin__v">What your tools and services hand back when it calls them.</span></li>
           <li><span class="ctxwin__k">Your question</span><span class="ctxwin__v">The specific request the model must act on now.</span></li>
         </ul>
       </figure>
 
-      <p>What makes this powerful is that the assistant fills that space itself, on demand: it opens your files, queries a database, searches the web, calls your business tools. Ask what your main competitor announced this week and a prompt alone cannot answer, because the model's knowledge stops at its <span class="term" data-tip="The cut-off point of what the model learned. It knows nothing that happened after it." tabindex="0" aria-label="Training date: the cut-off point of what the model learned; it knows nothing that happened after it.">training date</span>. So it searches, reads and selects what matters before it replies. That is context engineering.</p>
+      <p>What makes this powerful is that the assistant fills that space itself, on demand: it opens your files, queries a database, searches the web, calls your business tools. Ask what your main competitor announced this week and a prompt alone cannot answer, because the model's knowledge stops at its <span class="term" data-tip="The cut-off point of what the model learned. It knows nothing that happened after it." tabindex="0" aria-label="Knowledge cutoff: the cut-off point of what the model learned; it knows nothing that happened after it.">knowledge cutoff</span>. So it searches, reads and selects what matters before it replies. That is context engineering.</p>
 
       <figure class="promptfig reveal" role="group" aria-label="The same question answered without and with fetched context">
         <div class="promptfig__row">
           <span class="promptfig__tag">Prompt alone</span>
-          <p class="promptfig__prompt promptfig__prompt--dim">&ldquo;That happened after my training date, so I can only guess.&rdquo;</p>
+          <p class="promptfig__prompt promptfig__prompt--dim">&ldquo;That happened after my knowledge cutoff, so I can only guess.&rdquo;</p>
         </div>
         <div class="promptfig__row promptfig__row--eng">
           <span class="promptfig__versus">Versus</span>
@@ -214,7 +214,7 @@
       <aside class="article__callout"><span class="article__callout-mark"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 7.6h.01"/><path d="M12 11v5.5"/></svg></span><p>Notice what just appeared: a loop. Search, read, decide whether that is enough, search again. The assistant runs it on its own, until it judges the context sufficient.</p></aside>
 
       <h2><span class="article__kicker">03 / HARNESS ENGINEERING</span>Someone keeps the plan</h2>
-      <p>Context has a hard limit: the window fills up. On any job longer than a few minutes, the assistant runs out of room and starts compressing its own memory to make space. Details leak at every pass, like a colleague taking notes of their notes until the nuance is gone.</p>
+      <p>Context has a hard limit: the window only holds so much. Give the assistant a big enough job and it runs out of room, then starts compressing its own memory to make space. Details leak at every pass, like a colleague taking notes of their notes until the nuance is gone.</p>
       <p>The fix is to run the work from the outside. A <span class="term" data-tip="The software wrapped around the AI that holds the plan and feeds it one step at a time, so a long job never overflows its memory." tabindex="0" aria-label="Harness: the software wrapped around the AI that holds the plan and feeds it one step at a time, so a long job never overflows its memory.">harness</span> is the software wrapped around the assistant that does exactly this. It holds the plan, the to-do list and the progress in its own memory, outside the window. It hands the assistant one small step at a time with only the information that step needs, takes back the result, ticks it off, and moves to the next. The assistant never has to hold the whole job in its head.</p>
 
       <figure class="harnessfig reveal" role="group" aria-label="The harness holds the whole plan and ticks it off one step at a time, feeding the assistant only the current step">
@@ -257,7 +257,7 @@
       <h2><span class="article__kicker">04 / LOOP ENGINEERING</span>Nobody presses the button</h2>
       <p>Look back at those three levels. Each one still starts with a person typing a request. Loop engineering removes that last dependency: the agent prompts itself. The change is one of stance. Instead of treating AI as a chatbot you talk to, you write it something closer to a job description, a set of instructions, a trigger that starts the work, and the tools to carry it out. Once it fires, the agent runs on its own, checks its progress, and decides the next step until the job is done.</p>
       <p>A concrete picture: the report you rebuild every week. Pull the latest figures from a few tools, reconcile them, flag anything odd, write a short summary for the team. A loop runs that whole chain on schedule, gathers the data, compares it with last week, drafts the summary, and leaves only the exceptions for you to judge. Repeat it across the small operations a business runs every day, and the gain is not a faster answer, it is work that no longer waits on you to begin. You review the outcome, not the keystrokes.</p>
-      <p>The first thing you design is the trigger, the reason the agent wakes up. Four kinds cover almost everything.</p>
+      <p>The first thing you design is the trigger, what makes the agent start a run. Three come from outside it; the fourth is the loop restarting itself until a goal is met.</p>
 
       <figure class="trigfig reveal" role="group" aria-label="Four ways a loop is triggered: a heartbeat checking in on a fast beat, a schedule at a set time, a hook fired by an outside event, and a goal it loops toward until it is met.">
         <div class="trigfig__bar"><span class="trigfig__title">How a loop wakes up</span><span class="trigfig__meta">Four triggers</span></div>
@@ -282,7 +282,7 @@
           </div>
           <div class="trigfig__item">
             <span class="trigfig__ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="8.5"/><circle cx="12" cy="12" r="4.5"/><circle cx="12" cy="12" r="1" fill="currentColor"/></svg></span>
-            <span class="trigfig__k">Goal</span>
+            <span class="trigfig__k">Goal-driven</span>
             <span class="trigfig__t">Until it's done</span>
             <span class="trigfig__v">Works toward a target, checks itself, and loops until it is met.</span>
           </div>
@@ -299,14 +299,14 @@
         <li><span class="six__head"><span class="six__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="6" r="2"/><circle cx="6" cy="18" r="2"/><circle cx="18" cy="18" r="2"/><path d="M12 8v4M12 12l-4.5 4M12 12l4.5 4"/></svg></span><span class="k">Sub-agents</span></span><span class="v">Temporary helpers it spins up for a sub-task, without derailing the main job.</span></li>
       </ul>
 
-      <p>The real power shows when loops stack. They are recursive: a scheduled loop can wake up, look at a large piece of work, and start several goal-driven loops for different parts of it. The agent becomes a manager, handing work to a temporary team of its own and waiting for each to report back: a loop that runs loops.</p>
+      <p>The real power shows when loops stack. They are <span class="term" data-tip="Self-repeating: a loop can spin up more loops, each able to do the same, nesting to any depth." tabindex="0" aria-label="Recursive: self-repeating; a loop can spin up more loops, each able to do the same, nesting to any depth.">recursive</span>: a scheduled loop can wake up, look at a large piece of work, and start several goal-driven loops for different parts of it. The agent becomes a manager, handing work to a temporary team of its own and waiting for each to report back: a loop that runs loops.</p>
 
-      <p>There is a catch. When you work with a model by hand, you can stop it the moment it drifts. A loop runs while you are not watching, so you cannot reach for the brakes, and a goal-driven loop judges its own success. Give it a vague definition of done and it will not know when to stop: it keeps guessing, failing, and looping, spending compute and budget until you step in. Precision is the price of automation.</p>
+      <p>There is a catch. When you work with a model by hand, you can stop it the moment it drifts. A loop runs while you are not watching, so you cannot reach for the brakes, and a goal-driven loop judges its own success. Give it a vague definition of done and it will not know when to stop: it keeps guessing, failing, and looping, running up the bill until you step in. Precision is the price of automation.</p>
 
       <h2><span class="article__kicker">ANATOMY</span>What every loop needs</h2>
       <p>You have now seen three loops in this guide: an assistant that searches until it has enough, a harness that works through a task list, an operation that rebuilds a report on its own each week. They do different jobs, yet every dependable loop is built from the same five parts, on the one running cycle below. Miss one, and the loop misbehaves.</p>
 
-      <figure class="anatfig reveal" role="group" aria-label="The anatomy of one loop: a trigger fires each run, a goal sets the target, the work-and-check loop corrects each result against the goal, a stop condition ends the run, and guardrails bound the whole loop.">
+      <figure class="anatfig reveal" role="group" aria-label="The anatomy of one loop: a trigger fires each run, a goal sets the target, feedback checks and corrects each result against the goal, a stop condition ends the run, and guardrails bound the whole loop.">
         <div class="anatfig__bar"><span class="anatfig__title">Anatomy of one loop</span><span class="anatfig__meta">Five parts, one mechanism</span></div>
         <div class="anatfig__stage">
           <svg class="anatfig__svg" viewBox="0 0 700 224" aria-hidden="true">
@@ -352,20 +352,20 @@
             <line x1="353" y1="153" x2="353" y2="145" stroke="#CBA588" stroke-width="1.1" stroke-dasharray="1.5 3"/>
             <circle cx="353" cy="165" r="10.5" fill="#FFFFFF" stroke="#B07D54" stroke-width="1.5"/>
             <text x="353" y="169.4" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="12" fill="#855B3B">3</text>
-            <text x="353" y="188" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="11.5" letter-spacing=".9" fill="#855B3B">LOOP</text>
+            <text x="353" y="188" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="10.5" letter-spacing=".5" fill="#855B3B">FEEDBACK</text>
           </svg>
         </div>
         <ul class="anatfig__key">
           <li><span class="anatfig__n">1</span><span class="anatfig__kname">Trigger</span></li>
           <li><span class="anatfig__n">2</span><span class="anatfig__kname">Goal</span></li>
-          <li><span class="anatfig__n anatfig__n--fb">3</span><span class="anatfig__kname anatfig__kname--fb">Loop</span></li>
+          <li><span class="anatfig__n anatfig__n--fb">3</span><span class="anatfig__kname anatfig__kname--fb">Feedback</span></li>
           <li><span class="anatfig__n">4</span><span class="anatfig__kname">Stop</span></li>
           <li><span class="anatfig__n">5</span><span class="anatfig__kname">Guardrails</span></li>
         </ul>
       </figure>
 
-      <p>It starts with a <span class="term" data-tip="What sets a loop running: a fixed schedule, an event, or a problem the system detects. Without it, the loop just waits for you." tabindex="0" aria-label="Trigger: what sets a loop running, whether a fixed schedule, an event, or a problem the system detects; without it the loop just waits for you.">trigger</span>: the reason each run begins, one of the four kinds above. Without one, the loop just waits for you to ask, the very dependence loop engineering set out to remove.</p>
-      <p>It also needs a <span class="term" data-tip="A loop's target and its definition of done. Without one, a loop cannot tell progress from motion." tabindex="0" aria-label="Goal: a loop's target and its definition of done; without one, a loop cannot tell progress from motion.">goal</span>, a target and a clear definition of done: send the weekly summary, make the tests pass, answer the question. Without a goal it cannot tell progress from motion, and it never knows when to stop.</p>
+      <p>It starts with a <span class="term" data-tip="What makes a loop start a run, so the work begins without a person asking." tabindex="0" aria-label="Trigger: what makes a loop start a run, so the work begins without a person asking.">trigger</span>: the reason each run begins, one of the four kinds above. Without one, the loop just waits for you to ask, the very dependence loop engineering set out to remove.</p>
+      <p>It also needs a <span class="term" data-tip="A loop's target and its definition of done. Without one, a loop cannot tell progress from motion." tabindex="0" aria-label="Goal: a loop's target and its definition of done; without one, a loop cannot tell progress from motion.">goal</span>, a target and a clear <span class="term" data-tip="The exact, checkable statement of what finished looks like, so a loop can tell done from not-done." tabindex="0" aria-label="Definition of done: the exact, checkable statement of what finished looks like, so a loop can tell done from not-done.">definition of done</span>: send the weekly summary, make the tests pass, answer the question. Without a goal it cannot tell progress from motion, and it never knows when to stop.</p>
       <p>Then it needs <span class="term" data-tip="A loop's own check of its result against the goal, used to decide what to do next." tabindex="0" aria-label="Feedback: a loop's own check of its result against the goal, used to decide what to do next.">feedback</span>: after each pass, the loop compares what it produced against that goal. This one choice matters more than any other. A <span class="term" data-tip="A loop that checks its own result and corrects course. Self-correcting, and safe to trust with real work." tabindex="0" aria-label="Closed loop: a loop that checks its own result and corrects course, self-correcting and safe to trust with real work.">closed loop</span> checks its own result and corrects course, like a thermostat that keeps reading the room and nudging the heating until it reaches the temperature you set. A closed loop is self-correcting, and it is the only kind to trust with real work. An <span class="term" data-tip="A loop that follows a fixed plan and never checks the result. Simpler, but it drifts from reality." tabindex="0" aria-label="Open loop: a loop that follows a fixed plan and never checks the result, simpler but it drifts from reality.">open loop</span> follows a fixed plan and never looks back, like a sprinkler on a timer that waters the garden whether or not it rained in the night. Open loops are simpler, and they drift the moment reality stops matching the plan.</p>
 
       <p>Next, a <span class="term" data-tip="The rule that ends a loop: goal reached, budget spent, no progress, or a person calls a halt." tabindex="0" aria-label="Stop condition: the rule that ends a loop, whether the goal is reached, a budget is spent, progress stalls, or a person calls a halt.">stop condition</span>: a rule for when to end. The goal is reached, a budget of time or attempts is spent, progress has stalled, or a person calls a halt. This is the brake, and after the last section you know why it matters: a loop that cannot stop itself is the one that runs away. Most of the worry about these systems is really the worry about a loop with no brake.</p>
