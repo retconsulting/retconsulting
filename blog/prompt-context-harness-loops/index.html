@@ -28,7 +28,7 @@
 <link rel="icon" href="/assets/logo-glyph-dark.svg" media="(prefers-color-scheme: dark)"/>
 <link rel="apple-touch-icon" href="/assets/apple-touch-icon.png"/>
 <script>if('IntersectionObserver' in window && !matchMedia('(prefers-reduced-motion:reduce)').matches){document.documentElement.classList.add('reveal-on');}</script>
-<link rel="stylesheet" href="/assets/ds.css?v=20260713d"/>
+<link rel="stylesheet" href="/assets/ds.css?v=20260713e"/>
 <script type="application/ld+json">
 {"@context":"https://schema.org","@graph":[{"@type":"BlogPosting","headline":"From Prompt to Loop Engineering, a simple guide for the non-coders and knowledge workers","datePublished":"2026-07-11","dateModified":"2026-07-11","inLanguage":"en","articleSection":"AI","keywords":"AI, Explainer","author":{"@type":"Person","name":"Redha Etbaz","url":"https://retconsulting.be/"},"publisher":{"@type":"Organization","name":"RET Consulting","logo":{"@type":"ImageObject","url":"https://retconsulting.be/assets/icon-512.png"}},"image":"https://retconsulting.be/assets/icon-512.png","description":"From prompt engineering to loop engineering: the whole ladder in plain language, and what it changes for your team.","mainEntityOfPage":{"@type":"WebPage","@id":"https://retconsulting.be/blog/prompt-context-harness-loops/"},"url":"https://retconsulting.be/blog/prompt-context-harness-loops/"},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://retconsulting.be/"},{"@type":"ListItem","position":2,"name":"Blog","item":"https://retconsulting.be/blog/"},{"@type":"ListItem","position":3,"name":"From Prompt to Loop Engineering","item":"https://retconsulting.be/blog/prompt-context-harness-loops/"}]}]}
 </script>
@@ -50,7 +50,7 @@
     <p class="article-head__sub">Prompt → Context → Harness → Loops</p>
     <div class="article-head__tax"><span class="cat cat--subject" data-axis="subject">AI</span><span class="cat cat--type" data-axis="type">Explainer</span></div>
     <p class="article-head__meta"><time datetime="2026-07-11">2026-07-11</time> · 5 MIN READ</p>
-    <p class="article-head__lead">Prompt, context, harness, loop: four terms for how we work with AI today, each a layer built on the one before, not rival trends to choose between. Read together, they explain how an assistant went from answering a single question to carrying out a whole task on its own. Knowing where a piece of work sits on that ladder is what lets you decide what to hand to AI, how far to let it run, and where a person still needs to stay in charge. Here is the ladder from the bottom up, in plain language with no code, the way I explain it in my trainings.</p>
+    <p class="article-head__lead">Prompt, context, harness, loop: four words for how we work with AI, each building on the one before. Read as one ladder, not four trends to choose between, they trace the way an assistant went from answering a single question to carrying out a whole task on its own. Knowing where a piece of work sits on that ladder is what lets you decide what to hand to AI, how far to let it run, and where a person still needs to stay in charge. Here is the ladder from the bottom up, in plain language with no code, the way I explain it in my trainings.</p>
   </div>
 
   <div class="blogfig-wrap">
@@ -211,7 +211,7 @@
         </div>
       </figure>
 
-      <aside class="article__callout"><span class="article__callout-mark"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 12a9 9 0 0 1 15-6.7L21 8"/><path d="M21 3v5h-5"/><path d="M21 12a9 9 0 0 1-15 6.7L3 16"/><path d="M3 21v-5h5"/></svg></span><p>Notice what just appeared: a loop. Search, read, decide whether that is enough, search again. The assistant runs it on its own, until it judges the context sufficient.</p></aside>
+      <aside class="article__callout"><span class="article__callout-mark"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 7.6h.01"/><path d="M12 11v5.5"/></svg></span><p>Notice what just appeared: a loop. Search, read, decide whether that is enough, search again. The assistant runs it on its own, until it judges the context sufficient.</p></aside>
 
       <h2><span class="article__kicker">03 / HARNESS ENGINEERING</span>Someone keeps the plan</h2>
       <p>Context has a hard limit: the window fills up. On any job longer than a few minutes, the assistant runs out of room and starts compressing its own memory to make space. Details leak at every pass, like a colleague taking notes of their notes until the nuance is gone.</p>
@@ -252,7 +252,7 @@
       </figure>
 
       <p>Think of turn-by-turn directions. You never hold the whole route in your head: the GPS keeps it, gives you one turn at a time, and always knows where you are and what comes next. Ask an <span class="term" data-tip="An AI that can act on its own: use tools and take steps, not just answer." tabindex="0" aria-label="Agent: an AI that can act on its own, using tools and taking steps, not just answering.">agent</span> to rebuild a large website end to end, and the harness is that GPS, taking the model from the first step to the last without ever losing its place.</p>
-      <aside class="article__callout"><span class="article__callout-mark"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 12a9 9 0 0 1 15-6.7L21 8"/><path d="M21 3v5h-5"/><path d="M21 12a9 9 0 0 1-15 6.7L3 16"/><path d="M3 21v-5h5"/></svg></span><p>Second loop, one level up: task after task, until the list is empty.</p></aside>
+      <aside class="article__callout"><span class="article__callout-mark"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 7.6h.01"/><path d="M12 11v5.5"/></svg></span><p>Second loop, one level up: task after task, until the list is empty.</p></aside>
 
       <h2><span class="article__kicker">04 / LOOP ENGINEERING</span>Nobody presses the button</h2>
       <p>Look back at those three levels. Each one still starts with a human typing a request. Loop engineering removes that last dependency: the system prompts itself, on a schedule, on an event, on a detected problem.</p>
