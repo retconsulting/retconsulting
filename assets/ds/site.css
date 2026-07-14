@@ -493,6 +493,8 @@ html.flip-open .flipbrand { opacity: 1; transform: translate(-50%, 0); }
 html.reveal-on .expgrid.is-in > .expgrid__arrow { transition-delay: calc(var(--reveal-stagger) * 5); }
 
 .cases__note { max-width: var(--container); margin: 22px auto 0; padding-inline: var(--gutter); font-family: var(--font-mono); font-size: 11px; letter-spacing: .04em; color: var(--ink-2); text-align: center; }
+.cases__note a { color: var(--cognac-text); text-decoration: none; border-bottom: 1px solid var(--border-accent); transition: color var(--dur-base) var(--ease-out); }
+.cases__note a:hover, .cases__note a:focus-visible { color: var(--cognac-deep); }
 
 /* ---------- About ---------- */
 .about { max-width: var(--container); margin-inline: auto; padding-inline: var(--gutter);
@@ -1108,8 +1110,52 @@ html:not(.nav-stuck) .scrim-top { opacity: 0; }
 @media (max-width: 680px) { .tl__sectors { flex-wrap: wrap; justify-content: center; gap: 12px 22px; } .tl__sector { border-left: none !important; padding-inline: 0; } }
 @media print { .tl__scroll { overflow: visible; } .timeline { break-inside: avoid; } .tl__pops { display: none !important; } }
 
+/* ---------- Portfolio gateway (home CTA into /portfolio/) ---------- */
+/* One wide clickable panel that closes the Experience beat and sends to the portfolio
+   page. Same language as the cards: glass surface, dot-grid, cognac on hover. The whole
+   panel is the link; the "See portfolio" pill is a visual affordance (not nested <a>).
+   A fanned stack of frames on the right reads as "several projects inside" and spreads
+   on hover. */
+.pfcta-wrap { max-width: var(--container); margin-inline: auto; padding-inline: var(--gutter); }
+.pfcta { position: relative; overflow: hidden; display: grid; grid-template-columns: 1fr auto; gap: clamp(28px, 4vw, 64px);
+  align-items: center; padding: clamp(30px, 4vw, 52px) clamp(28px, 4vw, 56px);
+  border-radius: var(--r-xl); background: var(--glass-fill-deep); border: 1px solid var(--glass-border);
+  box-shadow: var(--shadow-md); color: inherit; text-decoration: none;
+  transition: transform var(--dur-base) var(--ease-out), box-shadow var(--dur-base) var(--ease-out), border-color var(--dur-base) var(--ease-out); }
+.pfcta::before { content: ""; position: absolute; inset: 0; z-index: 0; pointer-events: none;
+  background-image: var(--dot-grid); background-size: var(--dot-size) var(--dot-size); opacity: .6;
+  -webkit-mask: radial-gradient(120% 140% at 100% 0, #000 20%, transparent 68%);
+          mask: radial-gradient(120% 140% at 100% 0, #000 20%, transparent 68%); }
+.pfcta > * { position: relative; z-index: 1; }
+.pfcta:hover, .pfcta:focus-visible { transform: translateY(var(--card-lift)); box-shadow: var(--shadow-lg); border-color: var(--border-accent); }
+.pfcta:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
+.pfcta__line { font-family: var(--font-display); font-weight: 640; font-size: clamp(1.4rem, 1rem + 1.5vw, 2rem);
+  line-height: 1.12; letter-spacing: -.02em; color: var(--ink); margin: 14px 0 0; max-width: 22ch; text-wrap: balance; }
+.pfcta__go { display: inline-flex; align-items: center; gap: 9px; margin-top: 24px; padding: 11px 20px;
+  border-radius: var(--r-pill); background: var(--surface); border: 1px solid var(--border-strong);
+  font-family: var(--font-body); font-weight: 600; font-size: .95rem; color: var(--ink); box-shadow: var(--shadow-sm);
+  transition: background var(--dur-base) var(--ease-out), color var(--dur-base) var(--ease-out), border-color var(--dur-base) var(--ease-out); }
+.pfcta__go svg { width: 16px; height: 16px; stroke-width: 1.6; transition: transform var(--dur-base) var(--ease-out); }
+.pfcta:hover .pfcta__go, .pfcta:focus-visible .pfcta__go { background: var(--accent-btn); border-color: transparent; color: #fff; }
+.pfcta:hover .pfcta__go svg, .pfcta:focus-visible .pfcta__go svg { transform: translate(3px, -3px); }
+/* fanned deck of project frames */
+.pfcta__stack { position: relative; width: 150px; height: 116px; flex: none; }
+@media (hover: none) { .pfcta__stack { display: none; } }
+.pfcta__frame { position: absolute; inset: 0; border-radius: 13px; background: var(--surface);
+  border: 1px solid var(--border-strong); box-shadow: var(--shadow-sm); transform-origin: 80% 120%;
+  transition: transform var(--dur-slow) var(--ease-out), box-shadow var(--dur-slow) var(--ease-out); }
+.pfcta__frame--3 { transform: rotate(-13deg) translateX(-16px); opacity: .7; }
+.pfcta__frame--2 { transform: rotate(-6deg) translateX(-8px); opacity: .85; }
+.pfcta__frame--1 { display: flex; flex-direction: column; gap: 7px; padding: 14px; }
+.pfcta__frame--1 .b { height: 7px; border-radius: 4px; background: var(--canvas-sunken); }
+.pfcta__frame--1 .b--accent { height: 9px; width: 46%; background: linear-gradient(90deg, var(--cognac-soft), var(--accent)); }
+.pfcta__frame--1 .b--sm { width: 62%; }
+.pfcta:hover .pfcta__frame--2, .pfcta:focus-visible .pfcta__frame--2 { transform: rotate(-9deg) translateX(-16px) translateY(-3px); box-shadow: var(--shadow-md); }
+.pfcta:hover .pfcta__frame--3, .pfcta:focus-visible .pfcta__frame--3 { transform: rotate(-19deg) translateX(-30px) translateY(-2px); }
+@media (max-width: 640px) { .pfcta { grid-template-columns: 1fr; } .pfcta__stack { display: none; } }
+
 /* ---------- Featured project (dueday) ---------- */
-/* The #work section leads with one full-width showcase (this block) instead of a carousel;
+/* The portfolio page leads with one full-width showcase (this block) instead of a carousel;
    the two "coming soon" placeholders (still .pcard/.pcard--soon) sit in a row underneath. */
 .fproj-wrap { max-width: var(--container); margin-inline: auto; padding-inline: var(--gutter); }
 .fproj { max-width: var(--container); margin-inline: auto; padding: clamp(24px, 3vw, 40px);

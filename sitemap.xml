@@ -16,6 +16,20 @@
     <xhtml:link rel="alternate" hreflang="x-default" href="https://retconsulting.be/"/>
   </url>
   <url>
+    <loc>https://retconsulting.be/portfolio/</loc>
+    <lastmod>2026-07-14</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://retconsulting.be/portfolio/"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://retconsulting.be/portfolio/fr/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://retconsulting.be/portfolio/"/>
+  </url>
+  <url>
+    <loc>https://retconsulting.be/portfolio/fr/</loc>
+    <lastmod>2026-07-14</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://retconsulting.be/portfolio/"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://retconsulting.be/portfolio/fr/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://retconsulting.be/portfolio/"/>
+  </url>
+  <url>
     <loc>https://retconsulting.be/legal/</loc>
     <lastmod>2026-06-14</lastmod>
     <xhtml:link rel="alternate" hreflang="en" href="https://retconsulting.be/legal/"/>

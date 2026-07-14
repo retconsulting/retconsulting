@@ -31,7 +31,7 @@
 <link rel="manifest" href="/site.webmanifest"/>
 <meta name="apple-mobile-web-app-title" content="RET"/>
 <script>if('IntersectionObserver' in window && !matchMedia('(prefers-reduced-motion:reduce)').matches){document.documentElement.classList.add('reveal-on');}</script>
-<link rel="stylesheet" href="/assets/ds.css?v=20260714g"/>
+<link rel="stylesheet" href="/assets/ds.css?v=20260714h"/>
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -77,7 +77,7 @@
       <a class="nav__link" href="#about">Qui je suis</a>
       <a class="nav__link" href="#services">Ce que je fais</a>
       <a class="nav__link" href="#experience">Expérience</a>
-      <a class="nav__link" href="#work">Réalisations</a>
+      <a class="nav__link" href="/portfolio/fr/">Réalisations</a>
       <a class="nav__link" href="/blog/">Blog</a>
     </nav>
     <span class="nav__spacer"></span>
@@ -281,7 +281,7 @@
               <li>Ce site : conçu, écrit et construit à la main, bilingue, rapide et sans dépendance.</li>
               <li>La même discipline que mes missions d'entreprise : un périmètre clair, un logiciel qui fonctionne, une passation propre.</li>
             </ul>
-            <p class="svc__backfoot"><a href="#work">Voir le portfolio</a></p>
+            <p class="svc__backfoot"><a href="/portfolio/fr/">Voir le portfolio</a></p>
           </div>
         </div>
       </article>
@@ -601,78 +601,21 @@
     </div>
     <p class="cases__note">Les noms des clients sont couverts par des accords de confidentialité. Détails sur demande.</p>
   </section>
-  <section class="section" id="work">
-    <div class="section__head reveal-group">
-      <span class="ret-tag">[RÉALISATIONS]</span>
-      <h2 class="section__title">Des produits menés de l'idée au lancement.</h2>
-      <p class="section__lead">Cadré, conçu, développé et livré de bout en bout.</p>
+  <section class="section">
+    <div class="pfcta-wrap reveal-group">
+      <a class="pfcta reveal" href="/portfolio/fr/">
+        <div>
+          <span class="ret-tag">[RÉALISATIONS]</span>
+          <p class="pfcta__line">Des produits et des fonctionnalités que j'ai conçus, développés et livrés.</p>
+          <span class="pfcta__go">Voir les réalisations <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7"/><path d="M8 7h9v9"/></svg></span>
+        </div>
+        <span class="pfcta__stack" aria-hidden="true">
+          <span class="pfcta__frame pfcta__frame--3"></span>
+          <span class="pfcta__frame pfcta__frame--2"></span>
+          <span class="pfcta__frame pfcta__frame--1"><span class="b b--accent"></span><span class="b"></span><span class="b b--sm"></span></span>
+        </span>
+      </a>
     </div>
-    <div class="fproj-wrap">
-      <article class="fproj reveal" data-tilt>
-        <div class="fproj__preview">
-          <div class="appmock">
-            <div class="appmock__bar">
-              <span class="appmock__dots"><i></i><i></i><i></i></span>
-              <span class="appmock__live"><span class="appmock__livedot"></span>Live</span>
-            </div>
-            <div class="appmock__screen">
-              <span class="appmock__k">EXEMPLE</span>
-              <p class="appmock__total"><span class="appmock__amt">&euro;<span data-countup="214">214</span></span><span class="appmock__per">/mois</span></p>
-              <svg class="appmock__chart" viewBox="0 0 300 80" preserveAspectRatio="none" aria-hidden="true" focusable="false">
-                <polyline class="appmock__line" pathLength="1" points="0,64 30,58 60,62 90,48 120,52 150,40 180,44 210,30 240,34 270,22 300,18"/>
-              </svg>
-              <span class="appmock__span">12 mois</span>
-              <div class="appmock__seg"><i style="--w:40%"></i><i style="--w:26%"></i><i style="--w:20%"></i><i style="--w:14%"></i></div>
-              <ul class="appmock__rows">
-                <li><span class="appmock__ic"></span><span class="appmock__t"></span><span class="appmock__v"></span></li>
-                <li><span class="appmock__ic"></span><span class="appmock__t"></span><span class="appmock__v"></span></li>
-                <li><span class="appmock__ic"></span><span class="appmock__t"></span><span class="appmock__v"></span></li>
-                <li><span class="appmock__ic"></span><span class="appmock__t"></span><span class="appmock__v"></span></li>
-              </ul>
-            </div>
-          </div>
-        </div>
-        <div class="fproj__detail">
-          <span class="fproj__status"><span class="ret-diamond"></span>Sur l'App Store</span>
-          <h3 class="fproj__name">dueday</h3>
-          <p class="fproj__desc">Chaque abonnement et coût fixe au même endroit, leur total, et un rappel avant chaque échéance. Le même travail de bout en bout que je propose ci-dessus, cadré, livré et disponible sur l'App Store.</p>
-          <dl class="fproj__facts">
-            <div><dt>Quoi</dt><dd>Suivi de coûts récurrents</dd></div>
-            <div><dt>Plateforme</dt><dd>iOS · App Store</dd></div>
-            <div><dt>Prix</dt><dd>Gratuit</dd></div>
-            <div><dt>Rôle</dt><dd>Conçu en solo, de l'idée au lancement</dd></div>
-          </dl>
-          <div class="fproj__actions">
-            <a class="ret-btn ret-btn--primary ret-btn--md" href="https://apps.apple.com/be/app/dueday-co%C3%BBts-r%C3%A9currents/id6779892758">Télécharger sur l'App Store <span class="ret-btn__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7"/><path d="M8 7h9v9"/></svg></span></a>
-            <a class="ret-btn ret-btn--secondary ret-btn--md" href="/dueday/fr/">Voir le projet</a>
-          </div>
-        </div>
-      </article>
-    </div>
-    <ul class="fproj-next">
-      <li class="pcard pcard--soon">
-        <div class="pcard__cover pcard__cover--soon">
-          <span class="pcard__soonbadge">Bientôt</span>
-          <span class="pcard__glyph"><svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 8.5v7M8.5 12h7"/></svg></span>
-        </div>
-        <div class="pcard__body">
-          <span class="pcard__status pcard__status--muted">Prochain projet</span>
-          <h3 class="pcard__title">En préparation</h3>
-          <p class="pcard__desc">Un nouveau produit, mené de l'idée au lancement.</p>
-        </div>
-      </li>
-      <li class="pcard pcard--soon">
-        <div class="pcard__cover pcard__cover--soon">
-          <span class="pcard__soonbadge">Bientôt</span>
-          <span class="pcard__glyph"><svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7.5v5l3.5 2"/></svg></span>
-        </div>
-        <div class="pcard__body">
-          <span class="pcard__status pcard__status--muted">À venir</span>
-          <h3 class="pcard__title">À l'étude</h3>
-          <p class="pcard__desc">Un autre projet qui prend forme. Bientôt plus de détails.</p>
-        </div>
-      </li>
-    </ul>
   </section>
 
   <section class="section" id="contact">
@@ -719,7 +662,7 @@
       <h2>Site</h2>
       <a href="#services">Ce que je fais</a>
       <a href="#about">Qui je suis</a>
-      <a href="#work">Réalisations</a>
+      <a href="/portfolio/fr/">Réalisations</a>
       <a href="#experience">Expérience</a>
       <a href="/blog/">Blog</a>
       <a href="#contact">Contact</a>
@@ -843,7 +786,7 @@
     var label = document.getElementById('scrollnavLabel');
     if (!nav || !bar || !label) return;
     var CIRC = 97.39;
-    var SECTIONS = [['hero', 'Accueil'], ['about', 'Qui je suis'], ['services', 'Ce que je fais'], ['experience', 'Expérience'], ['work', 'Réalisations'], ['contact', 'Contact']];
+    var SECTIONS = [['hero', 'Accueil'], ['about', 'Qui je suis'], ['services', 'Ce que je fais'], ['experience', 'Expérience'], ['contact', 'Contact']];
     var rm = window.matchMedia('(prefers-reduced-motion: reduce)');
     var ticking = false;
     var render = function () {
