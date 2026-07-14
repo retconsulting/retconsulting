@@ -165,7 +165,6 @@ textarea.ret-input { resize: vertical; line-height: 1.5; }
   /* scroll-reveal system: force everything visible, no motion, regardless of reveal-on/is-in state */
   .reveal, .reveal-group, .reveal-group > * { opacity: 1 !important; transform: none !important; }
   .appmock__line { stroke-dashoffset: 0 !important; }
-  .appmock__end { opacity: 1 !important; transform: none !important; }
   .ret-hpill--tilt { animation: none !important; will-change: auto; }
   /* Motion v2: the global *{transition-duration:.001ms} above already snaps the FIG_02/FIG_03
      row-focus opacity fades, the nav-stuck background/box-shadow deepen, the langtoggle wash,
