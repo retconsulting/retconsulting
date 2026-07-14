@@ -1116,6 +1116,11 @@ html:not(.nav-stuck) .scrim-top { opacity: 0; }
    panel is the link; the "See portfolio" pill is a visual affordance (not nested <a>).
    A fanned stack of frames on the right reads as "several projects inside" and spreads
    on hover. */
+/* The CTA is a compact panel, not a full section: give it a small own padding and pull it
+   toward Experience and Contact with a negative block-margin, so it doesn't sit in two full
+   section-gaps of dead space above and below. */
+.section--cta { padding-block: clamp(14px, 1.8vw, 26px);
+  margin-top: calc(-0.75 * var(--section-gap)); margin-bottom: calc(-0.25 * var(--section-gap)); }
 .pfcta-wrap { max-width: var(--container); margin-inline: auto; padding-inline: var(--gutter); }
 .pfcta { position: relative; overflow: hidden; display: grid; grid-template-columns: 1fr auto; gap: clamp(28px, 4vw, 64px);
   align-items: center; padding: clamp(30px, 4vw, 52px) clamp(28px, 4vw, 56px);
