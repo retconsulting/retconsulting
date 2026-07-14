@@ -143,6 +143,8 @@ section[id], #main { scroll-margin-top: 96px; }
   .hero__flowstep:nth-child(2) { background-color: var(--cognac-wash); border-color: var(--border-accent); }
   /* the global duration zeroing does not kill transition-delays: zero the flip crossfade delays */
   .svc__face--front > *, .svc__face--back > * { transition-delay: 0s !important; }
+  /* skeleton shimmer off; counter-scale is instant (duration zeroed globally) */
+  .skb { animation: none; }
   /* … nor the hover-intent delays (140ms tips/seals, 120ms FIG_02/FIG_03 pops): zero those too */
   [data-tip]::after, [data-tip]::before,
   .certbadge::after, .certbadge::before,
@@ -313,15 +315,51 @@ section[id], #main { scroll-margin-top: 96px; }
    copy stays at 0 and only the solid rounded panel flies. The back copy fades in
    once the card has LANDED at its true size (.is-landed); the front copy restores
    only once the card is back in the grid (:not(.is-lifted)). */
-.svc__face--front > *, .svc__face--back > * { opacity: 0; transition: opacity var(--dur-fade-out) linear; }
-.svc:not(.is-lifted) .svc__face--front > * { opacity: 1; transition: opacity var(--dur-fade-in) linear; }
-.svc.is-landed .svc__face--back > * { opacity: 1; transition: opacity var(--dur-fade-in) linear var(--delay-fade-in); }
-/* the back copy assembles in a quick cascade the instant it lands (the site's
-   signature staggered reveal) so the reveal reads as the flight's payoff, not
-   text popping in after the copy-less morph. Zeroed under reduced-motion (§141). */
-.svc.is-landed .svc__face--back > *:nth-child(2) { transition-delay: calc(var(--delay-fade-in) + 1 * var(--stagger-assemble)); }
-.svc.is-landed .svc__face--back > *:nth-child(3) { transition-delay: calc(var(--delay-fade-in) + 2 * var(--stagger-assemble)); }
-.svc.is-landed .svc__face--back > *:nth-child(4) { transition-delay: calc(var(--delay-fade-in) + 3 * var(--stagger-assemble)); }
+.svc__face--front > :not(.skel), .svc__face--back > :not(.skel) { opacity: 0; transition: opacity var(--dur-fade-out) linear; }
+.svc:not(.is-lifted) .svc__face--front > :not(.skel) { opacity: 1; transition: opacity var(--dur-fade-in) linear var(--delay-fade-in); }
+.svc.is-landed .svc__face--back > :not(.skel) { opacity: 1; transition: opacity var(--dur-fade-in) linear var(--delay-fade-in); }
+/* the copy assembles in a quick cascade the instant the panel lands at true size —
+   the back copy on open, the front copy when the card lands back in the grid on close
+   (the site's signature staggered reveal), so the copy reads as the flight's payoff,
+   not text popping in after the copy-less morph. The .skel is child 1 of each face, so
+   the content runs from nth-child(2); the cascade increments from nth-child(3).
+   Zeroed under reduced-motion (§141). */
+.svc.is-landed .svc__face--back > :not(.skel):nth-child(3) { transition-delay: calc(var(--delay-fade-in) + 1 * var(--stagger-assemble)); }
+.svc.is-landed .svc__face--back > :not(.skel):nth-child(4) { transition-delay: calc(var(--delay-fade-in) + 2 * var(--stagger-assemble)); }
+.svc.is-landed .svc__face--back > :not(.skel):nth-child(5) { transition-delay: calc(var(--delay-fade-in) + 3 * var(--stagger-assemble)); }
+.svc:not(.is-lifted) .svc__face--front > :not(.skel):nth-child(3) { transition-delay: calc(var(--delay-fade-in) + 1 * var(--stagger-assemble)); }
+.svc:not(.is-lifted) .svc__face--front > :not(.skel):nth-child(4) { transition-delay: calc(var(--delay-fade-in) + 2 * var(--stagger-assemble)); }
+.svc:not(.is-lifted) .svc__face--front > :not(.skel):nth-child(5) { transition-delay: calc(var(--delay-fade-in) + 3 * var(--stagger-assemble)); }
+.svc:not(.is-lifted) .svc__face--front > :not(.skel):nth-child(6) { transition-delay: calc(var(--delay-fade-in) + 4 * var(--stagger-assemble)); }
+/* ---- SKELETON: fills the copy-less flight beat so the flying panel is never blank.
+   Grey-neutral (no cognac in motion), lives on BOTH faces so it turns with the 3D flip
+   and plays on the way out AND back. The inner COUNTER-SCALES the flight's non-uniform
+   scale (same --fsx/--fsy the card flies with), so the bars keep their true proportions
+   — the icon square stays square, no horizontal stretch. Shown only mid-flight
+   (lifted, not landed); the real copy takes over on landing. */
+.skel { position: absolute; inset: 0; border-radius: inherit; overflow: hidden;
+  background: var(--surface); opacity: 0; pointer-events: none; transition: opacity 140ms linear; }
+.svc.is-lifted:not(.is-landed) .skel { opacity: 1; }
+.skel__inner { position: absolute; top: 0; left: 0;
+  width: calc(100% * var(--fsx, 1)); height: calc(100% * var(--fsy, 1));
+  padding: 30px; display: flex; flex-direction: column; gap: 14px;
+  transform-origin: top left; transform: scale(calc(1 / var(--fsx, 1)), calc(1 / var(--fsy, 1)));
+  transition: transform var(--dur-flip) var(--ease-out); }
+.skel__row { display: flex; gap: 12px; align-items: flex-start; }
+.skel__dot { width: 7px; height: 7px; margin-top: 7px; flex: none; transform: rotate(45deg); background: var(--canvas-sunken); }
+.skel__col { display: flex; flex-direction: column; gap: 8px; flex: 1; }
+.skel__head { display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px; }
+.skel__pills { display: flex; gap: 8px; margin-top: 2px; }
+.skb { height: 11px; border-radius: 6px;
+  background: linear-gradient(90deg, var(--canvas-sunken) 25%, #F6F6F8 40%, var(--canvas-sunken) 60%);
+  background-size: 300% 100%; animation: skelShimmer 1.35s ease-in-out infinite; }
+.skb--tag { height: 9px; width: 38%; }
+.skb--title { height: 19px; width: 62%; border-radius: 7px; margin-bottom: 4px; }
+.skb--foot { height: 11px; width: 70%; margin-top: auto; }
+.skb--icon { width: 52px; height: 52px; border-radius: var(--r-md); }
+.skb--num { width: 24px; height: 10px; }
+.skb--pill { width: 108px; height: 28px; border-radius: var(--r-pill); }
+@keyframes skelShimmer { 0% { background-position: 120% 0; } 100% { background-position: -20% 0; } }
 .flipveil { position: fixed; inset: 0; z-index: 84; opacity: 0; pointer-events: none;
   background: rgba(24,24,27,.16);
   -webkit-backdrop-filter: blur(var(--blur-glass)) saturate(1.15);
