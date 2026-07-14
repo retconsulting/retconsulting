@@ -306,11 +306,16 @@ section[id], #main { scroll-margin-top: 96px; }
   will-change: transform;
   transition: transform var(--dur-flip) var(--ease-out), box-shadow var(--dur-flip) var(--ease-out); }
 .svc.is-lifted.is-landed { transition: box-shadow var(--dur-flip) var(--ease-out); }
-/* the panel does the 3D turn; the copy swaps with a quick fade so it never reads as skewed */
-.svc__face--front > * { transition: opacity var(--dur-fade-in) linear var(--delay-fade-in); }
-.svc.is-flipped .svc__face--front > * { opacity: 0; transition: opacity var(--dur-fade-out) linear; }
-.svc__face--back > * { opacity: 0; transition: opacity var(--dur-fade-out) linear; }
-.svc.is-flipped .svc__face--back > * { opacity: 1; transition: opacity var(--dur-fade-in) linear var(--delay-fade-in); }
+/* Copy is opacity-gated on the FLIGHT state, never on .is-flipped, because the
+   flight scale is non-uniform (source ~341 → target ~560 wide, height ~unchanged):
+   any text painted mid-morph is stretched horizontally, and an empty mid-flight
+   box flashes a scrollbar. So while the card is lifted-but-not-landed BOTH faces'
+   copy stays at 0 and only the solid rounded panel flies. The back copy fades in
+   once the card has LANDED at its true size (.is-landed); the front copy restores
+   only once the card is back in the grid (:not(.is-lifted)). */
+.svc__face--front > *, .svc__face--back > * { opacity: 0; transition: opacity var(--dur-fade-out) linear; }
+.svc:not(.is-lifted) .svc__face--front > * { opacity: 1; transition: opacity var(--dur-fade-in) linear; }
+.svc.is-landed .svc__face--back > * { opacity: 1; transition: opacity var(--dur-fade-in) linear var(--delay-fade-in); }
 .flipveil { position: fixed; inset: 0; z-index: 84; opacity: 0; pointer-events: none;
   background: rgba(24,24,27,.16);
   -webkit-backdrop-filter: blur(var(--blur-glass)) saturate(1.15);
