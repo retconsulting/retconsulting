@@ -92,7 +92,7 @@ section[id], #main { scroll-margin-top: 96px; }
 /* the copy column breathes to match FIG_01: eyebrow pinned to the canvas top, CTAs to its
    bottom, the leftover height spread evenly between the blocks on top of their base
    margins (2-col layout only; reset in the single-column breakpoint) */
-.hero__copy { display: flex; flex-direction: column; justify-content: space-between; align-items: flex-start; }
+.hero__copy { display: flex; flex-direction: column; justify-content: space-between; align-items: flex-start; container-type: inline-size; }
 .hero__eyebrow { display: flex; width: fit-content; max-width: 100%; align-items: center; gap: 12px; margin-bottom: 26px; flex-wrap: wrap;
   padding: 9px 16px; border-radius: var(--r-pill);
   background: linear-gradient(0deg, rgba(176,125,84,.10), rgba(176,125,84,.10)), var(--glass-fill);
@@ -100,8 +100,8 @@ section[id], #main { scroll-margin-top: 96px; }
   -webkit-backdrop-filter: blur(var(--blur-glass)) saturate(1.5); backdrop-filter: blur(var(--blur-glass)) saturate(1.5);
   box-shadow: var(--glass-shadow); }
 .hero__title { font-family: var(--font-display); font-weight: 700; color: var(--ink);
-  font-size: clamp(2.3rem, 1.3rem + 3vw, 3.5rem); line-height: 1.04; letter-spacing: -.03em; margin: 0; text-wrap: balance; }
-.hero__title .thin { display: block; font-weight: 560; color: var(--ink-2); letter-spacing: -.02em; }
+  font-size: clamp(1.2rem, 6.5cqw, 3.5rem); line-height: 1.04; letter-spacing: -.03em; margin: 0; }
+.hero__title .thin { display: block; font-weight: 560; color: var(--ink-2); letter-spacing: -.02em; white-space: nowrap; }
 .hero__title .accent { color: var(--accent); }
 .hero__lead { font-family: var(--font-body); font-weight: 300; font-size: clamp(1.05rem, .98rem + .5vw, 1.3rem);
   line-height: 1.85; color: var(--ink-2); max-width: 52ch; margin: 26px 0 0; }
@@ -287,10 +287,14 @@ section[id], #main { scroll-margin-top: 96px; }
   -webkit-backface-visibility: hidden; backface-visibility: hidden; }
 .svc.is-flipped .svc__face--front { visibility: hidden; transition: visibility 0s var(--dur-flip-half); }
 .svc__face--back { position: absolute; inset: 0; display: flex; flex-direction: column;
-  overflow-y: auto; overscroll-behavior: contain; transform: rotateY(180deg);
+  overflow-y: hidden; overscroll-behavior: contain; transform: rotateY(180deg);
   -webkit-backface-visibility: hidden; backface-visibility: hidden;
   visibility: hidden; transition: visibility 0s var(--dur-flip-half); }
 .svc.is-flipped .svc__face--back { visibility: visible; transition: visibility 0s; }
+/* the back face still sits in its SOURCE (smaller) box while flying — only allow the
+   scrollbar once .is-landed snaps the box to its true target size, otherwise the
+   longer WHY_ME copy overflows the mid-flight box and flashes a scrollbar */
+.svc.is-landed .svc__face--back { overflow-y: auto; }
 /* compositor-only flight: the pinned card keeps its SOURCE layout box for the whole
    flight and moves via translate+scale (--f* vars set by the flip script); the real
    target layout is snapped once on landing (.is-landed drops transform transitions so

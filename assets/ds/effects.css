@@ -48,7 +48,7 @@
   --dur-flip:        650ms; /* service-card flight + 3D turn */
   --dur-flip-half:   325ms; /* face visibility switch = mid-rotation (keep = --dur-flip / 2) */
   --dur-veil:        500ms; /* backdrop veil fade */
-  --dur-fade-out:    160ms; /* crossfade: outgoing copy */
-  --dur-fade-in:     220ms; /* crossfade: incoming copy */
-  --delay-fade-in:   680ms; /* crossfade: incoming waits until the flight has LANDED (scale = identity), otherwise the copy renders stretched on the still-scaling panel */
+  --dur-fade-out:    200ms; /* crossfade: outgoing copy */
+  --dur-fade-in:     220ms; /* crossfade: incoming copy, ends ~600ms: --ease-out is near-flat by then so no visible stretch */
+  --delay-fade-in:   380ms; /* crossfade: incoming waits past mid-rotation so it's never shown mirrored; short gap vs. outgoing fade-out (200ms) keeps the blank window brief instead of the ~520ms it was at 680ms */
 }
