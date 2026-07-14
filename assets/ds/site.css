@@ -60,6 +60,14 @@ section[id], #main { scroll-margin-top: 96px; }
   transition: background var(--dur-base), color var(--dur-base); }
 .nav__link:hover { background: rgba(24,24,27,.05); color: var(--ink); }
 .nav__link.is-active { color: var(--ink); background: rgba(24,24,27,.05); }
+/* Links that leave to a separate page (Portfolio, Blog): set apart by a hairline divider
+   and marked with the same diagonal arrow as the CTAs to signal "this goes elsewhere". */
+.nav__divider { flex: none; align-self: center; width: 1px; height: 18px; margin: 0 5px; border-radius: 1px; background: var(--line-strong); }
+.nav__link--out { display: inline-flex; align-items: center; gap: 5px; }
+.nav__link--out svg { flex: none; width: 12px; height: 12px; stroke-width: 1.7; color: var(--ink-3);
+  transition: transform var(--dur-base) var(--ease-out), color var(--dur-base) var(--ease-out); }
+.nav__link--out:hover svg, .nav__link--out.is-active svg { color: var(--accent); }
+.nav__link--out:hover svg { transform: translate(2px, -2px); }
 .nav__spacer { flex: 1; }
 .nav__cta { display: flex; align-items: center; gap: 10px; }
 
@@ -852,6 +860,9 @@ html:not(.nav-stuck) .scrim-top { opacity: 0; }
   .nav__links.is-open { display: flex; animation: navMenuIn 180ms var(--ease-out); }
   @keyframes navMenuIn { from { opacity: 0; transform: translateY(-6px); } to { opacity: 1; transform: none; } }
   .nav__link { padding: 12px 14px; min-height: 44px; display: flex; align-items: center; font-size: 15px; }
+  .nav__link--out { justify-content: flex-start; }
+  /* the dropdown is a vertical list: the divider becomes a full-width hairline */
+  .nav__divider { align-self: stretch; width: auto; height: 1px; margin: 8px 12px; }
   /* the dropdown carries Contact and the floating dock is the persistent CTA — drop the inline one */
   .nav__cta { display: none; }
 }
