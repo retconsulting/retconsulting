@@ -45,10 +45,11 @@
   --reveal-stagger: 80ms;  /* per-child stagger inside a .reveal-group */
 
   /* Service-card flip choreography (coupled: half = mid-rotation) */
-  --dur-flip:        650ms; /* service-card flight + 3D turn */
-  --dur-flip-half:   325ms; /* face visibility switch = mid-rotation (keep = --dur-flip / 2) */
-  --dur-veil:        500ms; /* backdrop veil fade */
+  --dur-flip:        440ms; /* service-card flight + 3D turn — snappier than the old 650ms so the copy-less morph is a short beat, not a dwelt-on blank */
+  --dur-flip-half:   220ms; /* face visibility switch = mid-rotation (keep = --dur-flip / 2) */
+  --dur-veil:        420ms; /* backdrop veil fade (kept ~= flight) */
   --dur-fade-out:    60ms;  /* outgoing copy vanishes fast, at scale ~1 BEFORE the morph is visible (the flight's ease-out is front-loaded, so a slow fade-out would stretch); the lift + veil mask the quick hide */
-  --dur-fade-in:     220ms; /* incoming copy fade-in */
-  --delay-fade-in:   60ms;  /* incoming copy waits this long AFTER landing (is-landed) so the size-snap frame is painted first — it never renders on the still-scaling panel */
+  --dur-fade-in:     190ms; /* incoming copy fade-in */
+  --delay-fade-in:   40ms;  /* incoming copy waits this long AFTER landing (is-landed) so the size-snap frame is painted first — it never renders on the still-scaling panel */
+  --stagger-assemble: 45ms; /* per-child cascade of the back copy at landing, so it assembles rather than popping in */
 }

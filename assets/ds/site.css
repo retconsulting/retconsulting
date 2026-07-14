@@ -316,6 +316,12 @@ section[id], #main { scroll-margin-top: 96px; }
 .svc__face--front > *, .svc__face--back > * { opacity: 0; transition: opacity var(--dur-fade-out) linear; }
 .svc:not(.is-lifted) .svc__face--front > * { opacity: 1; transition: opacity var(--dur-fade-in) linear; }
 .svc.is-landed .svc__face--back > * { opacity: 1; transition: opacity var(--dur-fade-in) linear var(--delay-fade-in); }
+/* the back copy assembles in a quick cascade the instant it lands (the site's
+   signature staggered reveal) so the reveal reads as the flight's payoff, not
+   text popping in after the copy-less morph. Zeroed under reduced-motion (§141). */
+.svc.is-landed .svc__face--back > *:nth-child(2) { transition-delay: calc(var(--delay-fade-in) + 1 * var(--stagger-assemble)); }
+.svc.is-landed .svc__face--back > *:nth-child(3) { transition-delay: calc(var(--delay-fade-in) + 2 * var(--stagger-assemble)); }
+.svc.is-landed .svc__face--back > *:nth-child(4) { transition-delay: calc(var(--delay-fade-in) + 3 * var(--stagger-assemble)); }
 .flipveil { position: fixed; inset: 0; z-index: 84; opacity: 0; pointer-events: none;
   background: rgba(24,24,27,.16);
   -webkit-backdrop-filter: blur(var(--blur-glass)) saturate(1.15);
