@@ -1161,8 +1161,9 @@ html:not(.nav-stuck) .scrim-top { opacity: 0; }
 .pfcta:hover .pfcta__go, .pfcta:focus-visible .pfcta__go { background: var(--accent-btn); border-color: transparent; color: #fff; }
 .pfcta:hover .pfcta__go svg, .pfcta:focus-visible .pfcta__go svg { transform: translate(3px, -3px); }
 /* fanned deck of project frames */
+/* the deck shows on every pointer type — its resting state is already a nice fan; the
+   hover only spreads it further. (Hidden only in the narrow single-column layout below.) */
 .pfcta__stack { position: relative; width: 150px; height: 116px; flex: none; }
-@media (hover: none) { .pfcta__stack { display: none; } }
 .pfcta__frame { position: absolute; inset: 0; border-radius: 13px; background: var(--surface);
   border: 1px solid var(--border-strong); box-shadow: var(--shadow-sm); transform-origin: 80% 120%;
   transition: transform var(--dur-slow) var(--ease-out), box-shadow var(--dur-slow) var(--ease-out); }
