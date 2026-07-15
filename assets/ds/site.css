@@ -540,6 +540,10 @@ html.reveal-on .expgrid.is-in > .expgrid__arrow { transition-delay: calc(var(--r
 .about__skills-row { display: flex; flex-wrap: wrap; justify-content: center; gap: 10px; max-width: 540px; }
 .about__skills-row .ret-hpill { background: var(--surface); border-color: var(--border-strong); box-shadow: var(--shadow-sm); -webkit-backdrop-filter: none; backdrop-filter: none; }
 .about__prose .accent { color: var(--cognac-text); font-weight: 500; }
+/* inline "goes elsewhere" link inside the profile prose: same cognac + diagonal arrow language as .nav__link--out / .pfcta__go */
+.about__prose a { display: inline-flex; align-items: center; gap: 4px; color: var(--cognac-text); font-weight: 500; text-decoration: none; }
+.about__prose a svg { flex: none; width: 12px; height: 12px; stroke-width: 1.7; transition: transform var(--dur-base) var(--ease-out); }
+.about__prose a:hover svg { transform: translate(2px, -2px); }
 /* certification seals: frosted double-ring roundel, cognac-marked; two centred rows echoing the
    skills chips above; hover/focus lifts the seal and reveals the full certification name in a
    small glass popover (::after, CSS-only), centred on the same 540px axis as the skills group above */
