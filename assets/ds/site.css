@@ -1668,8 +1668,9 @@ html.reveal-on .blogfig[data-tilt]:hover { transform: perspective(1100px) rotate
 .promptfig__tag--eng { color: var(--cognac-text); }
 .article .promptfig__prompt { margin: 0; max-width: none; font-family: var(--font-mono); font-size: .88rem; line-height: 1.6; color: var(--ink); }
 .article .promptfig__prompt--dim { color: var(--ink-3); }
-.promptfig__parts { list-style: none; margin: 12px 0 0; padding: 0; display: flex; flex-wrap: wrap; gap: 6px; }
-.promptfig__parts li { font-family: var(--font-mono); font-size: 9px; letter-spacing: .08em; text-transform: uppercase; color: var(--cognac-text); background: var(--cognac-wash); border: 1px solid var(--border-accent); border-radius: var(--r-pill); padding: 3px 9px; }
+.promptfig__parts { list-style: none; margin: 14px 0 0; padding: 0; display: flex; flex-wrap: wrap; gap: 7px; }
+.promptfig__parts li { display: inline-flex; align-items: center; gap: 6px; font-family: var(--font-mono); font-size: 9.5px; letter-spacing: .08em; text-transform: uppercase; color: var(--cognac-text); background: var(--cognac-wash); border: 1px solid var(--border-accent); border-radius: var(--r-pill); padding: 4px 11px 4px 8px; }
+.promptfig__parts svg { flex: none; width: 13px; height: 13px; stroke-width: 1.7; }
 /* Context-window contents: a framed "window" listing what shares its one fixed space */
 .ctxwin { margin: 24px 0 0; max-width: 65ch; background: var(--surface); border: 1px solid var(--line); border-radius: var(--r-lg); box-shadow: var(--shadow-sm); }
 .ctxwin__bar { display: flex; align-items: center; justify-content: space-between; gap: 12px; padding: 10px 16px; background: var(--canvas); border-bottom: 1px solid var(--line); border-radius: var(--r-lg) var(--r-lg) 0 0; }
