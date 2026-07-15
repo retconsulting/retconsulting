@@ -644,6 +644,11 @@ html.reveal-on .expgrid.is-in > .expgrid__arrow { transition-delay: calc(var(--r
 .contact__form .ret-input { background: rgba(255,255,255,.06); border-color: rgba(255,255,255,.16); color: #fff; }
 .contact__form .ret-input::placeholder { color: rgba(255,255,255,.55); }
 .contact__form .ret-input:focus { border-color: var(--cognac-soft); box-shadow: 0 0 0 3px rgba(200,160,124,.25); }
+/* dark-panel select: light chevron + muted look until a real option is picked (required + empty = :invalid).
+   The .contact__form .ret-input { background: … } shorthand resets repeat/position/size, so restate them here. */
+.contact__form select.ret-input { background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='14' height='14' viewBox='0 0 24 24' fill='none' stroke='%23ffffff' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E");
+  background-repeat: no-repeat; background-position: right 16px center; background-size: 14px; }
+.contact__form select.ret-input:invalid { color: rgba(255,255,255,.55); }
 .contact__actions { grid-column: 1/-1; display: flex; align-items: center; gap: 16px; flex-wrap: wrap; margin-top: 4px; }
 .contact__small { font-family: var(--font-mono); font-size: 11px; color: rgba(255,255,255,.5); }
 .contact__thanks { grid-column: 1/-1; border: 1px solid var(--cognac-soft); border-radius: var(--r-md); padding: 24px; background: rgba(200,160,124,.1);
@@ -1113,13 +1118,13 @@ html:not(.nav-stuck) .scrim-top { opacity: 0; }
    stays on the ring at any stage width. */
 .tl__pop--1 { bottom: calc(21.7% + 48px); left: calc(5.1% - 36px); transform: translateY(6px); }
 .tl__pop--1::after { bottom: -6.5px; left: 30px; }
-.tl__pop--2 { bottom: calc(34.8% + 48px); left: 26.8%; transform: translate(-50%, 6px); }
+.tl__pop--2 { bottom: calc(34.8% + 48px); left: 25.4%; transform: translate(-50%, 6px); }
 .tl__pop--2::after { bottom: -6.5px; left: 50%; margin-left: -6px; }
-.tl__pop--3 { top: calc(52.2% + 18px); left: 48.5%; transform: translate(-50%, -6px); }
+.tl__pop--3 { top: calc(52.2% + 18px); left: 45.8%; transform: translate(-50%, -6px); }
 .tl__pop--3::after { top: -6.5px; left: 50%; margin-left: -6px; }
-.tl__pop--4 { top: calc(39.1% + 18px); left: 59.3%; transform: translate(-50%, -6px); }
+.tl__pop--4 { top: calc(39.1% + 18px); left: 55.9%; transform: translate(-50%, -6px); }
 .tl__pop--4::after { top: -6.5px; left: 50%; margin-left: -6px; }
-.tl__pop--5 { top: calc(26.1% + 18px); left: calc(81% - 272px); transform: translateY(-6px); }
+.tl__pop--5 { top: calc(26.1% + 18px); left: calc(76.3% - 272px); transform: translateY(-6px); }
 .tl__pop--5::after { top: -6.5px; right: 42px; }
 /* ≥1100px the stage (min 860px) fits without scrolling (container gutters 128px +
    figure padding up to 96px + border 2px -> fits from ~1076px): release the scroll

@@ -88,6 +88,11 @@
 /* keyboard-specific ring on top of :focus (mouse-focus keeps the .18 opacity above) */
 .ret-input:focus-visible { border-color: var(--accent); box-shadow: 0 0 0 3px rgba(176,125,84,.14); }
 textarea.ret-input { resize: vertical; line-height: 1.5; }
+/* native <select> styled as an input: strip the OS chrome, draw our own chevron */
+select.ret-input { -webkit-appearance: none; -moz-appearance: none; appearance: none; cursor: pointer; padding-right: 42px;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='14' height='14' viewBox='0 0 24 24' fill='none' stroke='%2318181B' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E");
+  background-repeat: no-repeat; background-position: right 16px center; background-size: 14px; }
+select.ret-input option { color: var(--ink); background: #fff; }
 
 /* ---------- Highlight pill — frosted icon+text chip (ported verbatim from HighlightPill) ---------- */
 .ret-hpill {
