@@ -1671,6 +1671,18 @@ html.reveal-on .blogfig[data-tilt]:hover { transform: perspective(1100px) rotate
 .promptfig__parts { list-style: none; margin: 14px 0 0; padding: 0; display: flex; flex-wrap: wrap; gap: 7px; }
 .promptfig__parts li { display: inline-flex; align-items: center; gap: 6px; font-family: var(--font-mono); font-size: 9.5px; letter-spacing: .08em; text-transform: uppercase; color: var(--cognac-text); background: var(--cognac-wash); border: 1px solid var(--border-accent); border-radius: var(--r-pill); padding: 4px 11px 4px 8px; }
 .promptfig__parts svg { flex: none; width: 13px; height: 13px; stroke-width: 1.7; }
+/* Dissected prompt: each part of the engineered prompt gets its own row (label left,
+   clause right), instead of a flowing sentence plus a separate row of tag pills. Used
+   where every word of the prompt maps to exactly one named part (role, task, context,
+   constraints, format); the source-pills list above stays for figures listing sources
+   rather than clauses (files/database/web/tools). */
+.promptfig__dissect { list-style: none; margin: 2px 0 0; padding: 0; }
+.promptfig__dissect li { display: grid; grid-template-columns: 128px 1fr; column-gap: 16px; align-items: baseline; padding: 11px 0; border-top: 1px solid var(--line); }
+.promptfig__dissect li:first-child { border-top: 0; padding-top: 4px; }
+.promptfig__dissect .dlab { display: inline-flex; align-items: center; gap: 6px; font-family: var(--font-mono); font-size: 9.5px; letter-spacing: .12em; text-transform: uppercase; color: var(--cognac-text); }
+.promptfig__dissect .dlab svg { flex: none; width: 13px; height: 13px; stroke-width: 1.7; color: var(--cognac); }
+.promptfig__dissect .dtext { font-family: var(--font-mono); font-size: .88rem; line-height: 1.55; color: var(--ink); }
+@media (max-width: 560px) { .promptfig__dissect li { grid-template-columns: 1fr; row-gap: 5px; } }
 /* Context-window contents: a framed "window" listing what shares its one fixed space */
 .ctxwin { margin: 24px 0 0; max-width: 65ch; background: var(--surface); border: 1px solid var(--line); border-radius: var(--r-lg); box-shadow: var(--shadow-sm); }
 .ctxwin__bar { display: flex; align-items: center; justify-content: space-between; gap: 12px; padding: 10px 16px; background: var(--canvas); border-bottom: 1px solid var(--line); border-radius: var(--r-lg) var(--r-lg) 0 0; }
