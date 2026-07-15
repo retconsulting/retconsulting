@@ -1694,6 +1694,14 @@ html.reveal-on .blogfig[data-tilt]:hover { transform: perspective(1100px) rotate
 .ctxwin__gauge { width: 84px; height: 5px; border-radius: 999px; background: rgba(24,24,27,.08); overflow: hidden; }
 .ctxwin__gauge-fill { display: block; height: 100%; width: 10%; border-radius: 999px; background: var(--cognac); animation: ctxfill 4.5s var(--ease-soft) infinite; }
 @keyframes ctxfill { 0% { width: 6%; } 78% { width: 96%; } 100% { width: 6%; } }
+/* percentage readout: JS drives both the fill width and this number from the same
+   value, so they never drift out of sync; tabular-nums keeps digit changes from
+   jittering the layout as the count goes from one digit to three. */
+.ctxwin__capnum { font-variant-numeric: tabular-nums; min-width: 2.6ch; text-align: right; }
+/* "Compacting…", shown only once the gauge holds at 100%; display:none (not just
+   opacity) so the flex gap to its left collapses away when there's nothing to show */
+.ctxwin__status { display: none; }
+.ctxwin__status.is-on { display: inline; }
 .ctxwin__list { list-style: none; margin: 0; padding: 0; }
 .ctxwin__list li { display: grid; grid-template-columns: 132px 1fr; gap: 14px; padding: 11px 16px; align-items: baseline; }
 .ctxwin__list li + li { border-top: 1px solid var(--line); }
