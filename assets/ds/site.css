@@ -1075,6 +1075,8 @@ html:not(.nav-stuck) .scrim-top { opacity: 0; }
 .tl__drop { stroke: var(--line); stroke-width: 1; }
 .tl__solid { stroke: var(--ink); stroke-width: 2; stroke-linecap: round; }
 .tl__now { stroke: var(--accent); stroke-width: 2; stroke-linecap: round; }
+/* dotted cognac continuation past "today" (mid-2026): the ongoing tracks keep running */
+.tl__future { fill: none; stroke: var(--accent); stroke-width: 2.5; stroke-dasharray: 0.5 7; stroke-linecap: round; opacity: .5; }
 .tl__nowline { stroke: var(--ink-3); stroke-width: 1.5; stroke-dasharray: 1 7; stroke-linecap: round; }
 .tl__ring { fill: var(--surface); stroke: var(--ink); stroke-width: 2; }
 .tl__ring--now { fill: var(--surface); stroke: var(--accent); stroke-width: 2; }
@@ -1118,14 +1120,16 @@ html:not(.nav-stuck) .scrim-top { opacity: 0; }
    stays on the ring at any stage width. */
 .tl__pop--1 { bottom: calc(21.7% + 48px); left: calc(5.1% - 36px); transform: translateY(6px); }
 .tl__pop--1::after { bottom: -6.5px; left: 30px; }
-.tl__pop--2 { bottom: calc(34.8% + 48px); left: 25.4%; transform: translate(-50%, 6px); }
+.tl__pop--2 { bottom: calc(33.5% + 48px); left: 25.4%; transform: translate(-50%, 6px); }
 .tl__pop--2::after { bottom: -6.5px; left: 50%; margin-left: -6px; }
-.tl__pop--3 { top: calc(52.2% + 18px); left: 45.8%; transform: translate(-50%, -6px); }
+.tl__pop--3 { top: calc(43% + 18px); left: 45.8%; transform: translate(-50%, -6px); }
 .tl__pop--3::after { top: -6.5px; left: 50%; margin-left: -6px; }
-.tl__pop--4 { top: calc(39.1% + 18px); left: 55.9%; transform: translate(-50%, -6px); }
+.tl__pop--4 { top: calc(31.3% + 18px); left: 55.9%; transform: translate(-50%, -6px); }
 .tl__pop--4::after { top: -6.5px; left: 50%; margin-left: -6px; }
-.tl__pop--5 { top: calc(26.1% + 18px); left: calc(76.3% - 272px); transform: translateY(-6px); }
+.tl__pop--5 { top: calc(19.6% + 18px); left: calc(76.3% - 272px); transform: translateY(-6px); }
 .tl__pop--5::after { top: -6.5px; right: 42px; }
+.tl__pop--6 { bottom: calc(45.2% + 48px); left: 45.8%; transform: translate(-50%, 6px); }
+.tl__pop--6::after { bottom: -6.5px; left: 50%; margin-left: -6px; }
 /* ≥1100px the stage (min 860px) fits without scrolling (container gutters 128px +
    figure padding up to 96px + border 2px -> fits from ~1076px): release the scroll
    clip so the pops float above the figure without truncation. Below the breakpoint
@@ -1420,11 +1424,13 @@ html.reveal-on .svcmap.is-in .svcmap__diamond { animation: figfade 280ms var(--e
 .timeline:has(.tl__seg[data-exp="3"]:hover) .tl__pop--3,
 .timeline:has(.tl__seg[data-exp="4"]:hover) .tl__pop--4,
 .timeline:has(.tl__seg[data-exp="5"]:hover) .tl__pop--5,
+.timeline:has(.tl__seg[data-exp="6"]:hover) .tl__pop--6,
 .timeline:has(.tl__seg[data-exp="1"].is-tapped) .tl__pop--1,
 .timeline:has(.tl__seg[data-exp="2"].is-tapped) .tl__pop--2,
 .timeline:has(.tl__seg[data-exp="3"].is-tapped) .tl__pop--3,
 .timeline:has(.tl__seg[data-exp="4"].is-tapped) .tl__pop--4,
-.timeline:has(.tl__seg[data-exp="5"].is-tapped) .tl__pop--5 {
+.timeline:has(.tl__seg[data-exp="5"].is-tapped) .tl__pop--5,
+.timeline:has(.tl__seg[data-exp="6"].is-tapped) .tl__pop--6 {
   opacity: 1; visibility: visible;
   transition: opacity var(--dur-base) var(--ease-out), transform var(--dur-base) var(--ease-out), visibility 0s;
 }
@@ -1434,9 +1440,12 @@ html.reveal-on .svcmap.is-in .svcmap__diamond { animation: figfade 280ms var(--e
 .timeline:has(.tl__seg[data-exp="2"]:hover) .tl__pop--2,
 .timeline:has(.tl__seg[data-exp="3"]:hover) .tl__pop--3,
 .timeline:has(.tl__seg[data-exp="4"]:hover) .tl__pop--4,
-.timeline:has(.tl__seg[data-exp="5"]:hover) .tl__pop--5 { transition-delay: 120ms; }
+.timeline:has(.tl__seg[data-exp="5"]:hover) .tl__pop--5,
+.timeline:has(.tl__seg[data-exp="6"]:hover) .tl__pop--6 { transition-delay: 120ms; }
 .timeline:has(.tl__seg[data-exp="1"]:hover) .tl__pop--1,
 .timeline:has(.tl__seg[data-exp="1"].is-tapped) .tl__pop--1 { transform: translateY(0); }
+.timeline:has(.tl__seg[data-exp="6"]:hover) .tl__pop--6,
+.timeline:has(.tl__seg[data-exp="6"].is-tapped) .tl__pop--6 { transform: translate(-50%, 0); }
 .timeline:has(.tl__seg[data-exp="2"]:hover) .tl__pop--2,
 .timeline:has(.tl__seg[data-exp="2"].is-tapped) .tl__pop--2 { transform: translate(-50%, 0); }
 .timeline:has(.tl__seg[data-exp="3"]:hover) .tl__pop--3,
