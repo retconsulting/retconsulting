@@ -835,6 +835,300 @@ html:not(.nav-stuck) .scrim-top { opacity: 0; }
 .appcta__side { justify-self: start; }
 .appcta__side .dd-badge { background: rgba(200,160,124,.16); color: var(--cognac-soft); }
 
+/* ---------- Learning page (/learning/) ---------- */
+/* Same fix as the blog article: confine the dot field to the header band so it
+   never sits behind the format cards / flagship rows / trainer card further down. */
+.prose-page--head::before {
+  -webkit-mask-image: linear-gradient(to bottom, #000 0, #000 120px, transparent 480px);
+  mask-image: linear-gradient(to bottom, #000 0, #000 120px, transparent 480px); }
+
+/* S1 — intro: copy + FIG_04 canvas side by side (the hero idiom, scaled to a sub-page) */
+.lp-intro { max-width: var(--container-wide); margin-inline: auto; padding-inline: var(--gutter);
+  display: grid; grid-template-columns: 1.04fr .96fr; gap: clamp(28px,4vw,56px); align-items: center; }
+.lp-intro__actions { display: flex; align-items: center; gap: 14px; flex-wrap: wrap; margin-top: 30px; }
+/* trim the seam under the intro like the home does under its hero (#services rule) */
+#formats { padding-top: clamp(40px, 4vw, 64px); }
+
+/* FIG_04 · LEARNING PATH — same canvas recipe as FIG_02/FIG_03 (gradient, float shadow,
+   glass stamp); an autonomy-over-depth curve with one milestone per format. */
+.lppath { position: relative; margin: 0; border-radius: var(--r-3xl); border: 1px solid var(--line); box-shadow: var(--shadow-float);
+  background: radial-gradient(130% 95% at 16% 6%, rgba(255,255,255,.92), rgba(255,255,255,0) 52%), radial-gradient(78% 52% at 24% 100%, rgba(176,125,84,.24), rgba(176,125,84,0) 68%), linear-gradient(158deg, var(--canvas) 0%, var(--canvas-sunken) 100%);
+  padding: clamp(22px, 3vw, 40px); padding-top: clamp(54px, 5vw, 68px); }
+.lppath .stamp { position: absolute; top: 18px; left: 50%; transform: translateX(-50%); z-index: 3; display: flex; align-items: center; gap: 8px; white-space: nowrap;
+  padding: 8px 12px; border-radius: var(--r-pill);
+  background: var(--glass-fill); -webkit-backdrop-filter: blur(var(--blur-strong)) saturate(1.5); backdrop-filter: blur(var(--blur-strong)) saturate(1.5);
+  border: 1px solid var(--glass-border); box-shadow: var(--glass-shadow);
+  font-family: var(--font-mono); font-size: 10px; letter-spacing: .14em; text-transform: uppercase; color: var(--ink-2); }
+.lppath__svg { display: block; width: 100%; height: auto; }
+.lppath__level { stroke: var(--ink-5); stroke-width: 1.5; stroke-linecap: round; stroke-dasharray: 1 7; }
+.lppath__axis, .lppath__solid { stroke: var(--ink); stroke-width: 2; fill: none; stroke-linecap: round; stroke-linejoin: round; }
+.lppath__dash { stroke: var(--ink-3); stroke-width: 2; fill: none; stroke-linecap: round; stroke-dasharray: 1 7; }
+.lppath__ring { fill: var(--surface); stroke: var(--ink); stroke-width: 2; }
+.lppath__diamond { fill: var(--accent); }
+.lppath__lvlabel, .lppath__axlabel { font-family: var(--font-mono); font-size: 9.5px; letter-spacing: .08em; fill: var(--ink-3); }
+.lppath__name { font-family: var(--font-display); font-weight: 650; font-size: 16px; letter-spacing: -.01em; fill: var(--ink); }
+.lppath__dur { font-family: var(--font-mono); font-size: 9.5px; letter-spacing: .08em; fill: var(--ink-3); }
+/* FIG_04 draw-in: same law as FIG_02/03 (ink strokes trace, rings pop, cognac fades on
+   the spot), same html.reveal-on scoping so JS-off / reduced-motion render it fully drawn. */
+html.reveal-on .lppath .lppath__axis,
+html.reveal-on .lppath .lppath__solid { stroke-dasharray: 1; stroke-dashoffset: 1; }
+html.reveal-on .lppath .lppath__ring { opacity: 0; transform-box: fill-box; transform-origin: center; }
+html.reveal-on .lppath .lppath__diamond,
+html.reveal-on .lppath .lppath__dash { opacity: 0; }
+html.reveal-on .lppath.is-in .lppath__axis { animation: figdraw 440ms var(--ease-out) forwards; }
+html.reveal-on .lppath.is-in .lppath__solid { animation: figdraw 700ms var(--ease-out) forwards; animation-delay: 200ms; }
+html.reveal-on .lppath.is-in .lppath__ring { animation: figpop 280ms var(--ease-out) forwards; animation-delay: calc(340ms + var(--seg, 0) * 200ms); }
+html.reveal-on .lppath.is-in .lppath__diamond { animation: figfade 280ms var(--ease-out) forwards; animation-delay: 880ms; }
+html.reveal-on .lppath.is-in .lppath__dash { animation: figfade 300ms var(--ease-out) forwards; animation-delay: 980ms; }
+
+/* FIG_04 hover popovers: one glass card per milestone, same recipe and mechanics as the
+   FIG_02 pops (deep-glass gradient, diamond caret, CSS-only :has() show, 120ms
+   hover-intent on hover only, .is-tapped for touch). Hit circles own the pointer. */
+.lppath__stage { position: relative; }
+.lppath__hit { fill: transparent; pointer-events: all; }
+.lppath__note { margin: 10px 0 0; text-align: center; font-family: var(--font-mono); font-size: 9.5px; letter-spacing: .1em; text-transform: uppercase; color: var(--ink-4); }
+.lppath__pops { position: absolute; inset: 0; pointer-events: none; z-index: 4; }
+.lppath__pop { position: absolute; width: min(250px, 72%); padding: 13px 16px; border-radius: var(--r-md);
+  background: linear-gradient(152deg, rgba(255,255,255,.58) 0%, rgba(255,255,255,.32) 55%, rgba(255,255,255,.50) 100%);
+  border: 1px solid rgba(255,255,255,.80);
+  -webkit-backdrop-filter: blur(var(--blur-strong)) saturate(2.2) brightness(1.06);
+  backdrop-filter: blur(var(--blur-strong)) saturate(2.2) brightness(1.06);
+  box-shadow: 0 18px 48px -16px rgba(24,24,27,.22), inset 0 1px 0 rgba(255,255,255,.90), inset 0 -1px 0 rgba(255,255,255,.30);
+  opacity: 0; visibility: hidden;
+  transition: opacity var(--dur-base) var(--ease-out), transform var(--dur-base) var(--ease-out), visibility 0s linear var(--dur-base); }
+.lppath__pop .cap { display: flex; align-items: center; gap: 7px; font-family: var(--font-mono); font-size: 9.5px; letter-spacing: .13em; text-transform: uppercase; color: var(--ink-3); }
+.lppath__pop .cap .ret-diamond { width: 5px; height: 5px; }
+.lppath__pop strong { display: block; font-family: var(--font-display); font-weight: 700; font-size: 14.5px; letter-spacing: -.01em; color: var(--ink); margin-top: 6px; }
+.lppath__pop p { font-family: var(--font-body); font-size: 12.5px; line-height: 1.5; color: var(--ink-2); margin: 5px 0 0; }
+.lppath__pop::after { content: ""; position: absolute; z-index: -1; width: 12px; height: 12px;
+  background: linear-gradient(152deg, rgba(255,255,255,.58) 0%, rgba(255,255,255,.32) 55%, rgba(255,255,255,.50) 100%);
+  border: 1px solid rgba(255,255,255,.80);
+  -webkit-backdrop-filter: blur(var(--blur-strong)) saturate(2.2) brightness(1.06);
+  backdrop-filter: blur(var(--blur-strong)) saturate(2.2) brightness(1.06);
+  transform: rotate(45deg); }
+/* Anchors in stage percentages of the 640×440 viewBox (milestones at 150,340 / 300,225 /
+   470,110): f1/f2 open above their ring, f3 opens below its diamond (above would crowd
+   the stamp); the caret always sits over the milestone. */
+.lppath__pop--f1 { left: 23.4%; bottom: calc(22.7% + 16px); transform: translate(-24%, 6px); }
+.lppath__pop--f1::after { left: calc(24% - 6px); bottom: -6px; }
+.lppath__pop--f2 { left: 46.9%; bottom: calc(48.9% + 16px); transform: translate(-50%, 6px); }
+.lppath__pop--f2::after { left: calc(50% - 6px); bottom: -6px; }
+.lppath__pop--f3 { left: 73.4%; top: calc(25% + 16px); transform: translate(-76%, -6px); }
+.lppath__pop--f3::after { left: calc(76% - 6px); top: -6px; }
+.lppath:has(.lppath__hit[data-fmt="f1"]:hover) .lppath__pop--f1,
+.lppath:has(.lppath__hit[data-fmt="f2"]:hover) .lppath__pop--f2,
+.lppath:has(.lppath__hit[data-fmt="f3"]:hover) .lppath__pop--f3,
+.lppath:has(.lppath__hit[data-fmt="f1"].is-tapped) .lppath__pop--f1,
+.lppath:has(.lppath__hit[data-fmt="f2"].is-tapped) .lppath__pop--f2,
+.lppath:has(.lppath__hit[data-fmt="f3"].is-tapped) .lppath__pop--f3 {
+  opacity: 1; visibility: visible;
+  transition: opacity var(--dur-base) var(--ease-out), transform var(--dur-base) var(--ease-out), visibility 0s; }
+.lppath:has(.lppath__hit[data-fmt="f1"]:hover) .lppath__pop--f1,
+.lppath:has(.lppath__hit[data-fmt="f2"]:hover) .lppath__pop--f2,
+.lppath:has(.lppath__hit[data-fmt="f3"]:hover) .lppath__pop--f3 { transition-delay: 120ms; }
+.lppath:has(.lppath__hit[data-fmt="f1"]:hover) .lppath__pop--f1, .lppath:has(.lppath__hit[data-fmt="f1"].is-tapped) .lppath__pop--f1 { transform: translate(-24%, 0); }
+.lppath:has(.lppath__hit[data-fmt="f2"]:hover) .lppath__pop--f2, .lppath:has(.lppath__hit[data-fmt="f2"].is-tapped) .lppath__pop--f2 { transform: translate(-50%, 0); }
+.lppath:has(.lppath__hit[data-fmt="f3"]:hover) .lppath__pop--f3, .lppath:has(.lppath__hit[data-fmt="f3"].is-tapped) .lppath__pop--f3 { transform: translate(-76%, 0); }
+
+/* S1 — model-agnostic panel: self-contained glass card (own max-width + inline gutter,
+   same "wide self-padded band" pattern as .contact__panel/.appcta/.svcmap). */
+.lp-agnostic { max-width: var(--container); margin: clamp(28px,4vw,44px) auto 0; padding: clamp(22px,3vw,32px) var(--gutter);
+  background: var(--glass-fill-deep); border: 1px solid var(--glass-border); border-radius: var(--r-xl); box-shadow: var(--shadow-md);
+  -webkit-backdrop-filter: blur(var(--blur-glass)) saturate(1.5); backdrop-filter: blur(var(--blur-glass)) saturate(1.5); }
+.lp-agnostic__cap { display: flex; align-items: center; gap: 8px; margin: 0; font-family: var(--font-mono); font-size: 10px; letter-spacing: .14em; text-transform: uppercase; color: var(--accent-label); }
+.lp-agnostic__text { font-family: var(--font-body); font-size: .98rem; line-height: 1.6; color: var(--ink-2); max-width: 76ch; margin: 12px 0 0; }
+.lp-agnostic__chips { list-style: none; margin: 16px 0 0; padding: 0; display: flex; flex-wrap: wrap; gap: 8px; }
+.lp-agnostic__chips li { font-family: var(--font-body); font-size: 12.5px; font-weight: 500; line-height: 1; color: var(--ink-2);
+  background: var(--surface); border: 1px solid var(--border-strong); border-radius: var(--r-pill); padding: 6px 11px;
+  /* sequential cognac pulse, hero-pill language: one tool lights up at a time (delays inline per chip) */
+  animation: ret-hpill-seq var(--seq-dur, 6.5s) var(--ease-soft) infinite; will-change: transform; }
+
+/* S2 — three formats, same card language as .svc/.dd-card */
+.lp-formats { max-width: var(--container); margin-inline: auto; padding-inline: var(--gutter);
+  display: grid; grid-template-columns: repeat(3,1fr); gap: var(--card-gap); }
+.lpf { display: flex; flex-direction: column; padding: 30px; background: var(--glass-fill-deep); border: 1px solid var(--glass-border);
+  border-radius: var(--r-xl); box-shadow: var(--shadow-md);
+  -webkit-backdrop-filter: blur(var(--blur-glass)) saturate(1.5); backdrop-filter: blur(var(--blur-glass)) saturate(1.5);
+  transition: transform var(--dur-base) var(--ease-out), box-shadow var(--dur-base) var(--ease-out), border-color var(--dur-base) var(--ease-out); }
+.lpf:hover { transform: translateY(var(--card-lift)) perspective(1100px) rotateX(var(--rtx,0deg)) rotateY(var(--rty,0deg)); box-shadow: var(--shadow-lg); border-color: var(--border-accent); }
+.lpf__head { display: flex; align-items: center; justify-content: space-between; margin-bottom: 24px; }
+.lpf__icon { width: 52px; height: 52px; border-radius: var(--r-md); display: grid; place-items: center;
+  background: var(--canvas-sunken); color: var(--ink); transition: background var(--dur-base), color var(--dur-base); }
+.lpf:hover .lpf__icon { background: var(--accent); color: #fff; }
+.lpf__icon svg { stroke-width: 1.5; }
+.lpf__no { font-family: var(--font-mono); font-size: 11px; letter-spacing: .14em; color: var(--ink-3); }
+.lpf:hover .lpf__no { color: var(--accent); }
+.lpf__title { font-family: var(--font-display); font-weight: 700; font-size: 1.4rem; margin: 0 0 6px; }
+.lpf__tagline { font-family: var(--font-body); font-weight: 550; font-size: .95rem; color: var(--cognac-text); margin: 0 0 12px; }
+.lpf__desc { font-family: var(--font-body); font-size: .95rem; line-height: 1.55; color: var(--ink-2); margin: 0; }
+.lpf__facts { margin: auto 0 0; padding-top: 18px; }
+.lpf__facts > div { display: grid; grid-template-columns: 88px 1fr; gap: 12px; padding: 10px 0; border-top: 1px solid var(--line); }
+.lpf__facts dt { font-family: var(--font-mono); font-size: 10px; letter-spacing: .14em; text-transform: uppercase; color: var(--ink-3); padding-top: 2px; }
+.lpf__facts dd { margin: 0; font-family: var(--font-body); font-size: 13.5px; color: var(--ink-2); }
+/* card foot: mono cross-link to the matching flagship (svc-foot language: uppercase mono,
+   arrow pinned right, cognac on hover only) */
+.lpf__foot { display: flex; align-items: center; gap: 8px; margin-top: 0; padding: 12px 0 0; border-top: 1px solid var(--line);
+  font-family: var(--font-mono); font-size: 10.5px; letter-spacing: .1em; text-transform: uppercase; color: var(--ink-3); text-decoration: none;
+  transition: color var(--dur-base) var(--ease-out); }
+.lpf__foot svg { flex: none; width: 13px; height: 13px; stroke-width: 1.7; margin-left: auto; transition: transform var(--dur-base) var(--ease-out); }
+.lpf__foot:hover, .lpf__foot:focus-visible { color: var(--cognac-text); }
+.lpf__foot:hover svg { transform: translate(2px, -2px); }
+.lpf__foot:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; border-radius: 4px; }
+
+/* Format cards as home-style flip cards: the front reuses the .lpf content classes
+   inside a .svc shell (flagship on the back). Inside the flex face, only the foot may
+   own the auto margin, so the facts table sits right under the copy. */
+.svc .lpf__facts { margin: 18px 0 0; }
+.svc__face--back .lpflag__fig { margin-top: 16px; }
+
+/* "How to choose" strip under the format grid */
+.lp-choose { max-width: var(--container); margin: clamp(28px,4vw,40px) auto 0; padding-inline: var(--gutter); }
+.lp-choose__card { background: var(--surface); border: 1px solid var(--line); border-radius: var(--r-xl); box-shadow: var(--shadow-md); padding: 24px 30px; }
+.lp-choose__cap { font-family: var(--font-mono); font-size: 10px; letter-spacing: .14em; text-transform: uppercase; color: var(--ink-3); margin: 0 0 4px; }
+.lp-choose__list { list-style: none; margin: 0; padding: 0; }
+.lp-choose__row { display: flex; align-items: center; gap: 16px; padding: 16px 0; border-top: 1px solid var(--line); }
+.lp-choose__need { position: relative; flex: 1; padding-left: 18px; font-family: var(--font-body); font-size: .98rem; color: var(--ink-2); }
+.lp-choose__need::before { content: ""; position: absolute; left: 2px; top: .55em; width: 7px; height: 7px; background: var(--accent); transform: rotate(45deg); }
+.lp-choose__arrow { flex: none; width: 16px; height: 16px; color: var(--ink-3); }
+.lp-choose__fmt, .lpflag__chip { flex: none; font-family: var(--font-mono); font-size: 10.5px; letter-spacing: .1em; text-transform: uppercase; color: var(--accent-text);
+  background: var(--cognac-wash); border: 1px solid var(--border-accent); border-radius: var(--r-pill); padding: 7px 12px; white-space: nowrap; }
+
+/* S3 — flagship sessions: wide two-column rows (meta rail + body) */
+.lp-flags { max-width: var(--container); margin-inline: auto; padding-inline: var(--gutter); display: grid; gap: var(--card-gap); }
+.lpflag { display: grid; grid-template-columns: 280px 1fr; gap: clamp(24px,3vw,40px); padding: clamp(24px,3vw,34px); scroll-margin-top: 110px;
+  background: var(--surface); border: 1px solid var(--line); border-radius: var(--r-xl); box-shadow: var(--shadow-md);
+  transition: transform var(--dur-base) var(--ease-out), box-shadow var(--dur-base) var(--ease-out), border-color var(--dur-base) var(--ease-out); }
+.lpflag:hover { transform: translateY(var(--card-lift)) perspective(1100px) rotateX(var(--rtx,0deg)) rotateY(var(--rty,0deg)); box-shadow: var(--shadow-lg); border-color: var(--border-accent); }
+.lpflag__meta { display: flex; flex-direction: column; gap: 14px; align-items: flex-start; border-right: 1px solid var(--line); padding-right: clamp(20px,2.5vw,28px); }
+.lpflag__ref { display: flex; align-items: center; gap: 8px; font-family: var(--font-mono); font-size: 10.5px; letter-spacing: .12em; text-transform: uppercase; color: var(--ink-3); }
+/* Mini blueprint per flagship in the meta rail: the deliverable as a chip track
+   (promptfig/FIG_01 language), soft sequential cognac pulse, assemble-in on reveal. */
+.lpflag__fig { margin-top: 2px; }
+.lpflag__fig-k { display: block; font-family: var(--font-mono); font-size: 9px; letter-spacing: .14em; text-transform: uppercase; color: var(--ink-4); margin-bottom: 8px; }
+.lpflag__fig-track { display: flex; flex-wrap: wrap; align-items: center; gap: 6px; }
+.lpflag__fig-track i { font-style: normal; font-family: var(--font-mono); font-size: 9.5px; letter-spacing: .08em; text-transform: uppercase; color: var(--ink-2);
+  background: var(--surface-2); border: 1px solid var(--line-strong); border-radius: var(--r-pill); padding: 4px 10px; white-space: nowrap;
+  animation: lpfigpulse var(--figpulse-dur, 8s) var(--ease-soft) infinite; }
+.lpflag__fig-track i:nth-of-type(1) { animation-delay: 0s; }
+.lpflag__fig-track i:nth-of-type(2) { animation-delay: 1.6s; }
+.lpflag__fig-track i:nth-of-type(3) { animation-delay: 3.2s; }
+.lpflag__fig-track i:nth-of-type(4) { animation-delay: 4.8s; }
+.lpflag__fig-track svg { flex: none; width: 11px; height: 11px; stroke-width: 1.7; color: var(--ink-4); }
+@keyframes lpfigpulse {
+  0%, 5%, 20%, 100% { background-color: var(--surface-2); border-color: var(--line-strong); color: var(--ink-2); transform: translateY(0); }
+  9%, 16% { background-color: var(--cognac-wash); border-color: var(--border-accent); color: var(--accent-text); transform: translateY(-2px); }
+}
+/* assemble cascade on first reveal (opacity only: the pulse animation owns transform);
+   scoped under html.reveal-on so JS-off / reduced-motion render the track static */
+html.reveal-on .lpflag .lpflag__fig-track > * { opacity: 0; transition: opacity 300ms var(--ease-out); }
+html.reveal-on .lpflag.is-in .lpflag__fig-track > * { opacity: 1; }
+html.reveal-on .lpflag.is-in .lpflag__fig-track > :nth-child(2) { transition-delay: 320ms; }
+html.reveal-on .lpflag.is-in .lpflag__fig-track > :nth-child(3) { transition-delay: 380ms; }
+html.reveal-on .lpflag.is-in .lpflag__fig-track > :nth-child(4) { transition-delay: 440ms; }
+html.reveal-on .lpflag.is-in .lpflag__fig-track > :nth-child(5) { transition-delay: 500ms; }
+html.reveal-on .lpflag.is-in .lpflag__fig-track > :nth-child(6) { transition-delay: 560ms; }
+html.reveal-on .lpflag.is-in .lpflag__fig-track > :nth-child(7) { transition-delay: 620ms; }
+html.reveal-on .lpflag.is-in .lpflag__fig-track > :nth-child(1) { transition-delay: 260ms; }
+/* looping pulses stopped for reduced-motion (the global duration zeroing keeps
+   infinite animations cycling, same caveat as .ret-hpill--seq) */
+@media (prefers-reduced-motion: reduce) {
+  .lp-agnostic__chips li, .lpflag__fig-track i { animation: none !important; will-change: auto; }
+}
+.lpflag__facts { width: 100%; margin: auto 0 0; }
+.lpflag__facts > div { display: grid; grid-template-columns: 88px 1fr; gap: 12px; padding: 10px 0; border-top: 1px solid var(--line); }
+.lpflag__facts dt { font-family: var(--font-mono); font-size: 10px; letter-spacing: .14em; text-transform: uppercase; color: var(--ink-3); padding-top: 2px; }
+.lpflag__facts dd { margin: 0; font-family: var(--font-body); font-size: 13.5px; color: var(--ink-2); }
+.lpflag__title { font-family: var(--font-display); font-weight: 700; font-size: 1.35rem; letter-spacing: -.01em; margin: 0 0 10px; }
+.lpflag__desc { font-family: var(--font-body); font-size: .98rem; line-height: 1.6; color: var(--ink-2); margin: 0; max-width: 72ch; }
+.lpflag__dlv { margin-top: 16px; padding-top: 14px; border-top: 1px solid var(--line); }
+.lpflag__dlv-k { font-family: var(--font-mono); font-size: 10px; letter-spacing: .14em; text-transform: uppercase; color: var(--accent-label); }
+.lpflag__dlv p { position: relative; padding-left: 18px; font-family: var(--font-body); font-size: .95rem; font-weight: 500; color: var(--ink); margin: 6px 0 0; }
+.lpflag__dlv p::before { content: ""; position: absolute; left: 2px; top: .55em; width: 7px; height: 7px; background: var(--accent); transform: rotate(45deg); }
+
+/* FIG_05 · ENGAGEMENT — how a mission runs: one stamped canvas panel (svcmap recipe)
+   holding three glass step cards chained by arrows. Real text content, so this is a
+   styled panel, not a role="img" figure. */
+.lp-engage-wrap { max-width: var(--container); margin-inline: auto; padding-inline: var(--gutter); }
+.lp-engage { position: relative; border-radius: var(--r-3xl); border: 1px solid var(--line); box-shadow: var(--shadow-float);
+  background: radial-gradient(130% 95% at 16% 6%, rgba(255,255,255,.92), rgba(255,255,255,0) 52%), radial-gradient(78% 52% at 24% 100%, rgba(176,125,84,.24), rgba(176,125,84,0) 68%), linear-gradient(158deg, var(--canvas) 0%, var(--canvas-sunken) 100%);
+  padding: clamp(20px, 3vw, 40px); padding-top: clamp(56px, 6vw, 72px); }
+.lp-engage .stamp { position: absolute; top: 18px; left: 50%; transform: translateX(-50%); z-index: 3; display: flex; align-items: center; gap: 8px; white-space: nowrap;
+  padding: 8px 12px; border-radius: var(--r-pill);
+  background: var(--glass-fill); -webkit-backdrop-filter: blur(var(--blur-strong)) saturate(1.5); backdrop-filter: blur(var(--blur-strong)) saturate(1.5);
+  border: 1px solid var(--glass-border); box-shadow: var(--glass-shadow);
+  font-family: var(--font-mono); font-size: 10px; letter-spacing: .14em; text-transform: uppercase; color: var(--ink-2); }
+.lp-engage__grid { position: relative; display: grid; grid-template-columns: repeat(3,1fr); gap: var(--card-gap); }
+.lpstep { display: flex; flex-direction: column; padding: 26px; background: var(--glass-fill-deep); border: 1px solid var(--glass-border);
+  border-radius: var(--r-xl); box-shadow: var(--shadow-md);
+  -webkit-backdrop-filter: blur(var(--blur-glass)) saturate(1.5); backdrop-filter: blur(var(--blur-glass)) saturate(1.5);
+  transition: transform var(--dur-base) var(--ease-out), box-shadow var(--dur-base) var(--ease-out), border-color var(--dur-base) var(--ease-out); }
+.lpstep:hover { transform: translateY(var(--card-lift)) perspective(1100px) rotateX(var(--rtx,0deg)) rotateY(var(--rty,0deg)); box-shadow: var(--shadow-lg); border-color: var(--border-accent); }
+.lpstep__ref { display: flex; align-items: center; gap: 8px; font-family: var(--font-mono); font-size: 10.5px; letter-spacing: .12em; text-transform: uppercase; color: var(--ink-3); margin-bottom: 14px; }
+.lpstep__title { font-family: var(--font-display); font-weight: 700; font-size: 1.25rem; letter-spacing: -.01em; color: var(--ink); margin: 0 0 10px; }
+.lpstep__desc { font-family: var(--font-body); font-size: .95rem; line-height: 1.6; color: var(--ink-2); margin: 0 0 18px; }
+.lpstep__dlv { margin-top: auto; padding-top: 14px; border-top: 1px solid var(--line); }
+.lpstep__dlv-k { font-family: var(--font-mono); font-size: 10px; letter-spacing: .14em; text-transform: uppercase; color: var(--accent-label); }
+.lpstep__dlv p { position: relative; padding-left: 18px; font-family: var(--font-body); font-size: .92rem; font-weight: 500; color: var(--ink); margin: 6px 0 0; }
+.lpstep__dlv p::before { content: ""; position: absolute; left: 2px; top: .55em; width: 7px; height: 7px; background: var(--accent); transform: rotate(45deg); }
+/* connector arrows between the step cards (expgrid arrow language, 3-column variant;
+   percentages resolve against the grid box, which has no inline padding here) */
+.lp-engage__arrow { display: none; }
+@media (min-width: 981px) {
+  .lp-engage__arrow { display: grid; place-items: center; position: absolute; top: 50%;
+    left: calc((((100% - (var(--card-gap) * 2)) / 3) + var(--card-gap)) * var(--i) - (var(--card-gap) / 2));
+    transform: translate(-50%, -50%); color: var(--ink-3); pointer-events: none; z-index: 2; }
+  .lp-engage__arrow svg { display: block; width: 20px; height: 20px; stroke-width: 1.7; }
+}
+@media (max-width: 980px) {
+  .lp-engage__grid { grid-template-columns: 1fr; }
+}
+
+/* Practical modalities (fused into #formats): small icon tiles + label, trustbar
+   sector-tile language, introduced by a real h3 styled as the mono cap (AT-navigable). */
+.lp-mods-cap { max-width: var(--container); margin: clamp(28px,4vw,40px) auto 0; padding-inline: var(--gutter); }
+.lp-mods-cap + .lp-mods { margin-top: 16px; }
+.lp-mods { max-width: var(--container); margin-inline: auto; padding-inline: var(--gutter); display: grid; grid-template-columns: repeat(3,1fr); gap: var(--card-gap); }
+.lp-mod { display: flex; gap: 14px; align-items: flex-start; background: var(--surface); border: 1px solid var(--line); border-radius: var(--r-lg); box-shadow: var(--shadow-sm); padding: 20px 22px; }
+.lp-mod__icon { box-sizing: border-box; width: 40px; height: 40px; padding: 10px; flex: none; border-radius: var(--r-md);
+  background: var(--canvas-sunken); color: var(--ink); box-shadow: var(--shadow-sm);
+  transition: background var(--dur-base) var(--ease-out), color var(--dur-base) var(--ease-out), transform var(--dur-base) var(--ease-out); }
+.lp-mod:hover .lp-mod__icon { background: var(--accent); color: #fff; transform: translateY(-2px); }
+.lp-mod__icon svg { stroke-width: 1.5; }
+.lp-mod__k { font-family: var(--font-mono); font-size: 10px; letter-spacing: .14em; text-transform: uppercase; color: var(--ink-3); margin: 2px 0 6px; }
+/* inline pointer inside a tile (ONE TRAINER → home #about): prose-link language */
+.lp-mod__link { display: inline-flex; align-items: center; gap: 4px; color: var(--cognac-text); font-weight: 500; text-decoration: none; white-space: nowrap; }
+.lp-mod__link svg { flex: none; width: 12px; height: 12px; stroke-width: 1.7; transition: transform var(--dur-base) var(--ease-out); }
+.lp-mod__link:hover svg { transform: translate(2px, -2px); }
+.lp-mod__link:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; border-radius: 4px; }
+/* adjacent-sibling keeps this off .lp-mod__k itself (a bare `.lp-mod p` would out-rank the label's class rule) */
+.lp-mod__k + p { font-family: var(--font-body); font-size: 14px; line-height: 1.55; color: var(--ink-2); margin: 0; }
+
+/* S6 — scoping CTA (sits inside .appcta, which already inverts .ret-btn--primary to cognac) */
+.lp-cta__actions { display: flex; align-items: center; gap: 16px; flex-wrap: wrap; margin-top: 26px; }
+.lp-cta__direct { display: block; font-family: var(--font-mono); font-size: 12px; letter-spacing: .04em; color: rgba(255,255,255,.6); margin-top: 16px; }
+.lp-cta__direct a { color: var(--cognac-soft); }
+.lp-ctalist { background: rgba(255,255,255,.06); border: 1px solid rgba(255,255,255,.14); border-radius: var(--r-lg); padding: 20px 22px; }
+.lp-ctalist__cap { margin: 0; font-family: var(--font-mono); font-size: 10px; letter-spacing: .16em; text-transform: uppercase; color: rgba(255,255,255,.6); }
+.lp-ctalist ul { list-style: none; margin: 12px 0 0; padding: 0; display: flex; flex-direction: column; gap: 10px; }
+.lp-ctalist li { position: relative; padding-left: 18px; font-family: var(--font-body); font-size: 14px; color: rgba(255,255,255,.85); }
+.lp-ctalist li::before { content: ""; position: absolute; left: 2px; top: .55em; width: 7px; height: 7px; background: var(--cognac-soft); transform: rotate(45deg); }
+
+/* Learning page responsive */
+@media (max-width: 1100px) {
+  .lp-intro { grid-template-columns: 1fr; }
+}
+@media (max-width: 980px) {
+  .lp-formats { grid-template-columns: 1fr; }
+  .lp-mods { grid-template-columns: repeat(2,1fr); }
+  .lpflag { grid-template-columns: 1fr; }
+  .lpflag__meta { border-right: 0; border-bottom: 1px solid var(--line); padding-right: 0; padding-bottom: 18px; }
+  .lpflag__facts { margin-top: 0; }
+}
+@media (max-width: 640px) {
+  .lp-mods { grid-template-columns: 1fr; }
+  .lp-choose__row { flex-wrap: wrap; }
+}
+
 /* ---------- Responsive ---------- */
 @media (max-width: 980px) {
   .services { grid-template-columns: 1fr; }
@@ -1352,7 +1646,9 @@ html.reveal-on .svcmap.is-in .svcmap__diamond { animation: figfade 280ms var(--e
   html.reveal-on .timeline .tl__axis,
   html.reveal-on .timeline .tl__solid,
   html.reveal-on .timeline .tl__drop,
-  html.reveal-on .svcmap .svcmap__solid { stroke-dashoffset: 0 !important; }
+  html.reveal-on .svcmap .svcmap__solid,
+  html.reveal-on .lppath .lppath__axis,
+  html.reveal-on .lppath .lppath__solid { stroke-dashoffset: 0 !important; }
   html.reveal-on .timeline .tl__ring,
   html.reveal-on .timeline .tl__ring--now,
   html.reveal-on .timeline .tl__now,
@@ -1360,7 +1656,11 @@ html.reveal-on .svcmap.is-in .svcmap__diamond { animation: figfade 280ms var(--e
   html.reveal-on .svcmap .svcmap__rings circle,
   html.reveal-on .svcmap .svcmap__dots circle,
   html.reveal-on .svcmap .svcmap__diamond,
-  html.reveal-on .svcmap .svcmap__dash { opacity: 1 !important; }
+  html.reveal-on .svcmap .svcmap__dash,
+  html.reveal-on .lppath .lppath__ring,
+  html.reveal-on .lppath .lppath__diamond,
+  html.reveal-on .lppath .lppath__dash,
+  html.reveal-on .lpflag .lpflag__fig-track > * { opacity: 1 !important; }
 }
 
 /* ---------- Motion: contact-thanks fade-in (plays when the submit handler removes [hidden]) ---------- */
