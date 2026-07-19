@@ -861,8 +861,9 @@ html:not(.nav-stuck) .scrim-top { opacity: 0; }
 .learning-page #engagement { padding-block: clamp(40px, 4.5vw, 58px); }
 .learning-page main > .section:last-child { padding-top: clamp(32px, 3.5vw, 48px); }
 
-/* FIG_04 · LEARNING PATH — same canvas recipe as FIG_02/FIG_03 (gradient, float shadow,
-   glass stamp); an autonomy-over-depth curve with one milestone per format. */
+/* FIG_04 · UPSKILLING PATH — same canvas recipe as FIG_02/FIG_03 (gradient, float
+   shadow, glass stamp); a cumulative capability matrix. Duration is deliberately
+   metadata, never a proportional axis. */
 .lppath { position: relative; margin: 0; border-radius: var(--r-3xl); border: 1px solid var(--line); box-shadow: var(--shadow-float);
   background: radial-gradient(130% 95% at 16% 6%, rgba(255,255,255,.92), rgba(255,255,255,0) 52%), radial-gradient(78% 52% at 24% 100%, rgba(176,125,84,.24), rgba(176,125,84,0) 68%), linear-gradient(158deg, var(--canvas) 0%, var(--canvas-sunken) 100%);
   padding: clamp(22px, 3vw, 40px); padding-top: clamp(54px, 5vw, 68px); }
@@ -872,26 +873,24 @@ html:not(.nav-stuck) .scrim-top { opacity: 0; }
   border: 1px solid var(--glass-border); box-shadow: var(--glass-shadow);
   font-family: var(--font-mono); font-size: 10px; letter-spacing: .14em; text-transform: uppercase; color: var(--ink-2); }
 .lppath__svg { display: block; width: 100%; height: auto; }
-.lppath__level { stroke: var(--ink-5); stroke-width: 1.5; stroke-linecap: round; stroke-dasharray: 1 7; }
-.lppath__axis, .lppath__solid { stroke: var(--ink); stroke-width: 2; fill: none; stroke-linecap: round; stroke-linejoin: round; }
-.lppath__dash { stroke: var(--ink-3); stroke-width: 2; fill: none; stroke-linecap: round; stroke-dasharray: 1 7; }
+.lppath__svg--mobile { display: none; }
+.lppath__rule { stroke: var(--ink-5); stroke-width: 1.25; }
+.lppath__track { stroke: var(--ink); stroke-width: 2; fill: none; stroke-linecap: round; }
 .lppath__ring { fill: var(--surface); stroke: var(--ink); stroke-width: 2; }
 .lppath__diamond { fill: var(--accent); }
-.lppath__lvlabel, .lppath__axlabel { font-family: var(--font-mono); font-size: 9.5px; letter-spacing: .08em; fill: var(--ink-3); }
+.lppath__head { font-family: var(--font-display); font-weight: 700; font-size: 12px; letter-spacing: -.01em; fill: var(--ink); }
+.lppath__subhead, .lppath__metahead { font-family: var(--font-mono); font-size: 8.5px; letter-spacing: .09em; fill: var(--ink-3); }
+.lppath__subhead--accent { fill: var(--accent-label); }
 .lppath__name { font-family: var(--font-display); font-weight: 650; font-size: 16px; letter-spacing: -.01em; fill: var(--ink); }
-.lppath__dur { font-family: var(--font-mono); font-size: 9.5px; letter-spacing: .08em; fill: var(--ink-3); }
-/* FIG_04 draw-in: same law as FIG_02/03 (ink strokes trace, rings pop, cognac fades on
-   the spot), same html.reveal-on scoping so JS-off / reduced-motion render it fully drawn. */
-html.reveal-on .lppath .lppath__axis,
-html.reveal-on .lppath .lppath__solid { stroke-dasharray: 1; stroke-dashoffset: 1; }
+.lppath__dur { font-family: var(--font-mono); font-size: 8.5px; letter-spacing: .06em; fill: var(--ink-3); }
+/* FIG_04 draw-in: each cumulative track arrives row by row, then its capability
+   markers settle. JS-off and reduced-motion render the complete matrix. */
+html.reveal-on .lppath .lppath__track { stroke-dasharray: 1; stroke-dashoffset: 1; }
 html.reveal-on .lppath .lppath__ring { opacity: 0; transform-box: fill-box; transform-origin: center; }
-html.reveal-on .lppath .lppath__diamond,
-html.reveal-on .lppath .lppath__dash { opacity: 0; }
-html.reveal-on .lppath.is-in .lppath__axis { animation: figdraw 440ms var(--ease-out) forwards; }
-html.reveal-on .lppath.is-in .lppath__solid { animation: figdraw 700ms var(--ease-out) forwards; animation-delay: 200ms; }
-html.reveal-on .lppath.is-in .lppath__ring { animation: figpop 280ms var(--ease-out) forwards; animation-delay: calc(340ms + var(--seg, 0) * 200ms); }
-html.reveal-on .lppath.is-in .lppath__diamond { animation: figfade 280ms var(--ease-out) forwards; animation-delay: 880ms; }
-html.reveal-on .lppath.is-in .lppath__dash { animation: figfade 300ms var(--ease-out) forwards; animation-delay: 980ms; }
+html.reveal-on .lppath .lppath__diamond { opacity: 0; }
+html.reveal-on .lppath.is-in .lppath__track { animation: figdraw 460ms var(--ease-out) forwards; animation-delay: calc(140ms + var(--seg, 0) * 150ms); }
+html.reveal-on .lppath.is-in .lppath__ring { animation: figpop 260ms var(--ease-out) forwards; animation-delay: calc(260ms + var(--seg, 0) * 150ms); }
+html.reveal-on .lppath.is-in .lppath__diamond { animation: figfade 260ms var(--ease-out) forwards; animation-delay: calc(360ms + var(--seg, 0) * 150ms); }
 
 /* FIG_04 hover popovers: one glass card per milestone, same recipe and mechanics as the
    FIG_02 pops (deep-glass gradient, diamond caret, CSS-only :has() show, 120ms
@@ -918,15 +917,14 @@ html.reveal-on .lppath.is-in .lppath__dash { animation: figfade 300ms var(--ease
   -webkit-backdrop-filter: blur(var(--blur-strong)) saturate(2.2) brightness(1.06);
   backdrop-filter: blur(var(--blur-strong)) saturate(2.2) brightness(1.06);
   transform: rotate(45deg); }
-/* Anchors in stage percentages of the 640×440 viewBox (milestones at 150,340 / 300,225 /
-   470,110): f1/f2 open above their ring, f3 opens below its diamond (above would crowd
-   the stamp); the caret always sits over the milestone. */
-.lppath__pop--f1 { left: 23.4%; bottom: calc(22.7% + 16px); transform: translate(-24%, 6px); }
-.lppath__pop--f1::after { left: calc(24% - 6px); bottom: -6px; }
-.lppath__pop--f2 { left: 46.9%; bottom: calc(48.9% + 16px); transform: translate(-50%, 6px); }
-.lppath__pop--f2::after { left: calc(50% - 6px); bottom: -6px; }
-.lppath__pop--f3 { left: 73.4%; top: calc(25% + 16px); transform: translate(-76%, -6px); }
-.lppath__pop--f3::after { left: calc(76% - 6px); top: -6px; }
+/* Anchors in stage percentages of the 640×370 viewBox. Each popover opens above the
+   terminal diamond for its row; asymmetric transforms keep the cards inside the figure. */
+.lppath__pop--f1 { left: 59.4%; bottom: calc(60.5% + 16px); transform: translate(-54%, 6px); }
+.lppath__pop--f1::after { left: calc(54% - 6px); bottom: -6px; }
+.lppath__pop--f2 { left: 75%; bottom: calc(40% + 16px); transform: translate(-70%, 6px); }
+.lppath__pop--f2::after { left: calc(70% - 6px); bottom: -6px; }
+.lppath__pop--f3 { left: 90.6%; bottom: calc(19.5% + 16px); transform: translate(-94%, 6px); }
+.lppath__pop--f3::after { left: calc(94% - 6px); bottom: -6px; }
 .lppath:has(.lppath__hit[data-fmt="f1"]:hover) .lppath__pop--f1,
 .lppath:has(.lppath__hit[data-fmt="f2"]:hover) .lppath__pop--f2,
 .lppath:has(.lppath__hit[data-fmt="f3"]:hover) .lppath__pop--f3,
@@ -938,9 +936,23 @@ html.reveal-on .lppath.is-in .lppath__dash { animation: figfade 300ms var(--ease
 .lppath:has(.lppath__hit[data-fmt="f1"]:hover) .lppath__pop--f1,
 .lppath:has(.lppath__hit[data-fmt="f2"]:hover) .lppath__pop--f2,
 .lppath:has(.lppath__hit[data-fmt="f3"]:hover) .lppath__pop--f3 { transition-delay: 120ms; }
-.lppath:has(.lppath__hit[data-fmt="f1"]:hover) .lppath__pop--f1, .lppath:has(.lppath__hit[data-fmt="f1"].is-tapped) .lppath__pop--f1 { transform: translate(-24%, 0); }
-.lppath:has(.lppath__hit[data-fmt="f2"]:hover) .lppath__pop--f2, .lppath:has(.lppath__hit[data-fmt="f2"].is-tapped) .lppath__pop--f2 { transform: translate(-50%, 0); }
-.lppath:has(.lppath__hit[data-fmt="f3"]:hover) .lppath__pop--f3, .lppath:has(.lppath__hit[data-fmt="f3"].is-tapped) .lppath__pop--f3 { transform: translate(-76%, 0); }
+.lppath:has(.lppath__hit[data-fmt="f1"]:hover) .lppath__pop--f1, .lppath:has(.lppath__hit[data-fmt="f1"].is-tapped) .lppath__pop--f1 { transform: translate(-54%, 0); }
+.lppath:has(.lppath__hit[data-fmt="f2"]:hover) .lppath__pop--f2, .lppath:has(.lppath__hit[data-fmt="f2"].is-tapped) .lppath__pop--f2 { transform: translate(-70%, 0); }
+.lppath:has(.lppath__hit[data-fmt="f3"]:hover) .lppath__pop--f3, .lppath:has(.lppath__hit[data-fmt="f3"].is-tapped) .lppath__pop--f3 { transform: translate(-94%, 0); }
+
+@media (max-width: 560px) {
+  .lppath__svg--desktop { display: none; }
+  .lppath__svg--mobile { display: block; }
+  .lppath__pop--f1 { left: 12.5%; bottom: calc(65.9% + 16px); transform: translate(-10%, 6px); }
+  .lppath__pop--f1::after { left: calc(10% - 6px); }
+  .lppath__pop--f2 { left: 50%; bottom: calc(38.6% + 16px); transform: translate(-50%, 6px); }
+  .lppath__pop--f2::after { left: calc(50% - 6px); }
+  .lppath__pop--f3 { left: 87.5%; bottom: calc(11.4% + 16px); transform: translate(-90%, 6px); }
+  .lppath__pop--f3::after { left: calc(90% - 6px); }
+  .lppath:has(.lppath__hit[data-fmt="f1"]:hover) .lppath__pop--f1, .lppath:has(.lppath__hit[data-fmt="f1"].is-tapped) .lppath__pop--f1 { transform: translate(-10%, 0); }
+  .lppath:has(.lppath__hit[data-fmt="f2"]:hover) .lppath__pop--f2, .lppath:has(.lppath__hit[data-fmt="f2"].is-tapped) .lppath__pop--f2 { transform: translate(-50%, 0); }
+  .lppath:has(.lppath__hit[data-fmt="f3"]:hover) .lppath__pop--f3, .lppath:has(.lppath__hit[data-fmt="f3"].is-tapped) .lppath__pop--f3 { transform: translate(-90%, 0); }
+}
 
 /* S1 — model-agnostic panel: self-contained glass card (own max-width + inline gutter,
    same "wide self-padded band" pattern as .contact__panel/.appcta/.svcmap). */
@@ -1717,8 +1729,7 @@ html.reveal-on .svcmap.is-in .svcmap__diamond { animation: figfade 280ms var(--e
   html.reveal-on .timeline .tl__solid,
   html.reveal-on .timeline .tl__drop,
   html.reveal-on .svcmap .svcmap__solid,
-  html.reveal-on .lppath .lppath__axis,
-  html.reveal-on .lppath .lppath__solid { stroke-dashoffset: 0 !important; }
+  html.reveal-on .lppath .lppath__track { stroke-dashoffset: 0 !important; }
   html.reveal-on .timeline .tl__ring,
   html.reveal-on .timeline .tl__ring--now,
   html.reveal-on .timeline .tl__now,
@@ -1729,7 +1740,6 @@ html.reveal-on .svcmap.is-in .svcmap__diamond { animation: figfade 280ms var(--e
   html.reveal-on .svcmap .svcmap__dash,
   html.reveal-on .lppath .lppath__ring,
   html.reveal-on .lppath .lppath__diamond,
-  html.reveal-on .lppath .lppath__dash,
   html.reveal-on .lpflag .lpflag__fig-track > * { opacity: 1 !important; }
 }
 

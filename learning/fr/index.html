@@ -30,7 +30,7 @@
 <link rel="icon" href="/assets/logo-glyph-dark.svg" media="(prefers-color-scheme: dark)"/>
 <link rel="apple-touch-icon" href="/assets/apple-touch-icon.png"/>
 <script>if('IntersectionObserver' in window && !matchMedia('(prefers-reduced-motion:reduce)').matches){document.documentElement.classList.add('reveal-on');}</script>
-<link rel="stylesheet" href="/assets/ds.css?v=20260719zq"/>
+<link rel="stylesheet" href="/assets/ds.css?v=20260719zr"/>
 <script type="application/ld+json">
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Accueil","item":"https://retconsulting.be/fr/"},{"@type":"ListItem","position":2,"name":"RET Upskilling","item":"https://retconsulting.be/learning/fr/"}]}
 </script>
@@ -64,37 +64,84 @@
           <a class="ret-btn ret-btn--secondary ret-btn--md" href="#formats">Voir les formats</a>
         </div>
       </div>
-      <figure class="lppath reveal" data-tilt style="--tilt-amp:1.2" role="img" aria-label="Parcours RET Upskilling en trois formats. RET Spark, une à deux heures : comprendre et obtenir un premier résultat utile. RET Lab, une demi-journée ou une journée : pratiquer sur un cas réel. RET Immersion, deux à trois jours : appliquer l'IA avec une autonomie durable.">
+      <figure class="lppath reveal" data-tilt style="--tilt-amp:1.2" role="img" aria-label="Parcours de compétences RET Upskilling en trois formats cumulatifs. RET Spark dure une à deux heures et sensibilise aux fondamentaux. RET Lab dure une demi-journée ou une journée et développe la pratique. RET Immersion dure deux à trois jours et construit l'autonomie par l'automatisation.">
         <span class="stamp"><span class="ret-diamond"></span>FIG_04 &middot; PARCOURS UPSKILLING</span>
         <div class="lppath__stage">
-        <svg class="lppath__svg" viewBox="0 0 640 440" aria-hidden="true" focusable="false">
-          <line class="lppath__level" x1="48" y1="340" x2="592" y2="340"/>
-          <line class="lppath__level" x1="48" y1="225" x2="592" y2="225"/>
-          <line class="lppath__level" x1="48" y1="110" x2="592" y2="110"/>
-          <text class="lppath__lvlabel" x="48" y="330">COMPRENDRE</text>
-          <text class="lppath__lvlabel" x="48" y="215">PRATIQUER</text>
-          <text class="lppath__lvlabel" x="48" y="100">APPLIQUER</text>
-          <line class="lppath__axis" pathLength="1" x1="48" y1="400" x2="592" y2="400"/>
-          <text class="lppath__axlabel" x="592" y="424" text-anchor="end">PROFONDEUR DE FORMATION</text>
-          <polyline class="lppath__solid" pathLength="1" points="48,400 150,340 300,225 470,110"/>
-          <path class="lppath__dash" d="M470,110 L592,62"/>
-          <circle class="lppath__ring" style="--seg:0" cx="150" cy="340" r="5"/>
-          <circle class="lppath__ring" style="--seg:1" cx="300" cy="225" r="5"/>
-          <rect class="lppath__diamond" x="464.5" y="104.5" width="11" height="11" transform="rotate(45 470 110)"/>
-          <text class="lppath__name" x="162" y="368">RET Spark</text>
-          <text class="lppath__dur" x="162" y="384">1-2 H</text>
-          <text class="lppath__name" x="312" y="253">RET Lab</text>
-          <text class="lppath__dur" x="312" y="269">0,5-1 JOUR</text>
-          <text class="lppath__name" x="482" y="138">RET Immersion</text>
-          <text class="lppath__dur" x="482" y="154">2-3 JOURS</text>
-          <circle class="lppath__hit" data-fmt="f1" cx="150" cy="340" r="36"/>
-          <circle class="lppath__hit" data-fmt="f2" cx="300" cy="225" r="36"/>
-          <circle class="lppath__hit" data-fmt="f3" cx="470" cy="110" r="36"/>
+        <svg class="lppath__svg lppath__svg--desktop" viewBox="0 0 640 370" aria-hidden="true" focusable="false">
+          <text class="lppath__metahead" x="48" y="74">FORMAT</text>
+          <text class="lppath__metahead" x="180" y="74">ENGAGEMENT</text>
+          <text class="lppath__head" x="380" y="70" text-anchor="middle">COMPRENDRE</text>
+          <text class="lppath__subhead" x="380" y="89" text-anchor="middle">SENSIBILISATION</text>
+          <text class="lppath__head" x="480" y="70" text-anchor="middle">PRATIQUER</text>
+          <text class="lppath__subhead" x="480" y="89" text-anchor="middle">COMPÉTENCE</text>
+          <text class="lppath__head" x="580" y="70" text-anchor="middle">AUTOMATISER</text>
+          <text class="lppath__subhead lppath__subhead--accent" x="580" y="89" text-anchor="middle">AUTONOMIE</text>
+
+          <line class="lppath__rule" x1="48" y1="108" x2="592" y2="108"/>
+          <line class="lppath__rule" x1="48" y1="184" x2="592" y2="184"/>
+          <line class="lppath__rule" x1="48" y1="260" x2="592" y2="260"/>
+          <line class="lppath__rule" x1="48" y1="336" x2="592" y2="336"/>
+
+          <text class="lppath__name" x="48" y="152">RET Spark</text>
+          <text class="lppath__dur" x="180" y="152">1-2 HEURES</text>
+          <path class="lppath__track" style="--seg:0" pathLength="1" d="M380 146H380"/>
+          <rect class="lppath__diamond" style="--seg:0" x="374.5" y="140.5" width="11" height="11" transform="rotate(45 380 146)"/>
+
+          <text class="lppath__name" x="48" y="228">RET Lab</text>
+          <text class="lppath__dur" x="180" y="228">DEMI-JOURNÉE / JOURNÉE</text>
+          <path class="lppath__track" style="--seg:1" pathLength="1" d="M380 222H480"/>
+          <circle class="lppath__ring" style="--seg:1" cx="380" cy="222" r="5"/>
+          <rect class="lppath__diamond" style="--seg:1" x="474.5" y="216.5" width="11" height="11" transform="rotate(45 480 222)"/>
+
+          <text class="lppath__name" x="48" y="304">RET Immersion</text>
+          <text class="lppath__dur" x="180" y="304">2-3 JOURS</text>
+          <path class="lppath__track" style="--seg:2" pathLength="1" d="M380 298H580"/>
+          <circle class="lppath__ring" style="--seg:2" cx="380" cy="298" r="5"/>
+          <circle class="lppath__ring" style="--seg:2" cx="480" cy="298" r="5"/>
+          <rect class="lppath__diamond" style="--seg:2" x="574.5" y="292.5" width="11" height="11" transform="rotate(45 580 298)"/>
+
+          <circle class="lppath__hit" data-fmt="f1" cx="380" cy="146" r="32"/>
+          <circle class="lppath__hit" data-fmt="f2" cx="480" cy="222" r="32"/>
+          <circle class="lppath__hit" data-fmt="f3" cx="580" cy="298" r="32"/>
+        </svg>
+        <svg class="lppath__svg lppath__svg--mobile" viewBox="0 0 320 440" aria-hidden="true" focusable="false">
+          <text class="lppath__head" x="40" y="48" text-anchor="middle">COMPRENDRE</text>
+          <text class="lppath__subhead" x="40" y="67" text-anchor="middle">SENSIBILISATION</text>
+          <text class="lppath__head" x="160" y="48" text-anchor="middle">PRATIQUER</text>
+          <text class="lppath__subhead" x="160" y="67" text-anchor="middle">COMPÉTENCE</text>
+          <text class="lppath__head" x="280" y="48" text-anchor="middle">AUTOMATISER</text>
+          <text class="lppath__subhead lppath__subhead--accent" x="280" y="67" text-anchor="middle">AUTONOMIE</text>
+
+          <line class="lppath__rule" x1="24" y1="86" x2="296" y2="86"/>
+          <text class="lppath__name" x="24" y="120">RET Spark</text>
+          <text class="lppath__dur" x="296" y="120" text-anchor="end">1-2 HEURES</text>
+          <path class="lppath__track" style="--seg:0" pathLength="1" d="M40 150H40"/>
+          <rect class="lppath__diamond" style="--seg:0" x="34.5" y="144.5" width="11" height="11" transform="rotate(45 40 150)"/>
+
+          <line class="lppath__rule" x1="24" y1="190" x2="296" y2="190"/>
+          <text class="lppath__name" x="24" y="240">RET Lab</text>
+          <text class="lppath__dur" x="296" y="240" text-anchor="end">DEMI-JOURNÉE / JOURNÉE</text>
+          <path class="lppath__track" style="--seg:1" pathLength="1" d="M40 270H160"/>
+          <circle class="lppath__ring" style="--seg:1" cx="40" cy="270" r="5"/>
+          <rect class="lppath__diamond" style="--seg:1" x="154.5" y="264.5" width="11" height="11" transform="rotate(45 160 270)"/>
+
+          <line class="lppath__rule" x1="24" y1="310" x2="296" y2="310"/>
+          <text class="lppath__name" x="24" y="360">RET Immersion</text>
+          <text class="lppath__dur" x="296" y="360" text-anchor="end">2-3 JOURS</text>
+          <path class="lppath__track" style="--seg:2" pathLength="1" d="M40 390H280"/>
+          <circle class="lppath__ring" style="--seg:2" cx="40" cy="390" r="5"/>
+          <circle class="lppath__ring" style="--seg:2" cx="160" cy="390" r="5"/>
+          <rect class="lppath__diamond" style="--seg:2" x="274.5" y="384.5" width="11" height="11" transform="rotate(45 280 390)"/>
+          <line class="lppath__rule" x1="24" y1="424" x2="296" y2="424"/>
+
+          <circle class="lppath__hit" data-fmt="f1" cx="40" cy="150" r="32"/>
+          <circle class="lppath__hit" data-fmt="f2" cx="160" cy="270" r="32"/>
+          <circle class="lppath__hit" data-fmt="f3" cx="280" cy="390" r="32"/>
         </svg>
         <div class="lppath__pops" aria-hidden="true">
-          <div class="lppath__pop lppath__pop--f1"><span class="cap"><span class="ret-diamond"></span>RET SPARK &middot; 1-2 H</span><strong>Comprendre et essayer</strong><p>Une session en direct pour comprendre l'IA générative et obtenir un premier résultat utile.</p></div>
-          <div class="lppath__pop lppath__pop--f2"><span class="cap"><span class="ret-diamond"></span>RET LAB &middot; 0,5-1 JOUR</span><strong>Pratiquer et produire</strong><p>Un atelier construit autour du cas d'usage réel de chaque participant.</p></div>
-          <div class="lppath__pop lppath__pop--f3"><span class="cap"><span class="ret-diamond"></span>RET IMMERSION &middot; 2-3 JOURS</span><strong>Appliquer avec autonomie</strong><p>Un parcours construit autour d'un projet fonctionnel et d'une démonstration finale.</p></div>
+          <div class="lppath__pop lppath__pop--f1"><span class="cap"><span class="ret-diamond"></span>RET SPARK &middot; 1-2 HEURES</span><strong>Comprendre les fondamentaux</strong><p>Une session en direct pour comprendre l'IA générative et obtenir un premier résultat utile.</p></div>
+          <div class="lppath__pop lppath__pop--f2"><span class="cap"><span class="ret-diamond"></span>RET LAB &middot; DEMI-JOURNÉE OU JOURNÉE</span><strong>Développer la pratique</strong><p>Un atelier construit autour du cas d'usage réel de chaque participant.</p></div>
+          <div class="lppath__pop lppath__pop--f3"><span class="cap"><span class="ret-diamond"></span>RET IMMERSION &middot; 2-3 JOURS</span><strong>Gagner en autonomie</strong><p>Un parcours construit autour d'un projet fonctionnel, de workflows reproductibles et d'une démonstration finale.</p></div>
         </div>
         </div>
         <figcaption class="lppath__note">Survolez un jalon pour le détail</figcaption>
