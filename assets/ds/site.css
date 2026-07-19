@@ -981,8 +981,7 @@ html.reveal-on .lppath.is-in .lppath__dash { animation: figfade 300ms var(--ease
 .lpf__facts > div { display: grid; grid-template-columns: 88px 1fr; gap: 12px; padding: 10px 0; border-top: 1px solid var(--line); }
 .lpf__facts dt { font-family: var(--font-mono); font-size: 10px; letter-spacing: .14em; text-transform: uppercase; color: var(--ink-3); padding-top: 2px; }
 .lpf__facts dd { margin: 0; font-family: var(--font-body); font-size: 13.5px; color: var(--ink-2); }
-/* card foot: mono cross-link to the matching flagship (svc-foot language: uppercase mono,
-   arrow pinned right, cognac on hover only) */
+/* Legacy format-card foot treatment, retained for non-flip contexts. */
 .lpf__foot { display: flex; align-items: center; gap: 8px; margin-top: 0; padding: 12px 0 0; border-top: 1px solid var(--line);
   font-family: var(--font-mono); font-size: 10.5px; letter-spacing: .1em; text-transform: uppercase; color: var(--ink-3); text-decoration: none;
   transition: color var(--dur-base) var(--ease-out); }
@@ -991,9 +990,8 @@ html.reveal-on .lppath.is-in .lppath__dash { animation: figfade 300ms var(--ease
 .lpf__foot:hover svg { transform: translate(2px, -2px); }
 .lpf__foot:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; border-radius: 4px; }
 
-/* Format cards as home-style flip cards: the front reuses the .lpf content classes
-   inside a .svc shell (flagship on the back). Inside the flex face, only the foot may
-   own the auto margin, so the facts table sits right under the copy. */
+/* Format cards as home-style flip cards. The front summarizes the format; the back
+   presents a compact, representative selection from its catalog. */
 .svc .lpf__facts { margin: 18px 0 0; }
 .learning-page .svc__inner { isolation: isolate; }
 .learning-page .svc__face--front { position: relative; z-index: 2; }
@@ -1010,20 +1008,32 @@ html.reveal-on .lppath.is-in .lppath__dash { animation: figfade 300ms var(--ease
 .learning-page .svc:hover .lpf__choose { background: var(--ink); box-shadow: 0 16px 30px -18px rgba(24,24,27,.9), inset 0 -2px 0 var(--accent); }
 .learning-page .svc.is-lifted .lpf__choose { opacity: 0; }
 
-/* Format backs: one calm information panel, with labels doing the scanning work. */
+/* The catalog control is a persistent compact action instead of a hover-only arrow.
+   This keeps the interaction explicit after removing the flagship caption. */
+.learning-page .svc__foot--catalog { padding-top: 16px; padding-right: 0; justify-content: center; }
+.learning-page .svc__foot--catalog .svc__more {
+  position: static; inset: auto; width: auto; transform: none; justify-content: center; gap: 8px;
+  padding: 10px 15px; background: var(--accent-btn); color: #fff; }
+.learning-page .svc__foot--catalog .svc__more-label { max-width: none; opacity: 1; }
+.learning-page .svc__foot--catalog .svc__more svg { margin-left: 0; transform: none; color: #fff; }
+.learning-page .svc:hover .svc__foot--catalog .svc__more,
+.learning-page .svc__foot--catalog .svc__more:focus-visible { right: auto; padding: 10px 15px; gap: 8px; background: var(--ink); }
+.learning-page .svc:hover .svc__foot--catalog .svc__more svg { transform: translate(1px, -1px); }
+
+/* Format backs: compact catalog rows with a clear level-to-session hierarchy. */
 .learning-page .svc__face--back { padding: 26px; background: linear-gradient(155deg, var(--surface) 0%, var(--canvas) 100%); }
 .learning-page .svc__face--back > * { flex-shrink: 0; }
 .learning-page .svc__backhead { margin-bottom: 10px; }
-.learning-page .svc__backtitle { max-width: 25ch; font-size: 1.35rem; line-height: 1.08; margin-bottom: 18px; }
-.learning-page .lpf-backproof { gap: 0; border: 1px solid var(--line); border-radius: var(--r-md); overflow: hidden; background: rgba(255,255,255,.62); }
-.learning-page .lpf-backproof li { display: grid; grid-template-columns: 78px 1fr; gap: 12px; padding: 14px 13px; font-size: .86rem; line-height: 1.4; }
-.learning-page .lpf-backproof li + li { border-top: 1px solid var(--line); }
-.learning-page .lpf-backproof li::before { display: none; }
-.learning-page .lpf-backproof li span { padding-top: 2px; font-family: var(--font-mono); font-size: 8.5px; letter-spacing: .12em; text-transform: uppercase; color: var(--accent-label); }
-.learning-page .svc__face--back .lpflag__fig { margin-top: 18px; padding: 16px 14px; border: 1px solid var(--border-accent); border-radius: var(--r-md); background: var(--cognac-wash); }
-.learning-page .svc__face--back .lpflag__fig-k { color: var(--accent-label); }
+.learning-page .svc__backtitle { max-width: 30ch; font-size: 1.35rem; line-height: 1.08; margin-bottom: 14px; }
+.learning-page .lpf-catalog { gap: 0; border: 1px solid var(--line); border-radius: var(--r-md); overflow: hidden; background: rgba(255,255,255,.62); }
+.learning-page .lpf-catalog li { display: grid; grid-template-columns: 88px 1fr; gap: 12px; align-items: start; padding: 12px 13px; }
+.learning-page .lpf-catalog li + li { border-top: 1px solid var(--line); }
+.learning-page .lpf-catalog li::before { display: none; }
+.learning-page .lpf-catalog li span { padding-top: 2px; font-family: var(--font-mono); font-size: 8px; line-height: 1.25; letter-spacing: .1em; text-transform: uppercase; color: var(--accent-label); }
+.learning-page .lpf-catalog li strong { font-family: var(--font-body); font-size: .84rem; line-height: 1.35; font-weight: 600; color: var(--ink-2); }
+.learning-page .lpf-catalog__note { margin: 12px 2px 0; font-family: var(--font-body); font-size: .76rem; line-height: 1.45; color: var(--ink-3); }
 .learning-page .svc__backfoot { margin-top: auto; padding-top: 14px; }
-.learning-page .svc__backfoot a { display: flex; align-items: center; justify-content: space-between; gap: 12px; padding: 11px 15px; border-radius: var(--r-pill); background: var(--ink); color: #fff; font-weight: 600; }
+.learning-page .svc__backfoot a { display: inline-flex; align-items: center; justify-content: center; gap: 8px; padding: 9px 14px; border-radius: var(--r-pill); background: var(--ink); color: #fff; font-size: .84rem; font-weight: 600; }
 .learning-page .svc__backfoot a::after { content: "↗"; color: var(--cognac-soft); }
 
 /* S3 — flagship sessions: wide two-column rows (meta rail + body) */
@@ -1117,7 +1127,7 @@ html.reveal-on .lpflag.is-in .lpflag__fig-track > :nth-child(1) { transition-del
 
 /* Practical modalities (fused into #formats): small icon tiles + label, trustbar
    sector-tile language, introduced by a real h3 styled as the mono cap (AT-navigable). */
-.lp-mods-cap { max-width: var(--container); margin: clamp(32px,4vw,48px) auto 0; padding-inline: var(--gutter); text-align: center; }
+.lp-mods-cap { max-width: var(--container); margin: clamp(32px,4vw,48px) auto 0; padding-inline: var(--gutter); text-align: left; }
 .lp-mods-cap + .lp-mods { margin-top: 14px; }
 .lp-mods { max-width: var(--container); margin-inline: auto; padding-inline: var(--gutter); display: grid; grid-template-columns: repeat(6, minmax(0,1fr)); grid-auto-rows: 1fr; gap: 12px; }
 .lp-mod { min-width: 0; display: flex; flex-direction: column; gap: 12px; align-items: center; text-align: center; background: var(--surface); border: 1px solid var(--line); border-radius: var(--r-lg); box-shadow: var(--shadow-sm); padding: 18px 12px; }
@@ -1132,9 +1142,9 @@ html.reveal-on .lpflag.is-in .lpflag__fig-track > :nth-child(1) { transition-del
 .lp-mod__link:hover svg { transform: translate(2px, -2px); }
 .lp-mod__link:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; border-radius: 4px; }
 /* adjacent-sibling keeps this off .lp-mod__k itself (a bare `.lp-mod p` would out-rank the label's class rule) */
-.lp-mod__k + p { font-family: var(--font-body); font-size: 13px; line-height: 1.45; color: var(--ink-2); margin: 0; }
+.lp-mod__k + p { display: flex; flex: 1; align-items: center; justify-content: center; font-family: var(--font-body); font-size: 13px; line-height: 1.45; color: var(--ink-2); margin: 0; }
 
-.learning-page #formats .cases__note { max-width: 78ch; font-size: 11.5px; line-height: 1.55; }
+.learning-page #formats .cases__note { box-sizing: border-box; width: 100%; max-width: var(--container); padding-inline: var(--gutter); font-size: 11.5px; line-height: 1.55; }
 .learning-page #engagement .section__title { margin-top: 0; }
 
 /* S6 — scoping CTA (sits inside .appcta, which already inverts .ret-btn--primary to cognac) */
@@ -1176,7 +1186,7 @@ html.reveal-on .lpflag.is-in .lpflag__fig-track > :nth-child(1) { transition-del
   .lpf__choose { left: 16px; right: 16px; top: calc(100% - 18px); min-height: 64px; padding-top: 25px; }
   .lp-mods { grid-template-columns: repeat(2,1fr); }
 }
-@media (max-width: 380px) {
+@media (max-width: 400px) {
   .subhead { padding-inline: 12px; }
   .subhead__inner { gap: 10px; padding-inline: 12px; }
   .subhead__right { gap: 6px; }
