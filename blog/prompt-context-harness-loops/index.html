@@ -28,7 +28,7 @@
 <link rel="icon" href="/assets/logo-glyph-dark.svg" media="(prefers-color-scheme: dark)"/>
 <link rel="apple-touch-icon" href="/assets/apple-touch-icon.png"/>
 <script>if('IntersectionObserver' in window && !matchMedia('(prefers-reduced-motion:reduce)').matches){document.documentElement.classList.add('reveal-on');}</script>
-<link rel="stylesheet" href="/assets/ds.css?v=20260720d"/>
+<link rel="stylesheet" href="/assets/ds.css?v=20260720e"/>
 <script type="application/ld+json">
 {"@context":"https://schema.org","@graph":[{"@type":"BlogPosting","headline":"From Prompt to Loop Engineering, a simple guide for the non-coders and knowledge workers","datePublished":"2026-07-11","dateModified":"2026-07-20","inLanguage":"en","articleSection":"AI","keywords":"AI, Explainer","author":{"@type":"Person","name":"Redha Etbaz","url":"https://retconsulting.be/"},"publisher":{"@type":"Organization","name":"RET Consulting","logo":{"@type":"ImageObject","url":"https://retconsulting.be/assets/icon-512.png"}},"image":"https://retconsulting.be/assets/icon-512.png","description":"From prompt engineering to loop engineering: the whole ladder in plain language, and what it changes for your team.","mainEntityOfPage":{"@type":"WebPage","@id":"https://retconsulting.be/blog/prompt-context-harness-loops/"},"url":"https://retconsulting.be/blog/prompt-context-harness-loops/"},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://retconsulting.be/"},{"@type":"ListItem","position":2,"name":"Blog","item":"https://retconsulting.be/blog/"},{"@type":"ListItem","position":3,"name":"From Prompt to Loop Engineering","item":"https://retconsulting.be/blog/prompt-context-harness-loops/"}]}]}
 </script>
@@ -162,10 +162,12 @@
       <h2><span class="article__kicker">01 / PROMPT ENGINEERING</span>The baseline</h2>
 
       <span class="article__label">What it is</span>
-      <p>Prompt engineering is simply the craft of writing good instructions for an AI model. A model can't read our minds (yet): it only works from the exact words we give it, so the more deliberately we frame a request, the more reliable the answer becomes.</p>
+      <p>An <span class="term" data-tip="The generative AI system behind the conversation, like Claude, GPT or Gemini." tabindex="0" aria-label="AI model: the generative AI system behind the conversation, like Claude, GPT or Gemini.">AI model</span> can't read our minds (yet): it only works from the exact words we give it. That's precisely where prompt engineering comes in: the craft of writing good instructions for it.</p>
+      <p>The more deliberately we frame a request, the more reliable the answer becomes.</p>
 
       <span class="article__label">How it works</span>
-      <p>Give it a role to play, a clear task, the context it needs, the limits to respect, and the shape the answer should take, and a vague ask turns into a dependable one, as the two versions below show. Everything the model needs still fits inside that single message, with no outside help required.</p>
+      <p>To start engineering a prompt, give the AI model a <span class="term" data-tip="Who the model should act as while it answers." tabindex="0" aria-label="Role: who the model should act as while it answers.">role</span> to play, a clear <span class="term" data-tip="The concrete action you want the model to perform." tabindex="0" aria-label="Task: the concrete action you want the model to perform.">task</span> to perform, the <span class="term" data-tip="The background information the model needs to get it right." tabindex="0" aria-label="Context: the background information the model needs to get it right.">context</span> it needs, the <span class="term" data-tip="The rules and limits the answer must respect." tabindex="0" aria-label="Constraints: the rules and limits the answer must respect.">constraints</span> to respect, and the <span class="term" data-tip="The shape and length the answer should take." tabindex="0" aria-label="Format: the shape and length the answer should take.">format</span> the answer should take, as the two versions below show.</p>
+      <p>Do that, and everything the model needs to answer your query fits inside that single message, with no outside help required.</p>
 
       <figure class="promptfig reveal" role="group" aria-label="A vague prompt compared with an engineered prompt">
         <div class="promptfig__row">
@@ -185,19 +187,20 @@
         </div>
       </figure>
 
-      <span class="article__label">Example</span>
-      <p>The task in the figure above is the same in both versions, yet the results are worlds apart. Ask the model to explain gross versus net margin, or to work out how many cheeseburgers would fit between the Earth and the Moon, and it answers on its own: no search, no tools, just its own reasoning.</p>
-
       <span class="article__label">Limitations</span>
-      <p>This is where prompt engineering hits its ceiling. On its own, the model can't fetch new information, check today's numbers, or verify its own answer: everything has to already be in the message, or already in its training. That's the foundation everything else in this guide builds on.</p>
+      <p>This is where prompt engineering hits its ceiling. On its own, the AI model can't know anything that happened after its <span class="term" data-tip="The cut-off point of what the model learned. It knows nothing that happened after it." tabindex="0" aria-label="Knowledge cutoff: the cut-off point of what the model learned; it knows nothing that happened after it.">knowledge cutoff</span>, and for more advanced or exploratory work, you can't fit everything it needs into a single prompt.</p>
+      <p>That's where context engineering comes in.</p>
 
       <h2><span class="article__kicker">02 / CONTEXT ENGINEERING</span>Adding autonomy</h2>
 
       <span class="article__label">What it is</span>
-      <p>Our <span class="term" data-tip="The instruction you type for the AI to act on." tabindex="0" aria-label="Prompt: the instruction you type for the AI to act on.">prompt</span> never arrives alone, though. It lands inside the model's <span class="term" data-tip="The model's working memory for one exchange: instructions, the conversation, your documents and fetched data all share a single, fixed space." tabindex="0" aria-label="Context window: the model's working memory for one exchange, where instructions, the conversation, your documents and fetched data all share a single fixed space.">context window</span>, the working memory it keeps for this one exchange. Everything else it is holding at that moment shares that same space: the instructions it was given, the conversation so far, any documents we have added, and whatever it has just looked up.</p>
+      <p>The <span class="term" data-tip="The instruction you type for the AI to act on." tabindex="0" aria-label="Prompt: the instruction you type for the AI to act on.">prompt</span> we engineer, or don't, is only one part of what fills the AI model's <span class="term" data-tip="The model's working memory for one exchange: instructions, the conversation, your documents and fetched data all share a single, fixed space." tabindex="0" aria-label="Context window: the model's working memory for one exchange, where instructions, the conversation, your documents and fetched data all share a single fixed space.">context window</span>.</p>
+      <p>Think of it as the model's working memory: the conversation so far, its instructions, our preferences, the documents we've added, and every search or tool call it has made all share that same space.</p>
 
       <span class="article__label">How it works</span>
-      <p>That window is generous, but its size is fixed, so every one of those pieces is competing for the same limited room, as the breakdown below shows. What makes context engineering powerful is that the assistant fills that space itself, without being told exactly how: it opens our files, queries a database, searches the web, or calls whichever business tool we have connected.</p>
+      <p>The context window, although generous, is fixed in size. Every piece that makes it up is competing for the same limited room, and the AI model's performance degrades the more that window fills up, as the breakdown below shows.</p>
+      <p>You might ask: if we give too little context, does the quality drop? And if we fill the context window too much, does it drop too?</p>
+      <p>The answer is yes, on both counts. That's exactly what context engineering is: the craft of providing quality, fit-for-purpose context.</p>
 
       <figure class="ctxwin reveal" role="group" aria-label="What fills the context window and its fixed capacity">
         <div class="ctxwin__bar"><span class="ctxwin__title">Context window</span><span class="ctxwin__cap"><span class="ctxwin__gauge"><span class="ctxwin__gauge-fill"></span></span><span class="ctxwin__capnum">Fixed size</span><span class="ctxwin__status"></span></span></div>
@@ -210,9 +213,6 @@
           <li><span class="ctxwin__k">Your question</span><span class="ctxwin__v">The specific request the model must act on now.</span></li>
         </ul>
       </figure>
-
-      <span class="article__label">Example</span>
-      <p>Take a simple example. Ask what a competitor announced this week, and a prompt on its own can only guess, because the model's knowledge stops at its <span class="term" data-tip="The cut-off point of what the model learned. It knows nothing that happened after it." tabindex="0" aria-label="Knowledge cutoff: the cut-off point of what the model learned; it knows nothing that happened after it.">knowledge cutoff</span>, a fixed point in time. Give it the autonomy to search instead, and it goes and looks, reads what it finds, keeps only what matters, and only then replies. That back-and-forth of searching, reading and judging what to keep is context engineering.</p>
 
       <figure class="promptfig reveal" role="group" aria-label="The same question answered without and with fetched context">
         <div class="promptfig__row">
@@ -229,10 +229,38 @@
         </div>
       </figure>
 
-      <aside class="article__callout"><span class="article__callout-mark"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 7.6h.01"/><path d="M12 11v5.5"/></svg></span><p>Notice what just appeared: a loop. Search, read, judge whether that is enough, then search again, a cycle the assistant runs on its own until it decides it has gathered enough context.</p></aside>
+      <figure class="dodont reveal" role="group" aria-label="A checklist of what to do and what to avoid when engineering context">
+        <div class="dodont__bar"><span class="dodont__title">Context engineering checklist</span><span class="dodont__meta">Do vs. don't</span></div>
+        <ul class="dodont__list">
+          <li class="dodont__row">
+            <div class="dodont__do"><span class="dodont__tag dodont__tag--do">Do</span><span class="dodont__text"><strong>Write a clear prompt.</strong> Use prompt engineering to define the task, expected result, audience and constraints.</span></div>
+            <div class="dodont__dont"><span class="dodont__tag dodont__tag--dont">Don't</span><span class="dodont__text">Combine unrelated tasks, or leave the desired outcome open to interpretation.</span></div>
+          </li>
+          <li class="dodont__row">
+            <div class="dodont__do"><span class="dodont__tag dodont__tag--do">Do</span><span class="dodont__text"><strong>Share relevant data.</strong> Provide the facts, documents, examples or previous work the model needs.</span></div>
+            <div class="dodont__dont"><span class="dodont__tag dodont__tag--dont">Don't</span><span class="dodont__text">Dump everything into the context, or include outdated and contradictory information.</span></div>
+          </li>
+          <li class="dodont__row">
+            <div class="dodont__do"><span class="dodont__tag dodont__tag--do">Do</span><span class="dodont__text"><strong>Add useful links.</strong> Point to reliable sources and explain what the model should extract from them.</span></div>
+            <div class="dodont__dont"><span class="dodont__tag dodont__tag--dont">Don't</span><span class="dodont__text">Share links without saying why they matter, or assume the model can open them.</span></div>
+          </li>
+          <li class="dodont__row">
+            <div class="dodont__do"><span class="dodont__tag dodont__tag--do">Do</span><span class="dodont__text"><strong>Connect the right tools.</strong> Give the model access to the systems it needs to search, calculate, retrieve or act.</span></div>
+            <div class="dodont__dont"><span class="dodont__tag dodont__tag--dont">Don't</span><span class="dodont__text">Provide unnecessary tools, or leave it unclear when and how to use them.</span></div>
+          </li>
+          <li class="dodont__row">
+            <div class="dodont__do"><span class="dodont__tag dodont__tag--do">Do</span><span class="dodont__text"><strong>Remove unnecessary context.</strong> Keep only what helps the model complete the task accurately.</span></div>
+            <div class="dodont__dont"><span class="dodont__tag dodont__tag--dont">Don't</span><span class="dodont__text">Mistake more context for better context.</span></div>
+          </li>
+        </ul>
+      </figure>
+
+      <aside class="article__callout"><span class="article__callout-mark"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 7.6h.01"/><path d="M12 11v5.5"/></svg></span><p>Notice what just appeared: a loop. Add, check, prune, and check again: a cycle that runs until the context is exactly enough, no more and no less.</p></aside>
 
       <span class="article__label">Limitations</span>
-      <p>Context comes with a hard limit, though: the window only holds so much. Give the assistant a big enough job and it eventually runs out of room, then starts compressing its own memory to free up space. A little detail leaks at every pass, like a colleague taking notes of their notes until the nuance is gone.</p>
+      <p>Context engineering improves results, but it can't guarantee accuracy. Without a plan that includes an adversarial review, the AI model can still misunderstand instructions, overlook relevant details, or rely on incorrect information.</p>
+      <p>Whenever we compensate for that with a longer prompt, more context and detailed task planning, the context window fills up.</p>
+      <p>Eventually we either hit that ceiling or the AI model's output quality drops significantly. That's exactly why harness engineering matters.</p>
 
       <h2><span class="article__kicker">03 / HARNESS ENGINEERING</span>Managing from the outside</h2>
 
