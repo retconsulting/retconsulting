@@ -28,7 +28,7 @@
 <link rel="icon" href="/assets/logo-glyph-dark.svg" media="(prefers-color-scheme: dark)"/>
 <link rel="apple-touch-icon" href="/assets/apple-touch-icon.png"/>
 <script>if('IntersectionObserver' in window && !matchMedia('(prefers-reduced-motion:reduce)').matches){document.documentElement.classList.add('reveal-on');}</script>
-<link rel="stylesheet" href="/assets/ds.css?v=20260720e"/>
+<link rel="stylesheet" href="/assets/ds.css?v=20260720l"/>
 <script type="application/ld+json">
 {"@context":"https://schema.org","@graph":[{"@type":"BlogPosting","headline":"From Prompt to Loop Engineering, a simple guide for the non-coders and knowledge workers","datePublished":"2026-07-11","dateModified":"2026-07-20","inLanguage":"en","articleSection":"AI","keywords":"AI, Explainer","author":{"@type":"Person","name":"Redha Etbaz","url":"https://retconsulting.be/"},"publisher":{"@type":"Organization","name":"RET Consulting","logo":{"@type":"ImageObject","url":"https://retconsulting.be/assets/icon-512.png"}},"image":"https://retconsulting.be/assets/icon-512.png","description":"From prompt engineering to loop engineering: the whole ladder in plain language, and what it changes for your team.","mainEntityOfPage":{"@type":"WebPage","@id":"https://retconsulting.be/blog/prompt-context-harness-loops/"},"url":"https://retconsulting.be/blog/prompt-context-harness-loops/"},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://retconsulting.be/"},{"@type":"ListItem","position":2,"name":"Blog","item":"https://retconsulting.be/blog/"},{"@type":"ListItem","position":3,"name":"From Prompt to Loop Engineering","item":"https://retconsulting.be/blog/prompt-context-harness-loops/"}]}]}
 </script>
@@ -50,7 +50,7 @@
     <p class="article-head__sub">Prompt → Context → Harness → Loops</p>
     <div class="article-head__tax"><span class="cat cat--subject" data-axis="subject">AI</span><span class="cat cat--type" data-axis="type">Explainer</span></div>
     <p class="article-head__meta"><time datetime="2026-07-11">2026-07-11</time> · 8 MIN READ</p>
-    <p class="article-head__lead">As AI becomes everyone's tool, it brings a flood of new concepts to understand and, more importantly, to apply. From prompt engineering to context engineering, and from harness engineering to loop engineering, this guide explains what each one means, how they build on one another, and how to get the most out of AI on your hardest tasks, whether you write code or work with knowledge.</p>
+    <p class="article-head__lead">As AI becomes everyone's tool, it brings a flood of new concepts to understand and, more importantly, to apply. From prompt engineering to context engineering, and from harness engineering to loop engineering, this guide explains what each one means, how they build on one another, and how to get the most out of AI on your hardest tasks, whatever kind of work you do.</p>
   </div>
 
   <div class="blogfig-wrap">
@@ -169,6 +169,7 @@
       <p>To start engineering a prompt, give the AI model a <span class="term" data-tip="Who the model should act as while it answers." tabindex="0" aria-label="Role: who the model should act as while it answers.">role</span> to play, a clear <span class="term" data-tip="The concrete action you want the model to perform." tabindex="0" aria-label="Task: the concrete action you want the model to perform.">task</span> to perform, the <span class="term" data-tip="The background information the model needs to get it right." tabindex="0" aria-label="Context: the background information the model needs to get it right.">context</span> it needs, the <span class="term" data-tip="The rules and limits the answer must respect." tabindex="0" aria-label="Constraints: the rules and limits the answer must respect.">constraints</span> to respect, and the <span class="term" data-tip="The shape and length the answer should take." tabindex="0" aria-label="Format: the shape and length the answer should take.">format</span> the answer should take, as the two versions below show.</p>
       <p>Do that, and everything the model needs to answer your query fits inside that single message, with no outside help required.</p>
 
+      <span class="article__label">Example</span>
       <figure class="promptfig reveal" role="group" aria-label="A vague prompt compared with an engineered prompt">
         <div class="promptfig__row">
           <span class="promptfig__tag">Off-hand</span>
@@ -191,7 +192,7 @@
       <p>This is where prompt engineering hits its ceiling. On its own, the AI model can't know anything that happened after its <span class="term" data-tip="The cut-off point of what the model learned. It knows nothing that happened after it." tabindex="0" aria-label="Knowledge cutoff: the cut-off point of what the model learned; it knows nothing that happened after it.">knowledge cutoff</span>, and for more advanced or exploratory work, you can't fit everything it needs into a single prompt.</p>
       <p>That's where context engineering comes in.</p>
 
-      <h2><span class="article__kicker">02 / CONTEXT ENGINEERING</span>Adding autonomy</h2>
+      <h2><span class="article__kicker">02 / CONTEXT ENGINEERING</span>Increasing the limits</h2>
 
       <span class="article__label">What it is</span>
       <p>The <span class="term" data-tip="The instruction you type for the AI to act on." tabindex="0" aria-label="Prompt: the instruction you type for the AI to act on.">prompt</span> we engineer, or don't, is only one part of what fills the AI model's <span class="term" data-tip="The model's working memory for one exchange: instructions, the conversation, your documents and fetched data all share a single, fixed space." tabindex="0" aria-label="Context window: the model's working memory for one exchange, where instructions, the conversation, your documents and fetched data all share a single fixed space.">context window</span>.</p>
@@ -213,6 +214,9 @@
           <li><span class="ctxwin__k">Your question</span><span class="ctxwin__v">The specific request the model must act on now.</span></li>
         </ul>
       </figure>
+
+      <span class="article__label">Example</span>
+      <p>Ask the same question twice, once without extra context and once with it:</p>
 
       <figure class="promptfig reveal" role="group" aria-label="The same question answered without and with fetched context">
         <div class="promptfig__row">
@@ -255,8 +259,6 @@
         </ul>
       </figure>
 
-      <aside class="article__callout"><span class="article__callout-mark"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 7.6h.01"/><path d="M12 11v5.5"/></svg></span><p>Notice what just appeared: a loop. Add, check, prune, and check again: a cycle that runs until the context is exactly enough, no more and no less.</p></aside>
-
       <span class="article__label">Limitations</span>
       <p>Context engineering improves results, but it can't guarantee accuracy. Without a plan that includes an adversarial review, the AI model can still misunderstand instructions, overlook relevant details, or rely on incorrect information.</p>
       <p>Whenever we compensate for that with a longer prompt, more context and detailed task planning, the context window fills up.</p>
@@ -265,10 +267,10 @@
       <h2><span class="article__kicker">03 / HARNESS ENGINEERING</span>Managing from the outside</h2>
 
       <span class="article__label">What it is</span>
-      <p>The fix is to run the work from the outside, instead of trying to cram it all into one exchange. Think of the AI model itself as the engine of a car: powerful on its own, but not much use for actually getting anywhere without a steering wheel, seats, wheels and a body built around it. A <span class="term" data-tip="The software wrapped around the AI that holds the plan and feeds it one step at a time, so a long job never overflows its memory." tabindex="0" aria-label="Harness: the software wrapped around the AI that holds the plan and feeds it one step at a time, so a long job never overflows its memory.">harness</span> is that surrounding structure: the software wrapped around the assistant that keeps it pointed at the job. Claude Code, Cursor and GitHub Copilot's agent mode are everyday examples, each one the same kind of model wrapped in different plumbing for a different job.</p>
-
-      <span class="article__label">How it works</span>
-      <p>It keeps the plan, the to-do list and the progress in its own memory, outside the window, and hands the assistant one small step at a time, with only the information that step needs. It takes back the result, ticks it off, and moves on to the next, so the assistant never has to hold the whole job in its head.</p>
+      <p>Instead of cramming more context, internet searches and tool calls into the model's context window, AI products can use harnesses to manage all of that around the model.</p>
+      <p>An AI <span class="term" data-tip="The software wrapped around the AI that holds the plan and feeds it one step at a time, so a long job never overflows its memory." tabindex="0" aria-label="Harness: the software wrapped around the AI that holds the plan and feeds it one step at a time, so a long job never overflows its memory.">harness</span> is software that gives a model structured access to context, tools, memory and feedback, while guiding how it completes a task. Claude Code, Cursor and GitHub Copilot are examples within coding environments.</p>
+      <p>A harness can keep the plan, task list and progress outside the model's active context. It gives the model one step at a time, with only the relevant information, records the result, and then prepares the next step.</p>
+      <p>This reduces context overload, but completing each step still requires a process for evaluating the result and deciding what happens next: a loop.</p>
 
       <figure class="harnessfig reveal" role="group" aria-label="The harness holds the whole plan and ticks it off one step at a time, feeding the assistant only the current step">
         <div class="harnessfig__grid">
@@ -304,24 +306,48 @@
         <figcaption class="harnessfig__cap">The selector ticks down the plan; the assistant only ever holds the step it is on.</figcaption>
       </figure>
 
+      <span class="article__label">How it works</span>
+      <p>As an end user, you practice harness engineering by configuring how the AI works: provide reusable instructions, connect only the tools and data it needs, and define checkpoints for review or approval.</p>
+      <p>Don't grant unnecessary access, automate unclear processes, or allow important actions without verification.</p>
+      <p>The goal is to build a reliable workflow around the model, not simply give it a larger prompt.</p>
+
       <span class="article__label">Example</span>
-      <p>That same idea plays out step by step, the way turn-by-turn directions do. We never hold the whole route in our head: the GPS keeps it for us, gives us one turn at a time, and always knows where we are and what comes next. Ask an <span class="term" data-tip="An AI that can act on its own: use tools and take steps, not just answer." tabindex="0" aria-label="Agent: an AI that can act on its own, using tools and taking steps, not just answering.">agent</span> to rebuild a large website, or to turn a folder of scattered notes into one clean handbook, and the harness plays exactly that role of GPS, carrying the model from the first step to the last without ever losing its place.</p>
-      <aside class="article__callout"><span class="article__callout-mark"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 7.6h.01"/><path d="M12 11v5.5"/></svg></span><p>And there is our second loop, one level up: task after task, until the list is empty.</p></aside>
+      <p>Imagine asking a workplace AI assistant to prepare a brief for an upcoming client meeting. The same task, engineered at three levels:</p>
+
+      <figure class="examplefig reveal" role="group" aria-label="The same task engineered at three levels: prompt, context and harness">
+        <div class="examplefig__bar"><span class="examplefig__title">Preparing a client brief</span><span class="examplefig__meta">Three levels, one task</span></div>
+        <ul class="examplefig__list">
+          <li class="examplefig__row"><span class="examplefig__k">Prompt engineering</span><span class="examplefig__v">Create a one-page brief covering the client's goals, previous decisions, open questions and next steps.</span></li>
+          <li class="examplefig__row"><span class="examplefig__k">Context engineering</span><span class="examplefig__v">Use only the relevant email thread, meeting notes, proposal and current project plan.</span></li>
+          <li class="examplefig__row examplefig__row--harness">
+            <span class="examplefig__k">Harness engineering</span>
+            <ul class="examplefig__sub">
+              <li><span class="examplefig__subk">Tools</span><span class="examplefig__subv">Search approved folders and calendars, but don't send messages or edit documents.</span></li>
+              <li><span class="examplefig__subk">Feedback loop</span><span class="examplefig__subv">Link every important claim to its source, and flag conflicting or missing information.</span></li>
+              <li><span class="examplefig__subk">Completion rule</span><span class="examplefig__subv">Finish when every section is backed by current evidence and unresolved points are clearly flagged.</span></li>
+            </ul>
+          </li>
+        </ul>
+      </figure>
+
+      <p>The user has engineered the harness by controlling what the AI can access, what it can do, how its work is verified, and where human approval is required.</p>
 
       <span class="article__label">Limitations</span>
-      <p>A harness still waits for us. It can carry a job from the first step to the last without losing the plan, but someone still has to start it, point it at the work and press go: it doesn't decide what to do next on its own.</p>
+      <p>A harness gives the model tools, rules and checkpoints, but it can't guarantee the first attempt succeeds.</p>
+      <p>Complex tasks often need the AI to inspect its own output, compare it with the goal, and adjust its approach.</p>
+      <p>That need for repeated action, feedback and improvement is exactly what leads to loop engineering.</p>
 
       <h2><span class="article__kicker">04 / LOOP ENGINEERING</span>Automating the thinking</h2>
 
       <span class="article__label">What it is</span>
-      <p>Look back at those three levels and notice that each one still starts the same way: a person types a request. Loop engineering removes that last dependency, so the agent prompts itself.</p>
-      <p>It is less a new technique than a change in how we relate to the tool: instead of treating AI as a chatbot we open and chat with, we hand it something closer to a job description, made of a set of standing instructions, a trigger that kicks off the work, and the tools to carry it out. Once that trigger fires, the agent runs on its own: it checks its own progress and decides the next step until the job is done.</p>
+      <p>A harness provides the environment for completing a task. Loop engineering adds repetition: the system performs the task, evaluates the result, and decides whether to finish, try again, or involve a person.</p>
+      <p>A loop can run once or repeatedly. Each run begins with a trigger, works through the harness, checks the result against a goal, and follows a defined next step.</p>
 
-      <span class="article__label">How it works</span>
-      <p>The first thing we design is the trigger, what makes the agent start a run in the first place. Three of them come from outside the loop; the fourth is the loop restarting itself until a goal is met.</p>
+      <span class="article__label">How it starts</span>
+      <p>A loop can start in three common ways:</p>
 
-      <figure class="trigfig reveal" role="group" aria-label="Four ways a loop is triggered: a heartbeat checking in on a fast beat, a schedule at a set time, a hook fired by an outside event, and a goal it loops toward until it is met.">
-        <div class="trigfig__bar"><span class="trigfig__title">How a loop wakes up</span><span class="trigfig__meta">Four triggers</span></div>
+      <figure class="trigfig reveal" role="group" aria-label="Three ways a loop starts: a heartbeat checking in on a fast beat, a schedule at a set time, and an event firing from outside.">
+        <div class="trigfig__bar"><span class="trigfig__title">How a loop wakes up</span><span class="trigfig__meta">Three triggers</span></div>
         <div class="trigfig__grid">
           <div class="trigfig__item">
             <span class="trigfig__ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2.5 12h4l2-4.5 3.5 9 2-4.5h7.5"/></svg></span>
@@ -337,46 +363,52 @@
           </div>
           <div class="trigfig__item">
             <span class="trigfig__ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 8.5a6 6 0 0 0-12 0c0 6-2.5 7.5-2.5 7.5h17S18 14.5 18 8.5"/><path d="M13.5 19.5a2 2 0 0 1-3 0"/></svg></span>
-            <span class="trigfig__k">Hook</span>
-            <span class="trigfig__t">On an event</span>
-            <span class="trigfig__v">An outside event wakes it at once: a ticket lands, it starts.</span>
-          </div>
-          <div class="trigfig__item">
-            <span class="trigfig__ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="8.5"/><circle cx="12" cy="12" r="4.5"/><circle cx="12" cy="12" r="1" fill="currentColor"/></svg></span>
-            <span class="trigfig__k">Goal-driven</span>
-            <span class="trigfig__t">Until it's done</span>
-            <span class="trigfig__v">Works toward a target, checks itself, and loops until it is met.</span>
+            <span class="trigfig__k">Event</span>
+            <span class="trigfig__t">Something happens</span>
+            <span class="trigfig__v">Starts the moment an outside event fires, like a ticket landing.</span>
           </div>
         </div>
       </figure>
 
-      <p>Left entirely to its own devices, a loop can make a mess surprisingly quickly: without the right setup underneath it, it just repeats whatever we told it, good or bad, on its own schedule. Working safely takes a specific setup, each part with one clear job:</p>
+      <p>The goal does not start the loop. It determines when the loop should stop.</p>
+
+      <span class="article__label">How it works</span>
+      <p>As an end user, you practice loop engineering by defining the trigger, success criteria, retry limits, and points requiring human approval.</p>
+      <p>An unattended loop also needs:</p>
 
       <ul class="article__six">
-        <li><span class="six__head"><span class="six__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="7.5" height="14" rx="1.5"/><rect x="13.5" y="5" width="7.5" height="14" rx="1.5"/></svg></span><span class="k">Workspaces</span></span><span class="v">Isolated sandboxes, so it never overwrites human work or collides with another agent.</span></li>
-        <li><span class="six__head"><span class="six__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="9" width="18" height="10" rx="2"/><path d="M8 9V6a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v3"/><path d="M3 13h18"/></svg></span><span class="k">Skills</span></span><span class="v">Standard, repeatable methods for common tasks, so it does not reinvent one each time.</span></li>
-        <li><span class="six__head"><span class="six__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22v-5"/><path d="M9 8V2"/><path d="M15 8V2"/><path d="M18 8v5a6 6 0 0 1-12 0V8Z"/></svg></span><span class="k">Connections</span></span><span class="v">The integrations that let it read your files, reach your tools, and send messages.</span></li>
-        <li><span class="six__head"><span class="six__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><ellipse cx="12" cy="5" rx="8" ry="3"/><path d="M4 5v14c0 1.7 3.6 3 8 3s8-1.3 8-3V5"/><path d="M4 12c0 1.7 3.6 3 8 3s8-1.3 8-3"/></svg></span><span class="k">State</span></span><span class="v">A running memory of where it is, so it does not go round in circles.</span></li>
-        <li><span class="six__head"><span class="six__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="6" r="2"/><circle cx="6" cy="18" r="2"/><circle cx="18" cy="18" r="2"/><path d="M12 8v4M12 12l-4.5 4M12 12l4.5 4"/></svg></span><span class="k">Sub-agents</span></span><span class="v">Temporary helpers it spins up for a sub-task, without derailing the main job.</span></li>
+        <li><span class="six__head"><span class="six__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="7.5" height="14" rx="1.5"/><rect x="13.5" y="5" width="7.5" height="14" rx="1.5"/></svg></span><span class="k">Workspaces</span></span><span class="v">Isolated environments that protect human work.</span></li>
+        <li><span class="six__head"><span class="six__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="9" width="18" height="10" rx="2"/><path d="M8 9V6a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v3"/><path d="M3 13h18"/></svg></span><span class="k">Skills</span></span><span class="v">Reusable methods for recurring tasks.</span></li>
+        <li><span class="six__head"><span class="six__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22v-5"/><path d="M9 8V2"/><path d="M15 8V2"/><path d="M18 8v5a6 6 0 0 1-12 0V8Z"/></svg></span><span class="k">Connections</span></span><span class="v">Controlled access to files, tools and communication channels.</span></li>
+        <li><span class="six__head"><span class="six__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><ellipse cx="12" cy="5" rx="8" ry="3"/><path d="M4 5v14c0 1.7 3.6 3 8 3s8-1.3 8-3V5"/><path d="M4 12c0 1.7 3.6 3 8 3s8-1.3 8-3"/></svg></span><span class="k">State</span></span><span class="v">A record of completed work, pending actions and previous attempts.</span></li>
+        <li><span class="six__head"><span class="six__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="6" r="2"/><circle cx="6" cy="18" r="2"/><circle cx="18" cy="18" r="2"/><path d="M12 8v4M12 12l-4.5 4M12 12l4.5 4"/></svg></span><span class="k">Workers</span></span><span class="v">Temporary agents that can handle separate parts of a larger task.</span></li>
       </ul>
 
-      <p>The real power shows once loops start to stack on top of each other, a skill worth naming on its own: loopcraft. Loops are <span class="term" data-tip="Self-repeating: a loop can spin up more loops, each able to do the same, nesting to any depth." tabindex="0" aria-label="Recursive: self-repeating; a loop can spin up more loops, each able to do the same, nesting to any depth.">recursive</span>, meaning a loop can spin up other loops, each capable of doing the same.</p>
+      <p>Do not launch a loop with a vague goal, skip output checks, or give it unrestricted access to sensitive systems. The goal is a workflow that can evaluate and correct its output safely, not one that repeats the same mistake faster.</p>
+      <p>A loop can also coordinate several workers in parallel, collect their results, and decide what happens next. This is multi-agent orchestration rather than recursion.</p>
 
       <span class="article__label">Example</span>
-      <p>Take a concrete example: the report you rebuild every week. You pull the latest figures from a few tools, reconcile them, flag anything odd and write a short summary for the team.</p>
-      <p>A loop can run that whole chain on schedule, gathering the data, comparing it with last week, drafting the summary and leaving only the exceptions for you to judge.</p>
-      <p>Repeat that across the small operations a business runs every day, and the real gain isn't a faster answer, it's work that no longer waits on you to begin. You end up reviewing the outcome rather than the keystrokes.</p>
-      <p>Picture a loop built to keep a codebase healthy: on a heartbeat, it checks for bugs by itself, isolates a safe copy of the code to work in, drafts a fix, hands that fix to a second loop whose only job is to verify it, and only then opens the change for a person to approve. The agent effectively becomes a manager, delegating to a temporary team of its own and waiting for each member to report back before moving on, a loop that runs loops.</p>
+      <p>Picture the client brief from harness engineering again, but now nobody has to ask for it:</p>
 
-      <h3><span class="article__subkicker">LIMITATIONS</span>Beware the cost and time sink</h3>
-      <p>When we work with a model by hand, we can stop it the moment it drifts. A loop runs while we're not watching, so we can't simply reach for the brakes, and a goal-driven loop judges its own success.</p>
-      <p>Give it a vague definition of done and it won't know when to stop: it keeps guessing, failing and looping, burning through tokens (the units its work actually costs) until someone steps in.</p>
-      <p>When the goal is genuinely unclear, or when it can't quite tell whether a change actually helped, it can also start thrashing: changing things back and forth without ever converging on a real fix.</p>
-      <p>And because a loop can ship work faster than any one person can review it line by line, it opens a second risk worth watching for, call it comprehension debt: the growing gap between what now exists in our project and what we actually understand about it.</p>
-      <p>Precision, in other words, is the price we pay for automation. A person still needs to sit in the judgment seat, confirming the result really works and approving anything sensitive or hard to undo.</p>
+      <figure class="examplefig reveal" role="group" aria-label="How the client-brief harness becomes a self-triggering loop">
+        <div class="examplefig__bar"><span class="examplefig__title">From brief to loop</span><span class="examplefig__meta">Same task, running itself</span></div>
+        <ul class="examplefig__list">
+          <li class="examplefig__row"><span class="examplefig__k">Trigger</span><span class="examplefig__v">Every Monday morning, ahead of the client's weekly call.</span></li>
+          <li class="examplefig__row"><span class="examplefig__k">Runs</span><span class="examplefig__v">Pulls the latest emails, notes and project plan, and drafts the brief with the same harness as before.</span></li>
+          <li class="examplefig__row"><span class="examplefig__k">Checks</span><span class="examplefig__v">Compares this week's draft with last week's, and flags any claim it can't source.</span></li>
+          <li class="examplefig__row examplefig__row--accent"><span class="examplefig__k">Escalates</span><span class="examplefig__v">Sends the draft for review when everything checks out; pings a person directly the moment something doesn't.</span></li>
+        </ul>
+      </figure>
+
+      <p>The team stops preparing the brief and starts reviewing it instead.</p>
+
+      <span class="article__label">Limitations</span>
+      <p>A loop amplifies the system underneath it. A vague goal, weak harness or unreliable evaluation will fail repeatedly while consuming more time and tokens.</p>
+      <p>It can also become stuck, repeatedly changing its output without moving closer to the goal, or produce work faster than people can meaningfully review it.</p>
+      <p>Clear stopping conditions, retry limits and human approval remain essential for sensitive or difficult-to-reverse actions.</p>
 
       <h2><span class="article__kicker">ANATOMY</span>What every loop needs</h2>
-      <p>We have now met several loops in this guide: an assistant that searches until it has enough, a harness that works its way through a task list, and an operation that rebuilds a report on its own each week.</p>
+      <p>We have now met several loops in this guide: an assistant that searches until it has enough, a harness that works its way through a task list, and an operation that drafts a client brief on its own every Monday.</p>
       <p>They do very different jobs, yet every dependable loop is built from the same five parts, shown here as a single running cycle. Miss one of them, and the loop starts to misbehave.</p>
 
       <figure class="anatfig reveal" role="group" aria-label="The anatomy of one loop: a trigger fires each run, a goal sets the target, feedback checks and corrects each result against the goal, a stop condition ends the run, and guardrails bound the whole loop.">
@@ -437,7 +469,7 @@
         </ul>
       </figure>
 
-      <p>It starts with a <span class="term" data-tip="What makes a loop start a run, so the work begins without a person asking." tabindex="0" aria-label="Trigger: what makes a loop start a run, so the work begins without a person asking.">trigger</span>, the reason each run begins, one of the four kinds we just saw. Without one, the loop just sits there waiting for us to ask, which is exactly the dependence loop engineering set out to remove.</p>
+      <p>It starts with a <span class="term" data-tip="What makes a loop start a run, so the work begins without a person asking." tabindex="0" aria-label="Trigger: what makes a loop start a run, so the work begins without a person asking.">trigger</span>, the reason each run begins, one of the three kinds we just saw. Without one, the loop just sits there waiting for us to ask, which is exactly the dependence loop engineering set out to remove.</p>
       <p>It also needs a <span class="term" data-tip="A loop's target and its definition of done. Without one, a loop cannot tell progress from motion." tabindex="0" aria-label="Goal: a loop's target and its definition of done; without one, a loop cannot tell progress from motion.">goal</span>, a target and a clear <span class="term" data-tip="The exact, checkable statement of what finished looks like, so a loop can tell done from not-done." tabindex="0" aria-label="Definition of done: the exact, checkable statement of what finished looks like, so a loop can tell done from not-done.">definition of done</span>: send the weekly summary, make the tests pass, answer the question. Without one, it can't tell progress from motion, and it never quite knows when to stop.</p>
       <p>Then it needs <span class="term" data-tip="A loop's own check of its result against the goal, used to decide what to do next." tabindex="0" aria-label="Feedback: a loop's own check of its result against the goal, used to decide what to do next.">feedback</span>: after each pass, the loop compares what it produced against that goal. This single choice matters more than any other. A <span class="term" data-tip="A loop that checks its own result and corrects course. Self-correcting, and safe to trust with real work." tabindex="0" aria-label="Closed loop: a loop that checks its own result and corrects course, self-correcting and safe to trust with real work.">closed loop</span> checks its own result and corrects course, like a thermostat that keeps reading the room and nudging the heating until it reaches the temperature we set; it is self-correcting, and it is the only kind we'd trust with real work.</p>
       <p>An <span class="term" data-tip="A loop that follows a fixed plan and never checks the result. Simpler, but it drifts from reality." tabindex="0" aria-label="Open loop: a loop that follows a fixed plan and never checks the result, simpler but it drifts from reality.">open loop</span>, by contrast, follows a fixed plan and never looks back, like a sprinkler on a timer that waters the garden whether or not it rained overnight. Open loops are simpler, but they drift the moment reality stops matching the plan.</p>
@@ -455,13 +487,16 @@
       <div class="article-end__inner">
         <div class="article-end__aside">
           <span class="article-end__kicker">[ KEY_TAKEAWAY ]</span>
-          <h2 class="article-end__title">What this changes for <span class="accent">you</span></h2>
+          <h2 class="article-end__title">Why it <span class="accent">matters</span></h2>
         </div>
         <div class="article-end__body">
           <p>Prompt, context, harness, loop: it's one ladder, not four trends to choose between. The power is real. Climb a rung and the work starts running without us, the scope widening as we go, from a single answer, to a task, to a project, to an operation that runs on its own. We stop trading our time for output and start reviewing results instead.</p>
           <p>The limit is just as real. A loop only ever amplifies what sits beneath it, so a weak prompt stays weak inside the most advanced one, and a vague definition of done sends it circling, burning budget for nothing. Because it runs while we're away, precision and a few well-placed human checks are the whole game. Knowing what to hand over, and where to keep a hand on it, is a product skill more than a technical one, and the good news is that it can be learnt.</p>
         </div>
-        <a class="ret-btn ret-btn--primary ret-btn--md" href="/learning/">Explore RET Upskilling <span class="ret-btn__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7"/><path d="M8 7h9v9"/></svg></span></a>
+        <div class="article-end__cta">
+          <p class="article-end__ctalabel">Interested in training?</p>
+          <a class="ret-btn ret-btn--primary ret-btn--md" href="/learning/">Explore RET Upskilling <span class="ret-btn__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7"/><path d="M8 7h9v9"/></svg></span></a>
+        </div>
       </div>
     </section>
   </div>
