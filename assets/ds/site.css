@@ -273,7 +273,10 @@ section[id], #main { scroll-margin-top: 96px; }
 .svc__no { font-family: var(--font-mono); font-size: 11px; letter-spacing: .14em; color: var(--ink-3); }
 .svc:hover .svc__no { color: var(--accent); }
 .svc__title { font-family: var(--font-display); font-weight: 700; font-size: 1.4rem; letter-spacing: -.01em; color: var(--ink); margin: 0 0 6px; }
-.svc__kicker { font-family: var(--font-mono); font-size: 11px; font-weight: 600; letter-spacing: .1em; text-transform: uppercase; color: var(--ink-3); margin: 0 0 12px; }
+/* min-height reserves 2 lines (line-height: var(--lh-normal) = 1.5 → 2 × 1.5em = 3em) so
+   card 1's two-line kicker doesn't push its .svc__desc 16.5px lower than cards 2-3's
+   single-line kicker. */
+.svc__kicker { font-family: var(--font-mono); font-size: 11px; font-weight: 600; letter-spacing: .1em; text-transform: uppercase; color: var(--ink-3); margin: 0 0 12px; min-height: 3em; }
 .svc__desc { font-family: var(--font-body); font-size: .95rem; line-height: 1.55; color: var(--ink-2); margin: 0; }
 .svc__desc a { color: var(--cognac-text); text-decoration: none; }
 .svc__foot { margin-top: auto; padding-top: 22px; display: flex; align-items: center; gap: 8px;
@@ -638,7 +641,10 @@ html.reveal-on .expgrid.is-in > .expgrid__arrow { transition-delay: calc(var(--r
 .contact__copy p { font-family: var(--font-body); font-weight: 300; color: rgba(255,255,255,.72); font-size: 1.05rem; line-height: 1.55; margin: 18px 0 0; max-width: 40ch; }
 .contact__copy .ret-eyebrow { color: var(--cognac-soft); }
 .contact__direct { font-family: var(--font-mono); font-size: 12px; letter-spacing: .04em; color: rgba(255,255,255,.6); margin-top: 28px; }
-.contact__direct a { color: var(--cognac-soft); }
+/* Stays cognac-soft (not cognac-text): this sits on the dark .contact__panel ink ground,
+   where cognac-text only measures 3:1 (fails AA) vs cognac-soft's 7.4:1. Underline is
+   permanent (not hover-only) so the lighter tone still reads as a link, not decoration. */
+.contact__direct a { color: var(--cognac-soft); text-decoration: underline; }
 .contact__form { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
 .contact__field { display: flex; flex-direction: column; gap: 8px; }
 .contact__field--full { grid-column: 1 / -1; }
@@ -1163,7 +1169,10 @@ html.reveal-on .lpflag.is-in .lpflag__fig-track > :nth-child(1) { transition-del
 /* S6 — scoping CTA (sits inside .appcta, which already inverts .ret-btn--primary to cognac) */
 .lp-cta__actions { display: flex; align-items: center; gap: 16px; flex-wrap: wrap; margin-top: 26px; }
 .lp-cta__direct { display: block; font-family: var(--font-mono); font-size: 12px; letter-spacing: .04em; color: rgba(255,255,255,.6); margin-top: 16px; }
-.lp-cta__direct a { color: var(--cognac-soft); }
+/* Same dark-panel call as .contact__direct a above: sits on .appcta's ink ground, so it
+   stays cognac-soft (7.4:1) rather than cognac-text (3:1, fails AA here); underline kept
+   explicit for affordance even though it already inherits the browser default. */
+.lp-cta__direct a { color: var(--cognac-soft); text-decoration: underline; }
 .lp-ctalist { background: rgba(255,255,255,.06); border: 1px solid rgba(255,255,255,.14); border-radius: var(--r-lg); padding: 20px 22px; }
 .lp-ctalist__cap { margin: 0; font-family: var(--font-mono); font-size: 10px; letter-spacing: .16em; text-transform: uppercase; color: rgba(255,255,255,.6); }
 .lp-ctalist ul { list-style: none; margin: 12px 0 0; padding: 0; display: flex; flex-direction: column; gap: 10px; }
@@ -1192,9 +1201,11 @@ html.reveal-on .lpflag.is-in .lpflag__fig-track > :nth-child(1) { transition-del
   .learning-page .section__head { margin-bottom: 24px; }
   .learning-brand { gap: 7px; }
   .learning-brand__rule { height: 24px; margin-inline: 0; }
-  .learning-brand__extension { width: 80px; }
+  .learning-brand__extension { width: 104px; }
   .learning-brand__extension strong { font-size: 11.5px; }
-  .learning-brand__extension small { margin-top: 3px; padding-left: .4em; font-size: 6px; letter-spacing: .4em; }
+  /* Floor at 8px (was 6px, unreadable): letter-spacing pulled in from .4em→.14em and the
+     lockup widened 80px→104px to absorb the extra glyph width at the larger size. */
+  .learning-brand__extension small { margin-top: 3px; padding-left: .14em; font-size: 8px; letter-spacing: .14em; }
   .lp-formats { padding-bottom: 46px; }
   .lpf__choose { left: 16px; right: 16px; top: calc(100% - 18px); min-height: 64px; padding-top: 25px; }
   .lp-mods { grid-template-columns: repeat(2,1fr); }
@@ -1206,9 +1217,11 @@ html.reveal-on .lpflag.is-in .lpflag__fig-track > :nth-child(1) { transition-del
   .learning-brand { gap: 5px; }
   .learning-brand .nav__brand-wordmark .d { display: none; }
   .learning-brand__rule { margin-inline: 0; }
-  .learning-brand__extension { width: 70px; }
+  .learning-brand__extension { width: 96px; }
   .learning-brand__extension strong { font-size: 10px; letter-spacing: 0; }
-  .learning-brand__extension small { font-size: 5.5px; letter-spacing: .25em; }
+  /* Floor at 8px (was 5.5px, unreadable): letter-spacing .25em→.12em, lockup widened
+     70px→96px to fit. */
+  .learning-brand__extension small { font-size: 8px; letter-spacing: .12em; }
   .langtoggle__opt { padding-inline: 6px; }
 }
 
@@ -1225,11 +1238,12 @@ html.reveal-on .lpflag.is-in .lpflag__fig-track > :nth-child(1) { transition-del
   .apphero__grid { grid-template-columns: 1fr; } .apphero__visual { order: -1; }
   .features { grid-template-columns: repeat(2,1fr); } .appcta__inner { grid-template-columns: 1fr; }
 }
-/* ≤1240: single-column hero + hamburger nav. Past this width the 2-col copy column
+/* ≤1300: single-column hero + hamburger nav. Past this width the 2-col copy column
    has to fit the title, lead and action buttons comfortably (the longest wrap risk is the
-   FR lead line), which needs a ~584px column → ~1240px viewport. Below it we switch to the
-   stacked layout + hamburger together so the two never look cramped. */
-@media (max-width: 1240px) {
+   FR lead line), which needs a ~584px column → ~1300px viewport (raised from 1240 on
+   2026-07-21: the FR nav's 7 links + CTA measure 763px and overflow up to ~1291px). Below
+   it we switch to the stacked layout + hamburger together so the two never look cramped. */
+@media (max-width: 1300px) {
   /* hero → single column: copy spans full width, the method canvas and
      availability widget stack underneath */
   .hero__grid { grid-template-columns: 1fr; }
@@ -1876,10 +1890,11 @@ html.nav-stuck .nav__inner { background: var(--glass-fill-deep); box-shadow: var
 /* Cognac underline wipe on inline text links (button-styled .ret-btn anchors are a
    separate component and stay out of this selector list). Replaces the instant
    hover underline that .svc__desc a / .about__facts a had, and the always-on browser
-   default underline that .prose a / .legalfacts a / .contact__direct a relied on —
-   all five now draw the underline in on hover/focus instead. Colour behaviour (the
-   :hover colour swap above, and .contact__direct a's cognac-soft) is unchanged. */
-.prose a, .legalfacts a, .svc__desc a, .about__facts a, .contact__direct a {
+   default underline that .prose a / .legalfacts a relied on — all four now draw the
+   underline in on hover/focus instead. .contact__direct a is deliberately NOT in this
+   list (2026-07-21): it keeps a permanent underline (see its own rule above) since it
+   sits on a dark ink panel in cognac-soft, not cognac-text. */
+.prose a, .legalfacts a, .svc__desc a, .about__facts a {
   text-decoration: none;
   background-image: linear-gradient(currentColor, currentColor);
   background-repeat: no-repeat; background-position: 0 100%; background-size: 0% 1px;
@@ -1888,8 +1903,7 @@ html.nav-stuck .nav__inner { background: var(--glass-fill-deep); box-shadow: var
 .prose a:hover, .prose a:focus-visible,
 .legalfacts a:hover, .legalfacts a:focus-visible,
 .svc__desc a:hover, .svc__desc a:focus-visible,
-.about__facts a:hover, .about__facts a:focus-visible,
-.contact__direct a:hover, .contact__direct a:focus-visible { background-size: 100% 1px; }
+.about__facts a:hover, .about__facts a:focus-visible { background-size: 100% 1px; }
 
 /* Language toggle hover wash (colour/background transition already declared on .langtoggle__opt);
    the active pill keeps its cognac wash rather than flashing to the neutral hover wash. */
@@ -2302,3 +2316,13 @@ html.reveal-on .blogfig[data-tilt]:hover { transform: perspective(1100px) rotate
 .co-proof__certs { margin: 18px 0 0; font-family: var(--font-mono); font-size: 11px; letter-spacing: .06em; color: var(--ink-3); }
 .co-proof__more { margin-top: clamp(24px,3vw,32px); text-align: center; }
 .st-ctanote a { color: var(--cognac-text); }
+
+/* FIG_06/FIG_07 mobile label floor: .lppath__svg scales with its box (width:100%,
+   viewBox 640), so at a 375px viewport the ~341px card renders the 8.5px SVG units at
+   ~3.8px — unreadable. Bump just these two figures' text to 14 SVG units (≈6.2px
+   rendered at that scale, comfortably ≥6.5px once measured against the real card
+   width) without touching every other .lppath__metahead/subhead consumer (FIG_04). */
+@media (max-width: 560px) {
+  .stframe .lppath__metahead, .stframe .lppath__subhead,
+  .coline .lppath__metahead, .coline .lppath__subhead { font-size: 14px; }
+}
