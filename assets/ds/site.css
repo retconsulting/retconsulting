@@ -2230,3 +2230,75 @@ html.reveal-on .blogfig[data-tilt]:hover { transform: perspective(1100px) rotate
 @media (max-width: 720px) { .article-end__inner { grid-template-columns: 1fr; grid-template-rows: none; gap: 20px; } .article-end__aside, .article-end__body, .article-end__cta { grid-column: 1; grid-row: auto; } }
 @media print { .blogfig-wrap, .article__cta, .article-end-wrap { break-inside: avoid; } .blogfig { box-shadow: none !important; } .blogfig__wm, .bpost__wm { display: none; }
   .article-end { background: #fff !important; color: var(--ink) !important; box-shadow: none !important; border: 1px solid #ddd; } .article-end__dots { display: none !important; } .article-end *, .article-end__title .accent { color: var(--ink) !important; } }
+
+/* ---- RET Studio page ---- */
+/* FIG_06 · BUILD FRAME — reuses the .lppath canvas (box, stamp, stage, note, mono
+   headers, track/ring/diamond draw-in) from FIG_04; only the browser-frame drawing
+   itself is new. Three steps: a dashed frame (scoped), a solid frame with wireframe
+   blocks (designed & built), a resolved frame with filled blocks + a phone, exiting
+   into a single cognac diamond marked SHIPPED. */
+.stframe .fr-frame { fill: none; stroke: var(--ink); stroke-width: 1.5; }
+.stframe .fr-frame--dashed, .stframe .fr-bar--dashed, .stframe .fr-dot--dashed { stroke-dasharray: 3 4; }
+.stframe .fr-bar { stroke: var(--ink); stroke-width: 1.5; }
+.stframe .fr-dot { fill: none; stroke: var(--ink); stroke-width: 1.4; }
+.stframe .fr-block { fill: none; stroke: var(--ink-4); stroke-width: 1.2; }
+.stframe .fr-block--solid { fill: var(--ink-5); stroke: none; }
+.stframe .fr-phone { fill: var(--surface); stroke: var(--ink); stroke-width: 1.5; }
+.stframe .fr-phone__home { stroke: var(--ink-4); stroke-width: 1.4; stroke-linecap: round; }
+
+/* S2 — "One accountable delivery": four pillar tiles, same tile language as the
+   Practical modalities (.lp-mod / .lp-mod__icon / .lp-mod__k), own 4-col grid so it
+   doesn't inherit the 6-column Practical breakpoints. */
+.st-pillars { max-width: var(--container); margin-inline: auto; padding-inline: var(--gutter);
+  display: grid; grid-template-columns: repeat(4, minmax(0,1fr)); gap: var(--card-gap); }
+@media (max-width: 760px) { .st-pillars { grid-template-columns: repeat(2,1fr); } }
+@media (max-width: 460px) { .st-pillars { grid-template-columns: 1fr; } }
+
+/* S3 — proof: two .lpstep cards (same card language as the engagement steps) in a
+   simple 2-col grid, plus a centered link row to the portfolio. */
+.st-proof { max-width: var(--container); margin-inline: auto; padding-inline: var(--gutter);
+  display: grid; grid-template-columns: repeat(2, minmax(0,1fr)); gap: var(--card-gap); }
+@media (max-width: 760px) { .st-proof { grid-template-columns: 1fr; } }
+.st-proof .lpstep { min-height: 0; }
+.lpstep__actions { margin-top: auto; padding-top: 18px; display: flex; flex-wrap: wrap; gap: 10px; }
+.st-proof__more { max-width: var(--container); margin: clamp(28px,3.5vw,40px) auto 0; padding-inline: var(--gutter); text-align: center; }
+
+/* S4 — CTA: single-column variant of .appcta for pages with no side list, plus the
+   discrete legal note under the panel. */
+.appcta--solo .appcta__inner { grid-template-columns: 1fr; justify-items: center; text-align: center; }
+.appcta--solo .appcta__inner > div { max-width: 52ch; }
+.appcta--solo .lp-cta__actions { justify-content: center; }
+.appcta--solo .lp-cta__direct { text-align: center; }
+.st-ctanote { max-width: var(--container); margin: 20px auto 0; padding-inline: var(--gutter); text-align: center;
+  font-family: var(--font-mono); font-size: 11px; letter-spacing: .06em; color: var(--ink-3); }
+
+/* ---- RET Consulting page ---- */
+/* Co-signature lockup: same .learning-brand shell as Studio/Upskilling, but the
+   extension carries two stacked mono lines in ink (no cognac strong line, since the
+   offer shares the RET Consulting name). The generic small styling already renders
+   in --ink; this modifier only tightens the gap between the two stacked lines. */
+.learning-brand__extension--ink small + small { margin-top: 2px; }
+
+/* FIG_07 · DELIVERY LINE — reuses the .lppath canvas (box, stamp, stage, note, mono
+   subhead/metahead labels, track/ring/diamond draw-in) from FIG_04/06; only the line-
+   and-node drawing is new. One continuous track from AMBIGUITY to DELIVERED, five
+   nodes (four ink rings + one cognac diamond on DECIDE), light continuity ticks above
+   and a thin hand-off line with drops below. */
+.coline .fig7-tick { stroke: var(--ink-5); stroke-width: 1.4; stroke-linecap: round; }
+.coline .fig7-hand { stroke: var(--ink-5); stroke-width: 1.25; }
+.coline .fig7-drop { stroke: var(--ink-5); stroke-width: 1.1; }
+
+/* S2 — "How I work inside your team": three pillar tiles, same tile language as the
+   RET Studio delivery pillars (.lp-mod / .lp-mod__icon / .lp-mod__k), own 3-col grid
+   so it doesn't inherit the 4-col Studio or 6-col Practical breakpoints. */
+.co-pillars { max-width: var(--container); margin-inline: auto; padding-inline: var(--gutter);
+  display: grid; grid-template-columns: repeat(3, minmax(0,1fr)); gap: var(--card-gap); }
+@media (max-width: 760px) { .co-pillars { grid-template-columns: 1fr; } }
+
+/* S3 — proof: reuses the .svc__proof diamond-bullet list from the services flip-card
+   backs, in a narrower centered column with a certifications line and a link to the
+   full experience timeline. */
+.co-proof { max-width: var(--container-narrow); margin-inline: auto; padding-inline: var(--gutter); }
+.co-proof__certs { margin: 18px 0 0; font-family: var(--font-mono); font-size: 11px; letter-spacing: .06em; color: var(--ink-3); }
+.co-proof__more { margin-top: clamp(24px,3vw,32px); text-align: center; }
+.st-ctanote a { color: var(--cognac-text); }
