@@ -272,7 +272,8 @@ section[id], #main { scroll-margin-top: 96px; }
 .svc__icon svg { stroke-width: 1.5; }
 .svc__no { font-family: var(--font-mono); font-size: 11px; letter-spacing: .14em; color: var(--ink-3); }
 .svc:hover .svc__no { color: var(--accent); }
-.svc__title { font-family: var(--font-display); font-weight: 700; font-size: 1.4rem; letter-spacing: -.01em; color: var(--ink); margin: 0 0 10px; }
+.svc__title { font-family: var(--font-display); font-weight: 700; font-size: 1.4rem; letter-spacing: -.01em; color: var(--ink); margin: 0 0 6px; }
+.svc__kicker { font-family: var(--font-mono); font-size: 11px; font-weight: 600; letter-spacing: .1em; text-transform: uppercase; color: var(--ink-3); margin: 0 0 12px; }
 .svc__desc { font-family: var(--font-body); font-size: .95rem; line-height: 1.55; color: var(--ink-2); margin: 0; }
 .svc__desc a { color: var(--cognac-text); text-decoration: none; }
 .svc__foot { margin-top: auto; padding-top: 22px; display: flex; align-items: center; gap: 8px;
