@@ -68,6 +68,14 @@ section[id], #main { scroll-margin-top: 96px; }
   transition: transform var(--dur-base) var(--ease-out), color var(--dur-base) var(--ease-out); }
 .nav__link--out:hover svg, .nav__link--out.is-active svg { color: var(--accent); }
 .nav__link--out:hover svg { transform: translate(2px, -2px); }
+/* Two-row "RET / Offer" marks for Consulting/Studio/Upskilling: echoes the main
+   .nav__brand-wordmark w/d pattern at nav-pill scale, so the three RET offers read as
+   branded marks rather than plain text links. .w inherits the link's hover colour;
+   .d stays a fixed muted caption, same treatment as the main logo's subtitle line. */
+.nav__link--offer { padding-block: 6px; }
+.nav__link-mark { display: flex; flex-direction: column; align-items: flex-start; justify-content: center; line-height: 1; }
+.nav__link-mark .w { font-family: var(--font-display); font-weight: 700; font-size: 13px; letter-spacing: -.01em; }
+.nav__link-mark .d { font-family: var(--font-mono); font-size: 8.5px; letter-spacing: .16em; text-transform: uppercase; color: var(--text-muted); margin-top: 3px; }
 .nav__spacer { flex: 1; }
 .nav__cta { display: flex; align-items: center; gap: 10px; }
 
@@ -1242,11 +1250,12 @@ html.reveal-on .lpflag.is-in .lpflag__fig-track > :nth-child(1) { transition-del
   .apphero__grid { grid-template-columns: 1fr; } .apphero__visual { order: -1; }
   .features { grid-template-columns: repeat(2,1fr); } .appcta__inner { grid-template-columns: 1fr; }
 }
-/* nav → hamburger : depuis le retrait des 3 ancres internes (Who I am/What I do/Experience,
-   2026-07-22) il ne reste que 5 liens ; la nav FR (la plus large) déborde en dessous de
-   ~1072px, seuil ramené de 1420 à 1090. Reste découplé du hero (breakpoint hero ci-dessous,
-   toujours 1300) pour ne pas forcer le hero en 1-colonne sur les écrans 1366px. */
-@media (max-width: 1090px) {
+/* nav → hamburger : les 3 marques d'offre sont passées en RET/Offer empilé sur 2 lignes
+   (2026-07-22 soir, plus étroit par lien que le libellé sur une ligne), séparées de Blog par
+   .nav__divider. La nav FR (la plus large) déborde en dessous de ~940px, seuil ajusté 1090→960.
+   Reste découplé du hero (breakpoint hero ci-dessous, toujours 1300) pour ne pas forcer le hero
+   en 1-colonne sur les écrans 1366px. */
+@media (max-width: 960px) {
   /* nav → hamburger dropdown */
   .nav__inner { position: relative; gap: 10px; padding: 10px 10px 10px 16px; }
   .nav__toggle { display: grid; }
