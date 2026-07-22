@@ -857,7 +857,7 @@ html:not(.nav-stuck) .scrim-top { opacity: 0; }
 .learning-brand { gap: 9px; }
 .learning-brand__rule { width: 1px; height: 28px; margin-inline: 2px; background: var(--line-strong); }
 .learning-brand__extension { width: 98px; display: flex; flex-direction: column; justify-content: center; line-height: 1; }
-.learning-brand__extension strong { width: 100%; font-family: var(--font-display); font-size: 14px; font-weight: 800; letter-spacing: .035em; text-align: center; color: var(--cognac-soft); }
+.learning-brand__extension strong { width: 100%; font-family: var(--font-display); font-size: 14px; font-weight: 800; letter-spacing: .035em; text-align: center; color: var(--cognac-text); }
 .learning-brand__extension small { width: 100%; margin-top: 4px; padding-left: .46em; font-family: var(--font-mono); font-size: 7px; font-weight: 500; letter-spacing: .46em; text-align: center; color: var(--ink); }
 .lp-intro__actions { display: flex; align-items: center; gap: 14px; flex-wrap: wrap; margin-top: 30px; }
 /* This page is deliberately tighter than the general site rhythm: four dense sections,
