@@ -30,7 +30,7 @@
 <link rel="icon" href="/assets/logo-glyph-dark.svg" media="(prefers-color-scheme: dark)"/>
 <link rel="apple-touch-icon" href="/assets/apple-touch-icon.png"/>
 <script>if('IntersectionObserver' in window && !matchMedia('(prefers-reduced-motion:reduce)').matches){document.documentElement.classList.add('reveal-on');}</script>
-<link rel="stylesheet" href="/assets/ds.css?v=20260722a"/>
+<link rel="stylesheet" href="/assets/ds.css?v=20260722c"/>
 <script type="application/ld+json">
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Accueil","item":"https://retconsulting.be/fr/"},{"@type":"ListItem","position":2,"name":"RET Consulting","item":"https://retconsulting.be/consulting/fr/"}]}
 </script>
@@ -141,7 +141,7 @@
   </section>
 
   <section id="contact" class="section">
-    <div class="appcta appcta--solo">
+    <div class="appcta">
       <div class="appcta__dots"></div>
       <div class="appcta__inner">
         <div>
@@ -152,6 +152,18 @@
             <a class="ret-btn ret-btn--primary ret-btn--md" href="mailto:retbaz@retconsulting.be?subject=%5BRET%20Consulting%5D%20Mission%20longue">Échanger sur une mission longue <span class="ret-btn__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7"/><path d="M8 7h9v9"/></svg></span></a>
           </div>
           <p class="lp-cta__direct">Ou directement : <a href="mailto:retbaz@retconsulting.be">retbaz@retconsulting.be</a></p>
+          <p class="lp-cta__reply">Je réponds en français ou en anglais, sous deux jours ouvrés.</p>
+        </div>
+        <div class="appcta__side">
+          <div class="lp-ctalist">
+            <p class="lp-ctalist__cap">AU PROGRAMME</p>
+            <ul>
+              <li>Votre contexte et où l'ownership manque</li>
+              <li>Le périmètre, la gouvernance, les parties prenantes</li>
+              <li>Si une mission longue convient</li>
+              <li>Une façon réaliste de démarrer</li>
+            </ul>
+          </div>
         </div>
       </div>
     </div>
@@ -215,6 +227,27 @@
     document.addEventListener('pointerout', function (e) {
       if (el && !e.relatedTarget) { reset(el); el = null; }
     }, { passive: true });
+  })();
+
+  // Copie de l'email en secours : progressive enhancement à côté du lien mailto direct
+  (function () {
+    var wrap = document.querySelector('.lp-cta__direct');
+    if (!wrap || !navigator.clipboard) return;
+    var a = wrap.querySelector('a[href^="mailto:"]'); if (!a) return;
+    var email = a.textContent.trim();
+    var btn = document.createElement('button');
+    btn.type = 'button'; btn.className = 'lp-cta__copy';
+    var LABEL = 'Copier', DONE = 'Copié';
+    btn.textContent = LABEL;
+    btn.setAttribute('aria-live', 'polite');
+    btn.addEventListener('click', function () {
+      navigator.clipboard.writeText(email).then(function () {
+        btn.textContent = DONE;
+        window.setTimeout(function () { btn.textContent = LABEL; }, 2000);
+      });
+    });
+    wrap.appendChild(document.createTextNode(' '));
+    wrap.appendChild(btn);
   })();
 </script>
 </body>

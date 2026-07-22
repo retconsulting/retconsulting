@@ -30,7 +30,7 @@
 <link rel="icon" href="/assets/logo-glyph-dark.svg" media="(prefers-color-scheme: dark)"/>
 <link rel="apple-touch-icon" href="/assets/apple-touch-icon.png"/>
 <script>if('IntersectionObserver' in window && !matchMedia('(prefers-reduced-motion:reduce)').matches){document.documentElement.classList.add('reveal-on');}</script>
-<link rel="stylesheet" href="/assets/ds.css?v=20260722b"/>
+<link rel="stylesheet" href="/assets/ds.css?v=20260722c"/>
 <script type="application/ld+json">
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://retconsulting.be/"},{"@type":"ListItem","position":2,"name":"RET Upskilling","item":"https://retconsulting.be/upskilling/"}]}
 </script>
@@ -358,6 +358,7 @@
             <a class="ret-btn ret-btn--primary ret-btn--md" href="mailto:retbaz@retconsulting.be?subject=%5BRET%20Upskilling%5D%20Scoping%20call%20request">Book the scoping call <span class="ret-btn__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7"/><path d="M8 7h9v9"/></svg></span></a>
           </div>
           <p class="lp-cta__direct">Or directly: <a href="mailto:retbaz@retconsulting.be">retbaz@retconsulting.be</a></p>
+          <p class="lp-cta__reply">I reply in English or French, within two business days.</p>
         </div>
         <div class="appcta__side">
           <div class="lp-ctalist">
@@ -476,6 +477,27 @@
         if (!entries[0].isIntersecting) clear();
       }).observe(path);
     }
+  })();
+
+  // Copy-email fallback: progressive enhancement next to the mailto direct-contact line
+  (function () {
+    var wrap = document.querySelector('.lp-cta__direct');
+    if (!wrap || !navigator.clipboard) return;
+    var a = wrap.querySelector('a[href^="mailto:"]'); if (!a) return;
+    var email = a.textContent.trim();
+    var btn = document.createElement('button');
+    btn.type = 'button'; btn.className = 'lp-cta__copy';
+    var LABEL = 'Copy', DONE = 'Copied';
+    btn.textContent = LABEL;
+    btn.setAttribute('aria-live', 'polite');
+    btn.addEventListener('click', function () {
+      navigator.clipboard.writeText(email).then(function () {
+        btn.textContent = DONE;
+        window.setTimeout(function () { btn.textContent = LABEL; }, 2000);
+      });
+    });
+    wrap.appendChild(document.createTextNode(' '));
+    wrap.appendChild(btn);
   })();
 </script>
 <div class="flipbrand" aria-hidden="true">
