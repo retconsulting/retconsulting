@@ -1242,10 +1242,11 @@ html.reveal-on .lpflag.is-in .lpflag__fig-track > :nth-child(1) { transition-del
   .apphero__grid { grid-template-columns: 1fr; } .apphero__visual { order: -1; }
   .features { grid-template-columns: repeat(2,1fr); } .appcta__inner { grid-template-columns: 1fr; }
 }
-/* nav → hamburger: 8 liens (nav FR la plus large) débordent jusqu'à ~1411px, seuil relevé
-   de 1300 à 1420 le 2026-07-22 ; découplé du hero pour ne pas forcer le hero en 1-colonne
-   sur les écrans 1366px. */
-@media (max-width: 1420px) {
+/* nav → hamburger : depuis le retrait des 3 ancres internes (Who I am/What I do/Experience,
+   2026-07-22) il ne reste que 5 liens ; la nav FR (la plus large) déborde en dessous de
+   ~1072px, seuil ramené de 1420 à 1090. Reste découplé du hero (breakpoint hero ci-dessous,
+   toujours 1300) pour ne pas forcer le hero en 1-colonne sur les écrans 1366px. */
+@media (max-width: 1090px) {
   /* nav → hamburger dropdown */
   .nav__inner { position: relative; gap: 10px; padding: 10px 10px 10px 16px; }
   .nav__toggle { display: grid; }
