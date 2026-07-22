@@ -3,31 +3,17 @@
         xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
     <loc>https://retconsulting.be/</loc>
-    <lastmod>2026-07-21</lastmod>
+    <lastmod>2026-07-22</lastmod>
     <xhtml:link rel="alternate" hreflang="en" href="https://retconsulting.be/"/>
     <xhtml:link rel="alternate" hreflang="fr" href="https://retconsulting.be/fr/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://retconsulting.be/"/>
   </url>
   <url>
     <loc>https://retconsulting.be/fr/</loc>
-    <lastmod>2026-07-21</lastmod>
+    <lastmod>2026-07-22</lastmod>
     <xhtml:link rel="alternate" hreflang="en" href="https://retconsulting.be/"/>
     <xhtml:link rel="alternate" hreflang="fr" href="https://retconsulting.be/fr/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://retconsulting.be/"/>
-  </url>
-  <url>
-    <loc>https://retconsulting.be/portfolio/</loc>
-    <lastmod>2026-07-14</lastmod>
-    <xhtml:link rel="alternate" hreflang="en" href="https://retconsulting.be/portfolio/"/>
-    <xhtml:link rel="alternate" hreflang="fr" href="https://retconsulting.be/portfolio/fr/"/>
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://retconsulting.be/portfolio/"/>
-  </url>
-  <url>
-    <loc>https://retconsulting.be/portfolio/fr/</loc>
-    <lastmod>2026-07-14</lastmod>
-    <xhtml:link rel="alternate" hreflang="en" href="https://retconsulting.be/portfolio/"/>
-    <xhtml:link rel="alternate" hreflang="fr" href="https://retconsulting.be/portfolio/fr/"/>
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://retconsulting.be/portfolio/"/>
   </url>
   <url>
     <loc>https://retconsulting.be/consulting/</loc>
@@ -45,14 +31,14 @@
   </url>
   <url>
     <loc>https://retconsulting.be/studio/</loc>
-    <lastmod>2026-07-21</lastmod>
+    <lastmod>2026-07-22</lastmod>
     <xhtml:link rel="alternate" hreflang="en" href="https://retconsulting.be/studio/"/>
     <xhtml:link rel="alternate" hreflang="fr" href="https://retconsulting.be/studio/fr/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://retconsulting.be/studio/"/>
   </url>
   <url>
     <loc>https://retconsulting.be/studio/fr/</loc>
-    <lastmod>2026-07-21</lastmod>
+    <lastmod>2026-07-22</lastmod>
     <xhtml:link rel="alternate" hreflang="en" href="https://retconsulting.be/studio/"/>
     <xhtml:link rel="alternate" hreflang="fr" href="https://retconsulting.be/studio/fr/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://retconsulting.be/studio/"/>
