@@ -279,6 +279,7 @@ section[id], #main { scroll-margin-top: 96px; }
 .svc__kicker { font-family: var(--font-mono); font-size: 11px; font-weight: 600; letter-spacing: .1em; text-transform: uppercase; color: var(--ink-3); margin: 0 0 12px; min-height: 3em; }
 .svc__desc { font-family: var(--font-body); font-size: .95rem; line-height: 1.55; color: var(--ink-2); margin: 0; }
 .svc__desc a { color: var(--cognac-text); text-decoration: none; }
+.section__lead a { color: var(--cognac-text); text-decoration: underline; }
 .svc__foot { margin-top: auto; padding-top: 22px; display: flex; align-items: center; gap: 8px;
   font-family: var(--font-mono); font-size: 11px; letter-spacing: .12em; text-transform: uppercase; color: var(--ink-3); }
 .svc:hover .svc__foot { color: var(--accent); }
@@ -1217,7 +1218,10 @@ html.reveal-on .lpflag.is-in .lpflag__fig-track > :nth-child(1) { transition-del
   .learning-brand { gap: 5px; }
   .learning-brand .nav__brand-wordmark .d { display: none; }
   .learning-brand__rule { margin-inline: 0; }
-  .learning-brand__extension { width: 96px; }
+  /* min-height fits the worst case (3-line small, e.g. "SITES WEB & APPLICATIONS
+     MOBILES" on studio/fr): natural content height rounds to 37-38px depending on
+     subpixel layout, so give it explicit room rather than clip at the flex auto height. */
+  .learning-brand__extension { width: 96px; min-height: 39px; }
   .learning-brand__extension strong { font-size: 10px; letter-spacing: 0; }
   /* Floor at 8px (was 5.5px, unreadable): letter-spacing .25em→.12em, lockup widened
      70px→96px to fit. */
@@ -1354,9 +1358,11 @@ html.reveal-on .lpflag.is-in .lpflag__fig-track > :nth-child(1) { transition-del
   .contact__form .ret-input { background: #fff !important; border-color: #ccc !important; }
   a { color: var(--ink) !important; }
   /* keep cards, fact rows and headings from splitting across printed pages */
-  .prose__card, .legalfacts > div, .svc, .step, .dd-card, .expcard, .feat { break-inside: avoid; }
+  .prose__card, .legalfacts > div, .svc, .step, .dd-card, .expcard, .feat, .lp-mod { break-inside: avoid; }
   h1, h2, h3 { break-after: avoid; }
   @page { margin: 1.5cm; }
+  /* FIG_06/FIG_07 build-frame figures: same treatment as .svcmap/.timeline above */
+  .lppath { break-inside: avoid; box-shadow: none !important; }
 }
 
 /* ---------- FIG_02 service map ---------- */
@@ -1665,6 +1671,14 @@ html.reveal-on .reveal-group.is-in>:nth-child(2){transition-delay:calc(var(--rev
 html.reveal-on .reveal-group.is-in>:nth-child(3){transition-delay:calc(var(--reveal-stagger)*2)}
 html.reveal-on .reveal-group.is-in>:nth-child(4){transition-delay:calc(var(--reveal-stagger)*3)}
 html.reveal-on .reveal-group.is-in>:nth-child(5){transition-delay:calc(var(--reveal-stagger)*4)}
+
+/* lp-intro H1 (consulting/studio/upskilling) is the likely LCP element: unlike the home
+   hero it sits inside a plain .reveal-group, so the generic child rule above (opacity
+   only; the group's own transform is a shared block-level offset, not an inheritable
+   per-child property) would hide it (opacity:0) at first paint. Neutralise opacity for
+   this H1 specifically, same fix as the home hero title, without touching the
+   lead/actions siblings' fade. */
+html.reveal-on .lp-intro__copy > .section__title { opacity: 1; }
 
 /* ---------- Motion: load-entrance cascade (nav settle + hero copy/visual) ---------- */
 @keyframes navSettle { from { opacity: 0; transform: translateY(-10px); } to { opacity: 1; transform: none; } }
@@ -2323,6 +2337,6 @@ html.reveal-on .blogfig[data-tilt]:hover { transform: perspective(1100px) rotate
    rendered at that scale, comfortably ≥6.5px once measured against the real card
    width) without touching every other .lppath__metahead/subhead consumer (FIG_04). */
 @media (max-width: 560px) {
-  .stframe .lppath__metahead, .stframe .lppath__subhead,
-  .coline .lppath__metahead, .coline .lppath__subhead { font-size: 14px; }
+  .stframe .lppath__metahead, .stframe .lppath__subhead:not(.lppath__subhead--accent),
+  .coline .lppath__metahead, .coline .lppath__subhead:not(.lppath__subhead--accent) { font-size: 14px; }
 }
