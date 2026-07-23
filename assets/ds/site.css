@@ -2409,8 +2409,8 @@ html.reveal-on .blogfig[data-tilt]:hover { transform: perspective(1100px) rotate
   box-shadow: var(--shadow-sm); white-space: nowrap;
   transform: translate(-50%,-50%); }
 .orb__dot .orb__brand { font-size: 8.5px; letter-spacing: .14em; margin-right: -.14em; }
-.orb__pop { position: absolute; bottom: 54px; left: 0; transform: translateX(-50%) scale(.92); transform-origin: 50% 100%;
-  padding: 10px 15px; border-radius: var(--r-md);
+.orb__pop { position: absolute; bottom: 48px; left: 0; transform: translateX(-50%) scale(.92); transform-origin: 50% 100%;
+  padding: 9px 14px; border-radius: var(--r-md);
   background: linear-gradient(155deg, color-mix(in srgb, var(--o-accent) 28%, #FFFFFF) 0%, color-mix(in srgb, var(--o-accent) 7%, #FFFFFF) 100%);
   border: 1px solid color-mix(in srgb, var(--o-accent) 42%, transparent);
   box-shadow: var(--shadow-lg); white-space: nowrap; opacity: 0; pointer-events: none;
@@ -2418,6 +2418,11 @@ html.reveal-on .blogfig[data-tilt]:hover { transform: perspective(1100px) rotate
 .orb__dot:hover + .orb__pop { opacity: 1; transform: translateX(-50%) scale(1); }
 .orb:has(.orb__dot:hover) .orb__sat,
 .orb:has(.orb__dot:hover) .orb__unrot { animation-play-state: paused; }
+/* the hovered satellite's pop must sit in front of EVERYTHING: above the centre
+   tile (z3), the sibling satellites (z2) and, via the canvas, the Availability
+   widget that overhangs the bottom-left corner */
+.orb__sat:has(.orb__dot:hover) { z-index: 30; }
+.hero__canvas--offers:has(.orb__dot:hover) { z-index: 8; }
 .orb__sat--a { --a0: -20deg;  --r: 125px; --o-accent: var(--cognac);    --o-text: var(--cognac-ink); --o-name: var(--cognac-text); }
 .orb__sat--u { --a0: 100deg;  --r: 160px; --o-accent: var(--up-accent); --o-text: var(--up-ink); --o-name: var(--up-text); }
 .orb__sat--s { --a0: 220deg;  --r: 195px; --o-accent: var(--st-accent); --o-text: var(--st-ink); --o-name: var(--st-text); }
