@@ -108,7 +108,7 @@ section[id], #main { scroll-margin-top: 96px; }
 .hero { position: relative; padding: clamp(28px, 3.6vw, 56px) 0 clamp(52px, 5.5vw, 84px); }
 .hero__grid { max-width: var(--container-wide); margin-inline: auto; padding-inline: var(--gutter);
   display: grid; grid-template-columns: 1.1fr 0.9fr; gap: clamp(28px, 4vw, 56px); align-items: stretch; }
-/* the copy column breathes to match FIG_01: eyebrow pinned to the canvas top, CTAs to its
+/* the copy column breathes to match FIG_03: eyebrow pinned to the canvas top, CTAs to its
    bottom, the leftover height spread evenly between the blocks on top of their base
    margins (2-col layout only; reset in the single-column breakpoint) */
 .hero__copy { display: flex; flex-direction: column; justify-content: space-between; align-items: flex-start; container-type: inline-size; }
@@ -164,7 +164,7 @@ section[id], #main { scroll-margin-top: 96px; }
   .svc__face--front > *, .svc__face--back > * { transition-delay: 0s !important; }
   /* skeleton shimmer off; counter-scale is instant (duration zeroed globally) */
   .skb { animation: none !important; }
-  /* … nor the hover-intent delays (140ms tips/seals, 120ms FIG_02/FIG_03 pops): zero those too */
+  /* … nor the hover-intent delays (140ms tips/seals, 120ms FIG_02/FIG_05 pops): zero those too */
   [data-tip]::after, [data-tip]::before,
   .certbadge::after, .certbadge::before,
   .svcmap__pop, .tl__pop { transition-delay: 0s !important; }
@@ -193,7 +193,7 @@ section[id], #main { scroll-margin-top: 96px; }
 .slot--off .slot__state { color: var(--ink-3); }
 
 /* ---------- Credential ledger (trustbar) ---------- */
-/* symmetric block padding so the card sits centred in its sunken plateau; the FIG_01
+/* symmetric block padding so the card sits centred in its sunken plateau; the FIG_03
    shadow is held by the hero's own bottom padding above, not by this band's top pad */
 .trustbar { padding-block: 0; }
 .trustbar--about { margin-top: clamp(30px, 4vw, 48px); }
@@ -862,7 +862,7 @@ html:not(.nav-stuck) .scrim-top { opacity: 0; }
   -webkit-mask-image: linear-gradient(to bottom, #000 0, #000 120px, transparent 480px);
   mask-image: linear-gradient(to bottom, #000 0, #000 120px, transparent 480px); }
 
-/* S1 — intro: copy + FIG_04 canvas side by side (the hero idiom, scaled to a sub-page) */
+/* S1 — intro: copy + FIG_07 canvas side by side (the hero idiom, scaled to a sub-page) */
 .lp-intro { max-width: var(--container-wide); margin-inline: auto; padding-inline: var(--gutter);
   display: grid; grid-template-columns: 1.04fr .96fr; gap: clamp(28px,4vw,56px); align-items: center; }
 .learning-brand { gap: 9px; }
@@ -880,7 +880,7 @@ html:not(.nav-stuck) .scrim-top { opacity: 0; }
 .learning-page #engagement { padding-block: clamp(40px, 4.5vw, 58px); }
 .learning-page main > .section:last-child { padding-top: clamp(32px, 3.5vw, 48px); }
 
-/* FIG_04 · UPSKILLING PATH — same canvas recipe as FIG_02/FIG_03 (gradient, float
+/* FIG_07 · UPSKILLING PATH — same canvas recipe as FIG_02/FIG_05 (gradient, float
    shadow, glass stamp); a cumulative capability matrix. Duration is deliberately
    metadata, never a proportional axis. */
 .lppath { position: relative; margin: 0; border-radius: var(--r-3xl); border: 1px solid var(--line); box-shadow: var(--shadow-float);
@@ -902,7 +902,7 @@ html:not(.nav-stuck) .scrim-top { opacity: 0; }
 .lppath__subhead--accent { fill: var(--accent-label); }
 .lppath__name { font-family: var(--font-display); font-weight: 650; font-size: 16px; letter-spacing: -.01em; fill: var(--ink); }
 .lppath__dur { font-family: var(--font-mono); font-size: 8.5px; letter-spacing: .06em; fill: var(--ink-3); }
-/* FIG_04 draw-in: each cumulative track arrives row by row, then its capability
+/* FIG_07 draw-in: each cumulative track arrives row by row, then its capability
    markers settle. JS-off and reduced-motion render the complete matrix. */
 html.reveal-on .lppath .lppath__track { stroke-dasharray: 1; stroke-dashoffset: 1; }
 html.reveal-on .lppath .lppath__ring { opacity: 0; transform-box: fill-box; transform-origin: center; }
@@ -911,7 +911,7 @@ html.reveal-on .lppath.is-in .lppath__track { animation: figdraw 460ms var(--eas
 html.reveal-on .lppath.is-in .lppath__ring { animation: figpop 260ms var(--ease-out) forwards; animation-delay: calc(260ms + var(--seg, 0) * 150ms); }
 html.reveal-on .lppath.is-in .lppath__diamond { animation: figfade 260ms var(--ease-out) forwards; animation-delay: calc(360ms + var(--seg, 0) * 150ms); }
 
-/* FIG_04 hover popovers: one glass card per milestone, same recipe and mechanics as the
+/* FIG_07 hover popovers: one glass card per milestone, same recipe and mechanics as the
    FIG_02 pops (deep-glass gradient, diamond caret, CSS-only :has() show, 120ms
    hover-intent on hover only, .is-tapped for touch). Hit circles own the pointer. */
 .lppath__stage { position: relative; }
@@ -1076,7 +1076,7 @@ html.reveal-on .lppath.is-in .lppath__diamond { animation: figfade 260ms var(--e
 .lpflag__meta { display: flex; flex-direction: column; gap: 14px; align-items: flex-start; border-right: 1px solid var(--line); padding-right: clamp(20px,2.5vw,28px); }
 .lpflag__ref { display: flex; align-items: center; gap: 8px; font-family: var(--font-mono); font-size: 10.5px; letter-spacing: .12em; text-transform: uppercase; color: var(--ink-3); }
 /* Mini blueprint per flagship in the meta rail: the deliverable as a chip track
-   (promptfig/FIG_01 language), soft sequential cognac pulse, assemble-in on reveal. */
+   (promptfig/FIG_03 language), soft sequential cognac pulse, assemble-in on reveal. */
 .lpflag__fig { margin-top: 2px; }
 .lpflag__fig-k { display: block; font-family: var(--font-mono); font-size: 9px; letter-spacing: .14em; text-transform: uppercase; color: var(--ink-4); margin-bottom: 8px; }
 .lpflag__fig-track { display: flex; flex-wrap: wrap; align-items: center; gap: 6px; }
@@ -1119,7 +1119,7 @@ html.reveal-on .lpflag.is-in .lpflag__fig-track > :nth-child(1) { transition-del
 .lpflag__dlv p { position: relative; padding-left: 18px; font-family: var(--font-body); font-size: .95rem; font-weight: 500; color: var(--ink); margin: 6px 0 0; }
 .lpflag__dlv p::before { content: ""; position: absolute; left: 2px; top: .55em; width: 7px; height: 7px; background: var(--accent); transform: rotate(45deg); }
 
-/* FIG_05 · ENGAGEMENT — how a mission runs: one stamped canvas panel (svcmap recipe)
+/* FIG_08 · ENGAGEMENT — how a mission runs: one stamped canvas panel (svcmap recipe)
    holding three glass step cards chained by arrows. Real text content, so this is a
    styled panel, not a role="img" figure. */
 .lp-engage-wrap { max-width: var(--container); margin-inline: auto; padding-inline: var(--gutter); }
@@ -1308,7 +1308,7 @@ html.reveal-on .lpflag.is-in .lpflag__fig-track > :nth-child(1) { transition-del
   .footer__legal a { padding: 9px 0; min-height: 44px; display: inline-flex; align-items: center; }
 }
 @media (max-width: 600px) {
-  /* narrow canvas: top-align the cascade below the FIG_01 stamp instead of centring it */
+  /* narrow canvas: top-align the cascade below the FIG_03 stamp instead of centring it */
   .hero__canvas { aspect-ratio: auto; justify-content: flex-start; padding-top: 58px; padding-bottom: 30px; }
   /* method chips: stop indenting and let labels wrap so nothing clips on phones */
   .hero__flowstep { width: auto; max-width: 100%; margin-left: 0 !important; }
@@ -1380,12 +1380,12 @@ html.reveal-on .lpflag.is-in .lpflag__fig-track > :nth-child(1) { transition-del
   .prose__card, .legalfacts > div, .svc, .step, .dd-card, .expcard, .feat, .lp-mod { break-inside: avoid; }
   h1, h2, h3 { break-after: avoid; }
   @page { margin: 1.5cm; }
-  /* FIG_06/FIG_07 build-frame figures: same treatment as .svcmap/.timeline above */
+  /* FIG_06/FIG_04 build-frame figures: same treatment as .svcmap/.timeline above */
   .lppath { break-inside: avoid; box-shadow: none !important; }
 }
 
 /* ---------- FIG_02 service map ---------- */
-/* Swimlane figure closing the #services section: mirrors the hero FIG_01 canvas
+/* Swimlane figure closing the #services section: mirrors the hero FIG_03 canvas
    (same gradient/radius/float shadow, same centred glass stamp). The chart is an
    inline SVG, so its strokes/text are styled here via classes using the DS tokens. */
 .svcmap-wrap { max-width: var(--container); margin-inline: auto; padding-inline: var(--gutter); margin-top: clamp(32px, 4vw, 56px); }
@@ -1465,7 +1465,7 @@ html.reveal-on .lpflag.is-in .lpflag__fig-track > :nth-child(1) { transition-del
 }
 @media print { .svcmap__scroll { overflow: visible !important; } .svcmap { break-inside: avoid; box-shadow: none !important; } .svcmap__pops { display: none !important; } }
 
-/* ---------- FIG_03 experience timeline ---------- */
+/* ---------- FIG_05 experience timeline ---------- */
 /* Staircase of real missions closing the #experience head, above the mission cards.
    Same card recipe + stamp as FIG_02 svcmap; adds a sector strip above the chart. */
 .tl-wrap { max-width: var(--container); margin-inline: auto; padding-inline: var(--gutter); margin-bottom: clamp(28px, 4vw, 48px); }
@@ -1719,7 +1719,7 @@ html.reveal-on .hero__float  { animation: loadRise var(--dur-slow) var(--ease-ou
 html.reveal-on .appmock__line { stroke-dasharray: 1; stroke-dashoffset: 1; }
 html.reveal-on .fproj.is-in .appmock__line { stroke-dashoffset: 0; transition: stroke-dashoffset 900ms var(--ease-out); }
 
-/* ---------- Motion: FIG_02 / FIG_03 blueprint draw-in (Plan 008) ---------- */
+/* ---------- Motion: FIG_02 / FIG_05 blueprint draw-in (Plan 008) ---------- */
 /* At first reveal the two SVG figures DRAW instead of a plain fade-up: ink strokes
    trace in (pathLength=1 normalised dash), ink nodes pop (opacity + scale from centre),
    and every cognac mark (handover diamonds, the "now" segment) fades in ON THE SPOT.
@@ -1749,7 +1749,7 @@ html.reveal-on .timeline .tl__diamond,
 html.reveal-on .svcmap .svcmap__diamond,
 html.reveal-on .svcmap .svcmap__dash { opacity: 0; }
 
-/* FIG_03 timeline: axis first, then each segment left to right (--seg 0..4 on .tl__seg,
+/* FIG_05 timeline: axis first, then each segment left to right (--seg 0..4 on .tl__seg,
    plus --seg on each .tl__diamond so the handover marks land as their line arrives). */
 html.reveal-on .timeline.is-in .tl__axis { animation: figdraw 440ms var(--ease-out) forwards; }
 html.reveal-on .timeline.is-in .tl__solid,
@@ -1796,7 +1796,7 @@ html.reveal-on .svcmap.is-in .svcmap__diamond { animation: figfade 280ms var(--e
 
 /* ==========================================================================
    Motion v2: interactivity
-   Hover/focus layer on top of the shipped scroll-reveal system: FIG_02/FIG_03
+   Hover/focus layer on top of the shipped scroll-reveal system: FIG_02/FIG_05
    row-focus dimming, sticky-nav deepen-on-scroll, the cognac underline wipe on
    inline text links, langtoggle hover wash, and the contact-form focus flow.
    Every selector here targeting sibling-owned markup hooks (.svcmap__row,
@@ -1804,7 +1804,7 @@ html.reveal-on .svcmap.is-in .svcmap__diamond { animation: figfade 280ms var(--e
    until that markup lands — additive only, no base layout change.
    ========================================================================== */
 
-/* FIG_02 service map + FIG_03 timeline: hovering one row/segment dims the rest.
+/* FIG_02 service map + FIG_05 timeline: hovering one row/segment dims the rest.
    CSS-only via :has() — browsers without :has() support simply skip the dimming
    and the figure renders exactly as before (progressive enhancement). */
 .svcmap__row, .tl__seg { transition: opacity var(--dur-base) var(--ease-out); }
@@ -1846,7 +1846,7 @@ html.reveal-on .svcmap.is-in .svcmap__diamond { animation: figfade 280ms var(--e
 .svcmap:has([data-row="e2e"]:hover) .svcmap__pop--e2e,
 .svcmap:has([data-row="e2e"].is-tapped) .svcmap__pop--e2e { transform: translateY(0); }
 
-/* FIG_03 popovers: revealed by the same :has() segment-hover that drives the dimming. */
+/* FIG_05 popovers: revealed by the same :has() segment-hover that drives the dimming. */
 .timeline:has(.tl__seg[data-exp="1"]:hover) .tl__pop--1,
 .timeline:has(.tl__seg[data-exp="2"]:hover) .tl__pop--2,
 .timeline:has(.tl__seg[data-exp="3"]:hover) .tl__pop--3,
@@ -1892,7 +1892,7 @@ html.reveal-on .svcmap.is-in .svcmap__diamond { animation: figfade 280ms var(--e
 .hero__canvas[data-tilt], .svcmap[data-tilt], .timeline[data-tilt] { --tilt-amp: 1.2; }
 .shot[data-tilt], .about__card[data-tilt] { --tilt-amp: 1.5; }
 /* none of these had a hover transform (nothing overwritten) nor a transform transition;
-   the FIG_02/FIG_03 pops live INSIDE the tilting figure so they rotate with it and
+   the FIG_02/FIG_05 pops live INSIDE the tilting figure so they rotate with it and
    their carets stay aimed at the rings/diamonds. */
 .fproj[data-tilt], .hero__canvas[data-tilt], .shot[data-tilt], .about__card[data-tilt],
 .svcmap[data-tilt], .timeline[data-tilt] { transition: transform var(--dur-base) var(--ease-out); }
@@ -2025,7 +2025,7 @@ html.reveal-on .bpost:hover { transform: translateY(var(--card-lift)) perspectiv
   border: 1px solid var(--glass-border); box-shadow: var(--glass-shadow);
   font-family: var(--font-mono); font-size: 10px; letter-spacing: .14em; text-transform: uppercase; color: var(--ink-2); }
 .blogfig__svg { width: 100%; max-width: 460px; height: auto; position: relative; z-index: 1; }
-/* logo filigree, same language as .hero__watermark on FIG_01 (bottom-right bleed) */
+/* logo filigree, same language as .hero__watermark on FIG_03 (bottom-right bleed) */
 .blogfig__wm { position: absolute; right: -6%; bottom: -12%; width: 42%; opacity: .07; pointer-events: none; }
 .bpost__wm { position: absolute; right: -12%; bottom: -14%; width: 62%; opacity: .07; pointer-events: none; }
 .blogfig[data-tilt] { --tilt-amp: 1.2; transition: transform var(--dur-base) var(--ease-out); }
@@ -2280,7 +2280,7 @@ html.reveal-on .blogfig[data-tilt]:hover { transform: perspective(1100px) rotate
 
 /* ---- RET Studio page ---- */
 /* FIG_06 · BUILD FRAME — reuses the .lppath canvas (box, stamp, stage, note, mono
-   headers, track/ring/diamond draw-in) from FIG_04; only the browser-frame drawing
+   headers, track/ring/diamond draw-in) from FIG_07; only the browser-frame drawing
    itself is new. Three steps: a dashed frame (scoped), a solid frame with wireframe
    blocks (designed & built), a resolved frame with filled blocks + a phone, exiting
    into a single cognac diamond marked SHIPPED. */
@@ -2320,15 +2320,15 @@ html.reveal-on .blogfig[data-tilt]:hover { transform: perspective(1100px) rotate
   font-family: var(--font-mono); font-size: 11px; letter-spacing: .06em; color: var(--ink-3); }
 
 /* ---- RET Advisory page ---- */
-/* FIG_07 · DELIVERY LINE — reuses the .lppath canvas (box, stamp, stage, note, mono
-   subhead/metahead labels, track/ring/diamond draw-in) from FIG_04/06; only the line-
+/* FIG_04 · DELIVERY LINE — reuses the .lppath canvas (box, stamp, stage, note, mono
+   subhead/metahead labels, track/ring/diamond draw-in) from FIG_07/06; only the line-
    and-node drawing is new. One continuous track from AMBIGUITY to DELIVERED, five
    nodes (four ink rings + one cognac diamond on DECIDE), light continuity ticks above
    and a thin hand-off line with drops below. */
-.coline .fig7-tick { stroke: var(--ink-5); stroke-width: 1.4; stroke-linecap: round; }
-.coline .fig7-lead { fill: none; stroke: var(--ink-5); stroke-width: 1.4; stroke-dasharray: 2 6; stroke-linecap: round; }
-.coline .fig7-hand { stroke: var(--ink-5); stroke-width: 1.25; }
-.coline .fig7-drop { stroke: var(--ink-5); stroke-width: 1.1; }
+.coline .fig4-tick { stroke: var(--ink-5); stroke-width: 1.4; stroke-linecap: round; }
+.coline .fig4-lead { fill: none; stroke: var(--ink-5); stroke-width: 1.4; stroke-dasharray: 2 6; stroke-linecap: round; }
+.coline .fig4-hand { stroke: var(--ink-5); stroke-width: 1.25; }
+.coline .fig4-drop { stroke: var(--ink-5); stroke-width: 1.1; }
 
 /* S2 — "How I work inside your team": three pillar tiles, same tile language as the
    RET Studio delivery pillars (.lp-mod / .lp-mod__icon / .lp-mod__k), own 3-col grid
@@ -2345,11 +2345,11 @@ html.reveal-on .blogfig[data-tilt]:hover { transform: perspective(1100px) rotate
 .co-proof__more { margin-top: clamp(24px,3vw,32px); text-align: center; }
 .st-ctanote a { color: var(--cognac-text); }
 
-/* FIG_06/FIG_07 mobile label floor: .lppath__svg scales with its box (width:100%,
+/* FIG_06/FIG_04 mobile label floor: .lppath__svg scales with its box (width:100%,
    viewBox 640), so at a 375px viewport the ~341px card renders the 8.5px SVG units at
    ~3.8px — unreadable. Bump just these two figures' text to 14 SVG units (≈6.2px
    rendered at that scale, comfortably ≥6.5px once measured against the real card
-   width) without touching every other .lppath__metahead/subhead consumer (FIG_04). */
+   width) without touching every other .lppath__metahead/subhead consumer (FIG_07). */
 @media (max-width: 560px) {
   .stframe .lppath__metahead, .stframe .lppath__subhead:not(.lppath__subhead--accent),
   .coline .lppath__metahead, .coline .lppath__subhead:not(.lppath__subhead--accent) { font-size: 14px; }
@@ -2376,8 +2376,8 @@ html.reveal-on .blogfig[data-tilt]:hover { transform: perspective(1100px) rotate
 @media (max-width: 640px) { .learning-brand__extension--long { width: 104px; } }
 @media (max-width: 400px) { .learning-brand__extension--long { width: 96px; } }
 
-/* ---- FIG_08 · ONE HOUSE (home hero canvas, orbit) ----------------------------
-   Successor of FIG_01 in the home hero (FIG_01 moved to the Advisory hero): the
+/* ---- FIG_01 · ONE HOUSE (home hero canvas, orbit) ----------------------------
+   Successor of FIG_03 in the home hero (FIG_03 moved to the Advisory hero): the
    mother-brand tile at the exact centre, three concentric dashed orbits, and one
    gradient card per offer in revolution — Advisory innermost, then Upskilling,
    then Studio. One shared 48s revolution with satellites locked 120° apart, so
@@ -2421,7 +2421,7 @@ html.reveal-on .blogfig[data-tilt]:hover { transform: perspective(1100px) rotate
   .orb__card { position: static; transform: none; animation: none; width: min(100%, 320px); }
 }
 
-/* ---- FIG_01 transplanted into the Advisory hero ------------------------------
+/* ---- FIG_03 transplanted into the Advisory hero ------------------------------
    The method canvas fills the lp-intro figure column. No Availability widget
    overhangs here, so box 6 returns to the uniform staircase pitch. */
 .lp-intro .hero__canvas { aspect-ratio: 4 / 4.35; }
@@ -2431,5 +2431,5 @@ html.reveal-on .blogfig[data-tilt]:hover { transform: perspective(1100px) rotate
   .lp-intro .hero__flowstep { width: auto; max-width: 100%; margin-left: 0 !important; }
   .lp-intro .hero__flowstep-label { white-space: normal; }
 }
-/* FIG_07 relocated below the delivery pillars */
+/* FIG_04 relocated below the delivery pillars */
 #delivery .coline { margin-top: clamp(24px, 3vw, 40px); }
