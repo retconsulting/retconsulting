@@ -2395,11 +2395,29 @@ html.reveal-on .blogfig[data-tilt]:hover { transform: perspective(1100px) rotate
 .orb__tile img { width: 40px; }
 .orb__sat { position: absolute; left: 50%; top: 50%; width: 0; height: 0; z-index: 2; animation: orbrev 48s linear infinite; transform: rotate(var(--a0)); }
 .orb__arm { position: absolute; left: 0; top: 0; transform: translateX(var(--r)); }
-.orb__card { position: absolute; display: flex; flex-direction: column; align-items: center; text-align: center; gap: 3px; padding: 10px 14px; border-radius: var(--r-md);
-  background: linear-gradient(155deg, color-mix(in srgb, var(--o-accent) 28%, #FFFFFF) 0%, color-mix(in srgb, var(--o-accent) 7%, #FFFFFF) 100%);
-  border: 1px solid color-mix(in srgb, var(--o-accent) 42%, transparent);
+/* Satellites are name-only circles (nav-mark lockup); hovering one pauses the
+   WHOLE revolution (pausing a single satellite would break the 120° collision
+   lock) and reveals the description in a pop above the circle. Touch contexts
+   ((hover:none), and the ≤1300px stack below) show the description statically. */
+.orb__dot { position: absolute; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; gap: 1px; width: 88px; height: 88px; border-radius: 50%;
+  background: linear-gradient(155deg, color-mix(in srgb, var(--o-accent) 26%, #FFFFFF) 0%, color-mix(in srgb, var(--o-accent) 6%, #FFFFFF) 100%);
+  border: 1px solid color-mix(in srgb, var(--o-accent) 45%, transparent);
   box-shadow: var(--shadow-sm); white-space: nowrap;
   transform: translate(-50%,-50%) rotate(calc(-1 * var(--a0))); animation: orbrevc 48s linear infinite; }
+.orb__dot .orb__brand { font-size: 8.5px; letter-spacing: .14em; margin-right: -.14em; }
+.orb__pop { position: absolute; bottom: calc(100% + 10px); left: 50%; transform: translateX(-50%) scale(.92); transform-origin: 50% 100%;
+  padding: 10px 15px; border-radius: var(--r-md);
+  background: linear-gradient(155deg, color-mix(in srgb, var(--o-accent) 28%, #FFFFFF) 0%, color-mix(in srgb, var(--o-accent) 7%, #FFFFFF) 100%);
+  border: 1px solid color-mix(in srgb, var(--o-accent) 42%, transparent);
+  box-shadow: var(--shadow-lg); white-space: nowrap; opacity: 0; pointer-events: none;
+  transition: opacity .16s var(--ease-out), transform .16s var(--ease-out); }
+.orb__dot:hover .orb__pop { opacity: 1; transform: translateX(-50%) scale(1); }
+.orb:has(.orb__dot:hover) .orb__sat,
+.orb:has(.orb__dot:hover) .orb__dot { animation-play-state: paused; }
+@media (hover: none) {
+  .orb__dot { width: auto; height: auto; border-radius: var(--r-md); padding: 10px 16px; }
+  .orb__pop { position: static; opacity: 1; transform: none; padding: 0; margin-top: 3px; border: 0; background: none; box-shadow: none; pointer-events: auto; }
+}
 .orb__sat--a { --a0: -20deg;  --r: 125px; --o-accent: var(--cognac);    --o-text: var(--cognac-ink); --o-name: var(--cognac-text); }
 .orb__sat--u { --a0: 100deg;  --r: 160px; --o-accent: var(--up-accent); --o-text: var(--up-ink); --o-name: var(--up-text); }
 .orb__sat--s { --a0: 220deg;  --r: 195px; --o-accent: var(--st-accent); --o-text: var(--st-ink); --o-name: var(--st-text); }
@@ -2409,7 +2427,7 @@ html.reveal-on .blogfig[data-tilt]:hover { transform: perspective(1100px) rotate
 .orb__brand { font-family: var(--font-mono); font-size: 9.5px; letter-spacing: .2em; text-transform: uppercase; margin-top: 1px; margin-right: -.2em; color: var(--o-name); }
 .orb__desc { margin-top: 4px; font-family: var(--font-body); font-weight: 500; font-size: 11.5px; line-height: 1.4; color: var(--o-text); }
 @media (prefers-reduced-motion: reduce) {
-  .orb__sat, .orb__card { animation: none !important; }
+  .orb__sat, .orb__dot { animation: none !important; }
 }
 @media (max-width: 1300px) {
   .hero__canvas--offers { aspect-ratio: auto; padding-top: 58px; padding-bottom: 30px; }
@@ -2418,7 +2436,8 @@ html.reveal-on .blogfig[data-tilt]:hover { transform: perspective(1100px) rotate
   .orb__center { position: static; transform: none; }
   .orb__sat { position: static; width: auto; height: auto; animation: none; transform: none; }
   .orb__arm { position: static; transform: none; }
-  .orb__card { position: static; transform: none; animation: none; width: min(100%, 320px); }
+  .orb__dot { position: static; transform: none; animation: none; width: min(100%, 320px); height: auto; border-radius: var(--r-md); padding: 14px 16px; gap: 3px; }
+  .orb__dot .orb__pop { position: static; opacity: 1; transform: none; padding: 0; margin-top: 3px; border: 0; background: none; box-shadow: none; pointer-events: auto; }
 }
 
 /* ---- FIG_03 transplanted into the Advisory hero ------------------------------
