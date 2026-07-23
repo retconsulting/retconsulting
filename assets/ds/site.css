@@ -2403,16 +2403,11 @@ html.reveal-on .blogfig[data-tilt]:hover { transform: perspective(1100px) rotate
    pop as SIBLINGS: the circle can overflow-clip its glyph watermark while the
    pop escapes the clip freely. */
 .orb__unrot { position: absolute; left: 0; top: 0; width: 0; height: 0; transform: rotate(calc(-1 * var(--a0))); animation: orbrevc 48s linear infinite; }
-.orb__dot { position: absolute; left: 0; top: 0; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; gap: 1px; width: 88px; height: 88px; border-radius: 50%; overflow: hidden;
+.orb__dot { position: absolute; left: 0; top: 0; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; gap: 1px; width: 88px; height: 88px; border-radius: 50%;
   background: linear-gradient(155deg, color-mix(in srgb, var(--o-accent) 38%, #FFFFFF) 0%, color-mix(in srgb, var(--o-accent) 10%, #FFFFFF) 58%, #FFFFFF 100%);
   border: 1px solid color-mix(in srgb, var(--o-accent) 45%, transparent);
   box-shadow: var(--shadow-sm); white-space: nowrap;
   transform: translate(-50%,-50%); }
-/* glyph watermark inside each circle, FIG_03 recipe but tone-on-tone in the offer hue */
-.orb__dot::before { content: ""; position: absolute; right: -16%; bottom: -20%; width: 72%; aspect-ratio: 1; pointer-events: none;
-  background: var(--o-accent); opacity: .16;
-  -webkit-mask: url("../logo-mark.svg") center / contain no-repeat; mask: url("../logo-mark.svg") center / contain no-repeat; }
-.orb__dot .orb__name, .orb__dot .orb__brand { position: relative; z-index: 1; }
 .orb__dot .orb__brand { font-size: 8.5px; letter-spacing: .14em; margin-right: -.14em; }
 .orb__pop { position: absolute; bottom: 54px; left: 0; transform: translateX(-50%) scale(.92); transform-origin: 50% 100%;
   padding: 10px 15px; border-radius: var(--r-md);
@@ -2444,8 +2439,7 @@ html.reveal-on .blogfig[data-tilt]:hover { transform: perspective(1100px) rotate
   .orb__sat { position: static; width: auto; height: auto; animation: none; transform: none; }
   .orb__arm { position: static; transform: none; }
   .orb__unrot { position: static; width: auto; height: auto; animation: none; transform: none; display: flex; flex-direction: column; align-items: center; }
-  .orb__dot { position: static; transform: none; width: min(100%, 320px); height: auto; border-radius: var(--r-md); padding: 14px 16px; gap: 3px; overflow: visible; }
-  .orb__dot::before { display: none; }
+  .orb__dot { position: static; transform: none; width: min(100%, 320px); height: auto; border-radius: var(--r-md); padding: 14px 16px; gap: 3px; }
   .orb__pop { position: static; opacity: 1; transform: none; padding: 0; margin-top: 3px; border: 0; background: none; box-shadow: none; pointer-events: auto; }
 }
 
