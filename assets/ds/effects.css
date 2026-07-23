@@ -19,7 +19,7 @@
   --shadow-md:    0 12px 28px -12px rgba(24,24,27,0.16), 0 3px 8px -4px rgba(24,24,27,0.06);
   --shadow-lg:    0 28px 56px -22px rgba(24,24,27,0.22), 0 8px 20px -12px rgba(24,24,27,0.10);
   --shadow-float: 0 44px 88px -32px rgba(24,24,27,0.26), 0 14px 32px -20px rgba(24,24,27,0.12);
-  --shadow-accent: 0 18px 40px -16px rgba(156,90,46,0.5);
+  --shadow-accent: 0 18px 40px -16px color-mix(in srgb, var(--accent-btn) 50%, transparent);
   --shadow-inset-hi: inset 0 1px 0 rgba(255,255,255,0.7);
 
   /* — Card interaction — */

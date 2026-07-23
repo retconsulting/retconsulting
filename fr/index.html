@@ -32,7 +32,7 @@
 <link rel="manifest" href="/site.webmanifest"/>
 <meta name="apple-mobile-web-app-title" content="RET"/>
 <script>if('IntersectionObserver' in window && !matchMedia('(prefers-reduced-motion:reduce)').matches){document.documentElement.classList.add('reveal-on');}</script>
-<link rel="stylesheet" href="/assets/ds.css?v=20260722e"/>
+<link rel="stylesheet" href="/assets/ds.css?v=20260722j"/>
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -49,7 +49,7 @@
       "address": { "@type": "PostalAddress", "addressLocality": "Mons", "addressCountry": "BE" },
       "areaServed": "Belgium",
       "knowsAbout": ["Product ownership", "Analyse métier", "Analyse fonctionnelle", "Livraison de produits web et mobiles", "Formation à l'IA générative"],
-      "hasOfferCatalog": {"@type": "OfferCatalog", "name": "Offres", "itemListElement": [{"@type": "Offer", "itemOffered": {"@type": "Service", "name": "RET Consulting", "serviceType": "Gestion de produits et analyse métier", "url": "https://retconsulting.be/consulting/fr/"}}, {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "RET Studio", "serviceType": "Conception et livraison de produits web et mobiles", "url": "https://retconsulting.be/studio/fr/"}}, {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "RET Upskilling", "serviceType": "Formation à l'IA générative", "url": "https://retconsulting.be/upskilling/fr/"}}]},
+      "hasOfferCatalog": {"@type": "OfferCatalog", "name": "Offres", "itemListElement": [{"@type": "Offer", "itemOffered": {"@type": "Service", "name": "RET Advisory", "serviceType": "Gestion de produits et analyse métier", "url": "https://retconsulting.be/advisory/fr/"}}, {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "RET Studio", "serviceType": "Conception et livraison de produits web et mobiles", "url": "https://retconsulting.be/studio/fr/"}}, {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "RET Upskilling", "serviceType": "Formation professionnelle à l'IA générative", "url": "https://retconsulting.be/upskilling/fr/"}}]},
       "founder": { "@id": "https://retconsulting.be/#redha" },
       "sameAs": ["https://www.linkedin.com/in/retbaz/"]
     },
@@ -76,9 +76,9 @@
       <span class="nav__brand-wordmark"><span class="w">RET</span><span class="d">Consulting</span></span>
     </a>
     <nav class="nav__links" id="navmenu" aria-label="Navigation principale">
-      <a class="nav__link nav__link--out nav__link--offer" href="/consulting/fr/"><span class="nav__link-mark"><span class="w">RET</span><span class="d">Consulting</span></span> <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7"/><path d="M8 7h9v9"/></svg></a>
-      <a class="nav__link nav__link--out nav__link--offer" href="/studio/fr/"><span class="nav__link-mark"><span class="w">RET</span><span class="d">Studio</span></span> <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7"/><path d="M8 7h9v9"/></svg></a>
-      <a class="nav__link nav__link--out nav__link--offer" href="/upskilling/fr/"><span class="nav__link-mark"><span class="w">RET</span><span class="d">Upskilling</span></span> <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7"/><path d="M8 7h9v9"/></svg></a>
+      <a class="nav__link nav__link--out nav__link--offer" href="/advisory/fr/"><span class="nav__link-mark nav__link-mark--advisory"><span class="w">RET</span><span class="d">Advisory</span></span> <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7"/><path d="M8 7h9v9"/></svg></a>
+      <a class="nav__link nav__link--out nav__link--offer" href="/studio/fr/"><span class="nav__link-mark nav__link-mark--studio"><span class="w">RET</span><span class="d">Studio</span></span> <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7"/><path d="M8 7h9v9"/></svg></a>
+      <a class="nav__link nav__link--out nav__link--offer" href="/upskilling/fr/"><span class="nav__link-mark nav__link-mark--upskilling"><span class="w">RET</span><span class="d">Upskilling</span></span> <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7"/><path d="M8 7h9v9"/></svg></a>
       <span class="nav__divider" aria-hidden="true"></span>
       <a class="nav__link nav__link--out" href="/blog/">Blog <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7"/><path d="M8 7h9v9"/></svg></a>
     </nav>
@@ -119,22 +119,24 @@
         </div>
       </div>
       <div class="hero__visual">
-        <div class="hero__canvas" data-tilt>
-          <span class="stamp"><span class="ret-diamond"></span>FIG_01 · MÉTHODE</span>
-          <img class="hero__watermark" src="/assets/logo-mark.svg" alt=""/>
-          <div class="hero__flow">
-            <span class="hero__flowstep"><span class="hero__flowstep-ix">01 / Besoin</span><span class="hero__flowstep-label">Besoin métier</span></span>
-            <span class="hero__flowstep"><span class="hero__flowstep-ix">02 / Cadrage</span><span class="hero__flowstep-label">Cadrage &amp; priorités</span></span>
-            <span class="hero__flowstep"><span class="hero__flowstep-ix">03 / Spéc</span><span class="hero__flowstep-label">Spécifications</span></span>
-            <span class="hero__flowstep"><span class="hero__flowstep-ix">04 / Build</span><span class="hero__flowstep-label">Build &amp; tests</span></span>
-            <span class="hero__flowstep"><span class="hero__flowstep-ix">05 / Livré</span><span class="hero__flowstep-label">Produit livré</span></span>
-            <span class="hero__flowstep"><span class="hero__flowstep-ix">06 / Former</span><span class="hero__flowstep-label">Se former &amp; optimiser</span></span>
+        <div class="hero__canvas hero__canvas--offers" data-tilt>
+          <span class="stamp"><span class="ret-diamond"></span>FIG_08 · UNE MAISON</span>
+          <div class="orb">
+            <svg class="orb__rings" aria-hidden="true">
+              <circle cx="50%" cy="50%" r="125"/>
+              <circle cx="50%" cy="50%" r="160"/>
+              <circle cx="50%" cy="50%" r="195"/>
+            </svg>
+            <div class="orb__center"><span class="orb__tile"><img src="/assets/logo-mark.svg" alt=""/></span></div>
+            <div class="orb__sat orb__sat--a"><div class="orb__arm"><span class="orb__card"><span class="orb__name">RET</span><span class="orb__brand">ADVISORY</span><span class="orb__desc">Gestion de produit<br/>Analyse métier</span></span></div></div>
+            <div class="orb__sat orb__sat--u"><div class="orb__arm"><span class="orb__card"><span class="orb__name">RET</span><span class="orb__brand">UPSKILLING</span><span class="orb__desc">Intelligence artificielle<br/>Formation</span></span></div></div>
+            <div class="orb__sat orb__sat--s"><div class="orb__arm"><span class="orb__card"><span class="orb__name">RET</span><span class="orb__brand">STUDIO</span><span class="orb__desc">Livraison produit<br/>digitale, de bout en bout</span></span></div></div>
           </div>
         </div>
         <div class="hero__float">
           <span class="cap">Disponibilité</span>
           <ul class="hero__slots">
-            <li class="slot slot--off"><span class="slot__dot"></span><span class="slot__label">RET Consulting</span><span class="slot__state">Complet</span></li>
+            <li class="slot slot--off"><span class="slot__dot"></span><span class="slot__label">RET Advisory</span><span class="slot__state">Complet</span></li>
             <li class="slot"><span class="slot__dot"></span><span class="slot__label">RET Studio</span><span class="slot__state">Ouvert</span></li>
             <li class="slot"><span class="slot__dot"></span><span class="slot__label">RET Upskilling</span><span class="slot__state">Ouvert</span></li>
           </ul>
@@ -164,9 +166,9 @@
       </aside>
       <div class="about__prose">
         <p>Je travaille comme Product Owner / Business Analyst indépendant, sur quatre volets : la gestion de produits stratégique, l'analyse métier orientée livraison, l'IA générative mise au travail efficacement, et la formation qui monte vos équipes en compétence. Un seul interlocuteur, du cadrage à la passation.</p>
-        <p>Depuis 2018, j'ai livré des produits et fonctionnalités dans la tech, la pharma, le ferroviaire international, le secteur public et les services professionnels : de grands systèmes complexes à des fonctionnalités plus ciblées. <a href="#experience">Voir le parcours <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7"/><path d="M8 7h9v9"/></svg></a></p>
+        <p>Depuis 2018, j'ai livré des produits et fonctionnalités dans la tech, la pharma, le ferroviaire international, le secteur public et les services professionnels : de grands systèmes complexes à des fonctionnalités plus ciblées. <a href="/advisory/fr/#experience">Voir le parcours <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7"/><path d="M8 7h9v9"/></svg></a></p>
         <p>Je construis des workflows agentiques dans de vrais projets, j'automatise les tâches répétitives, et je forme vos équipes à les utiliser, des multinationales aux petites équipes, des premiers prompts aux flux que des non-développeurs font tourner seuls.</p>
-        <p>Je suis aussi un bâtisseur dans l'âme. Je conçois et développe des produits numériques, des sites web et des applications, du premier croquis à la sortie sur l'App Store : dueday et ce site en sont deux exemples, tous deux conçus et construits à la main. <a href="/studio/fr/#proof">Voir le portfolio <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7"/><path d="M8 7h9v9"/></svg></a></p>
+        <p>Je suis aussi un bâtisseur dans l'âme. Je conçois et développe des produits numériques, des sites web et des applications, du premier croquis à la sortie sur l'App Store : dueday et ce site en sont deux exemples, tous deux conçus et construits à la main. <a href="/studio/portfolio/fr/">Voir le portfolio <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7"/><path d="M8 7h9v9"/></svg></a></p>
       </div>
     </div>
     <div class="trustbar trustbar--about" aria-labelledby="cred-h">
@@ -229,7 +231,7 @@
               <span class="svc__icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="8.5"/><circle cx="12" cy="12" r="4.5"/><circle cx="12" cy="12" r="0.6"/></svg></span>
               <span class="svc__no">01</span>
             </div>
-            <h3 class="svc__title">RET Consulting</h3>
+            <h3 class="svc__title">RET Advisory</h3>
             <p class="svc__kicker">Gestion de produits &amp; analyse métier</p>
             <p class="svc__desc">J'intègre votre équipe comme Product Owner ou Business Analyst pour clarifier les priorités, aligner les parties prenantes et faire avancer une livraison complexe.</p>
             <ul class="svc__tags">
@@ -237,7 +239,7 @@
               <li class="svc__tag">Business Analyst</li>
               <li class="svc__tag">Functional Analyst</li>
             </ul>
-            <div class="svc__foot"><span class="svc__cap">Missions longues · sur site ou à distance</span><button type="button" class="svc__more" aria-expanded="false" aria-label="En savoir plus sur RET Consulting"><span class="svc__more-label">En savoir plus</span><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7"/><path d="M8 7h9v9"/></svg></button></div>
+            <div class="svc__foot"><span class="svc__cap">Missions longues · sur site ou à distance</span><button type="button" class="svc__more" aria-expanded="false" aria-label="En savoir plus sur RET Advisory"><span class="svc__more-label">En savoir plus</span><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7"/><path d="M8 7h9v9"/></svg></button></div>
           </div>
           <div class="svc__face svc__face--back" aria-hidden="true">
             <div class="skel" aria-hidden="true"><div class="skel__inner"><div class="skb skb--tag"></div><div class="skb skb--title"></div><div class="skel__row"><span class="skel__dot"></span><div class="skel__col"><div class="skb"></div><div class="skb" style="width:82%"></div></div></div><div class="skel__row"><span class="skel__dot"></span><div class="skel__col"><div class="skb"></div><div class="skb" style="width:74%"></div></div></div><div class="skel__row"><span class="skel__dot"></span><div class="skel__col"><div class="skb"></div><div class="skb" style="width:88%"></div></div></div><div class="skb skb--foot"></div></div></div>
@@ -251,7 +253,7 @@
               <li>Product owner d'une plateforme de maintenance (GMAO) dans le ferroviaire international : horaires transfrontaliers synchronisés avec les cycles de maintenance des flottes, à partir des besoins d'une équipe internationale.</li>
               <li>Auparavant : product owner d'applications mobiles de service public, missions d'analyse dans la pharma et en licences logicielles. Huit ans, cinq secteurs.</li>
             </ul>
-            <p class="svc__backfoot">Certifié SAFe POPM, PSPO I &amp; II, PSM I. <a href="/consulting/fr/">Découvrir RET Consulting</a></p>
+            <p class="svc__backfoot">Certifié SAFe POPM, PSPO I &amp; II, PSM I. <a href="/advisory/fr/">Découvrir RET Advisory</a></p>
           </div>
         </div>
       </article>
@@ -264,7 +266,7 @@
               <span class="svc__no">02</span>
             </div>
             <h3 class="svc__title">RET Studio</h3>
-            <p class="svc__kicker">Sites web &amp; applications mobiles</p>
+            <p class="svc__kicker">Livraison produit</p>
             <p class="svc__desc">Je cadre, conçois, développe et mets en ligne des sites web et applications mobiles, avec une responsabilité claire de bout en bout. Dernière sortie : <a href="/dueday/fr/">dueday</a>, un traqueur de coûts iOS gratuit.</p>
             <ul class="svc__tags">
               <li class="svc__tag">Apps iOS</li>
@@ -471,154 +473,9 @@
 
 
 
-  <section class="section band" id="experience">
-    <div class="section__head reveal-group">
-      <span class="ret-tag">[EXPÉRIENCE_CLIENT]</span>
-      <h2 class="section__title">Là où j'ai livré.</h2>
-      <p class="section__lead">Missions sélectionnées, de 2018 à aujourd'hui.</p>
-    </div>
-    <div class="tl-wrap">
-      <figure class="timeline reveal" data-tilt role="img" aria-label="Chronologie des missions. Tech, de 2018 à 2020, analyste logiciel. Pharma, de 2020 à 2022, analyste produit. Multi-secteurs, de 2022 à aujourd'hui, formateur IA générative, en cours. Secteur public, de 2022 à 2023, product owner. Ferroviaire, de 2023 à 2025, product owner. Pharma, depuis 2025, product et process owner, en cours. Secteurs : tech, pharma, ferroviaire, secteur public, services professionnels.">
-        <span class="stamp"><span class="ret-diamond"></span>FIG_03 · CHRONOLOGIE</span>
-        <ul class="tl__sectors">
-          <li class="tl__sector"><span class="tl__sicon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><circle cx="6" cy="7" r="2"/><circle cx="18" cy="7" r="2"/><circle cx="12" cy="17" r="2.4"/><path d="M8 7h8"/><path d="M7 8.7 10.5 15"/><path d="M17 8.7 13.5 15"/></svg></span>Pharma</li>
-          <li class="tl__sector"><span class="tl__sicon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M7 3v18M17 3v18"/><path d="M5 8h14M5 13h14M5 18h14"/></svg></span>Ferroviaire</li>
-          <li class="tl__sector"><span class="tl__sicon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M4 9 12 4l8 5"/><path d="M5 9h14"/><path d="M6 9v9M10 9v9M14 9v9M18 9v9"/><path d="M4 20h16"/></svg></span>Secteur public</li>
-          <li class="tl__sector"><span class="tl__sicon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><rect x="3.5" y="7.5" width="17" height="12" rx="2"/><path d="M8.5 7.5V6a2 2 0 0 1 2-2h3a2 2 0 0 1 2 2v1.5"/><path d="M3.5 13h17"/></svg></span>Services professionnels</li>
-          <li class="tl__sector"><span class="tl__sicon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><rect x="6" y="6" width="12" height="12" rx="2"/><rect x="9.5" y="9.5" width="5" height="5" rx="1"/><path d="M9 6V3M15 6V3M9 21v-3M15 21v-3M6 9H3M6 15H3M21 9h-3M21 15h-3"/></svg></span>Tech</li>
-        </ul>
-        <div class="tl__scroll">
-          <div class="tl__stage">
-          <svg class="tl__svg" viewBox="0 0 1180 460" aria-hidden="true" focusable="false">
-            <line class="tl__axis" pathLength="1" x1="48" y1="400" x2="1160" y2="400"/>
-            <g class="tl__ticks">
-              <line class="tl__tick" x1="60" y1="400" x2="60" y2="408"/>
-              <line class="tl__tick" x1="180" y1="400" x2="180" y2="408"/>
-              <line class="tl__tick" x1="300" y1="400" x2="300" y2="408"/>
-              <line class="tl__tick" x1="420" y1="400" x2="420" y2="408"/>
-              <line class="tl__tick" x1="540" y1="400" x2="540" y2="408"/>
-              <line class="tl__tick" x1="660" y1="400" x2="660" y2="408"/>
-              <line class="tl__tick" x1="780" y1="400" x2="780" y2="408"/>
-              <line class="tl__tick" x1="900" y1="400" x2="900" y2="408"/>
-              <line class="tl__tick" x1="1020" y1="400" x2="1020" y2="408"/>
-              <line class="tl__tick" x1="1140" y1="400" x2="1140" y2="408"/>
-            </g>
-            <g class="tl__years">
-              <text class="tl__year" text-anchor="middle" x="60" y="428">2018</text>
-              <text class="tl__year" text-anchor="middle" x="180" y="428">2019</text>
-              <text class="tl__year" text-anchor="middle" x="300" y="428">2020</text>
-              <text class="tl__year" text-anchor="middle" x="420" y="428">2021</text>
-              <text class="tl__year" text-anchor="middle" x="540" y="428">2022</text>
-              <text class="tl__year" text-anchor="middle" x="660" y="428">2023</text>
-              <text class="tl__year" text-anchor="middle" x="780" y="428">2024</text>
-              <text class="tl__year" text-anchor="middle" x="900" y="428">2025</text>
-              <text class="tl__year" text-anchor="middle" x="1020" y="428">2026</text>
-              <text class="tl__year" text-anchor="middle" x="1140" y="428">2027</text>
-            </g>
-            <g class="tl__seg" data-exp="1" style="--seg:0">
-              <rect class="tl__hit" x="48" y="320" width="264" height="52" fill="transparent"/>
-              <line class="tl__drop" pathLength="1" x1="60" y1="360" x2="60" y2="400"/>
-              <line class="tl__solid" pathLength="1" x1="60" y1="360" x2="300" y2="360"/>
-              <circle class="tl__ring" cx="60" cy="360" r="7"/>
-              <text class="tl__name" x="60" y="330">Tech</text>
-              <text class="tl__role" x="60" y="346">Analyste logiciel</text>
-            </g>
-            <g class="tl__seg" data-exp="2" style="--seg:1">
-              <rect class="tl__hit" x="288" y="266" width="264" height="52" fill="transparent"/>
-              <line class="tl__drop" pathLength="1" x1="300" y1="306" x2="300" y2="400"/>
-              <line class="tl__solid" pathLength="1" x1="300" y1="306" x2="540" y2="306"/>
-              <circle class="tl__ring" cx="300" cy="306" r="7"/>
-              <text class="tl__name" x="300" y="276">Pharma</text>
-              <text class="tl__role" x="300" y="292">Analyste produit</text>
-            </g>
-            <g class="tl__seg" data-exp="6" style="--seg:5">
-              <rect class="tl__hit" x="528" y="212" width="564" height="52" fill="transparent"/>
-              <line class="tl__now" x1="540" y1="252" x2="1080" y2="252"/>
-              <line class="tl__future" x1="1080" y1="252" x2="1140" y2="252"/>
-              <circle class="tl__ring--now" cx="540" cy="252" r="7"/>
-              <text class="tl__name" x="540" y="222">Multi-secteurs</text>
-              <text class="tl__role" x="540" y="238">Formateur IA générative</text>
-            </g>
-            <g class="tl__seg" data-exp="3" style="--seg:2">
-              <rect class="tl__hit" x="528" y="158" width="144" height="52" fill="transparent"/>
-              <line class="tl__drop" pathLength="1" x1="540" y1="198" x2="540" y2="400"/>
-              <line class="tl__solid" pathLength="1" x1="540" y1="198" x2="660" y2="198"/>
-              <circle class="tl__ring" cx="540" cy="198" r="7"/>
-              <text class="tl__name" x="540" y="168">Secteur public</text>
-              <text class="tl__role" x="540" y="184">Product Owner</text>
-            </g>
-            <g class="tl__seg" data-exp="4" style="--seg:3">
-              <rect class="tl__hit" x="648" y="104" width="264" height="52" fill="transparent"/>
-              <line class="tl__drop" pathLength="1" x1="660" y1="144" x2="660" y2="400"/>
-              <line class="tl__solid" pathLength="1" x1="660" y1="144" x2="900" y2="144"/>
-              <circle class="tl__ring" cx="660" cy="144" r="7"/>
-              <text class="tl__name" x="660" y="114">Ferroviaire</text>
-              <text class="tl__role" x="660" y="130">Product Owner</text>
-            </g>
-            <g class="tl__seg" data-exp="5" style="--seg:4">
-              <rect class="tl__hit" x="888" y="50" width="204" height="52" fill="transparent"/>
-              <line class="tl__drop" x1="900" y1="90" x2="900" y2="400"/>
-              <line class="tl__now" x1="900" y1="90" x2="1080" y2="90"/>
-              <line class="tl__future" x1="1080" y1="90" x2="1140" y2="90"/>
-              <circle class="tl__ring--now" cx="900" cy="90" r="7"/>
-              <text class="tl__name" x="900" y="60">Pharma</text>
-              <text class="tl__role" x="900" y="76">Product Owner</text>
-            </g>
-            <g class="tl__marks">
-              <rect class="tl__diamond" style="--seg:0" x="294.5" y="354.5" width="11" height="11" transform="rotate(45 300 360)"/>
-              <rect class="tl__diamond" style="--seg:1" x="534.5" y="300.5" width="11" height="11" transform="rotate(45 540 306)"/>
-              <rect class="tl__diamond" style="--seg:2" x="654.5" y="192.5" width="11" height="11" transform="rotate(45 660 198)"/>
-              <rect class="tl__diamond" style="--seg:3" x="894.5" y="138.5" width="11" height="11" transform="rotate(45 900 144)"/>
-            </g>
-            <text class="tl__note" text-anchor="end" x="1140" y="450">Survolez un segment pour les détails</text>
-          </svg>
-          <div class="tl__pops" aria-hidden="true">
-            <div class="tl__pop tl__pop--1">
-              <div class="tl__pop-head"><span class="tl__pop-chip">Tech</span><span class="tl__pop-ref">2018&ndash;2020 · Licences logicielles</span></div>
-              <span class="tl__pop-title">Analyste de licences logicielles</span>
-              <p class="tl__pop-scope">Software asset management pour de grands acteurs technologiques : réconcilier les données de déploiement avec les contrats de licence pour maîtriser le risque de conformité et les dépenses logicielles.</p>
-              <span class="ret-hpill" style="--tilt:0"><span class="ret-hpill__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><rect x="3.5" y="3.5" width="7" height="7" rx="1.5"/><rect x="13.5" y="3.5" width="7" height="7" rx="1.5"/><rect x="3.5" y="13.5" width="7" height="7" rx="1.5"/><rect x="13.5" y="13.5" width="7" height="7" rx="1.5"/></svg></span><span>Logiciel d'entreprise</span></span>
-            </div>
-            <div class="tl__pop tl__pop--2">
-              <div class="tl__pop-head"><span class="tl__pop-chip">Pharma</span><span class="tl__pop-ref">2020&ndash;2022 · Analyse &amp; recette</span></div>
-              <span class="tl__pop-title">Analyste produit et métier</span>
-              <p class="tl__pop-scope">Logiciel de suivi d'échantillons cliniques livré de bout en bout sous contraintes GxP : besoins, spécifications fonctionnelles, tests de validation formels et formation des utilisateurs.</p>
-              <span class="ret-hpill" style="--tilt:0"><span class="ret-hpill__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><rect x="3.5" y="3.5" width="7" height="7" rx="1.5"/><rect x="13.5" y="3.5" width="7" height="7" rx="1.5"/><rect x="3.5" y="13.5" width="7" height="7" rx="1.5"/><rect x="13.5" y="13.5" width="7" height="7" rx="1.5"/></svg></span><span>Logiciel d'entreprise</span></span>
-            </div>
-            <div class="tl__pop tl__pop--3">
-              <div class="tl__pop-head"><span class="tl__pop-chip">Secteur public</span><span class="tl__pop-ref">2022&ndash;2023 · Applications mobiles</span></div>
-              <span class="tl__pop-title">Product owner, applis mobiles de service public</span>
-              <p class="tl__pop-scope">Vision, feuille de route et backlog des applications iOS et Android d'un service public de l'emploi : des fonctionnalités accessibles et à fort impact pour les demandeurs d'emploi.</p>
-              <span class="ret-hpill" style="--tilt:0"><span class="ret-hpill__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><rect x="6" y="2.5" width="12" height="19" rx="2.5"/><path d="M11 18.5h2"/></svg></span><span>Applications mobiles</span></span>
-            </div>
-            <div class="tl__pop tl__pop--4">
-              <div class="tl__pop-head"><span class="tl__pop-chip">Ferroviaire</span><span class="tl__pop-ref">2023&ndash;2025 · Plateforme GMAO</span></div>
-              <span class="tl__pop-title">Product owner, maintenance du matériel roulant</span>
-              <p class="tl__pop-scope">Product owner d'une plateforme de maintenance (GMAO) du matériel roulant : un moteur de planification synchronisant les horaires transfrontaliers avec les cycles obligatoires de maintenance des flottes, à partir des besoins d'une équipe internationale.</p>
-              <span class="ret-hpill" style="--tilt:0"><span class="ret-hpill__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4.5" width="18" height="15" rx="2"/><path d="M3 9h18"/><path d="M6.5 6.7h.01M9 6.7h.01"/></svg></span><span>Applications web</span></span>
-            </div>
-            <div class="tl__pop tl__pop--5">
-              <div class="tl__pop-head"><span class="tl__pop-chip">Pharma</span><span class="tl__pop-ref">Depuis 2025 · ERP / S/4HANA</span></div>
-              <span class="tl__pop-title">Product et process owner, migration ERP</span>
-              <p class="tl__pop-scope">Product et process owner sur une migration SAP S/4HANA sous GxP : cartographie des processus, spécifications fonctionnelles, validation formelle et conduite du changement transverse pour maintenir les opérations.</p>
-              <span class="ret-hpill" style="--tilt:0"><span class="ret-hpill__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><rect x="3.5" y="3.5" width="7" height="7" rx="1.5"/><rect x="13.5" y="3.5" width="7" height="7" rx="1.5"/><rect x="3.5" y="13.5" width="7" height="7" rx="1.5"/><rect x="13.5" y="13.5" width="7" height="7" rx="1.5"/></svg></span><span>Logiciel d'entreprise</span></span>
-            </div>
-            <div class="tl__pop tl__pop--6">
-              <div class="tl__pop-head"><span class="tl__pop-chip">Multi-secteurs</span><span class="tl__pop-ref">2022&ndash;auj. · Formation IA</span></div>
-              <span class="tl__pop-title">Formateur IA générative</span>
-              <p class="tl__pop-scope">À la fois des formations techniques pour les développeurs (LLM, workflows agentiques, prompt engineering) et des sessions grand public pour les non-développeurs, des premiers prompts à la production.</p>
-              <span class="ret-hpill" style="--tilt:0"><span class="ret-hpill__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l1.9 5.6L19.5 10l-5.6 1.9L12 17.5l-1.9-5.6L4.5 11.9 10.1 10 12 3Z"/></svg></span><span>IA générative</span></span>
-            </div>
-          </div>
-          </div>
-        </div>
-      </figure>
-    </div>
-    <p class="cases__note">Les noms des clients sont couverts par des accords de confidentialité. Détails sur demande.</p>
-  </section>
   <section class="section section--cta">
     <div class="pfcta-wrap reveal-group">
-      <a class="pfcta reveal" href="/studio/fr/#proof">
+      <a class="pfcta reveal" href="/studio/portfolio/fr/">
         <div>
           <span class="ret-tag">[RÉALISATIONS]</span>
           <p class="pfcta__line">Des produits et des fonctionnalités que j'ai conçus, développés et livrés.</p>
@@ -678,8 +535,7 @@
       <h2>Site</h2>
       <a href="#services">Ce que je fais</a>
       <a href="#about">Qui je suis</a>
-      <a href="#experience">Expérience</a>
-      <a href="/consulting/fr/">RET Consulting</a>
+      <a href="/advisory/fr/">RET Advisory</a>
       <a href="/studio/fr/">RET Studio</a>
       <a href="/upskilling/fr/">RET Upskilling</a>
       <a href="/blog/">Blog</a>
@@ -806,7 +662,7 @@
     var label = document.getElementById('scrollnavLabel');
     if (!nav || !bar || !label) return;
     var CIRC = 97.39;
-    var SECTIONS = [['hero', 'Accueil'], ['about', 'Qui je suis'], ['services', 'Ce que je fais'], ['experience', 'Expérience'], ['contact', 'Contact']];
+    var SECTIONS = [['hero', 'Accueil'], ['about', 'Qui je suis'], ['services', 'Ce que je fais'], ['contact', 'Contact']];
     var rm = window.matchMedia('(prefers-reduced-motion: reduce)');
     var ticking = false;
     var render = function () {

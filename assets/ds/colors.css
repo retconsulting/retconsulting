@@ -71,3 +71,44 @@
   --border-strong:   var(--line-strong);
   --border-accent:   var(--line-cognac);
 }
+
+/* ---- Sub-brand accents (brand architecture, 2026-07-22) -------------------
+   One key colour per offer: Consulting keeps cognac (mother brand), Studio
+   owns a steel "blueprint" blue, Upskilling a heather plum. Same tonal
+   recipe and WCAG targets as cognac (text ≥4.5:1 on canvas, white ≥4.5:1 on
+   btn, soft ≥4.5:1 on ink panels, ink ≥7:1 on wash). Verified 2026-07-22.  */
+:root {
+  --st-accent: #5B7C9D; --st-deep: #2C4E70; --st-soft: #A9C2DA; --st-wash: #E5EBF2;
+  --st-ink:    #2B4C6B; --st-text: #41648A; --st-btn:  #3E6B96; --st-line: rgba(91, 124, 157, 0.32);
+  --up-accent: #8B6494; --up-deep: #5A3663; --up-soft: #C4A9CA; --up-wash: #EEE6F0;
+  --up-ink:    #573961; --up-text: #6E4878; --up-btn:  #7A4E85; --up-line: rgba(139, 100, 148, 0.32);
+  --fig-nappe: 24%;  /* figure-canvas accent tint; darker accents override lower so all three read equal */
+}
+
+/* Page-scoped theming: repoint the cognac tokens on the offer pages; every
+   component and figure consuming var(--accent, ...) or var(--cognac, ...) follows.
+   The --accent aliases (--accent-hover, --accent-soft, --accent-wash,
+   --accent-text, --accent-label), --border-accent, and --shadow-accent must
+   be re-pointed here too: root-level aliases resolve at root, inheritance
+   passes resolved values, not references, so each page has to re-declare
+   them rather than relying on the cognac tokens changing underneath them. */
+.studio-page {
+  --cognac: var(--st-accent); --cognac-deep: var(--st-deep); --cognac-soft: var(--st-soft);
+  --cognac-wash: var(--st-wash); --cognac-ink: var(--st-ink); --cognac-text: var(--st-text);
+  --line-cognac: var(--st-line); --accent-btn: var(--st-btn);
+  --accent: var(--st-accent); --accent-hover: var(--st-deep); --accent-soft: var(--st-soft);
+  --accent-wash: var(--st-wash); --accent-text: var(--st-ink); --accent-label: var(--st-text);
+  --border-accent: var(--st-line);
+  --shadow-accent: 0 18px 40px -16px color-mix(in srgb, var(--st-btn) 50%, transparent);
+  --fig-nappe: 22%;
+}
+.upskilling-page {
+  --cognac: var(--up-accent); --cognac-deep: var(--up-deep); --cognac-soft: var(--up-soft);
+  --cognac-wash: var(--up-wash); --cognac-ink: var(--up-ink); --cognac-text: var(--up-text);
+  --line-cognac: var(--up-line); --accent-btn: var(--up-btn);
+  --accent: var(--up-accent); --accent-hover: var(--up-deep); --accent-soft: var(--up-soft);
+  --accent-wash: var(--up-wash); --accent-text: var(--up-ink); --accent-label: var(--up-text);
+  --border-accent: var(--up-line);
+  --shadow-accent: 0 18px 40px -16px color-mix(in srgb, var(--up-btn) 50%, transparent);
+  --fig-nappe: 20%;
+}

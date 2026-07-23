@@ -16,18 +16,18 @@
     <xhtml:link rel="alternate" hreflang="x-default" href="https://retconsulting.be/"/>
   </url>
   <url>
-    <loc>https://retconsulting.be/consulting/</loc>
-    <lastmod>2026-07-21</lastmod>
-    <xhtml:link rel="alternate" hreflang="en" href="https://retconsulting.be/consulting/"/>
-    <xhtml:link rel="alternate" hreflang="fr" href="https://retconsulting.be/consulting/fr/"/>
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://retconsulting.be/consulting/"/>
+    <loc>https://retconsulting.be/advisory/</loc>
+    <lastmod>2026-07-22</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://retconsulting.be/advisory/"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://retconsulting.be/advisory/fr/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://retconsulting.be/advisory/"/>
   </url>
   <url>
-    <loc>https://retconsulting.be/consulting/fr/</loc>
-    <lastmod>2026-07-21</lastmod>
-    <xhtml:link rel="alternate" hreflang="en" href="https://retconsulting.be/consulting/"/>
-    <xhtml:link rel="alternate" hreflang="fr" href="https://retconsulting.be/consulting/fr/"/>
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://retconsulting.be/consulting/"/>
+    <loc>https://retconsulting.be/advisory/fr/</loc>
+    <lastmod>2026-07-22</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://retconsulting.be/advisory/"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://retconsulting.be/advisory/fr/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://retconsulting.be/advisory/"/>
   </url>
   <url>
     <loc>https://retconsulting.be/studio/</loc>
@@ -42,6 +42,20 @@
     <xhtml:link rel="alternate" hreflang="en" href="https://retconsulting.be/studio/"/>
     <xhtml:link rel="alternate" hreflang="fr" href="https://retconsulting.be/studio/fr/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://retconsulting.be/studio/"/>
+  </url>
+  <url>
+    <loc>https://retconsulting.be/studio/portfolio/</loc>
+    <lastmod>2026-07-22</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://retconsulting.be/studio/portfolio/"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://retconsulting.be/studio/portfolio/fr/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://retconsulting.be/studio/portfolio/"/>
+  </url>
+  <url>
+    <loc>https://retconsulting.be/studio/portfolio/fr/</loc>
+    <lastmod>2026-07-22</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://retconsulting.be/studio/portfolio/"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://retconsulting.be/studio/portfolio/fr/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://retconsulting.be/studio/portfolio/"/>
   </url>
   <url>
     <loc>https://retconsulting.be/upskilling/</loc>

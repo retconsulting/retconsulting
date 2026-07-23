@@ -84,9 +84,9 @@
   transition: border-color var(--dur-base) var(--ease-out), box-shadow var(--dur-base) var(--ease-out);
 }
 .ret-input::placeholder { color: var(--ink-3); }
-.ret-input:focus { outline: none; border-color: var(--accent); box-shadow: 0 0 0 3px rgba(176,125,84,.18); }
+.ret-input:focus { outline: none; border-color: var(--accent); box-shadow: 0 0 0 3px color-mix(in srgb, var(--accent) 18%, transparent); }
 /* keyboard-specific ring on top of :focus (mouse-focus keeps the .18 opacity above) */
-.ret-input:focus-visible { border-color: var(--accent); box-shadow: 0 0 0 3px rgba(176,125,84,.14); }
+.ret-input:focus-visible { border-color: var(--accent); box-shadow: 0 0 0 3px color-mix(in srgb, var(--accent) 14%, transparent); }
 textarea.ret-input { resize: vertical; line-height: 1.5; }
 /* native <select> styled as an input: strip the OS chrome, draw our own chevron */
 select.ret-input { -webkit-appearance: none; -moz-appearance: none; appearance: none; cursor: pointer; padding-right: 42px;
@@ -135,12 +135,12 @@ select.ret-input option { color: var(--ink); background: #fff; }
   7% {
     transform: rotate(calc(var(--tilt, 0deg) + 6deg)) translateY(-3px) scale(1.05);
     background: var(--cognac-wash); border-color: var(--accent);
-    color: var(--accent-text); box-shadow: 0 9px 22px -8px rgba(176, 125, 84, .55);
+    color: var(--accent-text); box-shadow: 0 9px 22px -8px color-mix(in srgb, var(--accent) 55%, transparent);
   }
   17% {
     transform: rotate(calc(var(--tilt, 0deg) - 3deg)) translateY(-3px) scale(1.05);
     background: var(--cognac-wash); border-color: var(--accent);
-    color: var(--accent-text); box-shadow: 0 9px 22px -8px rgba(176, 125, 84, .55);
+    color: var(--accent-text); box-shadow: 0 9px 22px -8px color-mix(in srgb, var(--accent) 55%, transparent);
   }
 }
 .ret-hpill--seq {

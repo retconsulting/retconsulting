@@ -32,7 +32,7 @@
 <link rel="manifest" href="/site.webmanifest"/>
 <meta name="apple-mobile-web-app-title" content="RET"/>
 <script>if('IntersectionObserver' in window && !matchMedia('(prefers-reduced-motion:reduce)').matches){document.documentElement.classList.add('reveal-on');}</script>
-<link rel="stylesheet" href="assets/ds.css?v=20260722e"/>
+<link rel="stylesheet" href="assets/ds.css?v=20260722j"/>
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -49,7 +49,7 @@
       "address": { "@type": "PostalAddress", "addressLocality": "Mons", "addressCountry": "BE" },
       "areaServed": "Belgium",
       "knowsAbout": ["Product ownership", "Business analysis", "Functional analysis", "Web and mobile product delivery", "Generative AI training"],
-      "hasOfferCatalog": {"@type": "OfferCatalog", "name": "Offers", "itemListElement": [{"@type": "Offer", "itemOffered": {"@type": "Service", "name": "RET Consulting", "serviceType": "Product ownership and business analysis", "url": "https://retconsulting.be/consulting/"}}, {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "RET Studio", "serviceType": "Web and mobile product design and delivery", "url": "https://retconsulting.be/studio/"}}, {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "RET Upskilling", "serviceType": "Generative AI training", "url": "https://retconsulting.be/upskilling/"}}]},
+      "hasOfferCatalog": {"@type": "OfferCatalog", "name": "Offers", "itemListElement": [{"@type": "Offer", "itemOffered": {"@type": "Service", "name": "RET Advisory", "serviceType": "Product ownership and business analysis", "url": "https://retconsulting.be/advisory/"}}, {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "RET Studio", "serviceType": "Web and mobile product design and delivery", "url": "https://retconsulting.be/studio/"}}, {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "RET Upskilling", "serviceType": "Professional generative AI training", "url": "https://retconsulting.be/upskilling/"}}]},
       "founder": { "@id": "https://retconsulting.be/#redha" },
       "sameAs": ["https://www.linkedin.com/in/retbaz/"]
     },
@@ -76,9 +76,9 @@
       <span class="nav__brand-wordmark"><span class="w">RET</span><span class="d">Consulting</span></span>
     </a>
     <nav class="nav__links" id="navmenu" aria-label="Main navigation">
-      <a class="nav__link nav__link--out nav__link--offer" href="/consulting/"><span class="nav__link-mark"><span class="w">RET</span><span class="d">Consulting</span></span> <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7"/><path d="M8 7h9v9"/></svg></a>
-      <a class="nav__link nav__link--out nav__link--offer" href="/studio/"><span class="nav__link-mark"><span class="w">RET</span><span class="d">Studio</span></span> <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7"/><path d="M8 7h9v9"/></svg></a>
-      <a class="nav__link nav__link--out nav__link--offer" href="/upskilling/"><span class="nav__link-mark"><span class="w">RET</span><span class="d">Upskilling</span></span> <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7"/><path d="M8 7h9v9"/></svg></a>
+      <a class="nav__link nav__link--out nav__link--offer" href="/advisory/"><span class="nav__link-mark nav__link-mark--advisory"><span class="w">RET</span><span class="d">Advisory</span></span> <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7"/><path d="M8 7h9v9"/></svg></a>
+      <a class="nav__link nav__link--out nav__link--offer" href="/studio/"><span class="nav__link-mark nav__link-mark--studio"><span class="w">RET</span><span class="d">Studio</span></span> <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7"/><path d="M8 7h9v9"/></svg></a>
+      <a class="nav__link nav__link--out nav__link--offer" href="/upskilling/"><span class="nav__link-mark nav__link-mark--upskilling"><span class="w">RET</span><span class="d">Upskilling</span></span> <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7"/><path d="M8 7h9v9"/></svg></a>
       <span class="nav__divider" aria-hidden="true"></span>
       <a class="nav__link nav__link--out" href="/blog/">Blog <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7"/><path d="M8 7h9v9"/></svg></a>
     </nav>
@@ -119,22 +119,24 @@
         </div>
       </div>
       <div class="hero__visual">
-        <div class="hero__canvas" data-tilt>
-          <span class="stamp"><span class="ret-diamond"></span>FIG_01 · METHOD</span>
-          <img class="hero__watermark" src="assets/logo-mark.svg" alt=""/>
-          <div class="hero__flow">
-            <span class="hero__flowstep"><span class="hero__flowstep-ix">01 / Need</span><span class="hero__flowstep-label">Business need</span></span>
-            <span class="hero__flowstep"><span class="hero__flowstep-ix">02 / Frame</span><span class="hero__flowstep-label">Scope &amp; priorities</span></span>
-            <span class="hero__flowstep"><span class="hero__flowstep-ix">03 / Spec</span><span class="hero__flowstep-label">Specifications</span></span>
-            <span class="hero__flowstep"><span class="hero__flowstep-ix">04 / Build</span><span class="hero__flowstep-label">Build &amp; test</span></span>
-            <span class="hero__flowstep"><span class="hero__flowstep-ix">05 / Ship</span><span class="hero__flowstep-label">Delivered product</span></span>
-            <span class="hero__flowstep"><span class="hero__flowstep-ix">06 / Train</span><span class="hero__flowstep-label">Learn, grow &amp; optimize</span></span>
+        <div class="hero__canvas hero__canvas--offers" data-tilt>
+          <span class="stamp"><span class="ret-diamond"></span>FIG_08 · ONE HOUSE</span>
+          <div class="orb">
+            <svg class="orb__rings" aria-hidden="true">
+              <circle cx="50%" cy="50%" r="125"/>
+              <circle cx="50%" cy="50%" r="160"/>
+              <circle cx="50%" cy="50%" r="195"/>
+            </svg>
+            <div class="orb__center"><span class="orb__tile"><img src="assets/logo-mark.svg" alt=""/></span></div>
+            <div class="orb__sat orb__sat--a"><div class="orb__arm"><span class="orb__card"><span class="orb__name">RET</span><span class="orb__brand">ADVISORY</span><span class="orb__desc">Product Management<br/>Business Analysis</span></span></div></div>
+            <div class="orb__sat orb__sat--u"><div class="orb__arm"><span class="orb__card"><span class="orb__name">RET</span><span class="orb__brand">UPSKILLING</span><span class="orb__desc">Artificial Intelligence<br/>Training</span></span></div></div>
+            <div class="orb__sat orb__sat--s"><div class="orb__arm"><span class="orb__card"><span class="orb__name">RET</span><span class="orb__brand">STUDIO</span><span class="orb__desc">E2E Digital<br/>Product Delivery</span></span></div></div>
           </div>
         </div>
         <div class="hero__float">
           <span class="cap">Availability</span>
           <ul class="hero__slots">
-            <li class="slot slot--off"><span class="slot__dot"></span><span class="slot__label">RET Consulting</span><span class="slot__state">Booked</span></li>
+            <li class="slot slot--off"><span class="slot__dot"></span><span class="slot__label">RET Advisory</span><span class="slot__state">Booked</span></li>
             <li class="slot"><span class="slot__dot"></span><span class="slot__label">RET Studio</span><span class="slot__state">Open</span></li>
             <li class="slot"><span class="slot__dot"></span><span class="slot__label">RET Upskilling</span><span class="slot__state">Open</span></li>
           </ul>
@@ -164,9 +166,9 @@
       </aside>
       <div class="about__prose">
         <p>I work as an independent Product Owner / Business Analyst, across four services: strategic product ownership, delivery-focused business analysis, efficient generative AI delivery, and training that upskills your teams. One point of contact, from kickoff to handover.</p>
-        <p>Since 2018, I've shipped products and features across technology, pharma, international rail, the public sector and professional services: from large, complex systems to smaller, targeted features. <a href="#experience">See the track record <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7"/><path d="M8 7h9v9"/></svg></a></p>
+        <p>Since 2018, I've shipped products and features across technology, pharma, international rail, the public sector and professional services: from large, complex systems to smaller, targeted features. <a href="/advisory/#experience">See the track record <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7"/><path d="M8 7h9v9"/></svg></a></p>
         <p>I build agentic workflows into real projects, automate repetitive tasks, and train your teams to use them, from multinationals to small crews, from first prompts to flows non-coders can run on their own.</p>
-        <p>I'm also a builder at heart. I design and build digital products, websites and apps, from first sketch to App Store release: dueday and this site are two examples, both designed and built by hand. <a href="/studio/#proof">See the portfolio <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7"/><path d="M8 7h9v9"/></svg></a></p>
+        <p>I'm also a builder at heart. I design and build digital products, websites and apps, from first sketch to App Store release: dueday and this site are two examples, both designed and built by hand. <a href="/studio/portfolio/">See the portfolio <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7"/><path d="M8 7h9v9"/></svg></a></p>
       </div>
     </div>
     <div class="trustbar trustbar--about" aria-labelledby="cred-h">
@@ -229,7 +231,7 @@
               <span class="svc__icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="8.5"/><circle cx="12" cy="12" r="4.5"/><circle cx="12" cy="12" r="0.6"/></svg></span>
               <span class="svc__no">01</span>
             </div>
-            <h3 class="svc__title">RET Consulting</h3>
+            <h3 class="svc__title">RET Advisory</h3>
             <p class="svc__kicker">Product ownership &amp; business analysis</p>
             <p class="svc__desc">I join your team as a Product Owner or Business Analyst to clarify priorities, align stakeholders and keep complex delivery moving.</p>
             <ul class="svc__tags">
@@ -237,7 +239,7 @@
               <li class="svc__tag">Business Analyst</li>
               <li class="svc__tag">Functional Analyst</li>
             </ul>
-            <div class="svc__foot"><span class="svc__cap">Long-term assignments · on-site or remote</span><button type="button" class="svc__more" aria-expanded="false" aria-label="More about RET Consulting"><span class="svc__more-label">Learn more</span><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7"/><path d="M8 7h9v9"/></svg></button></div>
+            <div class="svc__foot"><span class="svc__cap">Long-term assignments · on-site or remote</span><button type="button" class="svc__more" aria-expanded="false" aria-label="More about RET Advisory"><span class="svc__more-label">Learn more</span><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7"/><path d="M8 7h9v9"/></svg></button></div>
           </div>
           <div class="svc__face svc__face--back" aria-hidden="true">
             <div class="skel" aria-hidden="true"><div class="skel__inner"><div class="skb skb--tag"></div><div class="skb skb--title"></div><div class="skel__row"><span class="skel__dot"></span><div class="skel__col"><div class="skb"></div><div class="skb" style="width:82%"></div></div></div><div class="skel__row"><span class="skel__dot"></span><div class="skel__col"><div class="skb"></div><div class="skb" style="width:74%"></div></div></div><div class="skel__row"><span class="skel__dot"></span><div class="skel__col"><div class="skb"></div><div class="skb" style="width:88%"></div></div></div><div class="skb skb--foot"></div></div></div>
@@ -251,7 +253,7 @@
               <li>Product owner for rolling-stock maintenance in international rail: cross-border timetables synced with fleet maintenance cycles, from an international team's requirements.</li>
               <li>Before that: product owner on public-service mobile apps, analyst roles in pharma and software licensing. Eight years, five sectors.</li>
             </ul>
-            <p class="svc__backfoot">Certified SAFe POPM, PSPO I &amp; II, PSM I. <a href="/consulting/">Explore RET Consulting</a></p>
+            <p class="svc__backfoot">Certified SAFe POPM, PSPO I &amp; II, PSM I. <a href="/advisory/">Explore RET Advisory</a></p>
           </div>
         </div>
       </article>
@@ -264,7 +266,7 @@
               <span class="svc__no">02</span>
             </div>
             <h3 class="svc__title">RET Studio</h3>
-            <p class="svc__kicker">Web &amp; mobile products</p>
+            <p class="svc__kicker">Product delivery</p>
             <p class="svc__desc">From brief to shipped product: I frame, design, build and release focused websites and mobile applications, with one accountable delivery. Latest release: <a href="dueday/">dueday</a>, a free iOS cost tracker.</p>
             <ul class="svc__tags">
               <li class="svc__tag">iOS apps</li>
@@ -471,154 +473,9 @@
 
 
 
-  <section class="section band" id="experience">
-    <div class="section__head reveal-group">
-      <span class="ret-tag">[CLIENT_EXPERIENCE]</span>
-      <h2 class="section__title">Where I've delivered.</h2>
-      <p class="section__lead">Selected missions, 2018 to today.</p>
-    </div>
-    <div class="tl-wrap">
-      <figure class="timeline reveal" data-tilt role="img" aria-label="Delivery timeline. Technology, 2018 to 2020, software analyst. Pharma, 2020 to 2022, product analyst. Cross-industry, 2022 to now, generative AI trainer, ongoing. Public sector, 2022 to 2023, product owner. Rail, 2023 to 2025, product owner. Pharma, since 2025, product and process owner, ongoing. Sectors delivered in: technology, pharma, rail, public sector, professional services.">
-        <span class="stamp"><span class="ret-diamond"></span>FIG_03 · TIMELINE</span>
-        <ul class="tl__sectors">
-          <li class="tl__sector"><span class="tl__sicon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><circle cx="6" cy="7" r="2"/><circle cx="18" cy="7" r="2"/><circle cx="12" cy="17" r="2.4"/><path d="M8 7h8"/><path d="M7 8.7 10.5 15"/><path d="M17 8.7 13.5 15"/></svg></span>Pharma</li>
-          <li class="tl__sector"><span class="tl__sicon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M7 3v18M17 3v18"/><path d="M5 8h14M5 13h14M5 18h14"/></svg></span>Rail</li>
-          <li class="tl__sector"><span class="tl__sicon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M4 9 12 4l8 5"/><path d="M5 9h14"/><path d="M6 9v9M10 9v9M14 9v9M18 9v9"/><path d="M4 20h16"/></svg></span>Public sector</li>
-          <li class="tl__sector"><span class="tl__sicon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><rect x="3.5" y="7.5" width="17" height="12" rx="2"/><path d="M8.5 7.5V6a2 2 0 0 1 2-2h3a2 2 0 0 1 2 2v1.5"/><path d="M3.5 13h17"/></svg></span>Professional services</li>
-          <li class="tl__sector"><span class="tl__sicon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><rect x="6" y="6" width="12" height="12" rx="2"/><rect x="9.5" y="9.5" width="5" height="5" rx="1"/><path d="M9 6V3M15 6V3M9 21v-3M15 21v-3M6 9H3M6 15H3M21 9h-3M21 15h-3"/></svg></span>Tech</li>
-        </ul>
-        <div class="tl__scroll">
-          <div class="tl__stage">
-          <svg class="tl__svg" viewBox="0 0 1180 460" aria-hidden="true" focusable="false">
-            <line class="tl__axis" pathLength="1" x1="48" y1="400" x2="1160" y2="400"/>
-            <g class="tl__ticks">
-              <line class="tl__tick" x1="60" y1="400" x2="60" y2="408"/>
-              <line class="tl__tick" x1="180" y1="400" x2="180" y2="408"/>
-              <line class="tl__tick" x1="300" y1="400" x2="300" y2="408"/>
-              <line class="tl__tick" x1="420" y1="400" x2="420" y2="408"/>
-              <line class="tl__tick" x1="540" y1="400" x2="540" y2="408"/>
-              <line class="tl__tick" x1="660" y1="400" x2="660" y2="408"/>
-              <line class="tl__tick" x1="780" y1="400" x2="780" y2="408"/>
-              <line class="tl__tick" x1="900" y1="400" x2="900" y2="408"/>
-              <line class="tl__tick" x1="1020" y1="400" x2="1020" y2="408"/>
-              <line class="tl__tick" x1="1140" y1="400" x2="1140" y2="408"/>
-            </g>
-            <g class="tl__years">
-              <text class="tl__year" text-anchor="middle" x="60" y="428">2018</text>
-              <text class="tl__year" text-anchor="middle" x="180" y="428">2019</text>
-              <text class="tl__year" text-anchor="middle" x="300" y="428">2020</text>
-              <text class="tl__year" text-anchor="middle" x="420" y="428">2021</text>
-              <text class="tl__year" text-anchor="middle" x="540" y="428">2022</text>
-              <text class="tl__year" text-anchor="middle" x="660" y="428">2023</text>
-              <text class="tl__year" text-anchor="middle" x="780" y="428">2024</text>
-              <text class="tl__year" text-anchor="middle" x="900" y="428">2025</text>
-              <text class="tl__year" text-anchor="middle" x="1020" y="428">2026</text>
-              <text class="tl__year" text-anchor="middle" x="1140" y="428">2027</text>
-            </g>
-            <g class="tl__seg" data-exp="1" style="--seg:0">
-              <rect class="tl__hit" x="48" y="320" width="264" height="52" fill="transparent"/>
-              <line class="tl__drop" pathLength="1" x1="60" y1="360" x2="60" y2="400"/>
-              <line class="tl__solid" pathLength="1" x1="60" y1="360" x2="300" y2="360"/>
-              <circle class="tl__ring" cx="60" cy="360" r="7"/>
-              <text class="tl__name" x="60" y="330">Tech</text>
-              <text class="tl__role" x="60" y="346">Software Analyst</text>
-            </g>
-            <g class="tl__seg" data-exp="2" style="--seg:1">
-              <rect class="tl__hit" x="288" y="266" width="264" height="52" fill="transparent"/>
-              <line class="tl__drop" pathLength="1" x1="300" y1="306" x2="300" y2="400"/>
-              <line class="tl__solid" pathLength="1" x1="300" y1="306" x2="540" y2="306"/>
-              <circle class="tl__ring" cx="300" cy="306" r="7"/>
-              <text class="tl__name" x="300" y="276">Pharma</text>
-              <text class="tl__role" x="300" y="292">Product Analyst</text>
-            </g>
-            <g class="tl__seg" data-exp="6" style="--seg:5">
-              <rect class="tl__hit" x="528" y="212" width="564" height="52" fill="transparent"/>
-              <line class="tl__now" x1="540" y1="252" x2="1080" y2="252"/>
-              <line class="tl__future" x1="1080" y1="252" x2="1140" y2="252"/>
-              <circle class="tl__ring--now" cx="540" cy="252" r="7"/>
-              <text class="tl__name" x="540" y="222">Cross-industry</text>
-              <text class="tl__role" x="540" y="238">Gen AI Trainer</text>
-            </g>
-            <g class="tl__seg" data-exp="3" style="--seg:2">
-              <rect class="tl__hit" x="528" y="158" width="144" height="52" fill="transparent"/>
-              <line class="tl__drop" pathLength="1" x1="540" y1="198" x2="540" y2="400"/>
-              <line class="tl__solid" pathLength="1" x1="540" y1="198" x2="660" y2="198"/>
-              <circle class="tl__ring" cx="540" cy="198" r="7"/>
-              <text class="tl__name" x="540" y="168">Public sector</text>
-              <text class="tl__role" x="540" y="184">Product Owner</text>
-            </g>
-            <g class="tl__seg" data-exp="4" style="--seg:3">
-              <rect class="tl__hit" x="648" y="104" width="264" height="52" fill="transparent"/>
-              <line class="tl__drop" pathLength="1" x1="660" y1="144" x2="660" y2="400"/>
-              <line class="tl__solid" pathLength="1" x1="660" y1="144" x2="900" y2="144"/>
-              <circle class="tl__ring" cx="660" cy="144" r="7"/>
-              <text class="tl__name" x="660" y="114">Rail</text>
-              <text class="tl__role" x="660" y="130">Product Owner</text>
-            </g>
-            <g class="tl__seg" data-exp="5" style="--seg:4">
-              <rect class="tl__hit" x="888" y="50" width="204" height="52" fill="transparent"/>
-              <line class="tl__drop" x1="900" y1="90" x2="900" y2="400"/>
-              <line class="tl__now" x1="900" y1="90" x2="1080" y2="90"/>
-              <line class="tl__future" x1="1080" y1="90" x2="1140" y2="90"/>
-              <circle class="tl__ring--now" cx="900" cy="90" r="7"/>
-              <text class="tl__name" x="900" y="60">Pharma</text>
-              <text class="tl__role" x="900" y="76">Product Owner</text>
-            </g>
-            <g class="tl__marks">
-              <rect class="tl__diamond" style="--seg:0" x="294.5" y="354.5" width="11" height="11" transform="rotate(45 300 360)"/>
-              <rect class="tl__diamond" style="--seg:1" x="534.5" y="300.5" width="11" height="11" transform="rotate(45 540 306)"/>
-              <rect class="tl__diamond" style="--seg:2" x="654.5" y="192.5" width="11" height="11" transform="rotate(45 660 198)"/>
-              <rect class="tl__diamond" style="--seg:3" x="894.5" y="138.5" width="11" height="11" transform="rotate(45 900 144)"/>
-            </g>
-            <text class="tl__note" text-anchor="end" x="1140" y="450">Hover a segment for details</text>
-          </svg>
-          <div class="tl__pops" aria-hidden="true">
-            <div class="tl__pop tl__pop--1">
-              <div class="tl__pop-head"><span class="tl__pop-chip">Tech</span><span class="tl__pop-ref">2018&ndash;2020 · Software licensing</span></div>
-              <span class="tl__pop-title">Software license analyst</span>
-              <p class="tl__pop-scope">Software asset management for major technology enterprises: reconciling deployment data against licensing agreements to control compliance risk and software spend.</p>
-              <span class="ret-hpill" style="--tilt:0"><span class="ret-hpill__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><rect x="3.5" y="3.5" width="7" height="7" rx="1.5"/><rect x="13.5" y="3.5" width="7" height="7" rx="1.5"/><rect x="3.5" y="13.5" width="7" height="7" rx="1.5"/><rect x="13.5" y="13.5" width="7" height="7" rx="1.5"/></svg></span><span>Enterprise Software</span></span>
-            </div>
-            <div class="tl__pop tl__pop--2">
-              <div class="tl__pop-head"><span class="tl__pop-chip">Pharma</span><span class="tl__pop-ref">2020&ndash;2022 · Analysis &amp; UAT</span></div>
-              <span class="tl__pop-title">Product and business analyst</span>
-              <p class="tl__pop-scope">Clinical sample-tracking software delivered end to end under GxP: requirements, functional specifications, formal validation testing and user training.</p>
-              <span class="ret-hpill" style="--tilt:0"><span class="ret-hpill__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><rect x="3.5" y="3.5" width="7" height="7" rx="1.5"/><rect x="13.5" y="3.5" width="7" height="7" rx="1.5"/><rect x="3.5" y="13.5" width="7" height="7" rx="1.5"/><rect x="13.5" y="13.5" width="7" height="7" rx="1.5"/></svg></span><span>Enterprise Software</span></span>
-            </div>
-            <div class="tl__pop tl__pop--3">
-              <div class="tl__pop-head"><span class="tl__pop-chip">Public Sector</span><span class="tl__pop-ref">2022&ndash;2023 · Mobile apps</span></div>
-              <span class="tl__pop-title">Product owner, public-service mobile apps</span>
-              <p class="tl__pop-scope">Vision, roadmap and backlog for the iOS and Android apps of a public employment service: accessible, high-impact features for job seekers.</p>
-              <span class="ret-hpill" style="--tilt:0"><span class="ret-hpill__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><rect x="6" y="2.5" width="12" height="19" rx="2.5"/><path d="M11 18.5h2"/></svg></span><span>Mobile Apps</span></span>
-            </div>
-            <div class="tl__pop tl__pop--4">
-              <div class="tl__pop-head"><span class="tl__pop-chip">Rail</span><span class="tl__pop-ref">2023&ndash;2025 · CMMS platform</span></div>
-              <span class="tl__pop-title">Product owner, rolling-stock maintenance</span>
-              <p class="tl__pop-scope">Product owner for a rolling-stock maintenance (CMMS) platform: a planning engine syncing cross-border timetables with mandatory fleet maintenance cycles, built from an international team's requirements.</p>
-              <span class="ret-hpill" style="--tilt:0"><span class="ret-hpill__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4.5" width="18" height="15" rx="2"/><path d="M3 9h18"/><path d="M6.5 6.7h.01M9 6.7h.01"/></svg></span><span>Web Apps</span></span>
-            </div>
-            <div class="tl__pop tl__pop--5">
-              <div class="tl__pop-head"><span class="tl__pop-chip">Pharma</span><span class="tl__pop-ref">Since 2025 · ERP / S/4HANA</span></div>
-              <span class="tl__pop-title">Product and process owner, ERP migration</span>
-              <p class="tl__pop-scope">Product and process owner on an SAP S/4HANA migration under GxP: process mapping, functional specifications, formal validation and cross-functional change management to keep operations running.</p>
-              <span class="ret-hpill" style="--tilt:0"><span class="ret-hpill__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><rect x="3.5" y="3.5" width="7" height="7" rx="1.5"/><rect x="13.5" y="3.5" width="7" height="7" rx="1.5"/><rect x="3.5" y="13.5" width="7" height="7" rx="1.5"/><rect x="13.5" y="13.5" width="7" height="7" rx="1.5"/></svg></span><span>Enterprise Software</span></span>
-            </div>
-            <div class="tl__pop tl__pop--6">
-              <div class="tl__pop-head"><span class="tl__pop-chip">Cross-industry</span><span class="tl__pop-ref">2022&ndash;now · Gen AI training</span></div>
-              <span class="tl__pop-title">Generative AI trainer</span>
-              <p class="tl__pop-scope">Both technical training for engineers (LLMs, agentic workflows, prompt engineering) and plain-language sessions for non-coders, from first prompts to production.</p>
-              <span class="ret-hpill" style="--tilt:0"><span class="ret-hpill__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l1.9 5.6L19.5 10l-5.6 1.9L12 17.5l-1.9-5.6L4.5 11.9 10.1 10 12 3Z"/></svg></span><span>Generative AI</span></span>
-            </div>
-          </div>
-          </div>
-        </div>
-      </figure>
-    </div>
-    <p class="cases__note">Client names are withheld under confidentiality agreements. Details on request.</p>
-  </section>
   <section class="section section--cta">
     <div class="pfcta-wrap reveal-group">
-      <a class="pfcta reveal" href="/studio/#proof">
+      <a class="pfcta reveal" href="/studio/portfolio/">
         <div>
           <span class="ret-tag">[PORTFOLIO]</span>
           <p class="pfcta__line">Products and features I designed, developed and shipped.</p>
@@ -678,8 +535,7 @@
       <h2>Site</h2>
       <a href="#services">What I do</a>
       <a href="#about">Who I am</a>
-      <a href="#experience">Experience</a>
-      <a href="/consulting/">RET Consulting</a>
+      <a href="/advisory/">RET Advisory</a>
       <a href="/studio/">RET Studio</a>
       <a href="/upskilling/">RET Upskilling</a>
       <a href="/blog/">Blog</a>
@@ -806,7 +662,7 @@
     var label = document.getElementById('scrollnavLabel');
     if (!nav || !bar || !label) return;
     var CIRC = 97.39;
-    var SECTIONS = [['hero', 'Home'], ['about', 'Who I am'], ['services', 'What I do'], ['experience', 'Experience'], ['contact', 'Contact']];
+    var SECTIONS = [['hero', 'Home'], ['about', 'Who I am'], ['services', 'What I do'], ['contact', 'Contact']];
     var rm = window.matchMedia('(prefers-reduced-motion: reduce)');
     var ticking = false;
     var render = function () {

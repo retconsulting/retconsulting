@@ -71,11 +71,14 @@ section[id], #main { scroll-margin-top: 96px; }
 /* Two-row "RET / Offer" marks for Consulting/Studio/Upskilling: echoes the main
    .nav__brand-wordmark w/d pattern at nav-pill scale, so the three RET offers read as
    branded marks rather than plain text links. .w inherits the link's hover colour;
-   .d stays a fixed muted caption, same treatment as the main logo's subtitle line. */
+   .d carries each offer's own accent colour (sub-brand key colours, see colors.css). */
 .nav__link--offer { padding-block: 6px; }
-.nav__link-mark { display: flex; flex-direction: column; align-items: flex-start; justify-content: center; line-height: 1; }
+.nav__link-mark { display: flex; flex-direction: column; align-items: center; justify-content: center; line-height: 1; }
 .nav__link-mark .w { font-family: var(--font-display); font-weight: 700; font-size: 13px; letter-spacing: -.01em; }
-.nav__link-mark .d { font-family: var(--font-mono); font-size: 8.5px; letter-spacing: .16em; text-transform: uppercase; color: var(--text-muted); margin-top: 3px; }
+.nav__link-mark .d { font-family: var(--font-mono); font-size: 8.5px; letter-spacing: .16em; text-transform: uppercase; color: var(--text-muted); margin-top: 3px; margin-right: -.16em; }
+.nav__link-mark--advisory .d { color: var(--cognac-text); }
+.nav__link-mark--studio .d { color: var(--st-text); }
+.nav__link-mark--upskilling .d { color: var(--up-text); }
 .nav__spacer { flex: 1; }
 .nav__cta { display: flex; align-items: center; gap: 10px; }
 
@@ -637,7 +640,7 @@ html.reveal-on .expgrid.is-in > .expgrid__arrow { transition-delay: calc(var(--r
 
 /* Dark panels invert the primary button back to cognac (ink-on-ink would vanish) */
 .contact__panel .ret-btn--primary, .appcta .ret-btn--primary, .article-end .ret-btn--primary { --_bg: var(--accent-btn); box-shadow: var(--shadow-accent); }
-.contact__panel .ret-btn--primary:hover, .appcta .ret-btn--primary:hover, .article-end .ret-btn--primary:hover { --_bg: var(--accent-hover); box-shadow: 0 22px 46px -16px rgba(122,70,36,.55); }
+.contact__panel .ret-btn--primary:hover, .appcta .ret-btn--primary:hover, .article-end .ret-btn--primary:hover { --_bg: var(--accent-hover); box-shadow: 0 22px 46px -16px color-mix(in srgb, var(--accent-hover) 55%, transparent); }
 .contact__panel .ret-btn--primary .ret-btn__icon, .appcta .ret-btn--primary .ret-btn__icon, .article-end .ret-btn--primary .ret-btn__icon { color: #fff; }
 
 /* ---------- Contact (dark CTA panel + form) ---------- */
@@ -850,9 +853,9 @@ html:not(.nav-stuck) .scrim-top { opacity: 0; }
 .appcta p { font-family: var(--font-body); font-weight: 300; color: rgba(255,255,255,.72); font-size: 1.05rem; line-height: 1.55; margin: 16px 0 0; max-width: 40ch; }
 .appcta .ret-tag { color: var(--cognac-soft); }
 .appcta__side { justify-self: start; }
-.appcta__side .dd-badge { background: rgba(200,160,124,.16); color: var(--cognac-soft); }
+.appcta__side .dd-badge { background: color-mix(in srgb, var(--cognac-soft) 16%, transparent); color: var(--cognac-soft); }
 
-/* ---------- Learning page (/learning/) ---------- */
+/* ---------- Offer pages shell (/upskilling/, /advisory/, /studio/) ---------- */
 /* Same fix as the blog article: confine the dot field to the header band so it
    never sits behind the format cards / flagship rows / trainer card further down. */
 .prose-page--head::before {
@@ -881,7 +884,7 @@ html:not(.nav-stuck) .scrim-top { opacity: 0; }
    shadow, glass stamp); a cumulative capability matrix. Duration is deliberately
    metadata, never a proportional axis. */
 .lppath { position: relative; margin: 0; border-radius: var(--r-3xl); border: 1px solid var(--line); box-shadow: var(--shadow-float);
-  background: radial-gradient(130% 95% at 16% 6%, rgba(255,255,255,.92), rgba(255,255,255,0) 52%), radial-gradient(78% 52% at 24% 100%, rgba(176,125,84,.24), rgba(176,125,84,0) 68%), linear-gradient(158deg, var(--canvas) 0%, var(--canvas-sunken) 100%);
+  background: radial-gradient(130% 95% at 16% 6%, rgba(255,255,255,.92), rgba(255,255,255,0) 52%), radial-gradient(78% 52% at 24% 100%, color-mix(in srgb, var(--accent) var(--fig-nappe), transparent), transparent 68%), linear-gradient(158deg, var(--canvas) 0%, var(--canvas-sunken) 100%);
   padding: clamp(22px, 3vw, 40px); padding-top: clamp(54px, 5vw, 68px); }
 .lppath .stamp { position: absolute; top: 18px; left: 50%; transform: translateX(-50%); z-index: 3; display: flex; align-items: center; gap: 8px; white-space: nowrap;
   padding: 8px 12px; border-radius: var(--r-pill);
@@ -1030,7 +1033,7 @@ html.reveal-on .lppath.is-in .lppath__diamond { animation: figfade 260ms var(--e
 .lpf__choose { position: absolute; z-index: 1; left: 22px; right: 22px; top: calc(100% - 22px); min-height: 72px; margin: 0; padding: 29px 15px 10px;
   display: flex; flex-direction: column; justify-content: center; gap: 3px;
   border-radius: var(--r-md); background: var(--ink); color: #fff;
-  box-shadow: 0 14px 28px -18px rgba(24,24,27,.78), inset 0 -2px 0 rgba(176,125,84,.48); font-family: var(--font-body); font-size: 12.5px; line-height: 1.28;
+  box-shadow: 0 14px 28px -18px rgba(24,24,27,.78), inset 0 -2px 0 color-mix(in srgb, var(--accent) 48%, transparent); font-family: var(--font-body); font-size: 12.5px; line-height: 1.28;
   transition: background-color var(--dur-base) var(--ease-out), box-shadow var(--dur-base) var(--ease-out); }
 .lpf__choose span { font-family: var(--font-mono); font-size: 8.5px; line-height: 1; letter-spacing: .14em; text-transform: uppercase; color: var(--cognac-soft); }
 .learning-page .svc:hover .lpf__choose { background: var(--ink); box-shadow: 0 16px 30px -18px rgba(24,24,27,.9), inset 0 -2px 0 var(--accent); }
@@ -1121,7 +1124,7 @@ html.reveal-on .lpflag.is-in .lpflag__fig-track > :nth-child(1) { transition-del
    styled panel, not a role="img" figure. */
 .lp-engage-wrap { max-width: var(--container); margin-inline: auto; padding-inline: var(--gutter); }
 .lp-engage { position: relative; border-radius: var(--r-3xl); border: 1px solid var(--line); box-shadow: var(--shadow-float);
-  background: radial-gradient(130% 95% at 16% 6%, rgba(255,255,255,.92), rgba(255,255,255,0) 52%), radial-gradient(78% 52% at 24% 100%, rgba(176,125,84,.24), rgba(176,125,84,0) 68%), linear-gradient(158deg, var(--canvas) 0%, var(--canvas-sunken) 100%);
+  background: radial-gradient(130% 95% at 16% 6%, rgba(255,255,255,.92), rgba(255,255,255,0) 52%), radial-gradient(78% 52% at 24% 100%, color-mix(in srgb, var(--accent) var(--fig-nappe), transparent), transparent 68%), linear-gradient(158deg, var(--canvas) 0%, var(--canvas-sunken) 100%);
   padding: clamp(20px, 3vw, 40px); padding-top: clamp(56px, 6vw, 72px); }
 .lp-engage .stamp { position: absolute; top: 18px; left: 50%; transform: translateX(-50%); z-index: 3; display: flex; align-items: center; gap: 8px; white-space: nowrap;
   padding: 8px 12px; border-radius: var(--r-pill);
@@ -1271,6 +1274,8 @@ html.reveal-on .lpflag.is-in .lpflag__fig-track > :nth-child(1) { transition-del
   .nav__divider { align-self: stretch; width: auto; height: 1px; margin: 8px 12px; }
   /* the dropdown carries Contact and the floating dock is the persistent CTA — drop the inline one */
   .nav__cta { display: none; }
+  .nav__link-mark { align-items: flex-start; }
+  .nav__link-mark .d { margin-right: 0; }
 }
 /* ≤1300: single-column hero. Past this width the 2-col copy column has to fit the title,
    lead and action buttons comfortably (the longest wrap risk is the FR lead line), which
@@ -1552,8 +1557,8 @@ html.reveal-on .lpflag.is-in .lpflag__fig-track > :nth-child(1) { transition-del
 @media print { .tl__scroll { overflow: visible; } .timeline { break-inside: avoid; } .tl__pops { display: none !important; } }
 
 /* ---------- Portfolio gateway (home CTA into /portfolio/) ---------- */
-/* One wide clickable panel that closes the Experience beat and sends to the portfolio
-   page. Same language as the cards: glass surface, dot-grid, cognac on hover. The whole
+/* One wide clickable panel that closes the Experience beat and sends to the proof
+   section of /studio/. Same language as the cards: glass surface, dot-grid, cognac on hover. The whole
    panel is the link; the "See portfolio" pill is a visual affordance (not nested <a>).
    A fanned stack of frames on the right reads as "several projects inside" and spreads
    on hover. */
@@ -2314,19 +2319,14 @@ html.reveal-on .blogfig[data-tilt]:hover { transform: perspective(1100px) rotate
 .st-ctanote { max-width: var(--container); margin: 20px auto 0; padding-inline: var(--gutter); text-align: center;
   font-family: var(--font-mono); font-size: 11px; letter-spacing: .06em; color: var(--ink-3); }
 
-/* ---- RET Consulting page ---- */
-/* Co-signature lockup: same .learning-brand shell as Studio/Upskilling, but the
-   extension carries two stacked mono lines in ink (no cognac strong line, since the
-   offer shares the RET Consulting name). The generic small styling already renders
-   in --ink; this modifier only tightens the gap between the two stacked lines. */
-.learning-brand__extension--ink small + small { margin-top: 2px; }
-
+/* ---- RET Advisory page ---- */
 /* FIG_07 · DELIVERY LINE — reuses the .lppath canvas (box, stamp, stage, note, mono
    subhead/metahead labels, track/ring/diamond draw-in) from FIG_04/06; only the line-
    and-node drawing is new. One continuous track from AMBIGUITY to DELIVERED, five
    nodes (four ink rings + one cognac diamond on DECIDE), light continuity ticks above
    and a thin hand-off line with drops below. */
 .coline .fig7-tick { stroke: var(--ink-5); stroke-width: 1.4; stroke-linecap: round; }
+.coline .fig7-lead { fill: none; stroke: var(--ink-5); stroke-width: 1.4; stroke-dasharray: 2 6; stroke-linecap: round; }
 .coline .fig7-hand { stroke: var(--ink-5); stroke-width: 1.25; }
 .coline .fig7-drop { stroke: var(--ink-5); stroke-width: 1.1; }
 
@@ -2364,3 +2364,72 @@ html.reveal-on .blogfig[data-tilt]:hover { transform: perspective(1100px) rotate
 .appcta p.lp-cta__reply { font-size: .85rem; letter-spacing: .01em; color: rgba(255,255,255,.72); margin-top: 6px; }
 .lp-cta__copy { font: inherit; background: none; border: 0; padding: 0; margin-left: .1em; color: var(--cognac-soft); text-decoration: underline; cursor: pointer; }
 .lp-cta__copy:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; border-radius: 4px; }
+
+/* Long lockup descriptors (Advisory "PRODUCT OWNERSHIP", Studio "DIGITAL PRODUCT
+   DELIVERY"): the generic .46em spaced small wraps them into a ragged stack, so this
+   modifier widens the extension and pulls the tracking in for a clean one/two-liner.
+   Short descriptors (AI ACADEMY) keep the wide-tracked default. Placed at the very
+   end of the file so the media re-shrinks below win in source order at equal
+   specificity (same cascade trap as the former --self variant). */
+.learning-brand__extension--long { width: 132px; }
+.learning-brand__extension--long small { padding-left: .14em; letter-spacing: .14em; }
+@media (max-width: 640px) { .learning-brand__extension--long { width: 104px; } }
+@media (max-width: 400px) { .learning-brand__extension--long { width: 96px; } }
+
+/* ---- FIG_08 · ONE HOUSE (home hero canvas, orbit) ----------------------------
+   Successor of FIG_01 in the home hero (FIG_01 moved to the Advisory hero): the
+   mother-brand tile at the exact centre, three concentric dashed orbits, and one
+   gradient card per offer in revolution — Advisory innermost, then Upskilling,
+   then Studio. One shared 48s revolution with satellites locked 120° apart, so
+   collisions are geometrically impossible; each card counter-rotates on the same
+   clock to stay upright. Card type mirrors the nav offer mark (RET stacked over
+   the mono offer word in the brand colour). Reduced-motion = fixed angles (the
+   base transforms double as the fallback). ≤1300px the orbit cannot fit: the
+   figure degrades to a static stacked list, same cards, no motion. */
+.hero__canvas--offers { aspect-ratio: 4 / 4.2; }
+.orb { position: relative; z-index: 2; height: 100%; }
+.orb__rings { position: absolute; inset: 0; width: 100%; height: 100%; overflow: visible; }
+.orb__rings circle { fill: none; stroke: var(--ink-5); stroke-width: 1.2; stroke-dasharray: 2 7; stroke-linecap: round; }
+.orb__center { position: absolute; left: 50%; top: 50%; transform: translate(-50%,-50%); z-index: 3; }
+.orb__tile { width: 76px; height: 76px; border-radius: 24px; background: var(--surface); border: 1px solid var(--line); box-shadow: var(--shadow-md); display: grid; place-items: center; }
+.orb__tile img { width: 40px; }
+.orb__sat { position: absolute; left: 50%; top: 50%; width: 0; height: 0; z-index: 2; animation: orbrev 48s linear infinite; transform: rotate(var(--a0)); }
+.orb__arm { position: absolute; left: 0; top: 0; transform: translateX(var(--r)); }
+.orb__card { position: absolute; display: flex; flex-direction: column; align-items: center; text-align: center; gap: 3px; padding: 10px 14px; border-radius: var(--r-md);
+  background: linear-gradient(155deg, color-mix(in srgb, var(--o-accent) 28%, #FFFFFF) 0%, color-mix(in srgb, var(--o-accent) 7%, #FFFFFF) 100%);
+  border: 1px solid color-mix(in srgb, var(--o-accent) 42%, transparent);
+  box-shadow: var(--shadow-sm); white-space: nowrap;
+  transform: translate(-50%,-50%) rotate(calc(-1 * var(--a0))); animation: orbrevc 48s linear infinite; }
+.orb__sat--a { --a0: -20deg;  --r: 125px; --o-accent: var(--cognac);    --o-text: var(--cognac-ink); --o-name: var(--cognac-text); }
+.orb__sat--u { --a0: 100deg;  --r: 160px; --o-accent: var(--up-accent); --o-text: var(--up-ink); --o-name: var(--up-text); }
+.orb__sat--s { --a0: 220deg;  --r: 195px; --o-accent: var(--st-accent); --o-text: var(--st-ink); --o-name: var(--st-text); }
+@keyframes orbrev  { from { transform: rotate(var(--a0)); } to { transform: rotate(calc(var(--a0) + 360deg)); } }
+@keyframes orbrevc { from { transform: translate(-50%,-50%) rotate(calc(-1 * var(--a0))); } to { transform: translate(-50%,-50%) rotate(calc(-1 * var(--a0) - 360deg)); } }
+.orb__name { font-family: var(--font-display); font-weight: 700; font-size: 16px; letter-spacing: -.02em; line-height: 1; color: var(--ink); }
+.orb__brand { font-family: var(--font-mono); font-size: 9.5px; letter-spacing: .2em; text-transform: uppercase; margin-top: 1px; margin-right: -.2em; color: var(--o-name); }
+.orb__desc { margin-top: 4px; font-family: var(--font-body); font-weight: 500; font-size: 11.5px; line-height: 1.4; color: var(--o-text); }
+@media (prefers-reduced-motion: reduce) {
+  .orb__sat, .orb__card { animation: none !important; }
+}
+@media (max-width: 1300px) {
+  .hero__canvas--offers { aspect-ratio: auto; padding-top: 58px; padding-bottom: 30px; }
+  .orb { height: auto; display: flex; flex-direction: column; align-items: center; gap: 14px; }
+  .orb__rings { display: none; }
+  .orb__center { position: static; transform: none; }
+  .orb__sat { position: static; width: auto; height: auto; animation: none; transform: none; }
+  .orb__arm { position: static; transform: none; }
+  .orb__card { position: static; transform: none; animation: none; width: min(100%, 320px); }
+}
+
+/* ---- FIG_01 transplanted into the Advisory hero ------------------------------
+   The method canvas fills the lp-intro figure column. No Availability widget
+   overhangs here, so box 6 returns to the uniform staircase pitch. */
+.lp-intro .hero__canvas { aspect-ratio: 4 / 4.35; }
+.lp-intro .hero__canvas .hero__flowstep:nth-child(6) { margin-left: 38%; width: 62%; }
+@media (max-width: 980px) {
+  .lp-intro .hero__canvas { aspect-ratio: auto; justify-content: flex-start; padding-top: 58px; padding-bottom: 30px; }
+  .lp-intro .hero__flowstep { width: auto; max-width: 100%; margin-left: 0 !important; }
+  .lp-intro .hero__flowstep-label { white-space: normal; }
+}
+/* FIG_07 relocated below the delivery pillars */
+#delivery .coline { margin-top: clamp(24px, 3vw, 40px); }
