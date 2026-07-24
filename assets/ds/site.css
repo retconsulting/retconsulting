@@ -2403,13 +2403,12 @@ html.reveal-on .blogfig[data-tilt]:hover { transform: perspective(1100px) rotate
    pop as SIBLINGS: the circle can overflow-clip its glyph watermark while the
    pop escapes the clip freely. */
 .orb__unrot { position: absolute; left: 0; top: 0; width: 0; height: 0; transform: rotate(calc(-1 * var(--a0))); animation: orbrevc 48s linear infinite; }
-.orb__dot { position: absolute; left: 0; top: 0; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; gap: 1px; width: 88px; height: 88px; border-radius: 50%;
-  background: linear-gradient(155deg, color-mix(in srgb, var(--o-accent) 38%, #FFFFFF) 0%, color-mix(in srgb, var(--o-accent) 10%, #FFFFFF) 58%, #FFFFFF 100%);
-  border: 1px solid color-mix(in srgb, var(--o-accent) 45%, transparent);
+.orb__dot { position: absolute; left: 0; top: 0; display: flex; flex-direction: row; align-items: center; gap: 7px; border-radius: var(--r-pill); padding: 11px 17px;
+  background: linear-gradient(155deg, color-mix(in srgb, var(--o-accent) 18%, #FFFFFF) 0%, color-mix(in srgb, var(--o-accent) 4%, #FFFFFF) 62%, #FFFFFF 100%);
+  border: 1px solid color-mix(in srgb, var(--o-accent) 35%, transparent);
   box-shadow: var(--shadow-sm); white-space: nowrap;
   transform: translate(-50%,-50%); }
-.orb__dot .orb__brand { font-size: 8.5px; letter-spacing: .14em; margin-right: -.14em; }
-.orb__pop { position: absolute; bottom: 48px; left: 0; transform: translateX(-50%) scale(.92); transform-origin: 50% 100%;
+.orb__pop { position: absolute; bottom: 34px; left: 0; transform: translateX(-50%) scale(.92); transform-origin: 50% 100%;
   padding: 9px 14px; border-radius: var(--r-md);
   background: linear-gradient(155deg, color-mix(in srgb, var(--o-accent) 28%, #FFFFFF) 0%, color-mix(in srgb, var(--o-accent) 7%, #FFFFFF) 100%);
   border: 1px solid color-mix(in srgb, var(--o-accent) 42%, transparent);
@@ -2428,8 +2427,8 @@ html.reveal-on .blogfig[data-tilt]:hover { transform: perspective(1100px) rotate
 .orb__sat--s { --a0: 220deg;  --r: 195px; --o-accent: var(--st-accent); --o-text: var(--st-ink); --o-name: var(--st-text); }
 @keyframes orbrev  { from { transform: rotate(var(--a0)); } to { transform: rotate(calc(var(--a0) + 360deg)); } }
 @keyframes orbrevc { from { transform: rotate(calc(-1 * var(--a0))); } to { transform: rotate(calc(-1 * var(--a0) - 360deg)); } }
-.orb__name { font-family: var(--font-display); font-weight: 700; font-size: 16px; letter-spacing: -.02em; line-height: 1; color: var(--ink); }
-.orb__brand { font-family: var(--font-mono); font-size: 9.5px; letter-spacing: .2em; text-transform: uppercase; margin-top: 1px; margin-right: -.2em; color: var(--o-name); }
+.orb__name { font-family: var(--font-display); font-weight: 700; font-size: 14.5px; letter-spacing: -.02em; line-height: 1; color: var(--ink); }
+.orb__brand { font-family: var(--font-mono); font-size: 12px; letter-spacing: .14em; text-transform: uppercase; margin-right: -.14em; color: var(--o-name); }
 .orb__desc { margin-top: 4px; font-family: var(--font-body); font-weight: 500; font-size: 11.5px; line-height: 1.4; color: var(--o-text); }
 @media (prefers-reduced-motion: reduce) {
   .orb__sat, .orb__unrot { animation: none !important; }
@@ -2444,7 +2443,7 @@ html.reveal-on .blogfig[data-tilt]:hover { transform: perspective(1100px) rotate
   .orb__sat { position: static; width: auto; height: auto; animation: none; transform: none; }
   .orb__arm { position: static; transform: none; }
   .orb__unrot { position: static; width: auto; height: auto; animation: none; transform: none; display: flex; flex-direction: column; align-items: center; }
-  .orb__dot { position: static; transform: none; width: min(100%, 320px); height: auto; border-radius: var(--r-md); padding: 14px 16px; gap: 3px; }
+  .orb__dot { position: static; transform: none; width: min(100%, 320px); height: auto; border-radius: var(--r-md); padding: 14px 16px; gap: 7px; justify-content: center; }
   .orb__pop { position: static; opacity: 1; transform: none; padding: 0; margin-top: 3px; border: 0; background: none; box-shadow: none; pointer-events: auto; }
 }
 
