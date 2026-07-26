@@ -1,0 +1,13 @@
+/* RET Consulting: Atmospheric Utility · Base reset
+   Minimal, token-aware. Sets the calm near-white canvas + product sans defaults. */
+*,*::before,*::after{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--canvas);color:var(--text-primary);
+  font:var(--body-weight) var(--body-size)/var(--body-line) var(--font-sans);
+  -webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility}
+h1,h2,h3,h4,p,figure{margin:0}
+img,svg{display:block;max-width:100%}
+a{color:var(--accent-text);text-decoration:none}
+a:hover{color:var(--accent-hover);text-decoration:underline}
+:focus-visible{outline:2px solid var(--focus-ring);outline-offset:var(--focus-offset)}
+::selection{background:var(--signal-100);color:var(--text-primary)}

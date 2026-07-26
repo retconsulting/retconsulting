@@ -1,621 +1,656 @@
 <!doctype html>
 <html lang="en">
 <head>
-<meta charset="utf-8"/>
-<meta name="viewport" content="width=device-width,initial-scale=1"/>
-<meta name="format-detection" content="telephone=no"/>
-<title>From Prompt to Loop Engineering · RET Consulting Blog</title>
-<meta name="description" content="From prompt engineering to loop engineering: the whole ladder in plain language, and what it changes for your team."/>
-<meta name="author" content="RET Consulting SRL"/>
-<link rel="canonical" href="https://retconsulting.be/blog/prompt-context-harness-loops/"/>
-<link rel="alternate" hreflang="en" href="https://retconsulting.be/blog/prompt-context-harness-loops/"/>
-<link rel="alternate" hreflang="x-default" href="https://retconsulting.be/blog/prompt-context-harness-loops/"/>
-<meta property="og:type" content="article"/>
-<meta property="og:site_name" content="RET Consulting"/>
-<meta property="og:locale" content="en_GB"/>
-<meta property="og:title" content="From Prompt to Loop Engineering · RET Consulting Blog"/>
-<meta property="og:description" content="From prompt engineering to loop engineering: the whole ladder in plain language, and what it changes for your team."/>
-<meta property="og:url" content="https://retconsulting.be/blog/prompt-context-harness-loops/"/>
-<meta property="og:image" content="https://retconsulting.be/blog/prompt-context-harness-loops/og.jpg"/>
-<meta property="og:image:type" content="image/jpeg"/>
-<meta property="og:image:width" content="1200"/>
-<meta property="og:image:height" content="630"/>
-<meta property="og:image:alt" content="Diagram of four nested rings around an LLM core: prompt, context, harness and loops."/>
-<meta name="twitter:card" content="summary_large_image"/>
-<meta name="twitter:image" content="https://retconsulting.be/blog/prompt-context-harness-loops/og.jpg"/>
-<meta name="twitter:image:alt" content="Diagram of four nested rings around an LLM core: prompt, context, harness and loops."/>
-<meta name="theme-color" content="#F4F4F7"/>
-<link rel="icon" href="/assets/logo-glyph.svg"/>
-<link rel="icon" href="/assets/logo-glyph-dark.svg" media="(prefers-color-scheme: dark)"/>
-<link rel="apple-touch-icon" href="/assets/apple-touch-icon.png"/>
-<script>if('IntersectionObserver' in window && !matchMedia('(prefers-reduced-motion:reduce)').matches){document.documentElement.classList.add('reveal-on');}</script>
-<link rel="stylesheet" href="/assets/ds.css?v=20260722p"/>
-<script type="application/ld+json">
-{"@context":"https://schema.org","@graph":[{"@type":"BlogPosting","headline":"From Prompt to Loop Engineering, a simple guide for the non-coders and knowledge workers","datePublished":"2026-07-11","dateModified":"2026-07-20","inLanguage":"en","articleSection":"AI","keywords":"AI, Explainer","author":{"@type":"Person","name":"Redha Etbaz","url":"https://retconsulting.be/"},"publisher":{"@type":"Organization","name":"RET Consulting","logo":{"@type":"ImageObject","url":"https://retconsulting.be/assets/icon-512.png"}},"image":"https://retconsulting.be/blog/prompt-context-harness-loops/og.jpg","description":"From prompt engineering to loop engineering: the whole ladder in plain language, and what it changes for your team.","mainEntityOfPage":{"@type":"WebPage","@id":"https://retconsulting.be/blog/prompt-context-harness-loops/"},"url":"https://retconsulting.be/blog/prompt-context-harness-loops/"},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://retconsulting.be/"},{"@type":"ListItem","position":2,"name":"Blog","item":"https://retconsulting.be/blog/"},{"@type":"ListItem","position":3,"name":"From Prompt to Loop Engineering","item":"https://retconsulting.be/blog/prompt-context-harness-loops/"}]}]}
-</script>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="light">
+  <meta name="theme-color" content="#F7F8F7">
+  <meta name="format-detection" content="telephone=no">
+  <title>From Prompt to Loop Engineering · RET Consulting Blog</title>
+  <meta name="description" content="From prompt engineering to loop engineering: the whole ladder in plain language, and what it changes for your team.">
+  <link rel="canonical" href="https://retconsulting.be/blog/prompt-context-harness-loops/">
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="RET Consulting">
+  <meta property="og:locale" content="en_GB">
+  <meta property="og:title" content="From Prompt to Loop Engineering · RET Consulting Blog">
+  <meta property="og:description" content="From prompt engineering to loop engineering: the whole ladder in plain language, and what it changes for your team.">
+  <meta property="og:url" content="https://retconsulting.be/blog/prompt-context-harness-loops/">
+  <meta property="og:image" content="https://retconsulting.be/blog/prompt-context-harness-loops/og.jpg">
+  <meta property="og:image:type" content="image/jpeg">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="Diagram of four nested rings around an LLM core: prompt, context, harness and loops.">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:image" content="https://retconsulting.be/blog/prompt-context-harness-loops/og.jpg">
+  <meta name="twitter:image:alt" content="Diagram of four nested rings around an LLM core: prompt, context, harness and loops.">
+  <link rel="icon" href="/assets/img/logo-glyph.svg" type="image/svg+xml">
+  <link rel="icon" href="/favicon.ico" sizes="32x32">
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+  <link rel="manifest" href="/site.webmanifest">
+  <link rel="stylesheet" href="/assets/site.css?v=20260727y">
+  <script type="application/ld+json">
+  {"@context":"https://schema.org","@graph":[{"@type":"BlogPosting","headline":"From Prompt to Loop Engineering, a simple guide for the non-coders and knowledge workers","datePublished":"2026-07-11","dateModified":"2026-07-20","inLanguage":"en","articleSection":"AI","keywords":"AI, Explainer","author":{"@type":"Person","name":"Redha Etbaz","url":"https://retconsulting.be/"},"publisher":{"@type":"Organization","name":"RET Consulting","logo":{"@type":"ImageObject","url":"https://retconsulting.be/assets/img/icon-512.png"}},"image":"https://retconsulting.be/blog/prompt-context-harness-loops/og.jpg","description":"From prompt engineering to loop engineering: the whole ladder in plain language, and what it changes for your team.","mainEntityOfPage":{"@type":"WebPage","@id":"https://retconsulting.be/blog/prompt-context-harness-loops/"},"url":"https://retconsulting.be/blog/prompt-context-harness-loops/"},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://retconsulting.be/"},{"@type":"ListItem","position":2,"name":"Blog","item":"https://retconsulting.be/blog/"},{"@type":"ListItem","position":3,"name":"From Prompt to Loop Engineering","item":"https://retconsulting.be/blog/prompt-context-harness-loops/"}]}]}
+  </script>
 </head>
-<body class="site">
-<a class="skip-link" href="#main">Skip to content</a>
-
-<header class="subhead"><div class="subhead__inner">
-    <a class="nav__brand" href="/" aria-label="RET Consulting, home"><img class="nav__brand-glyph" src="/assets/logo-mark.svg" alt=""/><span class="nav__brand-wordmark"><span class="w">RET</span><span class="d">Consulting</span></span></a>
-    <div class="subhead__right">
-      <a class="subhead__back" href="/blog/"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5"/><path d="M11 18l-6-6 6-6"/></svg>Back to blog</a>
+<body>
+  <a class="rc-skip" href="#main">Skip to content</a>
+  <header class="rc-header">
+    <div class="rc-shell rc-header__inner">
+      <a class="rc-wordmark" href="/">
+        <img class="rc-wordmark__glyph" src="/assets/img/ret-mark.svg" alt="" width="22" height="22">
+        <span class="rc-wordmark__text">RET <span>Consulting</span></span>
+      </a>
+      <button class="rc-navtoggle" type="button" aria-expanded="false" aria-controls="navmenu"
+              aria-label="Open menu">
+        <span class="rc-navtoggle__bar" aria-hidden="true"></span>
+        <span class="rc-navtoggle__bar" aria-hidden="true"></span>
+        <span class="rc-navtoggle__bar" aria-hidden="true"></span>
+      </button>
+      <nav class="rc-nav" id="navmenu" aria-label="Main">
+        <a class="rc-nav__link rc-nav__link--offer" data-offer="advisory" href="/advisory/">
+          <span class="rc-navmark"><span class="rc-navmark__ret">RET</span><span class="rc-navmark__word">Advisory</span></span>
+        </a>
+        <a class="rc-nav__link rc-nav__link--offer" data-offer="studio" href="/studio/">
+          <span class="rc-navmark"><span class="rc-navmark__ret">RET</span><span class="rc-navmark__word">Studio</span></span>
+        </a>
+        <a class="rc-nav__link rc-nav__link--offer" data-offer="upskilling" href="/learning/">
+          <span class="rc-navmark"><span class="rc-navmark__ret">RET</span><span class="rc-navmark__word">Learning</span></span>
+        </a>
+        <span class="rc-nav__divider" aria-hidden="true"></span>
+        <a class="rc-nav__link" href="/about/">About</a>
+        <a class="rc-nav__link rc-nav__link--active" href="/blog/" aria-current="true">Blog</a>
+      </nav>
+      <a class="au-btn au-btn--standard au-btn--primary rc-header__cta" href="/#contact">Contact me</a>
     </div>
-  </div></header>
+  </header>
 
-<main id="main" class="prose-page" tabindex="-1">
-  <div class="article-head">
-    <span class="ret-tag">[BLOG · 01]</span>
-    <h1 class="article-head__title">From Prompt to Loop Engineering, a simple guide for the non-coders and knowledge workers</h1>
-    <p class="article-head__sub">Prompt → Context → Harness → Loops</p>
-    <div class="article-head__tax"><span class="cat cat--subject" data-axis="subject">AI</span><span class="cat cat--type" data-axis="type">Explainer</span></div>
-    <p class="article-head__meta"><time datetime="2026-07-11">2026-07-11</time> · 8 MIN READ</p>
-    <p class="article-head__lead">As AI becomes everyone's tool, it brings a flood of new concepts to understand and, more importantly, to apply. From prompt engineering to context engineering, and from harness engineering to loop engineering, this guide explains what each one means, how they build on one another, and how to get the most out of AI on your hardest tasks, whatever kind of work you do.</p>
-  </div>
+  <main id="main">
+    <article class="rc-section rc-section--first">
+      <div class="rc-shell">
 
-  <div class="blogfig-wrap">
-    <figure class="blogfig reveal" data-tilt role="img" aria-label="Four nested rings around an LLM core: prompt, then context, then harness, then loops on the outer cognac ring.">
-      <span class="stamp"><span class="ret-diamond"></span>FIG_B1 · FOUR LOOPS</span>
-      <img class="blogfig__wm" src="/assets/logo-mark.svg" alt=""/>
-      <svg class="blogfig__svg" viewBox="0 0 480 480" preserveAspectRatio="xMidYMid meet" aria-hidden="true">
-            <!-- graduated dial ring -->
-            <circle cx="240" cy="240" r="216" fill="none" stroke="#C9C9D0" stroke-width="7" stroke-dasharray="1.2 10.1" opacity=".55"/>
-            <!-- construction grid (logo-definition language): axes + 45-degree diagonals -->
-            <g stroke="#C9C9D0" stroke-width=".8" opacity=".45">
-              <line x1="240" y1="28"  x2="240" y2="452"/>
-              <line x1="28"  y1="240" x2="452" y2="240"/>
-              <line x1="87.2" y1="87.2" x2="392.8" y2="392.8"/>
-              <line x1="392.8" y1="87.2" x2="87.2" y2="392.8"/>
-            </g>
-            <defs>
-              <radialGradient id="fb1-w" cx="50%" cy="30%" r="80%">
-                <stop offset="0" stop-color="#FFFFFF"/>
-                <stop offset="1" stop-color="#EBEBF0"/>
-              </radialGradient>
-              <linearGradient id="fb1-c" x1="0" y1="0" x2="0" y2="1">
-                <stop offset="0" stop-color="#C48F63"/>
-                <stop offset="1" stop-color="#9C5A2E"/>
-              </linearGradient>
-              <filter id="fb1-sh" x="-80%" y="-80%" width="260%" height="300%">
-                <feDropShadow dx="0" dy="5" stdDeviation="5" flood-color="#18181B" flood-opacity=".20"/>
-              </filter>
-              <filter id="fb1-shc" x="-80%" y="-80%" width="260%" height="300%">
-                <feDropShadow dx="0" dy="6" stdDeviation="6" flood-color="#9C5A2E" flood-opacity=".42"/>
-              </filter>
-            </defs>
-            <!-- LOOPS orbit (cognac) + circling satellite: the loop icon -->
-            <circle cx="240" cy="240" r="188" fill="none" stroke="#B07D54" stroke-width="1.8"/>
-            <g class="dial__orbit" style="--odur:64s">
-              <g transform="translate(402.8,146)">
-                <g class="dial__sat">
-                  <circle r="21.5" fill="none" stroke="#B07D54" stroke-width="1" stroke-opacity=".4" stroke-dasharray="2.5 5.2"/>
-                  <g filter="url(#fb1-shc)"><circle r="16" fill="url(#fb1-c)" stroke="#8F5330" stroke-opacity=".5" stroke-width="1"/></g>
-                  <circle r="14.6" fill="none" stroke="#FFFFFF" stroke-opacity=".35" stroke-width="1"/>
-                  <g transform="translate(-8,-8) scale(0.667)" fill="none" stroke="#FFFFFF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                    <path d="M3 12a9 9 0 0 1 15-6.7L21 8"/><path d="M21 3v5h-5"/>
-                    <path d="M21 12a9 9 0 0 1-15 6.7L3 16"/><path d="M3 21v-5h5"/>
-                  </g>
-                </g>
-              </g>
-            </g>
-            <!-- spacer orbit -->
-            <circle cx="240" cy="240" r="160" fill="none" stroke="#C9C9D0" stroke-width="1" stroke-dasharray="2 9" opacity=".7"/>
-            <!-- HARNESS orbit + circling satellite: the terminal -->
-            <circle cx="240" cy="240" r="132" fill="none" stroke="#3F3F46" stroke-width="1.5"/>
-            <g class="dial__orbit dial__orbit--ccw" style="--odur:46s">
-              <g transform="translate(108,240)">
-                <g class="dial__sat">
-                  <circle r="21.5" fill="none" stroke="#9C9CA6" stroke-width="1" stroke-opacity=".55" stroke-dasharray="2.5 5.2"/>
-                  <g filter="url(#fb1-sh)"><circle r="16" fill="url(#fb1-w)" stroke="#D6D6DE" stroke-width="1"/></g>
-                  <circle r="16" fill="none" stroke="#B07D54" stroke-width="1.8" stroke-linecap="round" stroke-dasharray="14 86.5" stroke-dashoffset="32.4"/>
-                  <text y="4.5" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="11" letter-spacing="0.5" fill="#18181B">&gt;_</text>
-                </g>
-              </g>
-            </g>
-            <!-- CONTEXT orbit + circling satellite: the document -->
-            <circle cx="240" cy="240" r="86" fill="none" stroke="#3F3F46" stroke-width="1.5" stroke-dasharray="14 9"/>
-            <g class="dial__orbit" style="--odur:30s">
-              <g transform="translate(300.8,300.8)">
-                <g class="dial__sat">
-                  <circle r="21.5" fill="none" stroke="#9C9CA6" stroke-width="1" stroke-opacity=".55" stroke-dasharray="2.5 5.2"/>
-                  <g filter="url(#fb1-sh)"><circle r="16" fill="url(#fb1-w)" stroke="#D6D6DE" stroke-width="1"/></g>
-                  <circle r="16" fill="none" stroke="#B07D54" stroke-width="1.8" stroke-linecap="round" stroke-dasharray="14 86.5" stroke-dashoffset="32.4"/>
-                  <g transform="translate(-8,-8) scale(0.667)" fill="none" stroke="#3F3F46" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round">
-                    <path d="M7 3.5h7l4 4v13H7z"/><path d="M14 3.5V8h4"/><path d="M9.5 12h7M9.5 15.5h7"/>
-                  </g>
-                </g>
-              </g>
-            </g>
-            <!-- PROMPT core: LLM at the heart, the writing hand riding the innermost ring -->
-            <g filter="url(#fb1-sh)"><circle cx="240" cy="240" r="42" fill="url(#fb1-w)" stroke="#18181B" stroke-width="1.5"/></g>
-            <circle cx="240" cy="240" r="39.5" fill="none" stroke="#FFFFFF" stroke-opacity=".5" stroke-width="1.2"/>
-            <text x="240" y="244.4" text-anchor="middle" font-family="Archivo, sans-serif" font-weight="500" font-size="13" letter-spacing="0.5" fill="#B07D54">LLM</text>
-            <g class="dial__orbit dial__orbit--ccw" style="--odur:20s">
-              <g transform="translate(210.3,269.7)">
-                <g class="dial__sat">
-                  <circle r="21.5" fill="none" stroke="#9C9CA6" stroke-width="1" stroke-opacity=".55" stroke-dasharray="2.5 5.2"/>
-                  <g filter="url(#fb1-sh)"><circle r="16" fill="url(#fb1-w)" stroke="#D6D6DE" stroke-width="1"/></g>
-                  <circle r="16" fill="none" stroke="#B07D54" stroke-width="1.8" stroke-linecap="round" stroke-dasharray="14 86.5" stroke-dashoffset="32.4"/>
-                  <g transform="translate(-8,-8) scale(0.667)" fill="none" stroke="#3F3F46" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round">
-                    <path d="M12 20h9"/><path d="M16.5 3.5a2.12 2.12 0 0 1 3 3L7 19l-4 1 1-4 12.5-12.5z"/>
-                  </g>
-                </g>
-              </g>
-            </g>
-            <!-- orbit label plates -->
-            <g font-family="IBM Plex Mono, monospace" font-size="9.5" letter-spacing="1.6">
-              <rect x="205" y="189" width="70" height="17" rx="8.5" fill="#FFFFFF" stroke="#E4E4E9"/>
-              <text x="240" y="201" text-anchor="middle" fill="#646470">PROMPT</text>
-              <rect x="201" y="145" width="78" height="17" rx="8.5" fill="#FFFFFF" stroke="#E4E4E9"/>
-              <text x="240" y="157" text-anchor="middle" fill="#646470">CONTEXT</text>
-              <rect x="201" y="99"  width="78" height="17" rx="8.5" fill="#FFFFFF" stroke="#E4E4E9"/>
-              <text x="240" y="111" text-anchor="middle" fill="#646470">HARNESS</text>
-              <rect x="207" y="43"  width="66" height="17" rx="8.5" fill="#FFFFFF" stroke="#B07D54" stroke-opacity=".5"/>
-              <text x="240" y="55"  text-anchor="middle" fill="#855B3B">LOOPS</text>
-            </g>
-          </svg>
-    </figure>
-  </div>
-
-  <div class="article-wrap">
-    <div class="article">
-      <h2><span class="article__kicker">01 / PROMPT ENGINEERING</span>The baseline</h2>
-
-      <span class="article__label">What it is</span>
-      <p>An <span class="term" data-tip="The generative AI system behind the conversation, like Claude, GPT or Gemini." tabindex="0" aria-label="AI model: the generative AI system behind the conversation, like Claude, GPT or Gemini.">AI model</span> can't read our minds (yet): it only works from the exact words we give it. That's precisely where prompt engineering comes in: the craft of writing good instructions for it.</p>
-      <p>The more deliberately we frame a request, the more reliable the answer becomes.</p>
-
-      <span class="article__label">How it works</span>
-      <p>To start engineering a prompt, give the AI model a <span class="term" data-tip="Who the model should act as while it answers." tabindex="0" aria-label="Role: who the model should act as while it answers.">role</span> to play, a clear <span class="term" data-tip="The concrete action you want the model to perform." tabindex="0" aria-label="Task: the concrete action you want the model to perform.">task</span> to perform, the <span class="term" data-tip="The background information the model needs to get it right." tabindex="0" aria-label="Context: the background information the model needs to get it right.">context</span> it needs, the <span class="term" data-tip="The rules and limits the answer must respect." tabindex="0" aria-label="Constraints: the rules and limits the answer must respect.">constraints</span> to respect, and the <span class="term" data-tip="The shape and length the answer should take." tabindex="0" aria-label="Format: the shape and length the answer should take.">format</span> the answer should take, as the two versions below show.</p>
-      <p>Do that, and everything the model needs to answer your query fits inside that single message, with no outside help required.</p>
-
-      <span class="article__label">Example</span>
-      <figure class="promptfig reveal" role="group" aria-label="A vague prompt compared with an engineered prompt">
-        <div class="promptfig__row">
-          <span class="promptfig__tag">Off-hand</span>
-          <p class="promptfig__prompt promptfig__prompt--dim">&ldquo;Write an email to a client.&rdquo;</p>
-        </div>
-        <div class="promptfig__row promptfig__row--eng">
-          <span class="promptfig__versus">Versus</span>
-          <span class="promptfig__tag promptfig__tag--eng">Engineered</span>
-          <ul class="promptfig__dissect">
-            <li><span class="dlab"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 21v-1.5a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4V21"/><circle cx="12" cy="7" r="3.8"/></svg>Role</span><span class="dtext">&ldquo;You are my assistant.</span></li>
-            <li><span class="dlab"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3.5" y="3.5" width="17" height="17" rx="2.5"/><path d="M8 12l2.5 2.5L16.5 9"/></svg>Task</span><span class="dtext">Write a short, warm email to a client</span></li>
-            <li><span class="dlab"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m12 3 9 5-9 5-9-5 9-5Z"/><path d="m3 13 9 5 9-5"/></svg>Context</span><span class="dtext">whose invoice is a week overdue.</span></li>
-            <li><span class="dlab"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 4H5.5A1.5 1.5 0 0 0 4 5.5v13A1.5 1.5 0 0 0 5.5 20H7"/><path d="M17 4h1.5A1.5 1.5 0 0 1 20 5.5v13a1.5 1.5 0 0 1-1.5 1.5H17"/></svg>Constraints</span><span class="dtext">Ask for a payment date and offer to resend it.</span></li>
-            <li><span class="dlab"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3.5" y="3.5" width="17" height="17" rx="2.5"/><path d="M3.5 9h17"/><path d="M9 20.5V9"/></svg>Format</span><span class="dtext">Keep it to two short paragraphs, signed Redha.&rdquo;</span></li>
+        <div class="rc-article__head">
+          <div class="rc-article__cover au-tile au-silk au-silk--aurora" data-palette="upskilling">
+            <span class="au-silk__l au-silk__base" aria-hidden="true"></span>
+            <span class="au-silk__l au-silk__rib au-silk__rib--a" aria-hidden="true"></span>
+            <span class="au-silk__l au-silk__rib au-silk__rib--b" aria-hidden="true"></span>
+            <span class="au-silk__l au-silk__bloom" aria-hidden="true"></span>
+            <span class="au-silk__l au-silk__grain" aria-hidden="true"></span>
+            <span class="rc-eyebrow rc-article__coverpill">Prompt → Context → Harness → Loops</span>
+          </div>
+          <h1 class="rc-article__title">From Prompt to Loop Engineering, a simple guide for the non-coders and knowledge workers</h1>
+          <p class="rc-article__deck">From prompt engineering to loop engineering: the whole ladder in plain language, and what it changes for your team.</p>
+          <p class="rc-article__meta">
+            <span>Redha Etbaz</span>
+            <time datetime="2026-07-11">11 July 2026</time>
+            <span>8 min read</span>
+            <span>Updated 20 July 2026</span>
+          </p>
+          <ul class="rc-article__tags">
+            <li><span class="au-chip au-tag--upskilling">AI</span></li>
+            <li><span class="au-chip au-tag--neutral">Explainer</span></li>
           </ul>
         </div>
-      </figure>
 
-      <span class="article__label">Limitations</span>
-      <p>This is where prompt engineering hits its ceiling. On its own, the AI model can't know anything that happened after its <span class="term" data-tip="The cut-off point of what the model learned. It knows nothing that happened after it." tabindex="0" aria-label="Knowledge cutoff: the cut-off point of what the model learned; it knows nothing that happened after it.">knowledge cutoff</span>, and for more advanced or exploratory work, you can't fit everything it needs into a single prompt.</p>
-      <p>That's where context engineering comes in.</p>
-
-      <h2><span class="article__kicker">02 / CONTEXT ENGINEERING</span>Increasing the limits</h2>
-
-      <span class="article__label">What it is</span>
-      <p>The <span class="term" data-tip="The instruction you type for the AI to act on." tabindex="0" aria-label="Prompt: the instruction you type for the AI to act on.">prompt</span> we engineer, or don't, is only one part of what fills the AI model's <span class="term" data-tip="The model's working memory for one exchange: instructions, the conversation, your documents and fetched data all share a single, fixed space." tabindex="0" aria-label="Context window: the model's working memory for one exchange, where instructions, the conversation, your documents and fetched data all share a single fixed space.">context window</span>.</p>
-      <p>Think of it as the model's working memory: the conversation so far, its instructions, our preferences, the documents we've added, and every search or tool call it has made all share that same space.</p>
-
-      <span class="article__label">How it works</span>
-      <p>The context window, although generous, is fixed in size. Every piece that makes it up is competing for the same limited room, and the AI model's performance degrades the more that window fills up, as the breakdown below shows.</p>
-      <p>You might ask: if we give too little context, does the quality drop? And if we fill the context window too much, does it drop too?</p>
-      <p>The answer is yes, on both counts. That's exactly what context engineering is: the craft of providing quality, fit-for-purpose context.</p>
-
-      <figure class="ctxwin reveal" role="group" aria-label="What fills the context window and its fixed capacity">
-        <div class="ctxwin__bar"><span class="ctxwin__title">Context window</span><span class="ctxwin__cap"><span class="ctxwin__gauge"><span class="ctxwin__gauge-fill"></span></span><span class="ctxwin__capnum">Fixed size</span><span class="ctxwin__status"></span></span></div>
-        <ul class="ctxwin__list">
-          <li><span class="ctxwin__k ctxwin__k--badge" data-tip="The system prompt: standing instructions that set the assistant's persona, rules and limits for the whole session." tabindex="0" aria-label="Instructions, the system prompt: standing instructions that set the assistant's persona, rules and limits for the whole session.">Instructions</span><span class="ctxwin__v">The role, rules and tone fixed before the exchange begins.</span></li>
-          <li><span class="ctxwin__k">Conversation</span><span class="ctxwin__v">Every turn so far, your messages and its replies.</span></li>
-          <li><span class="ctxwin__k">Documents</span><span class="ctxwin__v">Files, records and notes you attach for reference.</span></li>
-          <li><span class="ctxwin__k">Retrieved</span><span class="ctxwin__v">Live search results and records the model pulls in.</span></li>
-          <li><span class="ctxwin__k">Tool results</span><span class="ctxwin__v">What your tools and services hand back when it calls them.</span></li>
-          <li><span class="ctxwin__k">Your question</span><span class="ctxwin__v">The specific request the model must act on now.</span></li>
-        </ul>
-      </figure>
-
-      <span class="article__label">Example</span>
-      <p>Ask the same question twice, once without extra context and once with it:</p>
-
-      <figure class="promptfig reveal" role="group" aria-label="The same question answered without and with fetched context">
-        <div class="promptfig__row">
-          <span class="promptfig__tag">Prompt alone</span>
-          <p class="promptfig__prompt promptfig__prompt--dim">&ldquo;That happened after my knowledge cutoff, so I can only guess.&rdquo;</p>
-        </div>
-        <div class="promptfig__row promptfig__row--eng">
-          <span class="promptfig__versus">Versus</span>
-          <span class="promptfig__tag promptfig__tag--eng">With context</span>
-          <p class="promptfig__prompt">&ldquo;They cut prices yesterday. Here is the summary, with the source.&rdquo;</p>
-          <ul class="promptfig__parts">
-            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7Z"/><path d="M14 2v4a2 2 0 0 0 2 2h4"/></svg>Your files</li><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3"/><path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"/></svg>Database</li><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9.5"/><path d="M2.5 12h19"/><path d="M12 2.5c2.6 2.5 4 5.9 4 9.5s-1.4 7-4 9.5c-2.6-2.5-4-5.9-4-9.5s1.4-7 4-9.5Z"/></svg>The web</li><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg>Your tools</li>
-          </ul>
-        </div>
-      </figure>
-
-      <figure class="dodont reveal" role="group" aria-label="A checklist of what to do and what to avoid when engineering context">
-        <div class="dodont__bar"><span class="dodont__title">Context engineering checklist</span><span class="dodont__meta">Do vs. don't</span></div>
-        <ul class="dodont__list">
-          <li class="dodont__row">
-            <div class="dodont__do"><span class="dodont__tag dodont__tag--do">Do</span><span class="dodont__text"><strong>Write a clear prompt.</strong> Use prompt engineering to define the task, expected result, audience and constraints.</span></div>
-            <div class="dodont__dont"><span class="dodont__tag dodont__tag--dont">Don't</span><span class="dodont__text">Combine unrelated tasks, or leave the desired outcome open to interpretation.</span></div>
-          </li>
-          <li class="dodont__row">
-            <div class="dodont__do"><span class="dodont__tag dodont__tag--do">Do</span><span class="dodont__text"><strong>Share relevant data.</strong> Provide the facts, documents, examples or previous work the model needs.</span></div>
-            <div class="dodont__dont"><span class="dodont__tag dodont__tag--dont">Don't</span><span class="dodont__text">Dump everything into the context, or include outdated and contradictory information.</span></div>
-          </li>
-          <li class="dodont__row">
-            <div class="dodont__do"><span class="dodont__tag dodont__tag--do">Do</span><span class="dodont__text"><strong>Add useful links.</strong> Point to reliable sources and explain what the model should extract from them.</span></div>
-            <div class="dodont__dont"><span class="dodont__tag dodont__tag--dont">Don't</span><span class="dodont__text">Share links without saying why they matter, or assume the model can open them.</span></div>
-          </li>
-          <li class="dodont__row">
-            <div class="dodont__do"><span class="dodont__tag dodont__tag--do">Do</span><span class="dodont__text"><strong>Connect the right tools.</strong> Give the model access to the systems it needs to search, calculate, retrieve or act.</span></div>
-            <div class="dodont__dont"><span class="dodont__tag dodont__tag--dont">Don't</span><span class="dodont__text">Provide unnecessary tools, or leave it unclear when and how to use them.</span></div>
-          </li>
-          <li class="dodont__row">
-            <div class="dodont__do"><span class="dodont__tag dodont__tag--do">Do</span><span class="dodont__text"><strong>Remove unnecessary context.</strong> Keep only what helps the model complete the task accurately.</span></div>
-            <div class="dodont__dont"><span class="dodont__tag dodont__tag--dont">Don't</span><span class="dodont__text">Mistake more context for better context.</span></div>
-          </li>
-        </ul>
-      </figure>
-
-      <span class="article__label">Limitations</span>
-      <p>Context engineering improves results, but it can't guarantee accuracy. Without a plan that includes an adversarial review, the AI model can still misunderstand instructions, overlook relevant details, or rely on incorrect information.</p>
-      <p>Whenever we compensate for that with a longer prompt, more context and detailed task planning, the context window fills up.</p>
-      <p>Eventually we either hit that ceiling or the AI model's output quality drops significantly. That's exactly why harness engineering matters.</p>
-
-      <h2><span class="article__kicker">03 / HARNESS ENGINEERING</span>Managing from the outside</h2>
-
-      <span class="article__label">What it is</span>
-      <p>Instead of cramming more context, internet searches and tool calls into the model's context window, AI products can use harnesses to manage all of that around the model.</p>
-      <p>An AI <span class="term" data-tip="The software wrapped around the AI that holds the plan and feeds it one step at a time, so a long job never overflows its memory." tabindex="0" aria-label="Harness: the software wrapped around the AI that holds the plan and feeds it one step at a time, so a long job never overflows its memory.">harness</span> is software that gives a model structured access to context, tools, memory and feedback, while guiding how it completes a task. Claude Code, Cursor and GitHub Copilot are examples within coding environments.</p>
-      <p>A harness can keep the plan, task list and progress outside the model's active context. It gives the model one step at a time, with only the relevant information, records the result, and then prepares the next step.</p>
-      <p>This reduces context overload, but completing each step still requires a process for evaluating the result and deciding what happens next: a loop.</p>
-
-      <figure class="harnessfig reveal" role="group" aria-label="The harness holds the whole plan and ticks it off one step at a time, feeding the assistant only the current step">
-        <div class="harnessfig__grid">
-          <div class="harnessfig__panel harnessfig__panel--plan">
-            <div class="harnessfig__head"><span class="harnessfig__title">Harness</span><span class="harnessfig__meta">The plan</span></div>
-            <ul class="harnessfig__list">
-              <li class="hstep"><span class="hstep__hl"></span><span class="hstep__mark"><svg viewBox="0 0 20 20" aria-hidden="true"><circle cx="10" cy="10" r="9" fill="none" stroke="#C9C9D0" stroke-width="1.6"/><g class="hmark__on"><circle cx="10" cy="10" r="9" fill="#B07D54"/><path d="M6 10.5l2.5 2.5L14 7.5" fill="none" stroke="#fff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></g></svg></span><span class="hstep__label">Map the pages</span></li>
-              <li class="hstep"><span class="hstep__hl"></span><span class="hstep__mark"><svg viewBox="0 0 20 20" aria-hidden="true"><circle cx="10" cy="10" r="9" fill="none" stroke="#C9C9D0" stroke-width="1.6"/><g class="hmark__on"><circle cx="10" cy="10" r="9" fill="#B07D54"/><path d="M6 10.5l2.5 2.5L14 7.5" fill="none" stroke="#fff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></g></svg></span><span class="hstep__label">Build the layout</span></li>
-              <li class="hstep"><span class="hstep__hl"></span><span class="hstep__mark"><svg viewBox="0 0 20 20" aria-hidden="true"><circle cx="10" cy="10" r="9" fill="none" stroke="#C9C9D0" stroke-width="1.6"/><g class="hmark__on"><circle cx="10" cy="10" r="9" fill="#B07D54"/><path d="M6 10.5l2.5 2.5L14 7.5" fill="none" stroke="#fff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></g></svg></span><span class="hstep__label">Wire up the forms</span></li>
-              <li class="hstep"><span class="hstep__hl"></span><span class="hstep__mark"><svg viewBox="0 0 20 20" aria-hidden="true"><circle cx="10" cy="10" r="9" fill="none" stroke="#C9C9D0" stroke-width="1.6"/><g class="hmark__on"><circle cx="10" cy="10" r="9" fill="#B07D54"/><path d="M6 10.5l2.5 2.5L14 7.5" fill="none" stroke="#fff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></g></svg></span><span class="hstep__label">Add the content</span></li>
-              <li class="hstep"><span class="hstep__hl"></span><span class="hstep__mark"><svg viewBox="0 0 20 20" aria-hidden="true"><circle cx="10" cy="10" r="9" fill="none" stroke="#C9C9D0" stroke-width="1.6"/><g class="hmark__on"><circle cx="10" cy="10" r="9" fill="#B07D54"/><path d="M6 10.5l2.5 2.5L14 7.5" fill="none" stroke="#fff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></g></svg></span><span class="hstep__label">Test and ship</span></li>
+        <div class="rc-longread">
+          <nav class="rc-toc rc-toc--band" aria-labelledby="rc-toc-label">
+            <span class="rc-eyebrow" id="rc-toc-label">On this page</span>
+            <ul class="rc-toc__list">
+              <li><a class="rc-toc__link" href="#prompt-engineering" data-sec="s1"><span class="rc-secbar" aria-hidden="true"></span>01 / Prompt engineering</a></li>
+              <li><a class="rc-toc__link" href="#context-engineering" data-sec="s2"><span class="rc-secbar" aria-hidden="true"></span>02 / Context engineering</a></li>
+              <li><a class="rc-toc__link" href="#harness-engineering" data-sec="s3"><span class="rc-secbar" aria-hidden="true"></span>03 / Harness engineering</a></li>
+              <li><a class="rc-toc__link" href="#loop-engineering" data-sec="s4"><span class="rc-secbar" aria-hidden="true"></span>04 / Loop engineering</a></li>
+              <li><a class="rc-toc__link" href="#anatomy" data-sec="s5"><span class="rc-secbar" aria-hidden="true"></span>05 / Anatomy</a></li>
             </ul>
-          </div>
-          <div class="harnessfig__flow">
-            <span class="harnessfig__arrow"><svg viewBox="0 0 30 12" aria-hidden="true"><path d="M2 6h24M21 2l5 4-5 4" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>one step</span>
-            <span class="harnessfig__arrow harnessfig__arrow--back"><svg viewBox="0 0 30 12" aria-hidden="true"><path d="M28 6H4M9 2L4 6l5 4" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>result</span>
-          </div>
-          <div class="harnessfig__panel harnessfig__panel--worker">
-            <div class="harnessfig__head"><span class="harnessfig__title">Assistant</span><span class="harnessfig__meta">One step</span></div>
-            <div class="harnessfig__now">
-              <span class="harnessfig__nowk">Now</span>
-              <span class="harnessfig__nowstack">
-                <span class="hnow">Map the pages</span>
-                <span class="hnow">Build the layout</span>
-                <span class="hnow">Wire up the forms</span>
-                <span class="hnow">Add the content</span>
-                <span class="hnow">Test and ship</span>
-              </span>
-              <span class="harnessfig__nowc">Only what this step needs, nothing else from the job.</span>
+          </nav>
+
+          <div class="rc-longread__body">
+
+            <div class="rc-prose">
+              <p>As AI becomes everyone's tool, it brings a flood of new concepts to understand and, more importantly, to apply. From prompt engineering to context engineering, and from harness engineering to loop engineering, this guide explains what each one means, how they build on one another, and how to get the most out of AI on your hardest tasks, whatever kind of work you do.</p>
+
+              <figure class="rc-fig rc-fig--center" role="group" aria-labelledby="fig-b1">
+                <figcaption class="rc-fig__head" id="fig-b1">
+                  <span class="rc-fig__label">FIG_B1 · Four layers</span>
+                  <span class="rc-fig__title">Each layer wraps the one before it</span>
+                </figcaption>
+                <div class="rc-fig__scroll" tabindex="0">
+                  <svg class="rc-fig__svg rc-fig__svg--ring" viewBox="0 0 460 460" role="img" aria-label="Concentric rings: the model at the centre, wrapped by prompt, then context, then harness, then loops.">
+                    <defs>
+                      <linearGradient id="rg-d4" data-depth="d4" gradientUnits="userSpaceOnUse" x1="42" y1="418" x2="418" y2="42">
+                        <stop class="rg__a" offset="0"/><stop class="rg__b" offset=".52"/><stop class="rg__c" offset="1"/>
+                      </linearGradient>
+                      <linearGradient id="rg-d3" data-depth="d3" gradientUnits="userSpaceOnUse" x1="42" y1="418" x2="418" y2="42">
+                        <stop class="rg__a" offset="0"/><stop class="rg__b" offset=".52"/><stop class="rg__c" offset="1"/>
+                      </linearGradient>
+                      <linearGradient id="rg-d2" data-depth="d2" gradientUnits="userSpaceOnUse" x1="42" y1="418" x2="418" y2="42">
+                        <stop class="rg__a" offset="0"/><stop class="rg__b" offset=".52"/><stop class="rg__c" offset="1"/>
+                      </linearGradient>
+                      <linearGradient id="rg-d1" data-depth="d1" gradientUnits="userSpaceOnUse" x1="42" y1="418" x2="418" y2="42">
+                        <stop class="rg__a" offset="0"/><stop class="rg__b" offset=".52"/><stop class="rg__c" offset="1"/>
+                      </linearGradient>
+                      <linearGradient id="rg-t4" data-air="a4" x1="0" y1="0" x2="1" y2="1">
+                        <stop class="rgt__a" offset="0"/><stop class="rgt__b" offset="1"/>
+                      </linearGradient>
+                      <linearGradient id="rg-t3" data-air="a3" x1="0" y1="1" x2="1" y2="0">
+                        <stop class="rgt__a" offset="0"/><stop class="rgt__b" offset="1"/>
+                      </linearGradient>
+                      <linearGradient id="rg-t2" data-air="a2" x1="0" y1="0" x2="1" y2="0">
+                        <stop class="rgt__a" offset="0"/><stop class="rgt__b" offset="1"/>
+                      </linearGradient>
+                      <linearGradient id="rg-t1" data-air="a1" x1="1" y1="0" x2="0" y2="1">
+                        <stop class="rgt__a" offset="0"/><stop class="rgt__b" offset="1"/>
+                      </linearGradient>
+                    </defs>
+                    <circle class="rg-ring" cx="230" cy="230" r="218" stroke-width="2.5" fill="url(#rg-d4)"/>
+                    <circle class="rg-ring" cx="230" cy="230" r="172" stroke-width="2.25" fill="url(#rg-d3)"/>
+                    <circle class="rg-ring" cx="230" cy="230" r="126" stroke-width="2" fill="url(#rg-d2)"/>
+                    <circle class="rg-ring" cx="230" cy="230" r="80" stroke-width="1.75" fill="url(#rg-d1)"/>
+                    <circle class="rg-core" cx="230" cy="230" r="40"/>
+                    <text class="rg-core__lb" x="230" y="236" text-anchor="middle">LLM</text>
+                    <g class="rg-tag">
+                      <rect x="197" y="24" width="66" height="22" rx="7" fill="url(#rg-t4)"/>
+                      <text x="230" y="40" text-anchor="middle">Loops</text>
+                    </g>
+                    <g class="rg-tag">
+                      <rect x="190" y="70" width="80" height="22" rx="7" fill="url(#rg-t3)"/>
+                      <text x="230" y="86" text-anchor="middle">Harness</text>
+                    </g>
+                    <g class="rg-tag">
+                      <rect x="190" y="116" width="80" height="22" rx="7" fill="url(#rg-t2)"/>
+                      <text x="230" y="132" text-anchor="middle">Context</text>
+                    </g>
+                    <g class="rg-tag">
+                      <rect x="194" y="159" width="72" height="22" rx="7" fill="url(#rg-t1)"/>
+                      <text x="230" y="175" text-anchor="middle">Prompt</text>
+                    </g>
+                  </svg>
+                </div>
+              </figure>
+
+              <section class="rc-prose rc-chapter" aria-labelledby="prompt-engineering">
+              <div class="rc-secfield au-silk au-silk--halftone" data-palette="dawn" data-sec="s1">
+                <span class="au-silk__l au-silk__base" aria-hidden="true"></span>
+                <span class="au-silk__l au-silk__rib au-silk__rib--a" aria-hidden="true"></span>
+                <span class="au-silk__l au-silk__rib au-silk__rib--b" aria-hidden="true"></span>
+                <span class="au-silk__l au-silk__bloom" aria-hidden="true"></span>
+                <span class="au-silk__l au-silk__dots" aria-hidden="true"></span>
+                <span class="au-silk__l au-silk__grain" aria-hidden="true"></span>
+                <span class="rc-eyebrow rc-secfield__pill">01 / Prompt engineering</span>
+              </div>
+              <h2 id="prompt-engineering">The baseline</h2>
+
+              <h3>What it is</h3>
+              <p>An <abbr tabindex="0" title="The generative AI system behind the conversation, like Claude, GPT or Gemini.">AI model</abbr> can't read our minds (yet): it only works from the exact words we give it. That's precisely where prompt engineering comes in: the craft of writing good instructions for it.</p>
+              <p class="rc-pull">The more deliberately we frame a request, the more reliable the answer becomes.</p>
+
+              <h3>How it works</h3>
+              <p>To start engineering a prompt, give the AI model a <abbr tabindex="0" title="Who the model should act as while it answers.">role</abbr> to play, a clear <abbr tabindex="0" title="The concrete action you want the model to perform.">task</abbr> to perform, the <abbr tabindex="0" title="The background information the model needs to get it right.">context</abbr> it needs, the <abbr tabindex="0" title="The rules and limits the answer must respect.">constraints</abbr> to respect, and the <abbr tabindex="0" title="The shape and length the answer should take.">format</abbr> the answer should take, as the two versions below show.</p>
+              <p>Do that, and everything the model needs to answer your query fits inside that single message, with no outside help required.</p>
+
+              <h3>Example</h3>
+              <figure class="rc-fig" data-sec="s1" role="group" aria-labelledby="fig-b2">
+                <figcaption class="rc-fig__head" id="fig-b2">
+                  <span class="rc-fig__label">FIG_B2 · Engineered prompt</span>
+                  <span class="rc-fig__title">A vague prompt compared with an engineered prompt</span>
+                </figcaption>
+                <div class="rc-fig__row">
+                  <span class="rc-fig__tag">Off-hand</span>
+                  <p class="rc-fig__quote rc-fig__quote--dim">"Write an email to a client."</p>
+                </div>
+                <div class="rc-fig__row">
+                  <span class="rc-fig__tag rc-fig__tag--strong">Versus, engineered</span>
+                  <ul class="rc-fig__parts rc-fig__parts--quote">
+                    <li>
+                      <span class="rc-fig__lab">Role</span>
+                      <span class="rc-fig__val">"You are my assistant.</span>
+                    </li>
+                    <li>
+                      <span class="rc-fig__lab">Task</span>
+                      <span class="rc-fig__val">Write a short, warm email to a client</span>
+                    </li>
+                    <li>
+                      <span class="rc-fig__lab">Context</span>
+                      <span class="rc-fig__val">whose invoice is a week overdue.</span>
+                    </li>
+                    <li>
+                      <span class="rc-fig__lab">Constraints</span>
+                      <span class="rc-fig__val">Ask for a payment date and offer to resend it.</span>
+                    </li>
+                    <li>
+                      <span class="rc-fig__lab">Format</span>
+                      <span class="rc-fig__val">Keep it to two short paragraphs, signed Redha."</span>
+                    </li>
+                  </ul>
+                </div>
+              </figure>
+
+              <h3>Limitations</h3>
+              <p>This is where prompt engineering hits its ceiling. On its own, the AI model can't know anything that happened after its <abbr tabindex="0" title="The cut-off point of what the model learned. It knows nothing that happened after it.">knowledge cutoff</abbr>, and for more advanced or exploratory work, you can't fit everything it needs into a single prompt.</p>
+              <p>That's where context engineering comes in.</p>
+              </section>
+
+              <section class="rc-prose rc-chapter" aria-labelledby="context-engineering">
+              <div class="rc-secfield au-silk au-silk--halftone" data-palette="jade" data-sec="s2">
+                <span class="au-silk__l au-silk__base" aria-hidden="true"></span>
+                <span class="au-silk__l au-silk__rib au-silk__rib--a" aria-hidden="true"></span>
+                <span class="au-silk__l au-silk__rib au-silk__rib--b" aria-hidden="true"></span>
+                <span class="au-silk__l au-silk__bloom" aria-hidden="true"></span>
+                <span class="au-silk__l au-silk__dots" aria-hidden="true"></span>
+                <span class="au-silk__l au-silk__grain" aria-hidden="true"></span>
+                <span class="rc-eyebrow rc-secfield__pill">02 / Context engineering</span>
+              </div>
+              <h2 id="context-engineering">Increasing the limits</h2>
+
+              <h3>What it is</h3>
+              <p>The <abbr tabindex="0" title="The instruction you type for the AI to act on.">prompt</abbr> we engineer, or don't, is only one part of what fills the AI model's <abbr tabindex="0" title="The model's working memory for one exchange: instructions, the conversation, your documents and fetched data all share a single, fixed space.">context window</abbr>.</p>
+              <p>Think of it as the model's working memory: the conversation so far, its instructions, our preferences, the documents we've added, and every search or tool call it has made all share that same space.</p>
+
+              <h3>How it works</h3>
+              <p>The context window, although generous, is fixed in size. Every piece that makes it up is competing for the same limited room, and the AI model's performance degrades the more that window fills up, as the breakdown below shows.</p>
+              <p>You might ask: if we give too little context, does the quality drop? And if we fill the context window too much, does it drop too?</p>
+              <p>The answer is yes, on both counts. That's exactly what context engineering is: the craft of providing quality, fit-for-purpose context.</p>
+              <figure class="rc-fig" data-sec="s2" role="group" aria-labelledby="fig-b3">
+                <figcaption class="rc-fig__head" id="fig-b3">
+                  <span class="rc-fig__label">FIG_B3 · Context window</span>
+                  <span class="rc-fig__title">What sits inside it, at a fixed size</span>
+                </figcaption>
+                <ul class="rc-fig__parts">
+                  <li>
+                    <span class="rc-fig__lab"><abbr tabindex="0" title="The system prompt: standing instructions that set the assistant's persona, rules and limits for the whole session.">Instructions</abbr></span>
+                    <span class="rc-fig__val">The role, rules and tone fixed before the exchange begins.</span>
+                  </li>
+                  <li>
+                    <span class="rc-fig__lab">Conversation</span>
+                    <span class="rc-fig__val">Every turn so far, your messages and its replies.</span>
+                  </li>
+                  <li>
+                    <span class="rc-fig__lab">Documents</span>
+                    <span class="rc-fig__val">Files, records and notes you attach for reference.</span>
+                  </li>
+                  <li>
+                    <span class="rc-fig__lab">Retrieved</span>
+                    <span class="rc-fig__val">Live search results and records the model pulls in.</span>
+                  </li>
+                  <li>
+                    <span class="rc-fig__lab">Tool results</span>
+                    <span class="rc-fig__val">What your tools and services hand back when it calls them.</span>
+                  </li>
+                  <li>
+                    <span class="rc-fig__lab">Your question</span>
+                    <span class="rc-fig__val">The specific request the model must act on now.</span>
+                  </li>
+                </ul>
+              </figure>
+
+              <h3>Example</h3>
+              <p>Ask the same question twice, once without extra context and once with it:</p>
+              <figure class="rc-fig" data-sec="s2" role="group" aria-labelledby="fig-b4">
+                <figcaption class="rc-fig__head" id="fig-b4">
+                  <span class="rc-fig__label">FIG_B4 · The same question</span>
+                  <span class="rc-fig__title">Answered without context and with it</span>
+                </figcaption>
+                <div class="rc-fig__row">
+                  <span class="rc-fig__tag">Prompt alone</span>
+                  <p class="rc-fig__quote rc-fig__quote--dim">"That happened after my knowledge cutoff, so I can only guess."</p>
+                </div>
+                <div class="rc-fig__row">
+                  <span class="rc-fig__tag rc-fig__tag--strong">Versus, with context</span>
+                  <p class="rc-fig__quote">"They cut prices yesterday. Here is the summary, with the source."</p>
+                  <ul class="rc-fig__grid">
+                    <li class="rc-fig__item">
+                      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6"/></svg>
+                      <span class="rc-fig__name">Your files</span>
+                    </li>
+                    <li class="rc-fig__item">
+                      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"/><path d="M3 12c0 1.66 4 3 9 3s9-1.34 9-3"/></svg>
+                      <span class="rc-fig__name">Database</span>
+                    </li>
+                    <li class="rc-fig__item">
+                      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+                      <span class="rc-fig__name">The web</span>
+                    </li>
+                    <li class="rc-fig__item">
+                      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg>
+                      <span class="rc-fig__name">Your tools</span>
+                    </li>
+                  </ul>
+                </div>
+              </figure>
+              <p>A context engineering checklist, do versus don't:</p>
+              <ul>
+                <li><strong>Do:</strong> write a clear prompt. Use prompt engineering to define the task, expected result, audience and constraints. <strong>Don't:</strong> combine unrelated tasks, or leave the desired outcome open to interpretation.</li>
+                <li><strong>Do:</strong> share relevant data. Provide the facts, documents, examples or previous work the model needs. <strong>Don't:</strong> dump everything into the context, or include outdated and contradictory information.</li>
+                <li><strong>Do:</strong> add useful links. Point to reliable sources and explain what the model should extract from them. <strong>Don't:</strong> share links without saying why they matter, or assume the model can open them.</li>
+                <li><strong>Do:</strong> connect the right tools. Give the model access to the systems it needs to search, calculate, retrieve or act. <strong>Don't:</strong> provide unnecessary tools, or leave it unclear when and how to use them.</li>
+                <li><strong>Do:</strong> remove unnecessary context. Keep only what helps the model complete the task accurately. <strong>Don't:</strong> mistake more context for better context.</li>
+              </ul>
+
+              <h3>Limitations</h3>
+              <p>Context engineering improves results, but it can't guarantee accuracy. Without a plan that includes an adversarial review, the AI model can still misunderstand instructions, overlook relevant details, or rely on incorrect information.</p>
+              <p>Whenever we compensate for that with a longer prompt, more context and detailed task planning, the context window fills up.</p>
+              <p>Eventually we either hit that ceiling or the AI model's output quality drops significantly. That's exactly why harness engineering matters.</p>
+              </section>
+
+              <section class="rc-prose rc-chapter" aria-labelledby="harness-engineering">
+              <div class="rc-secfield au-silk au-silk--halftone" data-palette="iris" data-sec="s3">
+                <span class="au-silk__l au-silk__base" aria-hidden="true"></span>
+                <span class="au-silk__l au-silk__rib au-silk__rib--a" aria-hidden="true"></span>
+                <span class="au-silk__l au-silk__rib au-silk__rib--b" aria-hidden="true"></span>
+                <span class="au-silk__l au-silk__bloom" aria-hidden="true"></span>
+                <span class="au-silk__l au-silk__dots" aria-hidden="true"></span>
+                <span class="au-silk__l au-silk__grain" aria-hidden="true"></span>
+                <span class="rc-eyebrow rc-secfield__pill">03 / Harness engineering</span>
+              </div>
+              <h2 id="harness-engineering">Managing from the outside</h2>
+
+              <h3>What it is</h3>
+              <p>Instead of cramming more context, internet searches and tool calls into the model's context window, AI products can use harnesses to manage all of that around the model.</p>
+              <p>An AI <abbr tabindex="0" title="The software wrapped around the AI that holds the plan and feeds it one step at a time, so a long job never overflows its memory.">harness</abbr> is software that gives a model structured access to context, tools, memory and feedback, while guiding how it completes a task. Claude Code, Cursor and GitHub Copilot are examples within coding environments.</p>
+              <p>A harness can keep the plan, task list and progress outside the model's active context. It gives the model one step at a time, with only the relevant information, records the result, and then prepares the next step.</p>
+              <p>This reduces context overload, but completing each step still requires a process for evaluating the result and deciding what happens next: a loop.</p>
+              <p>For example, a plan might look like this, with the assistant holding only the step it is currently on:</p>
+
+              <figure class="rc-fig" data-sec="s3" role="group" aria-labelledby="fig-b5" aria-describedby="fig-b5-sub">
+                <figcaption class="rc-fig__head" id="fig-b5">
+                  <span class="rc-fig__label">FIG_B5 · The plan</span>
+                  <span class="rc-fig__title">The harness ticks it off one step at a time</span>
+                </figcaption>
+                <div class="rc-fig__panels">
+                  <div class="rc-fig__panel">
+                    <span class="rc-fig__tag rc-fig__tag--strong">Harness</span>
+                    <span class="rc-fig__when">The plan</span>
+                    <ol class="rc-fig__steps">
+                      <li aria-current="step">Map the pages</li>
+                      <li>Build the layout</li>
+                      <li>Wire up the forms</li>
+                      <li>Add the content</li>
+                      <li>Test and ship</li>
+                    </ol>
+                  </div>
+                  <div class="rc-fig__panel">
+                    <span class="rc-fig__tag rc-fig__tag--strong">Assistant</span>
+                    <span class="rc-fig__when">One step</span>
+                    <ol class="rc-fig__steps">
+                      <li aria-current="step"><span class="rc-fig__now">Now</span>Map the pages</li>
+                    </ol>
+                    <p class="rc-fig__desc">Only what this step needs, nothing else from the job.</p>
+                  </div>
+                </div>
+                <p class="rc-fig__sub" id="fig-b5-sub">The selector ticks down the plan; the assistant only ever holds the step it is on.</p>
+              </figure>
+
+              <h3>How it works</h3>
+              <p>As an end user, you practice harness engineering by configuring how the AI works: provide reusable instructions, connect only the tools and data it needs, and define checkpoints for review or approval.</p>
+              <p>Don't grant unnecessary access, automate unclear processes, or allow important actions without verification.</p>
+              <p>The goal is to build a reliable workflow around the model, not simply give it a larger prompt.</p>
+
+              <h3>Example</h3>
+              <p>Imagine asking a workplace AI assistant to prepare a brief for an upcoming client meeting. The same task, engineered at three levels:</p>
+              <figure class="rc-fig" data-sec="s3" role="group" aria-labelledby="fig-b6">
+                <figcaption class="rc-fig__head" id="fig-b6">
+                  <span class="rc-fig__label">FIG_B6 · Preparing a client brief</span>
+                  <span class="rc-fig__title">Three levels, one task</span>
+                </figcaption>
+                <div class="rc-fig__row">
+                  <span class="rc-fig__tag rc-fig__tag--strong">Prompt engineering</span>
+                  <p class="rc-fig__desc">Create a one-page brief covering the client's goals, previous decisions, open questions and next steps.</p>
+                </div>
+                <div class="rc-fig__row">
+                  <span class="rc-fig__tag rc-fig__tag--strong">Context engineering</span>
+                  <p class="rc-fig__desc">Use only the relevant email thread, meeting notes, proposal and current project plan.</p>
+                </div>
+                <div class="rc-fig__row">
+                  <span class="rc-fig__tag rc-fig__tag--strong">Harness engineering</span>
+                  <ul class="rc-fig__parts">
+                    <li>
+                      <span class="rc-fig__lab">Tools</span>
+                      <span class="rc-fig__val">Search approved folders and calendars, but don't send messages or edit documents.</span>
+                    </li>
+                    <li>
+                      <span class="rc-fig__lab">Feedback loop</span>
+                      <span class="rc-fig__val">Link every important claim to its source, and flag conflicting or missing information.</span>
+                    </li>
+                    <li>
+                      <span class="rc-fig__lab">Completion rule</span>
+                      <span class="rc-fig__val">Finish when every section is backed by current evidence and unresolved points are clearly flagged.</span>
+                    </li>
+                  </ul>
+                </div>
+              </figure>
+              <p>The user has engineered the harness by controlling what the AI can access, what it can do, how its work is verified, and where human approval is required.</p>
+
+              <h3>Limitations</h3>
+              <p>A harness gives the model tools, rules and checkpoints, but it can't guarantee the first attempt succeeds.</p>
+              <p>Complex tasks often need the AI to inspect its own output, compare it with the goal, and adjust its approach.</p>
+              <p>That need for repeated action, feedback and improvement is exactly what leads to loop engineering.</p>
+              </section>
+
+              <section class="rc-prose rc-chapter" aria-labelledby="loop-engineering">
+              <div class="rc-secfield au-silk au-silk--halftone" data-palette="blossom" data-sec="s4">
+                <span class="au-silk__l au-silk__base" aria-hidden="true"></span>
+                <span class="au-silk__l au-silk__rib au-silk__rib--a" aria-hidden="true"></span>
+                <span class="au-silk__l au-silk__rib au-silk__rib--b" aria-hidden="true"></span>
+                <span class="au-silk__l au-silk__bloom" aria-hidden="true"></span>
+                <span class="au-silk__l au-silk__dots" aria-hidden="true"></span>
+                <span class="au-silk__l au-silk__grain" aria-hidden="true"></span>
+                <span class="rc-eyebrow rc-secfield__pill">04 / Loop engineering</span>
+              </div>
+              <h2 id="loop-engineering">Automating the thinking</h2>
+
+              <h3>What it is</h3>
+              <p>A harness provides the environment for completing a task. Loop engineering adds repetition: the system performs the task, evaluates the result, and decides whether to finish, try again, or involve a person.</p>
+              <p>A loop can run once or repeatedly. Each run begins with a trigger, works through the harness, checks the result against a goal, and follows a defined next step.</p>
+
+              <h3>How it starts</h3>
+              <p>A loop can start in three common ways:</p>
+              <figure class="rc-fig" data-sec="s4" role="group" aria-labelledby="fig-b7">
+                <figcaption class="rc-fig__head" id="fig-b7">
+                  <span class="rc-fig__label">FIG_B7 · How a loop wakes up</span>
+                  <span class="rc-fig__title">Three triggers</span>
+                </figcaption>
+                <ul class="rc-fig__grid">
+                  <li class="rc-fig__item">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>
+                    <span class="rc-fig__name">Heartbeat</span>
+                    <span class="rc-fig__when">Every few minutes</span>
+                    <span class="rc-fig__desc">Checks in on a fast, steady beat for new work.</span>
+                  </li>
+                  <li class="rc-fig__item">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+                    <span class="rc-fig__name">Schedule</span>
+                    <span class="rc-fig__when">At a set time</span>
+                    <span class="rc-fig__desc">Runs at a fixed moment, like every Friday at ten.</span>
+                  </li>
+                  <li class="rc-fig__item">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M13 2 3 14h9l-1 8 10-12h-9l1-8z"/></svg>
+                    <span class="rc-fig__name">Event</span>
+                    <span class="rc-fig__when">Something happens</span>
+                    <span class="rc-fig__desc">Starts the moment an outside event fires, like a ticket landing.</span>
+                  </li>
+                </ul>
+              </figure>
+              <p>The goal does not start the loop. It determines when the loop should stop.</p>
+
+              <h3>How it works</h3>
+              <p>As an end user, you practice loop engineering by defining the trigger, success criteria, retry limits, and points requiring human approval.</p>
+              <p>An unattended loop also needs:</p>
+              <ul>
+                <li>Workspaces: isolated environments that protect human work.</li>
+                <li>Skills: reusable methods for recurring tasks.</li>
+                <li>Connections: controlled access to files, tools and communication channels.</li>
+                <li>State: a record of completed work, pending actions and previous attempts.</li>
+                <li>Workers: temporary agents that can handle separate parts of a larger task.</li>
+              </ul>
+              <p>Do not launch a loop with a vague goal, skip output checks, or give it unrestricted access to sensitive systems. The goal is a workflow that can evaluate and correct its output safely, not one that repeats the same mistake faster.</p>
+              <p>A loop can also coordinate several workers in parallel, collect their results, and decide what happens next. This is multi-agent orchestration rather than recursion.</p>
+
+              <h3>Example</h3>
+              <p>Picture the client brief from harness engineering again, but now nobody has to ask for it:</p>
+              <figure class="rc-fig" data-sec="s4" role="group" aria-labelledby="fig-b8">
+                <figcaption class="rc-fig__head" id="fig-b8">
+                  <span class="rc-fig__label">FIG_B8 · From brief to loop</span>
+                  <span class="rc-fig__title">Same task, running itself</span>
+                </figcaption>
+                <ul class="rc-fig__parts">
+                  <li>
+                    <span class="rc-fig__lab">Trigger</span>
+                    <span class="rc-fig__val">Every Monday morning, ahead of the client's weekly call.</span>
+                  </li>
+                  <li>
+                    <span class="rc-fig__lab">Runs</span>
+                    <span class="rc-fig__val">Pulls the latest emails, notes and project plan, and drafts the brief with the same harness as before.</span>
+                  </li>
+                  <li>
+                    <span class="rc-fig__lab">Checks</span>
+                    <span class="rc-fig__val">Compares this week's draft with last week's, and flags any claim it can't source.</span>
+                  </li>
+                  <li>
+                    <span class="rc-fig__lab">Escalates</span>
+                    <span class="rc-fig__val">Sends the draft for review when everything checks out; pings a person directly the moment something doesn't.</span>
+                  </li>
+                </ul>
+              </figure>
+              <p>The team stops preparing the brief and starts reviewing it instead.</p>
+
+              <h3>Limitations</h3>
+              <p>A loop amplifies the system underneath it. A vague goal, weak harness or unreliable evaluation will fail repeatedly while consuming more time and tokens.</p>
+              <p>It can also become stuck, repeatedly changing its output without moving closer to the goal, or produce work faster than people can meaningfully review it.</p>
+              <p>Clear stopping conditions, retry limits and human approval remain essential for sensitive or difficult-to-reverse actions.</p>
+
+              </section>
+
+              <section class="rc-prose rc-chapter" aria-labelledby="anatomy">
+              <div class="rc-secfield au-silk au-silk--halftone" data-palette="solstice">
+                <span class="au-silk__l au-silk__base" aria-hidden="true"></span>
+                <span class="au-silk__l au-silk__rib au-silk__rib--a" aria-hidden="true"></span>
+                <span class="au-silk__l au-silk__rib au-silk__rib--b" aria-hidden="true"></span>
+                <span class="au-silk__l au-silk__bloom" aria-hidden="true"></span>
+                <span class="au-silk__l au-silk__dots" aria-hidden="true"></span>
+                <span class="au-silk__l au-silk__grain" aria-hidden="true"></span>
+                <span class="rc-eyebrow rc-secfield__pill">05 / Anatomy</span>
+              </div>
+              <h2 id="anatomy">What every loop needs</h2>
+              <p>We have now met several loops in this guide: an assistant that searches until it has enough, a harness that works its way through a task list, and an operation that drafts a client brief on its own every Monday.</p>
+              <p>They do very different jobs, yet every dependable loop is built from the same five parts, shown here as a single running cycle. Miss one of them, and the loop starts to misbehave.</p>
+              <figure class="rc-fig" data-sec="s5" role="group" aria-labelledby="fig-b9">
+                <figcaption class="rc-fig__head" id="fig-b9">
+                  <span class="rc-fig__label">FIG_B9 · Anatomy of one loop</span>
+                  <span class="rc-fig__title">Five parts, one mechanism</span>
+                </figcaption>
+                <svg class="rc-fig__svg rc-fig__svg--anatomy" viewBox="0 0 640 200" role="img" aria-label="Five stages connected in a cycle: trigger, goal, feedback, stop, guardrails, with the run returning from the last to the first.">
+                  <line class="ln" x1="60" y1="70" x2="580" y2="70"/>
+                  <path class="ln" d="M580 70 C 620 70 620 150 580 150 L 60 150 C 20 150 20 70 60 70"/>
+                  <circle class="nd nd--on" cx="60" cy="70" r="14"/>
+                  <circle class="nd" cx="190" cy="70" r="14"/>
+                  <circle class="nd" cx="320" cy="70" r="14"/>
+                  <circle class="nd" cx="450" cy="70" r="14"/>
+                  <circle class="nd" cx="580" cy="70" r="14"/>
+                  <text class="nu nu--on" x="60" y="74" text-anchor="middle">1</text>
+                  <text class="nu" x="190" y="74" text-anchor="middle">2</text>
+                  <text class="nu" x="320" y="74" text-anchor="middle">3</text>
+                  <text class="nu" x="450" y="74" text-anchor="middle">4</text>
+                  <text class="nu" x="580" y="74" text-anchor="middle">5</text>
+                  <text class="tx tx--on" x="60" y="34" text-anchor="middle">Trigger</text>
+                  <text class="tx" x="190" y="34" text-anchor="middle">Goal</text>
+                  <text class="tx" x="320" y="34" text-anchor="middle">Feedback</text>
+                  <text class="tx" x="450" y="34" text-anchor="middle">Stop</text>
+                  <text class="tx" x="580" y="34" text-anchor="middle">Guardrails</text>
+                  <text class="tx" x="320" y="176" text-anchor="middle">The run returns</text>
+                </svg>
+                <ul class="rc-fig__parts">
+                  <li><span class="rc-fig__lab">1 Trigger</span><span class="rc-fig__val">Fires each run.</span></li>
+                  <li><span class="rc-fig__lab">2 Goal</span><span class="rc-fig__val">Sets the target the run is measured against.</span></li>
+                  <li><span class="rc-fig__lab">3 Feedback</span><span class="rc-fig__val">Checks and corrects each result against the goal.</span></li>
+                  <li><span class="rc-fig__lab">4 Stop</span><span class="rc-fig__val">Ends the run.</span></li>
+                  <li><span class="rc-fig__lab">5 Guardrails</span><span class="rc-fig__val">Bound the whole loop.</span></li>
+                </ul>
+              </figure>
+              <p>It starts with a <abbr tabindex="0" title="What makes a loop start a run, so the work begins without a person asking.">trigger</abbr>, the reason each run begins, one of the three kinds we just saw. Without one, the loop just sits there waiting for us to ask, which is exactly the dependence loop engineering set out to remove.</p>
+              <p>It also needs a <abbr tabindex="0" title="A loop's target and its definition of done. Without one, a loop cannot tell progress from motion.">goal</abbr>, a target and a clear <abbr tabindex="0" title="The exact, checkable statement of what finished looks like, so a loop can tell done from not-done.">definition of done</abbr>: send the weekly summary, make the tests pass, answer the question. Without one, it can't tell progress from motion, and it never quite knows when to stop.</p>
+              <p>Then it needs <abbr tabindex="0" title="A loop's own check of its result against the goal, used to decide what to do next.">feedback</abbr>: after each pass, the loop compares what it produced against that goal. This single choice matters more than any other. A <abbr tabindex="0" title="A loop that checks its own result and corrects course. Self-correcting, and safe to trust with real work.">closed loop</abbr> checks its own result and corrects course, like a thermostat that keeps reading the room and nudging the heating until it reaches the temperature we set; it is self-correcting, and it is the only kind we'd trust with real work.</p>
+              <p>An <abbr tabindex="0" title="A loop that follows a fixed plan and never checks the result. Simpler, but it drifts from reality.">open loop</abbr>, by contrast, follows a fixed plan and never looks back, like a sprinkler on a timer that waters the garden whether or not it rained overnight. Open loops are simpler, but they drift the moment reality stops matching the plan.</p>
+              <p>Next, a <abbr tabindex="0" title="The rule that ends a loop: goal reached, budget spent, no progress, or a person calls a halt.">stop condition</abbr>, a rule for when to end: the goal is reached, a budget of time or attempts is spent, progress has stalled, or a person calls a halt. This is the brake, and we already know why it matters: a loop that can't stop itself is exactly the one that runs away.</p>
+              <p class="rc-pull">Most of the worry around these systems really comes down to this: a loop with no brake.</p>
+              <p>Last, <abbr tabindex="0" title="The limits set before a loop runs: what it may touch, how far, and what needs human approval.">guardrails</abbr>. Because the loop runs while we're not watching, we decide up front what it may touch, how far it may reach, and which actions need a human to approve them first. If the goal says where the loop is heading, the guardrails say where it must never go.</p>
+              </section>
             </div>
+
+            <div class="rc-inkpanel rc-inkpanel--slim">
+              <div class="rc-stack">
+                <span class="rc-eyebrow">Key takeaway</span>
+                <h2 class="rc-section__title">Why it matters</h2>
+                <p>Prompt, context, harness, loop: it's one ladder, not four trends to choose between. The power is real. Climb a rung and the work starts running without us, the scope widening as we go, from a single answer, to a task, to a project, to an operation that runs on its own. We stop trading our time for output and start reviewing results instead.</p>
+                <p>The limit is just as real. A loop only ever amplifies what sits beneath it, so a weak prompt stays weak inside the most advanced one, and a vague definition of done sends it circling, burning budget for nothing. Because it runs while we're away, precision and a few well-placed human checks are the whole game. Knowing what to hand over, and where to keep a hand on it, is a product skill more than a technical one, and the good news is that it can be learnt.</p>
+                <p>Interested in training?</p>
+              </div>
+              <div class="rc-hero__actions">
+                <a class="au-btn au-btn--standard au-btn--primary" href="/learning/">Explore RET Learning</a>
+              </div>
+            </div>
+
+            <footer class="rc-artend">
+              <p class="rc-artend__by">Written by Redha Etbaz · Independent product owner and business analyst</p>
+              <p class="rc-backlink"><a href="/blog/">Back to field notes</a></p>
+            </footer>
+
           </div>
-        </div>
-        <figcaption class="harnessfig__cap">The selector ticks down the plan; the assistant only ever holds the step it is on.</figcaption>
-      </figure>
-
-      <span class="article__label">How it works</span>
-      <p>As an end user, you practice harness engineering by configuring how the AI works: provide reusable instructions, connect only the tools and data it needs, and define checkpoints for review or approval.</p>
-      <p>Don't grant unnecessary access, automate unclear processes, or allow important actions without verification.</p>
-      <p>The goal is to build a reliable workflow around the model, not simply give it a larger prompt.</p>
-
-      <span class="article__label">Example</span>
-      <p>Imagine asking a workplace AI assistant to prepare a brief for an upcoming client meeting. The same task, engineered at three levels:</p>
-
-      <figure class="examplefig reveal" role="group" aria-label="The same task engineered at three levels: prompt, context and harness">
-        <div class="examplefig__bar"><span class="examplefig__title">Preparing a client brief</span><span class="examplefig__meta">Three levels, one task</span></div>
-        <ul class="examplefig__list">
-          <li class="examplefig__row"><span class="examplefig__k">Prompt engineering</span><span class="examplefig__v">Create a one-page brief covering the client's goals, previous decisions, open questions and next steps.</span></li>
-          <li class="examplefig__row"><span class="examplefig__k">Context engineering</span><span class="examplefig__v">Use only the relevant email thread, meeting notes, proposal and current project plan.</span></li>
-          <li class="examplefig__row examplefig__row--harness">
-            <span class="examplefig__k">Harness engineering</span>
-            <ul class="examplefig__sub">
-              <li><span class="examplefig__subk">Tools</span><span class="examplefig__subv">Search approved folders and calendars, but don't send messages or edit documents.</span></li>
-              <li><span class="examplefig__subk">Feedback loop</span><span class="examplefig__subv">Link every important claim to its source, and flag conflicting or missing information.</span></li>
-              <li><span class="examplefig__subk">Completion rule</span><span class="examplefig__subv">Finish when every section is backed by current evidence and unresolved points are clearly flagged.</span></li>
-            </ul>
-          </li>
-        </ul>
-      </figure>
-
-      <p>The user has engineered the harness by controlling what the AI can access, what it can do, how its work is verified, and where human approval is required.</p>
-
-      <span class="article__label">Limitations</span>
-      <p>A harness gives the model tools, rules and checkpoints, but it can't guarantee the first attempt succeeds.</p>
-      <p>Complex tasks often need the AI to inspect its own output, compare it with the goal, and adjust its approach.</p>
-      <p>That need for repeated action, feedback and improvement is exactly what leads to loop engineering.</p>
-
-      <h2><span class="article__kicker">04 / LOOP ENGINEERING</span>Automating the thinking</h2>
-
-      <span class="article__label">What it is</span>
-      <p>A harness provides the environment for completing a task. Loop engineering adds repetition: the system performs the task, evaluates the result, and decides whether to finish, try again, or involve a person.</p>
-      <p>A loop can run once or repeatedly. Each run begins with a trigger, works through the harness, checks the result against a goal, and follows a defined next step.</p>
-
-      <span class="article__label">How it starts</span>
-      <p>A loop can start in three common ways:</p>
-
-      <figure class="trigfig reveal" role="group" aria-label="Three ways a loop starts: a heartbeat checking in on a fast beat, a schedule at a set time, and an event firing from outside.">
-        <div class="trigfig__bar"><span class="trigfig__title">How a loop wakes up</span><span class="trigfig__meta">Three triggers</span></div>
-        <div class="trigfig__grid">
-          <div class="trigfig__item">
-            <span class="trigfig__ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2.5 12h4l2-4.5 3.5 9 2-4.5h7.5"/></svg></span>
-            <span class="trigfig__k">Heartbeat</span>
-            <span class="trigfig__t">Every few minutes</span>
-            <span class="trigfig__v">Checks in on a fast, steady beat for new work.</span>
-          </div>
-          <div class="trigfig__item">
-            <span class="trigfig__ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="8.5"/><path d="M12 7.5V12l3.5 2"/></svg></span>
-            <span class="trigfig__k">Schedule</span>
-            <span class="trigfig__t">At a set time</span>
-            <span class="trigfig__v">Runs at a fixed moment, like every Friday at ten.</span>
-          </div>
-          <div class="trigfig__item">
-            <span class="trigfig__ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 8.5a6 6 0 0 0-12 0c0 6-2.5 7.5-2.5 7.5h17S18 14.5 18 8.5"/><path d="M13.5 19.5a2 2 0 0 1-3 0"/></svg></span>
-            <span class="trigfig__k">Event</span>
-            <span class="trigfig__t">Something happens</span>
-            <span class="trigfig__v">Starts the moment an outside event fires, like a ticket landing.</span>
-          </div>
-        </div>
-      </figure>
-
-      <p>The goal does not start the loop. It determines when the loop should stop.</p>
-
-      <span class="article__label">How it works</span>
-      <p>As an end user, you practice loop engineering by defining the trigger, success criteria, retry limits, and points requiring human approval.</p>
-      <p>An unattended loop also needs:</p>
-
-      <ul class="article__six">
-        <li><span class="six__head"><span class="six__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="7.5" height="14" rx="1.5"/><rect x="13.5" y="5" width="7.5" height="14" rx="1.5"/></svg></span><span class="k">Workspaces</span></span><span class="v">Isolated environments that protect human work.</span></li>
-        <li><span class="six__head"><span class="six__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="9" width="18" height="10" rx="2"/><path d="M8 9V6a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v3"/><path d="M3 13h18"/></svg></span><span class="k">Skills</span></span><span class="v">Reusable methods for recurring tasks.</span></li>
-        <li><span class="six__head"><span class="six__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22v-5"/><path d="M9 8V2"/><path d="M15 8V2"/><path d="M18 8v5a6 6 0 0 1-12 0V8Z"/></svg></span><span class="k">Connections</span></span><span class="v">Controlled access to files, tools and communication channels.</span></li>
-        <li><span class="six__head"><span class="six__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><ellipse cx="12" cy="5" rx="8" ry="3"/><path d="M4 5v14c0 1.7 3.6 3 8 3s8-1.3 8-3V5"/><path d="M4 12c0 1.7 3.6 3 8 3s8-1.3 8-3"/></svg></span><span class="k">State</span></span><span class="v">A record of completed work, pending actions and previous attempts.</span></li>
-        <li><span class="six__head"><span class="six__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="6" r="2"/><circle cx="6" cy="18" r="2"/><circle cx="18" cy="18" r="2"/><path d="M12 8v4M12 12l-4.5 4M12 12l4.5 4"/></svg></span><span class="k">Workers</span></span><span class="v">Temporary agents that can handle separate parts of a larger task.</span></li>
-      </ul>
-
-      <p>Do not launch a loop with a vague goal, skip output checks, or give it unrestricted access to sensitive systems. The goal is a workflow that can evaluate and correct its output safely, not one that repeats the same mistake faster.</p>
-      <p>A loop can also coordinate several workers in parallel, collect their results, and decide what happens next. This is multi-agent orchestration rather than recursion.</p>
-
-      <span class="article__label">Example</span>
-      <p>Picture the client brief from harness engineering again, but now nobody has to ask for it:</p>
-
-      <figure class="examplefig reveal" role="group" aria-label="How the client-brief harness becomes a self-triggering loop">
-        <div class="examplefig__bar"><span class="examplefig__title">From brief to loop</span><span class="examplefig__meta">Same task, running itself</span></div>
-        <ul class="examplefig__list">
-          <li class="examplefig__row"><span class="examplefig__k">Trigger</span><span class="examplefig__v">Every Monday morning, ahead of the client's weekly call.</span></li>
-          <li class="examplefig__row"><span class="examplefig__k">Runs</span><span class="examplefig__v">Pulls the latest emails, notes and project plan, and drafts the brief with the same harness as before.</span></li>
-          <li class="examplefig__row"><span class="examplefig__k">Checks</span><span class="examplefig__v">Compares this week's draft with last week's, and flags any claim it can't source.</span></li>
-          <li class="examplefig__row examplefig__row--accent"><span class="examplefig__k">Escalates</span><span class="examplefig__v">Sends the draft for review when everything checks out; pings a person directly the moment something doesn't.</span></li>
-        </ul>
-      </figure>
-
-      <p>The team stops preparing the brief and starts reviewing it instead.</p>
-
-      <span class="article__label">Limitations</span>
-      <p>A loop amplifies the system underneath it. A vague goal, weak harness or unreliable evaluation will fail repeatedly while consuming more time and tokens.</p>
-      <p>It can also become stuck, repeatedly changing its output without moving closer to the goal, or produce work faster than people can meaningfully review it.</p>
-      <p>Clear stopping conditions, retry limits and human approval remain essential for sensitive or difficult-to-reverse actions.</p>
-
-      <h2><span class="article__kicker">ANATOMY</span>What every loop needs</h2>
-      <p>We have now met several loops in this guide: an assistant that searches until it has enough, a harness that works its way through a task list, and an operation that drafts a client brief on its own every Monday.</p>
-      <p>They do very different jobs, yet every dependable loop is built from the same five parts, shown here as a single running cycle. Miss one of them, and the loop starts to misbehave.</p>
-
-      <figure class="anatfig reveal" role="group" aria-label="The anatomy of one loop: a trigger fires each run, a goal sets the target, feedback checks and corrects each result against the goal, a stop condition ends the run, and guardrails bound the whole loop.">
-        <div class="anatfig__bar"><span class="anatfig__title">Anatomy of one loop</span><span class="anatfig__meta">Five parts, one mechanism</span></div>
-        <div class="anatfig__stage">
-          <svg class="anatfig__svg" viewBox="0 0 700 224" aria-hidden="true">
-            <defs>
-              <marker id="an-i" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0,1 L9,5 L0,9 z" fill="#3F3F46"/></marker>
-              <marker id="an-c" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6.6" markerHeight="6.6" orient="auto"><path d="M0,1 L9,5 L0,9 z" fill="#B07D54"/></marker>
-            </defs>
-            <!-- 05 guardrails: a soft dotted fence around the whole loop -->
-            <rect x="176" y="64" width="354" height="140" rx="30" fill="none" stroke="#B7B7BF" stroke-width="1.4" stroke-dasharray="0.5 6" stroke-linecap="round"/>
-            <!-- flow: trigger fires, goal enters, stop leaves, all on the centre line -->
-            <line x1="66" y1="123" x2="100" y2="123" stroke="#3F3F46" stroke-width="1.6" marker-end="url(#an-i)"/>
-            <line x1="136" y1="123" x2="202" y2="123" stroke="#3F3F46" stroke-width="1.6" marker-end="url(#an-i)"/>
-            <line x1="504" y1="123" x2="610" y2="123" stroke="#3F3F46" stroke-width="1.6" marker-end="url(#an-i)"/>
-            <!-- 03 loop: work and check exchange through two cognac arcs, forward on top and the correcting return below -->
-            <path d="M310,116 Q353,87 396,116" fill="none" stroke="#B07D54" stroke-width="2.1" marker-end="url(#an-c)"/>
-            <path class="anat-fb" d="M396,130 Q353,159 310,130" fill="none" stroke="#B07D54" stroke-width="2.1" marker-end="url(#an-c)"/>
-            <rect x="206" y="100" width="104" height="46" rx="14" fill="#FFFFFF" stroke="#18181B" stroke-width="1.5"/>
-            <text x="258" y="128" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="13.5" letter-spacing="1" fill="#18181B">WORK</text>
-            <rect x="396" y="100" width="104" height="46" rx="14" fill="#FFFFFF" stroke="#18181B" stroke-width="1.5"/>
-            <text x="448" y="128" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="13.5" letter-spacing="1" fill="#18181B">CHECK</text>
-            <!-- 01 trigger: a spark that fires each run, just the number above -->
-            <circle cx="48" cy="123" r="15" fill="#FFFFFF" stroke="#18181B" stroke-width="1.5"/>
-            <g transform="translate(48,123) scale(0.66) translate(-12,-12)"><path d="M13 2 L4 14 L11 14 L10 22 L20 9 L13 9 Z" fill="#18181B"/></g>
-            <circle cx="48" cy="90" r="10.5" fill="#FFFFFF" stroke="#B4B4BD" stroke-width="1.3"/>
-            <text x="48" y="94.4" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="12" fill="#3F3F46">1</text>
-            <!-- 02 goal: bullseye, just the number above -->
-            <circle cx="118" cy="123" r="15" fill="#FFFFFF" stroke="#18181B" stroke-width="1.5"/>
-            <circle cx="118" cy="123" r="7.5" fill="none" stroke="#18181B" stroke-width="1.5"/>
-            <circle cx="118" cy="123" r="2.3" fill="#18181B"/>
-            <circle cx="118" cy="90" r="10.5" fill="#FFFFFF" stroke="#B4B4BD" stroke-width="1.3"/>
-            <text x="118" y="94.4" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="12" fill="#3F3F46">2</text>
-            <!-- 04 stop: STOP inside the sign, just the number above -->
-            <path d="M628,99 L648,99 L662,113 L662,133 L648,147 L628,147 L614,133 L614,113 Z" fill="#FFFFFF" stroke="#18181B" stroke-width="1.5"/>
-            <text x="638" y="126.6" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="9.5" letter-spacing=".5" fill="#18181B">STOP</text>
-            <circle cx="638" cy="80" r="10.5" fill="#FFFFFF" stroke="#B4B4BD" stroke-width="1.3"/>
-            <text x="638" y="84.4" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="12" fill="#3F3F46">4</text>
-            <!-- 05 guardrails: number above, name below, above the fence -->
-            <circle cx="353" cy="24" r="10.5" fill="#FFFFFF" stroke="#B4B4BD" stroke-width="1.3"/>
-            <text x="353" y="28.4" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="12" fill="#3F3F46">5</text>
-            <text x="353" y="47" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="11.5" letter-spacing=".9" fill="#3F3F46">GUARDRAILS</text>
-            <line x1="353" y1="53" x2="353" y2="64" stroke="#C4C4CC" stroke-width="1" stroke-dasharray="1.5 3"/>
-            <!-- 03 loop: number above, name below, the one cognac accent -->
-            <line x1="353" y1="153" x2="353" y2="145" stroke="#CBA588" stroke-width="1.1" stroke-dasharray="1.5 3"/>
-            <circle cx="353" cy="165" r="10.5" fill="#FFFFFF" stroke="#B07D54" stroke-width="1.5"/>
-            <text x="353" y="169.4" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="12" fill="#855B3B">3</text>
-            <text x="353" y="188" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="10.5" letter-spacing=".5" fill="#855B3B">FEEDBACK</text>
-          </svg>
-        </div>
-        <ul class="anatfig__key">
-          <li><span class="anatfig__n">1</span><span class="anatfig__kname">Trigger</span></li>
-          <li><span class="anatfig__n">2</span><span class="anatfig__kname">Goal</span></li>
-          <li><span class="anatfig__n anatfig__n--fb">3</span><span class="anatfig__kname anatfig__kname--fb">Feedback</span></li>
-          <li><span class="anatfig__n">4</span><span class="anatfig__kname">Stop</span></li>
-          <li><span class="anatfig__n">5</span><span class="anatfig__kname">Guardrails</span></li>
-        </ul>
-      </figure>
-
-      <p>It starts with a <span class="term" data-tip="What makes a loop start a run, so the work begins without a person asking." tabindex="0" aria-label="Trigger: what makes a loop start a run, so the work begins without a person asking.">trigger</span>, the reason each run begins, one of the three kinds we just saw. Without one, the loop just sits there waiting for us to ask, which is exactly the dependence loop engineering set out to remove.</p>
-      <p>It also needs a <span class="term" data-tip="A loop's target and its definition of done. Without one, a loop cannot tell progress from motion." tabindex="0" aria-label="Goal: a loop's target and its definition of done; without one, a loop cannot tell progress from motion.">goal</span>, a target and a clear <span class="term" data-tip="The exact, checkable statement of what finished looks like, so a loop can tell done from not-done." tabindex="0" aria-label="Definition of done: the exact, checkable statement of what finished looks like, so a loop can tell done from not-done.">definition of done</span>: send the weekly summary, make the tests pass, answer the question. Without one, it can't tell progress from motion, and it never quite knows when to stop.</p>
-      <p>Then it needs <span class="term" data-tip="A loop's own check of its result against the goal, used to decide what to do next." tabindex="0" aria-label="Feedback: a loop's own check of its result against the goal, used to decide what to do next.">feedback</span>: after each pass, the loop compares what it produced against that goal. This single choice matters more than any other. A <span class="term" data-tip="A loop that checks its own result and corrects course. Self-correcting, and safe to trust with real work." tabindex="0" aria-label="Closed loop: a loop that checks its own result and corrects course, self-correcting and safe to trust with real work.">closed loop</span> checks its own result and corrects course, like a thermostat that keeps reading the room and nudging the heating until it reaches the temperature we set; it is self-correcting, and it is the only kind we'd trust with real work.</p>
-      <p>An <span class="term" data-tip="A loop that follows a fixed plan and never checks the result. Simpler, but it drifts from reality." tabindex="0" aria-label="Open loop: a loop that follows a fixed plan and never checks the result, simpler but it drifts from reality.">open loop</span>, by contrast, follows a fixed plan and never looks back, like a sprinkler on a timer that waters the garden whether or not it rained overnight. Open loops are simpler, but they drift the moment reality stops matching the plan.</p>
-
-      <p>Next, a <span class="term" data-tip="The rule that ends a loop: goal reached, budget spent, no progress, or a person calls a halt." tabindex="0" aria-label="Stop condition: the rule that ends a loop, whether the goal is reached, a budget is spent, progress stalls, or a person calls a halt.">stop condition</span>, a rule for when to end: the goal is reached, a budget of time or attempts is spent, progress has stalled, or a person calls a halt. This is the brake, and we already know why it matters: a loop that can't stop itself is exactly the one that runs away.</p>
-      <p>Most of the worry around these systems really comes down to this: a loop with no brake.</p>
-      <p>Last, <span class="term" data-tip="The limits set before a loop runs: what it may touch, how far, and what needs human approval." tabindex="0" aria-label="Guardrails: the limits set before a loop runs, covering what it may touch, how far it may go, and what needs human approval.">guardrails</span>. Because the loop runs while we're not watching, we decide up front what it may touch, how far it may reach, and which actions need a human to approve them first. If the goal says where the loop is heading, the guardrails say where it must never go.</p>
-
-    </div>
-  </div>
-
-  <div class="article-end-wrap">
-    <section class="article-end reveal">
-      <div class="article-end__dots"></div>
-      <div class="article-end__inner">
-        <div class="article-end__aside">
-          <span class="article-end__kicker">[ KEY_TAKEAWAY ]</span>
-          <h2 class="article-end__title">Why it <span class="accent">matters</span></h2>
-        </div>
-        <div class="article-end__body">
-          <p>Prompt, context, harness, loop: it's one ladder, not four trends to choose between. The power is real. Climb a rung and the work starts running without us, the scope widening as we go, from a single answer, to a task, to a project, to an operation that runs on its own. We stop trading our time for output and start reviewing results instead.</p>
-          <p>The limit is just as real. A loop only ever amplifies what sits beneath it, so a weak prompt stays weak inside the most advanced one, and a vague definition of done sends it circling, burning budget for nothing. Because it runs while we're away, precision and a few well-placed human checks are the whole game. Knowing what to hand over, and where to keep a hand on it, is a product skill more than a technical one, and the good news is that it can be learnt.</p>
-        </div>
-        <div class="article-end__cta">
-          <p class="article-end__ctalabel">Interested in training?</p>
-          <a class="ret-btn ret-btn--primary ret-btn--md" href="/upskilling/">Explore RET Upskilling <span class="ret-btn__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7"/><path d="M8 7h9v9"/></svg></span></a>
         </div>
       </div>
-    </section>
-  </div>
-</main>
+    </article>
+  </main>
 
-<footer class="footer footer--slim"><div class="footer__legal">
-    <span>RET Consulting SRL</span>
-    <a href="/legal/">Legal information</a>
-    <a href="https://retconsulting.be/">retconsulting.be</a>
-  </div></footer>
+  <footer class="rc-footer">
+    <div class="rc-shell">
+      <div class="rc-footer__grid">
+        <div class="rc-stack">
+          <a class="rc-wordmark" href="/">
+            <img class="rc-wordmark__glyph" src="/assets/img/ret-mark.svg" alt="" width="22" height="22">
+            <span class="rc-wordmark__text">RET <span>Consulting</span></span>
+          </a>
+          <p class="rc-footer__blurb">Independent product owner and business analyst, based in Belgium. From business need to delivered product.</p>
+        </div>
+        <div>
+          <h2 class="rc-footer__title">Services</h2>
+          <a class="rc-footer__link" href="/advisory/">RET Advisory</a>
+          <a class="rc-footer__link" href="/studio/">RET Studio</a>
+          <a class="rc-footer__link" href="/learning/">RET Learning</a>
+        </div>
+        <div>
+          <h2 class="rc-footer__title">Work</h2>
+          <a class="rc-footer__link" href="/studio/portfolio/">Portfolio</a>
+          <a class="rc-footer__link" href="/dueday/">dueday</a>
+          <a class="rc-footer__link" href="/about/">About</a>
+          <a class="rc-footer__link" href="/blog/">Blog</a>
+        </div>
+        <div>
+          <h2 class="rc-footer__title">Elsewhere</h2>
+          <a class="rc-footer__link" href="https://www.linkedin.com/in/retbaz">LinkedIn</a>
+          <a class="rc-footer__link" href="mailto:retbaz@retconsulting.be">retbaz@retconsulting.be</a>
+        </div>
+      </div>
+      <div class="rc-footer__bottom">
+        <span>© 2026 RET Consulting SRL</span>
+        <a href="/legal/">Legal information</a>
+        <a href="/legal/#privacy">Privacy</a>
+      </div>
+    </div>
+  </footer>
 
-<script>
-  // Scroll-reveal: fades/rises .reveal and .reveal-group elements into place once, on first intersect
-  (function () {
-    if (!document.documentElement.classList.contains('reveal-on')) return;
-    var els = document.querySelectorAll('.reveal,.reveal-group');
-    if (!els.length) return;
-    var io = new IntersectionObserver(function (entries) {
-      entries.forEach(function (entry) {
-        if (!entry.isIntersecting) return;
-        var el = entry.target;
-        el.style.willChange = 'opacity,transform';
-        el.classList.add('is-in');
-        el.addEventListener('transitionend', function h() { el.style.willChange = ''; el.removeEventListener('transitionend', h); });
-        io.unobserve(el);
-      });
-    }, { threshold: 0, rootMargin: '0px 0px -12% 0px' });
-    els.forEach(function (el) { io.observe(el); });
+  <script>
+  (function(){
+    var h=document.querySelector('.rc-header');
+    var b=document.querySelector('.rc-navtoggle');
+    if(!h||!b)return;
+    var close=function(){h.classList.remove('is-open');b.setAttribute('aria-expanded','false');};
+    b.addEventListener('click',function(){
+      var open=h.classList.toggle('is-open');
+      b.setAttribute('aria-expanded',open?'true':'false');
+    });
+    document.addEventListener('keydown',function(e){if(e.key==='Escape')close();});
+    document.addEventListener('click',function(e){
+      if(h.classList.contains('is-open')&&!h.contains(e.target))close();
+    });
   })();
-</script>
-<script>
-  // Context-window gauge: fills toward 100%, holds there for a second as "Compacting…"
-  // (echoing the compression the article describes), then resets and loops. The percentage
-  // number is driven by the same value as the bar's width, so they can't drift apart.
-  (function () {
-    var fill = document.querySelector('.ctxwin__gauge-fill');
-    var capnum = document.querySelector('.ctxwin__capnum');
-    var status = document.querySelector('.ctxwin__status');
-    if (!fill || !capnum || !status) return;
-    if (matchMedia('(prefers-reduced-motion: reduce)').matches) return; // CSS fallback: static bar, "Fixed size" label
-    fill.style.animation = 'none';
-    var START = 6, GROW_MS = 3400, HOLD_MS = 1000, RESET_MS = 550;
-    function easeOutCubic(p) { return 1 - Math.pow(1 - p, 3); }
-    function setPct(p) { fill.style.width = p + '%'; capnum.textContent = Math.round(p) + '%'; }
-    function grow() {
-      var t0 = null;
-      function step(ts) {
-        if (!t0) t0 = ts;
-        var p = Math.min((ts - t0) / GROW_MS, 1);
-        setPct(START + easeOutCubic(p) * (100 - START));
-        if (p < 1) requestAnimationFrame(step); else hold();
-      }
-      requestAnimationFrame(step);
-    }
-    function hold() {
-      setPct(100);
-      status.textContent = 'Compacting...';
-      status.classList.add('is-on');
-      setTimeout(reset, HOLD_MS);
-    }
-    function reset() {
-      status.classList.remove('is-on');
-      status.textContent = '';
-      var t0 = null;
-      function step(ts) {
-        if (!t0) t0 = ts;
-        var p = Math.min((ts - t0) / RESET_MS, 1);
-        setPct(100 + (START - 100) * p);
-        if (p < 1) requestAnimationFrame(step); else grow();
-      }
-      requestAnimationFrame(step);
-    }
-    setPct(START);
-    grow();
-  })();
-</script>
-<script>
-(function () {
-  if (!matchMedia('(hover: hover) and (pointer: fine)').matches) return;
-  if (matchMedia('(prefers-reduced-motion: reduce)').matches) return;
-  var el = null, raf = 0, ev = null;
-  function reset(n) { if (n) { n.style.setProperty('--rtx', '0deg'); n.style.setProperty('--rty', '0deg'); } }
-  function apply() {
-    raf = 0;
-    if (!el || !ev) return;
-    var r = el.getBoundingClientRect();
-    var amp = parseFloat(getComputedStyle(el).getPropertyValue('--tilt-amp')) || 2;
-    var px = (ev.clientX - r.left) / r.width - 0.5;
-    var py = (ev.clientY - r.top) / r.height - 0.5;
-    el.style.setProperty('--rtx', (py * 2 * amp).toFixed(2) + 'deg');
-    el.style.setProperty('--rty', (px * -2 * amp).toFixed(2) + 'deg');
-  }
-  document.addEventListener('pointermove', function (e) {
-    var t = e.target.closest ? e.target.closest('[data-tilt]') : null;
-    if (t && t.classList.contains('is-lifted')) t = null;
-    if (t !== el) { reset(el); el = t; }
-    if (!el) return;
-    ev = e;
-    if (!raf) raf = requestAnimationFrame(apply);
-  }, { passive: true });
-  document.addEventListener('pointerout', function (e) {
-    if (el && !e.relatedTarget) { reset(el); el = null; }
-  }, { passive: true });
-})();
-</script>
-<script>
-(function () {
-  if (matchMedia('(hover: hover) and (pointer: fine)').matches) return; // desktop: native hover
-  var cur = null;
-  function clear() { if (cur) { cur.classList.remove('is-tapped'); cur = null; } }
-  document.addEventListener('click', function (e) {
-    var t = e.target.closest ? e.target.closest('[data-tip]') : null;
-    if (!t) { clear(); return; }
-    if (t === cur) { clear(); return; }
-    clear(); cur = t; t.classList.add('is-tapped');
-  }, true);
-  window.addEventListener('scroll', clear, { passive: true });
-})();
-</script>
+  </script>
 </body>
 </html>

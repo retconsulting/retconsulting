@@ -1,0 +1,18 @@
+/* RET Consulting: Atmospheric Utility · Motion
+   Motion explains change; it never performs. Animate transform + opacity only.
+   Control feedback < 200ms, context transitions < 400ms. Respect reduced motion. */
+:root{
+  --motion-instant:0ms; /* @kind other */
+  --motion-fast:120ms; /* @kind other */      /* hover, small state */
+  --motion-control:180ms; /* @kind other */   /* control transition */
+  --motion-layer:280ms; /* @kind other */     /* sheet / modal enter */
+  --motion-exit:220ms; /* @kind other */      /* sheet / modal exit */
+  --motion-context:360ms; /* @kind other */   /* large contextual transition (max) */
+
+  --ease-standard:cubic-bezier(0.2,0,0,1); /* @kind other */
+  --ease-enter:cubic-bezier(0.16,1,0.3,1); /* @kind other */
+  --ease-exit:cubic-bezier(0.4,0,1,1); /* @kind other */
+}
+@media (prefers-reduced-motion:reduce){
+  :root{ --motion-fast:0ms; /* @kind other */ --motion-control:0ms; /* @kind other */ --motion-layer:120ms; /* @kind other */ --motion-exit:120ms; /* @kind other */ --motion-context:120ms; /* @kind other */ }
+}

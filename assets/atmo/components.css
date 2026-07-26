@@ -1,0 +1,266 @@
+/* RET Consulting - Atmospheric Utility - Component CSS
+   Ported verbatim from the React sources in ../Atmospheric/components
+   (see _spec/CONTRACT.md section 4). Do not restyle, reorder or "improve"
+   ported rules. Permitted deviations are documented inline where they occur. */
+
+/* ---- core/Button.jsx (DS v0.3 control revision) ----
+   Re-ported after v0.3 rebuilt every control to one grammar. What changed
+   here: secondary is now white + hairline + --elev-line rather than a grey
+   fill, and it is the DS's default look for any non-primary action; outline
+   is kept for tonal surfaces (this site uses it inside the ink panels);
+   subtle takes over the old tonal fill; gap 8 -> 7, standard padding 16 ->
+   15, compact 12 -> 11, large font 16 -> 15, press 0.98 -> 0.985, disabled
+   .45 -> .42, plus letter-spacing and the authored focus ring.
+   The action / action-soft variants are ported but unused: the azure ramp is
+   opt-in and nothing on this site is a conversion or commitment action in the
+   DS's sense. */
+.au-btn{display:inline-flex;align-items:center;justify-content:center;gap:7px;border:1px solid transparent;border-radius:var(--radius-control);font-family:var(--font-sans);font-weight:550;letter-spacing:-.005em;cursor:pointer;white-space:nowrap;text-decoration:none;transition:background var(--motion-fast) var(--ease-standard),border-color var(--motion-fast) var(--ease-standard),box-shadow var(--motion-fast) var(--ease-standard),transform var(--motion-fast) var(--ease-standard)}
+.au-btn:active:not(:disabled){transform:scale(.985)}
+.au-btn:focus-visible{outline:2px solid var(--focus-ring);outline-offset:2px}
+.au-btn:disabled{cursor:default;opacity:.42}
+.au-btn--compact{height:32px;padding:0 11px;font-size:13px}
+.au-btn--standard{height:40px;padding:0 15px;font-size:14px}
+.au-btn--large{height:48px;padding:0 20px;font-size:15px}
+.au-btn--block{width:100%}
+.au-btn--pill{border-radius:var(--radius-full)}
+.au-btn--primary{background:var(--accent);color:var(--text-on-signal)}
+.au-btn--primary:hover:not(:disabled){background:var(--accent-hover)}
+.au-btn--action{background:var(--action);color:var(--text-on-action)}
+.au-btn--action:hover:not(:disabled){background:var(--action-hover)}
+.au-btn--action-soft{background:var(--action-soft);color:var(--action-text)}
+.au-btn--action-soft:hover:not(:disabled){filter:brightness(.97)}
+.au-btn--secondary{background:var(--surface);color:var(--text-primary);border-color:var(--border-subtle);box-shadow:var(--elev-line)}
+.au-btn--secondary:hover:not(:disabled){background:var(--surface-subtle);border-color:var(--border-strong)}
+.au-btn--outline{background:transparent;color:var(--text-primary);border-color:var(--border-strong)}
+.au-btn--outline:hover:not(:disabled){background:var(--surface-subtle)}
+.au-btn--subtle{background:var(--surface-subtle);color:var(--text-primary)}
+.au-btn--subtle:hover:not(:disabled){background:var(--surface-strong)}
+.au-btn--ghost{background:transparent;color:var(--text-secondary)}
+.au-btn--ghost:hover:not(:disabled){background:var(--surface-subtle);color:var(--text-primary)}
+.au-btn--danger{background:var(--danger-soft);color:var(--danger-strong)}
+.au-btn--danger:hover:not(:disabled){filter:brightness(.97)}
+.au-btn--danger-strong{background:var(--danger-strong);color:#fff}
+.au-btn--danger-strong:hover:not(:disabled){filter:brightness(.92)}
+.au-btn__spin{width:14px;height:14px;border-radius:50%;border:2px solid currentColor;border-top-color:transparent;animation:au-spin .7s linear infinite}
+@keyframes au-spin{to{transform:rotate(360deg)}}
+
+/* ---- Permitted deviation (CONTRACT §4): anchor-as-button reset ---- */
+.au-btn{-webkit-appearance:none;appearance:none}
+a.au-btn:hover{text-decoration:none}
+a.au-btn--primary:hover{color:var(--text-on-signal)}
+a.au-btn--outline:hover,a.au-btn--secondary:hover{color:var(--text-primary)}
+
+/* ---- core/Badge.jsx (DS v0.3: one chip geometry) ----
+   v0.3 gave Badge and Tag a single shared chip: fixed 20px height, radius
+   --radius-chip (7px, was the full pill), 12px/600, 7px side padding, and
+   dedicated --chip-* surfaces that stay legible on white, tonal and selected
+   surfaces alike instead of aliasing a --surface token. Badge carries state,
+   Tag carries category, and they can no longer drift apart.
+   The shared .au-chip base is kept as its own class, exactly as the DS has
+   it, because the site now carries both primitives: Badge for state, Tag for
+   category. .au-badge remains an alias of the base so existing state chips
+   need no markup change. */
+.au-chip,.au-badge{display:inline-flex;width:fit-content;align-self:flex-start;align-items:center;gap:5px;height:20px;padding:0 7px;border:1px solid transparent;border-radius:var(--radius-chip);font:600 12px/1 var(--font-sans);letter-spacing:-.002em}
+.au-chip--pill,.au-badge--pill{border-radius:var(--radius-full);padding:0 9px}
+.au-chip--lg,.au-badge--lg{height:24px;padding:0 9px;font-size:13px}
+.au-badge--neutral{background:var(--chip-bg);color:var(--text-secondary);border-color:var(--chip-border)}
+.au-badge--signal{background:var(--chip-bg-strong);color:var(--text-primary);border-color:var(--chip-border)}
+.au-badge--action{background:var(--action-soft);color:var(--action-text)}
+.au-badge--outline{background:var(--surface);border-color:var(--chip-border);color:var(--text-secondary)}
+.au-badge--danger{background:var(--danger-soft);color:var(--danger-strong)}
+.au-badge--warning{background:var(--warning-soft);color:var(--warning-strong)}
+.au-badge--info{background:var(--info-soft);color:var(--info-strong)}
+.au-badge--success{background:var(--success-soft);color:var(--success-strong)}
+.au-badge__dot,.au-chip__dot{width:6px;height:6px;border-radius:50%;background:currentColor;flex:none}
+.au-badge svg,.au-chip svg{width:13px;height:13px;flex:none}
+
+/* ---- core/Tag.jsx ----
+   Content classification, on the same chip geometry as Badge. One hue is one
+   category, four hues maximum in any one grouping. The three practice hues
+   are locked to their silk family by the token file, so a tag and a field
+   describing the same service can never disagree. */
+.au-tag--neutral{background:var(--chip-bg);color:var(--tag-neutral-fg);border-color:var(--chip-border)}
+.au-tag--pink{background:var(--tag-pink-bg);color:var(--tag-pink-fg)}
+.au-tag--blue{background:var(--tag-blue-bg);color:var(--tag-blue-fg)}
+.au-tag--amber{background:var(--tag-amber-bg);color:var(--tag-amber-fg)}
+.au-tag--green{background:var(--tag-green-bg);color:var(--tag-green-fg)}
+.au-tag--violet{background:var(--tag-violet-bg);color:var(--tag-violet-fg)}
+.au-tag--cyan{background:var(--tag-cyan-bg);color:var(--tag-cyan-fg)}
+.au-tag--advisory{background:var(--tag-advisory-bg);color:var(--tag-advisory-fg)}
+.au-tag--studio{background:var(--tag-studio-bg);color:var(--tag-studio-fg)}
+.au-tag--upskilling{background:var(--tag-upskilling-bg);color:var(--tag-upskilling-fg)}
+
+/* ---- Permitted deviation (build correction 6): badges must not wrap ----
+   The ported CSS has no white-space control, so a longer label like "On the
+   App Store" reflows into a 3-line ~54px block at 375px instead of staying
+   a single-line pill. */
+.au-badge{white-space:nowrap}
+
+/* ---- core/Card.jsx ---- */
+.au-card{background:var(--surface);border:1px solid var(--border-subtle);border-radius:var(--radius-card);padding:var(--pad-card);display:flex;flex-direction:column;gap:var(--space-3)}
+.au-card--tonal{background:var(--surface-subtle);border-color:transparent}
+.au-card--interactive{cursor:pointer;transition:border-color var(--motion-fast) var(--ease-standard),background var(--motion-fast) var(--ease-standard)}
+.au-card--interactive:hover{border-color:var(--border-strong)}
+.au-card--selected{background:var(--accent-soft);border-color:var(--accent-graphic)}
+.au-card__head{display:flex;align-items:flex-start;gap:12px}
+.au-card__icon{color:var(--accent-text);flex:none;margin-top:2px}
+.au-card__title{font:var(--title-weight) var(--title-size)/var(--title-line) var(--font-sans);letter-spacing:var(--title-track);color:var(--text-primary)}
+.au-card__meta{font:var(--meta-weight) var(--meta-size)/var(--meta-line) var(--font-sans);letter-spacing:var(--meta-track);color:var(--text-tertiary)}
+.au-card__body{font:var(--body-sm-weight) var(--body-sm-size)/var(--body-sm-line) var(--font-sans);color:var(--text-secondary)}
+.au-card__actions{display:flex;gap:8px;margin-top:auto;padding-top:var(--space-2)}
+
+/* ---- forms/Input.jsx (FIELD_CSS) ---- */
+.au-field{display:flex;flex-direction:column;gap:6px;font-family:var(--font-sans)}
+.au-field__label{font:var(--label-weight) var(--label-size)/var(--label-line) var(--font-sans);color:var(--text-primary)}
+.au-field__help{font:var(--meta-weight) var(--meta-size)/var(--meta-line) var(--font-sans);color:var(--text-secondary)}
+.au-field__help--error{color:var(--danger-strong)}
+.au-field__box{display:flex;align-items:center;gap:8px;height:44px;padding:0 12px;background:var(--surface);border:1px solid var(--border-strong);border-radius:var(--radius-control);transition:border-color var(--motion-fast) var(--ease-standard)}
+.au-field__box:focus-within{outline:2px solid var(--focus-ring);outline-offset:2px}
+.au-field__box--error{border-color:var(--danger-strong)}
+.au-field__box--disabled{background:var(--surface-subtle);opacity:.6}
+.au-field__input{flex:1;min-width:24px;border:0;outline:0;background:transparent;font:var(--body-sm-weight) 14px/20px var(--font-sans);color:var(--text-primary)}
+.au-field__input::placeholder{color:var(--text-tertiary)}
+.au-field__affix{color:var(--text-tertiary);display:flex;flex:none}
+
+/* ---- forms/Select.jsx ---- */
+.au-select{appearance:none;-webkit-appearance:none;flex:1;border:0;outline:0;background:transparent;font:var(--body-sm-weight) 14px/20px var(--font-sans);color:var(--text-primary);cursor:pointer}
+.au-select-chev{flex:none;color:var(--text-tertiary);pointer-events:none;margin-left:-4px}
+
+/* ---- structure/Table.jsx ---- */
+.au-table{width:100%;border-collapse:collapse;background:var(--surface);font-family:var(--font-sans)}
+.au-table--bounded{border:1px solid var(--border-subtle);border-radius:var(--radius-card);overflow:hidden}
+.au-table table{width:100%;border-collapse:collapse}
+.au-table th{font:500 12px/16px var(--font-sans);letter-spacing:.01em;color:var(--text-secondary);text-align:left;padding:10px 16px;border-bottom:1px solid var(--border-subtle);text-transform:uppercase}
+.au-table td{font:400 14px/20px var(--font-sans);color:var(--text-primary);padding:0 16px;border-bottom:1px solid var(--border-subtle);height:56px}
+.au-table--compact td{height:48px}
+.au-table tr:last-child td{border-bottom:0}
+.au-table .num{text-align:right;font-variant-numeric:tabular-nums}
+.au-table tbody tr{transition:background var(--motion-fast) var(--ease-standard)}
+.au-table tbody tr:hover{background:var(--surface-subtle)}
+
+/* ---- feedback/InlineMessage.jsx (MSG_CSS) ---- */
+.au-msg{display:flex;gap:10px;padding:12px 14px;border-radius:var(--radius-control);font-family:var(--font-sans);align-items:flex-start}
+.au-msg__icon{flex:none;margin-top:1px}
+.au-msg__body{flex:1;display:flex;flex-direction:column;gap:2px}
+.au-msg__title{font:550 14px/20px var(--font-sans)}
+.au-msg__text{font:400 13px/18px var(--font-sans)}
+.au-msg__action{align-self:flex-start;margin-top:4px;border:0;background:transparent;padding:0;font:550 13px/16px var(--font-sans);color:inherit;text-decoration:underline;cursor:pointer}
+.au-msg--danger{background:var(--danger-soft);color:var(--danger-strong)}
+.au-msg--warning{background:var(--warning-soft);color:var(--warning-strong)}
+.au-msg--info{background:var(--info-soft);color:var(--info-strong)}
+.au-msg--success{background:var(--success-soft);color:var(--success-strong)}
+.au-msg--neutral{background:var(--surface-subtle);color:var(--text-primary)}
+
+/* ---- patterns/GradientCard.jsx (tile + gradient-card selectors) ----
+   Deviation (CONTRACT §4): the GRAIN constant is interpolated via ${GRAIN} in the JS
+   source; here it is inlined as its literal, unescaped data-URI value. */
+.au-tile{position:relative;border-radius:var(--radius-card);overflow:hidden;isolation:isolate;display:flex;align-items:center;justify-content:center;padding:28px;text-align:center;container-type:inline-size}
+.au-tile--square{aspect-ratio:1}
+.au-tile--wide{aspect-ratio:16/10}
+.au-tile--tall{aspect-ratio:4/5}
+/* ---- atmosphere/SilkField.jsx (DS v0.2) -------------------------------
+   Ported from the component's CSS constant, layer for layer and value for
+   value: base -> ribbon A (light) -> ribbon B (light + fold shade) -> bloom
+   -> grain. Blur lives in the field only, never on content, and no layer
+   uses a blend mode except grain. Deviation from the source: the halftone
+   and veil layers are not ported, and the field is applied directly to the
+   host element rather than nested as its own absolutely-positioned box, so
+   the static markup carries five spans instead of a wrapper plus five.
+   The halftone variant is deliberately absent: the DS allows one per view
+   and nothing on this site has earned it yet.
+   data-palette resolves the five stops from the service mapping, so no page
+   hand-picks a hue: Advisory = jade, Studio = blossom, Upskilling = iris. */
+.au-silk{position:relative;overflow:hidden;isolation:isolate;background:var(--sk-5)}
+.au-silk[data-palette="advisory"]{--sk-1:var(--silk-advisory-1);--sk-2:var(--silk-advisory-2);--sk-3:var(--silk-advisory-3);--sk-4:var(--silk-advisory-4);--sk-5:var(--silk-advisory-5)}
+.au-silk[data-palette="studio"]{--sk-1:var(--silk-studio-1);--sk-2:var(--silk-studio-2);--sk-3:var(--silk-studio-3);--sk-4:var(--silk-studio-4);--sk-5:var(--silk-studio-5)}
+.au-silk[data-palette="upskilling"]{--sk-1:var(--silk-upskilling-1);--sk-2:var(--silk-upskilling-2);--sk-3:var(--silk-upskilling-3);--sk-4:var(--silk-upskilling-4);--sk-5:var(--silk-upskilling-5)}
+/* mist is the one palette in the set that the DS maps to no service, which
+   makes it the only DS-legal field for a page that belongs to no practice.
+   /about/ is exactly that case: lending it jade, blossom or iris would file
+   the person under a practice he sits behind rather than inside, and a
+   hand-mixed fourth hue would be decoration, which the hard rules forbid. */
+.au-silk[data-palette="mist"]{--sk-1:var(--silk-mist-1);--sk-2:var(--silk-mist-2);--sk-3:var(--silk-mist-3);--sk-4:var(--silk-mist-4);--sk-5:var(--silk-mist-5)}
+.au-silk__l{position:absolute;pointer-events:none}
+.au-silk__base{inset:-30%;background:
+  radial-gradient(70% 92% at 0% 94%, var(--sk-1) 0%, transparent 62%),
+  radial-gradient(64% 84% at 100% 14%, var(--sk-3) 0%, transparent 60%),
+  radial-gradient(52% 60% at 74% 108%, var(--sk-4) 0%, transparent 56%),
+  radial-gradient(40% 48% at 28% 4%, var(--sk-2) 0%, transparent 60%),
+  linear-gradient(112deg, var(--sk-1) 0%, var(--sk-2) 34%, var(--sk-3) 72%, var(--sk-4) 100%);
+  filter:blur(24px) saturate(1.07) contrast(1.02)}
+.au-silk__rib{inset:-42%}
+.au-silk__rib--a{transform:rotate(-19deg);background:
+  radial-gradient(56% 5.5% at 42% 18%, rgba(255,255,255,.9) 0%, rgba(255,255,255,0) 74%),
+  radial-gradient(46% 3.5% at 56% 34%, rgba(255,255,255,.84) 0%, rgba(255,255,255,0) 76%),
+  radial-gradient(64% 8% at 44% 56%, rgba(255,255,255,.58) 0%, rgba(255,255,255,0) 76%),
+  radial-gradient(38% 3% at 62% 72%, rgba(255,255,255,.66) 0%, rgba(255,255,255,0) 76%),
+  radial-gradient(50% 6% at 50% 92%, rgba(255,255,255,.34) 0%, rgba(255,255,255,0) 76%);
+  filter:blur(7px)}
+.au-silk__rib--b{transform:rotate(13deg);background:
+  radial-gradient(50% 4% at 48% 28%, rgba(255,255,255,.62) 0%, rgba(255,255,255,0) 76%),
+  radial-gradient(46% 3.5% at 39% 46%, rgba(20,24,23,.085) 0%, rgba(20,24,23,0) 78%),
+  radial-gradient(58% 6% at 56% 70%, rgba(20,24,23,.065) 0%, rgba(20,24,23,0) 78%),
+  radial-gradient(42% 3% at 62% 86%, rgba(255,255,255,.46) 0%, rgba(255,255,255,0) 78%);
+  filter:blur(11px)}
+.au-silk__bloom{inset:0;background:radial-gradient(32% 40% at var(--sk-bx,68%) var(--sk-by,44%), rgba(255,255,255,.7) 0%, rgba(255,255,255,.22) 38%, rgba(255,255,255,0) 74%)}
+.au-silk__grain{inset:0;background-image:var(--tex-grain);background-size:160px;opacity:var(--grain-opacity);mix-blend-mode:overlay}
+.au-silk--aurora .au-silk__base{filter:blur(34px) saturate(1.06)}
+.au-silk--aurora .au-silk__rib--a{opacity:.72}
+.au-silk--aurora .au-silk__rib--b{opacity:.5}
+.au-silk--aurora .au-silk__bloom{background:radial-gradient(46% 54% at var(--sk-bx,68%) var(--sk-by,44%), rgba(255,255,255,.78) 0%, rgba(255,255,255,.3) 36%, rgba(255,255,255,0) 76%)}
+/* halftone: the masked dot screen. Ported from SilkField.jsx verbatim, layer
+   and value. It was left out of the first port because nothing had earned it;
+   the DS reserves it for one editorial moment per view, and the long-form
+   article is that moment. The dots layer sits between bloom and grain, which
+   is the order the source declares. */
+.au-silk__dots{inset:0;background-image:var(--tex-halftone);background-size:var(--tex-halftone-size) var(--tex-halftone-size);mix-blend-mode:multiply;opacity:.42;
+  -webkit-mask-image:radial-gradient(104% 104% at 54% 34%, rgba(0,0,0,1) 14%, rgba(0,0,0,0) 68%);
+  mask-image:radial-gradient(104% 104% at 54% 34%, rgba(0,0,0,1) 14%, rgba(0,0,0,0) 68%)}
+.au-silk--halftone .au-silk__base{filter:blur(22px) saturate(1.04)}
+.au-silk--halftone .au-silk__rib--a{opacity:.5}
+.au-silk--halftone .au-silk__rib--b{opacity:.35}
+.au-silk--sheer .au-silk__base{opacity:.82;filter:blur(38px) saturate(1.02)}
+.au-silk--sheer .au-silk__rib--a{opacity:.5}
+.au-silk--sheer .au-silk__rib--b{opacity:.3}
+.au-silk--sheer .au-silk__bloom{background:radial-gradient(60% 66% at 48% 42%, rgba(255,255,255,.92) 0%, rgba(255,255,255,.44) 42%, rgba(255,255,255,0) 78%)}
+@media (prefers-reduced-transparency:reduce){.au-silk__base{filter:none}.au-silk__grain{display:none}}
+.au-tile__headline{position:relative;font:600 clamp(18px,11cqw,40px)/1.14 var(--font-sans);letter-spacing:-.025em;color:var(--atmosphere-on-field);text-wrap:balance}
+.au-tile__headline--ink{color:var(--text-primary)}
+.au-tile__slot{position:relative;width:100%}
+.au-gcard{display:flex;flex-direction:column;gap:14px;font-family:var(--font-sans);text-decoration:none;text-align:left}
+.au-gcard--link{cursor:pointer}
+.au-gcard--link .au-tile{transition:transform var(--motion-control) var(--ease-standard)}
+.au-gcard--link:hover .au-tile{transform:scale(1.01)}
+.au-gcard__kicker{font:var(--meta-weight) var(--meta-size)/var(--meta-line) var(--font-sans);letter-spacing:var(--meta-track);color:var(--text-tertiary)}
+.au-gcard__title{font:var(--title-weight) var(--title-size)/var(--title-line) var(--font-sans);letter-spacing:var(--title-track);color:var(--text-primary)}
+.au-gcard__body{font:400 14px/20px var(--font-sans);color:var(--text-secondary);max-width:46ch}
+.au-gcard__text{display:flex;flex-direction:column;gap:4px}
+
+/* ---- patterns/ChromaticShowcase.jsx ---- */
+.au-cff{background:var(--surface);border:1px solid var(--border-subtle);border-radius:var(--radius-panel);padding:16px;font-family:var(--font-sans)}
+/* v0.2 rebuilt this on SilkField: the hand-rolled __atmo blur is gone, the
+   field is a silk field carrying a __stage, and the focal card takes the
+   --elev-float token instead of a literal shadow. */
+.au-cff__field{border-radius:var(--radius-card);min-height:280px;display:flex}
+.au-cff__stage{position:relative;flex:1;display:flex;align-items:center;justify-content:center;padding:32px}
+.au-cff__echo{position:absolute;width:62%;max-width:420px;border-radius:var(--radius-control);background:rgba(255,255,255,.42);filter:blur(6px);transform:translate(16px,16px);aspect-ratio:2.2}
+.au-cff__focal{position:relative;width:68%;max-width:440px;background:var(--surface);border-radius:var(--radius-card);padding:20px;box-shadow:var(--elev-float)}
+.au-cff__anchor{padding:20px 8px 4px;display:flex;flex-direction:column;gap:4px;max-width:52ch}
+.au-cff__title{font:var(--title-weight) var(--title-size)/var(--title-line) var(--font-sans);letter-spacing:var(--title-track);color:var(--text-primary)}
+.au-cff__copy{font:400 14px/20px var(--font-sans);color:var(--text-secondary)}
+.au-cff__action{margin-top:8px;align-self:flex-start}
+@media (prefers-reduced-transparency:reduce){.au-cff__echo{display:none}}
+
+/* ---- patterns/MediaStoryCard.jsx ---- */
+.au-story{position:relative;border-radius:var(--radius-card);overflow:hidden;background:var(--surface);border:1px solid var(--border-subtle);font-family:var(--font-sans);cursor:pointer;display:flex;flex-direction:column;transition:border-color var(--motion-fast) var(--ease-standard)}
+.au-story:hover{border-color:var(--border-strong)}
+.au-story__media{position:relative;aspect-ratio:16/10;background:var(--surface-strong);overflow:hidden}
+.au-story__media img{width:100%;height:100%;object-fit:cover}
+.au-story__ph{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;color:var(--text-tertiary);font:450 12px/16px var(--font-sans)}
+.au-story__scrim{position:absolute;left:0;right:0;bottom:0;height:45%;background:linear-gradient(180deg,transparent,rgba(20,24,23,.55))}
+.au-story__overlay{position:absolute;left:16px;right:16px;bottom:14px;color:#fff}
+.au-story__text{padding:16px 20px 20px;display:flex;flex-direction:column;gap:4px}
+.au-story__kicker{font:var(--meta-weight) var(--meta-size)/var(--meta-line) var(--font-sans);letter-spacing:var(--meta-track);color:var(--text-tertiary)}
+.au-story__title{font:var(--title-weight) var(--title-size)/var(--title-line) var(--font-sans);letter-spacing:var(--title-track);color:var(--text-primary)}
+.au-story__body{font:400 14px/20px var(--font-sans);color:var(--text-secondary);display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden}
+.au-story__caption{font:var(--meta-weight) var(--meta-size)/var(--meta-line) var(--font-sans);color:var(--text-tertiary);padding-top:4px}

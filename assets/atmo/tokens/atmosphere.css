@@ -1,0 +1,90 @@
+/* RET Consulting: Atmospheric Utility · Atmosphere layer (v0.2)
+   The chromatic *content* engine: silk gradient palettes, screen textures,
+   float elevations, the optional azure action ramp, and soft tag surfaces.
+   Nothing here is a control/state colour except --action-* (opt-in). */
+:root{
+  /* --- Silk palettes: 5 stops, ordered light-carrying → deep.
+     One palette per field. Consumed by SilkField / GradientBanner / covers. --- */
+  --silk-iris-1:#CABDF8; --silk-iris-2:#AAC2F9; --silk-iris-3:#A6DDF7; --silk-iris-4:#F3C2E5; --silk-iris-5:#F7F8FF;
+  --silk-dawn-1:#A9D6F5; --silk-dawn-2:#C8E4FB; --silk-dawn-3:#EAF4FD; --silk-dawn-4:#B6E3EE; --silk-dawn-5:#F7FBFF;
+  --silk-jade-1:#93E7CF; --silk-jade-2:#BEEEDD; --silk-jade-3:#E8F8F2; --silk-jade-4:#9DE3EB; --silk-jade-5:#F7FDFB;
+  --silk-ember-1:#F9C767; --silk-ember-2:#FAA382; --silk-ember-3:#FAE0C2; --silk-ember-4:#FFEBD3; --silk-ember-5:#FFFAF3;
+  --silk-blossom-1:#F8B8E0; --silk-blossom-2:#FFCEC3; --silk-blossom-3:#EBB2F4; --silk-blossom-4:#FFE0EA; --silk-blossom-5:#FFF7FC;
+  --silk-solstice-1:#8CB9EA; --silk-solstice-2:#F6A863; --silk-solstice-3:#FBDCB0; --silk-solstice-4:#EEB4CE; --silk-solstice-5:#FFF7EE;
+  --silk-mist-1:#DCE5F2; --silk-mist-2:#EDF1F7; --silk-mist-3:#F7F9FC; --silk-mist-4:#E1EBF5; --silk-mist-5:#FCFDFE;
+
+  /* Service mapping: RET Advisory = jade · RET Studio = blossom · RET Upskilling = iris */
+  --silk-advisory-1:var(--silk-jade-1); --silk-advisory-2:var(--silk-jade-2); --silk-advisory-3:var(--silk-jade-3); --silk-advisory-4:var(--silk-jade-4); --silk-advisory-5:var(--silk-jade-5);
+  --silk-studio-1:var(--silk-blossom-1); --silk-studio-2:var(--silk-blossom-2); --silk-studio-3:var(--silk-blossom-3); --silk-studio-4:var(--silk-blossom-4); --silk-studio-5:var(--silk-blossom-5);
+  --silk-upskilling-1:var(--silk-iris-1); --silk-upskilling-2:var(--silk-iris-2); --silk-upskilling-3:var(--silk-iris-3); --silk-upskilling-4:var(--silk-iris-4); --silk-upskilling-5:var(--silk-iris-5);
+
+  /* --- Screen textures. Fine grain is mandatory on every silk field. --- */
+  --tex-grain:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.86' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='160' height='160' filter='url(%23n)' opacity='.55'/%3E%3C/svg%3E"); /* @kind other */
+  --tex-halftone:radial-gradient(circle at center, rgba(20,24,23,.46) 44%, rgba(20,24,23,0) 53%); /* @kind other */
+  --tex-halftone-size:3px;
+  --tex-dotgrid:radial-gradient(circle at center, rgba(20,24,23,.062) 1px, rgba(20,24,23,0) 1.2px); /* @kind other */
+  --tex-dotgrid-size:10px;
+
+  --grain-opacity:.11; /* @kind other */      /* silk fields */
+  --grain-opacity-strong:.16; /* @kind other */
+
+  /* --- Ink for objects whose surface is an ALWAYS-WHITE literal (pills, app tiles) because
+     they float on a silk field, which is always light. Deliberately NOT re-declared in the
+     dark block: the surface does not flip, so its foreground must not flip either. --- */
+  --on-light-object:#141817;
+  --on-light-object-soft:#5D6662;
+
+  /* --- Float elevations: for objects sitting ON a chromatic field. --- */
+  --elev-float:0 1px 2px rgba(20,24,23,.05), 0 10px 26px -8px rgba(20,24,23,.14); /* @kind other */
+  --elev-pill:0 1px 3px rgba(20,24,23,.10), 0 14px 30px -12px rgba(20,24,23,.28); /* @kind other */
+
+  /* --- Shell: the desk the app window floats on. --- */
+  --shell-canvas:#EFEFEF;
+  --shell-window:var(--surface);
+  --shell-border:rgba(20,24,23,.07);
+
+  /* --- Azure action ramp (OPT-IN).
+     Ink stays the default interactive colour. Set --accent:var(--action) at the
+     app root, or use variant="action", when a product needs a vivid primary. --- */
+  --azure-600:#0A6EDB; --azure-500:#0A84FF; --azure-400:#3F9DFF; --azure-100:#E7F1FE;
+  --action:var(--azure-500);
+  --action-hover:var(--azure-600);
+  --action-text:var(--azure-600);
+  --action-soft:var(--azure-100);
+  --text-on-action:#FFFFFF;
+
+  /* --- Soft tag surfaces: content classification only, never state. --- */
+  --tag-neutral-bg:var(--chip-bg);  --tag-neutral-fg:var(--gray-600);
+  --tag-pink-bg:#FDE7EF;   --tag-pink-fg:#D6336C;
+  --tag-blue-bg:#E7F1FE;   --tag-blue-fg:#1668C9;
+  --tag-amber-bg:#FDF0DC;  --tag-amber-fg:#A96400;
+  --tag-green-bg:#E4F6EC;  --tag-green-fg:#1F7A4D;
+  --tag-violet-bg:#EFEBFD; --tag-violet-fg:#6941C6;
+  --tag-cyan-bg:#E2F5F7;   --tag-cyan-fg:#12717E;
+
+  /* Practice tags. Each hue is the tag-scale member of that practice's silk family, so a
+     tag and a field describing the same service can never disagree:
+     Advisory = jade -> cyan · Studio = blossom -> pink · Upskilling = iris -> violet. */
+  --tag-advisory-bg:var(--tag-cyan-bg);     --tag-advisory-fg:var(--tag-cyan-fg);
+  --tag-studio-bg:var(--tag-pink-bg);       --tag-studio-fg:var(--tag-pink-fg);
+  --tag-upskilling-bg:var(--tag-violet-bg); --tag-upskilling-fg:var(--tag-violet-fg);
+}
+
+[data-theme="dark"]{
+  --shell-canvas:#08090A;
+  --shell-window:#111213;
+  --shell-border:rgba(255,255,255,.07);
+  --tex-dotgrid:radial-gradient(circle at center, rgba(255,255,255,.055) 1px, rgba(255,255,255,0) 1.2px); /* @kind other */
+  --grain-opacity:.14; /* @kind other */
+  --action:var(--azure-400);
+  --action-hover:#6AB4FF;
+  --action-text:var(--azure-400);
+  --action-soft:#0E2743;
+  --tag-neutral-bg:var(--chip-bg);  --tag-neutral-fg:#AAB2AE;
+  --tag-pink-bg:#33121E;   --tag-pink-fg:#F2789F;
+  --tag-blue-bg:#0E2440;   --tag-blue-fg:#7FB2ED;
+  --tag-amber-bg:#2E2109;  --tag-amber-fg:#E4B15A;
+  --tag-green-bg:#0F2A1B;  --tag-green-fg:#6FCB93;
+  --tag-violet-bg:#1E1738; --tag-violet-fg:#B49BF5;
+  --tag-cyan-bg:#0B2A2E;   --tag-cyan-fg:#6FD3DE;
+}

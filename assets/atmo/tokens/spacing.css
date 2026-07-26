@@ -1,0 +1,30 @@
+/* RET Consulting: Atmospheric Utility · Spacing
+   4px base. Adjacent layout values differ by at least one full token.
+   Internal padding is smaller than the gap separating siblings. 2px is optical-only. */
+:root{
+  --space-0:0;
+  --space-0-5:2px;   /* optical correction only: never layout */
+  --space-1:4px;
+  --space-1-5:6px;
+  --space-2:8px;
+  --space-3:12px;
+  --space-4:16px;
+  --space-5:20px;
+  --space-6:24px;
+  --space-8:32px;
+  --space-10:40px;
+  --space-12:48px;
+  --space-16:64px;
+  --space-20:80px;
+  --space-24:96px;
+  --space-32:128px;
+
+  /* semantic aliases */
+  --pad-control:12px;      /* compact control padding */
+  --pad-control-lg:20px;   /* comfortable control padding */
+  --pad-card:24px;         /* card padding / grid gutter */
+  --pad-card-lg:40px;      /* large card padding */
+  --gutter:24px;
+  --region-gap:48px;       /* page region separation */
+  --section-gap:64px;      /* desktop section separation */
+}

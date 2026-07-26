@@ -1,0 +1,12 @@
+/* RET Consulting: Atmospheric Utility · Radius
+   Softness is structural. Children follow the parent's geometry: a child in a 20px
+   panel uses 12–16px, never 20px, so concentric corners read optically parallel. */
+:root{
+  --radius-chip:7px;         /* badges, tags, tick marks */
+  --radius-control-sm:8px;   /* icon buttons, compact controls, soft icon squares */
+  --radius-control:10px;     /* inputs, standard buttons */
+  --radius-card:16px;        /* cards, grouped settings */
+  --radius-panel:20px;       /* large panels, app window */
+  --radius-sheet:28px;       /* mobile sheets, immersive media */
+  --radius-full:999px;       /* switches, pills, segmented indicators */
+}

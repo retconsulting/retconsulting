@@ -1,17 +1,11 @@
 .DS_Store
 .claude/
+
+# QG local du projet : ne part jamais en ligne
 CLAUDE.md
-AGENTS.md
-BRAND_ARCHITECTURE.md
 
-# v2 design system source (local-only: unlicensed placeholder imagery, build artifacts)
-RET Consulting Design System v2/
+# spécifications internes (voix, services, méthode long format)
+_spec/
 
-# overnight autonomous-loop journal (local-only operational log)
-OVERNIGHT_LOG.md
-
-# product backlog (local-only: internal planning, must never be served on the public site)
-backlog.json
-
-# delegated-work planning notes (local-only, never commit)
-plans/
+# design system source, déposé par Redha : vendored dans assets/atmo/, la source reste locale
+Design System/

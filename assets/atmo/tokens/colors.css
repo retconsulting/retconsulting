@@ -1,0 +1,112 @@
+/* RET Consulting: Atmospheric Utility · Color
+   Neutral by default, vivid by exception. One signal family for all interactive state.
+   Semantic hues appear only when their meaning exists. Atmospheric hues are CONTENT, never state. */
+:root{
+  /* --- Primitive: neutral ramp --- */
+  --gray-0:#FCFCFB; --gray-25:#F7F8F7; --gray-50:#F1F3F2; --gray-100:#E7EBE9;
+  --gray-200:#E9ECEA; --gray-300:#D7DCDA; --gray-500:#7A827E; --gray-600:#5D6662; --gray-900:#141817;
+
+  /* --- Primitive: signal ramp (teal). Re-theme by replacing this whole ramp. --- */
+  --signal-700:#075F58; --signal-600:#087B72; --signal-500:#0D9488;
+  --signal-400:#2DD4BF; --signal-100:#DDF7F2; --signal-on:#F6FBF9;
+
+  /* --- Primitive: semantic --- */
+  --danger-strong:#B4234D;  --danger-soft:#FDE8EF;
+  --warning-strong:#8A5700; --warning-soft:#FFF2D6;
+  --info-strong:#205EA6;    --info-soft:#E8F1FC;
+  --success-strong:#267A4B; --success-soft:#E6F5EC;
+
+  /* --- Semantic: surfaces --- */
+  --canvas:var(--gray-25);
+  --surface:var(--gray-0);
+  --surface-subtle:var(--gray-50);
+  --surface-strong:var(--gray-100);
+
+  /* --- Semantic: text --- */
+  --text-primary:var(--gray-900);
+  --text-secondary:var(--gray-600);
+  --text-tertiary:var(--gray-500);      /* metadata only: never body/help/required */
+  --text-on-signal:var(--gray-25);      /* text on --accent ink fill */
+
+  /* --- Chip surfaces (Badge / Tag).
+     DEDICATED values, deliberately NOT aliases of any --surface-* token: a chip must stay
+     legible on white, tonal and selected surfaces alike, so its separator is a hairline with
+     real contrast rather than a fill that collides with the surface beneath it. --- */
+  --chip-bg:#EDF0EE;
+  --chip-bg-strong:#E1E6E3;
+  --chip-border:#C3CAC7;
+
+  /* --- Semantic: borders --- */
+  --border-subtle:var(--gray-200);
+  --border-strong:var(--gray-300);
+
+  /* --- Semantic: interactive (NEUTRAL INK: no accent hue) ---
+     Controls, selection and focus are ink-neutral so chromatic gradients stay free
+     for content. The signal ramp above remains for charts/spectral surfaces only. */
+  --accent:var(--gray-900);             /* primary interactive fill */
+  --accent-hover:#2A302E;
+  --accent-text:var(--gray-900);
+  --accent-graphic:var(--signal-500);
+  --accent-soft:var(--surface-strong);  /* selected surface (neutral) */
+  --focus-ring:var(--gray-900);
+  --text-on-accent:var(--gray-25);
+
+  /* --- Spectral gradients: illustrative FILLS for graphics, charts, covers and marks.
+     Not surfaces: a panel, card or plan never takes a spectral background; that is the
+     silk field's job. Pick ONE per graphic. --- */
+  --spectral:radial-gradient(circle at 52% 100%, rgba(45,212,191,.82), transparent 42%), linear-gradient(180deg,#0A3230 0%,#0B5E59 58%,#12B8AA 100%); /* @kind other */
+  --spectral-teal:var(--spectral); /* @kind other */
+  --spectral-violet:radial-gradient(circle at 52% 100%, rgba(181,153,246,.8), transparent 42%), linear-gradient(180deg,#1C1136 0%,#3B2478 58%,#7C5CD6 100%); /* @kind other */
+  --spectral-rose:radial-gradient(circle at 52% 100%, rgba(247,163,197,.8), transparent 42%), linear-gradient(180deg,#3A0E22 0%,#7E1F4A 58%,#E05A8C 100%); /* @kind other */
+  --spectral-amber:radial-gradient(circle at 52% 100%, rgba(245,205,138,.8), transparent 42%), linear-gradient(180deg,#33200A 0%,#7A4E12 58%,#D98A1F 100%); /* @kind other */
+  --spectral-green:radial-gradient(circle at 52% 100%, rgba(151,226,143,.8), transparent 42%), linear-gradient(180deg,#0E2A0C 0%,#2E6B29 58%,#52B94A 100%); /* @kind other */
+
+  /* --- Ink and scrim for content sitting ON a silk field. --- */
+  --atmosphere-scrim:rgba(20,24,23,.18); --atmosphere-on-field:#FCFCFB;
+}
+
+/* Dark mode: authored, not inverted. Near-black canvas, tonal surface steps,
+   damped signal, boundaries over shadow.
+   NOTE: the semantic aliases below MUST be re-declared here, not only the primitives.
+   A custom property resolves var() at the element where it is DECLARED, so a `--surface:
+   var(--gray-0)` living on :root would keep resolving to the LIGHT gray-0 inside a
+   [data-theme="dark"] subtree. Re-declaring them makes theming work on any wrapper element
+   (AppFrame theme="dark"), not just on <html>. */
+[data-theme="dark"]{
+  --chip-bg:#242928; --chip-bg-strong:#2E3433; --chip-border:#454B49;
+
+  --gray-0:#181C1B; --gray-25:#0E1211; --gray-50:#1F2423; --gray-100:#272D2B;
+  --gray-200:#2E3533; --gray-300:#3C4441; --gray-500:#8B938F; --gray-600:#AAB2AE; --gray-900:#EEF2F0;
+
+  --signal-700:#3FE3CE; --signal-600:#2DD4BF; --signal-500:#14B8A6;
+  --signal-400:#0D9488; --signal-100:#0E312E; --signal-on:#04201E;
+
+  --danger-strong:#F2789F;  --danger-soft:#3A1420;
+  --warning-strong:#E4B15A; --warning-soft:#33260C;
+  --info-strong:#7FB2ED;    --info-soft:#122236;
+  --success-strong:#6FCB93; --success-soft:#0F281A;
+
+  /* semantic aliases, re-resolved against the dark primitives above */
+  --canvas:var(--gray-25);
+  --surface:var(--gray-0);
+  --surface-subtle:var(--gray-50);
+  --surface-strong:var(--gray-100);
+  --text-primary:var(--gray-900);
+  --text-secondary:var(--gray-600);
+  --text-tertiary:var(--gray-500);
+  --text-on-signal:var(--gray-25);
+  --border-subtle:var(--gray-200);
+  --border-strong:var(--gray-300);
+  --accent:var(--gray-900);
+  --accent-hover:#D8DEDB;
+  --accent-text:var(--gray-900);
+  --accent-graphic:var(--signal-500);
+  --accent-soft:var(--surface-strong);
+  --focus-ring:var(--gray-900);
+  --text-on-accent:var(--gray-25);
+  --atmosphere-scrim:rgba(0,0,0,.28);
+}
+
+/* Inherited text colour is resolved on <body>, i.e. OUTSIDE a themed subtree: so the scope
+   itself must re-apply it, or unstyled text stays dark-on-dark. */
+[data-theme]{color:var(--text-primary)}

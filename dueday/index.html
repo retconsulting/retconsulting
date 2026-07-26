@@ -1,235 +1,293 @@
 <!doctype html>
 <html lang="en">
 <head>
-<meta charset="utf-8"/>
-<meta name="viewport" content="width=device-width,initial-scale=1"/>
-<meta name="format-detection" content="telephone=no"/>
-<title>dueday · your recurring costs, made clear</title>
-<meta name="description" content="dueday gathers your subscriptions, rent and bills on one screen and reminds you before each due date. 100% offline, no account, free. An iOS app by RET Consulting."/>
-<meta name="author" content="RET Consulting SRL"/>
-<link rel="canonical" href="https://retconsulting.be/dueday/"/>
-<link rel="alternate" hreflang="en" href="https://retconsulting.be/dueday/"/>
-<link rel="alternate" hreflang="fr" href="https://retconsulting.be/dueday/fr/"/>
-<link rel="alternate" hreflang="x-default" href="https://retconsulting.be/dueday/"/>
-<meta property="og:type" content="website"/>
-<meta property="og:site_name" content="RET Consulting"/>
-<meta property="og:locale" content="en_GB"/>
-<meta property="og:title" content="dueday · your recurring costs, made clear"/>
-<meta property="og:description" content="Subscriptions, rent, bills: one clear screen, a reminder before every due date. 100% offline, no account, free."/>
-<meta property="og:url" content="https://retconsulting.be/dueday/"/>
-<meta property="og:image" content="https://retconsulting.be/dueday/assets/shot-accueil-og.jpg"/>
-<meta property="og:image:type" content="image/jpeg"/>
-<meta property="og:image:width" content="589"/>
-<meta property="og:image:height" content="1280"/>
-<meta property="og:image:alt" content="The dueday home screen"/>
-<meta name="twitter:card" content="summary"/>
-<meta name="twitter:image:alt" content="The dueday home screen"/>
-<meta name="theme-color" content="#F4F4F7"/>
-<link rel="icon" href="../assets/logo-glyph.svg"/>
-<link rel="icon" href="../assets/logo-glyph-dark.svg" media="(prefers-color-scheme: dark)"/>
-<link rel="apple-touch-icon" href="../assets/apple-touch-icon.png"/>
-<link rel="stylesheet" href="../assets/ds.css?v=20260722p"/>
-<script type="application/ld+json">
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://retconsulting.be/"},{"@type":"ListItem","position":2,"name":"dueday","item":"https://retconsulting.be/dueday/"}]}
-</script>
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "MobileApplication",
-  "name": "dueday",
-  "operatingSystem": "iOS",
-  "applicationCategory": "FinanceApplication",
-  "url": "https://retconsulting.be/dueday/",
-  "installUrl": "https://apps.apple.com/be/app/dueday-co%C3%BBts-r%C3%A9currents/id6779892758",
-  "downloadUrl": "https://apps.apple.com/be/app/dueday-co%C3%BBts-r%C3%A9currents/id6779892758",
-  "image": "https://retconsulting.be/dueday/assets/shot-accueil-og.jpg",
-  "screenshot": ["https://retconsulting.be/dueday/assets/shot-accueil.webp", "https://retconsulting.be/dueday/assets/shot-calendrier.webp", "https://retconsulting.be/dueday/assets/shot-analyse.webp"],
-  "description": "dueday gathers your subscriptions, rent and bills on one screen and reminds you before each due date. 100% offline, no account, free.",
-  "inLanguage": ["en", "fr"],
-  "offers": { "@type": "Offer", "price": "0", "priceCurrency": "EUR" },
-  "publisher": { "@type": "Organization", "name": "RET Consulting SRL", "url": "https://retconsulting.be/", "logo": "https://retconsulting.be/assets/icon-512.png" }
-}
-</script>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="light">
+  <meta name="theme-color" content="#F7F8F7">
+  <meta name="format-detection" content="telephone=no">
+  <title>dueday · your recurring costs, made clear</title>
+  <meta name="description" content="dueday gathers your subscriptions, rent and bills on one screen and reminds you before each due date. 100% offline, no account, free.">
+  <link rel="canonical" href="https://retconsulting.be/dueday/">
+  <link rel="alternate" hreflang="en" href="https://retconsulting.be/dueday/">
+  <link rel="alternate" hreflang="fr" href="https://retconsulting.be/dueday/fr/">
+  <link rel="alternate" hreflang="x-default" href="https://retconsulting.be/dueday/">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="RET Consulting">
+  <meta property="og:locale" content="en_GB">
+  <meta property="og:locale:alternate" content="fr_BE">
+  <meta property="og:title" content="dueday · your recurring costs, made clear">
+  <meta property="og:description" content="Subscriptions, rent, bills: one clear screen, a reminder before every due date. 100% offline, no account, free.">
+  <meta property="og:url" content="https://retconsulting.be/dueday/">
+  <meta property="og:image" content="https://retconsulting.be/dueday/assets/shot-accueil-og.jpg">
+  <meta property="og:image:type" content="image/jpeg">
+  <meta property="og:image:width" content="589">
+  <meta property="og:image:height" content="1280">
+  <meta property="og:image:alt" content="The dueday home screen, showing the next due date, the monthly total and cost cards">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:image:alt" content="The dueday home screen, showing the next due date, the monthly total and cost cards">
+  <link rel="icon" href="/assets/img/logo-glyph.svg" type="image/svg+xml">
+  <link rel="icon" href="/favicon.ico" sizes="32x32">
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+  <link rel="manifest" href="/site.webmanifest">
+  <link rel="stylesheet" href="/assets/site.css?v=20260727y">
+  <script type="application/ld+json">
+  {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://retconsulting.be/"},{"@type":"ListItem","position":2,"name":"dueday","item":"https://retconsulting.be/dueday/"}]}
+  </script>
+  <script type="application/ld+json">
+  {"@context":"https://schema.org","@type":"MobileApplication","name":"dueday","operatingSystem":"iOS","applicationCategory":"FinanceApplication","url":"https://retconsulting.be/dueday/","installUrl":"https://apps.apple.com/be/app/dueday-co%C3%BBts-r%C3%A9currents/id6779892758","downloadUrl":"https://apps.apple.com/be/app/dueday-co%C3%BBts-r%C3%A9currents/id6779892758","image":"https://retconsulting.be/dueday/assets/shot-accueil-og.jpg","screenshot":["https://retconsulting.be/dueday/assets/shot-accueil.webp","https://retconsulting.be/dueday/assets/shot-calendrier.webp","https://retconsulting.be/dueday/assets/shot-analyse.webp"],"description":"dueday gathers your subscriptions, rent and bills on one screen and reminds you before each due date. 100% offline, no account, free.","inLanguage":["en","fr"],"offers":{"@type":"Offer","price":"0","priceCurrency":"EUR"},"publisher":{"@type":"Organization","name":"RET Consulting SRL","url":"https://retconsulting.be/","logo":"https://retconsulting.be/assets/img/icon-512.png"}}
+  </script>
 </head>
-<body class="site">
-<a class="skip-link" href="#main">Skip to content</a>
-
-<header class="subhead">
-  <div class="subhead__inner">
-    <a class="nav__brand" href="/" aria-label="RET Consulting, home">
-      <img class="nav__brand-glyph" src="../assets/logo-mark.svg" alt=""/>
-      <span class="nav__brand-wordmark"><span class="w">RET</span><span class="d">Consulting</span></span>
-    </a>
-    <div class="subhead__right">
-      <div class="langtoggle" role="group" aria-label="Language / Langue">
-        <a class="langtoggle__opt is-active" href="/dueday/" hreflang="en" lang="en" aria-current="true">EN</a>
-        <a class="langtoggle__opt" href="/dueday/fr/" hreflang="fr" lang="fr">FR</a>
+<body>
+  <a class="rc-skip" href="#main">Skip to content</a>
+  <header class="rc-header">
+    <div class="rc-shell rc-header__inner">
+      <a class="rc-wordmark" href="/">
+        <img class="rc-wordmark__glyph" src="/assets/img/ret-mark.svg" alt="" width="22" height="22">
+        <span class="rc-wordmark__text">RET <span>Consulting</span></span>
+      </a>
+      <button class="rc-navtoggle" type="button" aria-expanded="false" aria-controls="navmenu"
+              aria-label="Open menu">
+        <span class="rc-navtoggle__bar" aria-hidden="true"></span>
+        <span class="rc-navtoggle__bar" aria-hidden="true"></span>
+        <span class="rc-navtoggle__bar" aria-hidden="true"></span>
+      </button>
+      <nav class="rc-nav" id="navmenu" aria-label="Main">
+        <a class="rc-nav__link rc-nav__link--offer" data-offer="advisory" href="/advisory/">
+          <span class="rc-navmark"><span class="rc-navmark__ret">RET</span><span class="rc-navmark__word">Advisory</span></span>
+        </a>
+        <a class="rc-nav__link rc-nav__link--offer" data-offer="studio" href="/studio/">
+          <span class="rc-navmark"><span class="rc-navmark__ret">RET</span><span class="rc-navmark__word">Studio</span></span>
+        </a>
+        <a class="rc-nav__link rc-nav__link--offer" data-offer="upskilling" href="/learning/">
+          <span class="rc-navmark"><span class="rc-navmark__ret">RET</span><span class="rc-navmark__word">Learning</span></span>
+        </a>
+        <span class="rc-nav__divider" aria-hidden="true"></span>
+        <a class="rc-nav__link" href="/about/">About</a>
+        <a class="rc-nav__link" href="/blog/">Blog</a>
+      </nav>
+      <div class="rc-langtoggle">
+        <a class="rc-langtoggle__opt is-active" href="/dueday/" hreflang="en" aria-current="true">EN</a>
+        <span class="rc-langtoggle__sep" aria-hidden="true">/</span>
+        <a class="rc-langtoggle__opt" href="/dueday/fr/" hreflang="fr">FR</a>
       </div>
-      <a class="subhead__back" href="/"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5"/><path d="M11 18l-6-6 6-6"/></svg>Back to home</a>
+      <a class="au-btn au-btn--standard au-btn--primary rc-header__cta" href="/#contact">Contact me</a>
     </div>
-  </div>
-</header>
+  </header>
 
-<main id="main" class="dd-main" tabindex="-1">
+  <main id="main">
 
-  <!-- App hero: copy + phone with a cognac glow + floating glass -->
-  <section class="apphero dotfield ret-dotgrid--vignette" aria-label="dueday">
-    <div class="apphero__grid">
-      <div class="apphero__copy">
-        <span class="ret-tag">[iOS APP]</span>
-        <h1>dueday.<br>Your recurring costs, <span class="accent">made clear</span>.</h1>
-        <p>Subscriptions, rent, energy, insurance: dueday gathers them on one readable screen and warns you before each due date. You know exactly what you pay, and when.</p>
-        <div class="apphero__actions">
-          <a class="ret-btn ret-btn--primary ret-btn--md" href="https://apps.apple.com/be/app/dueday-co%C3%BBts-r%C3%A9currents/id6779892758">Download on the App Store <span class="ret-btn__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7"/><path d="M8 7h9v9"/></svg></span></a>
+    <section class="rc-section rc-section--first" id="dueday">
+      <div class="rc-shell">
+        <div class="rc-hero">
+          <div class="rc-hero__copy">
+            <span class="au-badge au-badge--neutral">RET Studio · iOS app</span>
+            <h1 class="rc-hero__title">dueday. Your recurring costs, made clear.</h1>
+            <p class="rc-hero__lead">Subscriptions, rent, energy, insurance: dueday gathers them on one readable screen and warns you before each due date. You know exactly what you pay, and when.</p>
+            <div class="rc-hero__actions">
+              <a class="au-btn au-btn--large au-btn--primary" href="https://apps.apple.com/be/app/dueday-co%C3%BBts-r%C3%A9currents/id6779892758" target="_blank" rel="noopener">
+                Download on the App Store
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7"/><path d="M8 7h9v9"/></svg>
+              </a>
+            </div>
+            <ul class="rc-chips">
+              <li><span class="au-chip au-tag--studio">Free</span></li>
+              <li><span class="au-chip au-tag--studio">Private</span></li>
+              <li><span class="au-chip au-tag--studio">On-device</span></li>
+            </ul>
+            <p class="rc-note">Peace of mind: no more surprises on upcoming costs.</p>
+          </div>
+          <div class="rc-hero__aside">
+            <div class="au-tile au-tile--square au-silk au-silk--aurora" data-palette="studio">
+              <span class="au-silk__l au-silk__base" aria-hidden="true"></span>
+              <span class="au-silk__l au-silk__rib au-silk__rib--a" aria-hidden="true"></span>
+              <span class="au-silk__l au-silk__rib au-silk__rib--b" aria-hidden="true"></span>
+              <span class="au-silk__l au-silk__bloom" aria-hidden="true"></span>
+              <span class="au-silk__l au-silk__grain" aria-hidden="true"></span>
+              <span class="au-tile__headline au-tile__headline--ink">dueday</span>
+              <span class="au-tile__slot">
+                <span class="au-badge au-badge--neutral">A RET Studio product</span>
+              </span>
+            </div>
+            <div class="au-card">
+              <dl class="rc-facts">
+                <dt>Platform</dt>
+                <dd>iOS, on the App Store</dd>
+                <dt>Price</dt>
+                <dd>Free, no time limit on core features</dd>
+                <dt>Data</dt>
+                <dd>100% offline, no account, nothing collected</dd>
+                <dt>Widgets</dt>
+                <dd>Home screen (3 sizes) and lock screen: next due date, monthly total, an agenda of upcoming payments</dd>
+                <dt>Backup</dt>
+                <dd>Export and import a JSON file, wherever you choose. Deleting everything takes one button.</dd>
+                <dt>Personalisation</dt>
+                <dd>4 colour themes, alternative icons, interface in French and English</dd>
+              </dl>
+            </div>
+          </div>
         </div>
       </div>
-      <div class="apphero__visual">
-        <div class="apphero__glow"></div>
-        <div class="apphero__device">
-          <span class="ret-hpill ret-hpill--lift ret-hpill--tilt apphero__pill" style="--tilt:-3deg;--tilt-amp:2.6deg;--tilt-dur:2.4s;animation-delay:-0.4s;top:9%;left:-76px"><span class="ret-hpill__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="m5 12 5 5 9-11"/></svg></span><span>Free</span></span>
-          <span class="ret-hpill ret-hpill--lift ret-hpill--tilt apphero__pill" style="--tilt:2.2deg;--tilt-amp:-2.2deg;--tilt-dur:2.2s;animation-delay:-1.1s;top:41%;left:-62px"><span class="ret-hpill__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="11" width="14" height="9" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></svg></span><span>Private</span></span>
-          <span class="ret-hpill ret-hpill--lift ret-hpill--tilt apphero__pill" style="--tilt:-1.8deg;--tilt-amp:2deg;--tilt-dur:2.6s;animation-delay:-0.7s;top:71%;left:-104px"><span class="ret-hpill__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><rect x="6" y="2.5" width="12" height="19" rx="2.5"/><path d="M11 18.5h2"/></svg></span><span>On-device</span></span>
-          <div class="shot apphero__shot"><img src="assets/shot-accueil.webp" alt="dueday home screen: next due date, monthly total and cost cards" width="589" height="1280" fetchpriority="high"/></div>
+    </section>
+
+    <section class="rc-section" id="promises">
+      <div class="rc-shell">
+        <div class="rc-section__head">
+          <span class="rc-eyebrow">Promises</span>
+          <h2 class="rc-section__title">What dueday does for you.</h2>
         </div>
-        <div class="apphero__float">
-          <span class="cap">Peace of mind</span>
-          <div class="row"><span class="ret-diamond"></span>No more surprises on upcoming costs</div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Promises (feature grid) -->
-  <section class="section dotfield" aria-label="Promises">
-    <div class="section__head"><span class="ret-tag">[PROMISES]</span><h2 class="section__title">What dueday does for you.</h2></div>
-    <div class="features">
-      <article class="feat" data-tilt>
-        <span class="feat__icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l7 3v5c0 4.4-3 7.6-7 9-4-1.4-7-4.6-7-9V6l7-3z"/><path d="m9 12 2 2 4-4"/></svg></span>
-        <h3 class="feat__t">Complete privacy</h3>
-        <p class="feat__d">100% offline: nothing leaves your device. No data collected, ever. Not a single byte goes through a server.</p>
-      </article>
-      <article class="feat" data-tilt>
-        <span class="feat__icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="3.2"/><path d="M6 20a6 6 0 0 1 12 0"/><path d="M4 4l16 16"/></svg></span>
-        <h3 class="feat__t">No account</h3>
-        <p class="feat__d">No signup, no email. Open the app and start.</p>
-      </article>
-      <article class="feat" data-tilt>
-        <span class="feat__icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="9" width="16" height="11" rx="1.5"/><path d="M4 13h16M12 9v11"/><path d="M12 9S10 4.5 7.7 5.6 9 9 12 9zM12 9s2-4.5 4.3-3.4S15 9 12 9z"/></svg></span>
-        <h3 class="feat__t">Free, no limits</h3>
-        <p class="feat__d">Every core feature, free and with no time limit. Only optional, purely cosmetic extras could ever become paid.</p>
-      </article>
-    </div>
-  </section>
-
-  <!-- Screenshot showcase — frameless screenshots on a solid band -->
-  <section class="section band" aria-label="The screens">
-    <div class="section__head"><span class="ret-tag">[THE_SCREENS]</span><h2 class="section__title">Three screens, everything's there.</h2></div>
-    <div class="showcase">
-      <div class="showcase__item">
-        <div class="shot" data-tilt><img src="assets/shot-accueil.webp" alt="dueday home screen" width="589" height="1280" loading="lazy" decoding="async"/></div>
-        <div class="showcase__cap"><span class="ix">Home</span><span class="t">The essentials at a glance</span><span class="d">Your next payments, the monthly total and all your cost cards, sortable by due date, amount, name or category.</span></div>
-      </div>
-      <div class="showcase__item">
-        <div class="shot" data-tilt><img src="assets/shot-calendrier.webp" alt="dueday calendar" width="589" height="1280" loading="lazy" decoding="async"/></div>
-        <div class="showcase__cap"><span class="ix">Calendar</span><span class="t">Every payment on its day</span><span class="d">Each due date pinned to its date, the detail one tap away, and two quiet reminders: the day before and on the day.</span></div>
-      </div>
-      <div class="showcase__item">
-        <div class="shot" data-tilt><img src="assets/shot-analyse.webp" alt="dueday analytics screen" width="589" height="1280" loading="lazy" decoding="async"/></div>
-        <div class="showcase__cap"><span class="ix">Analytics</span><span class="t">Your spending in perspective</span><span class="d">Monthly total, breakdown by category, your top 5 costs, measured against your budget and your income.</span></div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Extras (feature grid) -->
-  <section class="section" aria-label="Also">
-    <div class="section__head"><span class="ret-tag">[ALSO]</span><h2 class="section__title">The little extras.</h2></div>
-    <div class="features">
-      <article class="feat" data-tilt>
-        <span class="feat__icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3.5" y="3.5" width="7" height="7" rx="1.5"/><rect x="13.5" y="3.5" width="7" height="7" rx="1.5"/><rect x="3.5" y="13.5" width="7" height="7" rx="1.5"/><rect x="13.5" y="13.5" width="7" height="7" rx="1.5"/></svg></span>
-        <h3 class="feat__t">Widgets</h3>
-        <p class="feat__d">Home screen (3 sizes) and lock screen: next due date, monthly total, an agenda of upcoming payments.</p>
-      </article>
-      <article class="feat" data-tilt>
-        <span class="feat__icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3 3 8l9 5 9-5-9-5z"/><path d="m3 13 9 5 9-5"/></svg></span>
-        <h3 class="feat__t">Your data is yours</h3>
-        <p class="feat__d">Export and import a JSON backup, wherever you choose. Deleting everything takes one button.</p>
-      </article>
-      <article class="feat" data-tilt>
-        <span class="feat__icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v6M12 15v6M3 12h6M15 12h6m-9-6 3 3m0 6 3 3m-12 0 3-3m0-6L6 6"/></svg></span>
-        <h3 class="feat__t">Made your way</h3>
-        <p class="feat__d">4 colour themes, alternative icons, interface in French and English.</p>
-      </article>
-    </div>
-  </section>
-
-  <!-- Behind the product -->
-  <section class="section band" aria-label="Behind the product">
-    <div class="section__head"><span class="ret-tag">[BEHIND_THE_PRODUCT]</span><h2 class="section__title">A product built end to end.</h2></div>
-    <div class="features">
-      <article class="dd-card" data-tilt><h3>The need</h3><p>Knowing what you pay each month, with no spreadsheet to maintain and no account to create. The brief fit in one sentence: see everything, be warned in time.</p></article>
-      <article class="dd-card" data-tilt><h3>The choices</h3><p>100% offline rather than a server: simpler, more reliable, and privacy is settled by design. No account, no ads, free.</p></article>
-      <article class="dd-card" data-tilt><h3>The delivery</h3><p>Scoping, design, development and App Store prep handled in-house by RET Consulting, from first sketch to final build.</p></article>
-    </div>
-    <p style="max-width:var(--container);margin:24px auto 0;padding-inline:var(--gutter);font-family:var(--font-body);font-size:1rem;color:var(--ink-2);">It's the same work RET Consulting does on client missions: scope, decide, deliver. <a href="/" style="color:var(--cognac-text);">Learn more</a>.</p>
-  </section>
-
-  <!-- Download CTA (dark) -->
-  <section class="section">
-    <div class="appcta">
-      <div class="appcta__dots"></div>
-      <div class="appcta__inner">
-        <div>
-          <span class="ret-tag">[DUEDAY · iOS]</span>
-          <h2>Your recurring costs, <span class="accent">made clear</span>.</h2>
-          <p>100% offline, no account, free. Now on the App Store.</p>
-        </div>
-        <div class="appcta__side">
-          <a class="ret-btn ret-btn--primary ret-btn--md" href="https://apps.apple.com/be/app/dueday-co%C3%BBts-r%C3%A9currents/id6779892758">Download on the App Store <span class="ret-btn__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7"/><path d="M8 7h9v9"/></svg></span></a>
+        <div class="rc-grid rc-grid--3">
+          <article class="au-card">
+            <div class="au-card__head">
+              <span class="au-card__icon" aria-hidden="true">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l7 3.5v5.25c0 4.72-3.03 8.66-7 9.75-3.97-1.09-7-5.03-7-9.75V6.5L12 3z"/><path d="m9.5 12 1.75 1.75L15 10"/></svg>
+              </span>
+              <h3 class="au-card__title">Complete privacy</h3>
+            </div>
+            <p class="au-card__body">100% offline: nothing leaves your device. No data collected, ever. Not a single byte goes through a server.</p>
+          </article>
+          <article class="au-card">
+            <div class="au-card__head">
+              <span class="au-card__icon" aria-hidden="true">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2 4 14h6l-1 8 9-12h-6l1-8z"/></svg>
+              </span>
+              <h3 class="au-card__title">No account</h3>
+            </div>
+            <p class="au-card__body">No signup, no email. Open the app and start.</p>
+          </article>
+          <article class="au-card">
+            <div class="au-card__head">
+              <span class="au-card__icon" aria-hidden="true">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M18.18 8c-3.06 0-4.91 3.5-6.18 6-1.26-2.5-3.11-6-6.17-6a4 4 0 1 0 0 8c3.06 0 4.91-3.5 6.17-6 1.27 2.5 3.12 6 6.18 6a4 4 0 1 0 0-8z"/></svg>
+              </span>
+              <h3 class="au-card__title">Free, no limits</h3>
+            </div>
+            <p class="au-card__body">Every core feature, free and with no time limit. Only optional, purely cosmetic extras could ever become paid.</p>
+          </article>
         </div>
       </div>
+    </section>
+
+    <section class="rc-section rc-section--surface" id="screens">
+      <div class="rc-shell">
+        <div class="rc-section__head">
+          <span class="rc-eyebrow">The screens</span>
+          <h2 class="rc-section__title">Three screens, everything's there.</h2>
+        </div>
+        <div class="rc-grid rc-grid--3">
+          <article class="au-story">
+            <div class="au-story__media">
+              <img src="/dueday/assets/shot-accueil.webp" width="589" height="1280" loading="lazy" decoding="async" alt="The dueday home screen, listing the next due date, the monthly total and cost cards">
+            </div>
+            <div class="au-story__text">
+              <span class="au-story__kicker">Home</span>
+              <h3 class="au-story__title">The essentials at a glance</h3>
+              <p class="au-story__body">Your next payments, the monthly total and all your cost cards, sortable by due date, amount, name or category.</p>
+            </div>
+          </article>
+          <article class="au-story">
+            <div class="au-story__media">
+              <img src="/dueday/assets/shot-calendrier.webp" width="589" height="1280" loading="lazy" decoding="async" alt="The dueday calendar screen, with due dates marked across the month">
+            </div>
+            <div class="au-story__text">
+              <span class="au-story__kicker">Calendar</span>
+              <h3 class="au-story__title">Every payment on its day</h3>
+              <p class="au-story__body">Each due date pinned to its date, the detail one tap away, and two quiet reminders: the day before and on the day.</p>
+            </div>
+          </article>
+          <article class="au-story">
+            <div class="au-story__media">
+              <img src="/dueday/assets/shot-analyse.webp" width="589" height="1280" loading="lazy" decoding="async" alt="The dueday analytics screen, with monthly spend broken down by category">
+            </div>
+            <div class="au-story__text">
+              <span class="au-story__kicker">Analytics</span>
+              <h3 class="au-story__title">Your spending in perspective</h3>
+              <p class="au-story__body">Monthly total, breakdown by category, your top 5 costs, measured against your budget and your income.</p>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="rc-section" id="behind">
+      <div class="rc-shell">
+        <div class="rc-section__head">
+          <span class="rc-eyebrow">Behind the product</span>
+          <h2 class="rc-section__title">A product built end to end.</h2>
+        </div>
+        <div class="au-card au-card--tonal">
+          <dl class="rc-facts">
+            <dt>The need</dt>
+            <dd>Knowing what you pay each month, with no spreadsheet to maintain and no account to create. The brief fit in one sentence: see everything, be warned in time.</dd>
+            <dt>The choices</dt>
+            <dd>100% offline rather than a server: simpler, more reliable, and privacy is settled by design. No account, no ads, free.</dd>
+            <dt>The delivery</dt>
+            <dd>Scoping, design, development and App Store prep handled in-house by RET Consulting, from first sketch to final build.</dd>
+          </dl>
+        </div>
+        <p class="rc-section__lead">It's the same work RET Consulting does on client missions: scope, decide, deliver. <a href="/">Learn more</a>.</p>
+      </div>
+    </section>
+
+    <section class="rc-section" id="download">
+      <div class="rc-shell">
+        <div class="rc-spectral" data-spectral="studio">
+          <div class="rc-spectral__inner">
+            <span class="rc-eyebrow">dueday · iOS</span>
+            <h2 class="rc-spectral__title">Your recurring costs, made clear.</h2>
+            <p class="rc-spectral__copy">100% offline, no account, free. Now on the App Store.</p>
+            <ul class="rc-spectral__list">
+              <li>Free, no time limit on core features</li>
+              <li>100% offline, nothing leaves your device</li>
+              <li>No account needed, ever</li>
+            </ul>
+            <div class="rc-spectral__actions">
+              <a class="au-btn au-btn--large rc-spectral__btn" href="https://apps.apple.com/be/app/dueday-co%C3%BBts-r%C3%A9currents/id6779892758" target="_blank" rel="noopener">
+                Download on the App Store
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7"/><path d="M8 7h9v9"/></svg>
+              </a>
+            </div>
+            <p class="rc-spectral__meta">Available now on the App Store, Belgium.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="rc-footer rc-footer--slim">
+    <div class="rc-shell">
+      <div class="rc-stack">
+        <a class="rc-wordmark" href="/">
+          <img class="rc-wordmark__glyph" src="/assets/img/ret-mark.svg" alt="" width="22" height="22">
+          <span class="rc-wordmark__text">RET <span>Consulting</span></span>
+        </a>
+        <p class="rc-footer__blurb">Independent product owner and business analyst, based in Belgium. From business need to delivered product.</p>
+      </div>
+      <div class="rc-footer__bottom">
+        <span>© 2026 RET Consulting SRL</span>
+        <a href="/legal/">Legal information</a>
+        <a href="/dueday/privacy/">Privacy policy</a>
+        <a href="/dueday/support/">Support</a>
+      </div>
     </div>
-  </section>
+  </footer>
 
-</main>
-
-<footer class="footer footer--slim">
-  <div class="footer__legal">
-    <span>RET Consulting SRL</span>
-    <a href="/legal/">Legal information</a>
-    <a href="/dueday/privacy/">Privacy policy</a>
-    <a href="/dueday/support/">Support</a>
-    <a href="https://retconsulting.be/">retconsulting.be</a>
-  </div>
-</footer>
-
-<script>
-(function () {
-  if (!matchMedia('(hover: hover) and (pointer: fine)').matches) return;
-  if (matchMedia('(prefers-reduced-motion: reduce)').matches) return;
-  var el = null, raf = 0, ev = null;
-  function reset(n) { if (n) { n.style.setProperty('--rtx', '0deg'); n.style.setProperty('--rty', '0deg'); } }
-  function apply() {
-    raf = 0;
-    if (!el || !ev) return;
-    var r = el.getBoundingClientRect();
-    var amp = parseFloat(getComputedStyle(el).getPropertyValue('--tilt-amp')) || 2;
-    var px = (ev.clientX - r.left) / r.width - 0.5;
-    var py = (ev.clientY - r.top) / r.height - 0.5;
-    el.style.setProperty('--rtx', (py * 2 * amp).toFixed(2) + 'deg');
-    el.style.setProperty('--rty', (px * -2 * amp).toFixed(2) + 'deg');
-  }
-  document.addEventListener('pointermove', function (e) {
-    var t = e.target.closest ? e.target.closest('[data-tilt]') : null;
-    if (t && t.classList.contains('is-lifted')) t = null;
-    if (t !== el) { reset(el); el = t; }
-    if (!el) return;
-    ev = e;
-    if (!raf) raf = requestAnimationFrame(apply);
-  }, { passive: true });
-  document.addEventListener('pointerout', function (e) {
-    if (el && !e.relatedTarget) { reset(el); el = null; }
-  }, { passive: true });
-})();
-</script>
+  <script>
+  (function(){
+    var h=document.querySelector('.rc-header');
+    var b=document.querySelector('.rc-navtoggle');
+    if(!h||!b)return;
+    var close=function(){h.classList.remove('is-open');b.setAttribute('aria-expanded','false');};
+    b.addEventListener('click',function(){
+      var open=h.classList.toggle('is-open');
+      b.setAttribute('aria-expanded',open?'true':'false');
+    });
+    document.addEventListener('keydown',function(e){if(e.key==='Escape')close();});
+    document.addEventListener('click',function(e){
+      if(h.classList.contains('is-open')&&!h.contains(e.target))close();
+    });
+  })();
+  </script>
 </body>
 </html>
