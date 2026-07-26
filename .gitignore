@@ -9,3 +9,6 @@ _spec/
 
 # design system source, déposé par Redha : vendored dans assets/atmo/, la source reste locale
 Design System/
+
+# outillage local : portes de QA, sauvegardes, archives v1
+_tools/
