@@ -30,7 +30,7 @@
   <link rel="icon" href="/favicon.ico" sizes="32x32">
   <link rel="apple-touch-icon" href="/apple-touch-icon.png">
   <link rel="manifest" href="/site.webmanifest">
-  <link rel="stylesheet" href="/assets/site.css?v=20260727y">
+  <link rel="stylesheet" href="/assets/site.css?v=20260730a4">
   <script type="application/ld+json">
   {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://retconsulting.be/"},{"@type":"ListItem","position":2,"name":"dueday","item":"https://retconsulting.be/dueday/"}]}
   </script>
@@ -79,7 +79,7 @@
 
     <section class="rc-section rc-section--first" id="dueday">
       <div class="rc-shell">
-        <div class="rc-hero">
+        <div class="rc-hero rc-hero--app">
           <div class="rc-hero__copy">
             <span class="au-badge au-badge--neutral">RET Studio · iOS app</span>
             <h1 class="rc-hero__title">dueday. Your recurring costs, made clear.</h1>
@@ -90,80 +90,40 @@
                 <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7"/><path d="M8 7h9v9"/></svg>
               </a>
             </div>
-            <ul class="rc-chips">
-              <li><span class="au-chip au-tag--studio">Free</span></li>
-              <li><span class="au-chip au-tag--studio">Private</span></li>
-              <li><span class="au-chip au-tag--studio">On-device</span></li>
+            <ul class="rc-featlist">
+              <li class="rc-featlist__row">
+                <span class="rc-iconsq" aria-hidden="true"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l7 3.5v5.25c0 4.72-3.03 8.66-7 9.75-3.97-1.09-7-5.03-7-9.75V6.5L12 3z"/><path d="m9.5 12 1.75 1.75L15 10"/></svg></span>
+                <span class="rc-featlist__text">
+                  <span class="rc-featlist__title">Complete privacy</span>
+                  <span class="rc-featlist__body">100% offline: nothing leaves your device, no data collected, ever.</span>
+                </span>
+              </li>
+              <li class="rc-featlist__row">
+                <span class="rc-iconsq" aria-hidden="true"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2 4 14h6l-1 8 9-12h-6l1-8z"/></svg></span>
+                <span class="rc-featlist__text">
+                  <span class="rc-featlist__title">No account</span>
+                  <span class="rc-featlist__body">No signup, no email. Open the app and start.</span>
+                </span>
+              </li>
+              <li class="rc-featlist__row">
+                <span class="rc-iconsq" aria-hidden="true"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M18.18 8c-3.06 0-4.91 3.5-6.18 6-1.26-2.5-3.11-6-6.17-6a4 4 0 1 0 0 8c3.06 0 4.91-3.5 6.17-6 1.27 2.5 3.12 6 6.18 6a4 4 0 1 0 0-8z"/></svg></span>
+                <span class="rc-featlist__text">
+                  <span class="rc-featlist__title">Free, no limits</span>
+                  <span class="rc-featlist__body">Every core feature, free and with no time limit.</span>
+                </span>
+              </li>
             </ul>
-            <p class="rc-note">Peace of mind: no more surprises on upcoming costs.</p>
           </div>
           <div class="rc-hero__aside">
-            <div class="au-tile au-tile--square au-silk au-silk--aurora" data-palette="studio">
+            <div class="rc-appstage au-silk au-silk--aurora" data-palette="studio">
               <span class="au-silk__l au-silk__base" aria-hidden="true"></span>
               <span class="au-silk__l au-silk__rib au-silk__rib--a" aria-hidden="true"></span>
               <span class="au-silk__l au-silk__rib au-silk__rib--b" aria-hidden="true"></span>
               <span class="au-silk__l au-silk__bloom" aria-hidden="true"></span>
               <span class="au-silk__l au-silk__grain" aria-hidden="true"></span>
-              <span class="au-tile__headline au-tile__headline--ink">dueday</span>
-              <span class="au-tile__slot">
-                <span class="au-badge au-badge--neutral">A RET Studio product</span>
-              </span>
-            </div>
-            <div class="au-card">
-              <dl class="rc-facts">
-                <dt>Platform</dt>
-                <dd>iOS, on the App Store</dd>
-                <dt>Price</dt>
-                <dd>Free, no time limit on core features</dd>
-                <dt>Data</dt>
-                <dd>100% offline, no account, nothing collected</dd>
-                <dt>Widgets</dt>
-                <dd>Home screen (3 sizes) and lock screen: next due date, monthly total, an agenda of upcoming payments</dd>
-                <dt>Backup</dt>
-                <dd>Export and import a JSON file, wherever you choose. Deleting everything takes one button.</dd>
-                <dt>Personalisation</dt>
-                <dd>4 colour themes, alternative icons, interface in French and English</dd>
-              </dl>
+              <img class="rc-appstage__shot" src="/assets/img/dueday.svg" width="428" height="868" decoding="async" fetchpriority="high" alt="The dueday app running on an iPhone: costs against income, the monthly budget, a category breakdown and the top recurring costs.">
             </div>
           </div>
-        </div>
-      </div>
-    </section>
-
-    <section class="rc-section" id="promises">
-      <div class="rc-shell">
-        <div class="rc-section__head">
-          <span class="rc-eyebrow">Promises</span>
-          <h2 class="rc-section__title">What dueday does for you.</h2>
-        </div>
-        <div class="rc-grid rc-grid--3">
-          <article class="au-card">
-            <div class="au-card__head">
-              <span class="au-card__icon" aria-hidden="true">
-                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l7 3.5v5.25c0 4.72-3.03 8.66-7 9.75-3.97-1.09-7-5.03-7-9.75V6.5L12 3z"/><path d="m9.5 12 1.75 1.75L15 10"/></svg>
-              </span>
-              <h3 class="au-card__title">Complete privacy</h3>
-            </div>
-            <p class="au-card__body">100% offline: nothing leaves your device. No data collected, ever. Not a single byte goes through a server.</p>
-          </article>
-          <article class="au-card">
-            <div class="au-card__head">
-              <span class="au-card__icon" aria-hidden="true">
-                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2 4 14h6l-1 8 9-12h-6l1-8z"/></svg>
-              </span>
-              <h3 class="au-card__title">No account</h3>
-            </div>
-            <p class="au-card__body">No signup, no email. Open the app and start.</p>
-          </article>
-          <article class="au-card">
-            <div class="au-card__head">
-              <span class="au-card__icon" aria-hidden="true">
-                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M18.18 8c-3.06 0-4.91 3.5-6.18 6-1.26-2.5-3.11-6-6.17-6a4 4 0 1 0 0 8c3.06 0 4.91-3.5 6.17-6 1.27 2.5 3.12 6 6.18 6a4 4 0 1 0 0-8z"/></svg>
-              </span>
-              <h3 class="au-card__title">Free, no limits</h3>
-            </div>
-            <p class="au-card__body">Every core feature, free and with no time limit. Only optional, purely cosmetic extras could ever become paid.</p>
-          </article>
         </div>
       </div>
     </section>
@@ -172,60 +132,179 @@
       <div class="rc-shell">
         <div class="rc-section__head">
           <span class="rc-eyebrow">The screens</span>
-          <h2 class="rc-section__title">Three screens, everything's there.</h2>
+          <h2 class="rc-section__title">Four views, everything's there.</h2>
         </div>
-        <div class="rc-grid rc-grid--3">
-          <article class="au-story">
-            <div class="au-story__media">
-              <img src="/dueday/assets/shot-accueil.webp" width="589" height="1280" loading="lazy" decoding="async" alt="The dueday home screen, listing the next due date, the monthly total and cost cards">
+        <div class="rc-showcase">
+          <article class="rc-show">
+            <div class="rc-show__stage au-silk au-silk--aurora" data-palette="studio">
+              <span class="au-silk__l au-silk__base" aria-hidden="true"></span>
+              <span class="au-silk__l au-silk__rib au-silk__rib--a" aria-hidden="true"></span>
+              <span class="au-silk__l au-silk__rib au-silk__rib--b" aria-hidden="true"></span>
+              <span class="au-silk__l au-silk__bloom" aria-hidden="true"></span>
+              <span class="au-silk__l au-silk__grain" aria-hidden="true"></span>
+              <img class="rc-show__shot" src="/dueday/assets/feat-total.webp" width="578" height="566" loading="lazy" decoding="async" alt="A dueday tile showing the total of every recurring cost for the month, with the number of costs and categories beneath it.">
             </div>
-            <div class="au-story__text">
-              <span class="au-story__kicker">Home</span>
-              <h3 class="au-story__title">The essentials at a glance</h3>
-              <p class="au-story__body">Your next payments, the monthly total and all your cost cards, sortable by due date, amount, name or category.</p>
-            </div>
-          </article>
-          <article class="au-story">
-            <div class="au-story__media">
-              <img src="/dueday/assets/shot-calendrier.webp" width="589" height="1280" loading="lazy" decoding="async" alt="The dueday calendar screen, with due dates marked across the month">
-            </div>
-            <div class="au-story__text">
-              <span class="au-story__kicker">Calendar</span>
-              <h3 class="au-story__title">Every payment on its day</h3>
-              <p class="au-story__body">Each due date pinned to its date, the detail one tap away, and two quiet reminders: the day before and on the day.</p>
+            <div class="rc-show__text">
+              <span class="rc-show__kicker">Summary</span>
+              <h3 class="rc-show__title">The monthly total</h3>
+              <p class="rc-show__body">Every recurring cost added up, and how many of them there are.</p>
             </div>
           </article>
-          <article class="au-story">
-            <div class="au-story__media">
-              <img src="/dueday/assets/shot-analyse.webp" width="589" height="1280" loading="lazy" decoding="async" alt="The dueday analytics screen, with monthly spend broken down by category">
+          <article class="rc-show">
+            <div class="rc-show__stage au-silk au-silk--aurora" data-palette="studio">
+              <span class="au-silk__l au-silk__base" aria-hidden="true"></span>
+              <span class="au-silk__l au-silk__rib au-silk__rib--a" aria-hidden="true"></span>
+              <span class="au-silk__l au-silk__rib au-silk__rib--b" aria-hidden="true"></span>
+              <span class="au-silk__l au-silk__bloom" aria-hidden="true"></span>
+              <span class="au-silk__l au-silk__grain" aria-hidden="true"></span>
+              <img class="rc-show__shot" src="/dueday/assets/feat-costs.webp" width="590" height="604" loading="lazy" decoding="async" alt="A dueday cost card for a Netflix subscription: its category tag, its price per month, and the day it next falls due.">
             </div>
-            <div class="au-story__text">
-              <span class="au-story__kicker">Analytics</span>
-              <h3 class="au-story__title">Your spending in perspective</h3>
-              <p class="au-story__body">Monthly total, breakdown by category, your top 5 costs, measured against your budget and your income.</p>
+            <div class="rc-show__text">
+              <span class="rc-show__kicker">Your costs</span>
+              <h3 class="rc-show__title">One card per cost</h3>
+              <p class="rc-show__body">Tagged by category, priced per period, counting down to its date.</p>
+            </div>
+          </article>
+          <article class="rc-show">
+            <div class="rc-show__stage au-silk au-silk--aurora" data-palette="studio">
+              <span class="au-silk__l au-silk__base" aria-hidden="true"></span>
+              <span class="au-silk__l au-silk__rib au-silk__rib--a" aria-hidden="true"></span>
+              <span class="au-silk__l au-silk__rib au-silk__rib--b" aria-hidden="true"></span>
+              <span class="au-silk__l au-silk__bloom" aria-hidden="true"></span>
+              <span class="au-silk__l au-silk__grain" aria-hidden="true"></span>
+              <img class="rc-show__shot" src="/dueday/assets/feat-calendar.webp" width="688" height="657" loading="lazy" decoding="async" alt="Three weeks of the dueday calendar, each due date marked on its day by the category icon of the cost it belongs to, with today highlighted.">
+            </div>
+            <div class="rc-show__text">
+              <span class="rc-show__kicker">Calendar</span>
+              <h3 class="rc-show__title">Every payment on its day</h3>
+              <p class="rc-show__body">Pinned to its own day, with two quiet reminders: the day before, and the day itself.</p>
+            </div>
+          </article>
+          <article class="rc-show">
+            <div class="rc-show__stage au-silk au-silk--aurora" data-palette="studio">
+              <span class="au-silk__l au-silk__base" aria-hidden="true"></span>
+              <span class="au-silk__l au-silk__rib au-silk__rib--a" aria-hidden="true"></span>
+              <span class="au-silk__l au-silk__rib au-silk__rib--b" aria-hidden="true"></span>
+              <span class="au-silk__l au-silk__bloom" aria-hidden="true"></span>
+              <span class="au-silk__l au-silk__grain" aria-hidden="true"></span>
+              <img class="rc-show__shot" src="/dueday/assets/feat-analytics.webp" width="579" height="566" loading="lazy" decoding="async" alt="A dueday analytics tile: the share of income taken by all recurring costs, as a percentage above the two amounts it compares.">
+            </div>
+            <div class="rc-show__text">
+              <span class="rc-show__kicker">Analytics</span>
+              <h3 class="rc-show__title">Costs against income</h3>
+              <p class="rc-show__body">What the costs take out of your income, and out of the budget you set.</p>
             </div>
           </article>
         </div>
       </div>
     </section>
 
-    <section class="rc-section" id="behind">
+    <section class="rc-section" id="details">
       <div class="rc-shell">
         <div class="rc-section__head">
-          <span class="rc-eyebrow">Behind the product</span>
-          <h2 class="rc-section__title">A product built end to end.</h2>
+          <span class="rc-eyebrow">Practical</span>
+          <h2 class="rc-section__title">The fact sheet.</h2>
+          <p class="rc-section__lead">What the app runs on, what happens to your data, and what it does once it is on your phone.</p>
         </div>
-        <div class="au-card au-card--tonal">
-          <dl class="rc-facts">
-            <dt>The need</dt>
-            <dd>Knowing what you pay each month, with no spreadsheet to maintain and no account to create. The brief fit in one sentence: see everything, be warned in time.</dd>
-            <dt>The choices</dt>
-            <dd>100% offline rather than a server: simpler, more reliable, and privacy is settled by design. No account, no ads, free.</dd>
-            <dt>The delivery</dt>
-            <dd>Scoping, design, development and App Store prep handled in-house by RET Consulting, from first sketch to final build.</dd>
-          </dl>
+        <div class="rc-specs">
+          <section class="au-set" aria-labelledby="spec-1">
+            <h3 class="au-set__title" id="spec-1">The app</h3>
+            <div class="au-row au-row--noicon">
+              <span class="au-row__text">
+                <span class="au-row__label">Platform</span>
+                <span class="au-row__desc">Native on iPhone, released on the App Store.</span>
+              </span>
+              <span class="au-row__value">iOS</span>
+            </div>
+            <div class="au-row au-row--noicon">
+              <span class="au-row__text">
+                <span class="au-row__label">Price</span>
+                <span class="au-row__desc">Every core feature, with no time limit.</span>
+              </span>
+              <span class="au-row__value">Free</span>
+            </div>
+            <div class="au-row au-row--noicon">
+              <span class="au-row__text">
+                <span class="au-row__label">Languages</span>
+                <span class="au-row__desc">Interface in French and in English.</span>
+              </span>
+              <span class="au-row__value">FR · EN</span>
+            </div>
+            <div class="au-row au-row--noicon">
+              <span class="au-row__text">
+                <span class="au-row__label">Widgets</span>
+                <span class="au-row__desc">Home screen in three sizes, and the lock screen.</span>
+              </span>
+              <span class="au-row__value">Home + lock</span>
+            </div>
+          </section>
+          <section class="au-set" aria-labelledby="spec-2">
+            <h3 class="au-set__title" id="spec-2">Your data</h3>
+            <div class="au-row au-row--noicon">
+              <span class="au-row__text">
+                <span class="au-row__label">Storage</span>
+                <span class="au-row__desc">Everything stays on the device. No server, no account.</span>
+              </span>
+              <span class="au-row__value">On-device</span>
+            </div>
+            <div class="au-row au-row--noicon">
+              <span class="au-row__text">
+                <span class="au-row__label">Collection</span>
+                <span class="au-row__desc">Nothing gathered, nothing sent, nothing shared.</span>
+              </span>
+              <span class="au-row__value">None</span>
+            </div>
+            <div class="au-row au-row--noicon">
+              <span class="au-row__text">
+                <span class="au-row__label">Backup</span>
+                <span class="au-row__desc">Export and import a file, kept wherever you choose.</span>
+              </span>
+              <span class="au-row__value">JSON</span>
+            </div>
+            <div class="au-row au-row--noicon">
+              <span class="au-row__text">
+                <span class="au-row__label">Erasure</span>
+                <span class="au-row__desc">Removing everything takes one button.</span>
+              </span>
+              <span class="au-row__value">One button</span>
+            </div>
+          </section>
+          <section class="au-set" aria-labelledby="spec-3">
+            <h3 class="au-set__title" id="spec-3">Day to day</h3>
+            <div class="au-row au-row--noicon">
+              <span class="au-row__text">
+                <span class="au-row__label">Reminders</span>
+                <span class="au-row__desc">Two per due date: the day before, and the day itself.</span>
+              </span>
+              <span class="au-row__value">D-1 · D-day</span>
+            </div>
+            <div class="au-row au-row--noicon">
+              <span class="au-row__text">
+                <span class="au-row__label">Sorting</span>
+                <span class="au-row__desc">By due date, amount, name or category.</span>
+              </span>
+              <span class="au-row__value">4 ways</span>
+            </div>
+            <div class="au-row au-row--noicon">
+              <span class="au-row__text">
+                <span class="au-row__label">Targets</span>
+                <span class="au-row__desc">Set an income and a monthly budget, then see what the costs take.</span>
+              </span>
+              <span class="au-row__value">Budget · Income</span>
+            </div>
+            <div class="au-row au-row--noicon">
+              <span class="au-row__text">
+                <span class="au-row__label">Themes</span>
+                <span class="au-row__desc">Four colour themes, plus alternative app icons.</span>
+              </span>
+              <span class="au-row__value">4</span>
+            </div>
+          </section>
         </div>
-        <p class="rc-section__lead">It's the same work RET Consulting does on client missions: scope, decide, deliver. <a href="/">Learn more</a>.</p>
+        <div class="rc-doclinks">
+          <a class="au-btn au-btn--standard au-btn--secondary" href="/dueday/privacy/">Read the privacy policy <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h13"/><path d="m12.5 5.5 6.5 6.5-6.5 6.5"/></svg></a>
+          <a class="au-btn au-btn--standard au-btn--secondary" href="/dueday/support/">Get support <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h13"/><path d="m12.5 5.5 6.5 6.5-6.5 6.5"/></svg></a>
+        </div>
       </div>
     </section>
 

@@ -264,3 +264,27 @@ a.au-btn--outline:hover,a.au-btn--secondary:hover{color:var(--text-primary)}
 .au-story__title{font:var(--title-weight) var(--title-size)/var(--title-line) var(--font-sans);letter-spacing:var(--title-track);color:var(--text-primary)}
 .au-story__body{font:400 14px/20px var(--font-sans);color:var(--text-secondary);display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden}
 .au-story__caption{font:var(--meta-weight) var(--meta-size)/var(--meta-line) var(--font-sans);color:var(--text-tertiary);padding-top:4px}
+
+/* ---- structure/SettingsGroup.jsx (SettingsGroup + SettingsRow) ---------
+   Ported from the component's CSS constant, rule for rule and value for
+   value, like SilkField before it. Nothing is site-specific in here; the
+   page-level grid that arranges several groups lives in site.css.
+   Two rules from the source are deliberately kept even though nothing on
+   this site uses them yet, so a future re-vendoring diffs clean:
+   `.au-row--nav` (navigational rows) and `.au-row__chev`.
+   The divider is drawn as a ::before inset to 52px, which is what aligns
+   it with the text column rather than the icon; `.au-row--noicon` pulls it
+   back to 20px for iconless groups. */
+.au-set{background:var(--surface-subtle);border-radius:var(--radius-card);overflow:hidden;font-family:var(--font-sans)}
+.au-set__title{font:var(--label-weight) var(--label-size)/var(--label-line) var(--font-sans);color:var(--text-secondary);padding:16px 20px 8px}
+.au-row{display:flex;align-items:center;gap:12px;min-height:64px;padding:16px 20px;background:transparent;width:100%;border:0;text-align:left;font-family:var(--font-sans);position:relative}
+.au-row--nav{cursor:pointer;transition:background var(--motion-fast) var(--ease-standard)}
+.au-row--nav:hover{background:var(--surface-strong)}
+.au-row + .au-row::before{content:"";position:absolute;top:0;right:20px;left:52px;height:1px;background:var(--border-subtle)}
+.au-row--noicon + .au-row--noicon::before{left:20px}
+.au-row__icon{flex:none;width:20px;color:var(--text-secondary)}
+.au-row__text{flex:1;display:flex;flex-direction:column;gap:2px;min-width:0}
+.au-row__label{font:var(--body-sm-weight) 14px/20px var(--font-sans);color:var(--text-primary);font-weight:500}
+.au-row__desc{font:var(--meta-weight) var(--meta-size)/var(--meta-line) var(--font-sans);color:var(--text-secondary)}
+.au-row__value{font:var(--body-sm-weight) 14px/20px var(--font-sans);color:var(--text-secondary);font-variant-numeric:tabular-nums}
+.au-row__chev{flex:none;color:var(--text-tertiary)}

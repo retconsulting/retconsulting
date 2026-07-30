@@ -1,0 +1,82 @@
+# Safety net for daily AI News briefs (/blog/ai-news/).
+# The gate is the human merge; this check only catches format drift early.
+# The private word list (never committed) comes from the AI_NEWS_BLOCKLIST
+# secret: comma-separated, case-insensitive.
+name: AI News brief check
+on:
+  pull_request:
+    paths:
+      - 'blog/ai-news/index.html'
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: Check the new brief
+        env:
+          BLOCKLIST: ${{ secrets.AI_NEWS_BLOCKLIST }}
+        run: |
+          git diff "origin/${{ github.base_ref }}...HEAD" -- blog/ai-news/index.html > /tmp/brief.diff
+          python3 - <<'PY'
+          import os, re, sys
+
+          diff = open('/tmp/brief.diff', encoding='utf-8').read()
+          added   = [l[1:] for l in diff.splitlines() if l.startswith('+') and not l.startswith('+++')]
+          removed = [l[1:] for l in diff.splitlines() if l.startswith('-') and not l.startswith('---')]
+          fails = []
+
+          # Removals are only expected when the seed Sample entry goes away.
+          structural_removed = [l for l in removed if 'rc-brief' in l or 'rc-briefs' in l]
+          sample_removed = any('b-2026-07-30' in l or '>Sample<' in l for l in removed)
+          if structural_removed and not sample_removed:
+              fails.append('brief markup was removed outside the Sample entry')
+
+          blob = '\n'.join(added)
+
+          if '—' in blob:
+              fails.append('em dash in added content (banned by the voice spec)')
+
+          BANNED = ['leverage','unlock','synergy','world-class','revolutionary','disrupt',
+                    'empower','best-in-class','game changer','seamless','cutting-edge']
+          for w in BANNED:
+              if re.search(r'(?i)' + re.escape(w), blob):
+                  fails.append(f'banned lexicon: "{w}"')
+
+          private = [w.strip() for w in os.environ.get('BLOCKLIST', '').split(',') if w.strip()]
+          if private:
+              for w in private:
+                  if re.search(r'(?i)' + re.escape(w), blob):
+                      # Never echo the matched word: the list is private.
+                      fails.append('a word from the private blocklist appears in the added content')
+                      break
+          else:
+              print('NOTE: AI_NEWS_BLOCKLIST secret not set, private-list check skipped')
+
+          for m in re.finditer(r'rc-brief__title">([^<]*)</h2>', blob):
+              t = m.group(1).strip()
+              if len(t) > 60:
+                  fails.append(f'title is {len(t)} chars (max 60): "{t[:40]}..."')
+
+          for m in re.finditer(r'rc-brief__text">([^<]*)</p>', blob):
+              n = len(m.group(1).split())
+              if n > 80:
+                  fails.append(f'brief body is {n} words (max 80)')
+
+          entries = re.findall(r'<li class="rc-brief"', blob)
+          if entries:
+              if not re.search(r'rc-brief__source"><a href="https?://[^"]+"', blob):
+                  fails.append('new brief has no source link')
+              if not re.search(r'au-tag--neutral">(Models|Products|Research|Regulation|Business|Open source)<', blob):
+                  fails.append('new brief has no category chip from the closed vocabulary')
+              if len(entries) > 2:
+                  fails.append(f'{len(entries)} briefs in one PR (max 2)')
+
+          if fails:
+              print('BRIEF CHECK FAILURES:')
+              for f in fails: print(' -', f)
+              sys.exit(1)
+          print('brief check: OK')
+          PY

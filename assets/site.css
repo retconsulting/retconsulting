@@ -1,4 +1,4 @@
-@import url('/assets/atmo/atmo.css?v=20260727y');
+@import url('/assets/atmo/atmo.css?v=20260730a4');
 
 /* RET Consulting — Atmospheric Utility · Site CSS
    Page shell + every .rc-* class from _spec/CONTRACT.md §5. Values come from the DS
@@ -30,6 +30,27 @@
    touching the other two, which only improve (5.40 canvas, 5.60 surface). */
 :root{--text-tertiary:#5F6864}
 [data-theme="dark"]{--text-tertiary:var(--gray-500)}
+
+/* Shadow for artwork that sits DIRECTLY on a gradient field, where the
+   subject's own silhouette is not its box: the dueday chassis is a rounded
+   rect (rx 63.8) inside a 428x868 viewBox with `fill="none"`, so its four
+   corners are transparent and a box-shadow would trace a rectangle in the
+   empty air around them. `filter: drop-shadow` follows the alpha channel
+   instead, which is the only reason this is a filter and not an elevation
+   token.
+   Two shadows, same split as the DS elevation ramp: a 1px contact edge
+   that keeps the object from looking pasted on, plus the soft cast that
+   carries the lift. drop-shadow takes no spread, so --elev-pill's
+   `0 14px 30px -12px` becomes a shorter blur at the same offset rather
+   than a wider, weaker cloud.
+   A token rather than two literals because /studio/ already carried its
+   own hand-written `0 14px 30px rgba(20,24,23,.20)` on the same artwork,
+   and the dueday hero had none at all — the same phone rendering two
+   different ways on two pages. Both now read from here.
+   Not applied to .rc-show__shot: those crops are opaque rectangles with a
+   CSS radius, so box-shadow already clips to their real shape there. */
+:root{--drop-onfield:drop-shadow(0 1px 2px rgba(20,24,23,.10))
+                     drop-shadow(0 14px 24px rgba(20,24,23,.20))}
 
 /* correction 9 (outline buttons): .au-btn--outline changed background by
    ~1.05:1 on hover, effectively invisible. One full tonal step
@@ -528,6 +549,179 @@ body:has(.rc-lockup__word[data-brand="upskilling"]){--accent-graphic:var(--brand
 .rc-mock__value{font-family:var(--font-mono);font-variant-numeric:tabular-nums;color:var(--text-primary)}
 .rc-mock__meta{font:400 13px/18px var(--font-sans);color:var(--text-secondary);font-variant-numeric:tabular-nums}
 
+/* --- dueday hero (EN + FR): the app-page split --------------------------
+   The aside stops being a stacked square tile + fact card and becomes one
+   full-height aurora field with the phone as its only subject, which is the
+   canonical app-product-page silhouette. The three promise cards fold into
+   a bordered feature register under the CTA, so the first screen carries
+   the whole pitch; the fact card moves to the #details .rc-logi register.
+   Stretch on purpose: the field's height IS the copy column's, so the two
+   columns read as one composed screen, not a column plus a floating card.
+   The wide track goes to the field (the base .rc-hero gives it to the copy)
+   because here the visual is the evidence, not an illustration. The mobile
+   single-column template stays in the base rule's media query; declaring
+   the two-column template only above 1000px keeps this later rule from
+   beating it in the cascade. */
+.rc-hero--app{align-items:stretch}
+@media (min-width:1000px){
+  .rc-hero--app{grid-template-columns:minmax(0,.92fr) minmax(0,1.08fr)}
+}
+/* The feature register borrows .rc-logi's grammar (36px icon square, a
+   title/body pair, hairline dividers inside one bordered panel) at hero
+   scale: 15px titles, tighter rows, no value column. Not .rc-logi__* by
+   name: those rows are sized for a full-width section, and reusing them
+   here would couple the hero to every future register adjustment. */
+.rc-featlist{list-style:none;margin:0;padding:0 var(--space-5);
+  background:var(--surface);border:1px solid var(--border-subtle);
+  border-radius:var(--radius-panel)}
+.rc-featlist__row{display:grid;grid-template-columns:36px minmax(0,1fr);
+  align-items:center;gap:var(--space-4);padding:var(--space-4) 0}
+.rc-featlist__row + .rc-featlist__row{border-top:1px solid var(--border-subtle)}
+.rc-featlist__text{display:flex;flex-direction:column;gap:2px;min-width:0}
+.rc-featlist__title{font:var(--title-weight) 15px/22px var(--font-sans);letter-spacing:var(--title-track);color:var(--text-primary)}
+.rc-featlist__body{font:var(--body-sm-weight) var(--body-sm-size)/var(--body-sm-line) var(--font-sans);color:var(--text-secondary)}
+/* The stage is a silk host like .au-tile but without its text duties:
+   panel radius, full column height, the shot as the single subject. Bloom
+   pulled to the phone's upper half so the lightest part of the field halos
+   the screen. The min-height guards the stacked layout, where there is no
+   copy column to stretch against; the shot needs no z-index because the
+   silk layers are absolute and it paints after them. */
+.rc-appstage{position:relative;overflow:hidden;isolation:isolate;
+  border-radius:var(--radius-panel);
+  height:100%;min-height:560px;
+  display:flex;align-items:center;justify-content:center;
+  padding:var(--space-10);
+  --sk-bx:50%;--sk-by:32%}
+.rc-appstage__shot{position:relative;display:block;width:min(264px,100%);height:auto;
+  filter:var(--drop-onfield)}
+@media (max-width:999px){
+  .rc-appstage{min-height:0;padding:var(--space-8) var(--space-5)}
+  .rc-appstage__shot{width:min(232px,100%)}
+}
+
+/* --- dueday #screens: the feature showcase ------------------------------
+   Before: three `.au-story`, each holding a WHOLE 589x1280 phone screen
+   scaled into a ~300px column. At that size a full screen is texture, not
+   evidence — the app's own 34px type landed near 7px CSS, so nothing in
+   the picture was legible enough to prove the feature its caption claimed.
+   It also inherited `.au-story`'s cursor:pointer on cards that link
+   nowhere.
+   After: four cards, each a TIGHT crop of one real UI block from the
+   1320x2868 masters, blown up until the app's type lands near 16px and
+   reads. Sources are the demo-data captures (fictional dataset, 09:41
+   status bar), never the real-device ones, which carry actual personal
+   finances and are barred by the privacy rules.
+   The fragment is an opaque white object carrying `--elev-pill` — the
+   DS's sanctioned way to put content on a silk field, since text on these
+   light palettes is a contrast failure — and it is deliberately cut by the
+   card on the right and bottom, so each tile reads as a window onto a
+   running app instead of a framed picture.
+   All four fields are ONE family (studio = blossom). What separates them
+   is the bloom position, never a hue: four cards in four colours would be
+   exactly the per-card palette the hard rules forbid. */
+/* One row of four on a wide screen. The 2x2 this replaces put 552px
+   stages on the page: the fragments were legible twice over and the
+   section ran 1400px tall for four facts. At four across the shell gives
+   266px columns, the fragment renders ~239px from a ~590px source, and
+   the app's own 34px type still lands near 14px — the legibility floor
+   this section exists to hold, reached with a quarter of the footprint. */
+.rc-showcase{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));
+  gap:var(--space-8) var(--space-6)}
+@media (max-width:1023px){.rc-showcase{grid-template-columns:repeat(2,minmax(0,1fr))}}
+.rc-show{display:flex;flex-direction:column;gap:var(--space-5)}
+.rc-show__stage{position:relative;overflow:hidden;isolation:isolate;
+  border-radius:var(--radius-panel);aspect-ratio:1/1;
+  display:flex;align-items:center;justify-content:center}
+/* The fragment is ONE element of the app, cropped flush to its own bounds
+   and fully contained — it never bleeds off the stage.
+   Two earlier passes got this wrong in opposite directions. The first ran
+   the crop 104% wide so it was cut on the right, and since every screen in
+   this app sets its numbers flush right, the cut landed on "13,49 EUR" and
+   "demain" — the one datum each card exists to show. The second kept a
+   wide crop and let it overhang the bottom, which meant every card carried
+   a slab of neighbouring UI it did not need, and the 14px radius drawn
+   around that slab sat a few pixels off the app's own card corners
+   underneath: two nearly-concentric curves, which reads as a mistake.
+   Now each crop IS a single card — the Netflix cost card, the COUTS /
+   REVENU tile, a 4x3 block of calendar cells, the category ring — so the
+   only rounded corner in the picture is the element's own. `border-radius`
+   is a PERCENTAGE, not 14px, because the source elements carry ~6.8% of
+   their own width and a percentage tracks that at any rendered size. 7%
+   overshoots by a hair on purpose, so the clip bites just inside the card
+   edge rather than leaving a sliver of app background in the corner.
+   Square stage with the fragment centred, rather than a fixed offset: the
+   four crops range 0.98 to 1.05 in aspect, and max-width/max-height lets
+   each settle inside the same box without any of them being stretched or
+   cropped a second time by CSS.
+   90% covers 79% of each field, and the field is whatever is left over.
+   That mattered when the stages were 552px square: at 88% four of them
+   measured 15.83% tinted area of a 1440x900 view, over the >=85% neutral
+   the DS demands. At 266px the same four cost a fraction of that, so the
+   figure is now set by how much rim of colour looks right rather than by
+   the budget. */
+.rc-show__shot{position:relative;max-width:90%;max-height:90%;
+  width:auto;height:auto;
+  border-radius:7%;box-shadow:var(--elev-pill)}
+.rc-show__text{display:flex;flex-direction:column;gap:var(--space-1)}
+.rc-show__kicker{font:var(--meta-weight) var(--meta-size)/var(--meta-line) var(--font-sans);
+  letter-spacing:var(--meta-track);color:var(--text-tertiary)}
+.rc-show__title{font:var(--title-weight) var(--title-size)/var(--title-line) var(--font-sans);
+  letter-spacing:var(--title-track);color:var(--text-primary)}
+.rc-show__body{font:400 14px/20px var(--font-sans);color:var(--text-secondary)}
+.rc-showcase > .rc-show:nth-child(1) .rc-show__stage{--sk-bx:24%;--sk-by:26%}
+.rc-showcase > .rc-show:nth-child(2) .rc-show__stage{--sk-bx:78%;--sk-by:22%}
+.rc-showcase > .rc-show:nth-child(3) .rc-show__stage{--sk-bx:20%;--sk-by:76%}
+.rc-showcase > .rc-show:nth-child(4) .rc-show__stage{--sk-bx:72%;--sk-by:80%}
+@media (max-width:767px){
+  /* Two across, not one. A single column would blow each stage back up to
+     343px on a phone — larger than the widescreen layout it is supposed to
+     be a reduction of — and turn four facts into four full screens of
+     scrolling. At 2-up the fragment renders ~148px, which is under the
+     legibility floor, so the crops read as evidence of the interface
+     rather than as something to study; the caption carries the fact.
+     Nothing else is restated: max-width, max-height and the radius are
+     percentages, so the composition holds at every width with no second
+     set of numbers to keep in sync. */
+  .rc-showcase{grid-template-columns:repeat(2,minmax(0,1fr));gap:var(--space-6) var(--space-4)}
+}
+
+/* --- dueday #details: the fact sheet as settings groups ------------------
+   Before: one bordered panel of six `.rc-logi` rows, each carrying a label,
+   a sentence restating the label, and a value. Six rows is not a spec
+   sheet, it is a summary of one, and nothing grouped: platform sat next to
+   backup with no reason for the order.
+   After: the DS's own SettingsGroup/SettingsRow, newly vendored, arranged
+   three across. It is the right component twice over — it is what the DS
+   ships for exactly this shape of content, and settings groups are the
+   native idiom of the platform the product ships on, so an iOS fact sheet
+   built out of iOS settings rows reads as the thing it describes.
+   Twelve rows in three named groups: what the app is, what happens to your
+   data, what it does day to day. Four rows each, so the three columns
+   bottom out together without any height hack. */
+.rc-specs{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:var(--space-6);align-items:start}
+@media (max-width:899px){.rc-specs{grid-template-columns:minmax(0,1fr);gap:var(--space-5)}}
+/* The DS row is built for a settings screen, where the value is a current
+   setting and sits quietly. Here the value IS the fact the reader came
+   for, so it takes the mono machine face the rest of the site uses for
+   data and the ink it deserves: --text-secondary measures 5.60:1 on this
+   surface and would have been legal, but it reads as metadata next to a
+   label that is darker than it. Same reasoning as `.rc-logi__value`. */
+.rc-specs .au-row__value{font-family:var(--font-mono);font-size:12px;line-height:16px;
+  letter-spacing:.06em;text-transform:uppercase;color:var(--text-primary);
+  text-align:right;flex:none;max-width:38%}
+.rc-specs .au-row{align-items:flex-start}
+.rc-specs .au-row__icon{margin-top:2px}
+
+/* --- dueday #details: links out to the two documents -------------------
+   The privacy policy and the support page existed only in the footer,
+   which is where links go to be ignored. They belong at the foot of the
+   fact sheet: that section is the one making claims about what happens to
+   your data, and the policy is the document that backs them.
+   Secondary buttons, which the DS v0.3 makes the default for anything that
+   is not the primary action on the page. The primary here is still the
+   App Store, in the hero and again in the closing panel. */
+.rc-doclinks{display:flex;flex-wrap:wrap;gap:var(--space-3);margin-top:var(--space-8)}
+
 
 /* defect 9: site-level layout fix for the DS .au-gcard used in .rc-grid on the
    home page — components.css stays untouched. Column flex defaults to
@@ -731,6 +925,36 @@ body:has(.rc-lockup__word[data-brand="upskilling"]){--accent-graphic:var(--brand
 .rc-queue__row{display:flex;align-items:center;justify-content:space-between;gap:var(--space-4);
   padding:var(--space-4) 0;border-bottom:1px solid var(--border-subtle)}
 .rc-queue__title{font:400 15px/22px var(--font-sans);color:var(--text-secondary)}
+
+/* --- AI News bulletin (/blog/ai-news/) ------------------------------------
+   One living page, not a page per brief: three sentences do not carry a
+   standalone URL, and a daily page would churn the sitemap and the audit
+   list every morning. Entries stack newest-first as hairline rows, the same
+   grammar as the queue above, with one small silk tile per entry.
+   Palette discipline: every tile on the page is dawn, addressed by family
+   name per the §4.3 rule and the chapter-separator precedent, so a brief
+   never wears a practice's hue. What varies between days is the bloom
+   position (--sk-bx/--sk-by inline on the tile), which is the matière the
+   DS designates for telling siblings apart. Category chips stay neutral:
+   news categories are sectors, not practices.
+   The date stamp on the field reuses the postcard stamp treatment: ink at
+   reduced opacity, the shipped precedent for a mono label on a silk field. */
+.rc-briefs{list-style:none;margin:var(--space-6) 0 0;padding:0;border-top:1px solid var(--border-subtle)}
+.rc-brief{display:flex;gap:var(--space-6);padding:var(--space-6) 0;border-bottom:1px solid var(--border-subtle)}
+.rc-brief__fig{position:relative;flex:0 0 112px;height:112px;border-radius:var(--radius-card);overflow:hidden}
+.rc-brief__stamp{position:absolute;left:0;right:0;bottom:var(--space-2);z-index:1;text-align:center;
+  font:500 11px/16px var(--font-mono);letter-spacing:.08em;text-transform:uppercase;color:var(--text-primary);opacity:.55}
+.rc-brief__body{display:flex;flex-direction:column;gap:var(--space-2);min-width:0}
+.rc-brief__meta{display:flex;flex-wrap:wrap;align-items:center;gap:var(--space-3);font:var(--meta-weight) var(--meta-size)/var(--meta-line) var(--font-mono);letter-spacing:.01em;text-transform:uppercase;color:var(--text-tertiary)}
+.rc-brief__title{font:var(--title-weight) var(--title-size)/var(--title-line) var(--font-sans);letter-spacing:var(--title-track);color:var(--text-primary)}
+.rc-brief__text{font:400 15px/23px var(--font-sans);color:var(--text-secondary);max-width:68ch}
+.rc-brief__source a{color:var(--accent-text);font:400 14px/20px var(--font-sans);text-decoration:underline;text-decoration-thickness:1px;text-underline-offset:2px;transition:text-decoration-thickness var(--motion-fast) var(--ease-standard)}
+.rc-brief__source a:hover{text-decoration-thickness:2px}
+.rc-briefs__note{margin-top:var(--space-6);font:400 14px/20px var(--font-sans);color:var(--text-tertiary);max-width:68ch}
+@media (max-width:560px){
+  .rc-brief{flex-direction:column;gap:var(--space-4)}
+  .rc-brief__fig{flex:none;width:100%;height:88px}
+}
 
 /* a standing byline under the section lead: on a one-person consultancy the
    blog is where the person should be most visible, and repeating the name on
@@ -1483,7 +1707,7 @@ figcaption.rc-fig__head{margin-bottom:0}
   .rc-spectral__inner a{color:var(--text-primary)}
 
   /* never break inside a card or a table row */
-  .au-card,.au-gcard,.au-story,.rc-postcard,.au-tile,.au-cff{break-inside:avoid}
+  .au-card,.au-gcard,.au-story,.rc-postcard,.au-tile,.au-cff,.rc-brief{break-inside:avoid}
 
   /* expand link URLs after the link text, in long-form prose only */
   .rc-prose a[href^="http"]::after,.rc-doc a[href^="http"]::after{content:" (" attr(href) ")";color:var(--text-secondary)}
@@ -1631,7 +1855,7 @@ body:has(.rc-lockup__word[data-brand="upskilling"]) .au-gcard--role .au-tile{--s
    Served at 482x980 (2x the 232px slot) as webp: the source was a 1.2 MB
    PNG at 1709px, which is 40x the bytes for a picture this size. */
 .rc-shot{display:block;width:min(232px,100%);height:auto;margin:0 auto;
-  filter:drop-shadow(0 14px 30px rgba(20,24,23,.20))}
+  filter:var(--drop-onfield)}
 @media (max-width:1200px){.rc-shot{width:min(210px,100%)}}
 
 
@@ -2094,7 +2318,10 @@ body:has(.rc-lockup__word[data-brand="upskilling"]) .au-gcard--role .au-tile{--s
   border-radius:var(--radius-panel);
   overflow:hidden;
 }
-.rc-cat__group + .rc-cat__group{border-top:1px solid var(--border-subtle)}
+/* One panel per format (was one shared panel with hairline-joined groups):
+   each squircle now opens on its own head and closes on its co-created
+   gradient row. */
+.rc-cat + .rc-cat{margin-top:var(--space-6)}
 .rc-cat__head{
   display:flex;align-items:baseline;justify-content:space-between;
   gap:var(--space-4);
@@ -2115,6 +2342,15 @@ body:has(.rc-lockup__word[data-brand="upskilling"]) .au-gcard--role .au-tile{--s
   padding:var(--space-2) var(--space-6);
 }
 .rc-cat__row + .rc-cat__row{border-top:1px solid var(--border-subtle)}
+/* One co-created slot closes each format's list: the only tinted rows in the
+   catalogue, lit with the page family's silk base passe (same 112deg formula
+   as the nav pills). Ink text per the silk rule (white would sit at ~1.7:1 on
+   these light palettes); the chip becomes an opaque white object carrying
+   --elev-pill, the DS treatment for anything that must stay readable on a
+   tinted field. */
+.rc-cat__row--co{background:linear-gradient(112deg,var(--silk-upskilling-1) 0%,var(--silk-upskilling-2) 34%,var(--silk-upskilling-3) 72%,var(--silk-upskilling-4) 100%)}
+.rc-cat__row--co .rc-cat__title{font-weight:600}
+.rc-cat__row--co > .au-chip{background:var(--surface);color:var(--text-primary);box-shadow:var(--elev-pill)}
 .rc-cat__title{font:400 15px/22px var(--font-sans);color:var(--text-primary)}
 /* .au-chip ships align-self:flex-start, which in this row would top-align the
    chip to the title's line box rather than its cap height */
@@ -3559,16 +3795,18 @@ body:has(.rc-lockup__word[data-brand="upskilling"]) .au-gcard--role .au-tile{--s
   padding:var(--space-6);
 }
 .rc-shell > .au-silk.au-silk--sheer > .rc-chips{
-  justify-content:flex-start;flex:1 1 auto;
+  justify-content:center;flex:1 1 auto;
 }
 /* .rc-band__label removed on Redha's call: the band carries its name in the
-   list's aria-label instead, so the row is five tool pills and nothing else. */
+   list's aria-label instead, so the row is five tool pills and nothing else.
+   With no label holding the left edge, flex-start left the group hugging one
+   side of the field; the pills are the band's only content and sit centred. */
 @media (max-width:899px){
   /* below this the label and five pills cannot share a row without the
      pills breaking into a three-line rag, which is what the band looked
      like at 375 before this pass */
   .rc-shell > .au-silk.au-silk--sheer{
-    flex-direction:column;align-items:flex-start;
+    flex-direction:column;align-items:center;
     gap:var(--space-4);padding:var(--space-5);
   }
 }
