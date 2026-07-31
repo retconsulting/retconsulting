@@ -1,4 +1,4 @@
-@import url('/assets/atmo/atmo.css?v=20260730a4');
+@import url('/assets/atmo/atmo.css?v=20260731a2');
 
 /* RET Consulting — Atmospheric Utility · Site CSS
    Page shell + every .rc-* class from _spec/CONTRACT.md §5. Values come from the DS
@@ -1485,7 +1485,13 @@ figcaption.rc-fig__head{margin-bottom:0}
    eye to return to; the cover above stays centred, because it holds objects
    rather than type. Only the vertical rhythm is still equalised across the
    row, so the three buttons keep a common baseline. */
-.au-gcard .rc-chips{margin-top:var(--space-2);min-height:52px;align-content:center;justify-content:flex-start}
+/* The auto margin anchors the whole closing cluster (tags, mono note, CTA)
+   to the card floor: copy length varies per card, so the slack has to sit
+   between the body and the tags for the three tag blocks to share a y.
+   Centred rows since 2026-07-31 (Redha): the whole closing cluster now sits
+   on the card's vertical axis, tags included, under the left-aligned body. */
+.au-gcard .rc-chips{margin-top:auto;min-height:52px;align-content:center;justify-content:center}
+.au-gcard .au-gcard__body{margin-bottom:var(--space-2)}
 /* the <li> is a block, so it stood 24.5px tall around a 22px badge and a
    two-row block came out at 57 rather than 52 */
 .au-gcard .rc-chips li{display:flex}
@@ -1496,8 +1502,11 @@ figcaption.rc-fig__head{margin-bottom:0}
    axis whatever their copy length.
    Two lines stay reserved so the band keeps its height whatever the copy does
    at a narrower column, and the buttons keep their common baseline. */
-.au-gcard .rc-fig__when{margin-top:auto;min-height:calc(var(--space-4) + var(--meta-line) * 2);
+.au-gcard .rc-fig__when{min-height:calc(var(--space-4) + var(--meta-line) * 2);
   display:flex;align-items:center;justify-content:center;text-align:center}
+/* the chips above now carry the card's one auto margin; a second one on the
+   CTA would split the slack and break the shared tag line */
+.au-gcard__text:has(.rc-chips) > .au-btn{margin-top:0}
 
 /* --- The practice banner ------------------------------------------------
    A wide gradient banner carrying three white icon tiles, then the title
@@ -3726,10 +3735,13 @@ body:has(.rc-lockup__word[data-brand="upskilling"]) .au-gcard--role .au-tile{--s
   .rc-grid.rc-grid--tight > .au-gcard .au-gcard__body{min-height:60px}
 }
 @media (min-width:1200px){
-  /* one .au-chip is 20px tall and the <li> is display:flex around it */
+  /* one .au-chip is 20px tall and the <li> is display:flex around it; the
+     breathing room above the tags is a body floor now that the tag block's
+     margin-top is the card's auto anchor */
   .rc-grid.rc-grid--tight > .au-gcard .rc-chips{
-    min-height:20px;margin-top:var(--space-6);
+    min-height:20px;
   }
+  .rc-grid.rc-grid--tight > .au-gcard .au-gcard__body{margin-bottom:var(--space-6)}
 }
 
 /* --- 22.2 #catalogue: the level column ----------------------------------
