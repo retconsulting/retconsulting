@@ -1,4 +1,4 @@
-@import url('/assets/atmo/atmo.css?v=20260731a2');
+@import url('/assets/atmo/atmo.css?v=20260801f1');
 
 /* RET Consulting — Atmospheric Utility · Site CSS
    Page shell + every .rc-* class from _spec/CONTRACT.md §5. Values come from the DS
@@ -1456,6 +1456,14 @@ figcaption.rc-fig__head{margin-bottom:0}
    `.au-gcard__text > .au-btn{align-self:flex-start}`, which otherwise wins on
    source order and keeps the button pinned left */
 .au-gcard__text > .rc-offerbtn{align-self:center}
+/* a card can pair its Book CTA with a secondary link: one row, two equal
+   columns, full card width; the offerbtn's own top margin moves to the
+   wrapper. Grid, not flex: 1fr/1fr is what makes the widths equal. */
+/* minmax(0,1fr), not 1fr: the bare fr keeps its auto minimum, and the longer
+   Book label would widen its own column past its twin */
+.rc-cardacts{align-self:stretch;display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:var(--space-3);margin-top:var(--space-4)}
+.rc-cardacts > .rc-offerbtn{margin-top:0}
+.rc-cardacts > .au-btn{padding-left:var(--space-3);padding-right:var(--space-3)}
 .rc-offerbtn{margin-top:var(--space-4);color:var(--atmosphere-on-field)}
 .rc-offerbtn[data-offer="advisory"]{background:var(--brand-advisory-text)}
 .rc-offerbtn[data-offer="studio"]{background:var(--brand-studio-text)}
@@ -2350,6 +2358,59 @@ body:has(.rc-lockup__word[data-brand="upskilling"]) .au-gcard--role .au-tile{--s
   gap:var(--space-4);
   padding:var(--space-2) var(--space-6);
 }
+.rc-cat__row--rich{padding:var(--space-3) var(--space-6)}
+.rc-cat__text{display:flex;flex-direction:column;gap:2px;min-width:0}
+.rc-cat__desc{font:400 13.5px/20px var(--font-sans);color:var(--text-secondary)}
+/* Three anchor buttons under the catalogue hero: 80 rows is too long a page
+   to enter without a map, and the site carries no JS beyond the nav toggle,
+   so navigation is plain same-page anchors. */
+.rc-jumpnav{display:flex;flex-wrap:wrap;gap:var(--space-3);margin-top:var(--space-6)}
+
+/* --- Catalogue format banners --------------------------------------------
+   The longread's halftone chapter lid (.rc-secfield), ported for the three
+   format sections at Redha's request. Not reused directly: those rules are
+   scoped under .rc-longread on purpose, and this page keeps one palette
+   (upskilling) where the article spends five families, so only the bloom
+   position varies between the three bands, per §4.3. The pill floats on
+   elevation, not a hairline: fill-to-field measures well under 3:1 and the
+   separation never was a contrast claim (§ the secfield note). */
+.rc-catband{
+  position:relative;
+  min-height:132px;display:flex;flex-direction:column;align-items:center;justify-content:center;
+  gap:var(--space-4);
+  padding:var(--space-6);
+}
+@media (max-width:767px){.rc-catband{min-height:104px}}
+.rc-catband__pill{
+  position:relative;z-index:2;
+  margin:0;
+  background:var(--surface);color:var(--text-primary);
+  border-radius:var(--radius-full);padding:var(--space-2) var(--space-5);
+  box-shadow:var(--elev-pill);
+}
+/* the format facts float on the field with the pill: tint-on-tint would
+   mush, so each tag becomes an opaque white object carrying --elev-pill
+   (the co-created row's chip treatment), keeping its own violet text */
+.rc-catband__facts{position:relative;z-index:2;justify-content:center}
+.rc-catband__facts .au-chip{background:var(--surface);box-shadow:var(--elev-pill)}
+.rc-catband--f1{--sk-bx:30%;--sk-by:36%}
+.rc-catband--f2{--sk-bx:72%;--sk-by:58%}
+.rc-catband--f3{--sk-bx:44%;--sk-by:64%}
+
+/* Provider-agnostic rows carry four tool chips + a level: 441px of cluster.
+   Unconstrained, that column crushes the title to ~200px between 600 and
+   900px. The 50% cap makes the cluster wrap onto a second chip line instead,
+   right-aligned so the ragged edge faces the gutter, not the text. */
+.rc-cat__tags{display:flex;flex-wrap:wrap;justify-content:flex-end;align-items:center;gap:var(--space-2);flex:none;max-width:50%;margin-top:3px}
+/* Row tool labels sit on the white panel, so the silk-band float shadow is
+   replaced by the same compact bordered geometry as the adjacent level tag. */
+.rc-toolchip--row{
+  box-sizing:border-box;height:20px;padding:0 7px;gap:5px;
+  background:var(--surface);border:1px solid var(--chip-border);
+  border-radius:var(--radius-chip);box-shadow:none;
+  font:600 12px/1 var(--font-sans);letter-spacing:-.002em;
+  color:var(--text-secondary);
+}
 .rc-cat__row + .rc-cat__row{border-top:1px solid var(--border-subtle)}
 /* One co-created slot closes each format's list: the only tinted rows in the
    catalogue, lit with the page family's silk base passe (same 112deg formula
@@ -2370,13 +2431,26 @@ body:has(.rc-lockup__word[data-brand="upskilling"]) .au-gcard--role .au-tile{--s
      column and the chip reads as its footer. */
   .rc-cat__row{flex-direction:column;align-items:flex-start;gap:var(--space-2)}
   .rc-cat__row > .au-chip{margin-top:0}
+  /* stacked rows give the cluster the full column; the 50% cap is a
+     side-by-side concern and would fold four chips into a half-width knot */
+  .rc-cat__tags{flex-wrap:wrap;justify-content:flex-start;max-width:none;margin-top:0}
   .rc-cat__head,.rc-cat__row{padding-left:var(--space-5);padding-right:var(--space-5)}
+}
+/* Between the 599px stack and ~768px, a side-by-side rich row splits a ~568px
+   shell into a ~280px title column against a ~280px wrapped cluster: measured
+   at 600px the title third-wraps before the chips do. Rich rows stay stacked
+   through this band; the simple teaser rows keep the side-by-side layout,
+   which their single chip never stresses. */
+@media (min-width:600px) and (max-width:767px){
+  .rc-cat__row--rich{flex-direction:column;align-items:flex-start;gap:var(--space-2)}
+  .rc-cat__row--rich .rc-cat__tags{flex-wrap:wrap;justify-content:flex-start;max-width:none;margin-top:0}
 }
 
 /* The tool band now closes the catalogue instead of opening a section of its
    own, so it needs the region gap the removed .rc-section__head used to
    supply. .rc-note is the paragraph directly above it. */
 .rc-shell > .rc-note + .au-silk{margin-top:var(--space-8)}
+.rc-cat + .au-silk,.rc-grid + .au-silk{margin-top:var(--space-8)}
 
 /* --- The logistics facts (#practical) -----------------------------------
    The `.rc-factgrid` / `.rc-fact*` hairline grid that lived here was removed
@@ -3766,12 +3840,22 @@ body:has(.rc-lockup__word[data-brand="upskilling"]) .au-gcard--role .au-tile{--s
    color-mix rather than a literal so the pair follows the tag tokens if
    the sheet is ever read under [data-theme="dark"]. */
 @media (min-width:600px){
-  .rc-cat__row > .au-chip{min-width:88px;justify-content:center}
+  /* the rich rows nest their level chip inside .rc-cat__tags, so the direct-
+     child selector alone would leave the catalogue page's level column ragged
+     while the teaser's stays aligned */
+  .rc-cat__row > .au-chip,
+  .rc-cat__tags > .au-chip{min-width:88px;justify-content:center}
 }
 .rc-cat__row > .au-tag--blue{
   border-color:color-mix(in srgb, var(--tag-blue-fg) 33%, var(--surface));
 }
+.rc-cat__tags > .au-tag--blue{
+  border-color:color-mix(in srgb, var(--tag-blue-fg) 33%, var(--surface));
+}
 .rc-cat__row > .au-tag--violet{
+  border-color:color-mix(in srgb, var(--tag-violet-fg) 31%, var(--surface));
+}
+.rc-cat__tags > .au-tag--violet{
   border-color:color-mix(in srgb, var(--tag-violet-fg) 31%, var(--surface));
 }
 
