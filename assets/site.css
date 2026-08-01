@@ -1,4 +1,4 @@
-@import url('/assets/atmo/atmo.css?v=20260801f1');
+@import url('/assets/atmo/atmo.css?v=20260801t1');
 
 /* RET Consulting — Atmospheric Utility · Site CSS
    Page shell + every .rc-* class from _spec/CONTRACT.md §5. Values come from the DS
@@ -469,6 +469,11 @@ body:has(.rc-lockup__word[data-brand="upskilling"]){--accent-graphic:var(--brand
    .rc-spectral__btn does on the offer pages */
 .rc-inkpanel .au-btn--primary{background:var(--surface);color:var(--text-primary)}
 .rc-inkpanel .au-btn--primary:hover:not(:disabled){background:var(--gray-25)}
+/* Same trap as the primary above, one row down: `.rc-inkpanel a` is (0,1,1)
+   and beats the DS's `.au-btn--secondary` (0,1,0), so a white-filled
+   secondary inherited the panel's white link colour and rendered white on
+   white. (0,2,0) puts the ink back. */
+.rc-inkpanel .au-btn--secondary{color:var(--text-primary)}
 .rc-inkpanel .au-btn--outline{background:transparent;color:#fff;border-color:rgba(252,252,251,.4)}
 .rc-inkpanel .au-btn--outline:hover:not(:disabled){background:rgba(252,252,251,.1)}
 
@@ -2365,6 +2370,88 @@ body:has(.rc-lockup__word[data-brand="upskilling"]) .au-gcard--role .au-tile{--s
    to enter without a map, and the site carries no JS beyond the nav toggle,
    so navigation is plain same-page anchors. */
 .rc-jumpnav{display:flex;flex-wrap:wrap;gap:var(--space-3);margin-top:var(--space-6)}
+/* The tools band now closes the hero instead of the last panel. It stays a
+   DIRECT child of .rc-shell: every band rule in §22.3 is scoped
+   `.rc-shell > .au-silk.au-silk--sheer`, so nesting it one level deeper
+   (inside .rc-section__head) silently dropped the flex row, the padding and
+   the centring, and the static pills fell behind the field's absolutely
+   positioned layers. That is what the washed-out band was. */
+.rc-section--first:has(.rc-jumpnav){padding-top:var(--space-16);padding-bottom:var(--space-6)}
+.rc-section--first:has(.rc-jumpnav) .rc-section__head{margin-bottom:var(--space-6)}
+/* the PDF action lives beside the jump-nav, not inside it: a download is
+   not a format, and AT reads the nav's label onto its children */
+.rc-jumpnav-row{display:flex;flex-wrap:wrap;gap:var(--space-3);align-items:center;margin-top:var(--space-5)}
+.rc-jumpnav-row .rc-jumpnav{display:flex;flex-wrap:wrap;gap:var(--space-3);margin-top:0}
+/* one quiet next step after each panel: 43 rows made the page terminal,
+   with no action between the hero and a contact panel twelve screens down */
+.rc-catfoot{margin-top:var(--space-4);text-align:right;font:var(--meta-weight) var(--meta-size)/var(--meta-line) var(--font-mono);letter-spacing:.06em;text-transform:uppercase}
+.rc-catfoot a{color:var(--text-secondary)}
+.rc-catfoot a:hover{color:var(--text-primary)}
+/* the verb contract of each format, spoken on the lid itself */
+.rc-catband__note{position:relative;z-index:2;margin:0;font:400 13.5px/20px var(--font-sans);color:var(--text-primary)}
+/* --- Catalogue filter bar ------------------------------------------------
+   One line: four compact selects + a live count. Progressive enhancement:
+   ships [hidden], the script reveals it and fills the department options
+   from the route cards, which stay the single source of truth. */
+.rc-filters{margin-top:var(--space-2);display:flex;align-items:center;flex-wrap:wrap;gap:var(--space-3)}
+.rc-filters__label{font:var(--meta-weight) var(--meta-size)/var(--meta-line) var(--font-mono);
+  letter-spacing:.06em;text-transform:uppercase;color:var(--text-tertiary)}
+.rc-filtersel{position:relative;display:inline-flex}
+.rc-filtersel select{
+  appearance:none;-webkit-appearance:none;
+  height:28px;padding:0 26px 0 12px;
+  background:var(--surface);border:1px solid var(--chip-border);
+  border-radius:var(--radius-chip);
+  font:600 12px/1 var(--font-sans);color:var(--text-secondary);
+  cursor:pointer;
+}
+.rc-filtersel::after{
+  content:"";position:absolute;right:10px;top:50%;margin-top:-2px;
+  border-left:4px solid transparent;border-right:4px solid transparent;
+  border-top:5px solid var(--text-tertiary);pointer-events:none;
+}
+.rc-filtersel select:hover{border-color:var(--gray-500);color:var(--text-primary)}
+.rc-filtersel.has-value select{background:var(--text-primary);color:var(--surface);border-color:var(--text-primary)}
+.rc-filtersel.has-value::after{border-top-color:var(--surface)}
+.rc-filters__status{font:400 13px/20px var(--font-sans);color:var(--text-secondary)}
+.rc-filters__reset{background:none;border:0;padding:0;font:inherit;color:var(--text-secondary);
+  text-decoration:underline;cursor:pointer}
+.rc-filters__reset:hover{color:var(--text-primary)}
+/* display:flex on the row beats the [hidden] UA default, so the filter's
+   hides need their own rule; same for a section the time facet removes */
+.rc-cat__row[hidden]{display:none}
+.rc-section[hidden]{display:none}
+
+/* anchor targets land under 130px of pinned chrome (header 65 + jump bar):
+   scroll-margin keeps the row or lid clear of it */
+#spark,#lab,#bootcamp,#departments{scroll-margin-top:88px}
+.rc-cat__row--rich{scroll-margin-top:88px}
+/* quotable session references: the contact mail can now name rows */
+.rc-cat__ref{display:inline-block;font:var(--meta-weight) 11px/1 var(--font-mono);
+  letter-spacing:.06em;color:var(--text-tertiary);margin-bottom:3px}
+/* Pro leaves the tint families entirely: the scale ends on an ink object,
+   and violet goes back to meaning the brand, not a level */
+.rc-tag--ink{background:var(--text-primary);color:var(--surface);border-color:transparent}
+/* --- Departments: route cards ------------------------------------------
+   One card per department, its path through the catalogue as clickable
+   session references. White cards on canvas, no new field: the page has
+   already spent its colour on three lids and the tools band. */
+.rc-deptgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(320px,1fr));gap:var(--space-4)}
+.rc-deptcard{background:var(--surface);border:1px solid var(--border-subtle);border-radius:var(--radius-panel);padding:var(--space-5) var(--space-6)}
+.rc-deptcard h3{font:var(--title-weight) 17px/1.3 var(--font-sans);letter-spacing:var(--title-track);margin:0;color:var(--text-primary)}
+.rc-deptcard p{font:400 13.5px/20px var(--font-sans);color:var(--text-secondary);margin:6px 0 12px}
+.rc-deptcard__refs{display:flex;flex-wrap:wrap;gap:6px}
+.rc-deptcard__refs .au-chip{text-decoration:none}
+.rc-deptcard__refs .au-chip:hover{border-color:var(--gray-500);color:var(--text-primary)}
+
+/* The three format sections read as one continuous list, not as three
+   independent regions: the full --section-gap on both sides put ~192px
+   between a panel's last row and the next lid, twice any gap inside the
+   page. Halved, and the first one opens tight under the tools band. */
+#spark,#lab,#bootcamp{padding-block:var(--space-8)}
+@media (max-width:767px){
+  #spark,#lab,#bootcamp{padding-block:var(--space-6)}
+}
 
 /* --- Catalogue format banners --------------------------------------------
    The longread's halftone chapter lid (.rc-secfield), ported for the three
@@ -2421,7 +2508,7 @@ body:has(.rc-lockup__word[data-brand="upskilling"]) .au-gcard--role .au-tile{--s
 .rc-cat__row--co{background:linear-gradient(112deg,var(--silk-upskilling-1) 0%,var(--silk-upskilling-2) 34%,var(--silk-upskilling-3) 72%,var(--silk-upskilling-4) 100%)}
 .rc-cat__row--co .rc-cat__title{font-weight:600}
 .rc-cat__row--co > .au-chip{background:var(--surface);color:var(--text-primary);box-shadow:var(--elev-pill)}
-.rc-cat__title{font:400 15px/22px var(--font-sans);color:var(--text-primary)}
+.rc-cat__title{font:600 15px/22px var(--font-sans);color:var(--text-primary)}
 /* .au-chip ships align-self:flex-start, which in this row would top-align the
    chip to the title's line box rather than its cap height */
 .rc-cat__row > .au-chip{flex:none;margin-top:3px}
@@ -2434,6 +2521,10 @@ body:has(.rc-lockup__word[data-brand="upskilling"]) .au-gcard--role .au-tile{--s
   /* stacked rows give the cluster the full column; the 50% cap is a
      side-by-side concern and would fold four chips into a half-width knot */
   .rc-cat__tags{flex-wrap:wrap;justify-content:flex-start;max-width:none;margin-top:0}
+  /* the level chip anchors to the right edge so a scale value stops reading
+     as a fifth platform in the wrapped cluster (tool chips are .rc-toolchip;
+     the level is the only .au-chip child) */
+  .rc-cat__tags > .au-chip{margin-left:auto}
   .rc-cat__head,.rc-cat__row{padding-left:var(--space-5);padding-right:var(--space-5)}
 }
 /* Between the 599px stack and ~768px, a side-by-side rich row splits a ~568px
@@ -2441,9 +2532,17 @@ body:has(.rc-lockup__word[data-brand="upskilling"]) .au-gcard--role .au-tile{--s
    at 600px the title third-wraps before the chips do. Rich rows stay stacked
    through this band; the simple teaser rows keep the side-by-side layout,
    which their single chip never stresses. */
-@media (min-width:600px) and (max-width:767px){
+@media (min-width:600px) and (max-width:999px){
   .rc-cat__row--rich{flex-direction:column;align-items:flex-start;gap:var(--space-2)}
   .rc-cat__row--rich .rc-cat__tags{flex-wrap:wrap;justify-content:flex-start;max-width:none;margin-top:0}
+}
+/* Wide rows become a two-column grid: a fixed 441px tag column is what stops
+   the four-chip cluster wrapping (which staggered the level chip 16 vs 43px
+   from row to row at 820) and gives every title and description the same
+   measure instead of a shrink-to-fit rag. */
+@media (min-width:1000px){
+  .rc-cat__row--rich{display:grid;grid-template-columns:minmax(0,1fr) 441px}
+  .rc-cat__row--rich .rc-cat__tags{max-width:none}
 }
 
 /* The tool band now closes the catalogue instead of opening a section of its
@@ -3858,6 +3957,13 @@ body:has(.rc-lockup__word[data-brand="upskilling"]) .au-gcard--role .au-tile{--s
 .rc-cat__tags > .au-tag--violet{
   border-color:color-mix(in srgb, var(--tag-violet-fg) 31%, var(--surface));
 }
+/* amber was the one aligned-column chip left with border-color transparent:
+   the pair of rules above was written for blue and violet and never got its
+   third line. Same 31% formula, same optical band. */
+.rc-cat__row > .au-tag--amber,
+.rc-cat__tags > .au-tag--amber{
+  border-color:color-mix(in srgb, var(--tag-amber-fg) 31%, var(--surface));
+}
 
 /* --- 22.3 #catalogue: the tool band -------------------------------------
    1200 x 100px of iris field carrying a 620px row of five pills centred in
@@ -3889,6 +3995,11 @@ body:has(.rc-lockup__word[data-brand="upskilling"]) .au-gcard--role .au-tile{--s
 .rc-shell > .au-silk.au-silk--sheer{
   display:flex;align-items:center;gap:var(--space-6);
   padding:var(--space-6);
+  /* as wide as its pills and no wider: the full-shell slab measured 42%
+     bare field at each end and pushed the first fold to 18.9% chromatic
+     mass against the 15% ceiling. max-content + centre keeps the field a
+     carrier of content, not a stripe of decoration. */
+  width:max-content;max-width:100%;margin-inline:auto;
 }
 .rc-shell > .au-silk.au-silk--sheer > .rc-chips{
   justify-content:center;flex:1 1 auto;
@@ -3905,6 +4016,12 @@ body:has(.rc-lockup__word[data-brand="upskilling"]) .au-gcard--role .au-tile{--s
     flex-direction:column;align-items:center;
     gap:var(--space-4);padding:var(--space-5);
   }
+}
+/* on phones the band repeats what every row's chips already say, 172px of
+   field before the first session. Placed AFTER the band block on purpose:
+   equal specificity, so source order is the whole fight. */
+@media (max-width:767px){
+  .rc-shell > .au-silk.au-silk--sheer{display:none}
 }
 
 /* =========================================================
