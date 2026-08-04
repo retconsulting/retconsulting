@@ -1,12 +1,12 @@
-# Safety net for daily AI News briefs (/blog/ai-news/).
+# Safety net for daily AI Digest briefs (/blog/ai-digest/).
 # The gate is the human merge; this check only catches format drift early.
 # The private word list (never committed) comes from the AI_NEWS_BLOCKLIST
 # secret: comma-separated, case-insensitive.
-name: AI News brief check
+name: AI Digest brief check
 on:
   pull_request:
     paths:
-      - 'blog/ai-news/index.html'
+      - 'blog/ai-digest/index.html'
 
 jobs:
   check:
@@ -19,7 +19,7 @@ jobs:
         env:
           BLOCKLIST: ${{ secrets.AI_NEWS_BLOCKLIST }}
         run: |
-          git diff "origin/${{ github.base_ref }}...HEAD" -- blog/ai-news/index.html > /tmp/brief.diff
+          git diff "origin/${{ github.base_ref }}...HEAD" -- blog/ai-digest/index.html > /tmp/brief.diff
           python3 - <<'PY'
           import os, re, sys
 
@@ -28,11 +28,11 @@ jobs:
           removed = [l[1:] for l in diff.splitlines() if l.startswith('-') and not l.startswith('---')]
           fails = []
 
-          # Removals are only expected when the seed Sample entry goes away.
+          # A brief PR only ever adds. The seed Sample entry is gone, so any
+          # structural removal now means the routine ate an existing brief.
           structural_removed = [l for l in removed if 'rc-brief' in l or 'rc-briefs' in l]
-          sample_removed = any('b-2026-07-30' in l or '>Sample<' in l for l in removed)
-          if structural_removed and not sample_removed:
-              fails.append('brief markup was removed outside the Sample entry')
+          if structural_removed:
+              fails.append('existing brief markup was removed')
 
           blob = '\n'.join(added)
 

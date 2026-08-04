@@ -1,4 +1,4 @@
-@import url('/assets/atmo/atmo.css?v=20260801t1');
+@import url('/assets/atmo/atmo.css?v=20260804a1');
 
 /* RET Consulting — Atmospheric Utility · Site CSS
    Page shell + every .rc-* class from _spec/CONTRACT.md §5. Values come from the DS
@@ -931,34 +931,107 @@ body:has(.rc-lockup__word[data-brand="upskilling"]){--accent-graphic:var(--brand
   padding:var(--space-4) 0;border-bottom:1px solid var(--border-subtle)}
 .rc-queue__title{font:400 15px/22px var(--font-sans);color:var(--text-secondary)}
 
-/* --- AI News bulletin (/blog/ai-news/) ------------------------------------
+/* --- AI Digest (/blog/ai-digest/) -----------------------------------------
    One living page, not a page per brief: three sentences do not carry a
    standalone URL, and a daily page would churn the sitemap and the audit
-   list every morning. Entries stack newest-first as hairline rows, the same
-   grammar as the queue above, with one small silk tile per entry.
+   list every morning.
+
+   REPLACES the hairline-row bulletin this block first shipped as. The row
+   was right for five entries and wrong for the shape this page is heading
+   for: a brief is a tweet, and a hairline row spends a full 112px figure
+   plus a 68ch measure on 60 words. Measured on the shipped version, one
+   entry cost 208px of page; fifty entries would have run past 10,000px of
+   single-column scroll with the reader's eye travelling the full shell
+   width for every one of them. The wall of cards costs 3 entries per row
+   at 1200px and reads as what it is: a feed, scanned, not an article read.
+
+   Cards STRETCH, they do not size to content (no align-items:start). The
+   source row is pinned to the bottom with margin-top:auto, so every card
+   in a row closes on the same hairline at the same y. Ragged bottoms would
+   be the honest masonry answer, but the briefs are capped at 80 words by
+   the playbook, which bounds the variance to about four lines: aligning is
+   affordable here and a ragged row of near-identical heights reads as a
+   mistake rather than as a rhythm.
+
    Palette discipline: every tile on the page is dawn, addressed by family
    name per the §4.3 rule and the chapter-separator precedent, so a brief
    never wears a practice's hue. What varies between days is the bloom
    position (--sk-bx/--sk-by inline on the tile), which is the matière the
    DS designates for telling siblings apart. Category chips stay neutral:
-   news categories are sectors, not practices.
-   The date stamp on the field reuses the postcard stamp treatment: ink at
-   reduced opacity, the shipped precedent for a mono label on a silk field. */
-.rc-briefs{list-style:none;margin:var(--space-6) 0 0;padding:0;border-top:1px solid var(--border-subtle)}
-.rc-brief{display:flex;gap:var(--space-6);padding:var(--space-6) 0;border-bottom:1px solid var(--border-subtle)}
-.rc-brief__fig{position:relative;flex:0 0 112px;height:112px;border-radius:var(--radius-card);overflow:hidden}
-.rc-brief__stamp{position:absolute;left:0;right:0;bottom:var(--space-2);z-index:1;text-align:center;
-  font:500 11px/16px var(--font-mono);letter-spacing:.08em;text-transform:uppercase;color:var(--text-primary);opacity:.55}
-.rc-brief__body{display:flex;flex-direction:column;gap:var(--space-2);min-width:0}
-.rc-brief__meta{display:flex;flex-wrap:wrap;align-items:center;gap:var(--space-3);font:var(--meta-weight) var(--meta-size)/var(--meta-line) var(--font-mono);letter-spacing:.01em;text-transform:uppercase;color:var(--text-tertiary)}
-.rc-brief__title{font:var(--title-weight) var(--title-size)/var(--title-line) var(--font-sans);letter-spacing:var(--title-track);color:var(--text-primary)}
-.rc-brief__text{font:400 15px/23px var(--font-sans);color:var(--text-secondary);max-width:68ch}
-.rc-brief__source a{color:var(--accent-text);font:400 14px/20px var(--font-sans);text-decoration:underline;text-decoration-thickness:1px;text-underline-offset:2px;transition:text-decoration-thickness var(--motion-fast) var(--ease-standard)}
-.rc-brief__source a:hover{text-decoration-thickness:2px}
-.rc-briefs__note{margin-top:var(--space-6);font:400 14px/20px var(--font-sans);color:var(--text-tertiary);max-width:68ch}
-@media (max-width:560px){
-  .rc-brief{flex-direction:column;gap:var(--space-4)}
-  .rc-brief__fig{flex:none;width:100%;height:88px}
+   news categories are sectors, not practices. Fifty 56px tiles are the
+   page's only chromatic pulse below the masthead and cost about 1.5% of a
+   1440x900 screen, well inside the 15% ceiling.
+
+   The date tile carries FULL ink on both lines, not the reduced-opacity
+   stamp the row used. At 56px the month sits at 9px, and 9px is small
+   text: the .55 opacity that passed on a 112px tile computes to about
+   4.4:1 over the dawn base, under the 4.5:1 floor. Ink is 10.36:1 at
+   worst (§4.4), and hierarchy is carried by size and weight instead. */
+.rc-briefs{
+  list-style:none;margin:var(--space-8) 0 0;padding:0;
+  display:grid;grid-template-columns:repeat(auto-fill,minmax(320px,1fr));
+  gap:var(--space-4);
+}
+.rc-brief{
+  display:flex;flex-direction:column;gap:var(--space-3);
+  padding:var(--space-5);
+  background:var(--surface);
+  border:1px solid var(--border-subtle);border-radius:var(--radius-card);
+  transition:border-color var(--motion-fast) var(--ease-standard);
+}
+.rc-brief:hover{border-color:var(--border-strong)}
+/* display:flex on .rc-brief outranks the UA's [hidden]{display:none}, the
+   same trap the catalogue rows hit: the filter would set the attribute and
+   nothing would disappear */
+.rc-brief[hidden]{display:none}
+.rc-brief__head{display:flex;align-items:center;gap:var(--space-3)}
+.rc-brief__fig{
+  position:relative;flex:none;width:56px;height:56px;
+  border-radius:14px;overflow:hidden;
+  display:flex;flex-direction:column;align-items:center;justify-content:center;gap:1px;
+}
+.rc-brief__day{position:relative;z-index:1;font:600 17px/18px var(--font-mono);color:var(--text-primary)}
+.rc-brief__mon{position:relative;z-index:1;font:500 9px/11px var(--font-mono);letter-spacing:.1em;text-transform:uppercase;color:var(--text-primary)}
+.rc-brief__head > .au-chip{margin-left:auto}
+.rc-brief__title{font:600 16px/22px var(--font-sans);letter-spacing:-.01em;color:var(--text-primary);text-wrap:balance}
+.rc-brief__text{font:400 14px/21px var(--font-sans);color:var(--text-secondary)}
+/* the source is the promise of the format, so it gets its own closing rule
+   rather than trailing the body text. --accent-text is deliberately NOT
+   used: this page carries no .rc-lockup__word[data-brand], so the token
+   falls back to the DS turquoise (the dueday precedent), which would put a
+   practice-adjacent hue on a page whose whole colour budget is dawn. */
+.rc-brief__source{margin-top:auto;padding-top:var(--space-3);border-top:1px solid var(--border-subtle)}
+.rc-brief__source a{color:var(--text-secondary);font:400 13px/19px var(--font-sans);text-decoration:underline;text-decoration-thickness:1px;text-underline-offset:2px;transition:color var(--motion-fast) var(--ease-standard),text-decoration-thickness var(--motion-fast) var(--ease-standard)}
+.rc-brief__source a:hover{color:var(--text-primary);text-decoration-thickness:2px}
+.rc-briefs__note{margin-top:var(--space-8);font:400 14px/20px var(--font-sans);color:var(--text-tertiary);max-width:68ch}
+.rc-briefs__empty{
+  grid-column:1/-1;margin:0;padding:var(--space-8);text-align:center;
+  border:1px dashed var(--chip-border);border-radius:var(--radius-card);
+  font:400 14px/21px var(--font-sans);color:var(--text-tertiary);
+}
+
+/* The masthead band, and the same object on /blog/ as the entry point to
+   the feed. .rc-catband is reused rather than re-authored: a silk lid
+   carrying a white pill and a row of opaque fact chips is exactly what
+   this is, and the catalogue's version is already measured and shipped.
+   Only the corner treatment differs, because there the parent .rc-cat
+   clips and here the band is on its own. */
+.rc-catband--solo{border-radius:var(--radius-card);overflow:hidden}
+/* the masthead, the filter row and the wall are one object read in one
+   move, so they take the tight rhythm the catalogue hero uses and not the
+   64px section gap three times over. Measured before: 72px band-to-filter
+   and 96px filter-to-wall pushed the first card row entirely below a
+   900px fold, which is the one thing a feed page cannot afford. */
+.rc-section--first:has(.rc-catband--solo){padding-top:var(--space-16);padding-bottom:var(--space-8)}
+.rc-filters + .rc-section{padding-top:var(--space-6)}
+.rc-filters + .rc-section .rc-briefs{margin-top:var(--space-6)}
+.rc-digest{border:1px solid var(--border-subtle);border-radius:var(--radius-card);overflow:hidden;background:var(--surface)}
+.rc-digest .rc-catband{border-radius:0}
+.rc-digest__body{display:flex;flex-direction:column;align-items:flex-start;gap:var(--space-4);padding:var(--space-8)}
+.rc-digest__lead{font:400 16px/25px var(--font-sans);color:var(--text-secondary);max-width:62ch}
+.rc-digest__covers{font:var(--meta-weight) var(--meta-size)/var(--meta-line) var(--font-mono);letter-spacing:.08em;text-transform:uppercase;color:var(--text-tertiary)}
+@media (max-width:767px){
+  .rc-digest__body{padding:var(--space-6)}
 }
 
 /* a standing byline under the section lead: on a one-person consultancy the
