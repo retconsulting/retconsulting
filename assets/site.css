@@ -1,4 +1,4 @@
-@import url('/assets/atmo/atmo.css?v=20260804a1');
+@import url('/assets/atmo/atmo.css?v=20260805b1');
 
 /* RET Consulting — Atmospheric Utility · Site CSS
    Page shell + every .rc-* class from _spec/CONTRACT.md §5. Values come from the DS
@@ -1027,11 +1027,132 @@ body:has(.rc-lockup__word[data-brand="upskilling"]){--accent-graphic:var(--brand
 .rc-filters + .rc-section .rc-briefs{margin-top:var(--space-6)}
 .rc-digest{border:1px solid var(--border-subtle);border-radius:var(--radius-card);overflow:hidden;background:var(--surface)}
 .rc-digest .rc-catband{border-radius:0}
+/* the two feed panels on /blog/ are siblings, not a stack of one repeated:
+   the recap takes a secondary button so the daily flow keeps the primary */
+.rc-digest + .rc-digest{margin-top:var(--space-4)}
 .rc-digest__body{display:flex;flex-direction:column;align-items:flex-start;gap:var(--space-4);padding:var(--space-8)}
 .rc-digest__lead{font:400 16px/25px var(--font-sans);color:var(--text-secondary);max-width:62ch}
 .rc-digest__covers{font:var(--meta-weight) var(--meta-size)/var(--meta-line) var(--font-mono);letter-spacing:.08em;text-transform:uppercase;color:var(--text-tertiary)}
 @media (max-width:767px){
   .rc-digest__body{padding:var(--space-6)}
+}
+
+/* ── /blog/ai-recap/ : the weekly recap ────────────────────────────────────
+   The digest is a wall of cards because a brief is small, interchangeable and
+   read in any order. A recap is none of those: one per week, long enough to
+   carry four to six items, and read newest first. Cards would be wrong twice
+   over, so this is a stacked column of disclosure panels instead.
+
+   Closed by default is the load-bearing decision, not a preference. At one
+   recap a week the page reaches fifty-two entries inside a year; expanded at
+   a measured ~430px each that is over 22,000px of column, which is not a page
+   anyone reads, and the filter bar only narrows it. Closed, each week costs
+   one 88px row carrying its date range, its headline and its brief count, so
+   the column reads as an index and the reader opens the week they want. The
+   inline script opens the first visible panel (and whatever a #w-YYYY-Wnn
+   deep link asks for), so the top of the page is never a wall of shut doors.
+
+   Palette: dawn, the same family as the digest, addressed by family name per
+   §4.3. Recap and digest are one editorial flow at two cadences; what tells
+   them apart is form (panel against card), not hue, and inventing a second
+   family for a sibling page would say they are different products. The week
+   tile reuses the brief tile's geometry and full-ink treatment for the same
+   measured reason (§4.4): at 56px the year line sits at 9px, and 9px is small
+   text. Bloom position cycles on the ISO week number, which is the matière
+   the DS designates for telling siblings apart. Fifty-two 56px tiles are the
+   page's only chromatic pulse below the masthead, about the same 1.5% of a
+   1440x900 screen the digest measured. */
+/* the one line that ties the two cadences together, used under the masthead
+   band on BOTH feed pages: a reader landing on either one has to be able to
+   find the other, and a footer link is where links go to be ignored */
+.rc-feedlink{margin-top:var(--space-6);font:400 14px/21px var(--font-sans);color:var(--text-secondary);max-width:68ch}
+.rc-feedlink a,.rc-briefs__note a{color:var(--text-primary);text-decoration:underline;text-decoration-thickness:1px;text-underline-offset:2px}
+.rc-recaps{
+  list-style:none;margin:var(--space-8) 0 0;padding:0;
+  display:flex;flex-direction:column;gap:var(--space-4);
+}
+.rc-recap[hidden]{display:none}
+.rc-recap__box{
+  background:var(--surface);
+  border:1px solid var(--border-subtle);border-radius:var(--radius-card);
+  overflow:hidden;
+  transition:border-color var(--motion-fast) var(--ease-standard);
+}
+.rc-recap__box:hover{border-color:var(--border-strong)}
+.rc-recap__box[open]{border-color:var(--border-strong)}
+/* the whole row is the control, so it takes the focus ring rather than the
+   text inside it; the UA triangle is replaced by the chevron below */
+.rc-recap__sum{
+  display:flex;align-items:center;gap:var(--space-4);
+  padding:var(--space-4) var(--space-5);
+  cursor:pointer;list-style:none;
+}
+.rc-recap__sum::-webkit-details-marker{display:none}
+.rc-recap__sum:focus-visible{outline:2px solid var(--focus-ring);outline-offset:-2px}
+.rc-recap__fig{
+  position:relative;flex:none;width:56px;height:56px;
+  border-radius:14px;overflow:hidden;
+  display:flex;flex-direction:column;align-items:center;justify-content:center;gap:1px;
+}
+.rc-recap__wk{position:relative;z-index:1;font:600 17px/18px var(--font-mono);color:var(--text-primary)}
+.rc-recap__yr{position:relative;z-index:1;font:500 9px/11px var(--font-mono);letter-spacing:.1em;color:var(--text-primary)}
+.rc-recap__meta{display:flex;flex-direction:column;gap:2px;min-width:0;flex:1}
+.rc-recap__range{font:var(--meta-weight) var(--meta-size)/var(--meta-line) var(--font-mono);letter-spacing:.08em;text-transform:uppercase;color:var(--text-tertiary)}
+.rc-recap__title{font:600 17px/24px var(--font-sans);letter-spacing:-.01em;color:var(--text-primary);text-wrap:balance}
+/* align-self is not belt and braces: the DS ships .au-chip with
+   align-self:flex-start, which beats the row's align-items:center and hung the
+   count 18px above the tile's axis (measured). Same family as the §4.7 trap. */
+.rc-recap__count{flex:none;align-self:center}
+/* the chevron is the only affordance that says this row opens, so it is drawn
+   rather than borrowed from the UA marker, which differs per engine */
+.rc-recap__sum::after{
+  content:"";flex:none;width:8px;height:8px;margin-left:var(--space-1);
+  border-right:1.5px solid var(--gray-500);border-bottom:1.5px solid var(--gray-500);
+  transform:rotate(45deg) translate(-2px,-2px);
+  transition:transform var(--motion-fast) var(--ease-standard);
+}
+.rc-recap__box[open] .rc-recap__sum::after{transform:rotate(225deg) translate(-2px,-2px)}
+.rc-recap__body{padding:0 var(--space-5) var(--space-5);display:flex;flex-direction:column;gap:var(--space-4)}
+.rc-recap__lead{font:400 15px/24px var(--font-sans);color:var(--text-secondary);max-width:72ch}
+.rc-recap__items{list-style:none;margin:0;padding:0}
+/* the day column is not decoration: a week only reads as a week if the rhythm
+   of it is visible, and the same four items with no dates read as a list */
+.rc-recap__item{
+  display:grid;grid-template-columns:96px minmax(0,1fr);
+  column-gap:var(--space-4);row-gap:2px;
+  padding:var(--space-4) 0;border-top:1px solid var(--border-subtle);
+}
+.rc-recap__when{grid-column:1;grid-row:1/span 2;font:var(--meta-weight) var(--meta-size)/22px var(--font-mono);letter-spacing:.06em;text-transform:uppercase;color:var(--text-tertiary)}
+.rc-recap__link{grid-column:2;font:600 15px/22px var(--font-sans);color:var(--text-primary);text-decoration:underline;text-decoration-thickness:1px;text-underline-offset:2px;transition:text-decoration-thickness var(--motion-fast) var(--ease-standard)}
+.rc-recap__link:hover{text-decoration-thickness:2px}
+.rc-recap__line{grid-column:2;font:400 14px/21px var(--font-sans);color:var(--text-secondary)}
+/* the closing move is the reason a recap exists over the sum of its briefs:
+   the digest answers what changed for a product team per item, the recap
+   answers what to do once, for the week */
+.rc-recap__take{
+  padding:var(--space-4) var(--space-5);
+  background:var(--surface-subtle);border-radius:var(--radius-card);
+  font:400 14px/21px var(--font-sans);color:var(--text-primary);
+}
+.rc-recap__takelab{display:block;font:var(--meta-weight) var(--meta-size)/var(--meta-line) var(--font-mono);letter-spacing:.08em;text-transform:uppercase;color:var(--text-tertiary);margin-bottom:var(--space-1)}
+.rc-recaps__empty{
+  margin:var(--space-4) 0 0;padding:var(--space-8);text-align:center;
+  border:1px dashed var(--chip-border);border-radius:var(--radius-card);
+  font:400 14px/21px var(--font-sans);color:var(--text-tertiary);
+}
+.rc-filters + .rc-section .rc-recaps{margin-top:var(--space-6)}
+@media (max-width:767px){
+  .rc-recap__sum{gap:var(--space-3);padding:var(--space-4)}
+  .rc-recap__title{font-size:15px;line-height:21px}
+  /* the count chip and the fixed day column are the two things that stop
+     fitting first: the chip drops out of the row and the day rejoins the
+     text column rather than squeezing the headline to a third of the width */
+  .rc-recap__count{display:none}
+  .rc-recap__body{padding:0 var(--space-4) var(--space-4)}
+  .rc-recap__item{grid-template-columns:minmax(0,1fr)}
+  .rc-recap__when{grid-column:1;grid-row:auto}
+  .rc-recap__link,.rc-recap__line{grid-column:1}
+  .rc-recap__take{padding:var(--space-4)}
 }
 
 /* a standing byline under the section lead: on a one-person consultancy the

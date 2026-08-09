@@ -1,0 +1,129 @@
+# Safety net for the weekly AI Recap (/blog/ai-recap/).
+# The gate is the human merge; this check only catches format drift early.
+# The private word list (never committed) comes from the AI_NEWS_BLOCKLIST
+# secret: comma-separated, case-insensitive.
+name: AI Recap check
+on:
+  pull_request:
+    paths:
+      - 'blog/ai-recap/index.html'
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: Check the new recap
+        env:
+          BLOCKLIST: ${{ secrets.AI_NEWS_BLOCKLIST }}
+        run: |
+          git diff "origin/${{ github.base_ref }}...HEAD" -- blog/ai-recap/index.html > /tmp/recap.diff
+          python3 - <<'PY'
+          import os, re, sys
+
+          diff = open('/tmp/recap.diff', encoding='utf-8').read()
+          added   = [l[1:] for l in diff.splitlines() if l.startswith('+') and not l.startswith('+++')]
+          removed = [l[1:] for l in diff.splitlines() if l.startswith('-') and not l.startswith('---')]
+          fails = []
+
+          # A recap PR only ever adds. Any structural removal means the routine
+          # ate a week that was already published.
+          if [l for l in removed if 'rc-recap' in l]:
+              fails.append('existing recap markup was removed')
+
+          blob = '\n'.join(added)
+
+          if '—' in blob:
+              fails.append('em dash in added content (banned by the voice spec)')
+
+          BANNED = ['leverage','unlock','synergy','world-class','revolutionary','disrupt',
+                    'empower','best-in-class','game changer','seamless','cutting-edge']
+          for w in BANNED:
+              if re.search(r'(?i)' + re.escape(w), blob):
+                  fails.append(f'banned lexicon: "{w}"')
+
+          private = [w.strip() for w in os.environ.get('BLOCKLIST', '').split(',') if w.strip()]
+          if private:
+              for w in private:
+                  if re.search(r'(?i)' + re.escape(w), blob):
+                      # Never echo the matched word: the list is private.
+                      fails.append('a word from the private blocklist appears in the added content')
+                      break
+          else:
+              print('NOTE: AI_NEWS_BLOCKLIST secret not set, private-list check skipped')
+
+          entries = re.findall(r'<li class="rc-recap" id="([^"]*)"', blob)
+          if not entries:
+              print('no new recap in this diff, nothing to check')
+              sys.exit(0)
+          if len(entries) > 1:
+              fails.append(f'{len(entries)} recaps in one PR (max 1)')
+
+          for rid in entries:
+              if not re.fullmatch(r'w-\d{4}-W\d{2}', rid):
+                  fails.append(f'id "{rid}" is not w-YYYY-Wnn')
+
+          for m in re.finditer(r'rc-recap__title">([^<]*)</h2>', blob):
+              t = m.group(1).strip()
+              if len(t) > 60:
+                  fails.append(f'week headline is {len(t)} chars (max 60): "{t[:40]}..."')
+              if t.endswith('.'):
+                  fails.append('week headline ends with a full stop')
+
+          # Floor is 40 and not 60: since the three-brief threshold was dropped
+          # a thin week still gets a recap, and the way that format fails is by
+          # padding the lead to reach a word count.
+          for m in re.finditer(r'rc-recap__lead">([^<]*)</p>', blob):
+              n = len(m.group(1).split())
+              if not 40 <= n <= 110:
+                  fails.append(f'recap lead is {n} words (want 40 to 110)')
+
+          for m in re.finditer(r'rc-recap__line">([^<]*)</p>', blob):
+              n = len(m.group(1).split())
+              if n > 25:
+                  fails.append(f'item line is {n} words (max 25)')
+
+          for m in re.finditer(r'rc-recap__take">(.*?)</p>', blob, re.S):
+              body = re.sub(r'<[^>]+>', ' ', m.group(1))
+              body = body.replace('Key takeaway', '')
+              n = len(body.split())
+              if n > 70:
+                  fails.append(f'key takeaway is {n} words (max 70)')
+          if 'rc-recap__take' not in blob:
+              fails.append('recap has no closing key takeaway')
+          if 'rc-recap__takelab">Key takeaway<' not in blob:
+              fails.append('the closing label must read exactly "Key takeaway"')
+
+          # The lead opens on the subject matter, never on an inventory of the
+          # week's own briefs: "Four briefs, and three of them..." is the shape
+          # this catches.
+          for m in re.finditer(r'rc-recap__lead">([^<]*)</p>', blob):
+              opener = ' '.join(m.group(1).split()[:6]).lower()
+              if re.search(r'\b(one|two|three|four|five|six|\d+)\s+(brief|briefs|entries|items|stories)\b', opener):
+                  fails.append('the lead opens on a brief count, not on the topics')
+
+          # Every item must point at a brief anchor on the digest: the recap is
+          # only allowed to rest on something already published and sourced.
+          links = re.findall(r'class="rc-recap__link" href="([^"]+)"', blob)
+          if not 1 <= len(links) <= 6:
+              fails.append(f'{len(links)} items (want 1 to 6)')
+          for h in links:
+              if not re.fullmatch(r'/blog/ai-digest/#b-\d{4}-\d{2}-\d{2}(-[ab])?', h):
+                  fails.append(f'item link "{h}" is not a brief anchor on the digest')
+
+          # the count chip is read by a human on a phone, so it must be true
+          for m in re.finditer(r'rc-recap__count">(\d+) briefs?<', blob):
+              if int(m.group(1)) != len(links):
+                  fails.append(f'count chip says {m.group(1)} but the recap lists {len(links)} items')
+
+          if not re.search(r'<time class="rc-recap__range" datetime="\d{4}-\d{2}-\d{2}"', blob):
+              fails.append('recap has no <time datetime> on its range (the filter bar reads it)')
+
+          if fails:
+              print('RECAP CHECK FAILURES:')
+              for f in fails: print(' -', f)
+              sys.exit(1)
+          print('recap check: OK')
+          PY
