@@ -16,3 +16,22 @@ Design System/
 
 # outillage local : portes de QA, sauvegardes, archives v1
 _tools/
+
+# Secrets locaux : ne doivent jamais être publiés sur GitHub ou GitHub Pages
+.env
+.env.*
+*.pem
+*.key
+*.p8
+*.p12
+*.pfx
+*.jks
+*.keystore
+id_rsa
+id_rsa.*
+id_ed25519
+id_ed25519.*
+credentials.json
+service-account*.json
+.aws/
+.ssh/
