@@ -11,7 +11,7 @@ if (poses && pairImage && originalView) {
     const selected = event.target.closest('button[data-pose]');
     if (!selected) return;
     const [pair, capture] = sources[selected.dataset.pose];
-    pairImage.src = '/dials/assets/' + pair;
+    pairImage.src = '/dials/assets/' + pair + '?v=front';
     originalView.href = '/dials/assets/' + capture;
     for (const button of poses.children) {
       button.setAttribute('aria-pressed', String(button === selected));
