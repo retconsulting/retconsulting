@@ -170,4 +170,60 @@
     <xhtml:link rel="alternate" hreflang="fr" href="https://retconsulting.be/emdee/privacy/fr/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://retconsulting.be/emdee/privacy/"/>
   </url>
+  <url>
+    <loc>https://retconsulting.be/dials/legal/</loc>
+    <lastmod>2026-11-07</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://retconsulting.be/dials/legal/"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://retconsulting.be/dials/legal/fr/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://retconsulting.be/dials/legal/"/>
+  </url>
+  <url>
+    <loc>https://retconsulting.be/dials/legal/fr/</loc>
+    <lastmod>2026-11-07</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://retconsulting.be/dials/legal/"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://retconsulting.be/dials/legal/fr/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://retconsulting.be/dials/legal/"/>
+  </url>
+  <url>
+    <loc>https://retconsulting.be/dueday/legal/</loc>
+    <lastmod>2026-11-07</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://retconsulting.be/dueday/legal/"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://retconsulting.be/dueday/legal/fr/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://retconsulting.be/dueday/legal/"/>
+  </url>
+  <url>
+    <loc>https://retconsulting.be/dueday/legal/fr/</loc>
+    <lastmod>2026-11-07</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://retconsulting.be/dueday/legal/"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://retconsulting.be/dueday/legal/fr/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://retconsulting.be/dueday/legal/"/>
+  </url>
+  <url>
+    <loc>https://retconsulting.be/emdee/legal/</loc>
+    <lastmod>2026-11-07</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://retconsulting.be/emdee/legal/"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://retconsulting.be/emdee/legal/fr/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://retconsulting.be/emdee/legal/"/>
+  </url>
+  <url>
+    <loc>https://retconsulting.be/emdee/legal/fr/</loc>
+    <lastmod>2026-11-07</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://retconsulting.be/emdee/legal/"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://retconsulting.be/emdee/legal/fr/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://retconsulting.be/emdee/legal/"/>
+  </url>
+  <url>
+    <loc>https://retconsulting.be/emdee/support/</loc>
+    <lastmod>2026-11-07</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://retconsulting.be/emdee/support/"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://retconsulting.be/emdee/support/fr/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://retconsulting.be/emdee/support/"/>
+  </url>
+  <url>
+    <loc>https://retconsulting.be/emdee/support/fr/</loc>
+    <lastmod>2026-11-07</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://retconsulting.be/emdee/support/"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://retconsulting.be/emdee/support/fr/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://retconsulting.be/emdee/support/"/>
+  </url>
 </urlset>
