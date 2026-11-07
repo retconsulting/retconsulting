@@ -142,4 +142,18 @@
     <xhtml:link rel="alternate" hreflang="fr" href="https://retconsulting.be/dials/support/fr/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://retconsulting.be/dials/support/"/>
   </url>
+  <url>
+    <loc>https://retconsulting.be/emdee/</loc>
+    <lastmod>2026-11-07</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://retconsulting.be/emdee/"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://retconsulting.be/emdee/fr/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://retconsulting.be/emdee/"/>
+  </url>
+  <url>
+    <loc>https://retconsulting.be/emdee/fr/</loc>
+    <lastmod>2026-11-07</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://retconsulting.be/emdee/"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://retconsulting.be/emdee/fr/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://retconsulting.be/emdee/"/>
+  </url>
 </urlset>
