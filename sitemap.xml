@@ -100,4 +100,46 @@
     <xhtml:link rel="alternate" hreflang="en" href="https://retconsulting.be/about/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://retconsulting.be/about/"/>
   </url>
+  <url>
+    <loc>https://retconsulting.be/dials/</loc>
+    <lastmod>2026-11-07</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://retconsulting.be/dials/"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://retconsulting.be/dials/fr/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://retconsulting.be/dials/"/>
+  </url>
+  <url>
+    <loc>https://retconsulting.be/dials/fr/</loc>
+    <lastmod>2026-11-07</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://retconsulting.be/dials/"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://retconsulting.be/dials/fr/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://retconsulting.be/dials/"/>
+  </url>
+  <url>
+    <loc>https://retconsulting.be/dials/privacy/</loc>
+    <lastmod>2026-11-07</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://retconsulting.be/dials/privacy/"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://retconsulting.be/dials/privacy/fr/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://retconsulting.be/dials/privacy/"/>
+  </url>
+  <url>
+    <loc>https://retconsulting.be/dials/privacy/fr/</loc>
+    <lastmod>2026-11-07</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://retconsulting.be/dials/privacy/"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://retconsulting.be/dials/privacy/fr/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://retconsulting.be/dials/privacy/"/>
+  </url>
+  <url>
+    <loc>https://retconsulting.be/dials/support/</loc>
+    <lastmod>2026-11-07</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://retconsulting.be/dials/support/"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://retconsulting.be/dials/support/fr/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://retconsulting.be/dials/support/"/>
+  </url>
+  <url>
+    <loc>https://retconsulting.be/dials/support/fr/</loc>
+    <lastmod>2026-11-07</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://retconsulting.be/dials/support/"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://retconsulting.be/dials/support/fr/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://retconsulting.be/dials/support/"/>
+  </url>
 </urlset>
