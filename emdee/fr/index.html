@@ -30,102 +30,48 @@
 <link href="/favicon.ico" rel="icon" sizes="32x32"/>
 <link href="/apple-touch-icon.png" rel="apple-touch-icon"/>
 <link href="/site.webmanifest" rel="manifest"/>
-<link href="/assets/site.css?v=20260805b1&amp;apps=1" rel="stylesheet"/>
+<link href="/assets/site.css?v=20260805b1&amp;apps=2" rel="stylesheet"/>
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Accueil","item":"https://retconsulting.be/"},{"@type":"ListItem","position":2,"name":"Emdee","item":"https://retconsulting.be/emdee/fr/"}]}</script>
 
+
+<script defer src="/assets/product-pages.js?v=1"></script>
 </head>
-<body>
-<a class="rc-skip" href="#main">Aller au contenu</a>
-<header class="rc-header">
-<div class="rc-shell rc-header__inner">
-<a class="rc-wordmark" href="/">
-<img alt="" class="rc-wordmark__glyph" height="22" src="/assets/img/ret-mark.svg" width="22"/>
-<span class="rc-wordmark__text">RET <span>Consulting</span></span>
-</a>
-<button aria-controls="navmenu" aria-expanded="false" aria-label="Ouvrir le menu" class="rc-navtoggle" type="button">
-<span aria-hidden="true" class="rc-navtoggle__bar"></span>
-<span aria-hidden="true" class="rc-navtoggle__bar"></span>
-<span aria-hidden="true" class="rc-navtoggle__bar"></span>
-</button>
-<nav aria-label="Principale" class="rc-nav" id="navmenu">
-<a class="rc-nav__link rc-nav__link--offer" data-offer="advisory" href="/advisory/">
-<span class="rc-navmark"><span class="rc-navmark__ret">RET</span><span class="rc-navmark__word">Advisory</span></span>
-</a>
-<a class="rc-nav__link rc-nav__link--offer" data-offer="studio" href="/studio/">
-<span class="rc-navmark"><span class="rc-navmark__ret">RET</span><span class="rc-navmark__word">Studio</span></span>
-</a>
-<a class="rc-nav__link rc-nav__link--offer" data-offer="upskilling" href="/learning/">
-<span class="rc-navmark"><span class="rc-navmark__ret">RET</span><span class="rc-navmark__word">Learning</span></span>
-</a>
-<span aria-hidden="true" class="rc-nav__divider"></span>
-<a class="rc-nav__link" href="/about/">À propos</a>
+<body class="edition-emdee">
+<a class="product-skip" href="#main">Aller au contenu</a>
+<header>
+<nav aria-label="Navigation"><a href="/studio/">RET Studio</a><a href="/emdee/fr/">Emdee</a><span><a class="rc-langtoggle__opt" href="/emdee/">EN</a> / <a class="rc-langtoggle__opt" href="/emdee/fr/" lang="fr" aria-current="page">FR</a></span>
 </nav>
-<div class="rc-langtoggle">
-<a class="rc-langtoggle__opt" href="/emdee/" hreflang="en">EN</a>
-<span aria-hidden="true" class="rc-langtoggle__sep">/</span>
-<a aria-current="true" class="rc-langtoggle__opt is-active" href="/emdee/fr/" hreflang="fr">FR</a>
-</div>
-</div>
 </header>
-<main class="showcase emdee" id="main">
-<div class="wrap">
-<section class="hero">
-<div>
-<p class="kicker">Bientôt disponible · Mac, iPhone &amp; iPad</p>
-<h1>Emdee</h1>
-<p class="lead">Un espace de lecture pour vos documents Markdown. Feuilletez-les comme un livre ou modifiez la source à côté du texte mis en page.</p>
-</div><a aria-label="Emdee sur Mac présentant les Notes d’atelier mises en page" class="screen" href="/emdee/assets/reader.webp"><img alt="Emdee sur Mac présentant les Notes d’atelier mises en page" height="900" src="/emdee/assets/reader.webp" width="1440"/></a>
-</section>
-<section class="feature"><a aria-label="Mode livre sur iPhone" class="screen" href="/emdee/assets/book.webp"><img alt="Mode livre sur iPhone" height="1400" src="/emdee/assets/book.webp" width="644"/></a>
-<div class="copy">
-<p class="kicker">Mode livre</p>
-<h2>Une page à la fois.</h2>
-<p>Sur iPhone, le mode livre donne de l’espace au texte et garde les commandes de lecture à portée de main.</p>
-</div>
-</section>
-<section class="editor">
-<div class="copy">
-<p class="kicker">Éditeur Markdown</p>
-<h2>Écrivez en regard de la page.</h2>
-<p>Sur Mac, modifiez le Markdown avec l’aperçu à côté. Exportez le document en PDF ou au format de livre numérique EPUB.</p>
-</div><a aria-label="Source et aperçu côte à côte dans Emdee sur Mac" class="screen" href="/emdee/assets/editor.webp"><img alt="Source et aperçu côte à côte dans Emdee sur Mac" height="900" src="/emdee/assets/editor.webp" width="1440"/></a>
-</section>
-<p class="product-note">Interface en français. Nécessite macOS 13, iOS 26 ou iPadOS 26, ou une version ultérieure.</p>
-</div>
-<nav class="app-links" aria-label="Les apps de RET Studio"><strong>Les apps de RET Studio</strong><a href="/dials/fr/">Dials</a><a href="/dueday/fr/">dueday</a>
+<main id="main">
+<section class="opening">
+<h1>Lire avec Emdee.</h1>
+<p>Un lecteur et éditeur Markdown pour Mac, iPad et iPhone. Bientôt disponible, avec une interface en français.</p>
+<nav class="foliochoices" aria-label="Vues du carnet"><a href="#typeset">Lire le carnet</a><a href="#manuscript">Voir sa source</a>
 </nav>
+<div class="notebook">
+<figure id="typeset"><a class="desk-proof" href="/emdee/assets/reader.webp"><img src="/emdee/assets/reader.webp" width="1440" height="900" alt="Notes d’atelier en mode lecture" ></a><a class="pocket-proof" href="/emdee/assets/reader-phone.webp"><img alt="Lecture sur iPhone" width="644" height="1400" src="/emdee/assets/reader-phone.webp"></a>
+</figure>
+<figure id="manuscript"><a class="desk-proof" href="/emdee/assets/manuscript.webp"><img src="/emdee/assets/manuscript.webp" width="1500" height="938" alt="Notes d’atelier en édition Markdown avec aperçu" ></a><a class="pocket-proof" href="/emdee/assets/edit-phone.webp"><img alt="Édition sur iPhone" width="644" height="1400" src="/emdee/assets/edit-phone.webp"></a>
+</figure>
+</div>
+</section>
+<section class="bookspread">
+<div>
+<h2>Le livre s’ouvre.</h2>
+<p>Sur iPad, feuilletez votre document en double page. Sur iPhone, lisez-le une page à la fois.</p>
+</div><a href="/emdee/assets/spread.webp"><img src="/emdee/assets/spread.webp" width="1400" height="1050" alt="Mode livre sur iPad" ></a><a href="/emdee/assets/book.webp"><img src="/emdee/assets/book.webp" width="644" height="1400" alt="Mode livre sur iPhone" ></a>
+</section>
+<section class="afterword">
+<div>
+<h2>Retour au texte</h2>
+<p>Sur Mac, écrivez en Markdown à côté de l’aperçu. Exportez votre texte en document PDF ou en livre numérique EPUB.</p>
+</div><a href="/emdee/assets/editor.webp"><img src="/emdee/assets/editor.webp" width="1440" height="900" alt="Éditeur sombre avec aperçu du Markdown" ></a>
+</section>
 </main>
-<footer class="rc-footer rc-footer--slim">
-<div class="rc-shell">
-<div class="rc-stack">
-<a class="rc-wordmark" href="/">
-<img alt="" class="rc-wordmark__glyph" height="22" src="/assets/img/ret-mark.svg" width="22"/>
-<span class="rc-wordmark__text">RET <span>Consulting</span></span>
-</a>
-<p class="rc-footer__blurb">Product owner et business analyst indépendant, basé en Belgique. Du besoin métier au produit livré.</p>
-</div>
-<div class="rc-footer__bottom">
-<span>© 2026 RET Consulting SRL</span>
-<a href="/emdee/privacy/fr/">Confidentialité d’Emdee</a>
-<a href="/legal/fr/">Mentions légales</a>
-</div>
-</div>
+<footer><strong>Emdee</strong>
+<p>Nécessite macOS 13, iOS 26 ou iPadOS 26, ou une version ultérieure.</p>
+<nav aria-label="Liens utiles"><a href="/emdee/privacy/fr/">Confidentialité</a> <a href="/legal/fr/">Mentions légales</a> <a href="/dials/fr/">Dials</a> <a href="/dueday/fr/">dueday</a>
+</nav><a href="/">RET Consulting</a>
 </footer>
-<script>
-  (function(){
-    var h=document.querySelector('.rc-header');
-    var b=document.querySelector('.rc-navtoggle');
-    if(!h||!b)return;
-    var close=function(){h.classList.remove('is-open');b.setAttribute('aria-expanded','false');};
-    b.addEventListener('click',function(){
-      var open=h.classList.toggle('is-open');
-      b.setAttribute('aria-expanded',open?'true':'false');
-    });
-    document.addEventListener('keydown',function(e){if(e.key==='Escape')close();});
-    document.addEventListener('click',function(e){
-      if(h.classList.contains('is-open')&&!h.contains(e.target))close();
-    });
-  })();
-  </script>
 </body>
 </html>

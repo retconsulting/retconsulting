@@ -29,102 +29,58 @@
   <link rel="icon" href="/favicon.ico" sizes="32x32">
   <link rel="apple-touch-icon" href="/apple-touch-icon.png">
   <link rel="manifest" href="/site.webmanifest">
-  <link rel="stylesheet" href="/assets/site.css?v=20260805b1&amp;apps=1">
+  <link rel="stylesheet" href="/assets/site.css?v=20260805b1&amp;apps=2">
   <script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Accueil","item":"https://retconsulting.be/"},{"@type":"ListItem","position":2,"name":"Dials","item":"https://retconsulting.be/dials/fr/"}]}</script>
 
+
+<script defer src="/assets/product-pages.js?v=1"></script>
 </head>
-<body>
-  <a class="rc-skip" href="#main">Aller au contenu</a>
-  <header class="rc-header">
-    <div class="rc-shell rc-header__inner">
-      <a class="rc-wordmark" href="/">
-        <img class="rc-wordmark__glyph" src="/assets/img/ret-mark.svg" alt="" width="22" height="22">
-        <span class="rc-wordmark__text">RET <span>Consulting</span></span>
-      </a>
-      <button class="rc-navtoggle" type="button" aria-expanded="false" aria-controls="navmenu"
-              aria-label="Ouvrir le menu">
-        <span class="rc-navtoggle__bar" aria-hidden="true"></span>
-        <span class="rc-navtoggle__bar" aria-hidden="true"></span>
-        <span class="rc-navtoggle__bar" aria-hidden="true"></span>
-      </button>
-      <nav class="rc-nav" id="navmenu" aria-label="Principale">
-        <a class="rc-nav__link rc-nav__link--offer" data-offer="advisory" href="/advisory/">
-          <span class="rc-navmark"><span class="rc-navmark__ret">RET</span><span class="rc-navmark__word">Advisory</span></span>
-        </a>
-        <a class="rc-nav__link rc-nav__link--offer" data-offer="studio" href="/studio/">
-          <span class="rc-navmark"><span class="rc-navmark__ret">RET</span><span class="rc-navmark__word">Studio</span></span>
-        </a>
-        <a class="rc-nav__link rc-nav__link--offer" data-offer="upskilling" href="/learning/">
-          <span class="rc-navmark"><span class="rc-navmark__ret">RET</span><span class="rc-navmark__word">Learning</span></span>
-        </a>
-        <span class="rc-nav__divider" aria-hidden="true"></span>
-        <a class="rc-nav__link" href="/about/">À propos</a>
-      </nav>
-      <div class="rc-langtoggle">
-        <a class="rc-langtoggle__opt" href="/dials/" hreflang="en">EN</a>
-        <span class="rc-langtoggle__sep" aria-hidden="true">/</span>
-        <a class="rc-langtoggle__opt is-active" href="/dials/fr/" hreflang="fr" aria-current="true">FR</a>
-      </div>
-    </div>
-  </header>
-
-  <main id="main" class="showcase dials">
-<div class="wrap">
-<section class="hero">
-<div>
-<p class="kicker">Appareil photo manuel · iPhone</p>
-<h1>Dials</h1>
-<p class="lead">Choisissez la vitesse d’obturation, réglez la balance des blancs et préparez le rendu de votre prochaine photo dans l’éditeur de films.</p><a class="action" href="#gallery">Découvrir la galerie</a>
-</div>
-<div class="film-strip"><a class="screen" href="/dials/assets/film-editor.webp" aria-label="Éditeur de films Dials avec une photographie de référence en noir et blanc"><img width="650" height="1410" src="/dials/assets/film-editor.webp" alt="Éditeur de films Dials avec une photographie de référence en noir et blanc"></a><a class="screen" href="/dials/assets/gallery.webp" aria-label="Galerie Dials présentant des photographies de démonstration"><img width="650" height="1410" src="/dials/assets/gallery.webp" alt="Galerie Dials présentant des photographies de démonstration"></a>
-</div>
-</section>
-<section id="gallery" class="feature"><a class="screen" href="/dials/assets/gallery.webp" aria-label="Galerie Dials présentant des photographies de démonstration"><img width="650" height="1410" src="/dials/assets/gallery.webp" alt="Galerie Dials présentant des photographies de démonstration"></a>
-<div class="copy">
-<p class="kicker">Planche-contact</p>
-<h2>Retour à l’image.</h2>
-<p>Ouvrez une photo pour vérifier la mise au point et consulter les réglages d’exposition. Sur les iPhone compatibles, conservez un négatif numérique avec l’image traitée.</p>
-</div>
-</section>
-<p class="product-note">iOS 18 ou version ultérieure. Les formats dépendent de votre iPhone. Les captures présentent l’interface anglaise avec des photos de démonstration.</p>
-</div>
-<nav class="app-links" aria-label="Les apps de RET Studio"><strong>Les apps de RET Studio</strong><a href="/dueday/fr/">dueday</a><a href="/emdee/fr/">Emdee</a>
+<body class="edition-dials">
+<a class="product-skip" href="#main">Aller au contenu</a>
+<header>
+<nav aria-label="Navigation"><a href="/studio/">RET Studio</a><a href="/dials/fr/">Dials</a><span><a class="rc-langtoggle__opt" href="/dials/">EN</a> / <a class="rc-langtoggle__opt" href="/dials/fr/" lang="fr" aria-current="page">FR</a></span>
 </nav>
+</header>
+<main id="main">
+<section class="darkroom">
+<div class="titleline">
+<h1>Dans le viseur de Dials.</h1>
+<p>Un appareil photo manuel pour iPhone. Choisissez une scène de référence et explorez l’éditeur de films.</p>
+</div>
+<nav class="filmchoices" aria-label="Scènes de référence"><a href="#ref-indoor">Lumière intérieure</a><a href="#ref-lake">Lac alpin</a><a href="#ref-night">Lueurs de nuit</a>
+</nav>
+<div class="projector">
+<figure id="ref-indoor">
+<div><img src="/dials/assets/ref-indoor.webp" width="1440" height="960" alt="Lumière intérieure" ><img src="/dials/assets/edit-indoor.webp" width="585" height="1268" alt="Éditeur de films Dials" >
+</div>
+<figcaption>Lumière intérieure</figcaption>
+</figure>
+<figure id="ref-lake">
+<div><img src="/dials/assets/ref-lake.webp" width="1440" height="960" alt="Lac alpin" ><img src="/dials/assets/edit-lake.webp" width="585" height="1268" alt="Éditeur de films Dials" >
+</div>
+<figcaption>Lac alpin</figcaption>
+</figure>
+<figure id="ref-night">
+<div><img src="/dials/assets/ref-night.webp" width="1440" height="960" alt="Lueurs de nuit" ><img src="/dials/assets/edit-night.webp" width="585" height="1268" alt="Éditeur de films Dials" >
+</div>
+<figcaption>Lueurs de nuit</figcaption>
+</figure>
+</div>
+
+</section>
+<section class="contactsheet">
+<div>
+<h2>La planche-contact</h2>
+<p>Parcourez une série dans la galerie. Ouvrez un cliché pour vérifier la mise au point et l’exposition, puis choisissez l’original à partager.</p>
+</div><a href="/dials/assets/gallery.webp"><img src="/dials/assets/gallery.webp" width="650" height="1410" alt="Galerie Dials de photos de démonstration" ></a>
+<video controls playsinline preload="none" poster="/dials/assets/poster-fr.webp" aria-label="Démonstration de Dials" src="/dials/assets/teaser-fr.mp4">
+</video>
+</section>
 </main>
-
-  <footer class="rc-footer rc-footer--slim">
-    <div class="rc-shell">
-      <div class="rc-stack">
-        <a class="rc-wordmark" href="/">
-          <img class="rc-wordmark__glyph" src="/assets/img/ret-mark.svg" alt="" width="22" height="22">
-          <span class="rc-wordmark__text">RET <span>Consulting</span></span>
-        </a>
-        <p class="rc-footer__blurb">Product owner et business analyst indépendant, basé en Belgique. Du besoin métier au produit livré.</p>
-      </div>
-      <div class="rc-footer__bottom">
-        <span>© 2026 RET Consulting SRL</span>
-        <a href="/legal/fr/">Mentions légales</a>
-        <a href="/dials/privacy/fr/">Politique de confidentialité</a>
-        <a href="/dials/support/fr/">Support</a>
-      </div>
-    </div>
-  </footer>
-
-  <script>
-  (function(){
-    var h=document.querySelector('.rc-header');
-    var b=document.querySelector('.rc-navtoggle');
-    if(!h||!b)return;
-    var close=function(){h.classList.remove('is-open');b.setAttribute('aria-expanded','false');};
-    b.addEventListener('click',function(){
-      var open=h.classList.toggle('is-open');
-      b.setAttribute('aria-expanded',open?'true':'false');
-    });
-    document.addEventListener('keydown',function(e){if(e.key==='Escape')close();});
-    document.addEventListener('click',function(e){
-      if(h.classList.contains('is-open')&&!h.contains(e.target))close();
-    });
-  })();
-  </script>
+<footer><strong>Dials</strong>
+<p>iPhone avec iOS 18 ou version ultérieure. Les formats et objectifs dépendent de l’appareil. Interface en anglais. Les scènes de référence et les photos de la galerie sont des images de démonstration.</p>
+<nav aria-label="Liens utiles"><a href="/dials/support/fr/">Assistance</a> <a href="/dials/privacy/fr/">Confidentialité</a> <a href="/legal/fr/">Mentions légales</a> <a href="/dueday/fr/">dueday</a> <a href="/emdee/fr/">Emdee</a>
+</nav><a href="/">RET Consulting</a>
+</footer>
 </body>
 </html>
