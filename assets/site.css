@@ -4886,3 +4886,63 @@ body:has(.rc-lockup__word[data-brand="upskilling"]) .au-gcard--role .au-tile{--s
  .notebook .pocket-proof { display:block; width:min(100%,260px); margin:auto; }
  .notebook .desk-proof { display:none; }
 }
+
+/* The three type systems follow the native apps. Wordmarks are static native lettering. */
+@font-face{font-family:DialsDisplay;src:local("DINCondensed-Bold"),local("DIN Condensed Bold");font-weight:700}
+@font-face{font-family:EmdeeSerif;src:local("TimelessSerif-Regular"),local("Timeless Serif Regular")}
+@font-face{font-family:EmdeeSans;src:local("TimelessSans-SansRegular"),local("Timeless Sans Regular")}
+.edition-dials{--ground:#111110;--ink:#f6f5f1;--accent:#ffb675}
+.edition-dials :is(h1,h2,footer strong,.filmchoices a){font-family:DialsDisplay,"DIN Condensed","Arial Narrow",sans-serif;font-weight:700;letter-spacing:0}
+.edition-dials .product-mark{width:clamp(142px,19vw,295px)}
+.edition-dials .filmchoices a{font-size:1.22rem}
+.edition-dials .projector figure>div{grid-template-columns:minmax(0,1fr) auto}
+.edition-dials .projector figure>div>a img{width:auto;height:clamp(380px,43vw,620px);object-fit:contain}
+.edition-dials .projector figure>div>img{width:100%;height:clamp(380px,43vw,620px);object-fit:cover}
+.edition-dials .contactsheet{background:#20201e}
+.edition-dueday{--ground:#fff;--ink:#20192c;--accent:#6838ab;font-family:ui-rounded,"SF Pro Rounded",system-ui,sans-serif}
+.edition-dueday :is(h1,h2,button,output,footer strong){font-family:inherit}
+.edition-dueday .product-mark{width:clamp(190px,26vw,440px)}
+.edition-dueday header,.edition-dueday .ledger{background:#fff}
+.edition-dueday .statement{background:#f3edfc;border-radius:24px}
+.edition-dueday .amount h2{font-size:clamp(18px,2vw,28px);font-weight:750;letter-spacing:-.025em}
+.edition-dueday .amount output{font-weight:800}
+.edition-dueday .download{background:#693cac}
+.edition-dueday .sharecost{background:#f6f2fc}
+.edition-dueday .diary{border-top:1px solid #ebe6f0}
+.edition-emdee{--ground:#fcfcfc;--ink:#16161a;--accent:#2a6198;font-family:EmdeeSans,system-ui,sans-serif}
+.edition-emdee :is(h1,h2,footer strong){font-family:EmdeeSerif,"Iowan Old Style","Palatino Linotype",serif;letter-spacing:-.035em}
+.edition-emdee .foliochoices a{font-family:EmdeeSans,system-ui,sans-serif;font-size:1rem}
+.edition-emdee .product-mark{width:clamp(185px,25vw,370px);margin:auto}
+.edition-emdee .opening>p{margin-top:26px}
+.edition-emdee .notebook{background:#f3f3f5;padding:clamp(14px,2.6vw,36px)}
+.edition-emdee .desk-proof{display:block;max-width:670px;margin:auto}
+.edition-emdee .desk-proof img{width:100%;aspect-ratio:1.4;object-fit:cover;object-position:top}
+.edition-emdee .afterword{background:#17171a}
+.edition-emdee .afterword img{max-height:570px;object-fit:contain}
+.edition-emdee .bookspread img{max-height:520px;object-fit:contain}
+@media(max-width:650px){
+.edition-dials .projector figure>div{grid-template-columns:minmax(0,1fr) 52%;gap:7px}
+.edition-dials .projector figure>div>a img{height:auto;width:100%}
+.edition-dials .projector figure>div>img{height:100%;max-height:none;min-height:0}
+.edition-dueday .statement{grid-template-columns:minmax(0,1fr) minmax(0,1fr);padding:16px 10px;gap:6px}
+.edition-dueday .period button{padding:8px 10px}
+.edition-emdee .notebook .desk-proof{display:none}
+}
+.product-descriptor{display:block;margin-top:15px;font-size:clamp(24px,3.2vw,48px);line-height:1.05;letter-spacing:-.025em}
+.edition-dueday .ledger h1{max-width:none}
+.edition-dueday .amount output{white-space:nowrap}
+.edition-dueday .diary{border:0}
+@media(max-width:650px){.edition-dueday .amount output{font-size:clamp(21px,6.1vw,33px)}}
+@media(min-width:651px){
+.product-descriptor{font-size:clamp(36px,4.65vw,74px)}
+.edition-dueday .balance .product-descriptor{max-width:13ch}
+.edition-emdee .desk-proof{max-width:850px}
+}
+@supports (mask-image:url("")) {
+.native-title{position:relative;width:max-content;max-width:100%}
+.native-title:before{content:"";display:block;width:var(--art-width);max-width:100%;aspect-ratio:var(--art-ratio);background:currentColor;mask:var(--art) center/contain no-repeat}
+.native-title>span{position:absolute;inset:0;color:transparent;overflow:hidden}
+.edition-emdee .opening .native-title{margin-inline:auto}
+@media(forced-colors:active){.native-title:before{display:none}.native-title>span{position:static;color:CanvasText}}
+}
+.native-title{--art:none;--art-width:auto;--art-ratio:auto}
