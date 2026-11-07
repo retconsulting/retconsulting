@@ -30,7 +30,7 @@
   <link rel="icon" href="/favicon.ico" sizes="32x32">
   <link rel="apple-touch-icon" href="/apple-touch-icon.png">
   <link rel="manifest" href="/site.webmanifest">
-  <link rel="stylesheet" href="/assets/site.css?v=20260805b1&amp;apps=3">
+  <link rel="stylesheet" href="/assets/site.css?v=20260805b1&amp;apps=4">
   <script type="application/ld+json">
   {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Accueil","item":"https://retconsulting.be/"},{"@type":"ListItem","position":2,"name":"dueday","item":"https://retconsulting.be/dueday/fr/"}]}
   </script>
@@ -39,7 +39,8 @@
   </script>
 
 
-<script defer src="/assets/product-pages.js?v=1"></script>
+<script defer src="/assets/product-pages.js?v=2"></script>
+<script src="/assets/dueday-calendar.js?v=1" defer></script>
 </head>
 <body class="edition-dueday">
 <a class="product-skip" href="#main">Aller au contenu</a>
@@ -48,37 +49,33 @@
 </nav>
 </header>
 <main id="main">
-<section class="ledger">
-<div class="balance">
-<h1><img class="product-mark" src="/dueday/assets/wordmark.webp" width="1561" height="404" alt="dueday"><span class="product-descriptor native-title" style="--art:url(/dueday/assets/dueday-fr-0.webp);--art-width:10.4846em;--art-ratio:10.48462"><span>Dépenses récurrentes</span></span></h1>
-<p>Loyer, factures et abonnements sur iPhone. Le calendrier indique les paiements du mois. L’analyse répartit aussi vos dépenses trimestrielles et annuelles sur douze mois.</p><a href="https://apps.apple.com/be/app/dueday-co%C3%BBts-r%C3%A9currents/id6779892758" class="download">Télécharger sur l’App Store</a>
-</div>
-<div class="statement">
+<section class="due-cover"><div><h1><img class="product-mark" src="/dueday/assets/wordmark.webp" alt="dueday" width="1561" height="404"><span class="product-descriptor native-title" style="--art:url(/dueday/assets/dueday-fr-0.webp);--art-width:10.4846em;--art-ratio:10.48462"><span>Dépenses récurrentes</span></span></h1><p>Le loyer lundi. L’électricité jeudi. Touchez une date pour voir le paiement. Retrouvez ensuite le montant disponible pour le mois.</p><a href="https://apps.apple.com/be/app/dueday-co%C3%BBts-r%C3%A9currents/id6779892758" class="download">Télécharger sur l’App Store</a></div><div class="calendar-poster"><nav class="datesheet" aria-label="Échéances de novembre"><strong>Novembre 2026</strong>
+   <button class="day-slip" disabled type="button" aria-pressed="false" data-screen="/dueday/assets/payment-fr-0.webp" aria-label="Voir le paiement Streaming du 7 novembre"><time datetime="2026-11-07">7 <small>Sam.</small></time><span>Streaming<br>13,99 €</span></button>
+   <button class="day-slip" disabled type="button" aria-pressed="false" data-screen="/dueday/assets/payment-fr-2.webp" aria-label="Voir le loyer du 9 novembre"><time datetime="2026-11-09">9 <small>Lun.</small></time><span>Loyer<br>950 €</span></button>
+   <button class="day-slip" disabled type="button" aria-pressed="false" data-screen="/dueday/assets/payment-fr-5.webp" aria-label="Voir la facture d’électricité du 12 novembre"><time datetime="2026-11-12">12 <small>Jeu.</small></time><span>Électricité<br>74,50 €</span></button></nav>
+   <a class="due-phone" href="/dueday/assets/home-fr.webp"><img fetchpriority="high" src="/dueday/assets/home-fr.webp" alt="Agrandir l’accueil de novembre dans dueday" width="840" height="1821"></a></div></section><section class="ledger"><div class="statement">
 <div class="amount"><h2 class="native-title" style="--art:url(/dueday/assets/dueday-fr-1.webp);--art-width:10.8385em;--art-ratio:10.75573"><span>Votre budget récurrent</span></h2>
 
 <output aria-live="polite">1 166,14 €</output>
-<p>Exemple de budget · 9 dépenses récurrentes</p>
+<p>Neuf dépenses, dont un cours payé au trimestre et une assurance auto payée à l’année.</p>
 <div class="period" hidden>
-<button type="button" data-total="1 166,14 €" aria-pressed="true">Moyenne mensuelle</button>
-<button type="button" data-total="13 993,64 €" aria-pressed="false">Sur un an</button>
-</div><noscript>Moyenne mensuelle</noscript>
-</div><a href="/dueday/assets/analysis-fr.webp"><img src="/dueday/assets/analysis-fr.webp" width="840" height="1821" alt="Analyse du budget : moyenne mensuelle et revenu disponible" ></a>
+<button type="button" data-total="1 166,14 €" data-available="2 033,86 €" aria-pressed="true">Moyenne mensuelle</button>
+<button type="button" data-total="13 993,64 €" data-available="24 406,36 €" aria-pressed="false">Sur un an</button>
+</div><div class="budget-split"><span>Reste disponible</span> <strong id="available">2 033,86 €</strong><meter value="36.44" min="0" max="100" aria-label="Part du revenu consacrée aux dépenses récurrentes"></meter></div><noscript>Moyenne mensuelle</noscript>
+</div><a href="/dueday/assets/analysis-fr.webp"><img src="/dueday/assets/analysis-fr.webp" alt="Analyse du budget : moyenne mensuelle et revenu disponible" width="840" height="1821"></a>
 </div>
 </section>
 <section class="diary">
 <div>
 <h2 class="native-title" style="--art:url(/dueday/assets/dueday-fr-2.webp);--art-width:6.9923em;--art-ratio:8.57547"><span>Les échéances</span></h2>
 <p>Dans le calendrier, repérez le prochain débit. Les rappels locaux peuvent vous prévenir la veille et le jour de l’échéance.</p>
-</div><a href="/dueday/assets/calendar-fr.webp"><img src="/dueday/assets/dates-fr.webp" width="920" height="1269" alt="Dates de paiement dans le calendrier dueday" ></a><a href="/dueday/assets/home-fr.webp"><img src="/dueday/assets/costs-fr.webp" width="920" height="1000" alt="Exemple d’abonnement et date du prochain paiement" ></a>
+</div><a href="/dueday/assets/calendar-fr.webp"><img src="/dueday/assets/dates-fr.webp" alt="Dates de paiement dans le calendrier dueday" width="920" height="1269"></a><figure class="payment-proof"><a id="payment-proof-link" href="/dueday/assets/payment-fr-2.webp"><img id="payment-proof-image" src="/dueday/assets/day-detail-fr-2.webp" alt="Fiche du loyer du lundi 9 novembre" width="810" height="689"></a><figcaption>Détail de l’échéance</figcaption></figure>
 </section>
-<section class="sharecost"><a href="/dueday/assets/analysis-fr.webp"><img src="/dueday/assets/budget-fr.webp" width="920" height="794" alt="36,4 % du revenu dans le budget d’exemple" ></a>
-<div>
-<h2 class="native-title" style="--art:url(/dueday/assets/dueday-fr-3.webp);--art-width:8.0308em;--art-ratio:8.70000"><span>La part du revenu</span></h2>
-<p>Comparez vos dépenses récurrentes à votre revenu. Ici, 1 166,14 € de dépenses représentent 36,4 % d’un revenu mensuel de 3 200 €.</p>
-</div>
+<section class="sharecost"><a href="/dueday/assets/analysis-fr.webp"><img src="/dueday/assets/categories-fr.webp" alt="Graphique des catégories, logement à 81,5 %" width="930" height="710"></a>
+<div><h2>Le poids du loyer</h2><p>Le loyer représente 950 € sur 1 166,14 € de dépenses récurrentes. Dans Analyse, touchez une catégorie du graphique pour voir les paiements correspondants.</p></div>
 </section>
 </main>
-<footer><strong>dueday</strong>
+<footer><a class="download foot-download" href="https://apps.apple.com/be/app/id6779892758">Télécharger sur l’App Store</a><strong>dueday</strong>
 <p>Disponible en français et en anglais. Fonctionne hors ligne, sans compte.</p>
 <nav aria-label="Liens utiles"><a href="/dueday/support/fr/">Assistance</a> <a href="/dueday/privacy/fr/">Confidentialité</a> <a href="/legal/fr/">Mentions légales</a> <a href="/dials/fr/">Dials</a> <a href="/emdee/fr/">Emdee</a>
 </nav><a href="/">RET Consulting</a>

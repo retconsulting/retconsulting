@@ -29,11 +29,12 @@
   <link rel="icon" href="/favicon.ico" sizes="32x32">
   <link rel="apple-touch-icon" href="/apple-touch-icon.png">
   <link rel="manifest" href="/site.webmanifest">
-  <link rel="stylesheet" href="/assets/site.css?v=20260805b1&amp;apps=3">
+  <link rel="stylesheet" href="/assets/site.css?v=20260805b1&amp;apps=4">
   <script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Accueil","item":"https://retconsulting.be/"},{"@type":"ListItem","position":2,"name":"Dials","item":"https://retconsulting.be/dials/fr/"}]}</script>
 
 
-<script defer src="/assets/product-pages.js?v=1"></script>
+<script defer src="/assets/product-pages.js?v=2"></script>
+<script defer src="/assets/camera-pair.js?v=1"></script>
 </head>
 <body class="edition-dials">
 <a class="product-skip" href="#main">Aller au contenu</a>
@@ -42,26 +43,25 @@
 </nav>
 </header>
 <main id="main">
-<section class="darkroom">
-<div class="titleline">
-<h1><img class="product-mark" src="/dials/assets/wordmark.webp" width="766" height="320" alt="Dials"><span class="product-descriptor native-title" style="--art:url(/dials/assets/dials-fr-0.webp);--art-width:6.9846em;--art-ratio:7.50413"><span>Appareil photo manuel</span></span></h1>
-<p>Comparez les rendus de pellicule sur trois scènes de référence. Touchez une capture pour examiner les réglages. Bientôt sur iPhone.</p>
-</div>
+<section class="camera-catalogue"><div class="camera-intro"><h1><img class="product-mark" src="/dials/assets/wordmark.webp" alt="Dials" width="766" height="320"><span class="product-descriptor native-title" style="--art:url(/dials/assets/dials-fr-0.webp);--art-width:6.9846em;--art-ratio:7.50413"><span>Appareil photo manuel</span></span></h1>
+<p>Réglez la vitesse et la mise au point à la main. Travaillez la couleur avec les rendus de pellicule. Bientôt sur iPhone et iPhone Duo.</p>
+<nav class="catalogue-nav" aria-label="Éditeur de pellicule"><a class="catalogue-action" href="#film-lab">Explorer les pellicules <span aria-hidden="true">↓</span></a></nav></div>
+<figure class="hardware"><img fetchpriority="high" id="camera-pair" src="/dials/assets/instruments-open.webp" alt="Dials sur iPhone avec l’éditeur de pellicule et sur iPhone Duo avec le sélecteur de pellicule" width="1460" height="1050"><figcaption class="hardware-controls"><div class="postures" hidden aria-label="Position du Duo"><button type="button" data-pose="open" aria-pressed="true">Duo ouvert</button><button type="button" data-pose="closed" aria-pressed="false">Duo fermé</button></div><nav aria-label="Capture du Duo"><a id="duo-original" href="/dials/assets/duo-open.webp">Agrandir le viseur ↗</a></nav></figcaption></figure></section><section class="darkroom" id="film-lab"><div class="lab-intro"><h2>La chambre noire</h2><p>Choisissez une scène pour examiner ses réglages de pellicule.</p></div>
 <nav class="filmchoices" aria-label="Scènes de référence"><a href="#ref-indoor">Lumière intérieure</a><a href="#ref-lake">Lac alpin</a><a href="#ref-night">Lueurs de nuit</a>
 </nav>
 <div class="projector">
 <figure id="ref-indoor">
-<div><img src="/dials/assets/ref-indoor.webp" width="1440" height="960" alt="Lumière intérieure" ><a href="/dials/assets/editor-indoor.webp"><img src="/dials/assets/editor-indoor.webp" width="840" height="1821" alt="Agrandir les réglages de pellicule"></a>
+<div><img src="/dials/assets/ref-indoor.webp" alt="Lumière intérieure" width="1440" height="960"><a href="/dials/assets/editor-indoor.webp"><picture><source media="(max-width:650px)" srcset="/dials/assets/controls-indoor.webp"><img src="/dials/assets/editor-indoor.webp" alt="Agrandir les réglages de pellicule" width="840" height="1821"></picture></a>
 </div>
 <figcaption>Lumière intérieure</figcaption>
 </figure>
 <figure id="ref-lake">
-<div><img src="/dials/assets/ref-lake.webp" width="1440" height="960" alt="Lac alpin" ><a href="/dials/assets/editor-lake.webp"><img src="/dials/assets/editor-lake.webp" width="840" height="1821" alt="Agrandir les réglages de pellicule"></a>
+<div><img src="/dials/assets/ref-lake.webp" alt="Lac alpin" width="1440" height="960"><a href="/dials/assets/editor-lake.webp"><picture><source media="(max-width:650px)" srcset="/dials/assets/controls-lake.webp"><img src="/dials/assets/editor-lake.webp" alt="Agrandir les réglages de pellicule" width="840" height="1821"></picture></a>
 </div>
 <figcaption>Lac alpin</figcaption>
 </figure>
 <figure id="ref-night">
-<div><img src="/dials/assets/ref-night.webp" width="1440" height="960" alt="Lueurs de nuit" ><a href="/dials/assets/editor-night.webp"><img src="/dials/assets/editor-night.webp" width="840" height="1821" alt="Agrandir les réglages de pellicule"></a>
+<div><img src="/dials/assets/ref-night.webp" alt="Lueurs de nuit" width="1440" height="960"><a href="/dials/assets/editor-night.webp"><picture><source media="(max-width:650px)" srcset="/dials/assets/controls-night.webp"><img src="/dials/assets/editor-night.webp" alt="Agrandir les réglages de pellicule" width="840" height="1821"></picture></a>
 </div>
 <figcaption>Lueurs de nuit</figcaption>
 </figure>
@@ -69,9 +69,9 @@
 
 </section>
 <section class="contactsheet">
-<div><h2 class="native-title" style="--art:url(/dials/assets/dials-fr-1.webp);--art-width:5.3846em;--art-ratio:5.78512"><span>Le temps de pose</span></h2><p>Ouvrez le réglage de l’obturateur. La scène de référence reste dans le viseur pendant que vous choisissez votre vitesse.</p></div><a href="/dials/assets/shutter.webp"><img src="/dials/assets/shutter.webp" width="840" height="1821" alt="Viseur et réglage de la vitesse" ></a>
-<video controls playsinline preload="none" poster="/dials/assets/camera-film-poster.webp" aria-label="Démonstration de Dials" src="/dials/assets/camera-demo.mp4">
-</video>
+<div><h2 class="native-title" style="--art:url(/dials/assets/dials-fr-1.webp);--art-width:5.3846em;--art-ratio:5.78512"><span>Le temps de pose</span></h2><p>Ouvrez le réglage de l’obturateur. La scène de référence reste dans le viseur pendant que vous choisissez votre vitesse.</p></div><a href="/dials/assets/shutter-open.webp"><img src="/dials/assets/shutter-detail.webp" alt="Viseur et réglage de la vitesse" width="531" height="708"></a>
+<figure class="pod-film"><video controls playsinline preload="none" poster="/dials/assets/camera-film-poster.webp" aria-label="Démonstration de Dials" src="/dials/assets/camera-demo.mp4">
+</video><figcaption>Démonstration de la vitesse et des pellicules</figcaption></figure>
 </section>
 </main>
 <footer><strong>Dials</strong>
