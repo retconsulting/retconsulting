@@ -29,6 +29,8 @@ if (period) {
     const button = event.target.closest('button');
     if (!button) return;
     document.querySelector('.amount output').textContent = button.dataset.total;
+    const available = document.querySelector('#available');
+    if (available && button.dataset.available) available.textContent = button.dataset.available;
     for (const choice of period.children) choice.setAttribute('aria-pressed', String(choice === button));
   });
 }
