@@ -79,7 +79,8 @@ em{font:italic 400 1.12em/1 News,Georgia,serif;font-variation-settings:"opsz" 72
 }
 @media (max-width:640px){
   .shot .d-mac{--u:calc((100vw - 2 * var(--m)) / 363.4)}
-  .shot .d-edit,.shot .d-book{--u:calc((100vw - 2 * var(--m)) / 282.5)}
+  .shot .d-edit{--u:calc((100vw - 2 * var(--m)) / 282.5)}
+  .shot .d-book{--u:calc((100vw - 2 * var(--m)) / 164.8)}
   .shot .d-follow{--u:1.6px}
 }
 /* End and footer. */
