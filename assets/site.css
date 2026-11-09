@@ -4765,3 +4765,5 @@ body:has(.rc-lockup__word[data-brand="upskilling"]) .au-gcard--role .au-tile{--s
   /* the closing rule is the only thing here that draws, and it should */
   .rc-artend{border-top-color:var(--gray-500)}
 }
+
+.rc-form__hint a{color:inherit;text-decoration:underline;text-underline-offset:2px}
