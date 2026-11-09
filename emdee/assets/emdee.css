@@ -1,144 +1,105 @@
-/* Emdee site design system. The page reads like a document open in the app.
-   Tokens mirror the app: --paper and --encre = Resources/iOS/Assets.xcassets/Paper.colorset,
-   --accent = factory "blue" preset, --dot = the indigo dot of the app icon (Sources/Web/AccentColor.swift).
-   Timeless fonts must never be committed: licence section 6 forbids public repositories. Headlines
-   are therefore outlines inside the HTML (allowed by section 5.2), and running text is Newsreader (OFL).
-
-   Device images follow Apple's marketing rules: never crop, tilt, shadow or overlap them, and keep
-   their relative scale. Width = --mm (real width, set inline by the builder) times --u (pixels per
-   millimetre, set by the section). Change --u, never the width of a single device. */
-
-@font-face{font-family:"Newsreader";src:url("fonts/newsreader-latin-opsz-normal.woff2") format("woff2");font-weight:200 800;font-style:normal;font-display:swap}
-@font-face{font-family:"Newsreader";src:url("fonts/newsreader-latin-opsz-italic.woff2") format("woff2");font-weight:200 800;font-style:italic;font-display:swap}
-
-:root{
-  --paper:#fcfcfc;--ink:#17171a;--ink-2:#55555c;--desk:#eeeef1;--veil:#e3e3e8;--encre:#17171a;--encre-2:#232328;
-  --accent:#2f6fb3;--dot:#4b5bc4;
-  --m:clamp(16px,2.4vw,36px);--g:clamp(10px,1.6vw,24px);--side:236px;--r:12px;
-  --serif:"Newsreader",Georgia,"Times New Roman",serif;
-  --t-h2:clamp(38px,4.6vw,72px);--t-h3:clamp(24px,2vw,30px);--t-say:clamp(21px,1.75vw,26px);--t-body:18px;--t-small:16px;
-}
-*,*::before,*::after{box-sizing:border-box}
-html{-webkit-text-size-adjust:100%;font-optical-sizing:auto}
-body{margin:0;background:var(--paper);color:var(--ink);font:400 var(--t-body)/1.5 var(--serif);-webkit-font-smoothing:antialiased;overflow-x:clip}
-img,svg{display:block;max-width:100%}
-img{height:auto}
-a{color:var(--accent);text-underline-offset:.16em;text-decoration-thickness:1px}
-a:hover{color:var(--dot)}
-h1,h2,h3,h4,p,dl,dd,figure,ul,ol,blockquote{margin:0;padding:0}
-ul,ol{list-style:none}
-:focus-visible{outline:2px solid var(--accent);outline-offset:3px;border-radius:3px}
-::selection{background:#cfe0f3}
-.skip{position:absolute;left:12px;top:12px;z-index:60;width:1px;height:1px;overflow:hidden;clip-path:inset(50%);white-space:nowrap}
-.skip:focus{width:auto;height:auto;clip-path:none;background:var(--ink);color:#fff;padding:10px 16px;border-radius:8px}
-.quiet{font-size:var(--t-small);color:var(--ink-2)}
-
-/* Timeless outlines: each word is an inline SVG, so headlines still wrap like text. */
-.t{position:absolute;width:1px;height:1px;overflow:hidden;clip-path:inset(50%);white-space:nowrap}
-.tl{display:inline}
-.tl svg{display:inline-block;height:1.035em;width:auto;margin-right:.24em;vertical-align:top;overflow:visible;fill:currentColor}
-.bigmark{fill:currentColor}
-.bigmark .d{fill:var(--dot)}
-
-.topbar{display:flex;justify-content:space-between;align-items:center;gap:16px;padding:14px var(--m)}
-.topbar .side-mark{margin:0;width:66px}
-
-/* The badge keeps its clear space: a quarter of its height on every side (Apple rule). */
-.store{display:block;width:max-content;margin:14px auto}
-.store img{height:56px;width:auto}
-
-.dev{--mm:73;flex:none;width:calc(var(--mm) * var(--u))}
-.dev img{width:100%}
-.dev figcaption{margin-top:10px;text-align:center;font-size:var(--t-small);color:var(--ink-2)}
-h1,h2{font-weight:400;letter-spacing:-.005em;text-wrap:balance}
-h2{font-size:var(--t-h2);line-height:1.08}
-.say p{margin-top:clamp(12px,1.4vw,20px);font-size:var(--t-say);line-height:1.32;max-width:30em}
-
-/* ---------- Hero: every screen Emdee runs on, at true scale ---------- */
-.hero{text-align:center;padding:clamp(10px,2vw,28px) var(--m) 0}
-.hero h1{font-size:clamp(35px,6.2vw,100px);line-height:1.06}
-.lead{margin:clamp(10px,1.2vw,16px) auto 0;max-width:32em;font-size:var(--t-say);line-height:1.3;text-wrap:balance}
-.soon{font-size:var(--t-small);color:var(--ink-2)}
-.family{--u:min(calc((100vw - 2 * var(--m) - 2 * var(--g)) / 812),2.2px);display:flex;justify-content:center;align-items:flex-end;gap:var(--g);margin-top:clamp(24px,3vw,44px)}
-.cluster{display:flex;flex-direction:column;gap:var(--g);flex:none}
-.cluster-row{display:flex;justify-content:space-between;align-items:flex-end;gap:calc(8 * var(--u))}
-
-/* ---------- Selling points ---------- */
-.shots{display:flex;justify-content:center;align-items:flex-end;gap:var(--g)}
-.point{padding:clamp(72px,9vw,136px) var(--m) 0}
-.p-read .shots{--u:min(calc((100vw - 2 * var(--m) - var(--g)) / 438),calc(70svh / 220));margin-top:clamp(28px,3.4vw,48px)}
-.p-read .say{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,6fr);gap:clamp(12px,4vw,64px);align-items:end}
-.p-read .say p{margin-top:0}
-.p-edit{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:clamp(24px,4vw,64px);align-items:center}
-.p-edit .shots{--u:min(calc((48vw - var(--m)) / 165),4.6px)}
-.encre{display:grid;grid-template-columns:minmax(0,7fr) minmax(0,5fr);gap:clamp(24px,4vw,64px);align-items:center;margin-top:clamp(72px,9vw,136px);background:var(--encre);color:var(--paper);padding:clamp(56px,7vw,104px) var(--m)}
-.encre .shots{--u:min(calc((56vw - var(--m)) / 283),calc(80svh / 216))}
-.encre :focus-visible{outline-color:var(--paper)}
-
-/* ---------- Coming soon ---------- */
-.soon-page{--u:min(calc(62svh / 150),3.4px);display:flex;flex-direction:column;align-items:center;text-align:center;gap:14px;padding:clamp(12px,3vw,40px) var(--m) 0}
-.soon-page h1{font-size:clamp(35px,6.2vw,100px);line-height:1.06}
-
-@media (max-width:1100px){
-  .family{--u:calc((100vw - 2 * var(--m) - var(--g)) / 648);flex-wrap:wrap;row-gap:24px}
-  .cluster{flex-direction:row;align-items:flex-end}
-}
-/* Phones: same scale inside each row, never below Apple's 200 px device height. */
-@media (max-width:700px){
-  .family{--u:calc((100vw - 2 * var(--m)) / 166);flex-direction:column;align-items:center;flex-wrap:nowrap}
-  .cluster{flex-direction:column;width:100%;order:-1;align-items:center}
-  .cluster-row{order:-1;width:100%}
-  .d-mac{--u:calc((100vw - 2 * var(--m)) / 364)}
-  .d-ipad{--u:calc((100vw - 2 * var(--m)) / 283)}
-  .p-read .say,.p-edit,.encre{grid-template-columns:minmax(0,1fr)}
-  .encre .say{order:-1}
-  .p-read .shots{flex-wrap:wrap}
-  .p-read .shots .dev:first-child{--u:calc((100vw - 2 * var(--m)) / 364)}
-  .p-read .shots .dev:last-child{--u:2.6px}
-  .p-edit .shots{--u:calc((100vw - 2 * var(--m)) / 165)}
-  .encre .shots{--u:calc((100vw - 2 * var(--m)) / 283)}
-}
-
-/* ---------- Colophon: the end page of a book ---------- */
-.colophon{margin-top:clamp(72px,9vw,136px);padding:clamp(44px,6vw,96px) var(--m) 26px;background:var(--desk);text-align:center}
-.encre + .colophon,main + .colophon{margin-top:0}
-.colophon .bigmark{margin-inline:auto;width:min(40vw,300px)}
-.colophon p{max-width:54ch;margin:14px auto 0}
-.colophon ul{display:flex;flex-wrap:wrap;justify-content:center;gap:6px 22px;margin-top:22px}
-.colophon small{display:block;margin:24px auto 0;max-width:70ch;font-size:var(--t-small);color:var(--ink-2)}
-
-/* ---------- Sommaire: the app's sidebar is the site's navigation ---------- */
-.frame{display:grid;grid-template-columns:var(--side) minmax(0,1fr)}
-.side{position:sticky;top:0;height:100svh;padding:18px 18px 18px var(--m);display:flex;flex-direction:column;background:#f5f5f7}
-.side-mark{display:block;width:70px;height:auto;color:var(--ink);margin-bottom:22px}
-.side-t{font-size:var(--t-small);color:var(--ink-2);margin-bottom:6px}
-.side ol{display:flex;flex-direction:column;gap:2px}
-.side li a{display:block;padding:4px 10px;margin-left:-10px;border-radius:7px;color:var(--ink);text-decoration:none;font-size:var(--t-small);line-height:1.3;transition:background-color .15s ease,color .15s ease}
-.side li a:hover{background:var(--veil)}
-.side li a[aria-current="true"]{color:#215086;background:#e4edf7}
-.side-foot{margin-top:auto;display:flex;flex-direction:column;align-items:flex-start;gap:10px;font-size:var(--t-small)}
-.lang{display:flex;gap:10px}
-.lang a{color:var(--ink-2);text-decoration:none}
+/* Emdee site stylesheet. Generated by _spec/emdee-landing/site-build.py from the Emdee design system
+   (design-system.md, designs/tokens.css). Do not edit by hand: the next build overwrites it.
+   Light only. Every text colour was measured on --ground and --surface (WCAG 2.2 AA). */
+@font-face{font-family:Geist;src:url(fonts/geist-latin.woff2) format("woff2");font-weight:100 900;font-display:swap}
+@font-face{font-family:News;src:url(fonts/newsreader-latin-opsz-italic.woff2) format("woff2");font-weight:200 800;font-style:italic;font-display:swap}
+:root{--ground:#f5f5f7;--surface:#fff;--ink:#1d1d1f;--ink-2:#6e6e73;--dot:#4b5bc4;--mark:#b9b9bf;--line:#d9d9de;
+  --disp:-apple-system,BlinkMacSystemFont,"SF Pro Display",Geist,"Helvetica Neue",Arial,sans-serif;
+  --sans:-apple-system,BlinkMacSystemFont,"SF Pro Text",Geist,"Helvetica Neue",Arial,sans-serif;
+  --mono:ui-monospace,"SF Mono",Menlo,monospace;--m:clamp(20px,5vw,72px);--g:24px}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:var(--ground);color:var(--ink);font:400 17px/1.47 var(--sans);-webkit-font-smoothing:antialiased;overflow-x:hidden}
+img{display:block;max-width:100%;height:auto}
+a{color:var(--dot);text-decoration-thickness:1px;text-underline-offset:3px}a:hover{text-decoration-thickness:2px}
+a:focus-visible{outline:2px solid var(--ink);outline-offset:3px;border-radius:6px}
+.skip{position:absolute;left:-9999px}.skip:focus{left:16px;top:8px;z-index:9;background:#fff;color:var(--ink);padding:8px 12px;border-radius:8px}
+/* Header: 44 px language targets (WCAG 2.5.8 and Apple HIG). */
+.top{display:flex;justify-content:space-between;align-items:center;height:52px;padding:0 var(--m);border-bottom:1px solid rgba(0,0,0,.07)}
+.brand{display:flex;align-items:center;gap:9px;font:600 17px/1 var(--sans);letter-spacing:-.01em;color:var(--ink);text-decoration:none}
+.brand img{width:24px;height:24px;border-radius:6px}
+.lang{display:flex;margin-right:-12px;font:400 13px/1 var(--sans)}
+.lang a{display:inline-flex;align-items:center;justify-content:center;min-width:44px;min-height:44px;color:var(--ink-2);text-decoration:none}
 .lang a[aria-current]{color:var(--ink);font-weight:600}
-.main{min-width:0}
-.mobilebar{display:none}
-@media (max-width:860px){
-  .frame{grid-template-columns:minmax(0,1fr)}
-  .side{display:none}
-  .mobilebar{display:flex;justify-content:space-between;align-items:center;padding:12px var(--m)}
-  .mobilebar .side-mark{margin:0;width:60px}
-  .mobilebar .right{display:flex;align-items:center;gap:14px;font-size:var(--t-small)}
+/* Markdown marks: the signature. Pale, decorative (aria-hidden), at most one per title. */
+/* No margin by default: the * around the italic word hug it; only the leading # / ## get a gap (rules below). */
+.mk{font:300 .46em/1 var(--mono);color:var(--mark);letter-spacing:0;vertical-align:.34em}
+em{font:italic 400 1.12em/1 News,Georgia,serif;font-variation-settings:"opsz" 72;letter-spacing:-.02em;padding-right:.02em}
+/* Hero (round-3/hero.html). */
+.hero{text-align:center;padding:clamp(28px,3.2vw,44px) var(--m) 0}
+.hero h1{font:600 clamp(44px,5.4vw,78px)/1.03 var(--disp);letter-spacing:-.034em}
+.hero h1 .l1{position:relative}
+.hero h1 .l1 .mk{position:absolute;right:100%;top:50%;transform:translateY(-38%);margin-right:.36em;vertical-align:0}
+.lead{margin:16px auto 0;max-width:52ch;font:400 clamp(18px,1.5vw,21px)/1.38 var(--disp);color:var(--ink-2);letter-spacing:-.005em;text-wrap:balance}
+/* « Bientôt » is text, never a button: no box, no fill (UX principle 4). */
+.soon{margin:24px auto 0;display:inline-flex;align-items:center;gap:14px;text-align:left}
+.soon img{width:56px;height:56px;border-radius:12.5px;box-shadow:0 0 0 1px rgba(0,0,0,.06)}
+.soon small{display:block;font:400 12px/1.2 var(--sans);color:var(--ink-2)}
+.soon b{display:block;font:600 22px/1.25 var(--sans);letter-spacing:-.012em}
+.badge{display:inline-block;margin-top:24px}.badge img{height:56px;width:auto}
+.facts{margin:18px auto 0;display:flex;justify-content:center;flex-wrap:wrap;list-style:none;font:400 13.5px/1.4 var(--sans)}
+.facts li{display:flex;align-items:center;gap:8px;padding:0 22px;border-left:1px solid var(--line)}.facts li:first-child{border-left:0}
+.facts svg,.reg svg{width:18px;height:18px;flex:none;fill:none;stroke:var(--ink-2);stroke-width:1.3;stroke-linejoin:round;stroke-linecap:round}
+.stage{padding:clamp(24px,2.6vw,36px) var(--m) 0}
+.cap{text-align:center;margin-top:18px;padding-bottom:40px;font:400 13px/1.4 var(--sans);color:var(--ink-2)}
+/* True relative scale: width = real millimetres (--mm) × pixels per millimetre (--u). Change --u, never one width.
+   Apple 200 px minimum for the iPhone (150 mm tall): u ≥ 1.334. One row from 1300 px (iPad portrait 216.4 +
+   Mac 363.4 + Duo 164.8 + iPhone 72.8 = 817.4 mm); below, iPad + Mac / Duo + iPhone; under 641 px one device
+   per row except Duo + iPhone; under 361 px each alone. Measured with designs/probe.py, 320 to 1440 px. */
+.family{--u:min(calc((100vw - 2 * var(--m) - 3 * var(--g)) / 817.4),1.36px);display:flex;justify-content:center;align-items:flex-end;gap:var(--g)}
+.dev{--mm:72.8;flex:none;width:calc(var(--mm) * var(--u))}   /* default = iPhone; each device overrides --mm inline */
+@media (max-width:1299px){
+  .family{flex-wrap:wrap;row-gap:28px}
+  .family .d-ipad,.family .d-mac{--u:min(calc((100vw - 2 * var(--m) - var(--g)) / 579.8),1.5px)}
+  .family .d-open,.family .d-iphone{--u:min(max(calc((100vw - 2 * var(--m) - var(--g)) / 579.8),1.36px),1.5px)}
 }
-
-/* ---------- Document pages ---------- */
-.docmain{padding:clamp(28px,5vw,72px) var(--m) 0;max-width:calc(68ch + 2 * var(--m))}
-.docmain h1{font:400 var(--t-h2)/1.06 var(--serif)}
-.docmain .when{margin-top:10px;color:var(--ink-2);font-size:var(--t-small)}
-.doc-body{margin-top:clamp(20px,3vw,40px)}
-.doc-body>p:first-child{font-size:var(--t-say);line-height:1.32}
-.doc-body h2{margin-top:clamp(28px,3.6vw,48px);font:500 var(--t-h3)/1.15 var(--serif)}
-.doc-body h3{margin-top:20px;font:500 22px/1.2 var(--serif)}
-.doc-body p{margin-top:10px}
-.doc-body ul{margin-top:10px;padding-left:1.1em;list-style:disc}
-.doc-body li{margin-top:5px}
-
+@media (max-width:640px){
+  .family{--g:12px}
+  .family .d-mac{--u:calc((100vw - 2 * var(--m)) / 363.4)}
+  .family .d-ipad{--u:calc((100vw - 2 * var(--m)) * .72 / 216.4)}
+  .family .d-open,.family .d-iphone{--u:calc((100vw - 2 * var(--m) - var(--g)) / 237.6)}
+}
+@media (max-width:360px){.family .d-open{--u:calc((100vw - 2 * var(--m)) / 164.8)}.family .d-iphone{--u:1.5px}}
+@media (max-width:900px){.facts{flex-direction:column;align-items:center;gap:6px}.facts li{border-left:0;padding:0}}
+/* Sections (round-5/v2-alterne.html): text and device side by side from 900 px, alternating sides. */
+.sec{max-width:calc(1296px + 2 * var(--m));margin:0 auto;padding:clamp(64px,7vw,112px) var(--m);display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);gap:clamp(40px,5vw,72px);align-items:center;border-top:1px solid var(--line)}
+.sec:nth-of-type(even) .txt{order:2}
+.sec h2{position:relative;font:600 clamp(34px,4vw,56px)/1.06 var(--disp);letter-spacing:-.03em}
+.sec h2 .mk{position:absolute;right:100%;top:.74em;transform:translateY(-50%);margin-right:.36em;vertical-align:0}
+.sec .body{margin-top:18px;font:400 clamp(18px,1.5vw,21px)/1.45 var(--disp);color:var(--ink-2);max-width:46ch}
+.shot{--u:min(calc((100vw - 2 * var(--m) - 72px) * .583 / 363.4),1.9px);display:flex;justify-content:center}
+.buy{align-items:start}
+.reg{list-style:none}
+.reg li{display:flex;gap:14px;padding:16px 0;border-top:1px solid var(--line)}.reg li:last-child{border-bottom:1px solid var(--line)}
+.reg b{display:block;font:600 15px/1.3 var(--sans)}
+.reg span{font:400 15px/1.45 var(--sans);color:var(--ink-2)}
+@media (max-width:900px){
+  .sec{grid-template-columns:1fr}.sec:nth-of-type(even) .txt{order:0}
+  .sec h2 .mk{position:static;transform:none;vertical-align:.34em}
+  .shot{--u:min(calc((100vw - 2 * var(--m)) / 363.4),1.9px)}
+}
+@media (max-width:640px){
+  .shot .d-mac{--u:calc((100vw - 2 * var(--m)) / 363.4)}
+  .shot .d-edit,.shot .d-book{--u:calc((100vw - 2 * var(--m)) / 282.5)}
+  .shot .d-follow{--u:1.6px}
+}
+/* End and footer. */
+.end{text-align:center;padding:96px var(--m) 88px;border-top:1px solid var(--line)}
+.end-icon{width:88px;height:88px;border-radius:20px;box-shadow:0 0 0 1px rgba(0,0,0,.06);margin:0 auto}
+.end-name{margin-top:18px;font:600 15px/1 var(--sans);color:var(--ink-2)}
+.end-soon{margin-top:10px;font:600 clamp(28px,3vw,40px)/1.1 var(--disp);letter-spacing:-.025em}
+.end-fact{margin:14px auto 18px;max-width:44ch;font:400 17px/1.45 var(--sans);color:var(--ink-2)}
+.foot{border-top:1px solid var(--line);padding:28px var(--m) 40px;font:400 12.5px/1.6 var(--sans);color:var(--ink-2)}
+.foot nav{display:flex;flex-wrap:wrap;gap:0 22px;margin-bottom:8px;font-size:13.5px}
+.foot nav a{display:inline-flex;align-items:center;min-height:44px}
+.foot p+p{margin-top:4px}.foot .small{font-size:12px}
+/* Text pages (round-5/texte-confidentialite.html): texts unchanged, new chrome. */
+.doc{max-width:calc(68ch + 2 * var(--m));margin:0 auto;padding:clamp(48px,6vw,96px) var(--m) clamp(64px,7vw,112px)}
+.doc h1{position:relative;font:600 clamp(36px,4.4vw,60px)/1.06 var(--disp);letter-spacing:-.03em}
+.doc h1 .mk,.doc h2 .mk{position:absolute;right:100%;top:.72em;transform:translateY(-50%);margin-right:.4em;vertical-align:0}
+.doc .when{margin-top:14px;font:400 13px/1.4 var(--sans);color:var(--ink-2)}
+.doc article{margin-top:clamp(32px,3.4vw,48px);padding-top:clamp(28px,3vw,40px);border-top:1px solid var(--line)}
+.doc h2{position:relative;margin:clamp(36px,3.6vw,52px) 0 12px;font:600 clamp(22px,2vw,28px)/1.2 var(--disp);letter-spacing:-.02em}
+.doc p,.doc li{font:400 17px/1.6 var(--sans)}
+.doc p+p,.doc ul,.doc ol{margin-top:14px}.doc ul,.doc ol{padding-left:22px}
+.doc article>p:first-child{font:400 clamp(18px,1.5vw,21px)/1.5 var(--disp)}
+@media (max-width:760px){.doc h1 .mk,.doc h2 .mk{position:static;transform:none;vertical-align:.34em;margin-right:.36em}}
