@@ -1,0 +1,317 @@
+/* dueday site, 2.0.69 "Pop" (home EN/FR + privacy, support, legal). Generated pages: site-build.py.
+   Tokens are the app's (Apps/dueday PopWorld.swift purple world, PopKit.swift ink/sun/radii/lips,
+   design/home-prototype/app-pop-v2.src.html CSS). Rules of the identity, kept here on purpose:
+   - three layers: the sky (hero only), the ground (everything else), ONE ink card (privacy);
+   - depth = hard lips (an offset solid shade, no blur); press = the object sinks onto its lip;
+   - the ink card carries the only blurred glow of the page;
+   - motion: springy entrance with overshoot, cascades, one-shot moments, nothing loops,
+     prefers-reduced-motion = no movement.
+   Light theme only (the app's Pop identity is light): color-scheme light + explicit colours.
+   No third-party request: fonts are local. */
+@font-face{font-family:"Nunito";src:url("fonts/nunito-latin.woff2") format("woff2");font-weight:200 1000;font-display:swap;unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+2000-206F,U+20AC,U+2122,U+2190-2193,U+2212,U+2215,U+FEFF,U+FFFD}
+@font-face{font-family:"Nunito";src:url("fonts/nunito-latin-ext.woff2") format("woff2");font-weight:200 1000;font-display:swap;unicode-range:U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C0,U+2113,U+2C60-2C7F,U+A720-A7FF}
+
+:root{
+  color-scheme:light;
+  /* Purple world (PopWorld "purple"): Solo's world, the page's world. */
+  --top:#9466F2;--primary:#8850DF;--bottom:#8148D5;--deep:#6A32B0;--amount-lip:rgba(83,24,140,.6);
+  --glow:198,170,255;--tonal:rgba(70,17,118,.36);--ground:#F1E8FF;--ground-lip:#D9C0F5;
+  /* Ink, sun, soft (Pop). */
+  --ink:#0A1433;--ink-2:#55607F;--ink-lip:#04081A;--on-ink-2:#A9B6DA;--sun:#FFCE1F;--sun-lip:#D49A00;--soft:#EEF1F7;
+  --font:ui-rounded,"SF Pro Rounded","Nunito",system-ui,sans-serif;
+  --spring:cubic-bezier(.34,1.56,.64,1);
+  /* Type scale (strict): display / title / lead / body / label / small. */
+  --fs-display:clamp(44px,5.6vw,80px);--fs-title:clamp(32px,3.9vw,50px);--fs-lead:clamp(18px,1.55vw,21px);
+  --fs-body:17px;--fs-label:15px;--fs-small:14px;
+  --gutter:clamp(16px,4vw,40px);--max:1200px;
+  /* ONE section-break token: every gap between sections is --sec (72 px phone -> 140 px wide). */
+  --sec:clamp(72px,9vw,140px);
+  --overhang:clamp(64px,7vw,104px);
+  --hill:clamp(48px,6.5vw,104px);
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;overflow-x:clip;-webkit-text-size-adjust:100%}
+body{font-family:var(--font);color:var(--ink);background:var(--ground);-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility;overflow-x:clip;font-size:var(--fs-body);line-height:1.5}
+img{display:block;max-width:100%;height:auto}
+a{color:inherit}
+ul{list-style:none}
+svg{display:block}
+.skip{position:absolute;left:-999px;top:8px;background:#fff;color:var(--deep);font-weight:900;padding:12px 18px;border-radius:14px;z-index:20;box-shadow:0 4px 0 var(--deep)}
+.skip:focus{left:8px}
+:focus-visible{outline:3px solid var(--ink);outline-offset:3px;border-radius:8px}
+.sky :focus-visible,.ink :focus-visible{outline-color:#fff;box-shadow:0 0 0 7px rgba(10,20,51,.55)}
+
+/* ---------- Sky (hero) ---------- */
+.sky{position:relative;z-index:1;color:#fff;
+  background:linear-gradient(180deg,var(--top) 0,var(--primary) 220px,var(--bottom) 100%)}
+/* Ground hill (PopGroundHill): an ellipse 115 % wide of the ground colour, centred on the sky's
+   bottom edge, so it rises into the sky. Never clip the sky: the hill and the phone hang out of it. */
+.sky::after{content:"";position:absolute;left:-7.5%;right:-7.5%;bottom:calc(-1 * var(--hill));height:calc(2 * var(--hill));
+  border-radius:50%;background:var(--ground);pointer-events:none}
+
+.bar{position:relative;z-index:3;display:flex;justify-content:space-between;align-items:center;gap:16px;max-width:var(--max);margin:0 auto;padding:14px var(--gutter)}
+.word{display:inline-flex;align-items:center;min-height:44px;color:#fff;border-radius:10px}
+.word svg{height:30px;width:auto;fill:currentColor;filter:drop-shadow(0 3px 0 var(--amount-lip))}
+/* Language segment: a white object of the sky with a deep lip (app system-bar pill buttons). */
+.lang{display:flex;gap:2px;padding:4px;border-radius:18px;background:#fff;box-shadow:0 4px 0 var(--deep)}
+.lang a{display:grid;place-items:center;min-width:52px;min-height:44px;border-radius:14px;font-weight:900;font-size:var(--fs-label);text-decoration:none;color:var(--deep);transition:transform .12s,box-shadow .12s}
+.lang a:hover{background:rgba(136,80,223,.1)}
+.lang a[aria-current="page"]{background:var(--primary);color:#fff;box-shadow:0 3px 0 var(--deep);transform:translateY(-1px)}
+.lang a:active{transform:translateY(3px);box-shadow:none}
+
+.hero{--glow-at:76% 62%;
+  background:radial-gradient(ellipse 30% 44% at var(--glow-at),rgba(var(--glow),.95) 0%,rgba(var(--glow),0) 70%),
+             linear-gradient(180deg,var(--top) 0,var(--primary) 220px,var(--bottom) 100%)}
+.hero-in{position:relative;z-index:2;max-width:var(--max);margin:0 auto;padding:clamp(8px,2vw,24px) var(--gutter) 0;
+  display:grid;grid-template-columns:minmax(0,1fr);gap:40px;align-items:end}
+.hero-copy{display:flex;flex-direction:column;align-items:flex-start;padding-bottom:calc(var(--hill) + 48px)}
+.hello{display:flex;align-items:flex-end;gap:2px;margin-left:-10px}
+.hello picture{flex:none}
+.hello-dudu{width:clamp(112px,11vw,148px);height:auto}
+.bubble{position:relative;background:#fff;color:var(--ink);border:2px solid var(--ground-lip);border-radius:24px;
+  box-shadow:0 4px 0 var(--ground-lip);--t-fill:#fff;--t-edge:var(--ground-lip);--t-lip:var(--ground-lip)}
+/* Tail base = border middle (left:-19px puts SVG x=18 at padding x=-1). Bottom-anchored 26px above the
+   border-box bottom so it clears the 24px corner; the hero bubble centres it instead (see .on-sky). */
+.bubble .tail{position:absolute;left:-19px;bottom:20px;width:24px;height:22px;overflow:visible}
+.tail .t-lip{fill:var(--t-lip)}.tail .t-fill{fill:var(--t-fill)}.tail .t-edge{fill:none;stroke:var(--t-edge);stroke-width:2}
+.bubble.on-sky .tail{bottom:auto;top:calc(50% - 9px)}
+.bubble.on-sky{border-color:#fff;box-shadow:0 4px 0 var(--deep);--t-edge:#fff;--t-lip:var(--deep);
+  margin:0 0 40px 18px;padding:12px 20px 13px;border-radius:18px;font-weight:900;font-size:clamp(17px,1.5vw,20px);line-height:1.25;white-space:nowrap}
+.hero h1{margin-top:18px;font-weight:900;font-size:var(--fs-display);line-height:.98;letter-spacing:-.035em;max-width:13ch;text-wrap:balance;
+  text-shadow:0 .055em 0 var(--amount-lip)}
+.hero .sub{margin-top:20px;font-weight:700;font-size:var(--fs-lead);line-height:1.45;max-width:31ch;text-shadow:0 2px 0 rgba(83,24,140,.35)}
+.badge{display:inline-block;margin-top:32px;border-radius:12px;line-height:0}
+.badge img{height:56px;width:auto}
+.facts{display:flex;flex-wrap:wrap;gap:12px 10px;margin-top:24px}
+.facts li{display:flex;align-items:center;gap:7px;min-height:40px;padding:0 16px 0 12px;border-radius:20px;background:#fff;color:var(--deep);
+  font-weight:900;font-size:var(--fs-label);box-shadow:0 4px 0 var(--deep)}
+.facts svg{width:18px;height:18px;flex:none}
+.hero-shot{position:relative;display:flex;justify-content:center;align-self:end;margin-bottom:calc(-1 * var(--overhang))}
+.hero-shot .dev{width:clamp(236px,24vw,330px);height:auto}
+
+@media (min-width:880px){
+  .hero-in{grid-template-columns:minmax(0,1.3fr) minmax(0,.7fr);gap:24px}
+  .hero-copy{padding-bottom:calc(var(--hill) + var(--overhang) - 8px)}
+}
+@media (max-width:879px){
+  .hero{--glow-at:50% 86%}
+  .hero-in{gap:8px}
+  .hero-copy{padding-bottom:8px}
+  .hero h1{max-width:12ch}
+}
+@media (max-width:430px){
+  .hello{margin-left:-6px}
+  .bubble.on-sky{margin-bottom:28px}
+  .facts{gap:10px 8px}
+  .facts li{font-size:14px;padding:0 12px 0 9px;gap:5px;min-height:36px}
+  .facts svg{width:16px;height:16px}
+}
+
+/* Tablet: the stacked hero is centred (copy above the phone). */
+@media (min-width:600px) and (max-width:879px){
+  .hero-copy{align-items:center;text-align:center}
+  .hero h1,.hero .sub{margin-left:auto;margin-right:auto}
+  .facts{justify-content:center}
+  .hello{margin-left:0}
+}
+
+/* ---------- Ground: question sections ---------- */
+.ground{position:relative;padding-top:calc(var(--sec) * .75 + 48px);padding-bottom:var(--sec)}
+/* Section 2 starts one --sec below the hero phone's foot (the phone overhangs the sky by --overhang). */
+.home .ground{padding-top:calc(var(--overhang) + var(--sec))}
+.qa{max-width:var(--max);margin:0 auto;padding:0 var(--gutter);display:grid;grid-template-columns:minmax(0,1fr);gap:40px;align-items:center}
+.qa + .qa,.qa + .ink-wrap,.ink-wrap + .qa{margin-top:var(--sec)}
+.qa h2{font-weight:1000;font-size:var(--fs-title);line-height:1.04;letter-spacing:-.03em;text-wrap:balance;max-width:16ch}
+.reply{display:grid;grid-template-columns:auto minmax(0,1fr);gap:18px;align-items:end;margin-top:28px;max-width:600px}
+.avatar{width:clamp(76px,7.6vw,104px);height:auto}
+.reply .bubble{padding:16px 22px 17px}
+.reply .bubble p{font-weight:700;font-size:var(--fs-lead);line-height:1.45}
+.qa-proof{display:flex;justify-content:center;min-width:0}
+@media (min-width:600px) and (max-width:879px){.qa:not(.stacked){max-width:680px}}
+@media (max-width:430px){
+  .reply{gap:10px;margin-top:22px}.avatar{width:62px}
+  .reply .bubble{padding:14px 16px 15px}
+  .ink{padding:24px 18px;border-radius:26px}
+}
+.qa-proof .dev{width:clamp(220px,23vw,300px)}
+@media (min-width:880px){
+  .qa:not(.stacked):not(.solo){grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:56px}
+  .qa.flip:not(.stacked) .qa-text{order:2}
+  .qa.solo{justify-items:center;text-align:left}
+}
+.qa.stacked{justify-items:center}
+.qa.stacked h2,.qa.solo h2{max-width:20ch}
+.qa.stacked .qa-text{display:flex;flex-direction:column;align-items:center;text-align:center}
+.qa.stacked .reply{text-align:left}
+.qa.solo .qa-text{display:flex;flex-direction:column;align-items:center;text-align:center}
+.qa.solo .reply{text-align:left}
+
+/* Pastel cost cards (PopPastelCardStyle + PopDueTag): tilted tags are stickers with a lip. */
+.cards{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:26px 16px;width:min(100%,440px);padding-top:10px}
+.card{position:relative;display:flex;flex-direction:column;min-height:160px;padding:16px;border-radius:28px;background:var(--bg);color:var(--ink);
+  box-shadow:0 5px 0 var(--lip),inset 0 2px 0 #fff;margin-bottom:5px}
+.stack{position:relative;width:48px;height:48px;display:grid;place-items:center;color:#fff}
+.stack::before,.stack::after{content:"";position:absolute;inset:0;border-radius:16px}
+.stack::before{background:var(--tile-back);transform:rotate(13deg) translate(6px,2px)}
+.stack::after{background:linear-gradient(165deg,var(--tile-hi) 0%,var(--tile) 42%);box-shadow:0 3px 0 var(--deep),inset 0 2px 0 rgba(255,255,255,.38);transform:rotate(-6deg)}
+.stack svg{position:relative;z-index:1;width:25px;height:25px;transform:rotate(-6deg)}
+.tag{position:absolute;top:-10px;right:-6px;padding:4px 11px;border-radius:11px;transform:rotate(4deg);background:#fff;color:var(--deep);
+  box-shadow:0 3px 0 var(--lip);font-size:13px;font-weight:900;line-height:1.25;white-space:nowrap}
+.tag.close{background:var(--sun);color:var(--ink);box-shadow:0 3px 0 var(--sun-lip)}
+.tag.today{background:var(--ink);color:#fff;box-shadow:0 3px 0 var(--ink-lip)}
+.card-name{display:flex;align-items:flex-end;min-height:2.44em;margin-top:auto;padding-top:8px;font-size:16px;font-weight:800;line-height:1.22;color:var(--ink)}
+.card-price{margin-top:2px;font-size:24px;font-weight:1000;letter-spacing:-.02em;white-space:nowrap;font-variant-numeric:tabular-nums}
+.card-price span{margin-left:3px;font-size:13px;font-weight:800;letter-spacing:0;color:var(--ink2)}
+@media (max-width:380px){.cards{gap:24px 12px}.card{padding:14px;min-height:150px}.card-price{font-size:21px}}
+
+/* ---------- The ONE ink card (PopInkCard): navy, ink lip, the page's only blurred glow ---------- */
+.ink-wrap{max-width:var(--max);margin:0 auto;padding:0 var(--gutter)}
+.ink{display:grid;grid-template-columns:minmax(0,1fr);gap:36px;padding:clamp(28px,4.4vw,56px);border-radius:30px;background:var(--ink);color:#fff;
+  box-shadow:0 5px 0 var(--ink-lip),0 30px 56px -22px rgba(var(--glow),.8)}
+.ink h2{font-weight:1000;font-size:var(--fs-title);line-height:1.04;letter-spacing:-.03em;max-width:14ch;text-wrap:balance}
+.reply.on-ink .bubble{border-color:#fff;box-shadow:0 4px 0 #B9C2DA;--t-edge:#fff;--t-lip:#B9C2DA}
+.ink-link{display:inline-flex;align-items:center;gap:6px;min-height:48px;margin-top:28px;padding:0 14px 0 20px;border-radius:24px;
+  background:rgba(255,255,255,.11);font-weight:900;font-size:var(--fs-body);text-decoration:none;color:#fff;transition:background .12s,transform .12s}
+.ink-link svg{width:18px;height:18px}
+.ink-link:hover{background:rgba(255,255,255,.2)}
+.ink-link:active{transform:translateY(2px)}
+.ink-facts{display:grid;grid-template-columns:minmax(0,1fr);gap:12px;align-content:center}
+.ink-facts li{display:flex;gap:16px;align-items:center;padding:14px 16px;border-radius:24px;background:rgba(255,255,255,.07)}
+.ink-facts .ico{flex:none;width:48px;height:48px;border-radius:16px;display:grid;place-items:center;background:#fff;color:var(--ink);box-shadow:0 3px 0 #B9C2DA}
+.ink-facts .ico svg{width:25px;height:25px}
+.ink-facts strong{display:block;font-weight:900;font-size:18px;line-height:1.25}
+.ink-facts span span{display:block;font-weight:700;font-size:var(--fs-small);color:var(--on-ink-2);margin-top:2px;line-height:1.4}
+@media (min-width:880px){.ink{grid-template-columns:minmax(0,1.05fr) minmax(0,.95fr);gap:48px;align-items:center}}
+@media (min-width:560px) and (max-width:879px){.ink-facts{grid-template-columns:repeat(2,minmax(0,1fr))}}
+
+/* ---------- Two phones side by side (Insights + Dudu) ---------- */
+.pair{display:flex;justify-content:center;align-items:flex-end;gap:clamp(12px,2vw,28px)}
+.pair .dev{width:clamp(150px,19vw,260px)}
+
+/* ---------- Spaces: each card is its space's world (sky + hill + ground) ---------- */
+.spaces{display:grid;grid-template-columns:minmax(0,1fr);gap:28px;width:100%;margin-top:12px}
+.space{position:relative;display:flex;flex-direction:column;border-radius:30px;background:var(--ground);overflow:hidden;
+  box-shadow:0 5px 0 var(--ground-lip);isolation:isolate;margin-bottom:5px}
+/* The 2 px edge is drawn over sky and ground alike, so it never steps where the hill meets the side. */
+.space::after{content:"";position:absolute;inset:0;border-radius:inherit;box-shadow:inset 0 0 0 2px var(--ground-lip);pointer-events:none;z-index:3}
+.space-sky{--hill:34px;position:relative;display:flex;align-items:center;gap:14px;padding:22px 22px calc(var(--hill) + 22px);color:#fff;
+  background:radial-gradient(ellipse 40% 70% at 18% 45%,rgba(var(--glow),.85) 0%,rgba(var(--glow),0) 70%),linear-gradient(180deg,var(--top) 0,var(--primary) 60%,var(--bottom) 100%)}
+.space-sky::after{content:"";position:absolute;left:-7.5%;right:-7.5%;bottom:calc(-1 * var(--hill));height:calc(2 * var(--hill));border-radius:50%;background:var(--ground)}
+.space-dudu{position:relative;z-index:1;width:92px;height:auto;flex:none}
+.space h3{position:relative;z-index:1;font-weight:1000;font-size:clamp(30px,3vw,38px);line-height:1;letter-spacing:-.03em;text-shadow:0 3px 0 var(--amount-lip)}
+.space-sky p{position:relative;z-index:1;margin-top:6px;font-weight:800;font-size:var(--fs-label);line-height:1.3}
+.space-sky p{display:inline-block;padding:5px 12px;border-radius:15px;background:rgba(0,0,0,.18)}
+.space-ground{position:relative;z-index:1;display:flex;justify-content:center;padding:0 20px 28px;margin-top:-20px}
+.space-ground .dev{width:clamp(176px,17vw,236px)}
+.note{display:inline-flex;align-items:center;gap:8px;margin-top:8px;font-weight:800;font-size:var(--fs-label);color:var(--ink-2)}
+.note svg{width:20px;height:20px;color:var(--deep)}
+@media (min-width:760px){.spaces{grid-template-columns:repeat(3,minmax(0,1fr));gap:20px}}
+@media (min-width:760px) and (max-width:1023px){.space-dudu{width:72px}.space-sky{flex-direction:column;align-items:flex-start;gap:6px;padding:18px 18px calc(var(--hill) + 16px)}}
+
+/* ---------- Device family: ONE --u (px per mm) for every device = correct relative scale.
+   Frames are never tilted, cropped or overlapping; each row's devices stand on one line. ---------- */
+.family{--u:1.5px;display:flex;flex-direction:column;align-items:center;gap:40px;width:100%;margin-top:16px}
+.fam-row{display:flex;justify-content:center;align-items:flex-end;flex-wrap:wrap;gap:24px clamp(20px,3vw,48px)}
+.family figure{display:flex;flex-direction:column;align-items:center;gap:14px}
+.family .dev{width:calc(var(--mm) * var(--u));max-width:none}
+.family figcaption{display:inline-flex;align-items:center;min-height:32px;padding:0 14px;border-radius:16px;background:#fff;color:var(--ink);
+  font-weight:900;font-size:var(--fs-small);box-shadow:0 3px 0 var(--ground-lip);white-space:nowrap}
+@media (max-width:1180px){.family{--u:1.25px}}
+@media (max-width:960px){.family{--u:1.05px}}
+@media (max-width:760px){.family{--u:.92px}.fam-row{gap:20px 14px}}
+@media (max-width:430px){.family{--u:.86px;gap:28px}.fam-row{gap:20px 10px}.family figcaption{font-size:13px;padding:0 10px}}
+@media (max-width:374px){.family{--u:.8px}}
+
+/* ---------- End: free + the store link (no second badge) ---------- */
+.store{display:inline-flex;align-items:center;gap:16px;margin-top:8px;padding:12px 18px 12px 12px;border-radius:28px;text-decoration:none;
+  background:#fff;box-shadow:inset 0 0 0 2px var(--ground-lip),0 5px 0 var(--ground-lip);transition:transform .12s,box-shadow .12s}
+.store img{width:72px;height:72px;border-radius:22.5%}
+.store b{display:block;font-weight:1000;font-size:22px;letter-spacing:-.02em;color:var(--ink);text-align:left}
+.store span span{display:block;font-weight:900;font-size:var(--fs-label);color:var(--deep);text-align:left}
+.store svg{width:22px;height:22px;color:var(--deep)}
+.store:hover{box-shadow:inset 0 0 0 2px var(--primary),0 5px 0 var(--ground-lip)}
+.store:active{transform:translateY(5px);box-shadow:inset 0 0 0 2px var(--primary),0 0 0 var(--ground-lip)}
+
+/* ---------- Finale: the page closes on the sky again (the ground hill rises from above) ---------- */
+.home .ground{padding-bottom:0}
+.finale{position:relative;margin-top:calc(var(--sec) + var(--hill));padding:clamp(24px,4vw,48px) var(--gutter) clamp(72px,9vw,112px);
+  color:#fff;text-align:center;
+  background:radial-gradient(ellipse 36% 50% at 50% 46%,rgba(var(--glow),.75) 0%,rgba(var(--glow),0) 70%),
+             linear-gradient(180deg,var(--primary) 0,var(--bottom) 100%)}
+/* A sky dome: the closing sky rises above the ground like a horizon (mirror of the hero hill). */
+.finale::before{content:"";position:absolute;left:-7.5%;right:-7.5%;top:calc(-1 * var(--hill));height:calc(2 * var(--hill));border-radius:50%;background:var(--primary)}
+.finale-in{position:relative;max-width:720px;margin:0 auto;display:flex;flex-direction:column;align-items:center}
+.finale h2{font-weight:1000;font-size:var(--fs-title);line-height:1.04;letter-spacing:-.03em;text-shadow:0 .055em 0 var(--amount-lip);text-wrap:balance}
+.finale .reply{text-align:left}
+.finale .avatar{width:clamp(104px,10vw,140px)}
+.reply.on-sky .bubble{border-color:#fff;box-shadow:0 4px 0 var(--deep);--t-edge:#fff;--t-lip:var(--deep)}
+.finale .store{margin-top:36px;box-shadow:0 5px 0 var(--deep)}
+.finale .store:hover{box-shadow:0 5px 0 var(--deep),0 0 0 4px rgba(255,255,255,.35)}
+.finale .store:active{transform:translateY(5px);box-shadow:0 0 0 var(--deep)}
+
+/* ---------- Footer ---------- */
+.foot{position:relative;background:#fff;padding:56px 0 40px;color:var(--ink-2);font-size:var(--fs-small)}
+.foot .wrap{max-width:var(--max);margin:0 auto;padding:0 var(--gutter);display:grid;gap:28px}
+.foot .word{color:var(--primary);align-self:start;justify-self:start}
+.foot .word svg{filter:none;height:26px}
+.foot-cols{display:grid;gap:24px}
+.foot ul{display:grid;gap:10px}
+.foot ul a,.foot p a{font-weight:900;color:var(--ink);text-decoration:none}
+.foot p{margin:0}
+@media (max-width:759px){.foot ul{gap:0}.foot ul a{display:inline-flex;align-items:center;min-height:44px}}
+.foot p a{text-decoration:underline;text-decoration-color:var(--ground-lip);text-decoration-thickness:2px;text-underline-offset:3px}
+.foot ul a:hover,.foot p a:hover{color:var(--deep);text-decoration:underline;text-decoration-color:currentColor}
+.foot p,.foot li{line-height:1.6;font-weight:700}
+.foot p + p{margin-top:4px}
+.foot .fine{padding-top:24px;border-top:2px solid var(--soft)}
+.foot small{display:block;font-size:13px;line-height:1.6;font-weight:600;max-width:90ch}
+@media (min-width:760px){.foot-cols{grid-template-columns:minmax(0,.8fr) minmax(0,1fr) minmax(0,1.2fr);gap:40px}}
+
+/* ---------- Text pages (privacy, support, legal): compact sky, white sheet with a lip ---------- */
+.doc-hero{padding-bottom:calc(var(--hill) + 40px)}
+.doc-head{position:relative;z-index:2;max-width:860px;margin:0 auto;padding:clamp(16px,4vw,40px) var(--gutter) 0}
+.doc-head h1{font-weight:900;font-size:clamp(38px,5vw,62px);line-height:1;letter-spacing:-.035em;text-wrap:balance;text-shadow:0 .055em 0 var(--amount-lip)}
+.doc-head p{margin-top:14px;font-weight:800;font-size:var(--fs-label)}
+.doc-head .points{display:flex;flex-wrap:wrap;gap:10px;margin-top:22px}
+.doc-head .points a{display:inline-flex;align-items:center;min-height:44px;padding:0 18px;border-radius:22px;background:#fff;color:var(--deep);
+  font-weight:900;font-size:var(--fs-label);text-decoration:none;box-shadow:0 4px 0 var(--deep);transition:transform .12s,box-shadow .12s}
+.doc-head .points a:active{transform:translateY(4px);box-shadow:none}
+/* The sheet sits on the ground and rises over the hill (above the sky's z-index). */
+.doc .ground{z-index:2;padding:0 var(--gutter) var(--sec);margin-top:calc(-.5 * var(--hill))}
+.doc-body{max-width:860px;margin:0 auto;padding:clamp(28px,5vw,64px) clamp(22px,5.5vw,72px);background:#fff;border-radius:30px;
+  box-shadow:inset 0 0 0 2px var(--ground-lip),0 5px 0 var(--ground-lip)}
+.doc-body > :first-child{margin-top:0}
+.doc-body h2{margin-top:44px;font-weight:1000;font-size:clamp(24px,2.4vw,30px);line-height:1.15;letter-spacing:-.02em;color:var(--ink)}
+.doc-body h3{margin-top:28px;font-weight:900;font-size:20px;line-height:1.25;color:var(--ink)}
+.doc-body p,.doc-body li{font-weight:600;font-size:var(--fs-body);line-height:1.65;color:#2A3352}
+.doc-body p{margin-top:14px}
+.doc-body h2 + p,.doc-body h3 + p{margin-top:10px}
+.doc-body ul{margin-top:14px;display:grid;gap:10px}
+.doc-body li{position:relative;padding-left:26px}
+.doc-body li::before{content:"";position:absolute;left:4px;top:.62em;width:10px;height:10px;border-radius:4px;background:var(--primary);box-shadow:0 2px 0 var(--deep)}
+.doc-body strong{font-weight:900;color:var(--ink)}
+.doc-body a{color:var(--deep);font-weight:800;text-decoration:underline;text-decoration-thickness:2px;text-underline-offset:3px;overflow-wrap:anywhere}
+.doc-body a:hover{color:var(--ink)}
+
+/* ---------- Motion (progressive enhancement; nothing loops) ---------- */
+@keyframes pop{0%{opacity:0;transform:translateY(28px) scale(.94)}100%{opacity:1;transform:none}}
+@keyframes rise{0%{opacity:0;transform:translateY(60px)}100%{opacity:1;transform:none}}
+@keyframes wiggle{0%{transform:rotate(4deg)}30%{transform:rotate(10deg) scale(1.06)}60%{transform:rotate(-2deg)}100%{transform:rotate(4deg)}}
+@keyframes bubble-in{0%{opacity:0;transform:scale(.6) translateX(-12px);transform-origin:0 100%}100%{opacity:1;transform:none}}
+@media (prefers-reduced-motion:no-preference){
+  /* Hero: one cascade on load (CSS only; visible without JS). */
+  .hero-copy > *{animation:pop .7s var(--spring) both}
+  .hero-copy > :nth-child(1){animation-delay:.05s}.hero-copy > :nth-child(2){animation-delay:.12s}
+  .hero-copy > :nth-child(3){animation-delay:.19s}.hero-copy > :nth-child(4){animation-delay:.26s}
+  .hero-copy > :nth-child(5){animation-delay:.33s}
+  .hello .bubble{animation:bubble-in .55s var(--spring) .7s both}
+  .hero-shot .dev{animation:rise .9s var(--spring) .2s both}
+  /* Sections: landing.js marks items below the fold as waiting, then plays them once. */
+  .js-pop [data-pop].pop-wait{opacity:0;transform:translateY(28px) scale(.94)}
+  .js-pop [data-pop].pop-in{animation:pop .65s var(--spring) both}
+  .js-pop .card.pop-in .tag.today{animation:wiggle .5s ease-out .55s 1 both}
+}
+@media (prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  *,*::before,*::after{animation:none!important;transition:none!important}
+}
