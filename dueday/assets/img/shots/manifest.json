@@ -1,0 +1,112 @@
+{
+ "duo-closed-en.webp": {
+  "w": 800,
+  "h": 1117,
+  "mm": 84.5
+ },
+ "duo-closed-fr.webp": {
+  "w": 800,
+  "h": 1117,
+  "mm": 84.5
+ },
+ "duo-open-en.webp": {
+  "w": 1500,
+  "h": 1075,
+  "mm": 164.8
+ },
+ "duo-open-fr.webp": {
+  "w": 1500,
+  "h": 1075,
+  "mm": 164.8
+ },
+ "ipad-en.webp": {
+  "w": 1400,
+  "h": 1072,
+  "mm": 282.5
+ },
+ "ipad-fr.webp": {
+  "w": 1400,
+  "h": 1072,
+  "mm": 282.5
+ },
+ "iphone-calendar-en.webp": {
+  "w": 800,
+  "h": 1649,
+  "mm": 72.8
+ },
+ "iphone-calendar-fr.webp": {
+  "w": 800,
+  "h": 1649,
+  "mm": 72.8
+ },
+ "iphone-dudu-en.webp": {
+  "w": 800,
+  "h": 1649,
+  "mm": 72.8
+ },
+ "iphone-dudu-fr.webp": {
+  "w": 800,
+  "h": 1649,
+  "mm": 72.8
+ },
+ "iphone-home-en.webp": {
+  "w": 800,
+  "h": 1649,
+  "mm": 72.8
+ },
+ "iphone-home-fr.webp": {
+  "w": 800,
+  "h": 1649,
+  "mm": 72.8
+ },
+ "iphone-insights-en.webp": {
+  "w": 800,
+  "h": 1649,
+  "mm": 72.8
+ },
+ "iphone-insights-fr.webp": {
+  "w": 800,
+  "h": 1649,
+  "mm": 72.8
+ },
+ "iphone-space-duo-en.webp": {
+  "w": 800,
+  "h": 1649,
+  "mm": 72.8
+ },
+ "iphone-space-duo-fr.webp": {
+  "w": 800,
+  "h": 1649,
+  "mm": 72.8
+ },
+ "iphone-space-pro-en.webp": {
+  "w": 800,
+  "h": 1649,
+  "mm": 72.8
+ },
+ "iphone-space-pro-fr.webp": {
+  "w": 800,
+  "h": 1649,
+  "mm": 72.8
+ },
+ "iphone-space-solo-en.webp": {
+  "w": 800,
+  "h": 1649,
+  "mm": 72.8
+ },
+ "iphone-space-solo-fr.webp": {
+  "w": 800,
+  "h": 1649,
+  "mm": 72.8
+ },
+ "mac-en.webp": {
+  "w": 1500,
+  "h": 908,
+  "mm": 363.4
+ },
+ "mac-fr.webp": {
+  "w": 1500,
+  "h": 908,
+  "mm": 363.4
+ }
+}
