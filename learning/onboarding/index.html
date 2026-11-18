@@ -1,0 +1,840 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="light">
+  <meta name="theme-color" content="#F7F8F7">
+  <meta name="format-detection" content="telephone=no">
+  <title>Find your training · RET Learning</title>
+  <meta name="description" content="Four questions about your tools, level, department and goal. One recommended route through the RET Learning catalogue, and a request sent in one click.">
+  <link rel="canonical" href="https://retconsulting.be/learning/onboarding/">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="RET Consulting">
+  <meta property="og:locale" content="en_GB">
+  <meta property="og:title" content="Find your training · RET Learning">
+  <meta property="og:description" content="Four questions about your tools, level, department and goal. One recommended route through the RET Learning catalogue.">
+  <meta property="og:url" content="https://retconsulting.be/learning/onboarding/">
+  <meta property="og:image" content="https://retconsulting.be/assets/img/icon-512.png">
+  <meta property="og:image:type" content="image/png">
+  <meta property="og:image:width" content="512">
+  <meta property="og:image:height" content="512">
+  <meta property="og:image:alt" content="RET Consulting logo">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:image:alt" content="RET Consulting logo">
+  <link rel="icon" href="/assets/img/logo-glyph.svg" type="image/svg+xml">
+  <link rel="icon" href="/favicon.ico" sizes="32x32">
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+  <link rel="manifest" href="/site.webmanifest">
+  <link rel="stylesheet" href="/assets/site.css?v=20260805b1">
+  <script type="application/ld+json">
+  {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://retconsulting.be/"},{"@type":"ListItem","position":2,"name":"RET Learning","item":"https://retconsulting.be/learning/"},{"@type":"ListItem","position":3,"name":"Find your training","item":"https://retconsulting.be/learning/onboarding/"}]}
+  </script>
+  <style>
+  /* RET Learning · onboarding. Page-local layer on top of site.css: every value is a
+     DS token where one exists. Motion is transform + opacity only. */
+  body{min-height:100vh;min-height:100dvh;display:flex;flex-direction:column}
+  .ob-header .rc-header__inner{gap:var(--space-4)}
+  .ob-header .rc-lockup__ret,.ob-header .rc-lockup__word{font-size:18px}
+  .ob-exit{margin-left:auto}
+
+  /* ---------- stage: a silk field, the card floats on it ---------- */
+  .ob-stage{position:relative;flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:var(--space-5);
+    padding:var(--space-10) var(--space-6) var(--space-5);overflow:hidden;isolation:isolate}
+  .ob-field{position:absolute;inset:0;z-index:-1}
+  .ob-field .au-silk__bloom,.ob-field .au-silk__rib{transition:transform 900ms var(--ease-standard)}
+  .ob-field .au-silk__bloom{transform:translate(var(--ob-bx,0),var(--ob-by,0)) scale(1.25)}
+  .ob-field .au-silk__rib--a{transform:rotate(calc(-19deg + var(--ob-rot,0deg)))}
+  .ob-field .au-silk__rib--b{transform:rotate(calc(13deg - var(--ob-rot,0deg)))}
+
+  .ob-card{position:relative;width:100%;max-width:880px;display:flex;flex-direction:column;
+    min-height:min(660px,calc(100dvh - 64px - 2*var(--space-10) - var(--space-5)));
+    background:var(--surface);border:1px solid var(--shell-border);
+    border-radius:var(--radius-sheet);box-shadow:var(--elev-3)}
+  .ob-card[data-view="route"],.ob-card[data-view="request"]{max-width:1120px}
+  .ob-card[data-view="welcome"],.ob-card[data-view="sent"]{max-width:760px}
+
+  /* ---------- top bar: progress ---------- */
+  .ob-top{display:flex;align-items:center;gap:var(--space-4);min-height:56px;
+    padding:var(--space-3) var(--space-6) 0 var(--space-10)}
+  .ob-prog{display:flex;gap:var(--space-1-5);flex:none}
+  .ob-prog__seg{position:relative;width:44px;height:4px;border-radius:var(--radius-full);background:var(--surface-strong);overflow:hidden}
+  .ob-prog__seg::after{content:"";position:absolute;inset:0;border-radius:inherit;background:var(--accent-graphic);
+    transform:scaleX(0);transform-origin:left;transition:transform var(--motion-context) var(--ease-standard)}
+  .ob-prog__seg.is-done::after{transform:scaleX(1)}
+  .ob-prog__seg.is-now::after{transform:scaleX(.5)}
+  .ob-top__label{font:450 12px/16px var(--font-mono);letter-spacing:.08em;text-transform:uppercase;color:var(--text-tertiary);white-space:nowrap}
+  .ob-top__restart{margin-left:auto}
+  .ob-card[data-view="welcome"] .ob-prog,.ob-card[data-view="welcome"] .ob-top__label,
+  .ob-card[data-view="welcome"] .ob-top__restart{visibility:hidden}
+
+  /* ---------- body + step transition ---------- */
+  .ob-body{flex:1;display:flex;flex-direction:column;justify-content:center;
+    padding:var(--space-6) var(--space-10) var(--space-10);
+    transition:opacity var(--motion-control) var(--ease-exit),transform var(--motion-control) var(--ease-exit)}
+  .ob-card[data-view="route"] .ob-body,.ob-card[data-view="request"] .ob-body{justify-content:flex-start}
+  .ob-body.is-leaving{opacity:0;transform:translateY(-10px)}
+  .ob-body.is-leaving[data-dir="back"]{transform:translateY(10px)}
+  @keyframes ob-in{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:none}}
+  @keyframes ob-in-back{from{opacity:0;transform:translateY(-18px)}to{opacity:1;transform:none}}
+  .ob-a{animation:ob-in 400ms var(--ease-enter) both;animation-delay:calc(var(--i,0)*30ms)}
+  .ob-body[data-dir="back"] .ob-a{animation-name:ob-in-back}
+  @keyframes ob-pop{0%{transform:scale(.6);opacity:0}60%{transform:scale(1.12)}100%{transform:scale(1);opacity:1}}
+  @media (prefers-reduced-motion:reduce){
+    .ob-a{animation:none}
+    .ob-field .au-silk__l{transition:none}
+    .ob-opt,.ob-pick{transition:none}
+  }
+
+  .ob-eyebrow{font:450 12px/16px var(--font-mono);letter-spacing:.08em;text-transform:uppercase;color:var(--accent-deep,var(--text-tertiary))}
+  .ob-h{margin:var(--space-2) 0 0;font:var(--h2-weight) var(--h2-size)/var(--h2-line) var(--font-sans);letter-spacing:var(--h2-track);color:var(--text-primary);text-wrap:balance}
+  .ob-h:focus{outline:none}
+  .ob-h--display{font:var(--display-weight) var(--display-size)/var(--display-line) var(--font-sans);letter-spacing:var(--display-track)}
+  .ob-lead{margin:var(--space-3) 0 0;max-width:60ch;font:400 16px/24px var(--font-sans);color:var(--text-secondary);text-wrap:pretty}
+  .ob-head{margin-bottom:var(--space-8)}
+
+  /* ---------- welcome ---------- */
+  .ob-welcome{display:flex;flex-direction:column;align-items:flex-start;gap:var(--space-6)}
+  .ob-welcome .ob-lead{font-size:18px;line-height:28px;margin-top:0}
+  .ob-steps{display:grid;grid-template-columns:repeat(4,1fr);gap:var(--space-3);width:100%;list-style:none;margin:0;padding:0}
+  .ob-steps li{display:flex;flex-direction:column;gap:var(--space-2);padding:var(--space-4);
+    border:1px solid var(--border-subtle);border-radius:var(--radius-card);background:var(--canvas)}
+  .ob-steps__n{font:450 11px/1 var(--font-mono);letter-spacing:.08em;color:var(--accent-deep)}
+  .ob-steps__t{font:var(--label-weight) 14px/20px var(--font-sans);color:var(--text-primary)}
+  .ob-steps__d{font:400 13px/18px var(--font-sans);color:var(--text-secondary)}
+  .ob-cta{display:flex;align-items:center;gap:var(--space-4);flex-wrap:wrap}
+  .ob-hint{font:var(--meta-weight) var(--meta-size)/var(--meta-line) var(--font-sans);color:var(--text-secondary)}
+  .ob-kbd{display:inline-flex;align-items:center;justify-content:center;min-width:20px;height:20px;padding:0 5px;box-sizing:border-box;
+    border:1px solid var(--chip-border);border-radius:5px;background:var(--chip-bg);
+    font:500 11px/1 var(--font-mono);color:var(--text-secondary)}
+
+  /* ---------- option tiles ---------- */
+  .ob-opts{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:var(--space-3);list-style:none;margin:0;padding:0}
+  .ob-opts--2{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .ob-opts--4{grid-template-columns:repeat(4,minmax(0,1fr))}
+  .ob-opt{position:relative;display:flex;align-items:center;gap:var(--space-3);width:100%;height:100%;box-sizing:border-box;
+    padding:var(--space-4);text-align:left;cursor:pointer;-webkit-appearance:none;appearance:none;
+    font-family:var(--font-sans);color:var(--text-primary);
+    background:var(--surface);border:1px solid var(--border-strong);border-radius:var(--radius-card);box-shadow:var(--elev-line);
+    transition:transform var(--motion-control) var(--ease-standard),box-shadow var(--motion-control) var(--ease-standard),
+      border-color var(--motion-fast) var(--ease-standard),background var(--motion-fast) var(--ease-standard)}
+  .ob-opt:hover{border-color:var(--gray-600);transform:translateY(-2px);box-shadow:var(--elev-float)}
+  .ob-opt:active{transform:scale(.985)}
+  .ob-opt:focus-visible{outline:2px solid var(--focus-ring);outline-offset:2px}
+  .ob-opt[aria-checked="true"]{border-color:var(--text-primary);background:var(--silk-iris-5);
+    box-shadow:inset 0 0 0 1px var(--text-primary),var(--elev-float)}
+  .ob-opt__icon{flex:none;display:grid;place-items:center;width:40px;height:40px;border-radius:var(--radius-control);
+    background:var(--tag-violet-bg);color:var(--accent-graphic)}
+  .ob-opt__icon svg{width:20px;height:20px}
+  .ob-opt__logo{width:20px;height:20px;background:currentColor;-webkit-mask:var(--m) center/contain no-repeat;mask:var(--m) center/contain no-repeat}
+  .ob-opt__text{display:flex;flex-direction:column;gap:2px;min-width:0;flex:1}
+  .ob-opt__name{font:var(--label-weight) 15px/20px var(--font-sans);letter-spacing:-.005em}
+  .ob-opt__desc{font:400 13px/18px var(--font-sans);color:var(--text-secondary)}
+  .ob-opt__key{flex:none;align-self:flex-start;display:grid;place-items:center;width:22px;height:22px;border-radius:6px;
+    border:1px solid var(--chip-border);background:var(--chip-bg);font:500 11px/1 var(--font-mono);color:var(--text-secondary)}
+  .ob-opt__key svg{display:none;width:13px;height:13px}
+  .ob-opt[aria-checked="true"] .ob-opt__key{background:var(--text-primary);border-color:var(--text-primary);color:var(--text-on-accent);
+    border-radius:50%;animation:ob-pop 260ms var(--ease-enter)}
+  .ob-opt[aria-checked="true"] .ob-opt__key span{display:none}
+  .ob-opt[aria-checked="true"] .ob-opt__key svg{display:block}
+
+  /* stacked variant: level + goal */
+  .ob-opt--stack{flex-direction:column;align-items:stretch;gap:var(--space-4);padding:var(--space-4)}
+  .ob-opt--stack .ob-opt__key{position:absolute;top:var(--space-3);right:var(--space-3)}
+  .ob-bars{display:flex;align-items:flex-end;gap:4px;height:40px;color:var(--accent-graphic)}
+  .ob-bars i{display:block;width:10px;border-radius:3px;background:currentColor;opacity:.18}
+  .ob-bars i.on{opacity:1}
+  .ob-cover{position:relative;height:104px;border-radius:var(--radius-control);display:flex;align-items:flex-end;padding:var(--space-3)}
+  .ob-cover__name{position:relative;font:600 20px/24px var(--font-sans);letter-spacing:-.02em;color:var(--on-light-object)}
+  .ob-silk{isolation:isolate;overflow:hidden;background:
+    radial-gradient(46% 60% at var(--bx,68%) var(--by,40%),rgba(255,255,255,.85) 0%,rgba(255,255,255,0) 72%),
+    radial-gradient(80% 110% at 0% 100%,var(--silk-iris-1) 0%,transparent 62%),
+    radial-gradient(70% 90% at 100% 0%,var(--silk-iris-3) 0%,transparent 60%),
+    radial-gradient(60% 70% at 78% 110%,var(--silk-iris-4) 0%,transparent 58%),
+    linear-gradient(112deg,var(--silk-iris-1) 0%,var(--silk-iris-2) 40%,var(--silk-iris-3) 100%)}
+  .ob-silk::before{content:"";position:absolute;inset:0;background-image:var(--tex-grain);background-size:160px;opacity:var(--grain-opacity);mix-blend-mode:overlay;pointer-events:none}
+  .ob-cover--plain{background:var(--canvas);border:1px dashed var(--border-strong)}
+  .ob-facts{display:flex;flex-wrap:wrap;gap:var(--space-1-5);margin-top:var(--space-2)}
+
+  /* ---------- footer nav ---------- */
+  .ob-foot{position:sticky;bottom:0;z-index:5;display:flex;align-items:center;gap:var(--space-3);
+    padding:var(--space-4) var(--space-10);border-top:1px solid var(--border-subtle);
+    background:var(--surface);border-radius:0 0 var(--radius-sheet) var(--radius-sheet)}
+  .ob-foot:empty{display:none}
+  .ob-foot__mid{margin-left:auto;font:var(--label-weight) 13px/16px var(--font-sans);color:var(--text-secondary)}
+  .ob-foot__mid + .au-btn{margin-left:0}
+  .ob-foot .au-btn--primary{margin-left:auto}
+  .ob-foot__mid ~ .au-btn--primary{margin-left:0}
+
+  /* ---------- route ---------- */
+  .ob-answers{display:flex;flex-wrap:wrap;gap:var(--space-2);margin-top:var(--space-4)}
+  .ob-answer{display:inline-flex;align-items:center;gap:var(--space-1-5);height:28px;padding:0 10px;cursor:pointer;
+    border:1px solid var(--chip-border);border-radius:var(--radius-full);background:var(--surface);
+    font:500 13px/1 var(--font-sans);color:var(--text-primary);transition:border-color var(--motion-fast) var(--ease-standard),background var(--motion-fast) var(--ease-standard)}
+  .ob-answer:hover{border-color:var(--gray-600);background:var(--surface-subtle)}
+  .ob-answer:focus-visible{outline:2px solid var(--focus-ring);outline-offset:2px}
+  .ob-answer small{font:450 11px/1 var(--font-mono);letter-spacing:.06em;text-transform:uppercase;color:var(--text-tertiary)}
+  .ob-answer svg{width:12px;height:12px;color:var(--text-tertiary)}
+
+  .ob-route{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:var(--space-4);list-style:none;margin:0;padding:0}
+  .ob-col{display:flex;flex-direction:column;gap:var(--space-3);padding:var(--space-3);
+    border:1px solid var(--border-subtle);border-radius:var(--radius-panel);background:var(--canvas)}
+  .ob-col.is-start{border-color:var(--text-primary);box-shadow:var(--elev-2)}
+  .ob-band{position:relative;border-radius:var(--radius-control);padding:var(--space-4);min-height:112px;display:flex;flex-direction:column;justify-content:space-between;gap:var(--space-3)}
+  .ob-band > *{position:relative}
+  .ob-band__row{display:flex;align-items:center;justify-content:space-between;gap:var(--space-2);min-height:20px}
+  .ob-band__ord{font:450 11px/1 var(--font-mono);letter-spacing:.08em;color:var(--on-light-object)}
+  .ob-band__name{font:600 22px/26px var(--font-sans);letter-spacing:-.02em;color:var(--on-light-object)}
+  .ob-band__note{font:400 13px/18px var(--font-sans);color:var(--on-light-object)}
+  .ob-band .au-chip{background:var(--surface);color:var(--on-light-object);box-shadow:var(--elev-pill)}
+  .ob-flag{flex:none;white-space:nowrap;display:inline-flex;align-items:center;height:20px;padding:0 8px;border-radius:var(--radius-full);
+    background:var(--text-primary);color:var(--text-on-accent);font:600 11px/1 var(--font-sans);letter-spacing:.01em}
+
+  .ob-pick{position:relative;display:flex;flex-direction:column;gap:var(--space-2);padding:var(--space-4);cursor:pointer;
+    background:var(--surface);border:1px solid var(--border-strong);border-radius:var(--radius-card);box-shadow:var(--elev-line);
+    transition:transform var(--motion-control) var(--ease-standard),box-shadow var(--motion-control) var(--ease-standard),border-color var(--motion-fast) var(--ease-standard),background var(--motion-fast) var(--ease-standard)}
+  .ob-pick:hover{border-color:var(--gray-600);transform:translateY(-2px);box-shadow:var(--elev-float)}
+  .ob-pick.is-on{border-color:var(--text-primary);background:var(--silk-iris-5);box-shadow:inset 0 0 0 1px var(--text-primary),var(--elev-float)}
+  .ob-pick__top{display:flex;align-items:center;gap:var(--space-2)}
+  .ob-pick__ref{font:var(--meta-weight) 11px/1 var(--font-mono);letter-spacing:.04em;color:var(--accent-deep);
+    padding:4px 6px;border-radius:5px;background:var(--tag-violet-bg)}
+  .ob-pick__best{font:600 11px/1 var(--font-sans);color:var(--accent-deep)}
+  .ob-pick__title{margin:0;font:600 16px/22px var(--font-sans);letter-spacing:-.01em;color:var(--text-primary);text-wrap:pretty}
+  .ob-pick__desc{margin:0;font:400 13px/19px var(--font-sans);color:var(--text-secondary)}
+  .ob-pick__leave{margin:0;font:400 13px/19px var(--font-sans);color:var(--text-primary)}
+  .ob-pick__leave b{font-weight:600}
+  .ob-pick__why{display:flex;flex-wrap:wrap;gap:var(--space-1-5);margin-top:var(--space-1)}
+  .ob-pick__foot{display:flex;align-items:center;justify-content:space-between;gap:var(--space-2);margin-top:var(--space-2)}
+  .ob-pick__link{font:500 13px/16px var(--font-sans);color:var(--text-secondary);text-decoration:underline;text-underline-offset:2px}
+  .ob-pick__link:hover{color:var(--text-primary)}
+  .ob-add{flex:none;display:inline-flex;align-items:center;gap:6px;height:32px;padding:0 11px;cursor:pointer;-webkit-appearance:none;appearance:none;
+    border:1px solid var(--gray-500);border-radius:var(--radius-control-sm);background:var(--surface);
+    font:550 13px/1 var(--font-sans);color:var(--text-primary);transition:background var(--motion-fast) var(--ease-standard),color var(--motion-fast) var(--ease-standard)}
+  .ob-add svg{width:14px;height:14px}
+  .ob-add:focus-visible{outline:2px solid var(--focus-ring);outline-offset:2px}
+  .ob-pick.is-on .ob-add{background:var(--text-primary);border-color:var(--text-primary);color:var(--text-on-accent)}
+  .ob-add .i-on,.ob-add .t-on{display:none}
+  .ob-pick.is-on .ob-add .i-on,.ob-pick.is-on .ob-add .t-on{display:inline}
+  .ob-pick.is-on .ob-add .i-off,.ob-pick.is-on .ob-add .t-off{display:none}
+  .ob-pick.is-on .ob-add .i-on{animation:ob-pop 260ms var(--ease-enter)}
+  .ob-alt-label{margin:var(--space-2) var(--space-1) 0;font:450 11px/16px var(--font-mono);letter-spacing:.08em;text-transform:uppercase;color:var(--text-tertiary)}
+  .ob-pick--alt{padding:var(--space-3);gap:var(--space-1-5)}
+  .ob-pick--alt .ob-pick__title{font-size:14px;line-height:20px}
+  .ob-pick--alt .ob-pick__foot{margin-top:var(--space-1)}
+
+  .ob-custom{display:grid;grid-template-columns:1fr auto;align-items:center;gap:var(--space-6);margin-top:var(--space-4);
+    padding:var(--space-6);border-radius:var(--radius-panel);background:var(--gray-900);color:#fff;cursor:pointer;
+    transition:box-shadow var(--motion-control) var(--ease-standard)}
+  .ob-custom.is-on{box-shadow:0 0 0 3px var(--surface),0 0 0 5px var(--accent-graphic)}
+  .ob-custom__eyebrow{font:450 12px/16px var(--font-mono);letter-spacing:.08em;text-transform:uppercase;color:rgba(252,252,251,.72)}
+  .ob-custom__title{margin:var(--space-1) 0 0;font:600 20px/26px var(--font-sans);letter-spacing:-.015em;color:#fff}
+  .ob-custom__body{margin:var(--space-2) 0 0;max-width:62ch;font:400 14px/21px var(--font-sans);color:rgba(252,252,251,.82)}
+  .ob-custom .ob-add{height:40px;padding:0 15px;font-size:14px;border-color:rgba(252,252,251,.4);background:transparent;color:#fff}
+  .ob-custom .ob-add:focus-visible{outline-color:#fff}
+  .ob-custom.is-on .ob-add{background:var(--surface);border-color:var(--surface);color:var(--on-light-object)}
+  .ob-custom.is-on .ob-add .i-on,.ob-custom.is-on .ob-add .t-on{display:inline}
+  .ob-custom.is-on .ob-add .i-off,.ob-custom.is-on .ob-add .t-off{display:none}
+
+  /* ---------- request ---------- */
+  .ob-req{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,6fr);gap:var(--space-10);align-items:start}
+  .ob-recap{display:flex;flex-direction:column;gap:var(--space-3);padding:var(--space-4);
+    border:1px solid var(--border-subtle);border-radius:var(--radius-panel);background:var(--canvas)}
+  .ob-recap__title{margin:0;font:450 11px/16px var(--font-mono);letter-spacing:.08em;text-transform:uppercase;color:var(--text-tertiary)}
+  .ob-recap__list{display:flex;flex-direction:column;gap:var(--space-2);list-style:none;margin:0;padding:0}
+  .ob-recap__item{display:flex;gap:var(--space-3);align-items:flex-start;padding:var(--space-3);
+    background:var(--surface);border:1px solid var(--border-subtle);border-radius:var(--radius-control);box-shadow:var(--elev-line)}
+  .ob-recap__item .ob-pick__ref{flex:none;margin-top:1px}
+  .ob-recap__name{font:var(--label-weight) 14px/20px var(--font-sans);color:var(--text-primary)}
+  .ob-recap__meta{display:block;font:400 12px/16px var(--font-sans);color:var(--text-secondary);margin-top:2px}
+  .ob-recap dl{display:grid;grid-template-columns:auto 1fr;gap:var(--space-1-5) var(--space-4);margin:0}
+  .ob-recap dt{font:400 13px/18px var(--font-sans);color:var(--text-secondary)}
+  .ob-recap dd{margin:0;font:500 13px/18px var(--font-sans);color:var(--text-primary)}
+  .ob-seg{display:flex;flex-wrap:wrap;gap:var(--space-2)}
+  .ob-seg__btn{height:36px;padding:0 13px;cursor:pointer;-webkit-appearance:none;appearance:none;
+    border:1px solid var(--border-strong);border-radius:var(--radius-full);background:var(--surface);
+    font:500 13px/1 var(--font-sans);color:var(--text-primary);transition:background var(--motion-fast) var(--ease-standard),border-color var(--motion-fast) var(--ease-standard)}
+  .ob-seg__btn:hover{border-color:var(--gray-600)}
+  .ob-seg__btn:focus-visible{outline:2px solid var(--focus-ring);outline-offset:2px}
+  .ob-seg__btn[aria-checked="true"]{background:var(--text-primary);border-color:var(--text-primary);color:var(--text-on-accent)}
+  .ob-fieldset{border:0;margin:0;padding:0;min-width:0;display:flex;flex-direction:column;gap:6px}
+  .ob-fieldset legend{padding:0;margin-bottom:6px;font:var(--label-weight) var(--label-size)/var(--label-line) var(--font-sans);color:var(--text-primary)}
+
+  /* ---------- sent ---------- */
+  .ob-sent{display:flex;flex-direction:column;align-items:flex-start;gap:var(--space-4)}
+  .ob-sent__mark{display:grid;place-items:center;width:56px;height:56px;border-radius:50%;background:var(--tag-violet-bg);color:var(--accent-graphic);
+    animation:ob-pop 420ms var(--ease-enter) both}
+  .ob-sent__mark svg{width:28px;height:28px}
+  .ob-sent .rc-fallback__pre{width:100%;box-sizing:border-box;margin:0}
+  .ob-sent__acts{display:flex;flex-wrap:wrap;gap:var(--space-3)}
+
+  .ob-legal{margin:0;text-align:center;font:var(--meta-weight) var(--meta-size)/var(--meta-line) var(--font-sans);color:var(--on-light-object)}
+  .ob-legal a{color:inherit}
+
+  @media (max-width:1000px){
+    .ob-route{grid-template-columns:1fr}
+    .ob-req{grid-template-columns:1fr;gap:var(--space-6)}
+    .ob-opts--4{grid-template-columns:repeat(2,minmax(0,1fr))}
+  }
+  @media (max-width:767px){
+    .ob-stage{padding:var(--space-4);justify-content:flex-start;gap:var(--space-4)}
+    .ob-card{border-radius:var(--radius-panel);min-height:calc(100dvh - 64px - 2*var(--space-4) - 40px)}
+    .ob-top{padding:var(--space-3) var(--space-4) 0 var(--space-5)}
+    .ob-prog__seg{width:20px}
+    .ob-top{gap:var(--space-3)}
+    .ob-body{padding:var(--space-5) var(--space-5) var(--space-8)}
+    .ob-foot{padding:var(--space-3) var(--space-5);border-radius:0 0 var(--radius-panel) var(--radius-panel)}
+    .ob-head{margin-bottom:var(--space-6)}
+    .ob-opts,.ob-opts--2{grid-template-columns:1fr}
+    .ob-opts--tools{grid-template-columns:repeat(2,minmax(0,1fr))}
+    .ob-opts--tools .ob-opt{flex-direction:column;align-items:flex-start}
+    .ob-opts--tools .ob-opt__key{position:absolute;top:var(--space-3);right:var(--space-3)}
+    .ob-opts--4{grid-template-columns:1fr}
+    .ob-opt--stack.ob-opt--level{flex-direction:row;align-items:center}
+    .ob-opt--level .ob-bars{flex:none;width:52px}
+    .ob-steps{grid-template-columns:repeat(2,1fr)}
+    .ob-welcome .ob-lead{font-size:16px;line-height:24px}
+    .ob-custom{grid-template-columns:1fr}
+    .ob-custom .ob-add{justify-self:start}
+    .ob-foot__mid{display:none}
+  }
+  @media (hover:none){.ob-kbd-hint,.ob-opt__key span{visibility:hidden}.ob-opt:not([aria-checked="true"]) .ob-opt__key{visibility:hidden}}
+  </style>
+</head>
+<body>
+  <a class="rc-skip" href="#main">Skip to content</a>
+  <header class="rc-header ob-header">
+    <div class="rc-shell rc-header__inner">
+      <a class="rc-wordmark" href="/learning/" aria-label="RET Learning">
+        <img class="rc-wordmark__glyph" src="/assets/img/ret-mark.svg" alt="" width="22" height="22">
+        <span class="rc-lockup">
+          <span class="rc-lockup__ret">RET</span>
+          <span class="rc-lockup__word" data-brand="upskilling">Learning</span>
+        </span>
+      </a>
+      <a class="au-btn au-btn--standard au-btn--secondary ob-exit" href="/learning/">Exit</a>
+    </div>
+  </header>
+
+  <main id="main" class="ob-stage">
+    <div class="ob-field au-silk au-silk--aurora" data-palette="upskilling" aria-hidden="true">
+      <span class="au-silk__l au-silk__base"></span>
+      <span class="au-silk__l au-silk__rib au-silk__rib--a"></span>
+      <span class="au-silk__l au-silk__rib au-silk__rib--b"></span>
+      <span class="au-silk__l au-silk__bloom"></span>
+      <span class="au-silk__l au-silk__grain"></span>
+    </div>
+
+    <section class="ob-card" id="ob-card" data-view="welcome" aria-label="Find your training">
+      <div class="ob-top">
+        <div class="ob-prog" id="ob-prog" aria-hidden="true">
+          <span class="ob-prog__seg"></span><span class="ob-prog__seg"></span><span class="ob-prog__seg"></span><span class="ob-prog__seg"></span>
+        </div>
+        <span class="ob-top__label" id="ob-label" aria-live="polite"></span>
+        <button class="au-btn au-btn--compact au-btn--ghost ob-top__restart" type="button" data-act="restart">Start over</button>
+      </div>
+      <div class="ob-body" id="ob-body">
+        <noscript>
+          <div class="ob-welcome">
+            <h1 class="ob-h ob-h--display">Find the right training for your team.</h1>
+            <p class="ob-lead">This guide needs JavaScript. You can browse the <a href="/learning/catalogue/">full catalogue</a> or write to <a href="mailto:retbaz@retconsulting.be">retbaz@retconsulting.be</a>.</p>
+          </div>
+        </noscript>
+      </div>
+      <div class="ob-foot" id="ob-foot"></div>
+    </section>
+    <p class="ob-legal">Nothing leaves your browser until you send your request. RET Learning is a service of RET Consulting SRL · <a href="/legal/">Legal information</a> · <a href="/legal/#privacy">Privacy</a></p>
+  </main>
+
+  <script>
+  (function(){
+    'use strict';
+    /* ---------- catalogue: [ref, title, description, tools (g ChatGPT, c Copilot, a Claude, m Gemini), level 0-3] ----------
+       Source of truth: /learning/catalogue/. Keep both in step. */
+    var SESSIONS=[
+      ["S01", "Identify where AI saves time in your team's week", "A guided tour of the strongest office use cases, demonstrated live on the kind of work your team does. Leave with: a shortlist of quick wins for your team.", "gcam", 0],
+      ["S02", "Write effective prompts for everyday office work", "Role, context, format and examples: a repeatable briefing method applied to the group's own tasks. Leave with: a one-page briefing pattern.", "gcam", 0],
+      ["S03", "Draft reports, emails and offers from rough notes", "Rough notes turned into usable first drafts, live, on your own document types. Leave with: a drafting template per document type.", "gcam", 0],
+      ["S04", "Manage small to large projects with ChatGPT Work and Projects", "Set up Projects for recurring work, then hand a whole project to ChatGPT Work and review the finished deliverables. Leave with: one project space set up on a live dossier.", "g", 0],
+      ["S05", "Maintain your professional inbox with Copilot in Outlook and Teams", "Draft replies, summarise long threads and reason across your whole inbox and calendar. Leave with: a daily inbox routine you keep.", "c", 0],
+      ["S06", "Work faster in Gmail, Docs and Meet with Gemini", "Drafting in your own style, thread summaries, and meeting notes with action items taken for you. Leave with: three routines set up in your own Workspace.", "m", 0],
+      ["S07", "Analyse contracts and long documents with Claude", "Read a contract, a report and a policy side by side, and turn the answers into reusable documents with Artifacts. Leave with: a review brief for your document types.", "a", 0],
+      ["S08", "Produce meeting minutes and action lists from a recording", "From transcript or notes to minutes, decisions and owners, with a review pass before they go out. Leave with: a minutes template your team adopts.", "gcam", 1],
+      ["S09", "Summarise long reports and tenders without losing the numbers", "Extraction prompts, cross-checks and a one-page brief format for hundred-page material. Leave with: the brief format, ready to reuse.", "gcam", 1],
+      ["S10", "Translate and localise business documents", "Tone-true translation across French, Dutch and English. Leave with: a translation checklist for client-bound text.", "gcam", 1],
+      ["S11", "Capture your day with ChatGPT Voice, Record and Canvas", "Speak instead of type, record whole meetings on the desktop app, and get structured summaries saved as canvases. Leave with: recording set up on your own machine.", "g", 1],
+      ["S12", "Run better meetings with Copilot recap and the Facilitator agent", "Live notes, agendas and follow-ups taken by the Facilitator, and intelligent recaps for the meetings you skip. Leave with: the recap routine configured.", "c", 1],
+      ["S13", "Put Claude inside Excel, PowerPoint and Word", "The Office add-ins read whole workbooks, explain formulas with cell-level citations, and edit without breaking links. Leave with: the add-ins working on one of your files.", "a", 1],
+      ["S14", "Research your own sources with Gemini Notebook", "Ground a notebook in your files, generate briefings and audio overviews, and keep every answer cited. Leave with: a first notebook built on your documents.", "m", 1],
+      ["S15", "Get cited answers from your company knowledge in ChatGPT", "Connect Drive, SharePoint, Slack and mail, then ask questions that answer with sources and respect access rights. Leave with: a connector plan for your stack.", "g", 1],
+      ["S16", "Verify AI output before it reaches a client", "Why models invent citations and numbers, and the three-step check that catches most of it. Leave with: the check written up as a house rule.", "gcam", 2],
+      ["S17", "Choose the right tool per task: ChatGPT, Claude, Gemini, Copilot", "The same five office tasks run on all four tools live, with a scorecard the team keeps.", "gcam", 2],
+      ["S18", "Delegate finished work to background AI agents", "ChatGPT Work, the two Coworks and Gemini Spark demonstrated live: what agents finish alone, and what it costs. Leave with: a delegation shortlist for your tasks.", "gcam", 2],
+      ["S19", "Hand your desk work to Claude Cowork", "File access, multi-step execution and scheduled tasks: receipts to spreadsheets, folders organised, drafts assembled. Leave with: one task set up to run.", "a", 2],
+      ["S20", "Let Copilot build the file: Agent Mode in Word, Excel and PowerPoint", "Delegate whole deliverables: Copilot plans, executes and explains multi-step edits directly in the file. Leave with: two agent-mode recipes for your files.", "c", 2],
+      ["S21", "Automate cross-app routines with Google Workspace Studio", "Describe a workflow in plain English and watch Studio build the agent that runs it, no code involved. Leave with: one routine mapped and ready to build.", "m", 2],
+      ["S22", "Push the models: patterns for complex work", "Long documents, messy inputs, multi-step deliverables: briefing patterns for work one prompt cannot do. Leave with: the patterns as a crib sheet.", "gcam", 3],
+      ["S23", "Build the business case: licences, credits and time saved", "A leadership session on licence costs, metered agent credits and the metrics that prove adoption. Leave with: a cost model for your own stack.", "gcam", 3],
+      ["S24", "Pick the right model and effort level, per task", "Fast modes, deep reasoning and effort levels on each platform's current models, matched to daily tasks. Leave with: a picker card per platform.", "gcam", 3],
+      ["S25", "Automate your personal routine: memory, tasks and triggers", "Memory tuned, recurring tasks scheduled and triggers set, so the assistant works before you ask. Leave with: two automations running.", "gcam", 3],
+      ["L01", "Build your team's prompt library for recurring tasks", "The ten most frequent tasks scripted into tested, shared prompts, proofed on real cases in session. Leave with: the library, versioned and shared.", "gcam", 0],
+      ["L02", "Standardise one recurring document, from brief to final version", "Pick your document type and leave with a brief-to-draft-to-review workflow and its templates.", "gcam", 0],
+      ["L03", "Run your meetings end to end with AI: agenda, minutes, follow-up", "One meeting type wired end to end: preparation prompt, capture routine, minutes template, action tracking.", "gcam", 1],
+      ["L04", "Build a custom GPT for one team task", "Instructions, knowledge files, actions and guardrails: one working GPT per participant, tested by a colleague.", "g", 1],
+      ["L05", "Analyse your business data with Copilot in Excel", "A messy export cleaned and analysed in agent mode, with Copilot formulas and Python in Excel. Leave with: a documented, repeatable analysis.", "c", 1],
+      ["L06", "Build a Claude Project that answers from your documents", "Project knowledge, instructions and Artifacts set up on your own corpus, with source checking built in. Leave with: a project your team can query.", "a", 1],
+      ["L07", "Turn Gemini Notebook into your project's knowledge base", "Load one project's documents, get grounded answers, and produce briefing docs and an audio overview. Leave with: the notebook, live and shared.", "m", 1],
+      ["L08", "Design professional decks and one-pagers with Claude Design", "Turn an outline and raw material into an on-brand draft deck in your own design system, ready for review.", "a", 1],
+      ["L09", "Automate your weekly reporting with scheduled prompts", "Recurring briefs set up in session: ChatGPT scheduled tasks and Copilot scheduled prompts, posted where you work.", "gc", 1],
+      ["L10", "Build a proposal workflow: from opportunity brief to draft", "A live opportunity taken from brief to tailored draft, with your references and case studies wired in. Leave with: a proposal workflow the team reuses.", "gcam", 1],
+      ["L11", "Produce a month of on-brand content in one session", "Your tone of voice encoded, then a month's calendar drafted: posts, newsletter and visual briefs. Leave with: the tone guide and the calendar.", "gcam", 1],
+      ["L12", "Rebuild your recruitment pipeline with AI", "Job post, screening grid and structured interview questions built for one open role. Leave with: the full kit for your next vacancy.", "gcam", 1],
+      ["L13", "Build your monthly reporting pack with AI", "One close cycle rebuilt: variance analysis, commentary and the board one-pager. Leave with: the pack, repeatable every month.", "gcam", 1],
+      ["L14", "Document your processes into living SOPs", "Three undocumented processes captured into standard procedures through AI interviews and drafts. Leave with: three SOPs and the method.", "gcam", 1],
+      ["L15", "Build your answer library from support tickets", "Your ticket history mined for the top questions, answers drafted in your tone and organised for reuse. Leave with: a first answer library, live.", "gcam", 1],
+      ["L16", "Automate project reporting: from raw updates to steering pack", "Team updates and tickets turned into status, risks and a steering-ready pack. Leave with: the reporting workflow, documented.", "gcam", 1],
+      ["L17", "Turn one training into a full learning kit", "One existing course converted: refreshed slides, a quiz pack, summaries and a follow-up sequence. Leave with: the kit, ready to run.", "gcam", 1],
+      ["L18", "Rebuild one business process with AI inside", "A recurring process mapped step by step, the AI-able steps rebuilt, and the handoffs documented.", "gcam", 2],
+      ["L19", "Analyse a dataset without a data team", "One of your datasets explored in session: cleaning, pivots, findings. Leave with: a documented, repeatable analysis script.", "gcam", 2],
+      ["L20", "Build a contract review workflow with AI", "Your standard contract types mapped to review checklists, clause comparisons and risk summaries. Leave with: a review workflow your specialists keep.", "gcam", 2],
+      ["L21", "Build your personal briefing system", "Inbox, meetings and reading distilled into a daily brief and a decision log, set up on your own stack. Leave with: the system running.", "gcam", 2],
+      ["L22", "Delegate a multi-step task to an agent, with checkpoints", "Hand one of your tasks to an agent: task briefs, checkpoint design and review discipline. Leave with: a delegation brief built for reuse.", "gcam", 3],
+      ["B01", "The team AI day: from first wins to daily routine", "Morning: the essentials, practiced on live work. Afternoon: each participant builds one personal workflow. Capstone: every workflow demonstrated to the group, ready for Monday.", "gcam", 0],
+      ["B02", "The department day: your team's work, rebuilt with AI", "Morning: your department's week mapped, from sales to customer service. Afternoon: the top tasks rebuilt with AI on your templates. Capstone: one working routine per participant.", "gcam", 1],
+      ["B03", "The delivery day: project managers and business analysts", "Morning: plans, status reports and risk logs rebuilt as workflows. Afternoon: requirements and process maps from stakeholder notes. Capstone: one artefact shipped per participant.", "gcam", 1],
+      ["B04", "The pilot day: ChatGPT, Copilot, Claude or Gemini for your team", "Morning: your chosen platform set up, with shared workspaces and house conventions. Afternoon: each participant builds a capstone use case. Capstone: the pilot demonstrated, adoption agreed.", "gcam", 2],
+      ["B05", "The automation day: processes, assistants and background agents", "Morning: one process automated under supervision. Afternoon: an internal assistant built and tested. Capstone: background agents deployed, with monitoring and a handover.", "gcam", 2],
+      ["B06", "The champions day: train the people who will train the others", "Morning: standards and coaching routines drafted. Afternoon: each champion rehearses teaching one session. Capstone: an adoption plan with metrics, owned by the champions.", "gcam", 3]
+    ];
+
+    var TOOLS=[
+      {id:'g',name:'ChatGPT',desc:'OpenAI',logo:'openai'},
+      {id:'c',name:'Microsoft Copilot',short:'Copilot',desc:'Microsoft 365',logo:'copilot'},
+      {id:'a',name:'Claude',desc:'Anthropic',logo:'claude'},
+      {id:'m',name:'Gemini',desc:'Google Workspace',logo:'gemini'},
+      {id:'inhouse',name:'In-house LLM',short:'In-house LLM',desc:'A private or self-hosted model',icon:'cpu'},
+      {id:'unsure',name:'Not decided yet',short:'Tool not decided',desc:'Help me choose',icon:'help',solo:true}
+    ];
+    var LEVELS=[
+      {id:'0',name:'Beginner',desc:'New to AI at work.',bars:[1,0,0,0]},
+      {id:'1',name:'Intermediate',desc:'Uses AI every week.',bars:[1,1,0,0]},
+      {id:'2',name:'Advanced',desc:'Uses AI daily, ready to delegate.',bars:[1,1,1,0]},
+      {id:'3',name:'Pro',desc:'Builds routines and guides others.',bars:[1,1,1,1]},
+      {id:'mixed',name:'Mixed levels',desc:'Beginners and regular users together.',bars:[1,0,1,0]}
+    ];
+    var DEPTS=[
+      {id:'sales',name:'Sales',desc:'Proposals, prospecting, reporting',icon:'trend',route:['S03','L01','L10','B02']},
+      {id:'marketing',name:'Marketing',desc:'Content, decks, campaigns',icon:'megaphone',route:['S02','L08','L11','B02']},
+      {id:'hr',name:'HR & internal comms',desc:'Job posts, policies, announcements',icon:'users',route:['S10','L02','L12','B02']},
+      {id:'finance',name:'Finance',desc:'Reports, analysis, closing',icon:'bars',route:['S09','L05','L13','B02']},
+      {id:'ops',name:'Operations',desc:'Procedures, planning, automation',icon:'flow',route:['S21','L14','L18','B05']},
+      {id:'cs',name:'Customer service',desc:'Replies, answer library',icon:'chat',route:['S05','L06','L15','B02']},
+      {id:'legal',name:'Legal & procurement',desc:'Contracts, long documents',icon:'doc',route:['S07','S16','L20']},
+      {id:'delivery',name:'Project delivery',desc:'Plans, requirements, status',icon:'flag',route:['S08','L03','L16','B03']},
+      {id:'ld',name:'Learning & development',desc:'Training media, champions',icon:'cap',route:['S14','L07','L17','B06']},
+      {id:'exec',name:'Executive',desc:'Decisions, cost, adoption',icon:'compass',route:['S01','S23','S24','L21']},
+      {id:'mixed',name:'Several departments',short:'Whole team',desc:'A mixed group or the whole team',icon:'grid',route:['S01','S02','L01','B01']}
+    ];
+    var FORMATS={
+      S:{id:'S',name:'RET Spark',kicker:'Understand and try',facts:['2 hours','Up to 20 people'],note:'You watch it done live, and try it once.',
+         goal:'A short live session. The team sees what AI does and tries it once.',bloom:['24%','30%']},
+      L:{id:'L',name:'RET Lab',kicker:'Practice and produce',facts:['4 hours','6 to 10 people'],note:'You leave with one working artefact.',
+         goal:'A hands-on workshop. Each person turns one recurring task into a workflow.',bloom:['62%','58%']},
+      B:{id:'B',name:'RET Bootcamp',kicker:'Apply with autonomy',facts:['8 hours','6 to 8 people'],note:'Your team leaves with a running pilot.',
+         goal:'A full day. Future reference users build a working project.',bloom:['82%','26%']}
+    };
+    var LEVEL_NAMES=['Beginner','Intermediate','Advanced','Pro'];
+    var MAIL='retbaz@retconsulting.be';
+    var VIEWS=['welcome','tools','level','dept','goal','route','request','sent'];
+    var LETTERS='ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+
+    var I={
+      check:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>',
+      plus:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.25" stroke-linecap="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg>',
+      arrow:'<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 12h15"/><path d="m13 6 6 6-6 6"/></svg>',
+      back:'<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 12H5"/><path d="m11 6-6 6 6 6"/></svg>',
+      edit:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 20h4L19 9l-4-4L4 16z"/></svg>'
+    };
+    var ICONS={
+      trend:'<path d="m3 17 6-6 4 4 8-8"/><path d="M14 7h7v7"/>',
+      megaphone:'<path d="M3 11v2a1 1 0 0 0 1 1h2l5 4V6L6 10H4a1 1 0 0 0-1 1Z"/><path d="M15 9a4 4 0 0 1 0 6"/><path d="M18 6a8 8 0 0 1 0 12"/>',
+      users:'<circle cx="9" cy="8" r="3.2"/><path d="M3 20c0-3.3 2.7-5.5 6-5.5s6 2.2 6 5.5"/><path d="M16 5.2a3.2 3.2 0 0 1 0 5.6"/><path d="M17.5 14.8c2.1.6 3.5 2.5 3.5 5.2"/>',
+      bars:'<path d="M3 20h18"/><path d="M6 20V11"/><path d="M12 20V4"/><path d="M18 20v-6"/>',
+      flow:'<rect x="3" y="3" width="7" height="7" rx="1.5"/><rect x="14" y="14" width="7" height="7" rx="1.5"/><path d="M10 6.5h4.5a3 3 0 0 1 3 3V14"/>',
+      chat:'<path d="M21 12a8.5 8.5 0 0 1-12.6 7.4L3 21l1.6-5.2A8.5 8.5 0 1 1 21 12Z"/>',
+      doc:'<path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8Z"/><path d="M14 3v5h5"/><path d="m9 14.5 2 2 4-4.5"/>',
+      flag:'<path d="M5 21V4"/><path d="M5 4h12l-2.5 4 2.5 4H5"/>',
+      cap:'<path d="m2 9 10-5 10 5-10 5Z"/><path d="M6 11.5V16c0 1.5 2.7 3 6 3s6-1.5 6-3v-4.5"/><path d="M22 9v6"/>',
+      compass:'<circle cx="12" cy="12" r="8.5"/><path d="m15.5 8.5-2 5-5 2 2-5Z"/>',
+      grid:'<rect x="3.5" y="3.5" width="7" height="7" rx="1.5"/><rect x="13.5" y="3.5" width="7" height="7" rx="1.5"/><rect x="3.5" y="13.5" width="7" height="7" rx="1.5"/><rect x="13.5" y="13.5" width="7" height="7" rx="1.5"/>',
+      cpu:'<rect x="5" y="5" width="14" height="14" rx="2"/><rect x="9.5" y="9.5" width="5" height="5" rx="1"/><path d="M9 2v3M15 2v3M9 19v3M15 19v3M2 9h3M2 15h3M19 9h3M19 15h3"/>',
+      help:'<circle cx="12" cy="12" r="8.5"/><path d="M9.6 9.4a2.5 2.5 0 1 1 3.6 2.3c-.8.4-1.2 1-1.2 1.8"/><path d="M12 16.8h.01"/>'
+    };
+    function icon(n){return '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">'+ICONS[n]+'</svg>';}
+    function esc(s){return String(s).replace(/[&<>"']/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c];});}
+    function by(list,id){for(var i=0;i<list.length;i++)if(list[i].id===id)return list[i];return null;}
+    function session(ref){for(var i=0;i<SESSIONS.length;i++)if(SESSIONS[i][0]===ref)return SESSIONS[i];return null;}
+
+    /* ---------- state ---------- */
+    var KEY='ret-learning-onboarding-v1';
+    var blank=function(){return {view:'welcome',tools:[],level:null,dept:null,goal:null,picks:null,custom:false,sig:'',form:{name:'',company:'',size:'',mode:'',lang:'',notes:''}};};
+    var st=blank();
+    try{var saved=JSON.parse(sessionStorage.getItem(KEY)||'null');
+      if(saved&&VIEWS.indexOf(saved.view)>-1){for(var k in saved)st[k]=saved[k];if(st.view==='sent')st.view='request';}}catch(e){}
+    function save(){try{sessionStorage.setItem(KEY,JSON.stringify(st));}catch(e){}}
+
+    var card=document.getElementById('ob-card'),body=document.getElementById('ob-body'),foot=document.getElementById('ob-foot'),
+        label=document.getElementById('ob-label'),prog=document.getElementById('ob-prog'),stage=document.getElementById('main');
+    var reduced=window.matchMedia&&window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    var busy=false,editing=false,timer=null,lastMessage='';
+
+    /* ---------- recommendation ---------- */
+    function realTools(){return st.tools.filter(function(t){return t.length===1;});}
+    function startFormat(){
+      if(st.goal&&st.goal!=='unsure')return st.goal;
+      if(st.level==='3')return 'B';
+      if(st.level==='1'||st.level==='2')return 'L';
+      return 'S';
+    }
+    function score(s){
+      var tools=realTools(),generic=s[3].length===4,sc=0,why=[];
+      if(tools.length){
+        var hit=tools.filter(function(t){return s[3].indexOf(t)>-1;});
+        if(!hit.length)return null;
+        if(generic){sc+=1;}
+        else{sc+=3;why.push('Built for '+hit.map(function(t){var o=by(TOOLS,t);return o.short||o.name;}).join(' and '));}
+      }else{
+        if(!generic)return null;
+        if(st.tools.indexOf('unsure')>-1){if(s[0]==='S17')sc+=3;if(s[0]==='B04')sc+=2;}
+      }
+      if(generic)why.push(st.tools.indexOf('inhouse')>-1&&!tools.length?'Runs on your in-house LLM':'Runs on any tool');
+      if(st.level==='mixed'){sc+=[3,3,0,-2][s[4]];}
+      else{var d=Math.abs(s[4]-Number(st.level));sc+=[4,1.5,-1,-3][d];}
+      var dept=by(DEPTS,st.dept);
+      if(dept&&dept.route.indexOf(s[0])>-1){sc+=5;why.unshift(dept.id==='mixed'?'Fits a mixed group':dept.name+' route');}
+      return {s:s,score:sc,why:why};
+    }
+    function route(){
+      var out=[];
+      ['S','L','B'].forEach(function(f){
+        var list=[];
+        SESSIONS.forEach(function(s,i){if(s[0].charAt(0)!==f)return;var r=score(s);if(r){r.i=i;list.push(r);}});
+        list.sort(function(a,b){return b.score-a.score||a.i-b.i;});
+        out.push({f:FORMATS[f],top:list[0]||null,alts:list.slice(1,3)});
+      });
+      return out;
+    }
+    function signature(){return [st.tools.join(''),st.level,st.dept,st.goal].join('|');}
+    function ensurePicks(){
+      var sig=signature();
+      if(st.picks&&st.sig===sig)return;
+      st.sig=sig;st.custom=false;st.picks=[];
+      var sf=startFormat();
+      route().forEach(function(c){if(c.f.id===sf&&c.top)st.picks.push(c.top.s[0]);});
+    }
+
+    /* ---------- views ---------- */
+    function head(eyebrow,title,lead){
+      return '<div class="ob-head"><span class="ob-eyebrow ob-a" style="--i:0">'+eyebrow+'</span>'+
+        '<h1 class="ob-h ob-a" style="--i:1" tabindex="-1">'+title+'</h1>'+
+        (lead?'<p class="ob-lead ob-a" style="--i:2">'+lead+'</p>':'')+'</div>';
+    }
+    function key(i){return '<span class="ob-opt__key" aria-hidden="true"><span>'+LETTERS.charAt(i)+'</span>'+I.check+'</span>';}
+    function opt(o,i,on,multi,visual,cls){
+      return '<li class="ob-a" style="--i:'+(i+3)+'"><button type="button" class="ob-opt '+(cls||'')+'" role="'+(multi?'checkbox':'radio')+'" aria-checked="'+(on?'true':'false')+'" data-opt="'+o.id+'">'+
+        visual+'<span class="ob-opt__text"><span class="ob-opt__name">'+esc(o.name)+'</span>'+(o.desc?'<span class="ob-opt__desc">'+esc(o.desc)+'</span>':'')+(o.extra||'')+'</span>'+key(i)+'</button></li>';
+    }
+    var view={
+      welcome:function(){
+        return '<div class="ob-welcome">'+
+          '<span class="ob-eyebrow ob-a" style="--i:0">Find your training</span>'+
+          '<h1 class="ob-h ob-h--display ob-a" style="--i:1;margin:0" tabindex="-1">The right AI training for your team, in four questions.</h1>'+
+          '<p class="ob-lead ob-a" style="--i:2">Tell me which tools you use, your level, your department and your goal. You get a recommended route through 53 sessions. Then you send me your request in one click.</p>'+
+          '<ol class="ob-steps">'+
+            [['01','Tools','What your team runs'],['02','Level','Where people stand'],['03','Department','Whose work it is'],['04','Goal','What you want to leave with']].map(function(s,i){
+              return '<li class="ob-a" style="--i:'+(i+3)+'"><span class="ob-steps__n">'+s[0]+'</span><span class="ob-steps__t">'+s[1]+'</span><span class="ob-steps__d">'+s[2]+'</span></li>';}).join('')+
+          '</ol>'+
+          '<div class="ob-cta ob-a" style="--i:7"><button type="button" class="au-btn au-btn--large au-btn--primary" data-act="next">Start '+I.arrow+'</button>'+
+          '<span class="ob-hint">About one minute · <span class="ob-kbd-hint">press <span class="ob-kbd">Enter ↵</span></span></span></div>'+
+        '</div>';
+      },
+      tools:function(){
+        return head('Tools','Which AI tools does your team use?','Select every tool your team has access to. Sessions run on the licences you already hold.')+
+          '<ul class="ob-opts ob-opts--tools" role="group" aria-label="AI tools">'+TOOLS.map(function(t,i){
+            var v=t.logo?'<span class="ob-opt__icon"><span class="ob-opt__logo" style="--m:url(/assets/ai/'+t.logo+'.svg)"></span></span>':'<span class="ob-opt__icon">'+icon(t.icon)+'</span>';
+            return opt(t,i,st.tools.indexOf(t.id)>-1,true,v);}).join('')+'</ul>';
+      },
+      level:function(){
+        return head('Level','What is the level of the participants?','Choose the level of most people in the group.')+
+          '<ul class="ob-opts" role="radiogroup" aria-label="Level">'+LEVELS.map(function(l,i){
+            var v='<span class="ob-bars" aria-hidden="true">'+l.bars.map(function(b,j){return '<i class="'+(b?'on':'')+'" style="height:'+(13+j*9)+'px"></i>';}).join('')+'</span>';
+            return opt(l,i,st.level===l.id,false,v,'ob-opt--stack ob-opt--level');}).join('')+'</ul>';
+      },
+      dept:function(){
+        return head('Department','Which department is the training for?','Each department has its own route through the catalogue.')+
+          '<ul class="ob-opts" role="radiogroup" aria-label="Department">'+DEPTS.map(function(d,i){
+            return opt(d,i,st.dept===d.id,false,'<span class="ob-opt__icon">'+icon(d.icon)+'</span>');}).join('')+'</ul>';
+      },
+      goal:function(){
+        var goals=['S','L','B'].map(function(f){var F=FORMATS[f];
+          return {id:f,name:F.kicker,desc:F.goal,cover:'<span class="ob-cover ob-silk" style="--bx:'+F.bloom[0]+';--by:'+F.bloom[1]+'"><span class="ob-cover__name">'+F.name+'</span></span>',
+            extra:'<span class="ob-facts">'+F.facts.map(function(x){return '<span class="au-chip au-tag--upskilling">'+x+'</span>';}).join('')+'</span>'};});
+        goals.push({id:'unsure',name:'Not sure yet',desc:'I recommend a starting point from your answers.',cover:'<span class="ob-cover ob-cover--plain"><span class="ob-cover__name">Advise me</span></span>',
+          extra:'<span class="ob-facts"><span class="au-chip au-tag--neutral">Recommended for you</span></span>'});
+        return head('Goal','What do you want the team to leave with?','Your goal sets the format. The three formats build on each other.')+
+          '<ul class="ob-opts ob-opts--4" role="radiogroup" aria-label="Goal">'+goals.map(function(g,i){
+            return opt(g,i,st.goal===g.id,false,g.cover,'ob-opt--stack');}).join('')+'</ul>';
+      },
+      route:function(){
+        ensurePicks();
+        var cols=route(),sf=startFormat(),F=FORMATS[sf],n=0;
+        var tools=st.tools.map(function(t){var o=by(TOOLS,t);return o.short||o.name;}).join(', ');
+        var lv=by(LEVELS,st.level),dp=by(DEPTS,st.dept);
+        var answers=[['tools','Tools',tools],['level','Level',lv.name],['dept','Team',dp.short||dp.name],['goal','Goal',st.goal==='unsure'?'Advise me':FORMATS[st.goal].kicker]];
+        var h='<div class="ob-head"><span class="ob-eyebrow ob-a" style="--i:0">Your route</span>'+
+          '<h1 class="ob-h ob-a" style="--i:1" tabindex="-1">Start with a '+F.name+'. Then build on it.</h1>'+
+          '<p class="ob-lead ob-a" style="--i:2">These sessions fit your answers best. Select the ones that interest you, then send me your request.</p>'+
+          '<div class="ob-answers ob-a" style="--i:3" aria-label="Your answers">'+answers.map(function(a){
+            return '<button type="button" class="ob-answer" data-edit="'+a[0]+'" aria-label="Change '+a[1].toLowerCase()+': '+esc(a[2])+'"><small>'+a[1]+'</small>'+esc(a[2])+I.edit+'</button>';}).join('')+'</div></div>';
+        h+='<ol class="ob-route">'+cols.map(function(c,i){
+          var isStart=c.f.id===sf;
+          var col='<li class="ob-col ob-a'+(isStart?' is-start':'')+'" style="--i:'+(4+i*2)+'">'+
+            '<div class="ob-band ob-silk" style="--bx:'+c.f.bloom[0]+';--by:'+c.f.bloom[1]+'">'+
+              '<div class="ob-band__row"><span class="ob-band__ord">0'+(i+1)+' / '+c.f.kicker.toUpperCase()+'</span>'+(isStart?'<span class="ob-flag">Start here</span>':'')+'</div>'+
+              '<div><div class="ob-band__name">'+c.f.name+'</div><div class="ob-facts">'+c.f.facts.map(function(x){return '<span class="au-chip">'+x+'</span>';}).join('')+'</div></div>'+
+            '</div>';
+          if(c.top)col+=pick(c.top,false);
+          if(c.alts.length){col+='<p class="ob-alt-label">Also fits</p>'+c.alts.map(function(a){return pick(a,true);}).join('');}
+          return col+'</li>';}).join('')+'</ol>';
+        h+='<div class="ob-custom ob-a'+(st.custom?' is-on':'')+'" style="--i:11" data-custom>'+
+          '<div><span class="ob-custom__eyebrow">Tailor-made</span>'+
+          '<h2 class="ob-custom__title">Something else in mind? I build it with your team.</h2>'+
+          '<p class="ob-custom__body">Every format also runs as a co-created session, shaped around your process, your documents and your roles. We scope it together on a free 30-minute call.</p></div>'+
+          addBtn(st.custom,'Add a tailor-made session','Tailor-made added')+'</div>';
+        return h;
+      },
+      request:function(){
+        var f=st.form,items=st.picks.map(function(r){var s=session(r),F=FORMATS[r.charAt(0)];
+          return '<li class="ob-recap__item"><span class="ob-pick__ref">'+r+'</span><span><span class="ob-recap__name">'+esc(s[1])+'</span><span class="ob-recap__meta">'+F.name+' · '+F.facts.join(' · ')+'</span></span></li>';});
+        if(st.custom)items.push('<li class="ob-recap__item"><span class="ob-pick__ref">CO</span><span><span class="ob-recap__name">Tailor-made session</span><span class="ob-recap__meta">Scoped on a free 30-minute call</span></span></li>');
+        var lv=by(LEVELS,st.level),dp=by(DEPTS,st.dept);
+        var seg=function(name,legend,vals){return '<fieldset class="ob-fieldset"><legend>'+legend+'</legend><div class="ob-seg" role="radiogroup" aria-label="'+legend+'">'+vals.map(function(v){
+          return '<button type="button" class="ob-seg__btn" role="radio" aria-checked="'+(f[name]===v?'true':'false')+'" data-seg="'+name+'" data-val="'+v+'">'+v+'</button>';}).join('')+'</div></fieldset>';};
+        return '<div class="ob-head"><span class="ob-eyebrow ob-a" style="--i:0">Your request</span>'+
+          '<h1 class="ob-h ob-a" style="--i:1" tabindex="-1">Send me your request.</h1>'+
+          '<p class="ob-lead ob-a" style="--i:2">Add a few details. I reply in English or French within two business days.</p></div>'+
+          '<div class="ob-req"><aside class="ob-recap ob-a" style="--i:3" aria-label="Summary">'+
+            '<h2 class="ob-recap__title">Selected sessions</h2><ul class="ob-recap__list">'+items.join('')+'</ul>'+
+            '<h2 class="ob-recap__title">Your answers</h2><dl>'+
+              '<dt>Tools</dt><dd>'+esc(st.tools.map(function(t){var o=by(TOOLS,t);return o.short||o.name;}).join(', '))+'</dd>'+
+              '<dt>Level</dt><dd>'+lv.name+'</dd><dt>Team</dt><dd>'+esc(dp.name)+'</dd>'+
+              '<dt>Goal</dt><dd>'+(st.goal==='unsure'?'Advise me':FORMATS[st.goal].kicker)+'</dd></dl>'+
+          '</aside>'+
+          '<form class="rc-form ob-a" style="--i:4" id="ob-form" novalidate>'+
+            '<div class="rc-form__row">'+
+              '<label class="au-field" for="ob-name"><span class="au-field__label">Your name</span><span class="au-field__box" id="ob-name-box"><input id="ob-name" class="au-field__input" name="name" type="text" autocomplete="name" required aria-describedby="ob-name-help" value="'+esc(f.name)+'"></span><span class="au-field__help au-field__help--error" id="ob-name-help" hidden>Enter your name.</span></label>'+
+              '<label class="au-field" for="ob-company"><span class="au-field__label">Company</span><span class="au-field__box"><input id="ob-company" class="au-field__input" name="company" type="text" autocomplete="organization" value="'+esc(f.company)+'"></span></label>'+
+            '</div>'+
+            seg('size','Number of participants',['1 to 5','6 to 10','11 to 20','More than 20'])+
+            seg('mode','Delivery',['On site','Remote','No preference'])+
+            seg('lang','Language',['English','French'])+
+            '<label class="au-field" for="ob-notes"><span class="au-field__label">Anything else I should know? <span style="font-weight:400;color:var(--text-secondary)">Optional</span></span><span class="au-field__box"><textarea id="ob-notes" class="au-field__input" name="notes" rows="3" maxlength="600" placeholder="Timing, context, a task you want to improve">'+esc(f.notes)+'</textarea></span></label>'+
+            '<p class="rc-form__hint">The button opens your email app with the request ready. You send it yourself.</p>'+
+          '</form></div>';
+      },
+      sent:function(){
+        return '<div class="ob-sent">'+
+          '<span class="ob-sent__mark">'+I.check+'</span>'+
+          '<h1 class="ob-h ob-a" style="--i:1;margin:0" tabindex="-1">Your request is ready in your email app.</h1>'+
+          '<p class="ob-lead ob-a" style="--i:2;margin:0">Press send there. I reply within two business days. No email app opened? Copy the message and send it to <a href="mailto:'+MAIL+'">'+MAIL+'</a>.</p>'+
+          '<pre class="rc-fallback__pre ob-a" style="--i:3" tabindex="0" role="region" aria-label="Message to copy">'+esc(lastMessage)+'</pre>'+
+          '<div class="ob-sent__acts ob-a" style="--i:4"><button type="button" class="au-btn au-btn--standard au-btn--primary" data-act="copy">Copy the message</button>'+
+          '<a class="au-btn au-btn--standard au-btn--secondary" href="/learning/catalogue/">Browse the catalogue</a>'+
+          '<a class="au-btn au-btn--standard au-btn--ghost" href="/learning/">Back to RET Learning</a></div></div>';
+      }
+    };
+    function addBtn(on,off,onText){
+      return '<button type="button" class="ob-add" aria-pressed="'+(on?'true':'false')+'"><span class="i-off">'+I.plus+'</span><span class="i-on">'+I.check+'</span><span class="t-off">'+off+'</span><span class="t-on">'+onText+'</span></button>';
+    }
+    function pick(r,alt){
+      var s=r.s,on=st.picks.indexOf(s[0])>-1,parts=s[2].split(' Leave with: ');
+      var chips=r.why.slice(0,2).map(function(w){return '<span class="au-chip au-tag--upskilling">'+esc(w)+'</span>';}).join('')+'<span class="au-chip au-tag--neutral">'+LEVEL_NAMES[s[4]]+'</span>';
+      return '<article class="ob-pick'+(alt?' ob-pick--alt':'')+(on?' is-on':'')+'" data-pick="'+s[0]+'">'+
+        '<div class="ob-pick__top"><span class="ob-pick__ref">'+s[0]+'</span>'+(alt?'':'<span class="ob-pick__best">Best match</span>')+'</div>'+
+        '<h3 class="ob-pick__title">'+esc(s[1])+'</h3>'+
+        (alt?'':'<p class="ob-pick__desc">'+esc(parts[0])+'</p>'+(parts[1]?'<p class="ob-pick__leave"><b>You leave with:</b> '+esc(parts[1])+'</p>':''))+
+        '<div class="ob-pick__why">'+chips+'</div>'+
+        '<div class="ob-pick__foot"><a class="ob-pick__link" href="/learning/catalogue/#'+s[0].toLowerCase()+'" target="_blank" rel="noopener">Details<span class="rc-vh"> of '+s[0]+' (opens in a new tab)</span></a>'+
+        addBtn(on,'Select','Selected')+'</div></article>';
+    }
+
+    /* ---------- footer ---------- */
+    function ready(){
+      if(st.view==='tools')return st.tools.length>0;
+      if(st.view==='level')return st.level!==null;
+      if(st.view==='dept')return st.dept!==null;
+      if(st.view==='goal')return st.goal!==null;
+      if(st.view==='route')return st.picks.length>0||st.custom;
+      return true;
+    }
+    function count(){var n=st.picks.length+(st.custom?1:0);return n?n+(n===1?' session selected':' sessions selected'):'Select at least one session';}
+    function drawFoot(){
+      var v=st.view,h='';
+      if(v==='welcome'||v==='sent'){foot.innerHTML='';return;}
+      h+='<button type="button" class="au-btn au-btn--standard au-btn--ghost" data-act="back">'+I.back+' Back</button>';
+      if(v==='route')h+='<span class="ob-foot__mid" id="ob-count" aria-live="polite">'+count()+'</span>';
+      var text=v==='route'?'Continue to request':v==='request'?'Open my email to send':v==='goal'?'See my route':'Continue';
+      h+='<button type="button" class="au-btn au-btn--standard au-btn--primary" data-act="'+(v==='request'?'send':'next')+'"'+(ready()?'':' disabled')+'>'+text+' '+I.arrow+'</button>';
+      foot.innerHTML=h;
+    }
+    function refreshFoot(){
+      var b=foot.querySelector('.au-btn--primary');if(b)b.disabled=!ready();
+      var c=document.getElementById('ob-count');if(c)c.textContent=count();
+    }
+
+    /* ---------- draw + navigation ---------- */
+    var FIELD={welcome:['0%','0%','0deg'],tools:['-14%','10%','4deg'],level:['-28%','-8%','8deg'],dept:['-40%','12%','12deg'],goal:['-18%','22%','16deg'],route:['8%','-14%','20deg'],request:['-30%','4%','24deg'],sent:['0%','0%','28deg']};
+    function draw(dir){
+      var v=st.view,idx=VIEWS.indexOf(v);
+      card.setAttribute('data-view',v);
+      body.setAttribute('data-dir',dir||'fwd');
+      body.innerHTML=view[v]();
+      drawFoot();
+      Array.prototype.forEach.call(prog.children,function(seg,i){
+        seg.className='ob-prog__seg'+(idx>i+1?' is-done':idx===i+1?' is-now':'');});
+      label.textContent=idx>=1&&idx<=4?'Question '+idx+' of 4':v==='route'?'Your route':v==='request'?'Your request':v==='sent'?'Ready to send':'';
+      var f=FIELD[v];stage.style.setProperty('--ob-bx',f[0]);stage.style.setProperty('--ob-by',f[1]);stage.style.setProperty('--ob-rot',f[2]);
+      save();
+    }
+    function go(v,dir){
+      if(busy||v===st.view)return;
+      clearTimeout(timer);busy=true;
+      body.setAttribute('data-dir',dir||'fwd');body.classList.add('is-leaving');
+      setTimeout(function(){
+        st.view=v;draw(dir);body.classList.remove('is-leaving');busy=false;
+        var top=card.getBoundingClientRect().top;
+        if(top<0)window.scrollTo({top:window.pageYOffset+top-80,behavior:reduced?'auto':'smooth'});
+        var h=body.querySelector('.ob-h');if(h)h.focus({preventScroll:true});
+      },reduced?0:180);
+    }
+    function next(){
+      if(!ready())return;
+      var v=st.view;
+      if(editing&&v!=='route'&&st.goal!==null&&st.dept!==null&&st.level!==null&&st.tools.length){editing=false;go('route');return;}
+      go(VIEWS[VIEWS.indexOf(v)+1]);
+    }
+    function back(){editing=false;go(VIEWS[VIEWS.indexOf(st.view)-1],'back');}
+
+    function choose(btn){
+      var v=st.view,id=btn.getAttribute('data-opt');
+      if(v==='tools'){
+        var i=st.tools.indexOf(id),solo=by(TOOLS,id).solo;
+        if(i>-1)st.tools.splice(i,1);
+        else if(solo)st.tools=[id];
+        else{st.tools=st.tools.filter(function(t){return !by(TOOLS,t).solo;});st.tools.push(id);}
+        st.tools.sort(function(a,b){return TOOLS.indexOf(by(TOOLS,a))-TOOLS.indexOf(by(TOOLS,b));});
+        Array.prototype.forEach.call(body.querySelectorAll('[data-opt]'),function(b){
+          b.setAttribute('aria-checked',st.tools.indexOf(b.getAttribute('data-opt'))>-1?'true':'false');});
+        refreshFoot();save();return;
+      }
+      st[v]=id;
+      Array.prototype.forEach.call(body.querySelectorAll('[data-opt]'),function(b){b.setAttribute('aria-checked',b===btn?'true':'false');});
+      refreshFoot();save();
+      clearTimeout(timer);timer=setTimeout(next,reduced?0:280);
+    }
+    function togglePick(el){
+      var ref=el.getAttribute('data-pick'),i=st.picks.indexOf(ref);
+      if(i>-1)st.picks.splice(i,1);else st.picks.push(ref);
+      st.picks.sort(function(a,b){return 'SLB'.indexOf(a.charAt(0))-'SLB'.indexOf(b.charAt(0))||(a<b?-1:1);});
+      var on=i===-1;el.classList.toggle('is-on',on);el.querySelector('.ob-add').setAttribute('aria-pressed',on?'true':'false');
+      refreshFoot();save();
+    }
+
+    /* ---------- request ---------- */
+    function message(){
+      var f=st.form,lv=by(LEVELS,st.level),dp=by(DEPTS,st.dept),L=[];
+      L.push('Hello Redha,','','I used the training finder on retconsulting.be. Here is my request.','','SESSIONS');
+      st.picks.forEach(function(r){var s=session(r),F=FORMATS[r.charAt(0)];L.push('- '+r+' · '+s[1]+' ('+F.name+', '+F.facts[0]+')');});
+      if(st.custom)L.push('- Tailor-made session, to scope on a call');
+      L.push('','OUR CONTEXT',
+        'Tools: '+st.tools.map(function(t){return by(TOOLS,t).name;}).join(', '),
+        'Level: '+lv.name,'Department: '+dp.name,
+        'Goal: '+(st.goal==='unsure'?'Not sure yet, please advise':FORMATS[st.goal].kicker+' ('+FORMATS[st.goal].name+')'));
+      L.push('','PRACTICAL');
+      if(f.size)L.push('Participants: '+f.size);
+      if(f.mode)L.push('Delivery: '+f.mode);
+      if(f.lang)L.push('Language: '+f.lang);
+      if(f.company)L.push('Company: '+f.company);
+      if(f.notes)L.push('','NOTES',f.notes);
+      L.push('','Thanks,',f.name);
+      return L.join('\n');
+    }
+    function send(){
+      var f=st.form,box=document.getElementById('ob-name-box'),help=document.getElementById('ob-name-help'),input=document.getElementById('ob-name');
+      if(!f.name.trim()){box.classList.add('au-field__box--error');help.hidden=false;input.setAttribute('aria-invalid','true');input.focus();return;}
+      lastMessage=message();
+      var subject='[RET Learning] Training request'+(f.company?' · '+f.company:'');
+      go('sent');
+      setTimeout(function(){window.location.href='mailto:'+MAIL+'?subject='+encodeURIComponent(subject)+'&body='+encodeURIComponent(lastMessage);},reduced?50:500);
+    }
+    function copy(btn){
+      var done=function(){btn.textContent='Copied';setTimeout(function(){btn.textContent='Copy the message';},2000);};
+      if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(lastMessage).then(done,function(){select();});}else select();
+      function select(){var pre=body.querySelector('pre'),r=document.createRange();r.selectNodeContents(pre);var s=window.getSelection();s.removeAllRanges();s.addRange(r);
+        try{if(document.execCommand('copy'))done();}catch(e){}}
+    }
+
+    /* ---------- events ---------- */
+    card.addEventListener('click',function(e){
+      if(busy)return;
+      var t=e.target,el;
+      if((el=t.closest('[data-opt]'))){choose(el);return;}
+      if((el=t.closest('[data-act]'))){
+        var a=el.getAttribute('data-act');
+        if(a==='next')next();else if(a==='back')back();else if(a==='send')send();else if(a==='copy')copy(el);
+        else if(a==='restart'){st=blank();editing=false;go('welcome','back');}
+        return;
+      }
+      if((el=t.closest('[data-edit]'))){editing=true;go(el.getAttribute('data-edit'),'back');return;}
+      if((el=t.closest('[data-seg]'))){
+        var n=el.getAttribute('data-seg'),v=el.getAttribute('data-val');
+        st.form[n]=st.form[n]===v?'':v;
+        Array.prototype.forEach.call(body.querySelectorAll('[data-seg="'+n+'"]'),function(b){b.setAttribute('aria-checked',st.form[n]===b.getAttribute('data-val')?'true':'false');});
+        save();return;
+      }
+      if(t.closest('a'))return;
+      if((el=t.closest('[data-pick]'))){togglePick(el);return;}
+      if((el=t.closest('[data-custom]'))){
+        st.custom=!st.custom;el.classList.toggle('is-on',st.custom);el.querySelector('.ob-add').setAttribute('aria-pressed',st.custom?'true':'false');
+        refreshFoot();save();
+      }
+    });
+    card.addEventListener('input',function(e){
+      var n=e.target.name;if(!n||!(n in st.form))return;
+      st.form[n]=e.target.value;
+      if(n==='name'&&e.target.value.trim()){document.getElementById('ob-name-box').classList.remove('au-field__box--error');document.getElementById('ob-name-help').hidden=true;e.target.removeAttribute('aria-invalid');}
+      save();
+    });
+    card.addEventListener('submit',function(e){e.preventDefault();send();});
+    document.addEventListener('keydown',function(e){
+      if(busy||e.metaKey||e.ctrlKey||e.altKey)return;
+      var t=e.target,tag=t.tagName;
+      if(tag==='INPUT'||tag==='TEXTAREA'||tag==='SELECT')return;
+      if(e.key==='Enter'){
+        if(tag==='BUTTON'||tag==='A')return;
+        if(st.view==='request'){e.preventDefault();send();}
+        else if(st.view!=='sent'){e.preventDefault();next();}
+        return;
+      }
+      if(e.key.length===1&&VIEWS.indexOf(st.view)>=1&&VIEWS.indexOf(st.view)<=4){
+        var i=LETTERS.indexOf(e.key.toUpperCase()),opts=body.querySelectorAll('[data-opt]');
+        if(i>-1&&i<opts.length){e.preventDefault();opts[i].focus();choose(opts[i]);}
+      }
+    });
+
+    /* a restored session may point at a view whose answers are missing */
+    if(VIEWS.indexOf(st.view)>=5&&(!st.tools.length||st.level===null||st.dept===null||st.goal===null))st.view='welcome';
+    draw();
+  })();
+  </script>
+</body>
+</html>
